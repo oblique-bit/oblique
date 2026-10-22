@@ -1,15 +1,11 @@
-// Fill the pasted cover template instance, wrap it in a 1920x1080 frame and return a preview.
-// The old cover frames are NOT touched here (see backup-old-covers.js and remove-old-covers.js).
+// Fill the pasted cover template instance in a Figma design file, wrap it in a 1920x1080 frame and set it
+// as the file thumbnail. The old cover frames are kept: renamed "<name>_depr" and moved below the new one
+// (backup-old-covers.js and remove-old-covers.js remove them later).
 //
-// ARGS: {
-//   key, instanceId,
-//   values: { product, doc, purpose, version, modified, owner, docs, status },
-//   frame:  { name: "file_thumbnail", x, y }     // put it beside the old cover first
-// }
-// Text values are set through the component properties of the template. Writing rules used so far:
-//   product  "Oblique <release number>"      version  no letter V, e.g. "16.0.0-F1.3"
-//   modified "Month YYYY"                    purpose  empty = the Purpose row is hidden
-//   status   a lifecycle_status variant value, e.g. "active", "maintenance", "end_of_life"
+// ARGS: { key, instanceId, values: { product, doc, purpose, version, modified, owner, docs, status } }
+// Writing rules: product "Oblique <release number>"; version without the letter V; modified "Month YYYY";
+// status = a lifecycle_status variant (active, maintenance, end_of_life, work_in_progress_figma_only, ...).
+// An empty purpose hides the Purpose row; an empty version or modified hides its row (both: the whole column).
 (async () => {
   const A = __ARGS__;
   if (figma.fileKey !== A.key) return JSON.stringify({ wrongFile: figma.fileKey });
@@ -17,6 +13,11 @@
   const inst = await figma.getNodeByIdAsync(A.instanceId);
   if (!inst || inst.type !== 'INSTANCE') return JSON.stringify({ error: 'instance missing', instanceId: A.instanceId });
   const log = [];
+  let ft = pg.children.find(c => c.type === 'FRAME' && c.name === 'file_thumbnail');
+  const cur = await figma.getFileThumbnailNodeAsync();
+  const olds = pg.children.filter(c => c !== ft && c.type === 'FRAME' && !/_depr$/.test(c.name) && (/^_helper \/ thumbnail/.test(c.name) || (cur && c.id === cur.id)));
+  const main = olds.find(o => cur && o.id === cur.id) || olds[0];
+  const x0 = main ? main.x : 0, y0 = main ? main.y : 0;
   const all = []; const collect = i => { all.push(i); for (const e of i.exposedInstances) collect(e); }; collect(inst);
   const set = (prop, value) => {
     for (const i of all) {
@@ -27,23 +28,28 @@
   };
   const v = A.values;
   set('product', v.product); set('document_name', v.doc); set('purpose', v.purpose || '');
-  set('version', v.version); set('modified_on', v.modified); set('ownership', v.owner);
+  set('version', v.version || ''); set('modified_on', v.modified || ''); set('ownership', v.owner);
   set('documentation', v.docs); set('lifecycle_status', v.status);
-
-  const fr = A.frame;
-  let ft = pg.children.find(c => c.type === 'FRAME' && c.name === fr.name);
   if (!ft) {
-    ft = figma.createFrame(); ft.name = fr.name; ft.resize(1920, 1080); ft.clipsContent = true; ft.fills = [];
-    pg.appendChild(ft); ft.x = fr.x; ft.y = fr.y;
-    ft.appendChild(inst); inst.x = 0; inst.y = 0; log.push('wrapped in frame ' + fr.name);
+    ft = figma.createFrame(); ft.name = 'file_thumbnail'; ft.resize(1920, 1080); ft.clipsContent = true; ft.fills = [];
+    pg.appendChild(ft); ft.x = x0; ft.y = y0; ft.appendChild(inst); inst.x = 0; inst.y = 0; log.push('wrapped in frame file_thumbnail');
   }
-  // an empty text still takes a row and pushes the title up: hide the row instead
-  const purposeRow = ft.findOne(n => n.name === 'Purpose');
-  if (purposeRow) { purposeRow.visible = !!v.purpose; log.push('purpose row visible = ' + purposeRow.visible); }
+  const hide = names => { const hit = ft.findAll(x => names.includes(x.name)); hit.forEach(h => { h.visible = false; }); return hit.length; };
+  const row = ft.findOne(n => n.name === 'Purpose'); if (row) row.visible = !!v.purpose;
+  if (!v.version) log.push('hid version ' + hide(['Version label', 'Version value']));
+  if (!v.modified) log.push('hid modified ' + hide(['Modified label', 'Modified value']));
+  if (!v.version && !v.modified) log.push('hid column 1 ' + hide(['Info column 1', 'Separator']));
+  const oy = y0 + 1080 + 400;
+  for (const o of olds) { o.name = o.name.replace(/^_helper \/ /, '') + '_depr'; o.x = x0 + (o === main ? 0 : 1920 + 120); o.y = oy; }
+  let thumbErr = null;
+  try { await figma.setFileThumbnailNodeAsync(null); await new Promise(r => setTimeout(r, 800)); } catch (e) { log.push('restore: ' + (e.message || e)); }
+  try { await figma.setFileThumbnailNodeAsync(ft); } catch (e) { thumbErr = String(e.message || e); }
   await new Promise(r => setTimeout(r, 1500));
+  const now = await figma.getFileThumbnailNodeAsync();
   const texts = ft.findAll(n => n.type === 'TEXT').map(t => t.name + '=' + t.characters + (t.hyperlink ? ' [link]' : ''));
   return JSON.stringify({
-    log, texts, children: pg.children.map(c => c.type + ' ' + c.name + ' @' + Math.round(c.x) + ',' + Math.round(c.y)),
+    log, texts, thumbnail: now ? now.name : null, thumbErr,
+    children: pg.children.map(c => c.type + ' ' + c.name + ' @' + Math.round(c.x) + ',' + Math.round(c.y)),
     img: figma.base64Encode(await ft.exportAsync({ format: 'PNG', constraint: { type: 'SCALE', value: 0.5 } })),
   });
 })()

@@ -1,0 +1,47 @@
+// FigJam variant of fill-cover.js: the pasted template instance goes into a Section "file_thumbnail"
+// (1920x1080, white), which is set as the board thumbnail. FigJam cannot hold frames, and a paste can land
+// inside another section, so the page is found by walking up from the instance.
+// An existing section "file_thumbnail" is replaced and keeps its place.
+// ARGS: { key, instanceId, values: { product, doc, purpose, version, modified, owner, docs, status } }
+(async () => {
+  const A = __ARGS__;
+  if (figma.fileKey !== A.key) return JSON.stringify({ wrongFile: figma.fileKey });
+  await figma.loadAllPagesAsync();
+  const inst = await figma.getNodeByIdAsync(A.instanceId);
+  if (!inst || inst.type !== 'INSTANCE') return JSON.stringify({ error: 'instance missing', instanceId: A.instanceId });
+  let pg = inst; while (pg && pg.type !== 'PAGE') pg = pg.parent;
+  await pg.loadAsync(); await figma.setCurrentPageAsync(pg);
+  const log = [];
+  const all = []; const collect = i => { all.push(i); for (const e of i.exposedInstances) collect(e); }; collect(inst);
+  const set = (prop, value) => {
+    for (const i of all) {
+      const k = Object.keys(i.componentProperties).find(x => x.split('#')[0] === prop);
+      if (k) { i.setProperties({ [k]: value }); log.push(prop + ' = ' + JSON.stringify(value)); return; }
+    }
+    log.push('NOT FOUND ' + prop);
+  };
+  const v = A.values;
+  set('product', v.product); set('document_name', v.doc); set('purpose', v.purpose || ''); set('version', v.version || '');
+  set('modified_on', v.modified || ''); set('ownership', v.owner); set('documentation', v.docs); set('lifecycle_status', v.status);
+  const hide = names => { const hit = inst.findAll(x => names.includes(x.name)); hit.forEach(h => { h.visible = false; }); return hit.length; };
+  if (!v.version) log.push('hid version ' + hide(['Version label', 'Version value']));
+  if (!v.modified) log.push('hid modified ' + hide(['Modified label', 'Modified value']));
+  if (!v.version && !v.modified) log.push('hid column 1 ' + hide(['Info column 1', 'Separator']));
+  const row = inst.findOne(n => n.name === 'Purpose'); if (row) row.visible = !!v.purpose;
+  const old = pg.children.find(c => c.type === 'SECTION' && c.name === 'file_thumbnail');
+  let x = inst.x, y = inst.y;
+  if (old) { x = old.x; y = old.y; old.remove(); log.push('replaced the earlier file_thumbnail section'); }
+  else { const others = pg.children.filter(c => c !== inst); if (others.length) { x = Math.min(...others.map(c => c.x)) - 2200; y = Math.min(...others.map(c => c.y)); } }
+  const sec = figma.createSection(); sec.name = 'file_thumbnail'; sec.resizeWithoutConstraints(1920, 1080); sec.x = x; sec.y = y;
+  sec.fills = [{ type: 'SOLID', color: { r: 1, g: 1, b: 1 } }];
+  sec.appendChild(inst); inst.x = 0; inst.y = 0;
+  let thumbErr = null, thumb = null;
+  try {
+    await figma.setFileThumbnailNodeAsync(null); await new Promise(r => setTimeout(r, 800));
+    await figma.setFileThumbnailNodeAsync(sec); await new Promise(r => setTimeout(r, 1500));
+    const cur = await figma.getFileThumbnailNodeAsync(); thumb = cur ? cur.name : null;
+  } catch (e) { thumbErr = String(e.message || e); }
+  let img = null;
+  try { img = figma.base64Encode(await sec.exportAsync({ format: 'PNG', constraint: { type: 'SCALE', value: 0.3 } })); } catch (e) { log.push('export failed: ' + (e.message || e)); }
+  return JSON.stringify({ log, page: pg.name, thumbnail: thumb, thumbErr, img });
+})()

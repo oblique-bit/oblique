@@ -24,17 +24,38 @@ cover into it. They were used once to migrate the covers of the existing Oblique
 
 | File | Use |
 |---|---|
+| `cover-wizard.mjs` | **start here**: asks in the terminal, proposes the values from the old cover, changes one file |
+| `propose.mjs`, `propose.test.mjs` | the rules that turn the old cover texts into proposed values; `node --test propose.test.mjs` |
 | `cover-tools.zsh` | shell functions: `ct_open`, `ct_run`, `ct_enable_library`, `ct_clipboard_file`, `ct_btn` |
 | `cdp.mjs` | drive one Figma tab: `eval`, `click`, `type`, `key c/v`, `shot` |
 | `render.mjs`, `save-images.mjs` | fill the `__ARGS__` placeholder of a script; save returned PNGs |
 | `read-cover.js` | read-only report of the cover page (frames, texts, file thumbnail) |
 | `select-node.js` | select the template so it can be copied |
 | `prepare-paste.js`, `read-pasted.js` | open the cover page before the paste; check the pasted node |
-| `fill-cover.js` | fill the pasted instance, wrap it in a 1920x1080 frame, return a preview |
+| `fill-cover.js` | design files: fill the pasted instance, wrap it in a 1920x1080 frame, keep the old frames as `_depr`, set the thumbnail |
+| `fill-figjam.js` | FigJam boards: same, but the wrapper is a Section |
 | `backup-old-covers.js`, `remove-old-covers.js` | export the old cover frames as PNG and text; then remove them and set the file thumbnail |
 | `files.example.json` | shape of a per-file list of values |
 
-## Steps for one file
+## The easy way: the wizard
+
+```
+export COVER_TEMPLATE_KEY=<key of the file that owns the template>
+export COVER_TEMPLATE_NODE=<node id of the cover template component>
+node cover-wizard.mjs "<url of the file or board>"
+```
+
+The wizard reads the old cover, proposes a value for every field (Enter keeps it, `-` empties it), shows a
+table and asks "Change the file with these values? [y/N]" before it writes anything. Then it copies the
+template, enables the library (design files), pastes, fills, saves a preview in `./cover-wizard-out` and
+asks whether the old cover frames should be backed up and removed. Useful options: `--dry-run` (stop before
+any change), `--yes` (accept the proposals), `--values file.json` (take the values from a file),
+`--force` (run again on a file that already has the new cover).
+
+What the wizard cannot decide for you: the purpose sentence, and whether a working file is "Oblique DS" or
+a numbered release. A file without an old cover gets defaults (file name, current month, work in progress).
+
+## Steps for one file (what the wizard does)
 
 ```
 source cover-tools.zsh
@@ -95,6 +116,7 @@ the way back, and the backup holds PNG and texts.
 - Paste is Cmd+C / Cmd+V sent to the tab. Check the clipboard before each paste: another device can replace it.
 - The library step drives the Figma menus by their text. When Figma changes the menus, take a screenshot
   (`node cdp.mjs <key> shot out.png`) and adjust the labels in `ct_enable_library`.
-- Status of these tools: the original scripts ran on the existing Oblique files. This folder is the cleaned version of those scripts;
-  it was checked for syntax and tested read-only (`read-cover.js`, `read-pasted.js`, the tab helpers).
-  Run step 5 on a copy of a file first.
+- Status of these tools: the original scripts changed the covers of about 20 Oblique files and boards. The
+  proposal rules have unit tests. The wizard was run in `--dry-run` on real files, with typed and with piped
+  answers. The write path of the wizard (steps 3 to 6 in one run) has not been run as one piece: run it on a
+  copy of a file first.
