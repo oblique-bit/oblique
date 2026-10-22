@@ -1,0 +1,20 @@
+{
+  "templateFile": { "key": "<file key of the file that owns the template>", "nodeId": "<node id of the cover template component>" },
+  "files": [
+    {
+      "key": "<file key of the file to change>",
+      "url": "<full Figma URL of that file>",
+      "oldFrames": "^_helper / thumbnail",
+      "values": {
+        "product": "Oblique 16",
+        "doc": "Library",
+        "purpose": "",
+        "version": "16.0.0-F1.3",
+        "modified": "October 2026",
+        "owner": "<owner team>",
+        "docs": "oblique.bit.admin.ch",
+        "status": "active"
+      }
+    }
+  ]
+}
