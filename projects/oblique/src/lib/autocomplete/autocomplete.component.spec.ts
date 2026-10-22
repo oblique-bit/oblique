@@ -35,7 +35,7 @@ import {provideObliqueTestingConfiguration} from '../utilities';
 
 @Component({
 	standalone: false,
-	template: ``,
+	template: `<ob-autocomplete />`,
 })
 class TestParentComponent {
 	model = new FormControl('', Validators.required);
