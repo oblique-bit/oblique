@@ -1,6 +1,8 @@
 // FigJam variant of fill-cover.js: the pasted template instance goes into a Section "file_thumbnail"
 // (1920x1080, white), which is set as the board thumbnail. FigJam cannot hold frames, and a paste can land
 // inside another section, so the page is found by walking up from the instance.
+// The lifecycle status badge is made a separate instance (see standalone-badge.js), because the badge nested
+// in the cover is hard to select in FigJam.
 // An existing section "file_thumbnail" is replaced and keeps its place. Old cover frames on the page
 // ("_helper / thumbnail...") are kept, renamed "<name>_depr" and moved below the new section; the new
 // section takes the place of the current thumbnail frame.
@@ -41,6 +43,14 @@
   const sec = figma.createSection(); sec.name = 'file_thumbnail'; sec.resizeWithoutConstraints(1920, 1080); sec.x = x; sec.y = y;
   sec.fills = [{ type: 'SOLID', color: { r: 1, g: 1, b: 1 } }];
   sec.appendChild(inst); inst.x = 0; inst.y = 0;
+  const nestedBadge = inst.findOne(n => n.type === 'INSTANCE' && n.name === 'status');
+  if (nestedBadge) {
+    const bm = await nestedBadge.getMainComponentAsync();
+    const ba = nestedBadge.absoluteBoundingBox, bs = sec.absoluteBoundingBox;
+    const badge = bm.createInstance(); badge.name = 'lifecycle_status'; sec.appendChild(badge);
+    badge.x = (ba.x - bs.x) + ba.width - badge.width; badge.y = (ba.y - bs.y) + (ba.height - badge.height) / 2;
+    nestedBadge.visible = false; log.push('separate status badge: ' + bm.name);
+  }
   for (const o of olds) { o.name = o.name.replace(/^_helper \/ /, '') + '_depr'; o.x = x + (o === mainOld ? 0 : 1920 + 120); o.y = y + 1080 + 400; }
   let thumbErr = null, thumb = null;
   try {

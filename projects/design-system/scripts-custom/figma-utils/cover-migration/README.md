@@ -33,7 +33,8 @@ of the old cover into it. They were used to migrate the covers of the existing O
 | `select-node.js` | select the template so it can be copied |
 | `prepare-paste.js`, `read-pasted.js` | open the cover page before the paste; check the pasted node |
 | `fill-cover.js` | design files: fill the pasted instance, wrap it in a 1920x1080 frame, keep the old frames as `_depr`, set the thumbnail |
-| `fill-figjam.js` | FigJam boards: same, but the wrapper is a Section |
+| `fill-figjam.js` | FigJam boards: same, but the wrapper is a Section and the status badge is a separate instance |
+| `standalone-badge.js` | FigJam: make the status badge of an existing cover a separate instance |
 | `backup-old-covers.js`, `remove-old-covers.js` | export the old cover frames as PNG and text; then remove them and set the file thumbnail |
 | `values.example.json` | the shape of a values file for `--values` |
 
@@ -143,6 +144,11 @@ the answer of step 5 (for example `FRAME file_thumbnail @0,742`).
   the page by walking up from the pasted node, so this is handled. FigJam cannot enable a library; the
   pasted cover is a linked instance and its fields can be changed, but it is not verified that it receives
   later changes of the template. Check this after the next publish of the template.
+- **Changing the status in FigJam.** The badge is a separate instance in the section. Click it once, click the
+  small toolbar above it (diamond icon with an arrow) and pick the status in the panel "Variants". Nothing
+  else on the cover has to be touched. (The badge nested in the cover is hard to reach: a double click
+  enters its text; after that Esc and Shift+Enter select the whole badge.) If the badge changes its width
+  with the new status, move it back to the right edge by hand.
 - Figma refreshes the thumbnail in the file browser after some time, and it is more reliable when the file is
   closed. If the old picture stays, use "Restore default thumbnail" and then "Set as thumbnail" once more.
 - Status of these tools: the original scripts changed the covers of about 20 Oblique files and boards. The
