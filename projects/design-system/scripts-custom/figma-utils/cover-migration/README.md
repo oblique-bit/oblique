@@ -146,9 +146,9 @@ the answer of step 5 (for example `FRAME file_thumbnail @0,742`).
 - Figma refreshes the thumbnail in the file browser after some time, and it is more reliable when the file is
   closed. If the old picture stays, use "Restore default thumbnail" and then "Set as thumbnail" once more.
 - Status of these tools: the original scripts changed the covers of about 20 Oblique files and boards. The
-  proposal rules have unit tests. The wizard was run in `--dry-run` on real files, with typed and with piped
-  answers. The write path of the wizard (steps 3 to 6 in one run) has not been run as one piece: run it on a
-  copy of a file first.
+  proposal rules have unit tests. The wizard ran its whole write path (copy, paste, fill) on 11 files and
+  boards, 2 design files and 9 FigJam boards; removal of the old frames was done with the two removal scripts.
+  Run the wizard with `--dry-run` first on a new kind of file.
 
 ## Problems
 
