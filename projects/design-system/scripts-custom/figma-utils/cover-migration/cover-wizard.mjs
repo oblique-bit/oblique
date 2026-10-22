@@ -27,7 +27,7 @@ const argv = process.argv.slice(2);
 const flag = name => { const i = argv.indexOf(name); return i >= 0 ? argv[i + 1] : undefined; };
 const has = name => argv.includes(name);
 const url = argv.find(a => /^https?:\/\//.test(a));
-if (!url || has('--help')) { console.log(readFileSync(fileURLToPath(import.meta.url), 'utf8').split('\n').slice(1, 17).map(l => l.replace(/^\/\/ ?/, '')).join('\n')); process.exit(url ? 0 : 1); }
+if (!url || has('--help')) { console.log(readFileSync(fileURLToPath(import.meta.url), 'utf8').split('\n').slice(1).filter((l, i, all) => all.slice(0, i + 1).every(x => x.startsWith('//'))).map(l => l.replace(/^\/\/ ?/, '')).join('\n')); process.exit(url ? 0 : 1); }
 
 const TEMPLATE_KEY = flag('--template-key') || process.env.COVER_TEMPLATE_KEY;
 const TEMPLATE_NODE = flag('--template-node') || process.env.COVER_TEMPLATE_NODE;
