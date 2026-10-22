@@ -51,12 +51,12 @@ class ConfiguredTestComponent {}
 
 describe('ObAlertComponent', () => {
 	let obAlertComponent: ObAlertComponent;
-	let fixture: ComponentFixture<DefaultTestComponent>;
-	let testComponent: DefaultTestComponent;
 	let debugElement: DebugElement;
 	let hostChangeDetector: ChangeDetectorRef;
 
 	describe('with default inputs', () => {
+		let fixture: ComponentFixture<DefaultTestComponent>;
+		let testComponent: DefaultTestComponent;
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
 				imports: [ObAlertComponent],
@@ -133,6 +133,8 @@ describe('ObAlertComponent', () => {
 	});
 
 	describe('with custom inputs', () => {
+		let fixture: ComponentFixture<ConfiguredTestComponent>;
+		let testComponent: ConfiguredTestComponent;
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
 				imports: [ObAlertComponent],
@@ -173,6 +175,7 @@ describe('ObAlertComponent', () => {
 	});
 
 	describe('live region role alert', () => {
+		let fixture: ComponentFixture<AlertRoleTestComponent>;
 		describe('with  role from user over DOM, undefined token and input', () => {
 			beforeEach(async () => {
 				TestBed.resetTestingModule();
@@ -186,7 +189,6 @@ describe('ObAlertComponent', () => {
 
 			beforeEach(() => {
 				fixture = TestBed.createComponent(AlertRoleTestComponent);
-				testComponent = fixture.componentInstance;
 				fixture.detectChanges();
 				debugElement = fixture.debugElement.query(By.directive(ObAlertComponent));
 				obAlertComponent = debugElement.injector.get(ObAlertComponent);
@@ -235,7 +237,6 @@ describe('ObAlertComponent', () => {
 
 			beforeEach(() => {
 				fixture = TestBed.createComponent(DefaultTestComponent);
-				testComponent = fixture.componentInstance;
 				fixture.detectChanges();
 				debugElement = fixture.debugElement.query(By.directive(ObAlertComponent));
 				obAlertComponent = debugElement.injector.get(ObAlertComponent);
@@ -335,7 +336,6 @@ describe('ObAlertComponent', () => {
 
 			beforeEach(() => {
 				fixture = TestBed.createComponent(DefaultTestComponent);
-				testComponent = fixture.componentInstance;
 				fixture.detectChanges();
 				debugElement = fixture.debugElement.query(By.directive(ObAlertComponent));
 				obAlertComponent = debugElement.injector.get(ObAlertComponent);
@@ -397,7 +397,6 @@ describe('ObAlertComponent', () => {
 
 			beforeEach(() => {
 				fixture = TestBed.createComponent(DefaultTestComponent);
-				testComponent = fixture.componentInstance;
 				fixture.detectChanges();
 				debugElement = fixture.debugElement.query(By.directive(ObAlertComponent));
 				obAlertComponent = debugElement.injector.get(ObAlertComponent);

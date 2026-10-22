@@ -3,7 +3,7 @@ import {TestBed} from '@angular/core/testing';
 import {firstValueFrom, of, throwError} from 'rxjs';
 
 import {ObMultiTranslateLoader} from './multi-translate-loader';
-import {ObITranslationFile} from './multi-translate-loader.model';
+import {ObITranslationFile} from './translation.model';
 import {ObConsoleService} from '../console/ob-console.service';
 
 describe(ObMultiTranslateLoader.name, () => {

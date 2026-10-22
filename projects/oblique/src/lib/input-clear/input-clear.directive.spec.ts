@@ -17,6 +17,7 @@ import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObInputClearDirective} from './input-clear.directive';
 import {TranslatePipe} from '@ngx-translate/core';
 import {ObConsoleService} from '../console/ob-console.service';
+import {MatDatepicker} from '@angular/material/datepicker';
 
 interface ObInputClearDirectivePrivate {
 	setFocus: () => void;
@@ -25,6 +26,7 @@ interface ObInputClearDirectivePrivate {
 }
 
 @Component({
+	selector: 'ob-untyped-reactive',
 	standalone: false,
 	template: ` <div [formGroup]="testForm">
 		<mat-form-field>
@@ -49,6 +51,7 @@ class UntypedReactiveFormTestComponent {
 }
 
 @Component({
+	selector: 'ob-typed-reactive',
 	standalone: false,
 	template: ` <div [formGroup]="testForm">
 		<mat-form-field>
@@ -73,6 +76,7 @@ class StronglyTypedReactiveFormTestComponent {
 }
 
 @Component({
+	selector: 'ob-template',
 	standalone: false,
 	template: ` <div>
 		<mat-form-field>
@@ -90,6 +94,7 @@ class TemplateDrivenFormTestComponent {
 }
 
 @Component({
+	selector: 'ob-html-input',
 	standalone: false,
 	template: ` <div>
 		<mat-form-field>
@@ -107,6 +112,7 @@ class HtmlInputTestComponent {
 }
 
 @Component({
+	selector: 'ob-html-input-with-datepicker',
 	standalone: false,
 	template: ` <div>
 		<mat-form-field>
@@ -119,16 +125,17 @@ class HtmlInputTestComponent {
 	</div>`,
 })
 class HtmlInputWithDatePickerTestComponent {
-	datePicker = {select: jest.fn()};
+	datePicker = {select: jest.fn()} as unknown as MatDatepicker<unknown>;
 }
 
 @Component({
+	selector: 'ob-wrong-configuration',
 	standalone: false,
 	template: ` <div>
 		<mat-form-field>
 			<mat-label>Mandatory</mat-label>
 			<input type="text" matInput placeholder="Mandatory" required />
-			<button type="button" [obInputClear]="testModel">
+			<button type="button" [obInputClear]="undefined">
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>

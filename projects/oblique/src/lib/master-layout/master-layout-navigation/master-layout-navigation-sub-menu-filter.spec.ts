@@ -60,7 +60,7 @@ describe(obMasterLayoutNavigationSubMenuFilter.name, () => {
 		'that a click of $elementTag element with class(es): $classes will result in emitted being $expected',
 		({elementTag, classes, expected}) => {
 			const element: HTMLElement = document.createElement(elementTag);
-			element.classList.add(classes);
+			element.classList.add(...classes);
 			document.querySelector('body').appendChild(element);
 			let emitted = false;
 			fromEvent(document, 'click')
@@ -87,7 +87,7 @@ describe(obMasterLayoutNavigationSubMenuFilter.name, () => {
 			const obSubMenu: HTMLDivElement = document.createElement('div');
 			obSubMenu.classList.add('ob-sub-menu');
 			const element: HTMLElement = document.createElement(elementTag);
-			element.classList.add(classes);
+			element.classList.add(...classes);
 			obSubMenu.appendChild(element);
 			document.querySelector('body').appendChild(obSubMenu);
 			let emitted = false;

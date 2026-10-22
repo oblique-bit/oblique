@@ -1,5 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-import {TranslateNoOpCompiler, TranslateService} from '@ngx-translate/core';
+import {TranslateCompiler, TranslateNoOpCompiler} from '@ngx-translate/core';
 import {OB_TRANSLATION_CONFIGURATION, provideObliqueTranslations} from './translation.providers';
 
 describe('translation', () => {
@@ -14,8 +14,8 @@ describe('translation', () => {
 			expect(TestBed.inject(OB_TRANSLATION_CONFIGURATION)).toEqual({flatten: true});
 		});
 
-		it('should use "TranslateNoOpCompiler " as "TranslateCompiler"', () => {
-			expect(TestBed.inject(TranslateService).compiler).toBeInstanceOf(TranslateNoOpCompiler);
+		it('should use "TranslateNoOpCompiler" as "TranslateCompiler"', () => {
+			expect(TestBed.inject(TranslateCompiler)).toBeInstanceOf(TranslateNoOpCompiler);
 		});
 	});
 
@@ -32,8 +32,8 @@ describe('translation', () => {
 			});
 		});
 
-		it('should use "TranslateNoOpCompiler " as "TranslateCompiler"', () => {
-			expect(TestBed.inject(TranslateService).compiler).toBeInstanceOf(TranslateNoOpCompiler);
+		it('should use "TranslateNoOpCompiler" as "TranslateCompiler"', () => {
+			expect(TestBed.inject(TranslateCompiler)).toBeInstanceOf(TranslateNoOpCompiler);
 		});
 	});
 });
