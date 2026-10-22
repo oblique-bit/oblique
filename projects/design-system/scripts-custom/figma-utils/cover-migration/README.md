@@ -125,7 +125,8 @@ the answer of step 5 (for example `FRAME file_thumbnail @0,742`).
 - `purpose`: one status-neutral sentence about what the file contains; empty hides the Purpose row.
 - `owner`: the owning team; `docs`: the documentation address as written in the old cover.
 - `status`: a `lifecycle_status` variant of the template: active, release_candidate, maintenance, end_of_life,
-  work_in_progress_figma_only, on_hold_figma_only, experimental_figma_only, figma_only, dev_handoff_figma_only.
+  work_in_progress_figma_only, on_hold_figma_only, experimental_figma_only, figma_only, dev_handoff_figma_only,
+  deprecated.
 - Keep one thumbnail per file.
 
 ## Notes

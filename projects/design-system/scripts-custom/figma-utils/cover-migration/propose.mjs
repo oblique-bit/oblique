@@ -3,10 +3,10 @@
 const MONTHS = { january: 'January', february: 'February', march: 'March', april: 'April', may: 'May', june: 'June', july: 'July', august: 'August', september: 'September', october: 'October', november: 'November', december: 'December',
   januar: 'January', februar: 'February', 'märz': 'March', mai: 'May', juni: 'June', juli: 'July', oktober: 'October', dezember: 'December' };
 
-export const STATUSES = ['active', 'release_candidate', 'maintenance', 'end_of_life', 'work_in_progress_figma_only', 'on_hold_figma_only', 'experimental_figma_only', 'figma_only', 'dev_handoff_figma_only'];
+export const STATUSES = ['active', 'release_candidate', 'maintenance', 'end_of_life', 'work_in_progress_figma_only', 'on_hold_figma_only', 'experimental_figma_only', 'figma_only', 'dev_handoff_figma_only', 'deprecated'];
 
 const STATUS_WORDS = [
-  [/END OF LIFE|DEPRECATED/i, 'end_of_life'], [/MAINTENANCE/i, 'maintenance'], [/RELEASE CANDIDATE/i, 'release_candidate'],
+  [/END OF LIFE/i, 'end_of_life'], [/DEPRECATED/i, 'deprecated'], [/MAINTENANCE/i, 'maintenance'], [/RELEASE CANDIDATE/i, 'release_candidate'],
   [/WORK IN PROGRESS/i, 'work_in_progress_figma_only'], [/ON HOLD/i, 'on_hold_figma_only'], [/EXPERIMENTAL/i, 'experimental_figma_only'],
   [/DEV HANDOFF/i, 'dev_handoff_figma_only'], [/^ACTIVE$/i, 'active'],
 ];
