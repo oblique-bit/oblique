@@ -26,9 +26,9 @@ test('custom first line, no version, no date', () => {
   const p = propose(frame('f', ['t=Figma Metadata  Helper Component|Mockup', 'ON HOLD=ON HOLD']), { now: NOW });
   assert.equal(p.doc, 'Figma Metadata Helper Component'); assert.equal(p.purpose, 'Mockup'); assert.equal(p.status, 'on_hold_figma_only'); assert.equal(p.version, '');
 });
-test('no old cover: defaults from the file name and the current month', () => {
+test('no old cover: defaults from the file name, no invented date', () => {
   const p = propose({ name: 'States-WiP', frames: [] }, { now: NOW });
-  assert.equal(p.doc, 'States-WiP'); assert.equal(p.product, 'Oblique DS'); assert.equal(p.modified, 'October 2026'); assert.equal(p.status, 'work_in_progress_figma_only');
+  assert.equal(p.doc, 'States-WiP'); assert.equal(p.product, 'Oblique DS'); assert.equal(p.modified, ''); assert.equal(p.status, 'work_in_progress_figma_only');
 });
 test('deprecated is a status of its own', () => {
   const p = propose(frame('f', ['t=Oblique|Library V9', 'v=V9.0.0 – F1.0  |  May 2023', 'b=DEPRECATED']), { now: NOW });

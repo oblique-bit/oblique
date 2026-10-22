@@ -72,7 +72,7 @@ else {
   values.doc = await ask('doc name', values.doc);
   values.purpose = await ask('purpose', values.purpose, 'one sentence about what the file contains');
   values.version = await ask('version', values.version, 'no letter V');
-  values.modified = await ask('modified', values.modified, 'Month YYYY');
+  values.modified = await ask('modified', values.modified, 'Month YYYY of the last real change; empty hides the row, never use today by default');
   values.owner = await ask('owner', values.owner);
   values.docs = await ask('docs', values.docs);
   for (;;) { values.status = await ask('status', values.status, STATUSES.join(' | ')); if (STATUSES.includes(values.status)) break; console.log('  not a status variant'); if (YES) process.exit(1); }

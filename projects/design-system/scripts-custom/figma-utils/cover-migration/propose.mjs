@@ -28,7 +28,7 @@ export function currentMonthYear(date = new Date()) {
 
 export function propose(old, options = {}) {
   const owner = options.owner || 'BIT / Oblique Team';
-  const out = { product: 'Oblique DS', doc: (old && old.name) || '', purpose: '', version: '', modified: currentMonthYear(options.now), owner, docs: 'oblique.bit.admin.ch', status: 'work_in_progress_figma_only' };
+  const out = { product: 'Oblique DS', doc: (old && old.name) || '', purpose: '', version: '', modified: '', owner, docs: 'oblique.bit.admin.ch', status: 'work_in_progress_figma_only' };
   const frames = (old && old.frames) || [];
   const frame = frames.find(f => old.thumbnail && f.name === old.thumbnail.name) || frames.find(f => f.texts && f.texts.some(t => /^Oblique\|/.test(t.slice(t.indexOf('=') + 1)))) || frames[0];
   if (!frame) return out;

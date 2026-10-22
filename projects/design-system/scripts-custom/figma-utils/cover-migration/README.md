@@ -70,7 +70,7 @@ Options:
 | `--out <dir>` | folder for previews and backups |
 
 The wizard cannot decide for you: the purpose sentence, and whether a working file is "Oblique DS" or a
-numbered release. A file without an old cover gets defaults: the file name, the current month and the status
+numbered release. A file without an old cover gets defaults: the file name, no date (the row is hidden) and the status
 "work in progress". A file that already has the new cover is not changed (change its fields in the right
 panel of Figma).
 
@@ -121,7 +121,10 @@ the answer of step 5 (for example `FRAME file_thumbnail @0,742`).
 
 - `product`: "Oblique" plus the release number, without V or R (example: "Oblique 16").
 - `version`: no letter V, no spaces (example: "16.0.0-F1.3"), as on the documentation site.
-- `modified`: month and year with the full month name, no comma (example: "October 2026").
+- `modified`: month and year with the full month name, no comma (example: "October 2026"). It is the month of the
+  last real change of the content, not the month of the migration and not today. When the old cover has no date
+  and nobody knows the date, leave it empty: the row is hidden. The "Edited" time of the file browser cannot be
+  used, because every script run and every library update changes it.
 - `purpose`: one status-neutral sentence about what the file contains; empty hides the Purpose row.
 - `owner`: the owning team; `docs`: the documentation address as written in the old cover.
 - `status`: a `lifecycle_status` variant of the template: active, release_candidate, maintenance, end_of_life,
