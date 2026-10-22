@@ -22,7 +22,7 @@ ct_run() {
   local try res
   for try in 1 2 3; do
     res=$(ct_cli eval -f $out 2>&1 | tail -1)
-    [[ $res == \{* ]] && { echo $res; rm -f $out; return 0; }
+    [[ $res == \{* ]] && { print -r -- "$res"; rm -f $out; return 0; }
     sleep 4
   done
   echo "no answer: $res" >&2; rm -f $out; return 1
