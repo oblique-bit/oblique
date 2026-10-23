@@ -172,7 +172,7 @@ the answer of step 5 (for example `FRAME file_thumbnail @0,742`).
   ("Property naming change test project"); the number goes to `tickets`. The file name in Figma keeps its number, so a
   search by number in the file browser still works.
 - `git`: the git branch the work lives on, one name without spaces ("tokens-dev"). Optional, internal only, shown as a
-  third line of the second column of the internal footer, under Owner and Tickets (the three lines have the same 8 px gap). The value is at most 660 px wide, which leaves 48 px to the widest internal badge (WORK IN PROGRESS, 543 px): about 36 characters of a branch name fit, a longer name is shortened with "...". `tickets` is optional too. An empty value switches the row off (`show_git`,
+  third line of the second column of the internal footer, under Owner and Tickets (the three lines have the same 8 px gap). The value takes all the room up to the status badge (40 px clear): next to the widest internal badge (WORK IN PROGRESS, 543 px) about 36 characters of a branch name fit, next to a narrow one (DONE, 227 px) about 54. A longer name is shortened with "...". `tickets` is optional too. An empty value switches the row off (`show_git`,
   `show_tickets`), so an empty row takes no space. An external cover has neither.
 - `product`: "Oblique" plus the release number, without V or R (example: "Oblique 16").
 - `version`: no letter V, no spaces (example: "16.0.0-F1.3"), as on the documentation site.
