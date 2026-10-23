@@ -2,6 +2,7 @@
 // as the file thumbnail. The old cover frames are kept: renamed "<name>_depr" and moved below the new one
 // (backup-old-covers.js and remove-old-covers.js remove them later).
 //
+// Scope: only the cover page is read or changed. Other pages of the file are never touched.
 // ARGS: { key, instanceId, values: { product, doc, purpose, version, modified, owner, docs, status } }
 // Writing rules: product "Oblique <release number>"; version without the letter V; modified "Month YYYY";
 // status = a lifecycle_status variant (active, maintenance, end_of_life, work_in_progress_figma_only, ...).
@@ -9,9 +10,21 @@
 (async () => {
   const A = __ARGS__;
   if (figma.fileKey !== A.key) return JSON.stringify({ wrongFile: figma.fileKey });
-  const pg = figma.root.children.find(p => /cover/i.test(p.name)); await pg.loadAsync(); await figma.setCurrentPageAsync(pg);
+  const findCoverPage = async () => {
+    let pg = figma.root.children.find(p => /cover/i.test(p.name));
+    if (!pg && figma.editorType === 'figjam') {
+      for (const p of figma.root.children) { await p.loadAsync(); if (p.children.some(c => c.name === 'file_thumbnail')) { pg = p; break; } }
+    }
+    if (pg) await pg.loadAsync();
+    return pg || null;
+  };
+  const pg = await findCoverPage();
+  if (!pg) return JSON.stringify({ stop: 'no cover page, nothing changed' });
+  await figma.setCurrentPageAsync(pg);
   const inst = await figma.getNodeByIdAsync(A.instanceId);
   if (!inst || inst.type !== 'INSTANCE') return JSON.stringify({ error: 'instance missing', instanceId: A.instanceId });
+  let ip = inst; while (ip && ip.type !== 'PAGE') ip = ip.parent;
+  if (ip !== pg) return JSON.stringify({ stop: 'the pasted instance is on the page "' + (ip ? ip.name : '?') + '", not on the cover page, nothing changed' });
   const log = [];
   let ft = pg.children.find(c => c.type === 'FRAME' && c.name === 'file_thumbnail');
   const cur = await figma.getFileThumbnailNodeAsync();

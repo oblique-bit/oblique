@@ -104,7 +104,9 @@ if (sh('ct_clipboard_file') !== TEMPLATE_KEY) { console.error('The clipboard doe
 step('4. Paste into the file');
 open(url, KEY);
 if (!isFigjam) { const r = sh(`ct_enable_library ${q(KEY)} ${q(LIBRARY)}`); console.log(r); if (!/enabled/.test(r)) { console.error('The library is not enabled. Stopped.'); process.exit(1); } }
-console.log(JSON.stringify(run(KEY, 'prepare-paste.js')));
+const prep = run(KEY, 'prepare-paste.js');
+console.log(JSON.stringify(prep));
+if (!prep || prep.stop || prep.error || prep.wrongFile) { console.error('No cover page to paste into. Stopped.'); process.exit(1); }
 if (sh('ct_clipboard_file') !== TEMPLATE_KEY) { console.error('The clipboard changed. Stopped.'); process.exit(1); }
 sh(`node ${q(join(HERE, 'cdp.mjs'))} ${q(KEY)} key v`);
 await new Promise(r => setTimeout(r, 5000));
@@ -114,7 +116,7 @@ if (!pasted || pasted.count !== 1 || pasted.type !== 'INSTANCE' || !/remote=true
 
 step('5. Fill the cover');
 const res = run(KEY, isFigjam ? 'fill-figjam.js' : 'fill-cover.js', { instanceId: pasted.id, values });
-if (!res || res.error || res.wrongFile) { console.error('Fill failed:', JSON.stringify(res)); process.exit(1); }
+if (!res || res.error || res.wrongFile || res.stop) { console.error('Fill failed:', JSON.stringify(res)); process.exit(1); }
 console.log((res.log || []).join('\n'));
 console.log('file thumbnail is now:', res.thumbnail, res.thumbErr ? '(error: ' + res.thumbErr + ')' : '');
 savePreview(res, KEY);

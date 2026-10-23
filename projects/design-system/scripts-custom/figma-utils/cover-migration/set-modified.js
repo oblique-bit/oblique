@@ -2,18 +2,24 @@
 // Works in Figma design files and in FigJam boards. Writes only when the current value is one of `overwrite`
 // (default: empty or "October 2026", the month an earlier run invented), so a value a person set is never replaced.
 // With dryRun true nothing is changed and the answer says what would happen.
+// Scope: only the cover page is read or changed. Other pages of the file are never touched.
 // ARGS: { key, modified, overwrite?: string[], dryRun?: boolean }
 (async () => {
   const A = __ARGS__;
   if (figma.fileKey !== A.key) return JSON.stringify({ wrongFile: figma.fileKey });
-  await figma.loadAllPagesAsync();
+  const findCoverPage = async () => {
+    let pg = figma.root.children.find(p => /cover/i.test(p.name));
+    if (!pg && figma.editorType === 'figjam') {
+      for (const p of figma.root.children) { await p.loadAsync(); if (p.children.some(c => c.name === 'file_thumbnail')) { pg = p; break; } }
+    }
+    if (pg) await pg.loadAsync();
+    return pg || null;
+  };
+  const pg = await findCoverPage();
+  if (!pg) return JSON.stringify({ error: 'no cover page' });
   const overwrite = A.overwrite || ['', 'October 2026'];
-  let thumb = null;
-  try { thumb = await figma.getFileThumbnailNodeAsync(); } catch (e) { thumb = null; }
-  if (!thumb) {
-    for (const p of figma.root.children) { const hit = p.findOne(n => n.name === 'file_thumbnail'); if (hit) { thumb = hit; break; } }
-  }
-  if (!thumb) return JSON.stringify({ error: 'no cover found' });
+  const thumb = pg.children.find(c => c.name === 'file_thumbnail') || null;
+  if (!thumb) return JSON.stringify({ error: 'no file_thumbnail on the cover page' });
   const prop = (i, name) => Object.keys(i.componentProperties).find(x => x.split('#')[0] === name);
   const candidates = thumb.findAll(n => n.type === 'INSTANCE');
   let inst = null, all = [];

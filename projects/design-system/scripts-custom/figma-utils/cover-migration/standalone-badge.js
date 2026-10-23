@@ -3,15 +3,23 @@
 // the same variant is placed at its position inside the section "file_thumbnail". One click selects it, and
 // the small toolbar above it opens the panel "Variants" to change the status.
 // Safe to repeat: when the separate badge exists, nothing is changed.
+// Scope: only the cover page is read or changed. Other pages of the file are never touched.
 // ARGS: { key }
 (async () => {
   const A = __ARGS__;
   if (figma.fileKey !== A.key) return JSON.stringify({ wrongFile: figma.fileKey });
   if (figma.editorType !== 'figjam') return JSON.stringify({ error: 'not a FigJam board' });
-  await figma.loadAllPagesAsync();
-  const pg = figma.root.children.find(p => p.children.some(c => c.type === 'SECTION' && c.name === 'file_thumbnail'));
-  if (!pg) return JSON.stringify({ error: 'no section file_thumbnail' });
-  await pg.loadAsync(); await figma.setCurrentPageAsync(pg);
+  const findCoverPage = async () => {
+    let pg = figma.root.children.find(p => /cover/i.test(p.name));
+    if (!pg && figma.editorType === 'figjam') {
+      for (const p of figma.root.children) { await p.loadAsync(); if (p.children.some(c => c.name === 'file_thumbnail')) { pg = p; break; } }
+    }
+    if (pg) await pg.loadAsync();
+    return pg || null;
+  };
+  const pg = await findCoverPage();
+  if (!pg) return JSON.stringify({ error: 'no cover page' });
+  await figma.setCurrentPageAsync(pg);
   const sec = pg.children.find(c => c.type === 'SECTION' && c.name === 'file_thumbnail');
   const inst = sec.findOne(n => n.type === 'INSTANCE' && n.name === '~figma_only/thumbnail');
   if (!inst) return JSON.stringify({ error: 'no cover instance in the section' });

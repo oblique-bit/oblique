@@ -6,15 +6,26 @@
 // An existing section "file_thumbnail" is replaced and keeps its place. Old cover frames on the page
 // ("_helper / thumbnail...") are kept, renamed "<name>_depr" and moved below the new section; the new
 // section takes the place of the current thumbnail frame.
+// Scope: only the cover page is read or changed. Other pages of the file are never touched.
 // ARGS: { key, instanceId, values: { product, doc, purpose, version, modified, owner, docs, status } }
 (async () => {
   const A = __ARGS__;
   if (figma.fileKey !== A.key) return JSON.stringify({ wrongFile: figma.fileKey });
-  await figma.loadAllPagesAsync();
+  const findCoverPage = async () => {
+    let pg = figma.root.children.find(p => /cover/i.test(p.name));
+    if (!pg && figma.editorType === 'figjam') {
+      for (const p of figma.root.children) { await p.loadAsync(); if (p.children.some(c => c.name === 'file_thumbnail')) { pg = p; break; } }
+    }
+    if (pg) await pg.loadAsync();
+    return pg || null;
+  };
+  const cover = await findCoverPage();
+  if (!cover) return JSON.stringify({ stop: 'no cover page, nothing changed' });
   const inst = await figma.getNodeByIdAsync(A.instanceId);
   if (!inst || inst.type !== 'INSTANCE') return JSON.stringify({ error: 'instance missing', instanceId: A.instanceId });
   let pg = inst; while (pg && pg.type !== 'PAGE') pg = pg.parent;
-  await pg.loadAsync(); await figma.setCurrentPageAsync(pg);
+  if (pg !== cover) return JSON.stringify({ stop: 'the pasted instance is on the page "' + (pg ? pg.name : '?') + '", not on the cover page, nothing changed' });
+  await figma.setCurrentPageAsync(pg);
   const log = [];
   const all = []; const collect = i => { all.push(i); for (const e of i.exposedInstances) collect(e); }; collect(inst);
   const set = (prop, value) => {

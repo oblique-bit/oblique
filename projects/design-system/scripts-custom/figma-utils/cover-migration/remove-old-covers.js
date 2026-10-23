@@ -1,11 +1,22 @@
 // Remove the old cover frames, move the new frame to the freed place and set it as the file thumbnail.
 // Run only after backup-old-covers.js has been saved. Component and instance nodes are never removed:
 // only plain FRAME nodes whose name matches namePattern. The new cover is a frame (design file) or a section (FigJam).
+// Scope: only the cover page is read or changed. Other pages of the file are never touched.
 // ARGS: { key, namePattern, keepName: "file_thumbnail", move: { x, y } }
 (async () => {
   const A = __ARGS__;
   if (figma.fileKey !== A.key) return JSON.stringify({ wrongFile: figma.fileKey });
-  const pg = figma.root.children.find(p => /cover/i.test(p.name)); await pg.loadAsync(); await figma.setCurrentPageAsync(pg);
+  const findCoverPage = async () => {
+    let pg = figma.root.children.find(p => /cover/i.test(p.name));
+    if (!pg && figma.editorType === 'figjam') {
+      for (const p of figma.root.children) { await p.loadAsync(); if (p.children.some(c => c.name === 'file_thumbnail')) { pg = p; break; } }
+    }
+    if (pg) await pg.loadAsync();
+    return pg || null;
+  };
+  const pg = await findCoverPage();
+  if (!pg) return JSON.stringify({ stop: 'no cover page, nothing changed' });
+  await figma.setCurrentPageAsync(pg);
   const keep = pg.children.find(c => (c.type === 'FRAME' || c.type === 'SECTION') && c.name === A.keepName);
   if (!keep) return JSON.stringify({ stop: 'new frame "' + A.keepName + '" is missing, nothing removed' });
   const re = new RegExp(A.namePattern);

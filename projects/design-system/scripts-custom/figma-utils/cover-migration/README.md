@@ -22,6 +22,12 @@ of the old cover into it. They were used to migrate the covers of the existing O
 
 ## Files
 
+**Scope: the cover page only.** Every script that reads or changes a file works on the cover page (a page whose name
+contains "cover"; in a FigJam board without one, the page that already holds the section `file_thumbnail`). Other
+pages are not read and never changed. A file without a cover page gets one (`🎬 Cover`) before the paste; if that is
+not possible, the script stops and says so. A pasted instance that landed on another page is not filled. The scripts
+also change the file thumbnail and, in design files, enable the cover library; nothing else.
+
 | File | Use |
 |---|---|
 | `cover-wizard.mjs` | **start here**: asks in the terminal, proposes the values from the old cover, changes one file |

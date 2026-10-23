@@ -1,5 +1,5 @@
 // Select one node (the cover template) so it can be copied with `cdp.mjs <key> key c`.
-// Run it in the file that owns the template.
+// Run it in the file that owns the template. It only changes the selection and the shown page, never a node.
 // ARGS: { key, nodeId }
 (async () => {
   const A = __ARGS__;
