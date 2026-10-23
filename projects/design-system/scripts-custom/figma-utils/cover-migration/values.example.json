@@ -1,6 +1,8 @@
 {
+  "distribution": "external",
   "product": "Oblique 16",
   "doc": "Library",
+  "tickets": "",
   "purpose": "",
   "version": "16.0.0-F1.3",
   "modified": "October 2026",

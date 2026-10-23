@@ -7,7 +7,7 @@
 // ("_helper / thumbnail...") are kept, renamed "<name>_depr" and moved below the new section; the new
 // section takes the place of the current thumbnail frame.
 // Scope: only the cover page is read or changed. Other pages of the file are never touched.
-// ARGS: { key, instanceId, values: { product, doc, purpose, version, modified, owner, docs, status } }
+// ARGS: { key, instanceId, values: { distribution, product, doc, tickets, purpose, version, modified, owner, docs, status } }
 (async () => {
   const A = __ARGS__;
   if (figma.fileKey !== A.key) return JSON.stringify({ wrongFile: figma.fileKey });
@@ -27,21 +27,26 @@
   if (pg !== cover) return JSON.stringify({ stop: 'the pasted instance is on the page "' + (pg ? pg.name : '?') + '", not on the cover page, nothing changed' });
   await figma.setCurrentPageAsync(pg);
   const log = [];
-  const all = []; const collect = i => { all.push(i); for (const e of i.exposedInstances) collect(e); }; collect(inst);
+  const gather = () => { const all = []; const collect = i => { all.push(i); for (const e of i.exposedInstances) collect(e); }; collect(inst); return all; };
   const set = (prop, value) => {
-    for (const i of all) {
+    for (const i of gather()) {
       const k = Object.keys(i.componentProperties).find(x => x.split('#')[0] === prop);
       if (k) { i.setProperties({ [k]: value }); log.push(prop + ' = ' + JSON.stringify(value)); return; }
     }
     log.push('NOT FOUND ' + prop);
   };
   const v = A.values;
+  const internal = v.distribution === 'internal';
+  if (v.distribution) set('distribution', v.distribution);
   set('product', v.product); set('document_name', v.doc); set('purpose', v.purpose || ''); set('version', v.version || '');
-  set('modified_on', v.modified || ''); set('ownership', v.owner); set('documentation', v.docs); set('lifecycle_status', v.status);
+  set('modified_on', v.modified || ''); set('ownership', v.owner);
+  if (internal) { set('tickets', v.tickets || ''); set('file_status', v.status); }
+  else { set('documentation', v.docs); set('lifecycle_status', v.status); }
   const hide = names => { const hit = inst.findAll(x => names.includes(x.name)); hit.forEach(h => { h.visible = false; }); return hit.length; };
   if (!v.version) log.push('hid version ' + hide(['Version label', 'Version value']));
   if (!v.modified) log.push('hid modified ' + hide(['Modified label', 'Modified value']));
   if (!v.version && !v.modified) log.push('hid column 1 ' + hide(['Info column 1', 'Separator']));
+  if (internal && !v.tickets) log.push('hid tickets ' + hide(['Tickets label', 'Tickets value']));
   const row = inst.findOne(n => n.name === 'Purpose'); if (row) row.visible = !!v.purpose;
   const old = pg.children.find(c => c.type === 'SECTION' && c.name === 'file_thumbnail');
   const curThumb = await figma.getFileThumbnailNodeAsync();

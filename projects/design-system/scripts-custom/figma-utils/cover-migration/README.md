@@ -152,6 +152,22 @@ the answer of step 5 (for example `FRAME file_thumbnail @0,742`).
 
 ## Writing rules used for the values
 
+- `distribution`: `internal` (team only) or `external` (other teams, Figma Community). A file becomes external when it is
+  shared outside the team; before that it is internal. The footer of the cover and the status badges depend on it:
+
+  | | internal | external |
+  |---|---|---|
+  | owner | the person who owns the file | the team ("BIT / Oblique Team") |
+  | tickets | shown, at most 3 | never shown |
+  | docs | not shown | shown |
+  | status badges | `file_status`: work_in_progress_figma_only, dev_handoff_figma_only, done_figma_only, backup_figma_only, on_hold_figma_only, experimental_figma_only, figma_only, deprecated | `lifecycle_status`: active, release_candidate, maintenance, end_of_life, deprecated |
+
+  The external footer has no field for a person or a ticket at all. A hidden layer is still in the file and can be read
+  by anyone who copies it.
+- `tickets`: Jira keys, written `KEY-123`: upper case, separated by a comma and a space, the main ticket first, at most
+  three, none twice (example: "ABC-123, ABC-456"). The title does not hold the ticket number: it says what the file is
+  ("Property naming change test project"); the number goes to `tickets`. The file name in Figma keeps its number, so a
+  search by number in the file browser still works.
 - `product`: "Oblique" plus the release number, without V or R (example: "Oblique 16").
 - `version`: no letter V, no spaces (example: "16.0.0-F1.3"), as on the documentation site.
 - `modified`: month and year with the full month name, no comma (example: "October 2026"). It is the month of the
@@ -159,11 +175,12 @@ the answer of step 5 (for example `FRAME file_thumbnail @0,742`).
   and nobody knows the date, leave it empty: the row is hidden. The "Edited" time of the file browser cannot be
   used, because every script run and every library update changes it.
 - `purpose`: one status-neutral sentence about what the file contains; empty hides the Purpose row.
-- `owner`: the owning team; `docs`: the documentation address as written in the old cover.
-- `status`: a `lifecycle_status` variant of the template: active, release_candidate, maintenance, end_of_life,
-  work_in_progress_figma_only, on_hold_figma_only, experimental_figma_only, figma_only, dev_handoff_figma_only,
-  deprecated, done_figma_only, backup_figma_only. What each badge means and when to use it is written next to the
-  badges in the library (Building Blocks page, section "Covers / Thumbnails").
+- `owner` and `docs`: see `distribution`. For an internal cover the wizard proposes the creator of the file (needs
+  `FIGMA_TOKEN`); the creator is not always the owner, so confirm it.
+- `status`: a variant of the badge set that belongs to the distribution (table above). What each badge means and when
+  to use it is written next to the badges in the library (Utility Components page, section "Badge guidelines").
+  The wizard stops when a status does not fit the distribution, when an external cover has tickets or no docs, and when
+  tickets are not written in the form above.
 - Keep one thumbnail per file.
 
 ## Notes

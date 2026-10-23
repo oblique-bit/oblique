@@ -3,9 +3,11 @@
 // (backup-old-covers.js and remove-old-covers.js remove them later).
 //
 // Scope: only the cover page is read or changed. Other pages of the file are never touched.
-// ARGS: { key, instanceId, values: { product, doc, purpose, version, modified, owner, docs, status } }
+// ARGS: { key, instanceId, values: { distribution, product, doc, tickets, purpose, version, modified, owner, docs, status } }
 // Writing rules: product "Oblique <release number>"; version without the letter V; modified "Month YYYY";
-// status = a lifecycle_status variant (active, maintenance, end_of_life, work_in_progress_figma_only, ...).
+// distribution = internal (person as owner, tickets, file_status badge) or external (team as owner, docs, lifecycle_status badge).
+// status = a variant of that badge set (external: active, release_candidate, maintenance, end_of_life, deprecated;
+// internal: work_in_progress_figma_only, dev_handoff_figma_only, ..., deprecated).
 // An empty purpose hides the Purpose row; an empty version or modified hides its row (both: the whole column).
 (async () => {
   const A = __ARGS__;
@@ -31,18 +33,21 @@
   const olds = pg.children.filter(c => c !== ft && c.type === 'FRAME' && !/_depr$/.test(c.name) && (/^_helper \/ thumbnail/.test(c.name) || (cur && c.id === cur.id)));
   const main = olds.find(o => cur && o.id === cur.id) || olds[0];
   const x0 = main ? main.x : 0, y0 = main ? main.y : 0;
-  const all = []; const collect = i => { all.push(i); for (const e of i.exposedInstances) collect(e); }; collect(inst);
+  const gather = () => { const all = []; const collect = i => { all.push(i); for (const e of i.exposedInstances) collect(e); }; collect(inst); return all; };
   const set = (prop, value) => {
-    for (const i of all) {
+    for (const i of gather()) {
       const k = Object.keys(i.componentProperties).find(x => x.split('#')[0] === prop);
       if (k) { i.setProperties({ [k]: value }); log.push(prop + ' = ' + JSON.stringify(value)); return; }
     }
     log.push('NOT FOUND ' + prop);
   };
   const v = A.values;
+  const internal = v.distribution === 'internal';
+  if (v.distribution) set('distribution', v.distribution);
   set('product', v.product); set('document_name', v.doc); set('purpose', v.purpose || '');
   set('version', v.version || ''); set('modified_on', v.modified || ''); set('ownership', v.owner);
-  set('documentation', v.docs); set('lifecycle_status', v.status);
+  if (internal) { set('tickets', v.tickets || ''); set('file_status', v.status); }
+  else { set('documentation', v.docs); set('lifecycle_status', v.status); }
   if (!ft) {
     ft = figma.createFrame(); ft.name = 'file_thumbnail'; ft.resize(1920, 1080); ft.clipsContent = true; ft.fills = [];
     pg.appendChild(ft); ft.x = x0; ft.y = y0; ft.appendChild(inst); inst.x = 0; inst.y = 0; log.push('wrapped in frame file_thumbnail');
@@ -52,6 +57,7 @@
   if (!v.version) log.push('hid version ' + hide(['Version label', 'Version value']));
   if (!v.modified) log.push('hid modified ' + hide(['Modified label', 'Modified value']));
   if (!v.version && !v.modified) log.push('hid column 1 ' + hide(['Info column 1', 'Separator']));
+  if (internal && !v.tickets) log.push('hid tickets ' + hide(['Tickets label', 'Tickets value']));
   const oy = y0 + 1080 + 400;
   for (const o of olds) { o.name = o.name.replace(/^_helper \/ /, '') + '_depr'; o.x = x0 + (o === main ? 0 : 1920 + 120); o.y = oy; }
   let thumbErr = null;

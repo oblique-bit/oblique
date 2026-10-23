@@ -25,8 +25,8 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { tmpdir } from 'node:os';
 import readline from 'node:readline/promises';
-import { propose, STATUSES } from './propose.mjs';
-import { lastRealChange } from './last-real-change.mjs';
+import { propose, checkValues, statusesFor, DISTRIBUTIONS, normalizeTickets, TEAM_OWNER } from './propose.mjs';
+import { lastRealChange, fetchMeta } from './last-real-change.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const argv = process.argv.slice(2);
@@ -81,16 +81,29 @@ if (!values.modified && process.env.FIGMA_TOKEN && !flag('--values') && (!YES ||
 if (flag('--values')) values = { ...values, ...JSON.parse(readFileSync(flag('--values'), 'utf8')) };
 else {
   console.log('Enter keeps the proposal, "-" makes the field empty (an empty version, date or purpose hides that row).');
+  for (;;) { values.distribution = await ask('distribution', values.distribution, 'internal = team only, external = other teams or Figma Community'); if (DISTRIBUTIONS.includes(values.distribution)) break; console.log('  internal or external'); if (YES) process.exit(1); }
+  if (values.distribution === 'external') { values.tickets = ''; if (!values.docs) values.docs = 'oblique.bit.admin.ch'; if (values.owner !== TEAM_OWNER) values.owner = TEAM_OWNER; }
+  else {
+    values.docs = '';
+    if (values.owner === TEAM_OWNER && process.env.FIGMA_TOKEN) {
+      try { const m = await fetchMeta(KEY, process.env.FIGMA_TOKEN); if (m.creator && m.creator.handle) { values.owner = m.creator.handle.replace(/\s+BIT$/, ''); console.log(`Owner is proposed from the creator of the file: ${m.creator.handle}. The creator is not always the owner: check it.`); } } catch (e) { console.log('Creator not available (' + e.message + ').'); }
+    }
+  }
   values.product = await ask('product', values.product, 'Oblique <release number>, or Oblique DS');
-  values.doc = await ask('doc name', values.doc);
+  values.doc = await ask('doc name', values.doc, 'says what the file is; ticket numbers go to tickets');
+  if (values.distribution === 'internal') values.tickets = normalizeTickets(await ask('tickets', values.tickets, 'KEY-123, at most 3, main ticket first'));
   values.purpose = await ask('purpose', values.purpose, 'one sentence about what the file contains');
   values.version = await ask('version', values.version, 'no letter V');
   values.modified = await ask('modified', values.modified, 'Month YYYY of the last real change; empty hides the row, never use today by default');
-  values.owner = await ask('owner', values.owner);
-  values.docs = await ask('docs', values.docs);
-  for (;;) { values.status = await ask('status', values.status, STATUSES.join(' | ')); if (STATUSES.includes(values.status)) break; console.log('  not a status variant'); if (YES) process.exit(1); }
+  values.owner = await ask('owner', values.owner, values.distribution === 'internal' ? 'the person who owns the file' : 'the team');
+  if (values.distribution === 'external') values.docs = await ask('docs', values.docs);
+  const allowed = statusesFor(values.distribution);
+  for (;;) { values.status = await ask('status', allowed.includes(values.status) ? values.status : allowed[0], allowed.join(' | ')); if (allowed.includes(values.status)) break; console.log('  not a status of an ' + values.distribution + ' cover'); if (YES) process.exit(1); }
 }
+const check = checkValues(values);
 console.table(values);
+check.warnings.forEach(w => console.log('  warning: ' + w));
+if (check.errors.length) { check.errors.forEach(e => console.error('  error: ' + e)); console.error('Fix these values first. Nothing was changed.'); rl.close(); process.exit(1); }
 if (DRY) { console.log('Dry run: nothing was changed.'); rl.close(); process.exit(0); }
 if (!TEMPLATE_KEY || !TEMPLATE_NODE) { console.error('Set --template-key and --template-node (or COVER_TEMPLATE_KEY / COVER_TEMPLATE_NODE).'); process.exit(1); }
 if (!YES && (await readLine('Change the file with these values? [y/N] ')).trim().toLowerCase() !== 'y') { console.log('Stopped, nothing was changed.'); process.exit(0); }

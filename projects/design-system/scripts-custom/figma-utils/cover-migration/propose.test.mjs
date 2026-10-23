@@ -1,14 +1,14 @@
 // Run: node --test propose.test.mjs
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { propose, normalizeVersion, normalizeDate } from './propose.mjs';
+import { propose, normalizeVersion, normalizeDate, normalizeTickets, stripTickets, checkValues, statusesFor } from './propose.mjs';
 
 const frame = (name, texts) => ({ thumbnail: { name }, name: 'x', frames: [{ name, texts }] });
 const NOW = new Date('2026-10-22T12:00:00Z');
 
 test('library cover, end of life', () => {
   const p = propose(frame('f', ['Title=Oblique – Swiss Government Design System', 'Test a bit longer title=Oblique|Library V14', 'V=V14.0.0 – F1.4  |  October, 2025', 'Documentation: oblique.admin.c=Documentation: oblique.admin.ch [link]', 'END OF LIFE=END OF LIFE [link]']), { now: NOW });
-  assert.deepEqual(p, { product: 'Oblique 14', doc: 'Library', purpose: '', version: '14.0.0-F1.4', modified: 'October 2025', owner: 'BIT / Oblique Team', docs: 'oblique.admin.ch', status: 'end_of_life' });
+  assert.deepEqual(p, { distribution: 'external', product: 'Oblique 14', doc: 'Library', tickets: '', purpose: '', version: '14.0.0-F1.4', modified: 'October 2025', owner: 'BIT / Oblique Team', docs: 'oblique.admin.ch', status: 'end_of_life' });
 });
 test('library cover with day and comma', () => {
   const p = propose(frame('f', ['t=Oblique|Library V11', 'v=V11.0.1 – F1.2  |  March 4, 2024', 'ACTIVE=MAINTENANCE', 'd=Documentation: oblique.admin.ch']), { now: NOW });
@@ -45,4 +45,37 @@ test('backup is a status of its own', () => {
 test('helpers', () => {
   assert.equal(normalizeVersion('V16.0.2 – F1.3'), '16.0.2-F1.3');
   assert.equal(normalizeDate('March, 2026'), 'March 2026');
+});
+
+test('an official status makes the cover external, without tickets', () => {
+  const p = propose(frame('f', ['t=Oblique|Library V15', 'v=V15.1.2 – F1.0  |  March 2026', 'b=MAINTENANCE']), { now: NOW });
+  assert.equal(p.distribution, 'external'); assert.equal(p.tickets, ''); assert.equal(p.docs, 'oblique.bit.admin.ch');
+});
+test('a working file is internal: tickets leave the title, no docs', () => {
+  const p = propose({ name: 'ABC-4723 property naming change test project', frames: [] }, { now: NOW });
+  assert.equal(p.distribution, 'internal'); assert.equal(p.doc, 'Property naming change test project');
+  assert.equal(p.tickets, 'ABC-4723'); assert.equal(p.docs, '');
+});
+test('tickets are written the same way everywhere', () => {
+  assert.equal(normalizeTickets('abc-4797 / DEF-233; ABC-4797'), 'ABC-4797, DEF-233');
+  assert.equal(normalizeTickets('ab-1, cd-2, ef-3, gh-4'), 'AB-1, CD-2, EF-3');
+  assert.equal(normalizeTickets('no ticket here'), '');
+});
+test('titles lose ticket numbers and brackets', () => {
+  assert.equal(stripTickets('Test Project (ABC-271)'), 'Test Project');
+  assert.equal(stripTickets('ABC-233 Test: confirm slot override persistence'), 'Test: confirm slot override persistence');
+  assert.equal(stripTickets('Library'), 'Library');
+});
+test('statuses depend on the distribution, deprecated is in both', () => {
+  assert.ok(statusesFor('external').includes('deprecated') && statusesFor('internal').includes('deprecated'));
+  assert.ok(!statusesFor('external').includes('work_in_progress_figma_only'));
+  assert.ok(!statusesFor('internal').includes('active'));
+});
+test('rules: external has no tickets and needs docs; internal needs a person', () => {
+  const ext = checkValues({ distribution: 'external', status: 'work_in_progress_figma_only', tickets: 'ABC-1', docs: '', version: '1', owner: 'BIT / Oblique Team', doc: 'Library' });
+  assert.equal(ext.errors.length, 3);
+  const ok = checkValues({ distribution: 'internal', status: 'done_figma_only', tickets: 'ABC-1, DEF-2', docs: '', version: '', owner: 'Anna Berger', doc: 'Research' });
+  assert.deepEqual(ok.errors, []);
+  const many = checkValues({ distribution: 'internal', status: 'done_figma_only', tickets: 'AB-1, CD-2, EF-3, GH-4', owner: 'X', doc: 'Y' });
+  assert.ok(many.errors.length > 0);
 });

@@ -5,6 +5,31 @@ const MONTHS = { january: 'January', february: 'February', march: 'March', april
 
 export const STATUSES = ['active', 'release_candidate', 'maintenance', 'end_of_life', 'work_in_progress_figma_only', 'on_hold_figma_only', 'experimental_figma_only', 'figma_only', 'dev_handoff_figma_only', 'deprecated', 'done_figma_only', 'backup_figma_only'];
 
+// A cover is internal (team only) or external (other teams, Figma Community). The two kinds use their own status badges;
+// "deprecated" is in both.
+export const EXTERNAL_STATUSES = ['active', 'release_candidate', 'maintenance', 'end_of_life', 'deprecated'];
+export const INTERNAL_STATUSES = ['work_in_progress_figma_only', 'dev_handoff_figma_only', 'done_figma_only', 'backup_figma_only', 'on_hold_figma_only', 'experimental_figma_only', 'figma_only', 'deprecated'];
+export const DISTRIBUTIONS = ['internal', 'external'];
+export const statusesFor = distribution => (distribution === 'external' ? EXTERNAL_STATUSES : INTERNAL_STATUSES);
+export const MAX_TICKETS = 3;
+export const TEAM_OWNER = 'BIT / Oblique Team';
+
+// Tickets are shown as KEY-123, upper case, separated by ", ", the main ticket first, at most three, none twice.
+const TICKET = /\b[A-Za-z]{2,10}-\d{1,6}\b/g;
+export const extractTickets = text => [...new Set(((text || '').match(TICKET) || []).map(t => t.toUpperCase()))];
+export const normalizeTickets = raw => extractTickets(raw).slice(0, MAX_TICKETS).join(', ');
+// A title says what the file is; the ticket numbers move to the footer.
+export function stripTickets(title) {
+  const t = (title || '')
+    .replace(new RegExp('\\(\\s*(?:' + TICKET.source + '[\\s,;/]*)+\\)', 'g'), '')
+    .replace(new RegExp('\\[\\s*(?:' + TICKET.source + '[\\s,;/]*)+\\]', 'g'), '')
+    .replace(TICKET, '')
+    .replace(/\s{2,}/g, ' ')
+    .replace(/^[\s:\-–,;/]+|[\s:\-–,;/]+$/g, '')
+    .trim();
+  return t ? t[0].toUpperCase() + t.slice(1) : t;
+}
+
 const STATUS_WORDS = [
   [/END OF LIFE/i, 'end_of_life'], [/DEPRECATED/i, 'deprecated'], [/MAINTENANCE/i, 'maintenance'], [/RELEASE CANDIDATE/i, 'release_candidate'],
   [/WORK IN PROGRESS/i, 'work_in_progress_figma_only'], [/ON HOLD/i, 'on_hold_figma_only'], [/EXPERIMENTAL/i, 'experimental_figma_only'],
@@ -28,10 +53,10 @@ export function currentMonthYear(date = new Date()) {
 
 export function propose(old, options = {}) {
   const owner = options.owner || 'BIT / Oblique Team';
-  const out = { product: 'Oblique DS', doc: (old && old.name) || '', purpose: '', version: '', modified: '', owner, docs: 'oblique.bit.admin.ch', status: 'work_in_progress_figma_only' };
+  const out = { distribution: 'internal', product: 'Oblique DS', doc: (old && old.name) || '', tickets: '', purpose: '', version: '', modified: '', owner, docs: 'oblique.bit.admin.ch', status: 'work_in_progress_figma_only' };
   const frames = (old && old.frames) || [];
   const frame = frames.find(f => old.thumbnail && f.name === old.thumbnail.name) || frames.find(f => f.texts && f.texts.some(t => /^Oblique\|/.test(t.slice(t.indexOf('=') + 1)))) || frames[0];
-  if (!frame) return out;
+  if (!frame) return finish(out, options);
   const texts = frame.texts.map(t => { const i = t.indexOf('='); return { name: t.slice(0, i), value: t.slice(i + 1).replace(/ \[link\]$/, '').trim() }; });
   const found = { status: false };
   let release = '';
@@ -70,5 +95,40 @@ export function propose(old, options = {}) {
   }
   if (!release) { const m = out.version.match(/^(\d{2})\b/); if (m) release = m[1]; }
   out.product = release ? 'Oblique ' + release : 'Oblique DS';
+  return finish(out, options);
+}
+
+// distribution, tickets and the fields that belong to one distribution only
+function finish(out, options) {
+  out.tickets = normalizeTickets(out.doc);
+  if (out.tickets) out.doc = stripTickets(out.doc);
+  const official = ['active', 'release_candidate', 'maintenance', 'end_of_life'];
+  out.distribution = options.distribution || (official.includes(out.status) ? 'external' : 'internal');
+  if (out.distribution === 'external') out.tickets = '';
+  else out.docs = '';
   return out;
+}
+
+// Rules a set of values has to follow. errors stop the wizard, warnings are only shown.
+export function checkValues(v) {
+  const errors = [], warnings = [];
+  if (!DISTRIBUTIONS.includes(v.distribution)) errors.push('distribution must be internal or external');
+  else if (!statusesFor(v.distribution).includes(v.status)) errors.push(`status "${v.status}" is not allowed on an ${v.distribution} cover (${statusesFor(v.distribution).join(', ')})`);
+  if (v.distribution === 'external') {
+    if (v.tickets) errors.push('an external cover shows no ticket numbers');
+    if (!v.docs) errors.push('an external cover needs the documentation address');
+    if (!v.version) warnings.push('an external cover should show a version');
+    if (v.owner && v.owner !== TEAM_OWNER) warnings.push(`an external cover names the team ("${TEAM_OWNER}"), not a person`);
+  }
+  if (v.distribution === 'internal') {
+    if (!v.owner) errors.push('an internal cover needs the owner (a person)');
+    else if (v.owner === TEAM_OWNER) warnings.push('an internal cover names the person who owns the file, not the team');
+  }
+  if (v.tickets) {
+    const keys = extractTickets(v.tickets);
+    if (v.tickets !== keys.join(', ')) errors.push(`tickets must look like "${keys.join(', ') || 'KEY-123'}" (upper case, comma and space, no other text)`);
+    if (keys.length > MAX_TICKETS) errors.push(`at most ${MAX_TICKETS} tickets fit on the cover`);
+  }
+  if (extractTickets(v.doc).length) warnings.push('the title still holds a ticket number; the number belongs in tickets');
+  return { errors, warnings };
 }
