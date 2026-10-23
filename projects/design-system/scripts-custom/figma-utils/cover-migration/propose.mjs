@@ -13,8 +13,8 @@ export const DISTRIBUTIONS = ['internal', 'external'];
 export const statusesFor = distribution => (distribution === 'external' ? EXTERNAL_STATUSES : INTERNAL_STATUSES);
 export const MAX_TICKETS = 3;
 export const TEAM_OWNER = 'BIT / Oblique Team';
-// the Git row has 1133 px for the value; an average branch name needs 18.3 px per character
-export const GIT_FITS = 60;
+// the Git value in column 2 is at most 660 px wide; an average branch name needs 18.3 px per character
+export const GIT_FITS = 36;
 // An internal cover names the owner by initials: "BIT / Oblique / DR". An external cover names the team.
 export const OWNER_PREFIX = 'BIT / Oblique / ';
 export const INTERNAL_OWNER = /^BIT \/ Oblique \/ [A-Z]{2,3}$/;

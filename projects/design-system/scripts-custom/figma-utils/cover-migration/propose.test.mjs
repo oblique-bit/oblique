@@ -130,5 +130,5 @@ test('a long git branch name is a warning, not an error', () => {
   const base = { distribution: 'internal', status: 'done_figma_only', owner: 'BIT / Oblique / DR', doc: 'Y' };
   const long = checkValues({ ...base, git: 'tokens-' + 'a'.repeat(70) });
   assert.deepEqual(long.errors, []); assert.equal(long.warnings.length, 1);
-  assert.equal(checkValues({ ...base, git: 'tokens-ABC-1-simplify-color-variables' }).warnings.length, 0);
+  assert.equal(checkValues({ ...base, git: 'tokens-ABC-1-simplify-colors' }).warnings.length, 0);
 });
