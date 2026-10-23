@@ -12,6 +12,11 @@
 //     --dry-run               read, propose, ask, print the plan, change nothing
 //     --yes                   accept the proposals without asking and do not ask for confirmation
 //     --force                 run even when the file already has the new cover (it is added a second time)
+//     --use-history           with --yes: also take a missing modified date from the version history
+//     --own-since <YYYY-MM-DD>  own versions from this day on are ignored when the date comes from the history (default: today)
+// When the old cover has no date and FIGMA_TOKEN is set, the wizard proposes the month of the last real change from
+// the version history (see last-real-change.mjs). In a terminal you confirm or change it; with --yes it is used only
+// together with --use-history.
 //     --out <dir>             where previews and backups go (default ./cover-wizard-out)
 // Needs the same tools as the README: figma-ds-cli, Figma Desktop with the debug port, zsh, node.
 import { spawnSync } from 'node:child_process';
@@ -21,6 +26,7 @@ import { fileURLToPath } from 'node:url';
 import { tmpdir } from 'node:os';
 import readline from 'node:readline/promises';
 import { propose, STATUSES } from './propose.mjs';
+import { lastRealChange } from './last-real-change.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const argv = process.argv.slice(2);
@@ -65,6 +71,13 @@ if ((old.frames || []).some(f => f.texts.some(t => t.startsWith('Ownership label
 }
 step('2. Values for the new cover');
 let values = propose(old);
+if (!values.modified && process.env.FIGMA_TOKEN && !flag('--values') && (!YES || has('--use-history'))) {
+  try {
+    const h = await lastRealChange(KEY, process.env.FIGMA_TOKEN, { since: flag('--own-since') });
+    if (h) { values.modified = h.monthYear; console.log(`Modified is proposed from the version history: last change ${h.date.slice(0, 10)} by ${h.by}${h.label ? ' (named version "' + h.label + '")' : ''}.`); }
+    else console.log('The version history has no change before the migration: no modified date is proposed.');
+  } catch (e) { console.log('Version history not available (' + e.message + '): no modified date is proposed.'); }
+}
 if (flag('--values')) values = { ...values, ...JSON.parse(readFileSync(flag('--values'), 'utf8')) };
 else {
   console.log('Enter keeps the proposal, "-" makes the field empty (an empty version, date or purpose hides that row).');

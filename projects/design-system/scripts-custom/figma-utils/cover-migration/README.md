@@ -25,6 +25,7 @@ of the old cover into it. They were used to migrate the covers of the existing O
 | File | Use |
 |---|---|
 | `cover-wizard.mjs` | **start here**: asks in the terminal, proposes the values from the old cover, changes one file |
+| `last-real-change.mjs` | month of the last real change of a file from its version history (needs a token); table for review |
 | `propose.mjs`, `propose.test.mjs` | the rules that turn the old cover texts into proposed values; `node --test propose.test.mjs` |
 | `cover-tools.zsh` | shell functions: `ct_open`, `ct_run`, `ct_enable_library`, `ct_clipboard_file`, `ct_btn` |
 | `cdp.mjs` | drive one Figma tab: `eval`, `click`, `type`, `key c/v`, `shot` |
@@ -75,6 +76,29 @@ numbered release. A file without an old cover gets defaults: the file name, no d
 panel of Figma).
 
 Try it first with `--dry-run`. A FigJam board works the same way; the wrapper of the cover is a Section.
+
+## Date from the version history
+
+A cover must not show the month of the migration. When the old cover has no date, `last-real-change.mjs` asks
+the Figma REST API for the version history and takes the newest version that is not the runner's own migration:
+
+- versions made by the person who runs the script **from the cut-off day on** (default: today, set it with
+  `--since YYYY-MM-DD`; the migration of a folder can take several days) are ignored;
+- of the rest, the newest version by **anyone** wins, so a change by another person always stays the reference,
+  and the runner's own earlier real work counts;
+- the latest named version is shown next to it; nothing is written by this tool.
+
+```
+export FIGMA_TOKEN=...     # personal access token, read scopes only, kept in the terminal
+node last-real-change.mjs "<url 1>" "<url 2>" --since 2026-10-21 --csv dates.csv    # a table to review
+```
+
+The wizard uses the same rule: with `FIGMA_TOKEN` set it proposes the month in the terminal and shows its
+source ("last change 2026-03-12 by <person>"); you confirm or change it. With `--yes` it does this only when
+`--use-history` is added. The token needs the scopes `file_versions:read` and `file_metadata:read`, and the scope
+that allows `GET /v1/me`. A version history shows trivial changes too, so check the proposed months before you
+trust them. The exact fields of a version (user, date, label) and whether automatic saves are listed were not
+verified against the live API yet: run the table on one file first.
 
 ## Steps for one file (what the wizard does)
 
