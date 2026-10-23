@@ -7,7 +7,7 @@
 // Writing rules: product "Oblique <release number>"; version without the letter V; modified "Mon YYYY" (month with three letters);
 // distribution = internal (person as owner, tickets, file_status badge) or external (team as owner, docs, lifecycle_status badge).
 // status = a variant of that badge set (external: active, release_candidate, maintenance, end_of_life, deprecated;
-// internal: work_in_progress_figma_only, dev_handoff_figma_only, ..., deprecated).
+// internal: Work in progress, Dev handoff, Done, Backup, On hold, Experimental, Figma only, Deprecated).
 // An empty purpose hides the Purpose row; an empty version or modified hides its row (both: the whole column).
 (async () => {
   const A = __ARGS__;
@@ -51,6 +51,7 @@
   if (internal) {
     set('tickets', v.tickets || ''); set('file_status', v.status);
     if (hasProp('show_tickets')) set('show_tickets', !!v.tickets);
+    if (hasProp('show_version')) { set('show_version', !!v.version); set('show_modified', !!v.modified); set('show_owner', !!v.owner); }
     if (v.git) { if (hasProp('git')) { set('git', v.git); set('show_git', true); } else log.push('NOT FOUND git (publish the library and update it in this file)'); }
   }
   else { set('documentation', v.docs); set('lifecycle_status', v.status); }
@@ -60,9 +61,9 @@
   }
   const hide = names => { const hit = ft.findAll(x => names.includes(x.name)); hit.forEach(h => { h.visible = false; }); return hit.length; };
   const row = ft.findOne(n => n.name === 'Purpose'); if (row) row.visible = !!v.purpose;
-  if (!v.version) log.push('hid version ' + hide(['Version label', 'Version value']));
-  if (!v.modified) log.push('hid modified ' + hide(['Modified label', 'Modified value']));
-  if (!v.version && !v.modified) log.push('hid column 1 ' + hide(['Info column 1', 'Separator']));
+  if (!v.version && !hasProp('show_version')) log.push('hid version ' + hide(['Version label', 'Version value']));
+  if (!v.modified && !hasProp('show_modified')) log.push('hid modified ' + hide(['Modified label', 'Modified value']));
+  if (!v.version && !v.modified && !(internal && v.owner)) log.push('hid column 1 ' + hide(['Info column 1', 'Separator']));
   if (internal && !v.tickets && !hasProp('show_tickets')) log.push('hid tickets ' + hide(['Tickets label', 'Tickets value']));
   const oy = y0 + 1080 + 400;
   for (const o of olds) { o.name = o.name.replace(/^_helper \/ /, '') + '_depr'; o.x = x0 + (o === main ? 0 : 1920 + 120); o.y = oy; }

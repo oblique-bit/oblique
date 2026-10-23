@@ -25,7 +25,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { tmpdir } from 'node:os';
 import readline from 'node:readline/promises';
-import { propose, checkValues, statusesFor, DISTRIBUTIONS, normalizeTickets, formatModified, internalOwner, INTERNAL_OWNER, TEAM_OWNER } from './propose.mjs';
+import { propose, checkValues, statusesFor, DISTRIBUTIONS, normalizeTickets, formatModified, normalizeStatus, internalOwner, INTERNAL_OWNER, TEAM_OWNER } from './propose.mjs';
 import { lastRealChange, fetchMeta } from './last-real-change.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -100,9 +100,10 @@ else {
   values.owner = await ask('owner', values.owner, values.distribution === 'internal' ? 'initials of the owner: BIT / Oblique / DR' : 'the team');
   if (values.distribution === 'external') values.docs = await ask('docs', values.docs);
   const allowed = statusesFor(values.distribution);
-  for (;;) { values.status = await ask('status', allowed.includes(values.status) ? values.status : allowed[0], allowed.join(' | ')); if (allowed.includes(values.status)) break; console.log('  not a status of an ' + values.distribution + ' cover'); if (YES) process.exit(1); }
+  for (;;) { const cur = normalizeStatus(values.distribution, values.status); values.status = normalizeStatus(values.distribution, await ask('status', allowed.includes(cur) ? cur : allowed[0], allowed.join(' | '))); if (allowed.includes(values.status)) break; console.log('  not a status of an ' + values.distribution + ' cover'); if (YES) process.exit(1); }
 }
 values.modified = formatModified(values.modified);
+values.status = normalizeStatus(values.distribution, values.status);
 const check = checkValues(values);
 console.table(values);
 check.warnings.forEach(w => console.log('  warning: ' + w));

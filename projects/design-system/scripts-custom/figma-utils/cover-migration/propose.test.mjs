@@ -1,7 +1,7 @@
 // Run: node --test propose.test.mjs
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { propose, normalizeVersion, normalizeDate, normalizeTickets, stripTickets, checkValues, statusesFor, formatModified, initials, internalOwner } from './propose.mjs';
+import { propose, normalizeVersion, normalizeDate, normalizeTickets, stripTickets, checkValues, statusesFor, formatModified, initials, internalOwner, normalizeStatus } from './propose.mjs';
 
 const frame = (name, texts) => ({ thumbnail: { name }, name: 'x', frames: [{ name, texts }] });
 const NOW = new Date('2026-10-22T12:00:00Z');
@@ -20,27 +20,27 @@ test('2023 cover: only a year, release 2023', () => {
 });
 test('working file: product line and ticket text after the title', () => {
   const p = propose(frame('f', ['t=Oblique|Color Variables Sandbox   simplify-the-color-variables', 'v=V16-DS – F1.0  |  Oktober 2026', 'WORK IN PROGRESS=WORK IN PROGRESS']), { now: NOW });
-  assert.equal(p.doc, 'Color Variables Sandbox'); assert.equal(p.purpose, 'simplify-the-color-variables'); assert.equal(p.version, '16-DS-F1.0'); assert.equal(p.modified, 'Oct 2026'); assert.equal(p.status, 'work_in_progress_figma_only');
+  assert.equal(p.doc, 'Color Variables Sandbox'); assert.equal(p.purpose, 'simplify-the-color-variables'); assert.equal(p.version, '16-DS-F1.0'); assert.equal(p.modified, 'Oct 2026'); assert.equal(p.status, 'Work in progress');
 });
 test('custom first line, no version, no date', () => {
   const p = propose(frame('f', ['t=Figma Metadata  Helper Component|Mockup', 'ON HOLD=ON HOLD']), { now: NOW });
-  assert.equal(p.doc, 'Figma Metadata Helper Component'); assert.equal(p.purpose, 'Mockup'); assert.equal(p.status, 'on_hold_figma_only'); assert.equal(p.version, '');
+  assert.equal(p.doc, 'Figma Metadata Helper Component'); assert.equal(p.purpose, 'Mockup'); assert.equal(p.status, 'On hold'); assert.equal(p.version, '');
 });
 test('no old cover: defaults from the file name, no invented date', () => {
   const p = propose({ name: 'States-WiP', frames: [] }, { now: NOW });
-  assert.equal(p.doc, 'States-WiP'); assert.equal(p.product, 'Oblique DS'); assert.equal(p.modified, ''); assert.equal(p.status, 'work_in_progress_figma_only');
+  assert.equal(p.doc, 'States-WiP'); assert.equal(p.product, 'Oblique DS'); assert.equal(p.modified, ''); assert.equal(p.status, 'Work in progress');
 });
 test('deprecated is a status of its own', () => {
   const p = propose(frame('f', ['t=Oblique|Library V9', 'v=V9.0.0 – F1.0  |  May 2023', 'b=DEPRECATED']), { now: NOW });
-  assert.equal(p.status, 'deprecated');
+  assert.equal(p.status, 'Deprecated'); assert.equal(p.distribution, 'internal');
 });
 test('done is a status of its own', () => {
   const p = propose(frame('f', ['t=Oblique|Workshop', 'b=DONE']), { now: NOW });
-  assert.equal(p.status, 'done_figma_only');
+  assert.equal(p.status, 'Done');
 });
 test('backup is a status of its own', () => {
   const p = propose(frame('f', ['t=Oblique|Library V15', 'b=BACKUP']), { now: NOW });
-  assert.equal(p.status, 'backup_figma_only');
+  assert.equal(p.status, 'Backup');
 });
 test('helpers', () => {
   assert.equal(normalizeVersion('V16.0.2 – F1.3'), '16.0.2-F1.3');
@@ -67,16 +67,16 @@ test('titles lose ticket numbers and brackets', () => {
   assert.equal(stripTickets('Library'), 'Library');
 });
 test('statuses depend on the distribution, deprecated is in both', () => {
-  assert.ok(statusesFor('external').includes('deprecated') && statusesFor('internal').includes('deprecated'));
-  assert.ok(!statusesFor('external').includes('work_in_progress_figma_only'));
+  assert.ok(statusesFor('external').includes('deprecated') && statusesFor('internal').includes('Deprecated'));
+  assert.ok(!statusesFor('external').includes('Work in progress'));
   assert.ok(!statusesFor('internal').includes('active'));
 });
 test('rules: external has no tickets and needs docs; internal needs a person', () => {
-  const ext = checkValues({ distribution: 'external', status: 'work_in_progress_figma_only', tickets: 'ABC-1', docs: '', version: '1', owner: 'BIT / Oblique Team', doc: 'Library' });
+  const ext = checkValues({ distribution: 'external', status: 'Work in progress', tickets: 'ABC-1', docs: '', version: '1', owner: 'BIT / Oblique Team', doc: 'Library' });
   assert.equal(ext.errors.length, 3);
-  const ok = checkValues({ distribution: 'internal', status: 'done_figma_only', tickets: 'ABC-1, DEF-2', docs: '', version: '', owner: 'BIT / Oblique / DR', doc: 'Research' });
+  const ok = checkValues({ distribution: 'internal', status: 'Done', tickets: 'ABC-1, DEF-2', docs: '', version: '', owner: 'BIT / Oblique / DR', doc: 'Research' });
   assert.deepEqual(ok.errors, []);
-  const many = checkValues({ distribution: 'internal', status: 'done_figma_only', tickets: 'AB-1, CD-2, EF-3, GH-4', owner: 'BIT / Oblique / DR', doc: 'Y' });
+  const many = checkValues({ distribution: 'internal', status: 'Done', tickets: 'AB-1, CD-2, EF-3, GH-4', owner: 'BIT / Oblique / DR', doc: 'Y' });
   assert.ok(many.errors.length > 0);
 });
 
@@ -96,7 +96,7 @@ test('a working file and an archived release both get the short month', () => {
   assert.equal(e.modified, 'Oct 2025');
 });
 test('rules: the month must have three letters', () => {
-  const bad = checkValues({ distribution: 'internal', status: 'done_figma_only', owner: 'BIT / Oblique / DR', doc: 'Y', modified: 'October 2026' });
+  const bad = checkValues({ distribution: 'internal', status: 'Done', owner: 'BIT / Oblique / DR', doc: 'Y', modified: 'October 2026' });
   assert.equal(bad.errors.length, 1);
   const ok = checkValues({ distribution: 'external', status: 'active', docs: 'oblique.bit.admin.ch', version: '16', owner: 'BIT / Oblique Team', doc: 'Y', modified: 'Oct 2026' });
   assert.deepEqual(ok.errors, []);
@@ -107,9 +107,9 @@ test('the owner of an internal cover is written with initials', () => {
   assert.equal(initials('Carl Dubois'), 'CD');
   assert.equal(internalOwner('Eva Marti BIT'), 'BIT / Oblique / EM');
   assert.equal(internalOwner(''), '');
-  const bad = checkValues({ distribution: 'internal', status: 'done_figma_only', owner: 'Anna Berger', doc: 'Y' });
+  const bad = checkValues({ distribution: 'internal', status: 'Done', owner: 'Anna Berger', doc: 'Y' });
   assert.equal(bad.errors.length, 1);
-  assert.deepEqual(checkValues({ distribution: 'internal', status: 'done_figma_only', owner: 'BIT / Oblique / OV', doc: 'Y' }).errors, []);
+  assert.deepEqual(checkValues({ distribution: 'internal', status: 'Done', owner: 'BIT / Oblique / OV', doc: 'Y' }).errors, []);
 });
 
 test('a hand-made cover with a GIT or Jira row keeps that information', () => {
@@ -119,7 +119,7 @@ test('a hand-made cover with a GIT or Jira row keeps that information', () => {
   assert.equal(j.tickets, 'ABC-243'); assert.equal(j.git, '');
 });
 test('rules: git is optional, internal only, one branch name', () => {
-  const base = { status: 'done_figma_only', owner: 'BIT / Oblique / DR', doc: 'Y' };
+  const base = { status: 'Done', owner: 'BIT / Oblique / DR', doc: 'Y' };
   assert.deepEqual(checkValues({ ...base, distribution: 'internal', git: 'tokens-ABC-1-name' }).errors, []);
   assert.deepEqual(checkValues({ ...base, distribution: 'internal', git: '' }).errors, []);
   assert.ok(checkValues({ ...base, distribution: 'internal', git: 'two words' }).errors.length > 0);
@@ -127,8 +127,17 @@ test('rules: git is optional, internal only, one branch name', () => {
 });
 
 test('a long git branch name is a warning, not an error', () => {
-  const base = { distribution: 'internal', status: 'done_figma_only', owner: 'BIT / Oblique / DR', doc: 'Y' };
+  const base = { distribution: 'internal', status: 'Done', owner: 'BIT / Oblique / DR', doc: 'Y' };
   const long = checkValues({ ...base, git: 'tokens-' + 'a'.repeat(70) });
   assert.deepEqual(long.errors, []); assert.equal(long.warnings.length, 1);
   assert.equal(checkValues({ ...base, git: 'tokens-ABC-1-simplify-colors' }).warnings.length, 0);
+});
+
+test('internal statuses are plain words, the first names are still accepted', () => {
+  assert.equal(normalizeStatus('internal', 'work_in_progress_figma_only'), 'Work in progress');
+  assert.equal(normalizeStatus('internal', 'on hold'), 'On hold');
+  assert.equal(normalizeStatus('internal', 'Figma only'), 'Figma only');
+  assert.equal(normalizeStatus('internal', 'deprecated'), 'Deprecated');
+  assert.equal(normalizeStatus('external', 'End of life'), 'end_of_life');
+  assert.deepEqual(checkValues({ distribution: 'internal', status: 'dev_handoff_figma_only', owner: 'BIT / Oblique / DR', doc: 'Y' }).errors, []);
 });

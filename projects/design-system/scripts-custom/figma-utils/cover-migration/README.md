@@ -163,7 +163,7 @@ the answer of step 5 (for example `FRAME file_thumbnail @0,742`).
   | owner | the owner by initials: "BIT / Oblique / DR" | the team ("BIT / Oblique Team") |
   | tickets, git | optional: shown when filled, tickets at most 3 | never shown |
   | docs | not shown | shown |
-  | status badges | `file_status`: work_in_progress_figma_only, dev_handoff_figma_only, done_figma_only, backup_figma_only, on_hold_figma_only, experimental_figma_only, figma_only, deprecated | `lifecycle_status`: active, release_candidate, maintenance, end_of_life, deprecated |
+  | status badges | `file_status`: Work in progress, Dev handoff, Done, Backup, On hold, Experimental, Figma only, Deprecated | `lifecycle_status`: active, release_candidate, maintenance, end_of_life, deprecated |
 
   The external footer has no field for a person or a ticket at all. A hidden layer is still in the file and can be read
   by anyone who copies it.

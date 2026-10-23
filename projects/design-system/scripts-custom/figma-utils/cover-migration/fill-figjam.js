@@ -45,13 +45,14 @@
   if (internal) {
     set('tickets', v.tickets || ''); set('file_status', v.status);
     if (hasProp('show_tickets')) set('show_tickets', !!v.tickets);
+    if (hasProp('show_version')) { set('show_version', !!v.version); set('show_modified', !!v.modified); set('show_owner', !!v.owner); }
     if (v.git) { if (hasProp('git')) { set('git', v.git); set('show_git', true); } else log.push('NOT FOUND git (publish the library and update it in this file)'); }
   }
   else { set('documentation', v.docs); set('lifecycle_status', v.status); }
   const hide = names => { const hit = inst.findAll(x => names.includes(x.name)); hit.forEach(h => { h.visible = false; }); return hit.length; };
-  if (!v.version) log.push('hid version ' + hide(['Version label', 'Version value']));
-  if (!v.modified) log.push('hid modified ' + hide(['Modified label', 'Modified value']));
-  if (!v.version && !v.modified) log.push('hid column 1 ' + hide(['Info column 1', 'Separator']));
+  if (!v.version && !hasProp('show_version')) log.push('hid version ' + hide(['Version label', 'Version value']));
+  if (!v.modified && !hasProp('show_modified')) log.push('hid modified ' + hide(['Modified label', 'Modified value']));
+  if (!v.version && !v.modified && !(internal && v.owner)) log.push('hid column 1 ' + hide(['Info column 1', 'Separator']));
   if (internal && !v.tickets && !hasProp('show_tickets')) log.push('hid tickets ' + hide(['Tickets label', 'Tickets value']));
   const row = inst.findOne(n => n.name === 'Purpose'); if (row) row.visible = !!v.purpose;
   const old = pg.children.find(c => c.type === 'SECTION' && c.name === 'file_thumbnail');

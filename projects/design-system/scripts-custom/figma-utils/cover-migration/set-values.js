@@ -46,12 +46,20 @@
   if (v.status !== undefined) set(internal ? 'file_status' : 'lifecycle_status', v.status, log);
   const rows = names => thumb.findAll(x => names.includes(x.name));
   const vis = (names, on) => rows(names).forEach(h => { h.visible = on; });
-  const now = { version: read('version'), modified: read('modified_on'), tickets: internal ? read('tickets') : '' };
+  const now = { version: read('version'), modified: read('modified_on'), owner: read('ownership'), tickets: internal ? read('tickets') : '', git: internal ? read('git') : '' };
   const purposeRow = thumb.findOne(n => n.name === 'Purpose'); if (purposeRow) purposeRow.visible = !!read('purpose');
-  vis(['Version label', 'Version value'], !!now.version);
-  vis(['Modified label', 'Modified value'], !!now.modified);
-  vis(['Info column 1', 'Separator'], !!(now.version || now.modified));
-  if (internal) { if (hasProp('show_tickets')) set('show_tickets', !!now.tickets, log); else vis(['Tickets label', 'Tickets value'], !!now.tickets); }
+  if (internal && hasProp('show_version')) {
+    // every row has its own switch: an empty value switches the row off (also repairs the rows after a library update)
+    set('show_version', !!now.version, log); set('show_modified', !!now.modified, log); set('show_owner', !!now.owner, log);
+    if (hasProp('show_tickets')) set('show_tickets', !!now.tickets, log);
+    if (hasProp('show_git')) set('show_git', !!now.git, log);
+    vis(['Info column 1', 'Separator'], !!(now.version || now.modified || now.owner));
+  } else {
+    vis(['Version label', 'Version value'], !!now.version);
+    vis(['Modified label', 'Modified value'], !!now.modified);
+    vis(['Info column 1', 'Separator'], !!(now.version || now.modified));
+    if (internal) { if (hasProp('show_tickets')) set('show_tickets', !!now.tickets, log); else vis(['Tickets label', 'Tickets value'], !!now.tickets); }
+  }
   let thumbErr = null;
   try { await figma.setFileThumbnailNodeAsync(null); await new Promise(r => setTimeout(r, 800)); await figma.setFileThumbnailNodeAsync(thumb); await new Promise(r => setTimeout(r, 1000)); } catch (e) { thumbErr = String(e.message || e); }
   let img = null;

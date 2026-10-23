@@ -8,7 +8,16 @@ export const STATUSES = ['active', 'release_candidate', 'maintenance', 'end_of_l
 // A cover is internal (team only) or external (other teams, Figma Community). The two kinds use their own status badges;
 // "deprecated" is in both.
 export const EXTERNAL_STATUSES = ['active', 'release_candidate', 'maintenance', 'end_of_life', 'deprecated'];
-export const INTERNAL_STATUSES = ['work_in_progress_figma_only', 'dev_handoff_figma_only', 'done_figma_only', 'backup_figma_only', 'on_hold_figma_only', 'experimental_figma_only', 'figma_only', 'deprecated'];
+// Internal badges are written in plain words, without a suffix: the dropdown in Figma shows exactly these names.
+// The names of the first version (work_in_progress_figma_only ...) are still accepted as input and converted.
+const PLAIN = { work_in_progress_figma_only: 'Work in progress', dev_handoff_figma_only: 'Dev handoff', done_figma_only: 'Done', backup_figma_only: 'Backup', on_hold_figma_only: 'On hold', experimental_figma_only: 'Experimental', figma_only: 'Figma only', deprecated: 'Deprecated' };
+export const INTERNAL_STATUSES = Object.values(PLAIN);
+export function normalizeStatus(distribution, status) {
+  const s = (status || '').trim();
+  if (distribution === 'external') return s.toLowerCase().replace(/\s+/g, '_');
+  if (PLAIN[s]) return PLAIN[s];
+  return INTERNAL_STATUSES.find(n => n.toLowerCase() === s.toLowerCase().replace(/_/g, ' ')) || s;
+}
 export const DISTRIBUTIONS = ['internal', 'external'];
 export const statusesFor = distribution => (distribution === 'external' ? EXTERNAL_STATUSES : INTERNAL_STATUSES);
 export const MAX_TICKETS = 3;
@@ -133,6 +142,7 @@ function finish(out, options) {
   if (extractTickets(out.doc).length) out.doc = stripTickets(out.doc);
   const official = ['active', 'release_candidate', 'maintenance', 'end_of_life'];
   out.distribution = options.distribution || (official.includes(out.status) ? 'external' : 'internal');
+  out.status = normalizeStatus(out.distribution, out.status);
   if (out.distribution === 'external') { out.tickets = ''; out.git = ''; out.owner = TEAM_OWNER; }
   else { out.docs = ''; out.owner = options.owner || ''; }
   out.modified = formatModified(out.modified);
@@ -143,7 +153,7 @@ function finish(out, options) {
 export function checkValues(v) {
   const errors = [], warnings = [];
   if (!DISTRIBUTIONS.includes(v.distribution)) errors.push('distribution must be internal or external');
-  else if (!statusesFor(v.distribution).includes(v.status)) errors.push(`status "${v.status}" is not allowed on an ${v.distribution} cover (${statusesFor(v.distribution).join(', ')})`);
+  else if (!statusesFor(v.distribution).includes(normalizeStatus(v.distribution, v.status))) errors.push(`status "${v.status}" is not allowed on an ${v.distribution} cover (${statusesFor(v.distribution).join(', ')})`);
   if (v.distribution === 'external') {
     if (v.tickets) errors.push('an external cover shows no ticket numbers');
     if (!v.docs) errors.push('an external cover needs the documentation address');
