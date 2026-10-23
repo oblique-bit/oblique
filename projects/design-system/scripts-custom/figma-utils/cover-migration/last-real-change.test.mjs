@@ -3,7 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { pickLastRealChange, monthYear, keyFromUrl } from './last-real-change.mjs';
 
-const me = { id: '1', handle: 'runner' }, other = { id: '2', handle: 'colleague' };
+const me = { id: '1', handle: 'runner' }, other = { id: '2', handle: 'colleague' }, system = { id: '3', handle: 'Figma' };
 const v = (created_at, user, label = null) => ({ id: created_at, created_at, user, label });
 
 test('own versions since the cut-off are ignored, the other person stays the reference', () => {
@@ -25,6 +25,10 @@ test('only own migration versions: nothing to propose', () => {
 test('the latest named version is reported next to the latest change', () => {
   const r = pickLastRealChange([v('2026-06-01T10:00:00Z', other), v('2026-01-10T10:00:00Z', other, 'Handoff')], { runnerId: '1', ignoreOwnSince: '2026-10-21' });
   assert.equal(r.monthYear, 'June 2026'); assert.equal(r.latestNamed.label, 'Handoff');
+});
+test('automatic saves of the system user count before the cut-off day and are ignored from it on', () => {
+  const r = pickLastRealChange([v('2026-10-22T15:35:00Z', system), v('2026-10-22T14:57:00Z', me), v('2026-09-28T12:51:00Z', system), v('2026-07-06T16:45:00Z', me)], { runnerId: '1', ignoreOwnSince: '2026-10-21' });
+  assert.equal(r.monthYear, 'September 2026'); assert.equal(r.by, 'Figma');
 });
 test('helpers', () => {
   assert.equal(monthYear('2025-07-31T23:59:00Z'), 'July 2025');

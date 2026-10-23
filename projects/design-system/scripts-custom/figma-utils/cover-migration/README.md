@@ -83,7 +83,9 @@ A cover must not show the month of the migration. When the old cover has no date
 the Figma REST API for the version history and takes the newest version that is not the runner's own migration:
 
 - versions made by the person who runs the script **from the cut-off day on** (default: today, set it with
-  `--since YYYY-MM-DD`; the migration of a folder can take several days) are ignored;
+  `--since YYYY-MM-DD`; the migration of a folder can take several days) are ignored, and so are the automatic
+  saves of the system user "Figma" from that day on (Figma writes them after the script's edits; before the
+  cut-off day they count);
 - of the rest, the newest version by **anyone** wins, so a change by another person always stays the reference,
   and the runner's own earlier real work counts;
 - the latest named version is shown next to it; nothing is written by this tool.
@@ -97,8 +99,8 @@ The wizard uses the same rule: with `FIGMA_TOKEN` set it proposes the month in t
 source ("last change 2026-03-12 by <person>"); you confirm or change it. With `--yes` it does this only when
 `--use-history` is added. The token needs the scopes `file_versions:read` and `file_metadata:read`, and the scope
 that allows `GET /v1/me`. A version history shows trivial changes too, so check the proposed months before you
-trust them. The exact fields of a version (user, date, label) and whether automatic saves are listed were not
-verified against the live API yet: run the table on one file first.
+trust them. Tested against the live API on 20 files: a version has `id`, `created_at`, `label`, `description`, `user` and
+`thumbnail_url`; automatic saves are listed with the user "Figma"; most versions have no label.
 
 ## Steps for one file (what the wizard does)
 

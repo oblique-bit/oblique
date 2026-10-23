@@ -2,8 +2,10 @@
 // the month of the migration. Read-only: it only asks the Figma REST API, it writes nothing anywhere.
 //
 // Rule: take the version list of the file, drop the versions that the person who runs the script made since the
-// cut-off date (those are the migration itself), and take the newest version that is left, by anyone.
-// A change by another person therefore always stays the reference; the runner's own earlier work counts.
+// cut-off date (those are the migration itself) and the automatic saves of the system user "Figma" since the
+// cut-off date (Figma writes them after the script's edits), and take the newest version that is left, by anyone.
+// A change by another person therefore always stays the reference; the runner's own earlier work counts, and
+// so do automatic saves from before the cut-off date.
 //
 // usage:
 //   FIGMA_TOKEN=... node last-real-change.mjs <file url or key> [more files ...] [--since YYYY-MM-DD] [--csv out.csv]
@@ -21,10 +23,11 @@ export const keyFromUrl = s => { const b = s.match(/\/branch\/([A-Za-z0-9]+)/); 
 
 // Pure rule, tested in last-real-change.test.mjs.
 // versions: [{ id, created_at, label, user: { id, handle } }]; runnerId: id of the person who runs the script;
-// ignoreOwnSince: ISO date; own versions created at or after it are ignored.
+// ignoreOwnSince: ISO date; own versions and automatic saves ("Figma") created at or after it are ignored.
+export const isSystemUser = u => !!u && u.handle === 'Figma';
 export function pickLastRealChange(versions, { runnerId, ignoreOwnSince }) {
   const cut = new Date(ignoreOwnSince).getTime();
-  const left = (versions || []).filter(v => v.created_at && !(v.user && v.user.id === runnerId && new Date(v.created_at).getTime() >= cut));
+  const left = (versions || []).filter(v => v.created_at && !(v.user && (v.user.id === runnerId || isSystemUser(v.user)) && new Date(v.created_at).getTime() >= cut));
   if (!left.length) return null;
   left.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
   const v = left[0];
