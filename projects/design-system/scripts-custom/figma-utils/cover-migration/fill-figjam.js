@@ -37,6 +37,7 @@
   };
   const v = A.values;
   const internal = v.distribution === 'internal';
+  if (v.distribution && !gather().some(i => Object.keys(i.componentProperties).includes('distribution'))) return JSON.stringify({ stop: 'the pasted cover has no property "distribution": the library version in this file is older than the footer variants. Publish the library, update it in this file and paste again. Nothing was filled.' });
   if (v.distribution) set('distribution', v.distribution);
   set('product', v.product); set('document_name', v.doc); set('purpose', v.purpose || ''); set('version', v.version || '');
   set('modified_on', v.modified || ''); set('ownership', v.owner);
