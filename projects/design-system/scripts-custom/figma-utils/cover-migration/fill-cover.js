@@ -4,7 +4,7 @@
 //
 // Scope: only the cover page is read or changed. Other pages of the file are never touched.
 // ARGS: { key, instanceId, values: { distribution, product, doc, tickets, purpose, version, modified, owner, docs, status } }
-// Writing rules: product "Oblique <release number>"; version without the letter V; modified "Month YYYY";
+// Writing rules: product "Oblique <release number>"; version without the letter V; modified "Mon YYYY" (month with three letters);
 // distribution = internal (person as owner, tickets, file_status badge) or external (team as owner, docs, lifecycle_status badge).
 // status = a variant of that badge set (external: active, release_candidate, maintenance, end_of_life, deprecated;
 // internal: work_in_progress_figma_only, dev_handoff_figma_only, ..., deprecated).

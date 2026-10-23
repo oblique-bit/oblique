@@ -94,13 +94,13 @@ else {
   if (values.distribution === 'internal') values.tickets = normalizeTickets(await ask('tickets', values.tickets, 'KEY-123, at most 3, main ticket first'));
   values.purpose = await ask('purpose', values.purpose, 'one sentence about what the file contains');
   values.version = await ask('version', values.version, 'no letter V');
-  values.modified = await ask('modified', values.modified, 'month of the last real change; internal: Oct 2026, external: October 2026; empty hides the row, never use today by default');
+  values.modified = await ask('modified', values.modified, 'month of the last real change, three letters: Oct 2026; empty hides the row, never use today by default');
   values.owner = await ask('owner', values.owner, values.distribution === 'internal' ? 'the person who owns the file' : 'the team');
   if (values.distribution === 'external') values.docs = await ask('docs', values.docs);
   const allowed = statusesFor(values.distribution);
   for (;;) { values.status = await ask('status', allowed.includes(values.status) ? values.status : allowed[0], allowed.join(' | ')); if (allowed.includes(values.status)) break; console.log('  not a status of an ' + values.distribution + ' cover'); if (YES) process.exit(1); }
 }
-values.modified = formatModified(values.modified, values.distribution);
+values.modified = formatModified(values.modified);
 const check = checkValues(values);
 console.table(values);
 check.warnings.forEach(w => console.log('  warning: ' + w));

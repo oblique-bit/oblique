@@ -3,6 +3,7 @@
 // (default: empty or "October 2026", the month an earlier run invented), so a value a person set is never replaced.
 // With dryRun true nothing is changed and the answer says what would happen.
 // Scope: only the cover page is read or changed. Other pages of the file are never touched.
+// `modified` is written with a three-letter month ("Oct 2026").
 // ARGS: { key, modified, overwrite?: string[], dryRun?: boolean }
 (async () => {
   const A = __ARGS__;

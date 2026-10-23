@@ -136,7 +136,7 @@ ct_run $K read-pasted.js '{}'           # note "id"
 
 # 5. fill, wrap, set as thumbnail, preview (use fill-figjam.js in a FigJam board)
 ct_run $K fill-cover.js '{"instanceId":"<id>","values":{"product":"Oblique 16","doc":"Library","purpose":"",
-  "version":"16.0.0-F1.3","modified":"October 2026","owner":"<owner>","docs":"oblique.bit.admin.ch","status":"active"}}' > fill.json
+  "version":"16.0.0-F1.3","modified":"Oct 2026","owner":"<owner>","docs":"oblique.bit.admin.ch","status":"active"}}' > fill.json
 node save-images.mjs fill.json ./preview
 # the new frame takes the place of the old cover; the old frames are renamed "..._depr" and moved below it
 
@@ -170,12 +170,11 @@ the answer of step 5 (for example `FRAME file_thumbnail @0,742`).
   search by number in the file browser still works.
 - `product`: "Oblique" plus the release number, without V or R (example: "Oblique 16").
 - `version`: no letter V, no spaces (example: "16.0.0-F1.3"), as on the documentation site.
-- `modified`: month and year, no comma. An internal cover writes the month with three letters ("Oct 2026"), an external
-  cover with the full month name ("October 2026"), as on the documentation site. It is the month of the
-  last real change of the content, not the month of the migration and not today. When the old cover has no date
-  and nobody knows the date, leave it empty: the row is hidden. The "Edited" time of the file browser cannot be
-  used, because every script run and every library update changes it. The wizard writes the month in the form of
-  the distribution and stops on a month in the other form.
+- `modified`: month and year, no comma, the month with three letters on every cover ("Oct 2026", "Sep 2026").
+  It is the month of the last real change of the content, not the month of the migration and not today. When the old
+  cover has no date and nobody knows the date, leave it empty: the row is hidden. The "Edited" time of the file
+  browser cannot be used, because every script run and every library update changes it. The wizard writes the month
+  with three letters and stops on a longer month name.
 - `purpose`: one status-neutral sentence about what the file contains; empty hides the Purpose row.
 - `owner` and `docs`: see `distribution`. For an internal cover the wizard proposes the creator of the file (needs
   `FIGMA_TOKEN`); the creator is not always the owner, so confirm it.

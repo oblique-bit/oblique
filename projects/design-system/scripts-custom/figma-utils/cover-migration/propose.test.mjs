@@ -8,11 +8,11 @@ const NOW = new Date('2026-10-22T12:00:00Z');
 
 test('library cover, end of life', () => {
   const p = propose(frame('f', ['Title=Oblique – Swiss Government Design System', 'Test a bit longer title=Oblique|Library V14', 'V=V14.0.0 – F1.4  |  October, 2025', 'Documentation: oblique.admin.c=Documentation: oblique.admin.ch [link]', 'END OF LIFE=END OF LIFE [link]']), { now: NOW });
-  assert.deepEqual(p, { distribution: 'external', product: 'Oblique 14', doc: 'Library', tickets: '', purpose: '', version: '14.0.0-F1.4', modified: 'October 2025', owner: 'BIT / Oblique Team', docs: 'oblique.admin.ch', status: 'end_of_life' });
+  assert.deepEqual(p, { distribution: 'external', product: 'Oblique 14', doc: 'Library', tickets: '', purpose: '', version: '14.0.0-F1.4', modified: 'Oct 2025', owner: 'BIT / Oblique Team', docs: 'oblique.admin.ch', status: 'end_of_life' });
 });
 test('library cover with day and comma', () => {
   const p = propose(frame('f', ['t=Oblique|Library V11', 'v=V11.0.1 – F1.2  |  March 4, 2024', 'ACTIVE=MAINTENANCE', 'd=Documentation: oblique.admin.ch']), { now: NOW });
-  assert.equal(p.version, '11.0.1-F1.2'); assert.equal(p.modified, 'March 2024'); assert.equal(p.status, 'maintenance');
+  assert.equal(p.version, '11.0.1-F1.2'); assert.equal(p.modified, 'Mar 2024'); assert.equal(p.status, 'maintenance');
 });
 test('2023 cover: only a year, release 2023', () => {
   const p = propose(frame('f', ['t=Oblique|Components 2023', 'v=2023', 'b=END OF LIFE']), { now: NOW });
@@ -80,24 +80,24 @@ test('rules: external has no tickets and needs docs; internal needs a person', (
   assert.ok(many.errors.length > 0);
 });
 
-test('months: three letters on an internal cover, full name on an external cover', () => {
-  assert.equal(formatModified('October 2026', 'internal'), 'Oct 2026');
-  assert.equal(formatModified('September 2026', 'internal'), 'Sep 2026');
-  assert.equal(formatModified('June, 2026', 'internal'), 'Jun 2026');
-  assert.equal(formatModified('Oct 2026', 'external'), 'October 2026');
-  assert.equal(formatModified('2023', 'internal'), '2023');
-  assert.equal(formatModified('', 'internal'), '');
-  assert.equal(formatModified('Mai 2026', 'internal'), 'Mai 2026');
+test('months: always three letters', () => {
+  assert.equal(formatModified('October 2026'), 'Oct 2026');
+  assert.equal(formatModified('September 2026'), 'Sep 2026');
+  assert.equal(formatModified('June, 2026'), 'Jun 2026');
+  assert.equal(formatModified('Oct 2026'), 'Oct 2026');
+  assert.equal(formatModified('2023'), '2023');
+  assert.equal(formatModified(''), '');
+  assert.equal(formatModified('Mai 2026'), 'Mai 2026');
 });
-test('a working file gets the short month, an archived release the full month', () => {
+test('a working file and an archived release both get the short month', () => {
   const w = propose(frame('f', ['t=Oblique|Research', 'v=V1.0.0  |  October 2026', 'b=WORK IN PROGRESS']), { now: NOW });
   assert.equal(w.modified, 'Oct 2026');
   const e = propose(frame('f', ['t=Oblique|Library V14', 'v=V14.0.0 – F1.4  |  October, 2025', 'b=END OF LIFE']), { now: NOW });
-  assert.equal(e.modified, 'October 2025');
+  assert.equal(e.modified, 'Oct 2025');
 });
-test('rules: the month must be written for the distribution', () => {
+test('rules: the month must have three letters', () => {
   const bad = checkValues({ distribution: 'internal', status: 'done_figma_only', owner: 'X', doc: 'Y', modified: 'October 2026' });
   assert.equal(bad.errors.length, 1);
-  const ok = checkValues({ distribution: 'internal', status: 'done_figma_only', owner: 'X', doc: 'Y', modified: 'Oct 2026' });
+  const ok = checkValues({ distribution: 'external', status: 'active', docs: 'oblique.bit.admin.ch', version: '16', owner: 'BIT / Oblique Team', doc: 'Y', modified: 'Oct 2026' });
   assert.deepEqual(ok.errors, []);
 });

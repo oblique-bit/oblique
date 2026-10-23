@@ -53,15 +53,13 @@ export function currentMonthYear(date = new Date()) {
 
 const FULL_MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const SHORT_MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-// An internal cover writes the month with three letters ("Oct 2026"), an external cover with the full name ("October 2026").
-// A year alone ("2023") and an empty value stay as they are.
-export function formatModified(raw, distribution) {
+// Every cover writes the month with three letters ("Oct 2026"). A year alone ("2023") and an empty value stay as they are.
+export function formatModified(raw) {
   const v = (raw || '').trim();
   const m = v.match(/^([A-Za-z]{3,9})\.?,?\s+(\d{4})$/);
   if (!m) return v;
   const i = FULL_MONTHS.findIndex(f => f.slice(0, 3).toLowerCase() === m[1].slice(0, 3).toLowerCase());
-  if (i < 0) return v;
-  return (distribution === 'internal' ? SHORT_MONTHS[i] : FULL_MONTHS[i]) + ' ' + m[2];
+  return i < 0 ? v : SHORT_MONTHS[i] + ' ' + m[2];
 }
 
 export function propose(old, options = {}) {
@@ -119,7 +117,7 @@ function finish(out, options) {
   out.distribution = options.distribution || (official.includes(out.status) ? 'external' : 'internal');
   if (out.distribution === 'external') out.tickets = '';
   else out.docs = '';
-  out.modified = formatModified(out.modified, out.distribution);
+  out.modified = formatModified(out.modified);
   return out;
 }
 
@@ -138,7 +136,7 @@ export function checkValues(v) {
     if (!v.owner) errors.push('an internal cover needs the owner (a person)');
     else if (v.owner === TEAM_OWNER) warnings.push('an internal cover names the person who owns the file, not the team');
   }
-  if (v.modified && formatModified(v.modified, v.distribution) !== v.modified) errors.push(`modified "${v.modified}" must be "${formatModified(v.modified, v.distribution)}" on ${v.distribution === 'internal' ? 'an internal cover (month with three letters)' : 'an external cover (full month name)'}`);
+  if (v.modified && formatModified(v.modified) !== v.modified) errors.push(`modified "${v.modified}" must be written "${formatModified(v.modified)}" (month with three letters)`);
   if (v.tickets) {
     const keys = extractTickets(v.tickets);
     if (v.tickets !== keys.join(', ')) errors.push(`tickets must look like "${keys.join(', ') || 'KEY-123'}" (upper case, comma and space, no other text)`);
