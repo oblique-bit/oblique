@@ -8,7 +8,7 @@ const NOW = new Date('2026-10-22T12:00:00Z');
 
 test('library cover, end of life', () => {
   const p = propose(frame('f', ['Title=Oblique – Swiss Government Design System', 'Test a bit longer title=Oblique|Library V14', 'V=V14.0.0 – F1.4  |  October, 2025', 'Documentation: oblique.admin.c=Documentation: oblique.admin.ch [link]', 'END OF LIFE=END OF LIFE [link]']), { now: NOW });
-  assert.deepEqual(p, { distribution: 'external', product: 'Oblique 14', doc: 'Library', tickets: '', purpose: '', version: '14.0.0-F1.4', modified: 'Oct 2025', owner: 'BIT / Oblique Team', docs: 'oblique.admin.ch', status: 'end_of_life' });
+  assert.deepEqual(p, { distribution: 'external', product: 'Oblique 14', doc: 'Library', tickets: '', git: '', purpose: '', version: '14.0.0-F1.4', modified: 'Oct 2025', owner: 'BIT / Oblique Team', docs: 'oblique.admin.ch', status: 'end_of_life' });
 });
 test('library cover with day and comma', () => {
   const p = propose(frame('f', ['t=Oblique|Library V11', 'v=V11.0.1 – F1.2  |  March 4, 2024', 'ACTIVE=MAINTENANCE', 'd=Documentation: oblique.admin.ch']), { now: NOW });
@@ -110,4 +110,18 @@ test('the owner of an internal cover is written with initials', () => {
   const bad = checkValues({ distribution: 'internal', status: 'done_figma_only', owner: 'Anna Berger', doc: 'Y' });
   assert.equal(bad.errors.length, 1);
   assert.deepEqual(checkValues({ distribution: 'internal', status: 'done_figma_only', owner: 'BIT / Oblique / OV', doc: 'Y' }).errors, []);
+});
+
+test('a hand-made cover with a GIT or Jira row keeps that information', () => {
+  const g = propose(frame('f', ['t=Oblique|Design System', 'Documentation label=GIT', 'Documentation value=tokens-dev [link]', 'WORK IN PROGRESS=WORK IN PROGRESS']), { now: NOW });
+  assert.equal(g.git, 'tokens-dev'); assert.equal(g.distribution, 'internal');
+  const j = propose(frame('f', ['t=Oblique|Design System PoC', 'Documentation label=Jira', 'Documentation value=FTR ABC-243', 'WORK IN PROGRESS=WORK IN PROGRESS']), { now: NOW });
+  assert.equal(j.tickets, 'ABC-243'); assert.equal(j.git, '');
+});
+test('rules: git is optional, internal only, one branch name', () => {
+  const base = { status: 'done_figma_only', owner: 'BIT / Oblique / DR', doc: 'Y' };
+  assert.deepEqual(checkValues({ ...base, distribution: 'internal', git: 'tokens-ABC-1-name' }).errors, []);
+  assert.deepEqual(checkValues({ ...base, distribution: 'internal', git: '' }).errors, []);
+  assert.ok(checkValues({ ...base, distribution: 'internal', git: 'two words' }).errors.length > 0);
+  assert.ok(checkValues({ distribution: 'external', status: 'active', docs: 'x', version: '1', owner: 'BIT / Oblique Team', doc: 'Y', git: 'tokens-dev' }).errors.length > 0);
 });

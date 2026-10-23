@@ -93,6 +93,7 @@ else {
   values.product = await ask('product', values.product, 'Oblique <release number>, or Oblique DS');
   values.doc = await ask('doc name', values.doc, 'says what the file is; ticket numbers go to tickets');
   if (values.distribution === 'internal') values.tickets = normalizeTickets(await ask('tickets', values.tickets, 'KEY-123, at most 3, main ticket first'));
+  if (values.distribution === 'internal') values.git = await ask('git', values.git, 'branch name, optional; empty hides the row');
   values.purpose = await ask('purpose', values.purpose, 'one sentence about what the file contains');
   values.version = await ask('version', values.version, 'no letter V');
   values.modified = await ask('modified', values.modified, 'month of the last real change, three letters: Oct 2026; empty hides the row, never use today by default');

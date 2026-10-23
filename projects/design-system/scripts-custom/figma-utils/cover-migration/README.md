@@ -159,7 +159,7 @@ the answer of step 5 (for example `FRAME file_thumbnail @0,742`).
   | | internal | external |
   |---|---|---|
   | owner | the owner by initials: "BIT / Oblique / DR" | the team ("BIT / Oblique Team") |
-  | tickets | shown, at most 3 | never shown |
+  | tickets, git | optional: shown when filled, tickets at most 3 | never shown |
   | docs | not shown | shown |
   | status badges | `file_status`: work_in_progress_figma_only, dev_handoff_figma_only, done_figma_only, backup_figma_only, on_hold_figma_only, experimental_figma_only, figma_only, deprecated | `lifecycle_status`: active, release_candidate, maintenance, end_of_life, deprecated |
 
@@ -169,6 +169,9 @@ the answer of step 5 (for example `FRAME file_thumbnail @0,742`).
   three, none twice (example: "ABC-123, ABC-456"). The title does not hold the ticket number: it says what the file is
   ("Property naming change test project"); the number goes to `tickets`. The file name in Figma keeps its number, so a
   search by number in the file browser still works.
+- `git`: the git branch the work lives on, one name without spaces ("tokens-dev"). Optional, internal only, shown as a
+  "Git" line under the purpose. `tickets` is optional too. An empty value switches the row off (`show_git`,
+  `show_tickets`), so an empty row takes no space. An external cover has neither.
 - `product`: "Oblique" plus the release number, without V or R (example: "Oblique 16").
 - `version`: no letter V, no spaces (example: "16.0.0-F1.3"), as on the documentation site.
 - `modified`: month and year, no comma, the month with three letters on every cover ("Oct 2026", "Sep 2026").

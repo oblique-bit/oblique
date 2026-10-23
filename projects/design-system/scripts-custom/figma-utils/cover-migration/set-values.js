@@ -2,7 +2,7 @@
 // Only the fields named in `values` are changed. The cover is the instance inside the frame or section "file_thumbnail".
 // Rows follow the values: version, modified and tickets rows are visible only when they have a value.
 // Scope: only the cover page is read or changed. Other pages of the file are never touched.
-// ARGS: { key, values: { distribution?, product?, doc?, tickets?, purpose?, version?, modified?, owner?, docs?, status? }, dryRun? }
+// ARGS: { key, values: { distribution?, product?, doc?, tickets?, git?, purpose?, version?, modified?, owner?, docs?, status? }, dryRun? }
 (async () => {
   const A = __ARGS__;
   if (figma.fileKey !== A.key) return JSON.stringify({ wrongFile: figma.fileKey });
@@ -25,7 +25,7 @@
   const read = name => { for (const i of gather()) { const k = prop(i, name); if (k) return i.componentProperties[k].value; } return null; };
   const set = (name, value, log) => { for (const i of gather()) { const k = prop(i, name); if (k) { i.setProperties({ [k]: value }); log.push(name + ' = ' + JSON.stringify(value)); return; } } log.push('NOT FOUND ' + name); };
   const v = A.values || {};
-  const before = { distribution: read('distribution'), doc: read('document_name'), version: read('version'), modified: read('modified_on'), owner: read('ownership'), purpose: read('purpose'), tickets: read('tickets'), docs: read('documentation'), status: read('file_status') || read('lifecycle_status') };
+  const before = { distribution: read('distribution'), doc: read('document_name'), version: read('version'), modified: read('modified_on'), owner: read('ownership'), purpose: read('purpose'), tickets: read('tickets'), git: read('git'), docs: read('documentation'), status: read('file_status') || read('lifecycle_status') };
   if (A.dryRun) return JSON.stringify({ dryRun: true, before, wanted: v });
   const log = [];
   if (v.distribution !== undefined) set('distribution', v.distribution, log);
@@ -37,7 +37,11 @@
   if (v.version !== undefined) set('version', v.version, log);
   if (v.modified !== undefined) set('modified_on', v.modified, log);
   if (v.owner !== undefined) set('ownership', v.owner, log);
+  const hasProp = name => gather().some(i => Object.keys(i.componentProperties).some(k => k.split('#')[0] === name));
   if (v.tickets !== undefined && internal) set('tickets', v.tickets, log);
+  if (v.git !== undefined && internal) {
+    if (hasProp('git')) { set('git', v.git, log); set('show_git', !!v.git, log); } else log.push('NOT FOUND git (publish the library and update it in this file)');
+  }
   if (v.docs !== undefined && !internal) set('documentation', v.docs, log);
   if (v.status !== undefined) set(internal ? 'file_status' : 'lifecycle_status', v.status, log);
   const rows = names => thumb.findAll(x => names.includes(x.name));
@@ -47,7 +51,7 @@
   vis(['Version label', 'Version value'], !!now.version);
   vis(['Modified label', 'Modified value'], !!now.modified);
   vis(['Info column 1', 'Separator'], !!(now.version || now.modified));
-  if (internal) vis(['Tickets label', 'Tickets value'], !!now.tickets);
+  if (internal) { if (hasProp('show_tickets')) set('show_tickets', !!now.tickets, log); else vis(['Tickets label', 'Tickets value'], !!now.tickets); }
   let thumbErr = null;
   try { await figma.setFileThumbnailNodeAsync(null); await new Promise(r => setTimeout(r, 800)); await figma.setFileThumbnailNodeAsync(thumb); await new Promise(r => setTimeout(r, 1000)); } catch (e) { thumbErr = String(e.message || e); }
   let img = null;

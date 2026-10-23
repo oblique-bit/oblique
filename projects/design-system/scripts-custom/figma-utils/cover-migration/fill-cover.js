@@ -3,7 +3,7 @@
 // (backup-old-covers.js and remove-old-covers.js remove them later).
 //
 // Scope: only the cover page is read or changed. Other pages of the file are never touched.
-// ARGS: { key, instanceId, values: { distribution, product, doc, tickets, purpose, version, modified, owner, docs, status } }
+// ARGS: { key, instanceId, values: { distribution, product, doc, tickets, git, purpose, version, modified, owner, docs, status } }
 // Writing rules: product "Oblique <release number>"; version without the letter V; modified "Mon YYYY" (month with three letters);
 // distribution = internal (person as owner, tickets, file_status badge) or external (team as owner, docs, lifecycle_status badge).
 // status = a variant of that badge set (external: active, release_candidate, maintenance, end_of_life, deprecated;
@@ -47,7 +47,12 @@
   if (v.distribution) set('distribution', v.distribution);
   set('product', v.product); set('document_name', v.doc); set('purpose', v.purpose || '');
   set('version', v.version || ''); set('modified_on', v.modified || ''); set('ownership', v.owner);
-  if (internal) { set('tickets', v.tickets || ''); set('file_status', v.status); }
+  const hasProp = name => gather().some(i => Object.keys(i.componentProperties).some(k => k.split('#')[0] === name));
+  if (internal) {
+    set('tickets', v.tickets || ''); set('file_status', v.status);
+    if (hasProp('show_tickets')) set('show_tickets', !!v.tickets);
+    if (v.git) { if (hasProp('git')) { set('git', v.git); set('show_git', true); } else log.push('NOT FOUND git (publish the library and update it in this file)'); }
+  }
   else { set('documentation', v.docs); set('lifecycle_status', v.status); }
   if (!ft) {
     ft = figma.createFrame(); ft.name = 'file_thumbnail'; ft.resize(1920, 1080); ft.clipsContent = true; ft.fills = [];
@@ -58,7 +63,7 @@
   if (!v.version) log.push('hid version ' + hide(['Version label', 'Version value']));
   if (!v.modified) log.push('hid modified ' + hide(['Modified label', 'Modified value']));
   if (!v.version && !v.modified) log.push('hid column 1 ' + hide(['Info column 1', 'Separator']));
-  if (internal && !v.tickets) log.push('hid tickets ' + hide(['Tickets label', 'Tickets value']));
+  if (internal && !v.tickets && !hasProp('show_tickets')) log.push('hid tickets ' + hide(['Tickets label', 'Tickets value']));
   const oy = y0 + 1080 + 400;
   for (const o of olds) { o.name = o.name.replace(/^_helper \/ /, '') + '_depr'; o.x = x0 + (o === main ? 0 : 1920 + 120); o.y = oy; }
   let thumbErr = null;

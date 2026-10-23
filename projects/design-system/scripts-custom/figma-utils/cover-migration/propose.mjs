@@ -73,7 +73,7 @@ export function formatModified(raw) {
 
 export function propose(old, options = {}) {
   const owner = options.owner || 'BIT / Oblique Team';
-  const out = { distribution: 'internal', product: 'Oblique DS', doc: (old && old.name) || '', tickets: '', purpose: '', version: '', modified: '', owner, docs: 'oblique.bit.admin.ch', status: 'work_in_progress_figma_only' };
+  const out = { distribution: 'internal', product: 'Oblique DS', doc: (old && old.name) || '', tickets: '', git: '', purpose: '', version: '', modified: '', owner, docs: 'oblique.bit.admin.ch', status: 'work_in_progress_figma_only' };
   const frames = (old && old.frames) || [];
   const frame = frames.find(f => old.thumbnail && f.name === old.thumbnail.name) || frames.find(f => f.texts && f.texts.some(t => /^Oblique\|/.test(t.slice(t.indexOf('=') + 1)))) || frames[0];
   if (!frame) return finish(out, options);
@@ -109,6 +109,13 @@ export function propose(old, options = {}) {
   }
   const docs = texts.map(t => t.value.match(/^Documentation:\s*(\S+)/)).find(Boolean);
   if (docs) out.docs = docs[1];
+  // a hand-made cover can use the last row for something else: "GIT  tokens-dev" or "Jira  KEY-123"
+  const rowLabel = texts.find(t => t.name === 'Documentation label'), rowValue = texts.find(t => t.name === 'Documentation value');
+  if (rowLabel && rowValue) {
+    if (/^git$/i.test(rowLabel.value)) out.git = rowValue.value;
+    else if (/^jira$/i.test(rowLabel.value)) out.tickets = normalizeTickets(rowValue.value);
+    else if (/^docs$/i.test(rowLabel.value) && rowValue.value) out.docs = rowValue.value.split(/\s+/)[0];
+  }
   for (const t of texts) {
     const hit = STATUS_WORDS.find(([re]) => re.test(t.value));
     if (hit && t.value.length < 30) { out.status = hit[1]; found.status = true; break; }
@@ -120,11 +127,11 @@ export function propose(old, options = {}) {
 
 // distribution, tickets and the fields that belong to one distribution only
 function finish(out, options) {
-  out.tickets = normalizeTickets(out.doc);
-  if (out.tickets) out.doc = stripTickets(out.doc);
+  out.tickets = normalizeTickets(out.tickets + ' ' + out.doc);
+  if (extractTickets(out.doc).length) out.doc = stripTickets(out.doc);
   const official = ['active', 'release_candidate', 'maintenance', 'end_of_life'];
   out.distribution = options.distribution || (official.includes(out.status) ? 'external' : 'internal');
-  if (out.distribution === 'external') { out.tickets = ''; out.owner = TEAM_OWNER; }
+  if (out.distribution === 'external') { out.tickets = ''; out.git = ''; out.owner = TEAM_OWNER; }
   else { out.docs = ''; out.owner = options.owner || ''; }
   out.modified = formatModified(out.modified);
   return out;
@@ -146,6 +153,10 @@ export function checkValues(v) {
     else if (!INTERNAL_OWNER.test(v.owner)) errors.push(`owner "${v.owner}" must be written "${OWNER_PREFIX}" plus the initials of the person, for example "BIT / Oblique / DR"`);
   }
   if (v.modified && formatModified(v.modified) !== v.modified) errors.push(`modified "${v.modified}" must be written "${formatModified(v.modified)}" (month with three letters)`);
+  if (v.git) {
+    if (v.distribution === 'external') errors.push('an external cover shows no git branch');
+    if (!/^[A-Za-z0-9._\/-]+$/.test(v.git) || v.git.length > 80) errors.push('git must be one branch name without spaces, at most 80 characters');
+  }
   if (v.tickets) {
     const keys = extractTickets(v.tickets);
     if (v.tickets !== keys.join(', ')) errors.push(`tickets must look like "${keys.join(', ') || 'KEY-123'}" (upper case, comma and space, no other text)`);
