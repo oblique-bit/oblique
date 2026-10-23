@@ -43,6 +43,7 @@ also change the file thumbnail and, in design files, enable the cover library; n
 | `fill-figjam.js` | FigJam boards: same, but the wrapper is a Section and the status badge is a separate instance |
 | `standalone-badge.js` | FigJam: make the status badge of an existing cover a separate instance |
 | `set-modified.js` | set the Modified month of an existing cover and show the row again; replaces only an empty value or a month named in `overwrite`, never a month a person set |
+| `set-values.js` | change fields of the cover that is already in the file (only the fields you name) and show or hide the rows that depend on them |
 | `backup-old-covers.js`, `remove-old-covers.js` | export the old cover frames as PNG and text; then remove them and set the file thumbnail |
 | `values.example.json` | the shape of a values file for `--values` |
 

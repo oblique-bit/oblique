@@ -12,20 +12,21 @@ ct_ensure_port() {
   curl -s -m 3 localhost:9222/json/version >/dev/null || { echo "no debug port on 9222" >&2; return 1; }
 }
 
-# ct_run <fileKey> <script.js> '<json args>'   run one plugin script in the open tab, print its JSON answer.
-# figma-ds-cli sometimes loses the answer of a script that did run: read-only scripts are safe to repeat,
-# for writing scripts check the file state (read-cover.js) before running them again.
+# ct_run <fileKey> <script.js> '<json args>'   run one plugin script in the tab of that file, print its JSON answer.
+# The script runs through the debug port directly in the tab that holds the file key (cdp.mjs), so it cannot land in
+# another open file. Exactly one open tab may match the key: close the other tabs of the same file first.
+# Read-only scripts are safe to repeat; for writing scripts check the file state (read-cover.js) before running again.
 ct_run() {
-  local key=$1 script=$2 args=${3:-'{}'} out=$(mktemp -t ctrun).js
+  local key=$1 script=$2 args=${3:-'{}'} code try res out
   ct_ensure_port || return 1
-  node $CT_DIR/render.mjs $CT_DIR/$script "$(node -e 'const a=JSON.parse(process.argv[1]);a.key=process.argv[2];console.log(JSON.stringify(a))' "$args" "$key")" > $out
-  local try res
+  code=$(node $CT_DIR/render.mjs $CT_DIR/$script "$(node -e 'const a=JSON.parse(process.argv[1]);a.key=process.argv[2];console.log(JSON.stringify(a))' "$args" "$key")")
   for try in 1 2 3; do
-    res=$(ct_cli eval -f $out 2>&1 | tail -1)
-    [[ $res == \{* ]] && { print -r -- "$res"; rm -f $out; return 0; }
+    res=$(node $CT_DIR/cdp.mjs $key eval "$code" 2>&1 | tail -1)
+    out=$(print -r -- "$res" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{try{const v=JSON.parse(s);console.log(typeof v==="string"?v:JSON.stringify(v))}catch(e){}})')
+    [[ $out == \{* ]] && { print -r -- "$out"; return 0; }
     sleep 4
   done
-  echo "no answer: $res" >&2; rm -f $out; return 1
+  echo "no answer: $res" >&2; return 1
 }
 
 # ct_open <figma url> <fileKey>   open the file in Figma Desktop and wait until its tab exists.
@@ -34,8 +35,7 @@ ct_open() {
   open -a Figma "$1"
   local i; for i in {1..15}; do sleep 2; curl -s -m 3 localhost:9222/json | grep -q "$2" && break; done
   # a file that is already open is not always brought to the front by `open -a`: do it over the debug port
-  node $CT_DIR/cdp.mjs $2 eval "1" >/dev/null 2>&1; sleep 1
-  ct_cli connect >/dev/null 2>&1; sleep 6
+  node $CT_DIR/cdp.mjs $2 eval "1" >/dev/null 2>&1; sleep 3
 }
 
 # ct_btn <fileKey> <label> <js condition on r>   print "x y" of a visible button, or "none".
