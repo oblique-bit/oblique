@@ -36,6 +36,7 @@ of the old cover into it. They were used to migrate the covers of the existing O
 | `fill-cover.js` | design files: fill the pasted instance, wrap it in a 1920x1080 frame, keep the old frames as `_depr`, set the thumbnail |
 | `fill-figjam.js` | FigJam boards: same, but the wrapper is a Section and the status badge is a separate instance |
 | `standalone-badge.js` | FigJam: make the status badge of an existing cover a separate instance |
+| `set-modified.js` | set the Modified month of an existing cover and show the row again; replaces only an empty value or a month named in `overwrite`, never a month a person set |
 | `backup-old-covers.js`, `remove-old-covers.js` | export the old cover frames as PNG and text; then remove them and set the file thumbnail |
 | `values.example.json` | the shape of a values file for `--values` |
 
