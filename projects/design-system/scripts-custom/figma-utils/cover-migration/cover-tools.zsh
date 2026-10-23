@@ -32,6 +32,8 @@ ct_run() {
 # ct_open <figma url> <fileKey>   open the file in Figma Desktop and wait until its tab exists.
 ct_open() {
   ct_ensure_port || return 1
+  # a Figma that is not in front can ignore the open request: bring it to the front first
+  osascript -e 'tell application "Figma" to activate' >/dev/null 2>&1; sleep 1
   open -a Figma "$1"
   local i; for i in {1..15}; do sleep 2; curl -s -m 3 localhost:9222/json | grep -q "$2" && break; done
   # a file that is already open is not always brought to the front by `open -a`: do it over the debug port

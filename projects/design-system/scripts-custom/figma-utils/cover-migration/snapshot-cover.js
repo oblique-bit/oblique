@@ -11,7 +11,7 @@
   const inst = thumb.findAll(n => n.type === 'INSTANCE').find(c => c.name === '~figma_only/thumbnail') || thumb.findOne(n => n.type === 'INSTANCE');
   const all = []; const collect = i => { all.push(i); for (const e of i.exposedInstances) collect(e); }; collect(inst);
   const props = {}; for (const i of all) for (const [k, v] of Object.entries(i.componentProperties)) props[k.split('#')[0]] = v.value;
-  const vis = {}; for (const n of ['Version label', 'Modified label', 'Tickets label', 'Info column 1', 'Git', 'Documentation label', 'Docs']) { const h = thumb.findAll(x => x.name === n); if (h.length) vis[n] = h.map(x => x.visible); }
+  const vis = {}; for (const n of ['Version label', 'Modified label', 'Tickets label', 'Info column 1', 'Git label', 'Git value', 'Documentation label', 'Docs']) { const h = thumb.findAll(x => x.name === n); if (h.length) vis[n] = h.map(x => x.visible); }
   const texts = thumb.findAll(n => n.type === 'TEXT' && n.visible).map(t => t.name + '=' + t.characters.slice(0, 50));
   return JSON.stringify({ name: figma.root.name, props, vis, texts, img: figma.base64Encode(await thumb.exportAsync({ format: 'PNG', constraint: { type: 'SCALE', value: 0.4 } })) });
 })()
