@@ -156,7 +156,8 @@ the answer of step 5 (for example `FRAME file_thumbnail @0,742`).
 - `owner`: the owning team; `docs`: the documentation address as written in the old cover.
 - `status`: a `lifecycle_status` variant of the template: active, release_candidate, maintenance, end_of_life,
   work_in_progress_figma_only, on_hold_figma_only, experimental_figma_only, figma_only, dev_handoff_figma_only,
-  deprecated, done_figma_only.
+  deprecated, done_figma_only, backup_figma_only. What each badge means and when to use it is written next to the
+  badges in the library (Building Blocks page, section "Covers / Thumbnails").
 - Keep one thumbnail per file.
 
 ## Notes
