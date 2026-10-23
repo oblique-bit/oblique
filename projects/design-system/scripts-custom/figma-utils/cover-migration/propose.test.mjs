@@ -8,11 +8,11 @@ const NOW = new Date('2026-10-22T12:00:00Z');
 
 test('library cover, end of life', () => {
   const p = propose(frame('f', ['Title=Oblique – Swiss Government Design System', 'Test a bit longer title=Oblique|Library V14', 'V=V14.0.0 – F1.4  |  October, 2025', 'Documentation: oblique.admin.c=Documentation: oblique.admin.ch [link]', 'END OF LIFE=END OF LIFE [link]']), { now: NOW });
-  assert.deepEqual(p, { distribution: 'external', product: 'Oblique 14', doc: 'Library', tickets: '', git: '', purpose: '', version: '14.0.0-F1.4', modified: 'Oct 2025', owner: 'BIT / Oblique Team', docs: 'oblique.admin.ch', status: 'end_of_life' });
+  assert.deepEqual(p, { distribution: 'external', product: 'Oblique 14', doc: 'Library', tickets: '', git: '', purpose: '', version: '14.0.0-F1.4', modified: 'Oct 2025', owner: 'BIT / Oblique Team', docs: 'oblique.admin.ch', status: 'End of life' });
 });
 test('library cover with day and comma', () => {
   const p = propose(frame('f', ['t=Oblique|Library V11', 'v=V11.0.1 – F1.2  |  March 4, 2024', 'ACTIVE=MAINTENANCE', 'd=Documentation: oblique.admin.ch']), { now: NOW });
-  assert.equal(p.version, '11.0.1-F1.2'); assert.equal(p.modified, 'Mar 2024'); assert.equal(p.status, 'maintenance');
+  assert.equal(p.version, '11.0.1-F1.2'); assert.equal(p.modified, 'Mar 2024'); assert.equal(p.status, 'Maintenance');
 });
 test('2023 cover: only a year, release 2023', () => {
   const p = propose(frame('f', ['t=Oblique|Components 2023', 'v=2023', 'b=END OF LIFE']), { now: NOW });
@@ -67,9 +67,9 @@ test('titles lose ticket numbers and brackets', () => {
   assert.equal(stripTickets('Library'), 'Library');
 });
 test('statuses depend on the distribution, deprecated is in both', () => {
-  assert.ok(statusesFor('external').includes('deprecated') && statusesFor('internal').includes('Deprecated'));
+  assert.ok(statusesFor('external').includes('Deprecated') && statusesFor('internal').includes('Deprecated'));
   assert.ok(!statusesFor('external').includes('Work in progress'));
-  assert.ok(!statusesFor('internal').includes('active'));
+  assert.ok(!statusesFor('internal').includes('Active'));
 });
 test('rules: external has no tickets and needs docs; internal needs a person', () => {
   const ext = checkValues({ distribution: 'external', status: 'Work in progress', tickets: 'ABC-1', docs: '', version: '1', owner: 'BIT / Oblique Team', doc: 'Library' });
@@ -138,6 +138,6 @@ test('internal statuses are plain words, the first names are still accepted', ()
   assert.equal(normalizeStatus('internal', 'on hold'), 'On hold');
   assert.equal(normalizeStatus('internal', 'Figma only'), 'Figma only');
   assert.equal(normalizeStatus('internal', 'deprecated'), 'Deprecated');
-  assert.equal(normalizeStatus('external', 'End of life'), 'end_of_life');
+  assert.equal(normalizeStatus('external', 'end_of_life'), 'End of life');
   assert.deepEqual(checkValues({ distribution: 'internal', status: 'dev_handoff_figma_only', owner: 'BIT / Oblique / DR', doc: 'Y' }).errors, []);
 });

@@ -7,14 +7,14 @@ export const STATUSES = ['active', 'release_candidate', 'maintenance', 'end_of_l
 
 // A cover is internal (team only) or external (other teams, Figma Community). The two kinds use their own status badges;
 // "deprecated" is in both.
-export const EXTERNAL_STATUSES = ['active', 'release_candidate', 'maintenance', 'end_of_life', 'deprecated'];
+export const EXTERNAL_STATUSES = ['Active', 'Release candidate', 'Maintenance', 'End of life', 'Deprecated'];
 // Internal badges are written in plain words, without a suffix: the dropdown in Figma shows exactly these names.
 // The names of the first version (work_in_progress_figma_only ...) are still accepted as input and converted.
 const PLAIN = { work_in_progress_figma_only: 'Work in progress', dev_handoff_figma_only: 'Dev handoff', done_figma_only: 'Done', backup_figma_only: 'Backup', on_hold_figma_only: 'On hold', experimental_figma_only: 'Experimental', figma_only: 'Figma only', deprecated: 'Deprecated' };
 export const INTERNAL_STATUSES = Object.values(PLAIN);
 export function normalizeStatus(distribution, status) {
   const s = (status || '').trim();
-  if (distribution === 'external') return s.toLowerCase().replace(/\s+/g, '_');
+  if (distribution === 'external') return EXTERNAL_STATUSES.find(n => n.toLowerCase() === s.toLowerCase().replace(/_/g, ' ')) || s;
   if (PLAIN[s]) return PLAIN[s];
   return INTERNAL_STATUSES.find(n => n.toLowerCase() === s.toLowerCase().replace(/_/g, ' ')) || s;
 }

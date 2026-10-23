@@ -6,7 +6,7 @@
 // ARGS: { key, instanceId, values: { distribution, product, doc, tickets, git, purpose, version, modified, owner, docs, status } }
 // Writing rules: product "Oblique <release number>"; version without the letter V; modified "Mon YYYY" (month with three letters);
 // distribution = internal (person as owner, tickets, file_status badge) or external (team as owner, docs, lifecycle_status badge).
-// status = a variant of that badge set (external: active, release_candidate, maintenance, end_of_life, deprecated;
+// status = a variant of that badge set (external: Active, Release candidate, Maintenance, End of life, Deprecated;
 // internal: Work in progress, Dev handoff, Done, Backup, On hold, Experimental, Figma only, Deprecated).
 // An empty purpose hides the Purpose row; an empty version or modified hides its row (both: the whole column).
 (async () => {
