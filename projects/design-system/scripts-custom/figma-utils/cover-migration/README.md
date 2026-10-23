@@ -44,6 +44,8 @@ also change the file thumbnail and, in design files, enable the cover library; n
 | `standalone-badge.js` | FigJam: make the status badge of an existing cover a separate instance |
 | `set-modified.js` | set the Modified month of an existing cover and show the row again; replaces only an empty value or a month named in `overwrite`, never a month a person set |
 | `set-values.js` | change fields of the cover that is already in the file (only the fields you name) and show or hide the rows that depend on them |
+| `snapshot-cover.js` | read-only snapshot of the cover properties and rows; take it before and after a library update and compare |
+| `update-library.mjs` | accept the pending updates of the cover components in one design file (only `~figma_only/` names), never "Update all" |
 | `backup-old-covers.js`, `remove-old-covers.js` | export the old cover frames as PNG and text; then remove them and set the file thumbnail |
 | `values.example.json` | the shape of a values file for `--values` |
 
@@ -188,6 +190,15 @@ the answer of step 5 (for example `FRAME file_thumbnail @0,742`).
   The wizard stops when a status does not fit the distribution, when an external cover has tickets or no docs, and when
   tickets are not written in the form above.
 - Keep one thumbnail per file.
+
+## Updating the library in a file
+
+A file keeps its old library version until somebody accepts the update. A file can also wait for many other updates
+(old helpers, other libraries), so "Update all" is not safe. `update-library.mjs <fileKey>` opens the cover page, opens
+"Manage libraries > Updates" and presses "Update" only next to `~figma_only/` components. In a FigJam board the update is the
+banner "N component updates" in the tab "Stickers" of the plus menu. Take `snapshot-cover.js` before and after: the values must be
+the same. A new switch (`show_tickets`, `show_git`) is off after an update, so set it again with `set-values.js` where a file has
+tickets or a git branch.
 
 ## Notes
 
