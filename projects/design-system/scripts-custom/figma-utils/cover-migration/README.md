@@ -158,7 +158,7 @@ the answer of step 5 (for example `FRAME file_thumbnail @0,742`).
 
   | | internal | external |
   |---|---|---|
-  | owner | the person who owns the file | the team ("BIT / Oblique Team") |
+  | owner | the owner by initials: "BIT / Oblique / DR" | the team ("BIT / Oblique Team") |
   | tickets | shown, at most 3 | never shown |
   | docs | not shown | shown |
   | status badges | `file_status`: work_in_progress_figma_only, dev_handoff_figma_only, done_figma_only, backup_figma_only, on_hold_figma_only, experimental_figma_only, figma_only, deprecated | `lifecycle_status`: active, release_candidate, maintenance, end_of_life, deprecated |
@@ -177,8 +177,9 @@ the answer of step 5 (for example `FRAME file_thumbnail @0,742`).
   browser cannot be used, because every script run and every library update changes it. The wizard writes the month
   with three letters and stops on a longer month name.
 - `purpose`: one status-neutral sentence about what the file contains; empty hides the Purpose row.
-- `owner` and `docs`: see `distribution`. For an internal cover the wizard proposes the creator of the file (needs
-  `FIGMA_TOKEN`); the creator is not always the owner, so confirm it.
+- `owner` and `docs`: see `distribution`. An internal cover writes the owner as "BIT / Oblique /" plus the initials of the
+  person ("BIT / Oblique / DR"). The wizard proposes the initials of the creator of the file (needs `FIGMA_TOKEN`);
+  the creator is not always the owner, so confirm it.
 - `status`: a variant of the badge set that belongs to the distribution (table above). What each badge means and when
   to use it is written next to the badges in the library (Utility Components page, section "Badge guidelines").
   The wizard stops when a status does not fit the distribution, when an external cover has tickets or no docs, and when

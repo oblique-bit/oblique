@@ -13,6 +13,15 @@ export const DISTRIBUTIONS = ['internal', 'external'];
 export const statusesFor = distribution => (distribution === 'external' ? EXTERNAL_STATUSES : INTERNAL_STATUSES);
 export const MAX_TICKETS = 3;
 export const TEAM_OWNER = 'BIT / Oblique Team';
+// An internal cover names the owner by initials: "BIT / Oblique / DR". An external cover names the team.
+export const OWNER_PREFIX = 'BIT / Oblique / ';
+export const INTERNAL_OWNER = /^BIT \/ Oblique \/ [A-Z]{2,3}$/;
+export function initials(name) {
+  const w = (name || '').replace(/\s+BIT$/i, '').trim().split(/\s+/).filter(Boolean);
+  if (!w.length) return '';
+  return ((w[0][0] || '') + (w.length > 1 ? w[w.length - 1][0] : '')).toUpperCase();
+}
+export const internalOwner = name => (initials(name) ? OWNER_PREFIX + initials(name) : '');
 
 // Tickets are shown as KEY-123, upper case, separated by ", ", the main ticket first, at most three, none twice.
 const TICKET = /\b[A-Za-z]{2,10}-\d{1,6}\b/g;
@@ -115,8 +124,8 @@ function finish(out, options) {
   if (out.tickets) out.doc = stripTickets(out.doc);
   const official = ['active', 'release_candidate', 'maintenance', 'end_of_life'];
   out.distribution = options.distribution || (official.includes(out.status) ? 'external' : 'internal');
-  if (out.distribution === 'external') out.tickets = '';
-  else out.docs = '';
+  if (out.distribution === 'external') { out.tickets = ''; out.owner = TEAM_OWNER; }
+  else { out.docs = ''; out.owner = options.owner || ''; }
   out.modified = formatModified(out.modified);
   return out;
 }
@@ -133,8 +142,8 @@ export function checkValues(v) {
     if (v.owner && v.owner !== TEAM_OWNER) warnings.push(`an external cover names the team ("${TEAM_OWNER}"), not a person`);
   }
   if (v.distribution === 'internal') {
-    if (!v.owner) errors.push('an internal cover needs the owner (a person)');
-    else if (v.owner === TEAM_OWNER) warnings.push('an internal cover names the person who owns the file, not the team');
+    if (!v.owner) errors.push('an internal cover needs the owner, written "BIT / Oblique / DR" (initials)');
+    else if (!INTERNAL_OWNER.test(v.owner)) errors.push(`owner "${v.owner}" must be written "${OWNER_PREFIX}" plus the initials of the person, for example "BIT / Oblique / DR"`);
   }
   if (v.modified && formatModified(v.modified) !== v.modified) errors.push(`modified "${v.modified}" must be written "${formatModified(v.modified)}" (month with three letters)`);
   if (v.tickets) {

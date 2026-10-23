@@ -25,7 +25,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { tmpdir } from 'node:os';
 import readline from 'node:readline/promises';
-import { propose, checkValues, statusesFor, DISTRIBUTIONS, normalizeTickets, formatModified, TEAM_OWNER } from './propose.mjs';
+import { propose, checkValues, statusesFor, DISTRIBUTIONS, normalizeTickets, formatModified, internalOwner, INTERNAL_OWNER, TEAM_OWNER } from './propose.mjs';
 import { lastRealChange, fetchMeta } from './last-real-change.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -85,9 +85,10 @@ else {
   if (values.distribution === 'external') { values.tickets = ''; if (!values.docs) values.docs = 'oblique.bit.admin.ch'; if (values.owner !== TEAM_OWNER) values.owner = TEAM_OWNER; }
   else {
     values.docs = '';
-    if (values.owner === TEAM_OWNER && process.env.FIGMA_TOKEN) {
-      try { const m = await fetchMeta(KEY, process.env.FIGMA_TOKEN); if (m.creator && m.creator.handle) { values.owner = m.creator.handle.replace(/\s+BIT$/, ''); console.log(`Owner is proposed from the creator of the file: ${m.creator.handle}. The creator is not always the owner: check it.`); } } catch (e) { console.log('Creator not available (' + e.message + ').'); }
+    if (!INTERNAL_OWNER.test(values.owner || '') && process.env.FIGMA_TOKEN) {
+      try { const m = await fetchMeta(KEY, process.env.FIGMA_TOKEN); if (m.creator && m.creator.handle) { values.owner = internalOwner(m.creator.handle); console.log(`Owner is proposed from the creator of the file (${m.creator.handle}). The creator is not always the owner: check it.`); } } catch (e) { console.log('Creator not available (' + e.message + ').'); }
     }
+    if (!INTERNAL_OWNER.test(values.owner || '')) values.owner = '';
   }
   values.product = await ask('product', values.product, 'Oblique <release number>, or Oblique DS');
   values.doc = await ask('doc name', values.doc, 'says what the file is; ticket numbers go to tickets');
@@ -95,7 +96,7 @@ else {
   values.purpose = await ask('purpose', values.purpose, 'one sentence about what the file contains');
   values.version = await ask('version', values.version, 'no letter V');
   values.modified = await ask('modified', values.modified, 'month of the last real change, three letters: Oct 2026; empty hides the row, never use today by default');
-  values.owner = await ask('owner', values.owner, values.distribution === 'internal' ? 'the person who owns the file' : 'the team');
+  values.owner = await ask('owner', values.owner, values.distribution === 'internal' ? 'initials of the owner: BIT / Oblique / DR' : 'the team');
   if (values.distribution === 'external') values.docs = await ask('docs', values.docs);
   const allowed = statusesFor(values.distribution);
   for (;;) { values.status = await ask('status', allowed.includes(values.status) ? values.status : allowed[0], allowed.join(' | ')); if (allowed.includes(values.status)) break; console.log('  not a status of an ' + values.distribution + ' cover'); if (YES) process.exit(1); }

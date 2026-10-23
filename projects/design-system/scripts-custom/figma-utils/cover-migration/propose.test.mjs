@@ -1,7 +1,7 @@
 // Run: node --test propose.test.mjs
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { propose, normalizeVersion, normalizeDate, normalizeTickets, stripTickets, checkValues, statusesFor, formatModified } from './propose.mjs';
+import { propose, normalizeVersion, normalizeDate, normalizeTickets, stripTickets, checkValues, statusesFor, formatModified, initials, internalOwner } from './propose.mjs';
 
 const frame = (name, texts) => ({ thumbnail: { name }, name: 'x', frames: [{ name, texts }] });
 const NOW = new Date('2026-10-22T12:00:00Z');
@@ -74,9 +74,9 @@ test('statuses depend on the distribution, deprecated is in both', () => {
 test('rules: external has no tickets and needs docs; internal needs a person', () => {
   const ext = checkValues({ distribution: 'external', status: 'work_in_progress_figma_only', tickets: 'ABC-1', docs: '', version: '1', owner: 'BIT / Oblique Team', doc: 'Library' });
   assert.equal(ext.errors.length, 3);
-  const ok = checkValues({ distribution: 'internal', status: 'done_figma_only', tickets: 'ABC-1, DEF-2', docs: '', version: '', owner: 'Anna Berger', doc: 'Research' });
+  const ok = checkValues({ distribution: 'internal', status: 'done_figma_only', tickets: 'ABC-1, DEF-2', docs: '', version: '', owner: 'BIT / Oblique / DR', doc: 'Research' });
   assert.deepEqual(ok.errors, []);
-  const many = checkValues({ distribution: 'internal', status: 'done_figma_only', tickets: 'AB-1, CD-2, EF-3, GH-4', owner: 'X', doc: 'Y' });
+  const many = checkValues({ distribution: 'internal', status: 'done_figma_only', tickets: 'AB-1, CD-2, EF-3, GH-4', owner: 'BIT / Oblique / DR', doc: 'Y' });
   assert.ok(many.errors.length > 0);
 });
 
@@ -96,8 +96,18 @@ test('a working file and an archived release both get the short month', () => {
   assert.equal(e.modified, 'Oct 2025');
 });
 test('rules: the month must have three letters', () => {
-  const bad = checkValues({ distribution: 'internal', status: 'done_figma_only', owner: 'X', doc: 'Y', modified: 'October 2026' });
+  const bad = checkValues({ distribution: 'internal', status: 'done_figma_only', owner: 'BIT / Oblique / DR', doc: 'Y', modified: 'October 2026' });
   assert.equal(bad.errors.length, 1);
   const ok = checkValues({ distribution: 'external', status: 'active', docs: 'oblique.bit.admin.ch', version: '16', owner: 'BIT / Oblique Team', doc: 'Y', modified: 'Oct 2026' });
   assert.deepEqual(ok.errors, []);
+});
+
+test('the owner of an internal cover is written with initials', () => {
+  assert.equal(initials('Anna Berger BIT'), 'AB');
+  assert.equal(initials('Carl Dubois'), 'CD');
+  assert.equal(internalOwner('Eva Marti BIT'), 'BIT / Oblique / EM');
+  assert.equal(internalOwner(''), '');
+  const bad = checkValues({ distribution: 'internal', status: 'done_figma_only', owner: 'Anna Berger', doc: 'Y' });
+  assert.equal(bad.errors.length, 1);
+  assert.deepEqual(checkValues({ distribution: 'internal', status: 'done_figma_only', owner: 'BIT / Oblique / OV', doc: 'Y' }).errors, []);
 });
