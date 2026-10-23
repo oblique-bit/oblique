@@ -53,7 +53,8 @@
     set('show_version', !!now.version, log); set('show_modified', !!now.modified, log); set('show_owner', !!now.owner, log);
     if (hasProp('show_tickets')) set('show_tickets', !!now.tickets, log);
     if (hasProp('show_git')) set('show_git', !!now.git, log);
-    vis(['Info column 1', 'Separator'], !!(now.version || now.modified || now.owner));
+    const c1 = !!(now.version || now.modified || now.owner), c2 = !!(now.tickets || now.git);
+    vis(['Info column 1'], c1); vis(['Info column 2'], c2); vis(['Separator'], c1 && c2);
   } else {
     vis(['Version label', 'Version value'], !!now.version);
     vis(['Modified label', 'Modified value'], !!now.modified);

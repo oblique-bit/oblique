@@ -54,6 +54,7 @@
   if (!v.modified && !hasProp('show_modified')) log.push('hid modified ' + hide(['Modified label', 'Modified value']));
   if (!v.version && !v.modified && !(internal && v.owner)) log.push('hid column 1 ' + hide(['Info column 1', 'Separator']));
   if (internal && !v.tickets && !hasProp('show_tickets')) log.push('hid tickets ' + hide(['Tickets label', 'Tickets value']));
+  if (internal && !v.tickets && !v.git) log.push('hid column 2 ' + hide(['Info column 2', 'Separator']));
   const row = inst.findOne(n => n.name === 'Purpose'); if (row) row.visible = !!v.purpose;
   const old = pg.children.find(c => c.type === 'SECTION' && c.name === 'file_thumbnail');
   const curThumb = await figma.getFileThumbnailNodeAsync();

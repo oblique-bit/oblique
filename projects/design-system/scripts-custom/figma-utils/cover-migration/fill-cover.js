@@ -65,6 +65,7 @@
   if (!v.modified && !hasProp('show_modified')) log.push('hid modified ' + hide(['Modified label', 'Modified value']));
   if (!v.version && !v.modified && !(internal && v.owner)) log.push('hid column 1 ' + hide(['Info column 1', 'Separator']));
   if (internal && !v.tickets && !hasProp('show_tickets')) log.push('hid tickets ' + hide(['Tickets label', 'Tickets value']));
+  if (internal && !v.tickets && !v.git) log.push('hid column 2 ' + hide(['Info column 2', 'Separator']));
   const oy = y0 + 1080 + 400;
   for (const o of olds) { o.name = o.name.replace(/^_helper \/ /, '') + '_depr'; o.x = x0 + (o === main ? 0 : 1920 + 120); o.y = oy; }
   let thumbErr = null;
