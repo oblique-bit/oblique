@@ -75,12 +75,9 @@
               "**/*.module.ts",
               "**/*.spec.ts",
               "**/off-canvas-container.directive.ts",
-              "**/master-layout/master-layout/master-layout-component-base.ts",
-              "**/master-layout/master-layout/master-layout.component.ts",
               "**/master-layout/master-layout-navigation/master-layout-navigation-component-base.ts",
               "**/master-layout/master-layout-navigation/master-layout-navigation.component.ts",
-              "**/master-layout/master-layout-navigation/sub-menu-item/master-layout-navigation-sub-menu-item.component.ts",
-              "**/service-navigation/authentication/service-navigation-authentication.component.ts"
+              "**/master-layout/master-layout-navigation/sub-menu-item/master-layout-navigation-sub-menu-item.component.ts"
             ],
             "coverageThresholds": {
               "lines": 99,

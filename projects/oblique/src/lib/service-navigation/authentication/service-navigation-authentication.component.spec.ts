@@ -9,8 +9,10 @@ import {ObServiceNavigationAuthenticationHarness} from './service-navigation-aut
 import {ObServiceNavigationAuthenticationComponent} from './service-navigation-authentication.component';
 import {MatButtonModule} from '@angular/material/button';
 import {ObButtonModule} from '../../button/button.module';
+import {ObExternalLinkDirective} from '../../external-link/external-link.directive';
+import {provideObliqueTestingConfiguration} from '../../utilities';
 
-describe.skip('ObServiceNavigationAuthenticationComponent', () => {
+describe('ObServiceNavigationAuthenticationComponent', () => {
 	let component: ObServiceNavigationAuthenticationComponent;
 	let fixture: ComponentFixture<ObServiceNavigationAuthenticationComponent>;
 	let harness: ObServiceNavigationAuthenticationHarness;
@@ -18,7 +20,15 @@ describe.skip('ObServiceNavigationAuthenticationComponent', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			declarations: [ObServiceNavigationAuthenticationComponent],
-			imports: [ObMockTranslatePipe, MatIconModule, MatTooltipModule, MatButtonModule, ObButtonModule],
+			imports: [
+				ObMockTranslatePipe,
+				MatIconModule,
+				MatTooltipModule,
+				MatButtonModule,
+				ObButtonModule,
+				ObExternalLinkDirective,
+			],
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationAuthenticationComponent);

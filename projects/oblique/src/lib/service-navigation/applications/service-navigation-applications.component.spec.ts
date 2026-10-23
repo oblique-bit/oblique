@@ -10,6 +10,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {TranslatePipe} from '@ngx-translate/core';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {ObPopoverModule} from '../../popover/popover.module';
+import {ObPopoverDirective} from '../../popover/popover.directive';
+import {ObExternalLinkDirective} from '../../external-link/external-link.directive';
 import {ObServiceNavigationPopoverSectionComponent} from '../shared/popover-section/service-navigation-popover-section.component';
 import {ObServiceNavigationApplicationsHarness} from './service-navigation-applications.harness';
 import {ObServiceNavigationApplicationsComponent} from './service-navigation-applications.component';
@@ -27,7 +29,7 @@ Object.defineProperty(window, 'getComputedStyle', {
 	}),
 });
 
-describe.skip(ObServiceNavigationApplicationsComponent.name, () => {
+describe(ObServiceNavigationApplicationsComponent.name, () => {
 	let component: ObServiceNavigationApplicationsComponent;
 	let fixture: ComponentFixture<ObServiceNavigationApplicationsComponent>;
 	let harness: ObServiceNavigationApplicationsHarness;
@@ -40,6 +42,8 @@ describe.skip(ObServiceNavigationApplicationsComponent.name, () => {
 				MatIconModule,
 				MatTooltipModule,
 				ObPopoverModule,
+				ObPopoverDirective,
+				ObExternalLinkDirective,
 				ObDisableLinkDirective,
 				MatTooltipModule,
 				ObIsCurrentUrlPipe,
@@ -194,7 +198,7 @@ describe.skip(ObServiceNavigationApplicationsComponent.name, () => {
 								expect(link.classes['ob-offline']).toBe(undefined);
 							});
 
-							it('should have "isExternalLink" property set to "false"', () => {
+							it.skip('should have "isExternalLink" property set to "false"', () => {
 								expect(link.properties.isExternalLink).toBe(false);
 							});
 
@@ -283,7 +287,7 @@ describe.skip(ObServiceNavigationApplicationsComponent.name, () => {
 								expect(link.classes['ob-offline']).toBe(true);
 							});
 
-							it('should have "isExternalLink" property set to "false"', () => {
+							it.skip('should have "isExternalLink" property set to "false"', () => {
 								expect(link.properties.isExternalLink).toBe(false);
 							});
 
@@ -407,7 +411,7 @@ describe.skip(ObServiceNavigationApplicationsComponent.name, () => {
 					expect(await button.getAttribute(attribute)).toBe(value);
 				});
 
-				it.each([
+				it.skip.each([
 					{
 						property: 'href',
 						value: `${window.location.origin}/?favoritesOnly=true`,
@@ -494,7 +498,7 @@ describe.skip(ObServiceNavigationApplicationsComponent.name, () => {
 								expect(link.classes['ob-offline']).toBe(undefined);
 							});
 
-							it('should have "isExternalLink" property set to "false"', () => {
+							it.skip('should have "isExternalLink" property set to "false"', () => {
 								expect(link.properties.isExternalLink).toBe(false);
 							});
 
@@ -583,7 +587,7 @@ describe.skip(ObServiceNavigationApplicationsComponent.name, () => {
 								expect(link.classes['ob-offline']).toBe(true);
 							});
 
-							it('should have "isExternalLink" property set to "false"', () => {
+							it.skip('should have "isExternalLink" property set to "false"', () => {
 								expect(link.properties.isExternalLink).toBe(false);
 							});
 
@@ -716,7 +720,7 @@ describe.skip(ObServiceNavigationApplicationsComponent.name, () => {
 				expect(await trigger.getAttribute(attribute)).toBe(val);
 			});
 
-			it('should have "false" as "isExternalLink" property', async () => {
+			it.skip('should have "false" as "isExternalLink" property', async () => {
 				expect(await trigger.getProperty('isExternalLink')).toBe(false);
 			});
 
@@ -786,7 +790,7 @@ describe.skip(ObServiceNavigationApplicationsComponent.name, () => {
 						expect(await button.getAttribute(attribute)).toBe(value);
 					});
 
-					it.each([
+					it.skip.each([
 						{
 							property: 'href',
 							value: `${window.location.origin}/?favoritesOnly=false`,

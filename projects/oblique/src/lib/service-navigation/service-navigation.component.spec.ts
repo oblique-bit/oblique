@@ -2,6 +2,29 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {TestElement} from '@angular/cdk/testing';
 import {ChangeDetectionStrategy, Component, NO_ERRORS_SCHEMA, NgModule, signal} from '@angular/core';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
+import {A11yModule} from '@angular/cdk/a11y';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {TranslatePipe} from '@ngx-translate/core';
+import {ObButtonModule} from '../button/button.module';
+import {ObExternalLinkDirective} from '../external-link/external-link.directive';
+import {ObPopoverDirective} from '../popover/popover.directive';
+import {ObTranslateParamsPipe} from '../translate-params/translate-params.pipe';
+import {ObContactToLinksPipe} from './info/contact-to-links.pipe';
+import {ObServiceNavigationInfoComponent} from './info/service-navigation-info.component';
+import {ObServiceNavigationMessageComponent} from './message/service-navigation-message.component';
+import {ObServiceNavigationProfileComponent} from './profile/service-navigation-profile.component';
+import {ObServiceNavigationApplicationNameStatusPipe} from './applications/service-navigation-application-name-status.pipe';
+import {ObServiceNavigationApplicationsComponent} from './applications/service-navigation-applications.component';
+import {ObServiceNavigationAuthenticationComponent} from './authentication/service-navigation-authentication.component';
+import {ObServiceNavigationLanguagesComponent} from './languages/service-navigation-languages.component';
+import {ObDisableLinkDirective} from './shared/disable-link/disable-link.directive';
+import {ObIsCurrentUrlPipe} from './shared/popover-section/is-current-url.pipe';
+import {ObServiceNavigationPopoverSectionComponent} from './shared/popover-section/service-navigation-popover-section.component';
 import {ObIsUserLoggedInPipe} from './shared/is-user-logged-in.pipe';
 import {ObServiceNavigationProfileHarness} from './profile/service-navigation-profile.harness';
 import {ObServiceNavigationAuthenticationHarness} from './authentication/service-navigation-authentication.harness';
@@ -14,6 +37,7 @@ import {ObServiceNavigationHarness} from './service-navigation.harness';
 import {ObServiceNavigationService} from './service-navigation.service';
 import {ObIServiceNavigationBackendInfo} from './api/service-navigation.api.model';
 import {ObEPamsEnvironment, ObLoginState} from './service-navigation.model';
+import {provideObliqueTestingConfiguration} from '../utilities';
 import {RouterModule} from '@angular/router';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
@@ -100,8 +124,40 @@ describe('ObServiceNavigationComponent', () => {
 	beforeEach(async () => {
 		TestBed.overrideProvider(ObServiceNavigationService, {useValue: mockServiceNavigationService});
 		await TestBed.configureTestingModule({
-			declarations: [ObServiceNavigationComponent, ObIsUserLoggedInPipe, CustomControlsTestComponent],
-			imports: [RouterModule, HttpClientTestingModule],
+			declarations: [
+				ObServiceNavigationComponent,
+				ObServiceNavigationInfoComponent,
+				ObServiceNavigationMessageComponent,
+				ObServiceNavigationProfileComponent,
+				ObServiceNavigationAuthenticationComponent,
+				ObServiceNavigationApplicationsComponent,
+				ObServiceNavigationLanguagesComponent,
+				ObServiceNavigationPopoverSectionComponent,
+				ObIsUserLoggedInPipe,
+				ObContactToLinksPipe,
+				ObServiceNavigationApplicationNameStatusPipe,
+				CustomControlsTestComponent,
+			],
+			imports: [
+				CommonModule,
+				A11yModule,
+				MatBadgeModule,
+				MatButtonModule,
+				MatIconModule,
+				MatSelectModule,
+				MatTooltipModule,
+				NgOptimizedImage,
+				ObButtonModule,
+				ObDisableLinkDirective,
+				ObExternalLinkDirective,
+				ObPopoverDirective,
+				ObTranslateParamsPipe,
+				ObIsCurrentUrlPipe,
+				TranslatePipe,
+				RouterModule,
+				HttpClientTestingModule,
+			],
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 	});
 
@@ -379,7 +435,7 @@ describe('ObServiceNavigationComponent', () => {
 				});
 			});
 
-			describe.skip.each([
+			describe.each([
 				{loginState: 'SA', widgets: [selectors.info, selectors.applications, selectors.auth]},
 				{loginState: 'S1', widgets: [selectors.info, selectors.applications, selectors.auth]},
 				{loginState: 'S2OK', widgets: allWidgets},
@@ -411,7 +467,7 @@ describe('ObServiceNavigationComponent', () => {
 			});
 		});
 
-		describe.skip('customControlTemplates', () => {
+		describe('customControlTemplates', () => {
 			let customControlFixture: ComponentFixture<CustomControlsTestComponent>;
 			const allWidgets = [
 				'button',
@@ -495,7 +551,7 @@ describe('ObServiceNavigationComponent', () => {
 		});
 
 		describe('useInfoBackend', () => {
-			describe.skip('when is true', () => {
+			describe('when is true', () => {
 				let infoElement: TestElement;
 
 				beforeEach(async () => {
@@ -505,7 +561,7 @@ describe('ObServiceNavigationComponent', () => {
 					infoElement = await harness.getInfoElement();
 				});
 
-				it.each([
+				it.skip.each([
 					{inputExpectedResult: 'backend description text', input: 'description'},
 					{inputExpectedResult: 'backend contact text', input: 'contactText'},
 					{inputExpectedResult: 'backend help text', input: 'helpText'},
@@ -528,7 +584,7 @@ describe('ObServiceNavigationComponent', () => {
 				);
 			});
 
-			describe.skip('when is false', () => {
+			describe('when is false', () => {
 				let infoElement: TestElement;
 
 				beforeEach(async () => {
@@ -547,7 +603,7 @@ describe('ObServiceNavigationComponent', () => {
 					infoElement = await harness.getInfoElement();
 				});
 
-				it.each([
+				it.skip.each([
 					{inputExpectedResult: 'input description text', input: 'description'},
 					{inputExpectedResult: 'input contact text', input: 'contactText'},
 					{inputExpectedResult: 'input help text', input: 'helpText'},
@@ -626,7 +682,7 @@ describe('ObServiceNavigationComponent', () => {
 		});
 	});
 
-	describe.skip('with two languages', () => {
+	describe('with two languages', () => {
 		beforeEach(() => {
 			mockServiceNavigationService.languages.set([
 				{code: 'en', label: ''},

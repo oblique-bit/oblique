@@ -10,6 +10,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatOptionHarness} from '@angular/material/core/testing';
 import {MatSelectHarness} from '@angular/material/select/testing';
+import {MatIcon} from '@angular/material/icon';
 
 @Component({
 	standalone: false,
@@ -27,7 +28,7 @@ class TestHostComponent {
 })
 export class TestHostModule {}
 
-describe.skip('ObServiceNavigationLanguagesComponent', () => {
+describe('ObServiceNavigationLanguagesComponent', () => {
 	let component: ObServiceNavigationLanguagesComponent;
 	let fixture: ComponentFixture<ObServiceNavigationLanguagesComponent>;
 	let harness: ObServiceNavigationLanguagesHarness;
@@ -36,7 +37,7 @@ describe.skip('ObServiceNavigationLanguagesComponent', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			declarations: [ObServiceNavigationLanguagesComponent, TestHostComponent],
-			imports: [ObMockTranslatePipe, MatFormFieldModule, MatSelectModule],
+			imports: [ObMockTranslatePipe, MatFormFieldModule, MatSelectModule, MatIcon],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationLanguagesComponent);

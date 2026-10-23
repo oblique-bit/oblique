@@ -1,8 +1,9 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, Component, Pipe, PipeTransform} from '@angular/core';
-import {Router, provideRouter} from '@angular/router';
+import {Router, RouterLink, provideRouter} from '@angular/router';
 import {HighContrastMode, HighContrastModeDetector} from '@angular/cdk/a11y';
 import {outputToObservable} from '@angular/core/rxjs-interop';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {TranslatePipe} from '@ngx-translate/core';
 import {Subject, firstValueFrom} from 'rxjs';
 import {provideObliqueTestingConfiguration} from '../../utilities';
@@ -38,7 +39,7 @@ export class ObMockLocalizePipe implements PipeTransform {
 	}
 }
 
-describe.skip('ObMasterLayoutComponent', () => {
+describe('ObMasterLayoutComponent', () => {
 	let component: ObMasterLayoutComponent;
 	let fixture: ComponentFixture<ObMasterLayoutComponent>;
 	let offCanvasOpened$: Subject<boolean>;
@@ -61,7 +62,7 @@ describe.skip('ObMasterLayoutComponent', () => {
 	beforeEach(async () => {
 		offCanvasOpened$ = new Subject<boolean>();
 		await TestBed.configureTestingModule({
-			imports: [TranslatePipe, ObMockLocalizePipe],
+			imports: [RouterLink, TranslatePipe, ObMockLocalizePipe, MatTooltipModule],
 			declarations: [ObMasterLayoutComponent],
 			providers: [
 				provideObliqueTestingConfiguration(),

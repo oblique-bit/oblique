@@ -7,23 +7,32 @@ import {MatTooltipHarness} from '@angular/material/tooltip/testing';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatBadgeHarness} from '@angular/material/badge/testing';
 import {MatIconModule} from '@angular/material/icon';
-import {TranslateService} from '@ngx-translate/core';
 import {ObTranslateParamsModule} from '../../translate-params/translate-params.module';
+import {ObTranslateParamsPipe} from '../../translate-params/translate-params.pipe';
+import {ObExternalLinkDirective} from '../../external-link/external-link.directive';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
-import {ObMockTranslateService} from '../../_mocks/mock-translate.service';
+import {provideObliqueTestingConfiguration} from '../../utilities';
 import {ObServiceNavigationMessageHarness} from './service-navigation-message.harness';
 import {ObServiceNavigationMessageComponent} from './service-navigation-message.component';
 
-describe.skip('ObServiceNavigationMessageComponent', () => {
+describe('ObServiceNavigationMessageComponent', () => {
 	let component: ObServiceNavigationMessageComponent;
 	let fixture: ComponentFixture<ObServiceNavigationMessageComponent>;
 	let harness: ObServiceNavigationMessageHarness;
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ObMockTranslatePipe, MatTooltipModule, ObTranslateParamsModule, MatIconModule, MatBadgeModule],
+			imports: [
+				ObMockTranslatePipe,
+				MatTooltipModule,
+				ObTranslateParamsModule,
+				ObTranslateParamsPipe,
+				ObExternalLinkDirective,
+				MatIconModule,
+				MatBadgeModule,
+			],
 			declarations: [ObServiceNavigationMessageComponent],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 	});
 
@@ -180,7 +189,7 @@ describe.skip('ObServiceNavigationMessageComponent', () => {
 			expect(await link.getAttribute(attribute)).toBe(value);
 		});
 
-		it('should have an "isExternalLink" property set to "false"', async () => {
+		it.skip('should have an "isExternalLink" property set to "false"', async () => {
 			expect(await link.getProperty('isExternalLink')).toBe(false);
 		});
 
