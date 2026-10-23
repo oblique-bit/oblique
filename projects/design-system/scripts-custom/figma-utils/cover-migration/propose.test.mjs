@@ -125,3 +125,10 @@ test('rules: git is optional, internal only, one branch name', () => {
   assert.ok(checkValues({ ...base, distribution: 'internal', git: 'two words' }).errors.length > 0);
   assert.ok(checkValues({ distribution: 'external', status: 'active', docs: 'x', version: '1', owner: 'BIT / Oblique Team', doc: 'Y', git: 'tokens-dev' }).errors.length > 0);
 });
+
+test('a long git branch name is a warning, not an error', () => {
+  const base = { distribution: 'internal', status: 'done_figma_only', owner: 'BIT / Oblique / DR', doc: 'Y' };
+  const long = checkValues({ ...base, git: 'tokens-' + 'a'.repeat(70) });
+  assert.deepEqual(long.errors, []); assert.equal(long.warnings.length, 1);
+  assert.equal(checkValues({ ...base, git: 'tokens-ABC-1-simplify-color-variables' }).warnings.length, 0);
+});

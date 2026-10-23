@@ -13,6 +13,8 @@ export const DISTRIBUTIONS = ['internal', 'external'];
 export const statusesFor = distribution => (distribution === 'external' ? EXTERNAL_STATUSES : INTERNAL_STATUSES);
 export const MAX_TICKETS = 3;
 export const TEAM_OWNER = 'BIT / Oblique Team';
+// the Git row has 1133 px for the value; an average branch name needs 18.3 px per character
+export const GIT_FITS = 60;
 // An internal cover names the owner by initials: "BIT / Oblique / DR". An external cover names the team.
 export const OWNER_PREFIX = 'BIT / Oblique / ';
 export const INTERNAL_OWNER = /^BIT \/ Oblique \/ [A-Z]{2,3}$/;
@@ -155,7 +157,8 @@ export function checkValues(v) {
   if (v.modified && formatModified(v.modified) !== v.modified) errors.push(`modified "${v.modified}" must be written "${formatModified(v.modified)}" (month with three letters)`);
   if (v.git) {
     if (v.distribution === 'external') errors.push('an external cover shows no git branch');
-    if (!/^[A-Za-z0-9._\/-]+$/.test(v.git) || v.git.length > 80) errors.push('git must be one branch name without spaces, at most 80 characters');
+    if (!/^[A-Za-z0-9._\/-]+$/.test(v.git)) errors.push('git must be one branch name without spaces');
+    else if (v.git.length > GIT_FITS) warnings.push(`git is longer than ${GIT_FITS} characters: the cover shortens it with "..." (about ${GIT_FITS} characters fit next to the widest badge)`);
   }
   if (v.tickets) {
     const keys = extractTickets(v.tickets);
