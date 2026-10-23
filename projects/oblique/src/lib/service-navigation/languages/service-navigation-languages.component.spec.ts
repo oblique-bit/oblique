@@ -1,6 +1,6 @@
 import {HarnessLoader, TestElement} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
-import {Component} from '@angular/core';
+import {Component, NO_ERRORS_SCHEMA, NgModule} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
@@ -18,6 +18,14 @@ import {MatSelectHarness} from '@angular/material/select/testing';
 class TestHostComponent {
 	languageChanges: string[] = [];
 }
+
+// TODO remove once Master Layout have been migrated to standalone
+// with Angular 22.2+, non standalone components with dependencies have to be part of a Module to satisfy the AOT compiler
+@NgModule({
+	declarations: [TestHostComponent],
+	schemas: [NO_ERRORS_SCHEMA],
+})
+export class TestHostModule {}
 
 describe.skip('ObServiceNavigationLanguagesComponent', () => {
 	let component: ObServiceNavigationLanguagesComponent;

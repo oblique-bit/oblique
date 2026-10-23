@@ -11,10 +11,5 @@
     "compilationMode": "full"
   },
   "include": ["**/*.spec.ts", "../../tests/setupVitest.ts"],
-  "exclude": [
-    "**/master-layout/master-layout-navigation/master-layout-navigation.component.spec.ts",
-    "**/master-layout/outline.directive.spec.ts",
-    "**/service-navigation/languages/service-navigation-languages.component.spec.ts",
-    "**/service-navigation/service-navigation.component.spec.ts"
-  ]
+  "exclude": []
 }

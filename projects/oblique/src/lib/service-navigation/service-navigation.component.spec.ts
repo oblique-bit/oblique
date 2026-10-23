@@ -1,7 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {TestElement} from '@angular/cdk/testing';
-import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, NO_ERRORS_SCHEMA, NgModule, signal} from '@angular/core';
 import {ObIsUserLoggedInPipe} from './shared/is-user-logged-in.pipe';
 import {ObServiceNavigationProfileHarness} from './profile/service-navigation-profile.harness';
 import {ObServiceNavigationAuthenticationHarness} from './authentication/service-navigation-authentication.harness';
@@ -44,6 +44,14 @@ class CustomControlsTestComponent {
 	displayAuthentication = true;
 	displayLanguages = true;
 }
+
+// TODO remove once Master Layout have been migrated to standalone
+// with Angular 22.2+, non standalone components with dependencies have to be part of a Module to satisfy the AOT compiler
+@NgModule({
+	declarations: [CustomControlsTestComponent],
+	schemas: [NO_ERRORS_SCHEMA],
+})
+export class CustomControlsTestModule {}
 
 describe('ObServiceNavigationComponent', () => {
 	let component: ObServiceNavigationComponent;

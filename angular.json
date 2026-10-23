@@ -63,12 +63,6 @@
             "runner": "vitest",
             "setupFiles": ["tests/setupVitest.ts"],
             "isolate": true,
-            "exclude": [
-              "**/master-layout/master-layout-navigation/master-layout-navigation.component.spec.ts",
-              "**/master-layout/outline.directive.spec.ts",
-              "**/service-navigation/languages/service-navigation-languages.component.spec.ts",
-              "**/service-navigation/service-navigation.component.spec.ts"
-            ],
             "coverage": true,
             "coverageReporters": ["text", "html", "lcov"],
             "coverageInclude": ["projects/oblique/src/lib/**/*.ts"],
@@ -85,16 +79,8 @@
               "**/master-layout/master-layout/master-layout.component.ts",
               "**/master-layout/master-layout-navigation/master-layout-navigation-component-base.ts",
               "**/master-layout/master-layout-navigation/master-layout-navigation.component.ts",
-              "**/master-layout/master-layout-navigation/master-layout-navigation.component.spec-basic-mocks-links.ts",
-              "**/master-layout/master-layout-navigation/master-layout-navigation.component.spec-mock-links-with-data.ts",
               "**/master-layout/master-layout-navigation/sub-menu-item/master-layout-navigation-sub-menu-item.component.ts",
-              "**/service-navigation/service-navigation.component.ts",
-              "**/service-navigation/applications/service-navigation-applications.component.ts",
-              "**/service-navigation/authentication/service-navigation-authentication.component.ts",
-              "**/service-navigation/info/service-navigation-info.component.ts",
-              "**/service-navigation/languages/service-navigation-languages.component.ts",
-              "**/service-navigation/message/service-navigation-message.component.ts",
-              "**/service-navigation/profile/service-navigation-profile.component.ts"
+              "**/service-navigation/authentication/service-navigation-authentication.component.ts"
             ],
             "coverageThresholds": {
               "lines": 99,
