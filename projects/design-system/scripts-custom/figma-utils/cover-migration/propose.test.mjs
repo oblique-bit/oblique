@@ -1,7 +1,7 @@
 // Run: node --test propose.test.mjs
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { propose, normalizeVersion, normalizeDate, normalizeTickets, stripTickets, checkValues, statusesFor } from './propose.mjs';
+import { propose, normalizeVersion, normalizeDate, normalizeTickets, stripTickets, checkValues, statusesFor, formatModified } from './propose.mjs';
 
 const frame = (name, texts) => ({ thumbnail: { name }, name: 'x', frames: [{ name, texts }] });
 const NOW = new Date('2026-10-22T12:00:00Z');
@@ -20,7 +20,7 @@ test('2023 cover: only a year, release 2023', () => {
 });
 test('working file: product line and ticket text after the title', () => {
   const p = propose(frame('f', ['t=Oblique|Color Variables Sandbox   simplify-the-color-variables', 'v=V16-DS – F1.0  |  Oktober 2026', 'WORK IN PROGRESS=WORK IN PROGRESS']), { now: NOW });
-  assert.equal(p.doc, 'Color Variables Sandbox'); assert.equal(p.purpose, 'simplify-the-color-variables'); assert.equal(p.version, '16-DS-F1.0'); assert.equal(p.modified, 'October 2026'); assert.equal(p.status, 'work_in_progress_figma_only');
+  assert.equal(p.doc, 'Color Variables Sandbox'); assert.equal(p.purpose, 'simplify-the-color-variables'); assert.equal(p.version, '16-DS-F1.0'); assert.equal(p.modified, 'Oct 2026'); assert.equal(p.status, 'work_in_progress_figma_only');
 });
 test('custom first line, no version, no date', () => {
   const p = propose(frame('f', ['t=Figma Metadata  Helper Component|Mockup', 'ON HOLD=ON HOLD']), { now: NOW });
@@ -78,4 +78,26 @@ test('rules: external has no tickets and needs docs; internal needs a person', (
   assert.deepEqual(ok.errors, []);
   const many = checkValues({ distribution: 'internal', status: 'done_figma_only', tickets: 'AB-1, CD-2, EF-3, GH-4', owner: 'X', doc: 'Y' });
   assert.ok(many.errors.length > 0);
+});
+
+test('months: three letters on an internal cover, full name on an external cover', () => {
+  assert.equal(formatModified('October 2026', 'internal'), 'Oct 2026');
+  assert.equal(formatModified('September 2026', 'internal'), 'Sep 2026');
+  assert.equal(formatModified('June, 2026', 'internal'), 'Jun 2026');
+  assert.equal(formatModified('Oct 2026', 'external'), 'October 2026');
+  assert.equal(formatModified('2023', 'internal'), '2023');
+  assert.equal(formatModified('', 'internal'), '');
+  assert.equal(formatModified('Mai 2026', 'internal'), 'Mai 2026');
+});
+test('a working file gets the short month, an archived release the full month', () => {
+  const w = propose(frame('f', ['t=Oblique|Research', 'v=V1.0.0  |  October 2026', 'b=WORK IN PROGRESS']), { now: NOW });
+  assert.equal(w.modified, 'Oct 2026');
+  const e = propose(frame('f', ['t=Oblique|Library V14', 'v=V14.0.0 – F1.4  |  October, 2025', 'b=END OF LIFE']), { now: NOW });
+  assert.equal(e.modified, 'October 2025');
+});
+test('rules: the month must be written for the distribution', () => {
+  const bad = checkValues({ distribution: 'internal', status: 'done_figma_only', owner: 'X', doc: 'Y', modified: 'October 2026' });
+  assert.equal(bad.errors.length, 1);
+  const ok = checkValues({ distribution: 'internal', status: 'done_figma_only', owner: 'X', doc: 'Y', modified: 'Oct 2026' });
+  assert.deepEqual(ok.errors, []);
 });

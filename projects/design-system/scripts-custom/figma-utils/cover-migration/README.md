@@ -170,10 +170,12 @@ the answer of step 5 (for example `FRAME file_thumbnail @0,742`).
   search by number in the file browser still works.
 - `product`: "Oblique" plus the release number, without V or R (example: "Oblique 16").
 - `version`: no letter V, no spaces (example: "16.0.0-F1.3"), as on the documentation site.
-- `modified`: month and year with the full month name, no comma (example: "October 2026"). It is the month of the
+- `modified`: month and year, no comma. An internal cover writes the month with three letters ("Oct 2026"), an external
+  cover with the full month name ("October 2026"), as on the documentation site. It is the month of the
   last real change of the content, not the month of the migration and not today. When the old cover has no date
   and nobody knows the date, leave it empty: the row is hidden. The "Edited" time of the file browser cannot be
-  used, because every script run and every library update changes it.
+  used, because every script run and every library update changes it. The wizard writes the month in the form of
+  the distribution and stops on a month in the other form.
 - `purpose`: one status-neutral sentence about what the file contains; empty hides the Purpose row.
 - `owner` and `docs`: see `distribution`. For an internal cover the wizard proposes the creator of the file (needs
   `FIGMA_TOKEN`); the creator is not always the owner, so confirm it.
