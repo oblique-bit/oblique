@@ -49,7 +49,9 @@ Object.defineProperty(window, 'localStorage', {value: mock()});
 Object.defineProperty(window, 'sessionStorage', {value: mock()});
 Object.defineProperty(window, 'scrollIntoView', {value: mock()});
 Object.defineProperty(window, 'getComputedStyle', {
-	value: () => ['-webkit-appearance'],
+	value: () => ({
+		getPropertyValue: () => '',
+	}),
 });
 Object.defineProperty(window, 'open', {value: vi.fn(), writable: true});
 Object.defineProperty(window, 'confirm', {value: vi.fn()});
