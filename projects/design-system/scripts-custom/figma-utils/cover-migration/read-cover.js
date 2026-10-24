@@ -21,7 +21,7 @@
   const frames = [];
   for (const c of pg.children) {
     if (c.type === 'SECTION' && figma.editorType === 'figjam' && c.name !== 'file_thumbnail' && !(cur && c.id === cur.id)) continue;
-    const texts = c.findAll ? c.findAll(n => n.type === 'TEXT').map(t => t.name + '=' + t.characters.slice(0, 80).replace(/\n/g, '|') + (t.hyperlink ? ' [link]' : '')) : [];
+    const texts = c.findAll ? c.findAll(n => n.type === 'TEXT').map(t => t.name + '=' + t.characters.slice(0, 400).replace(/\n/g, '|') + (t.hyperlink ? ' [link]' : '')) : [];
     let main = null;
     if (c.type === 'INSTANCE') { const m = await c.getMainComponentAsync(); main = m ? m.name + ' remote=' + m.remote : null; }
     frames.push({ type: c.type, name: c.name, x: Math.round(c.x), y: Math.round(c.y), w: Math.round(c.width), h: Math.round(c.height), main, texts: texts.slice(0, 16) });
