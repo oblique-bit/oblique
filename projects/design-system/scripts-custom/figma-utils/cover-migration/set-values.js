@@ -1,6 +1,7 @@
 // Change fields of the cover that is already in the file, and show or hide the rows that depend on them.
 // Only the fields named in `values` are changed. The cover is the instance inside the frame or section "file_thumbnail".
 // Rows follow the values: version, modified and tickets rows are visible only when they have a value.
+// The git row follows its own switch unless `git` is given: an empty git text keeps the template placeholder, so the text alone says nothing. To hide the row pass git ''.
 // Scope: only the cover page is read or changed. Other pages of the file are never touched.
 // ARGS: { key, values: { distribution?, product?, doc?, tickets?, git?, purpose?, version?, modified?, owner?, docs?, status? }, dryRun? }
 (async () => {
@@ -46,7 +47,7 @@
   if (v.status !== undefined) set(internal ? 'file_status' : 'lifecycle_status', v.status, log);
   const rows = names => thumb.findAll(x => names.includes(x.name));
   const vis = (names, on) => rows(names).forEach(h => { h.visible = on; });
-  const now = { version: read('version'), modified: read('modified_on'), owner: read('ownership'), tickets: internal ? read('tickets') : '', git: internal ? read('git') : '' };
+  const now = { version: read('version'), modified: read('modified_on'), owner: read('ownership'), tickets: internal ? read('tickets') : '', git: internal ? (v.git !== undefined ? v.git : (read('show_git') ? read('git') : '')) : '' };
   const purposeRow = thumb.findOne(n => n.name === 'Purpose'); if (purposeRow) purposeRow.visible = !!read('purpose');
   if (internal && hasProp('show_version')) {
     // every row has its own switch: an empty value switches the row off (also repairs the rows after a library update)
