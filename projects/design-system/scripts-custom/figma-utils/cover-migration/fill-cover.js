@@ -60,8 +60,10 @@
     pg.appendChild(ft); ft.x = x0; ft.y = y0; ft.appendChild(inst); inst.x = 0; inst.y = 0; log.push('wrapped in frame file_thumbnail');
   }
   const hide = names => { const hit = ft.findAll(x => names.includes(x.name)); hit.forEach(h => { h.visible = false; }); return hit.length; };
-  const row = ft.findOne(n => n.name === 'Purpose'); if (row) row.visible = !!v.purpose;
-  ft.findAll(n => n.name === 'Line Button').forEach(n => { n.visible = !!v.doc; });   // an empty second title line takes no room
+  // the purpose row and the second title line have a switch each; an older library version has only the layers
+  const hasSwitch = name => gather().some(i => Object.keys(i.componentProperties).some(k => k.split('#')[0] === name));
+  if (hasSwitch('show_purpose')) set('show_purpose', !!v.purpose); else { const row = ft.findOne(n => n.name === 'Purpose'); if (row) row.visible = !!v.purpose; }
+  if (hasSwitch('show_document_name')) set('show_document_name', !!v.doc); else ft.findAll(n => n.name === 'Line Button' || n.name === 'Title line 2').forEach(n => { n.visible = !!v.doc; });
   if (!v.version && !(internal && hasProp('show_version'))) log.push('hid version ' + hide(['Version label', 'Version value']));
   if (!v.modified && !(internal && hasProp('show_modified'))) log.push('hid modified ' + hide(['Modified label', 'Modified value']));
   if (!v.version && !v.modified && !(internal && v.owner)) log.push('hid column 1 ' + hide(['Info column 1', 'Separator']));

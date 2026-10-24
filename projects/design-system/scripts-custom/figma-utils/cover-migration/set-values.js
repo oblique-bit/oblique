@@ -48,9 +48,10 @@
   const rows = names => thumb.findAll(x => names.includes(x.name));
   const vis = (names, on) => rows(names).forEach(h => { h.visible = on; });
   const now = { version: read('version'), modified: read('modified_on'), owner: read('ownership'), tickets: internal ? read('tickets') : '', git: internal ? (v.git !== undefined ? v.git : (read('show_git') ? read('git') : '')) : '' };
-  const purposeRow = thumb.findOne(n => n.name === 'Purpose'); if (purposeRow) purposeRow.visible = !!read('purpose');
+  // the purpose row and the second title line have a switch each; an older library version has only the layers
+  if (hasProp('show_purpose')) set('show_purpose', !!read('purpose'), log); else { const purposeRow = thumb.findOne(n => n.name === 'Purpose'); if (purposeRow) purposeRow.visible = !!read('purpose'); }
   // an empty second title line would still take the height of one line: hide its row
-  thumb.findAll(n => n.name === 'Line Button').forEach(n => { n.visible = !!read('document_name'); });
+  if (hasProp('show_document_name')) set('show_document_name', !!read('document_name'), log); else thumb.findAll(n => n.name === 'Line Button' || n.name === 'Title line 2').forEach(n => { n.visible = !!read('document_name'); });
   if (internal && hasProp('show_version')) {
     // every row has its own switch: an empty value switches the row off (also repairs the rows after a library update)
     set('show_version', !!now.version, log); set('show_modified', !!now.modified, log); set('show_owner', !!now.owner, log);
