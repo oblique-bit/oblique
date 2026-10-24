@@ -3,7 +3,7 @@
 //
 // usage:
 //   node figma-tabs.mjs count              number of open file tabs (Home is not counted)
-//   node figma-tabs.mjs close-all          close every file tab, one by one; exit code 2 when a tab does not close
+//   node figma-tabs.mjs close-all          close every file tab, one by one, with patience (45 s per tab); exit code 2 when a tab does not close
 //                                          (for example because a dialog "You have unsaved changes" is waiting)
 //   node figma-tabs.mjs home <url>         open <url> in the Home tab (the file browser), for example a folder
 const [cmd, arg] = process.argv.slice(2);
@@ -24,7 +24,7 @@ if (cmd === 'close-all') {
   let n = await count(), closed = 0;
   while (n > 0 && closed < 80) {
     await ev(`[...document.querySelectorAll('button')].find(b => b.getAttribute('aria-label') === 'Close tab').click()`);
-    let m = n; for (let i = 0; i < 12 && m >= n; i++) { await wait(500); m = await count(); }
+    let m = n; for (let i = 0; i < 90 && m >= n; i++) { await wait(500); m = await count(); } // up to 45 s: a tab with changes that are still syncing asks first, never click again meanwhile
     if (m >= n) { console.log(JSON.stringify({ closed, left: n, stuck: true })); process.exit(2); }
     closed++; n = m;
   }

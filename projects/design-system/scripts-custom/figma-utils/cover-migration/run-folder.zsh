@@ -23,7 +23,7 @@ stop() { log "STOP: $*"; log "done: $(wc -l < $DONE | tr -d ' ')  failed: $(wc -
 health() { curl -s -m 8 http://127.0.0.1:9222/json/version | grep -q Browser; }
 ready() { [[ $(t 30 node cdp.mjs $1 eval "typeof figma" 2>/dev/null | tr -d '"') == object ]]; }
 updated() { t 40 node cdp.mjs $1 eval "(async()=>{const r=await fetch('/api/files/$1',{credentials:'include'});const j=await r.json();return j.meta.updated_at})()" 2>/dev/null | tr -d '"'; }
-closeall() { local r; r=$(t 90 node figma-tabs.mjs close-all 2>&1); local rc=$?; [[ $rc == 0 ]] || stop "a tab does not close ($r)"; sleep 3; }
+closeall() { local r; r=$(t 400 node figma-tabs.mjs close-all 2>&1); local rc=$?; [[ $rc == 0 ]] || stop "a tab does not close, a dialog may be waiting ($r)"; sleep 8; }
 
 health || ct_ensure_port || stop "Figma does not answer on the debug port"
 [[ $(t 20 node figma-tabs.mjs count) == 0 ]] || closeall
@@ -72,7 +72,7 @@ PY2
   if [[ $saved == 0 ]]; then for i in $(seq 1 20); do sleep 3; [[ $(updated $k) != $before ]] && { saved=1; break; }; done; fi
   log "updated_at after: $(updated $k)"
   [[ $saved == 1 ]] || stop "the change of $k did not reach the server in 3 minutes: not closing the tab"
-  sleep 3
+  sleep 20   # let the editor finish its own syncing before the tab is closed
   closeall
   echo $k >> $DONE; log "OK $k saved and closed"
 done
