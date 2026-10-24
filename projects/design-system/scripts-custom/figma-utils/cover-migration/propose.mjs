@@ -82,6 +82,15 @@ export function formatModified(raw) {
   return i < 0 ? v : SHORT_MONTHS[i] + ' ' + m[2];
 }
 
+// An obvious copy ("... (Copy)") keeps its name: renaming it would lose the link to the original. The cover shows the file name,
+// split before the version number: "OB Project Starter Kit 15.0.0 – F1.0 (Copy)" -> "OB Project Starter Kit" / "15.0.0 – F1.0 (Copy)".
+export const isCopy = name => /\(copy\)\s*$/i.test((name || '').trim());
+export function copyTitle(name) {
+  const n = (name || '').trim();
+  const m = n.match(/^(.*?)\s+(\d[\w.]*\s*[–-]\s*F\S+.*)$/);
+  return m ? { product: m[1].trim(), doc: m[2].trim() } : { product: n.replace(/\s*\(copy\)\s*$/i, '').trim(), doc: '(Copy)' };
+}
+
 export function propose(old, options = {}) {
   const owner = options.owner || 'BIT / Oblique Team';
   const out = { distribution: 'internal', product: 'Oblique DS', doc: (old && old.name) || '', tickets: '', git: '', purpose: '', version: '', modified: '', owner, docs: 'oblique.bit.admin.ch', status: 'work_in_progress_figma_only' };
@@ -138,6 +147,7 @@ export function propose(old, options = {}) {
 
 // distribution, tickets and the fields that belong to one distribution only
 function finish(out, options) {
+  if (options.fileName && isCopy(options.fileName)) Object.assign(out, copyTitle(options.fileName));
   out.tickets = normalizeTickets(out.tickets + ' ' + out.doc);
   if (extractTickets(out.doc).length) out.doc = stripTickets(out.doc);
   const official = ['active', 'release_candidate', 'maintenance', 'end_of_life'];

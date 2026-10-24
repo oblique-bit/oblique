@@ -70,7 +70,7 @@ if ((old.frames || []).some(f => f.texts.some(t => t.startsWith('Ownership label
   if (!FORCE) { rl.close(); process.exit(0); }
 }
 step('2. Values for the new cover');
-let values = propose(old);
+let values = propose(old, { fileName: old.name });
 if (!values.modified && process.env.FIGMA_TOKEN && !flag('--values') && (!YES || has('--use-history'))) {
   try {
     const h = await lastRealChange(KEY, process.env.FIGMA_TOKEN, { since: flag('--own-since') });

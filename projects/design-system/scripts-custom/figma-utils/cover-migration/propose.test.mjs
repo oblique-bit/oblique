@@ -1,7 +1,7 @@
 // Run: node --test propose.test.mjs
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { propose, normalizeVersion, normalizeDate, normalizeTickets, stripTickets, checkValues, statusesFor, formatModified, initials, internalOwner, normalizeStatus } from './propose.mjs';
+import { propose, normalizeVersion, normalizeDate, normalizeTickets, stripTickets, checkValues, statusesFor, formatModified, initials, internalOwner, normalizeStatus, isCopy, copyTitle } from './propose.mjs';
 
 const frame = (name, texts) => ({ thumbnail: { name }, name: 'x', frames: [{ name, texts }] });
 const NOW = new Date('2026-10-22T12:00:00Z');
@@ -140,4 +140,12 @@ test('internal statuses are plain words, the first names are still accepted', ()
   assert.equal(normalizeStatus('internal', 'deprecated'), 'Deprecated');
   assert.equal(normalizeStatus('external', 'end_of_life'), 'End of life');
   assert.deepEqual(checkValues({ distribution: 'internal', status: 'dev_handoff_figma_only', owner: 'BIT / Oblique / DR', doc: 'Y' }).errors, []);
+});
+
+test('an obvious copy keeps its file name on the cover', () => {
+  assert.ok(isCopy('OB Project Starter Kit 15.0.0 – F1.0 (Copy)')); assert.ok(!isCopy('Pill, Tag - Mockup'));
+  assert.deepEqual(copyTitle('OB Project Starter Kit 15.0.0 – F1.0 (Copy)'), { product: 'OB Project Starter Kit', doc: '15.0.0 – F1.0 (Copy)' });
+  assert.deepEqual(copyTitle('States Concept (Copy)'), { product: 'States Concept', doc: '(Copy)' });
+  const p = propose({ name: 'OB Project Starter Kit 15.0.0 – F1.0 (Copy)', frames: [] }, { fileName: 'OB Project Starter Kit 15.0.0 – F1.0 (Copy)' });
+  assert.equal(p.product, 'OB Project Starter Kit'); assert.equal(p.doc, '15.0.0 – F1.0 (Copy)');
 });
