@@ -56,6 +56,7 @@
   if (internal && !v.tickets && !hasProp('show_tickets')) log.push('hid tickets ' + hide(['Tickets label', 'Tickets value']));
   if (internal && !v.tickets && !v.git) log.push('hid column 2 ' + hide(['Info column 2', 'Separator']));
   const row = inst.findOne(n => n.name === 'Purpose'); if (row) row.visible = !!v.purpose;
+  inst.findAll(n => n.name === 'Line Button').forEach(n => { n.visible = !!v.doc; });   // an empty second title line takes no room
   const old = pg.children.find(c => c.type === 'SECTION' && c.name === 'file_thumbnail');
   const curThumb = await figma.getFileThumbnailNodeAsync();
   const olds = pg.children.filter(c => c !== old && c !== inst && (c.type === 'FRAME' || c.type === 'SECTION') && !/_depr$/.test(c.name) && (/^_helper \/ thumbnail/.test(c.name) || (curThumb && c.id === curThumb.id && c.name !== 'file_thumbnail')));

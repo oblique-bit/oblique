@@ -7,7 +7,10 @@
 //                                          (for example because a dialog "You have unsaved changes" is waiting)
 //   node figma-tabs.mjs close-matching <text>   close only the tab whose title contains <text> (other tabs stay open, also ones with unsaved work)
 //   node figma-tabs.mjs home <url>         open <url> in the Home tab (the file browser), for example a folder
-const [cmd, arg] = process.argv.slice(2);
+const argv = process.argv.slice(2);
+const ki = argv.indexOf('--keep');
+const KEEP = ki >= 0 ? argv.splice(ki, 2)[1] : (process.env.FIGMA_KEEP_TAB || '');
+const [cmd, arg] = argv;
 let targets;
 try { targets = await (await fetch('http://localhost:9222/json')).json(); } catch { console.log('no debug port on 9222'); process.exit(3); }
 const shell = targets.find(t => /shell\.html/.test(t.url));
@@ -17,14 +20,16 @@ await new Promise(r => ws.addEventListener('open', r));
 let id = 0;
 const send = (method, params = {}) => new Promise(res => { const i = ++id; const h = e => { const m = JSON.parse(e.data); if (m.id === i) { ws.removeEventListener('message', h); res(m); } }; ws.addEventListener('message', h); ws.send(JSON.stringify({ id: i, method, params })); });
 const ev = async expr => { const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }); return r.result && r.result.result ? r.result.result.value : null; };
-const count = () => ev(`[...document.querySelectorAll('button')].filter(b => b.getAttribute('aria-label') === 'Close tab').length`);
+// the close buttons of the tabs that are not kept: a tab is found by walking up from its close button to the element that holds exactly that button
+const PICK = `(keep, click) => { const bs = [...document.querySelectorAll('button')].filter(b => b.getAttribute('aria-label') === 'Close tab'); const out = []; for (const b of bs) { let e = b, label = ''; for (let i = 0; i < 6 && e; i++) { e = e.parentElement; if (e && e.querySelectorAll('button[aria-label="Close tab"]').length === 1 && (e.textContent || '').trim()) { label = e.textContent; break; } } if (keep && label.includes(keep)) continue; out.push(b); } if (click && out.length) out[0].click(); return out.length; }`;
+const count = () => ev(`(${PICK})(${JSON.stringify(KEEP)}, false)`);
 const wait = ms => new Promise(r => setTimeout(r, ms));
 
 if (cmd === 'count') { console.log(await count()); process.exit(0); }
 if (cmd === 'close-all') {
   let n = await count(), closed = 0;
   while (n > 0 && closed < 80) {
-    await ev(`[...document.querySelectorAll('button')].find(b => b.getAttribute('aria-label') === 'Close tab').click()`);
+    await ev(`(${PICK})(${JSON.stringify(KEEP)}, true)`);
     let m = n; for (let i = 0; i < 90 && m >= n; i++) { await wait(500); m = await count(); } // up to 45 s: a tab with changes that are still syncing asks first, never click again meanwhile
     if (m >= n) { console.log(JSON.stringify({ closed, left: n, stuck: true })); process.exit(2); }
     closed++; n = m;

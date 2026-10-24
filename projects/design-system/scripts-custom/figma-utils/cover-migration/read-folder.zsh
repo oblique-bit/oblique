@@ -17,10 +17,10 @@ log() { print -r -- "$(date +%H:%M:%S) $*" | tee -a $LOG; }
 stop() { log "STOP: $*"; exit 1; }
 health() { curl -s -m 8 http://127.0.0.1:9222/json/version | grep -q Browser; }
 ready() { [[ $(t 30 node cdp.mjs $1 eval "typeof figma" 2>/dev/null | tr -d '"') == object ]]; }
-closeall() { local r; r=$(t 400 node figma-tabs.mjs close-all 2>&1); local rc=$?; [[ $rc == 0 ]] || stop "a tab does not close, a dialog may be waiting ($r)"; sleep 8; }
+closeall() { local r; r=$(t 400 node figma-tabs.mjs --keep "${KEEP_TAB:-}" close-all 2>&1); local rc=$?; [[ $rc == 0 ]] || stop "a tab does not close, a dialog may be waiting ($r)"; sleep 8; }
 
 health || ct_ensure_port || stop "Figma does not answer on the debug port"
-[[ $(t 20 node figma-tabs.mjs count) == 0 ]] || closeall
+[[ $(t 20 node figma-tabs.mjs --keep "${KEEP_TAB:-}" count) == 0 ]] || closeall
 for k in $(cat $ORDER); do
   grep -qx $k $DONE && continue
   log "==== $k"

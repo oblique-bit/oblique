@@ -61,6 +61,7 @@
   }
   const hide = names => { const hit = ft.findAll(x => names.includes(x.name)); hit.forEach(h => { h.visible = false; }); return hit.length; };
   const row = ft.findOne(n => n.name === 'Purpose'); if (row) row.visible = !!v.purpose;
+  ft.findAll(n => n.name === 'Line Button').forEach(n => { n.visible = !!v.doc; });   // an empty second title line takes no room
   if (!v.version && !(internal && hasProp('show_version'))) log.push('hid version ' + hide(['Version label', 'Version value']));
   if (!v.modified && !(internal && hasProp('show_modified'))) log.push('hid modified ' + hide(['Modified label', 'Modified value']));
   if (!v.version && !v.modified && !(internal && v.owner)) log.push('hid column 1 ' + hide(['Info column 1', 'Separator']));
