@@ -44,6 +44,8 @@ also change the file thumbnail and, in design files, enable the cover library; n
 | `standalone-badge.js` | FigJam: make the status badge of an existing cover a separate instance |
 | `set-modified.js` | set the Modified month of an existing cover and show the row again; replaces only an empty value or a month named in `overwrite`, never a month a person set |
 | `set-values.js` | change fields of the cover that is already in the file (only the fields you name) and show or hide the rows that depend on them |
+| `run-folder.zsh` | put the cover into many files of one folder, strictly one file at a time (close all tabs, open, wizard, wait until the server shows the change, close the tab); skips a file that fails and stops when Figma stops answering |
+| `figma-tabs.mjs` | the tab strip of Figma Desktop: count the file tabs, close them all one by one (the debug port lists only loaded tabs, the strip holds all of them), open a URL in the Home tab |
 | `snapshot-cover.js` | read-only snapshot of the cover properties and rows; take it before and after a library update and compare |
 | `update-library.mjs` | accept the pending updates of the cover components in one design file (only `~figma_only/` names), never "Update all" |
 | `backup-old-covers.js`, `remove-old-covers.js` | export the old cover frames as PNG and text; then remove them and set the file thumbnail |
@@ -194,6 +196,13 @@ the answer of step 5 (for example `FRAME file_thumbnail @0,742`).
   The wizard stops when a status does not fit the distribution, when an external cover has tickets or no docs, and when
   tickets are not written in the form above.
 - Keep one thumbnail per file.
+
+## Many files: one at a time
+
+`run-folder.zsh <folderId> <order.txt> <valuesDir> <outDir> [limit]` runs the wizard over a list of files. It never keeps more than one
+file open: Figma Desktop slows down and freezes with many open tabs, and a tab with unsaved changes opens a dialog that blocks the app.
+The change counts as saved only when `updated_at` of the file changes on the server; then the tab is closed. Test with `limit` 2 first.
+Figma Make files (editor type `figmake`) have no canvas: they get no cover.
 
 ## Updating the library in a file
 
