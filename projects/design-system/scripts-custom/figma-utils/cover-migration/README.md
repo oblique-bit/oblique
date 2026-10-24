@@ -176,7 +176,9 @@ the answer of step 5 (for example `FRAME file_thumbnail @0,742`).
 - `git`: the git branch the work lives on, one name without spaces ("tokens-dev"). Optional, internal only, shown as a
   third line of the second column of the internal footer, under Owner and Tickets, with the label "GitHub" (the three lines have the same 8 px gap). The value takes all the room up to the status badge (40 px clear): next to the widest internal badge (WORK IN PROGRESS, 543 px) about 36 characters of a branch name fit, next to a narrow one (DONE, 227 px) about 54. A longer name is shortened with "...". `tickets` is optional too. An empty value switches the row off (`show_git`,
   `show_tickets`), so an empty row takes no space. An external cover has neither.
-- **Titles of internal covers:** the first line (light) is the Feature or Topic, the second line (bold) the work type or format ("Pill, Tag" / "Mockup").
+- **Titles of internal covers:** the first line (bold) is the Feature or Topic, the second line (light) the work type or format ("**Pill, Tag**" / "Mockup").
+  Bold carries what tells the files apart: the work type repeats on many files. The weight is a property of the template and the same for
+  every cover: line 1 bold, line 2 light (an external cover shows "**Oblique 16**" / "Library").
   "Oblique" is not repeated, it is already in the header: "Oblique" becomes "Design System", "OB DS (TOKEN)" becomes "Design System (Token)".
   An obvious copy ("... (Copy)") is not renamed: the cover shows the file name, split before the version number
   ("OB Project Starter Kit" / "15.0.0 – F1.0 (Copy)"), so the link to the original stays visible.
