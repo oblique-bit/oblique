@@ -8,6 +8,7 @@
 #   outDir      log, list of done and failed files, the result of every file
 #   limit       process only this many files that are not done yet (a test run)
 # Needs COVER_TEMPLATE_KEY and COVER_TEMPLATE_NODE (see README), Figma Desktop with the debug port, node 22+.
+# WIZARD_ARGS="--force" replaces a cover that is already there (for example a detached copy of the cover).
 #
 # For every file: close all file tabs (through the tab strip), open the file, wait until the editor answers, run the wizard,
 # check the result, wait until the server shows a new "updated_at" (the change is saved), close the tab, next file.
@@ -59,7 +60,7 @@ for t in (fr[0]['texts'] if fr else []):
 json.dump(v,open(sys.argv[1],'w'),ensure_ascii=False)
 PY2
   fi
-  t 480 node cover-wizard.mjs "https://www.figma.com/design/$k" --values $VALS/$k.json --yes --out $OUT/$k < /dev/null > $OUT/$k.wizard.log 2>&1
+  t 480 node cover-wizard.mjs "https://www.figma.com/design/$k" --values $VALS/$k.json --yes ${=WIZARD_ARGS:-} --out $OUT/$k < /dev/null > $OUT/$k.wizard.log 2>&1
   rc=$?
   if [[ $rc != 0 ]] || ! grep -q "^Done\." $OUT/$k.wizard.log; then
     log "FAIL $k: wizard rc=$rc ($(tail -1 $OUT/$k.wizard.log | cut -c1-120))"; echo $k >> $FAIL

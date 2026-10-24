@@ -47,7 +47,7 @@
   if (v.status !== undefined) set(internal ? 'file_status' : 'lifecycle_status', v.status, log);
   const rows = names => thumb.findAll(x => names.includes(x.name));
   const vis = (names, on) => rows(names).forEach(h => { h.visible = on; });
-  const now = { version: read('version'), modified: read('modified_on'), owner: read('ownership'), tickets: internal ? read('tickets') : '', git: internal ? (v.git !== undefined ? v.git : (read('show_git') ? read('git') : '')) : '' };
+  const now = { version: read('version'), modified: read('modified_on'), owner: read('ownership'), tickets: internal ? (v.tickets !== undefined ? v.tickets : (read('tickets') === 'ABC-123' ? '' : read('tickets'))) : '', git: internal ? (v.git !== undefined ? v.git : (read('show_git') ? read('git') : '')) : '' };
   // the purpose row and the second title line have a switch each; an older library version has only the layers
   if (hasProp('show_purpose')) set('show_purpose', !!read('purpose'), log); else { const purposeRow = thumb.findOne(n => n.name === 'Purpose'); if (purposeRow) purposeRow.visible = !!read('purpose'); }
   // an empty second title line would still take the height of one line: hide its row

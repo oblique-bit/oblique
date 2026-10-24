@@ -44,14 +44,21 @@ for k in $(cat $ORDER); do
   before=$(updated $k); [[ -n $before ]] || log "WARN $k: updated_at not readable before the change"
   ct_run $k snapshot-cover.js '{}' > $OUT/$k.before.json 2>/dev/null
   if ! grep -q '"props"' $OUT/$k.before.json; then log "FAIL $k: no new cover to update"; echo $k >> $FAIL; closeall; continue; fi
-  upd=$(t 240 node update-library.mjs $k 2>&1 | tail -1)
-  log "update: $upd"
+  et=$(t 30 node cdp.mjs $k eval "figma.editorType" 2>/dev/null | tr -d '"')
+  if [[ $et == figjam ]]; then upd=$(t 150 node update-figjam.mjs $k 2>&1 | tail -1); else upd=$(t 240 node update-library.mjs $k 2>&1 | tail -1); fi
+  log "update ($et): $upd"
   [[ $upd == \{* ]] || { log "FAIL $k: update did not answer"; echo $k >> $FAIL; health || stop "Figma stopped answering"; closeall; continue; }
-  [[ $upd == *'"stillPending":[]'* ]] || log "WARN $k: some updates are still pending"
-  sleep 10
+  if [[ $et == figjam ]]; then
+    [[ $upd == *'"updated":true'* || $upd == *'"updates":0'* ]] || { log "FAIL $k: FigJam update stopped: $upd"; echo $k >> $FAIL; closeall; continue; }
+  else
+    [[ $upd == *'"stillPending":[]'* ]] || log "WARN $k: some updates are still pending"
+  fi
+  # the editor can reload after an update: wait until it answers again before writing
+  sleep 8; for i in $(seq 1 30); do ready $k && break; sleep 4; done; sleep 4
   if [[ -s $VALS/$k.json ]]; then
     ct_run $k set-values.js "$(cat $VALS/$k.json)" > $OUT/$k.set.json 2>/dev/null
-    grep -q '"log"' $OUT/$k.set.json || { log "FAIL $k: values were not written ($(tail -c 160 $OUT/$k.set.json))"; echo $k >> $FAIL; health || stop "Figma stopped answering"; closeall; continue; }
+    # the answer of the script can get lost although the values were written: the check below reads the cover itself
+    grep -q '"log"' $OUT/$k.set.json || { log "WARN $k: no answer of the write script, checking the cover itself"; health || stop "Figma stopped answering"; }
     node save-images.mjs $OUT/$k.set.json $OUT $k- >/dev/null 2>&1
   fi
   ct_run $k snapshot-cover.js '{}' > $OUT/$k.after.json 2>/dev/null

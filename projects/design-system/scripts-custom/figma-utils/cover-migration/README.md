@@ -47,6 +47,7 @@ also change the file thumbnail and, in design files, enable the cover library; n
 | `run-folder.zsh` | put the cover into many files of one folder, strictly one file at a time (close all tabs, open, wizard, wait until the server shows the change, close the tab); skips a file that fails and stops when Figma stops answering |
 | `figma-tabs.mjs` | the tab strip of Figma Desktop: count the file tabs, close them all one by one or only the one whose title contains a text (a tab with unsaved work stays untouched) (the debug port lists only loaded tabs, the strip holds all of them), open a URL in the Home tab |
 | `read-folder.zsh` | read the cover of many files, strictly one file at a time, without changing anything (for a table before a bulk change); waits 20 s before closing a tab and up to 45 s for it to close |
+| `update-figjam.mjs` | accept the cover update in one FigJam board: reads "N component updates" in the tab Stickers of the plus menu and presses Update only when N is at most 4 |
 | `update-folder.zsh` | accept the library update of the cover components and write new values (title lines, purpose, ...) into the cover of many files, one file at a time; checks every cover against the wanted values and waits for the server |
 | `snapshot-cover.js` | read-only snapshot of the cover properties and rows; take it before and after a library update and compare |
 | `update-library.mjs` | accept the pending updates of the cover components in one design file (only `~figma_only/` names), never "Update all" |
@@ -178,12 +179,18 @@ the answer of step 5 (for example `FRAME file_thumbnail @0,742`).
 - `git`: the git branch the work lives on, one name without spaces ("tokens-dev"). Optional, internal only, shown as a
   third line of the second column of the internal footer, under Owner and Tickets, with the label "GitHub" (the three lines have the same 8 px gap). The value takes all the room up to the status badge (40 px clear): next to the widest internal badge (WORK IN PROGRESS, 543 px) about 36 characters of a branch name fit, next to a narrow one (DONE, 227 px) about 54. A longer name is shortened with "...". `tickets` is optional too. An empty value switches the row off (`show_git`,
   `show_tickets`), so an empty row takes no space. An external cover has neither.
-- **Titles of internal covers:** the first line (bold) is the Feature or Topic, the second line (light) the work type or format ("**Pill, Tag**" / "Mockup").
-  Bold carries what tells the files apart: the work type repeats on many files. The weight is a property of the template and the same for
-  every cover: line 1 bold, line 2 light (an external cover shows "**Oblique 16**" / "Library").
-  "Oblique" is not repeated, it is already in the header: "Oblique" becomes "Design System", "OB DS (TOKEN)" becomes "Design System (Token)".
+- **Titles of internal covers:** line 1 (bold) is what makes the file unique: the Feature or Topic ("**Pill, Tag**"). Line 2 (light) says which
+  kind of file it is: "Design System" for the new tokenized system, "Legacy Library" for the old one, "Boards" for boards; it stays empty
+  when the file is neither. A file without the mark is not assumed to be one or the other. The weight is a property of the template and the
+  same for every cover (an external cover shows "**Oblique 16**" / "Library"). "Oblique" is not repeated, it is already in the header.
+  The kind of work ("Mockup") is not a title: it becomes the purpose when the purpose is empty, and the team completes the sentence.
+  A ticket key does not belong to the title: it goes into the footer (`tickets`). "(Token)" and release marks leave the title.
+  In a folder where every file is about the Design System the mark is not needed: line 1 names the work ("Design System WIP-9.9" for the
+  main development, the topic for an isolated proof of concept with "Design System PoC" in line 2) and line 2 is a free subtitle.
   An obvious copy ("... (Copy)") is not renamed: the cover shows the file name, split before the version number
   ("OB Project Starter Kit" / "15.0.0 – F1.0 (Copy)"), so the link to the original stays visible.
+- **Rows with a switch:** purpose (`show_purpose`) and the second title line (`show_document_name`) have a switch like the footer rows. An empty
+  value switches the row off and it takes no room. After a library update the switches start on: run `set-values.js` with empty values.
 - `product`: "Oblique" plus the release number, without V or R (example: "Oblique 16").
 - `version`: no letter V, no spaces (example: "16.0.0-F1.3"), as on the documentation site.
 - `modified`: month and year, no comma, the month with three letters on every cover ("Oct 2026", "Sep 2026").
