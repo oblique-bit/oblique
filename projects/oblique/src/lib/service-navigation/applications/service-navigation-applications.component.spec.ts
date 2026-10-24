@@ -198,8 +198,8 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 								expect(link.classes['ob-offline']).toBe(undefined);
 							});
 
-							it.skip('should have "isExternalLink" property set to "false"', () => {
-								expect(link.properties.isExternalLink).toBe(false);
+							it('should have "isExternalLink" input set to "false"', () => {
+								expect(link.injector.get(ObExternalLinkDirective).isExternalLink()).toBe(false);
 							});
 
 							it('should have 2 children', () => {
@@ -287,8 +287,8 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 								expect(link.classes['ob-offline']).toBe(true);
 							});
 
-							it.skip('should have "isExternalLink" property set to "false"', () => {
-								expect(link.properties.isExternalLink).toBe(false);
+							it('should have "isExternalLink" input set to "false"', () => {
+								expect(link.injector.get(ObExternalLinkDirective).isExternalLink()).toBe(false);
 							});
 
 							it('should have 2 children', () => {
@@ -411,17 +411,15 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 					expect(await button.getAttribute(attribute)).toBe(value);
 				});
 
-				it.skip.each([
-					{
-						property: 'href',
-						value: `${window.location.origin}/?favoritesOnly=true`,
-					},
-					{
-						property: 'isExternalLink',
-						value: false,
-					},
-				])('should have property "$attribute" to have value "$value"', async ({property, value}) => {
-					expect(await button.getProperty(property)).toBe(value);
+				it('should have "href" property set to the favoritesOnly url', async () => {
+					expect(await button.getProperty('href')).toBe(`${window.location.origin}/?favoritesOnly=true`);
+				});
+
+				it('should have "isExternalLink" input set to "false"', () => {
+					const externalLink = fixture.debugElement
+						.query(By.css(ObServiceNavigationApplicationsHarness.allFavoriteLinkSelector))
+						.injector.get(ObExternalLinkDirective);
+					expect(externalLink.isExternalLink()).toBe(false);
 				});
 
 				it('should have text "i18n.oblique.service-navigation.applications.favorite.button"', async () => {
@@ -498,8 +496,8 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 								expect(link.classes['ob-offline']).toBe(undefined);
 							});
 
-							it.skip('should have "isExternalLink" property set to "false"', () => {
-								expect(link.properties.isExternalLink).toBe(false);
+							it('should have "isExternalLink" input set to "false"', () => {
+								expect(link.injector.get(ObExternalLinkDirective).isExternalLink()).toBe(false);
 							});
 
 							it('should have 2 children', () => {
@@ -587,8 +585,8 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 								expect(link.classes['ob-offline']).toBe(true);
 							});
 
-							it.skip('should have "isExternalLink" property set to "false"', () => {
-								expect(link.properties.isExternalLink).toBe(false);
+							it('should have "isExternalLink" input set to "false"', () => {
+								expect(link.injector.get(ObExternalLinkDirective).isExternalLink()).toBe(false);
 							});
 
 							it('should have 2 children', () => {
@@ -720,8 +718,11 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				expect(await trigger.getAttribute(attribute)).toBe(val);
 			});
 
-			it.skip('should have "false" as "isExternalLink" property', async () => {
-				expect(await trigger.getProperty('isExternalLink')).toBe(false);
+			it('should have "false" as "isExternalLink" input', () => {
+				const externalLink = fixture.debugElement
+					.query(By.directive(ObExternalLinkDirective))
+					.injector.get(ObExternalLinkDirective);
+				expect(externalLink.isExternalLink()).toBe(false);
 			});
 
 			describe('tooltip', () => {
@@ -790,17 +791,15 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 						expect(await button.getAttribute(attribute)).toBe(value);
 					});
 
-					it.skip.each([
-						{
-							property: 'href',
-							value: `${window.location.origin}/?favoritesOnly=false`,
-						},
-						{
-							property: 'isExternalLink',
-							value: false,
-						},
-					])('should have property "$attribute" to have value "$value"', async ({property, value}) => {
-						expect(await button.getProperty(property)).toBe(value);
+					it('should have "href" property set to the all-services url', async () => {
+						expect(await button.getProperty('href')).toBe(`${window.location.origin}/?favoritesOnly=false`);
+					});
+
+					it('should have "isExternalLink" input set to "false"', () => {
+						const externalLink = fixture.debugElement
+							.query(By.css(ObServiceNavigationApplicationsHarness.allServicesLinkSelector))
+							.injector.get(ObExternalLinkDirective);
+						expect(externalLink.isExternalLink()).toBe(false);
 					});
 
 					it('should have text "i18n.oblique.service-navigation.applications.favorite.button"', async () => {

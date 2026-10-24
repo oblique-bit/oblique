@@ -7,6 +7,7 @@ import {MatTooltipHarness} from '@angular/material/tooltip/testing';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatBadgeHarness} from '@angular/material/badge/testing';
 import {MatIconModule} from '@angular/material/icon';
+import {By} from '@angular/platform-browser';
 import {ObTranslateParamsModule} from '../../translate-params/translate-params.module';
 import {ObTranslateParamsPipe} from '../../translate-params/translate-params.pipe';
 import {ObExternalLinkDirective} from '../../external-link/external-link.directive';
@@ -189,8 +190,11 @@ describe('ObServiceNavigationMessageComponent', () => {
 			expect(await link.getAttribute(attribute)).toBe(value);
 		});
 
-		it.skip('should have an "isExternalLink" property set to "false"', async () => {
-			expect(await link.getProperty('isExternalLink')).toBe(false);
+		it('should have an "isExternalLink" input set to "false"', () => {
+			const externalLink = fixture.debugElement
+				.query(By.directive(ObExternalLinkDirective))
+				.injector.get(ObExternalLinkDirective);
+			expect(externalLink.isExternalLink()).toBe(false);
 		});
 
 		it('should have the "ob-widget" class', async () => {

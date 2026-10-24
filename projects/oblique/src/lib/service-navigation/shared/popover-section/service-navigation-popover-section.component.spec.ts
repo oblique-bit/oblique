@@ -7,6 +7,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {NEVER} from 'rxjs';
 import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {NgOptimizedImage} from '@angular/common';
+import {By} from '@angular/platform-browser';
 import {ObMockTranslatePipe} from './../../../_mocks/mock-translate.pipe';
 import {ObServiceNavigationPopOverSectionHarness} from './service-navigation-popover-section.harness';
 import {ObServiceNavigationPopoverSectionComponent} from './service-navigation-popover-section.component';
@@ -158,8 +159,11 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 
 				describe.each(Object.keys(sampleLinks))('item %s', index => {
 					let link: TestElement;
+					let externalLink: ObExternalLinkDirective;
 					beforeEach(() => {
 						link = links[index];
+						const externalLinkDirectives = fixture.debugElement.queryAll(By.directive(ObExternalLinkDirective));
+						externalLink = externalLinkDirectives[index].injector.get(ObExternalLinkDirective);
 					});
 
 					it(`should have "${sampleLinks[index].label}" as content`, async () => {
@@ -170,8 +174,8 @@ describe(ObServiceNavigationPopoverSectionComponent.name, () => {
 						expect(await link.getAttribute('href')).toBe(sampleLinks[index].url);
 					});
 
-					it.skip(`should have "${sampleLinks[index].isExternalLink as boolean}" as isExternalLink attribute`, async () => {
-						expect(await link.getProperty('isExternalLink')).toBe(!sampleLinks[index].isInternalLink);
+					it(`should have "${!sampleLinks[index].isInternalLink}" as isExternalLink input`, () => {
+						expect(externalLink.isExternalLink()).toBe(!sampleLinks[index].isInternalLink);
 					});
 
 					it(`should have "${sampleLinks[index].ariaLabel?.text! ?? null}" as aria-label attribute`, async () => {

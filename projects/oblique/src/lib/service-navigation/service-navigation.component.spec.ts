@@ -37,6 +37,7 @@ import {ObServiceNavigationHarness} from './service-navigation.harness';
 import {ObServiceNavigationService} from './service-navigation.service';
 import {ObIServiceNavigationBackendInfo} from './api/service-navigation.api.model';
 import {ObEPamsEnvironment, ObLoginState} from './service-navigation.model';
+import {By} from '@angular/platform-browser';
 import {provideObliqueTestingConfiguration} from '../utilities';
 import {RouterModule} from '@angular/router';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
@@ -552,16 +553,13 @@ describe('ObServiceNavigationComponent', () => {
 
 		describe('useInfoBackend', () => {
 			describe('when is true', () => {
-				let infoElement: TestElement;
-
-				beforeEach(async () => {
+				beforeEach(() => {
 					fixture.componentRef.setInput('useInfoBackend', true);
 					fixture.componentRef.setInput('displayInfo', true);
 					fixture.componentRef.changeDetectorRef.detectChanges();
-					infoElement = await harness.getInfoElement();
 				});
 
-				it.skip.each([
+				it.each([
 					{inputExpectedResult: 'backend description text', input: 'description'},
 					{inputExpectedResult: 'backend contact text', input: 'contactText'},
 					{inputExpectedResult: 'backend help text', input: 'helpText'},
@@ -575,9 +573,11 @@ describe('ObServiceNavigationComponent', () => {
 					},
 				])(
 					'should add infoBackend.$input to ob-service-navigation-info $input input',
-					async ({input, inputExpectedResult}) => {
+					({input, inputExpectedResult}) => {
 						const expectedResult = inputExpectedResult;
-						const property = await infoElement.getProperty(input);
+						const property = fixture.debugElement
+							.query(By.directive(ObServiceNavigationInfoComponent))
+							.componentInstance[input]();
 
 						expect(property).toEqual(expectedResult);
 					}
@@ -585,9 +585,7 @@ describe('ObServiceNavigationComponent', () => {
 			});
 
 			describe('when is false', () => {
-				let infoElement: TestElement;
-
-				beforeEach(async () => {
+				beforeEach(() => {
 					fixture.componentRef.setInput('useInfoBackend', false);
 					fixture.componentRef.setInput('displayInfo', true);
 					fixture.componentRef.setInput('infoDescription', 'input description text');
@@ -600,10 +598,9 @@ describe('ObServiceNavigationComponent', () => {
 						phone: 'input phone',
 					});
 					fixture.componentRef.changeDetectorRef.detectChanges();
-					infoElement = await harness.getInfoElement();
 				});
 
-				it.skip.each([
+				it.each([
 					{inputExpectedResult: 'input description text', input: 'description'},
 					{inputExpectedResult: 'input contact text', input: 'contactText'},
 					{inputExpectedResult: 'input help text', input: 'helpText'},
@@ -617,9 +614,11 @@ describe('ObServiceNavigationComponent', () => {
 					},
 				])(
 					'should add infoBackend.$input to ob-service-navigation-info $input input',
-					async ({input, inputExpectedResult}) => {
+					({input, inputExpectedResult}) => {
 						const expectedResult = inputExpectedResult;
-						const property = await infoElement.getProperty(input);
+						const property = fixture.debugElement
+							.query(By.directive(ObServiceNavigationInfoComponent))
+							.componentInstance[input]();
 
 						expect(property).toEqual(expectedResult);
 					}
