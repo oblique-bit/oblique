@@ -5,6 +5,7 @@
 //   node figma-tabs.mjs count              number of open file tabs (Home is not counted)
 //   node figma-tabs.mjs close-all          close every file tab, one by one, with patience (45 s per tab); exit code 2 when a tab does not close
 //                                          (for example because a dialog "You have unsaved changes" is waiting)
+//   node figma-tabs.mjs close-matching <text>   close only the tab whose title contains <text> (other tabs stay open, also ones with unsaved work)
 //   node figma-tabs.mjs home <url>         open <url> in the Home tab (the file browser), for example a folder
 const [cmd, arg] = process.argv.slice(2);
 let targets;
@@ -30,6 +31,13 @@ if (cmd === 'close-all') {
   }
   console.log(JSON.stringify({ closed, left: n })); process.exit(0);
 }
+if (cmd === 'close-matching') {
+  const find = `(() => { const bs = [...document.querySelectorAll('button')].filter(b => b.getAttribute('aria-label') === 'Close tab'); for (const b of bs) { let e = b; for (let i = 0; i < 6 && e; i++) { e = e.parentElement; if (e && (e.textContent || '').includes(${JSON.stringify(arg)}) && e.querySelectorAll('button[aria-label="Close tab"]').length === 1) { b.click(); return true; } } } return false; })()`;
+  const n0 = await count();
+  if (!(await ev(find))) { console.log(JSON.stringify({ found: false })); process.exit(2); }
+  let m = n0; for (let i = 0; i < 90 && m >= n0; i++) { await wait(500); m = await count(); }
+  console.log(JSON.stringify({ closed: m < n0, left: m })); process.exit(m < n0 ? 0 : 2);
+}
 if (cmd === 'home') {
   const page = targets.find(t => t.type === 'page' && /\/files\/|desktop_new_tab/.test(t.url) && !/shell\.html/.test(t.url));
   if (!page) { console.log('no Home tab found'); process.exit(3); }
@@ -37,4 +45,4 @@ if (cmd === 'home') {
   w2.send(JSON.stringify({ id: 1, method: 'Page.navigate', params: { url: arg } })); await wait(1500);
   console.log('home ->', arg); process.exit(0);
 }
-console.log('usage: node figma-tabs.mjs count | close-all | home <url>'); process.exit(1);
+console.log('usage: node figma-tabs.mjs count | close-all | close-matching <text> | home <url>'); process.exit(1);

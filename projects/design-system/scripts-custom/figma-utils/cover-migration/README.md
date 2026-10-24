@@ -45,8 +45,9 @@ also change the file thumbnail and, in design files, enable the cover library; n
 | `set-modified.js` | set the Modified month of an existing cover and show the row again; replaces only an empty value or a month named in `overwrite`, never a month a person set |
 | `set-values.js` | change fields of the cover that is already in the file (only the fields you name) and show or hide the rows that depend on them |
 | `run-folder.zsh` | put the cover into many files of one folder, strictly one file at a time (close all tabs, open, wizard, wait until the server shows the change, close the tab); skips a file that fails and stops when Figma stops answering |
-| `figma-tabs.mjs` | the tab strip of Figma Desktop: count the file tabs, close them all one by one (the debug port lists only loaded tabs, the strip holds all of them), open a URL in the Home tab |
+| `figma-tabs.mjs` | the tab strip of Figma Desktop: count the file tabs, close them all one by one or only the one whose title contains a text (a tab with unsaved work stays untouched) (the debug port lists only loaded tabs, the strip holds all of them), open a URL in the Home tab |
 | `read-folder.zsh` | read the cover of many files, strictly one file at a time, without changing anything (for a table before a bulk change); waits 20 s before closing a tab and up to 45 s for it to close |
+| `update-folder.zsh` | accept the library update of the cover components and write new values (title lines, purpose, ...) into the cover of many files, one file at a time; checks every cover against the wanted values and waits for the server |
 | `snapshot-cover.js` | read-only snapshot of the cover properties and rows; take it before and after a library update and compare |
 | `update-library.mjs` | accept the pending updates of the cover components in one design file (only `~figma_only/` names), never "Update all" |
 | `backup-old-covers.js`, `remove-old-covers.js` | export the old cover frames as PNG and text; then remove them and set the file thumbnail |
