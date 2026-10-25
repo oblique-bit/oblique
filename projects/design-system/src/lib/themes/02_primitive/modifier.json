@@ -23,10 +23,10 @@
 					"$value": "0.18",
 					"$description": "Role: Shared. Modifier amount 0.18 for a mix ratio or an alpha. Read by color modifiers."
 				},
-				"280": {
+				"250": {
 					"$type": "number",
-					"$value": "0.28",
-					"$description": "Role: Shared. Modifier amount 0.28 for a mix ratio or an alpha. Read by color modifiers."
+					"$value": "0.25",
+					"$description": "Role: Shared. Modifier amount 0.25 for a mix ratio or an alpha. Read by color modifiers."
 				},
 				"350": {
 					"$type": "number",

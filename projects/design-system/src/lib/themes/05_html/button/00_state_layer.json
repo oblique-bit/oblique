@@ -16,7 +16,7 @@
 						},
 						"active": {
 							"$type": "number",
-							"$value": "{ob.p.modifier.180}"
+							"$value": "{ob.p.modifier.150}"
 						}
 					},
 					"soft": {
@@ -26,7 +26,7 @@
 						},
 						"active": {
 							"$type": "number",
-							"$value": "{ob.p.modifier.280}"
+							"$value": "{ob.p.modifier.250}"
 						}
 					},
 					"strong": {
@@ -42,11 +42,11 @@
 					"fill_alpha": {
 						"hover": {
 							"$type": "number",
-							"$value": "{ob.p.modifier.900}"
+							"$value": "{ob.p.modifier.800}"
 						},
 						"active": {
 							"$type": "number",
-							"$value": "{ob.p.modifier.750}"
+							"$value": "{ob.p.modifier.650}"
 						}
 					}
 				}

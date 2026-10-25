@@ -211,7 +211,7 @@
 								"rest": {
 									"inversity_normal": {
 										"$type": "color",
-										"$value": "{ob.p.color.basic.white}",
+										"$value": "{ob.p.color.steelblue.50}",
 										"$description": "Secondary button foreground, rest state, high emphasis, dark mode, inversity normal."
 									},
 									"inversity_flipped": {
@@ -223,7 +223,7 @@
 								"hover": {
 									"inversity_normal": {
 										"$type": "color",
-										"$value": "{ob.p.color.basic.white}",
+										"$value": "{ob.p.color.steelblue.50}",
 										"$description": "Secondary button foreground, hover state, high emphasis, dark mode, inversity normal."
 									},
 									"inversity_flipped": {
@@ -235,7 +235,7 @@
 								"active": {
 									"inversity_normal": {
 										"$type": "color",
-										"$value": "{ob.p.color.basic.white}",
+										"$value": "{ob.p.color.steelblue.50}",
 										"$description": "Secondary button foreground, active state, high emphasis, dark mode, inversity normal."
 									},
 									"inversity_flipped": {
@@ -249,7 +249,7 @@
 								"rest": {
 									"inversity_normal": {
 										"$type": "color",
-										"$value": "{ob.p.color.steelblue.100}",
+										"$value": "{ob.p.color.white_alpha.700}",
 										"$description": "Secondary button border, rest state, high emphasis, dark mode, inversity normal."
 									},
 									"inversity_flipped": {
@@ -261,7 +261,7 @@
 								"hover": {
 									"inversity_normal": {
 										"$type": "color",
-										"$value": "{ob.p.color.steelblue.100}",
+										"$value": "{ob.p.color.white_alpha.700}",
 										"$description": "Secondary button border, hover state, high emphasis, dark mode, inversity normal."
 									},
 									"inversity_flipped": {
@@ -273,7 +273,7 @@
 								"active": {
 									"inversity_normal": {
 										"$type": "color",
-										"$value": "{ob.p.color.steelblue.100}",
+										"$value": "{ob.p.color.white_alpha.700}",
 										"$description": "Secondary button border, active state, high emphasis, dark mode, inversity normal."
 									},
 									"inversity_flipped": {
@@ -493,7 +493,7 @@
 								"rest": {
 									"inversity_normal": {
 										"$type": "color",
-										"$value": "{ob.p.color.basic.white}",
+										"$value": "{ob.p.color.cobalt.100}",
 										"$description": "Secondary button foreground, rest state, low emphasis, dark mode, inversity normal."
 									},
 									"inversity_flipped": {
@@ -505,7 +505,7 @@
 								"hover": {
 									"inversity_normal": {
 										"$type": "color",
-										"$value": "{ob.p.color.basic.white}",
+										"$value": "{ob.p.color.cobalt.100}",
 										"$description": "Secondary button foreground, hover state, low emphasis, dark mode, inversity normal."
 									},
 									"inversity_flipped": {
@@ -517,7 +517,7 @@
 								"active": {
 									"inversity_normal": {
 										"$type": "color",
-										"$value": "{ob.p.color.basic.white}",
+										"$value": "{ob.p.color.cobalt.100}",
 										"$description": "Secondary button foreground, active state, low emphasis, dark mode, inversity normal."
 									},
 									"inversity_flipped": {
