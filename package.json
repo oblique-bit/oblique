@@ -32,6 +32,7 @@
   "scripts": {
     "lint": "tsx scripts/lint.ts && npm run lint --workspaces",
     "format": "tsx scripts/lint.ts --fix && npm run format --workspaces",
+    "test": "tsx --test \"scripts/**/*.spec.ts\"",
     "dependencies-update": "tsx scripts/dependencies-update.ts",
     "update-angular": "tsx scripts/update-angular.ts",
     "postinstall": "tsx scripts/sanitize-package-lock.ts",
