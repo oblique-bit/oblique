@@ -1,7 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 import {DateAdapter} from '@angular/material/core';
 import {TranslateService} from '@ngx-translate/core';
-import {Observable, Subject} from 'rxjs';
+import {Observable, Subject, firstValueFrom} from 'rxjs';
 import {ObLanguageService} from './language.service';
 import {ObILocale} from './language.model';
 import {WINDOW} from '../window/window.provider';
@@ -79,21 +79,17 @@ describe('LanguageService', () => {
 				expect(service.locale$ instanceof Observable).toBe(true);
 			});
 
-			it('should update locale and localStorage on language change', done => {
+			it('should update locale and localStorage on language change', async () => {
 				onLangChange.next({lang: 'fr', translations: null});
-				service.locale$.subscribe(locale => {
-					expect(localStorage.getItem('oblique_lang')).toBe('fr');
-					expect(locale).toBe('fr-CH');
-					done();
-				});
+				const locale = await firstValueFrom(service.locale$);
+				expect(localStorage.getItem('oblique_lang')).toBe('fr');
+				expect(locale).toBe('fr-CH');
 			});
 
-			it('should fallback to language code when locale is not configured', done => {
+			it('should fallback to language code when locale is not configured', async () => {
 				onLangChange.next({lang: 'es', translations: null});
-				service.locale$.subscribe(locale => {
-					expect(locale).toBe('es');
-					done();
-				});
+				const locale = await firstValueFrom(service.locale$);
+				expect(locale).toBe('es');
 			});
 		});
 	});

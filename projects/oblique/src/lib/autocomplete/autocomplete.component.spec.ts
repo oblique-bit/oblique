@@ -12,7 +12,7 @@ import {
 	ReactiveFormsModule,
 	Validators,
 } from '@angular/forms';
-import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatAutocompleteModule, MatAutocompleteTrigger} from '@angular/material/autocomplete';
 import {MatAutocompleteHarness} from '@angular/material/autocomplete/testing';
 import {MatOptionHarness} from '@angular/material/core/testing';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -22,6 +22,7 @@ import {MatIconTestingModule} from '@angular/material/icon/testing';
 import {MatInputModule} from '@angular/material/input';
 import {MatInputHarness} from '@angular/material/input/testing';
 import {By} from '@angular/platform-browser';
+import {firstValueFrom} from 'rxjs';
 
 import {ObIAutocompleteInputOption, ObIAutocompleteInputOptionGroup} from '../autocomplete/autocomplete.model';
 import {ObOptionLabelIconModule} from '../autocomplete/option-label-icon/option-label-icon.module';
@@ -34,8 +35,8 @@ import {ObAutocompleteComponent} from './autocomplete.component';
 import {provideObliqueTestingConfiguration} from '../utilities';
 
 @Component({
-	standalone: false,
-	template: ``,
+	imports: [ObAutocompleteComponent, FormsModule, ReactiveFormsModule, MatFormFieldModule],
+	template: `<ob-autocomplete />`,
 })
 class TestParentComponent {
 	model = new FormControl('', Validators.required);
@@ -84,8 +85,8 @@ describe(ObAutocompleteComponent.name, () => {
 				ObOptionLabelIconModule,
 				CommonModule,
 				MatIconTestingModule,
+				TestParentComponent,
 			],
-			declarations: [TestParentComponent],
 			providers: [provideObliqueTestingConfiguration(), {provide: ObAutocompleteTextToFindService}],
 		}).compileComponents();
 	});
@@ -260,12 +261,10 @@ describe(ObAutocompleteComponent.name, () => {
 			parentFixture.detectChanges();
 		});
 
-		it('should get the value as changed in autocompleteComponent ', done => {
-			parentComponent.parentFormControl.get('model').valueChanges.subscribe(value => {
-				expect(value).toBe('fat unicorn');
-				done();
-			});
+		it('should get the value as changed in autocompleteComponent ', async () => {
+			const result = firstValueFrom(parentComponent.parentFormControl.get('model').valueChanges);
 			component.autocompleteInputControl.setValue('fat unicorn');
+			expect(await result).toBe('fat unicorn');
 		});
 	});
 	describe.each([
@@ -622,10 +621,17 @@ describe(ObAutocompleteComponent.name, () => {
 		});
 
 		describe('ngDoCheck', () => {
+			function getMatAutocompleteTrigger(): MatAutocompleteTrigger {
+				return parentFixture.debugElement
+					.query(By.directive(ObAutocompleteComponent))
+					.query(By.directive(MatAutocompleteTrigger))
+					.injector.get(MatAutocompleteTrigger);
+			}
+
 			it('should not call updatePosition on the first check after opening', async () => {
 				await obAutocompleteHarness.openAutocompletePanel();
 				parentFixture.detectChanges();
-				const updatePositionSpy = jest.spyOn(component.autocompleteTrigger(), 'updatePosition');
+				const updatePositionSpy = jest.spyOn(getMatAutocompleteTrigger(), 'updatePosition');
 
 				component.ngDoCheck();
 
@@ -635,8 +641,11 @@ describe(ObAutocompleteComponent.name, () => {
 			it('should call updatePosition when the position changes while the panel stays open', async () => {
 				await obAutocompleteHarness.openAutocompletePanel();
 				parentFixture.detectChanges();
-				const updatePositionSpy = jest.spyOn(component.autocompleteTrigger(), 'updatePosition');
-				const rectSpy = jest.spyOn(component.elementRef.nativeElement, 'getBoundingClientRect');
+				const updatePositionSpy = jest.spyOn(getMatAutocompleteTrigger(), 'updatePosition');
+				const hostElement: HTMLElement = parentFixture.debugElement.query(
+					By.directive(ObAutocompleteComponent)
+				).nativeElement;
+				const rectSpy = jest.spyOn(hostElement, 'getBoundingClientRect');
 
 				rectSpy.mockReturnValueOnce({top: 0, left: 0} as DOMRect);
 				component.ngDoCheck();
@@ -649,6 +658,7 @@ describe(ObAutocompleteComponent.name, () => {
 	});
 
 	describe('displayWith', () => {
+		let componentWithObject: ObAutocompleteComponent<{name: string}>;
 		beforeEach(async () => {
 			jest.useFakeTimers();
 			parentFixture = TestBed.overrideComponent(TestParentComponent, {
@@ -659,7 +669,7 @@ describe(ObAutocompleteComponent.name, () => {
 				},
 			}).createComponent(TestParentComponent);
 			parentComponent = parentFixture.componentInstance;
-			component = parentFixture.debugElement.query(By.directive(ObAutocompleteComponent)).componentInstance;
+			componentWithObject = parentFixture.debugElement.query(By.directive(ObAutocompleteComponent)).componentInstance;
 			parentFixture.detectChanges();
 			loader = TestbedHarnessEnvironment.documentRootLoader(parentFixture);
 			obAutocompleteHarness = await TestbedHarnessEnvironment.harnessForFixture(parentFixture, ObAutocompleteHarness);
@@ -680,11 +690,11 @@ describe(ObAutocompleteComponent.name, () => {
 		});
 
 		it('handles non-string values through displayWith', async () => {
-			component.autocompleteInputControl.setValue({name: 'hello'});
+			componentWithObject.autocompleteInputControl.setValue({name: 'hello'});
 			jest.advanceTimersByTime(250);
 			await Promise.resolve();
 			parentFixture.detectChanges();
-			expect(component.searchText()).toBe('hello');
+			expect(componentWithObject.searchText()).toBe('hello');
 		});
 	});
 

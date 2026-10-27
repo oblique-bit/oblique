@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {ChangeDetectionStrategy, Component, DebugElement, inject} from '@angular/core';
+import {Component, DebugElement, inject} from '@angular/core';
 import {FormBuilder, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {MatInput} from '@angular/material/input';
@@ -8,6 +8,7 @@ import {ObSchemaRequiredDirective} from './schema-required.directive';
 import {ObSchemaValidationDirective} from './schema-validation.directive';
 
 @Component({
+	selector: 'ob-reactive',
 	imports: [
 		FormsModule,
 		ObSchemaValidationDirective,
@@ -23,7 +24,6 @@ import {ObSchemaValidationDirective} from './schema-validation.directive';
 			<input matInput obSchemaValidate type="text" formControlName="text" />
 		</mat-form-field>
 	</form>`,
-	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestReactiveComponent {
 	form = inject(FormBuilder).group({text: ''});
@@ -36,6 +36,7 @@ class TestReactiveComponent {
 }
 
 @Component({
+	selector: 'ob-template',
 	imports: [FormsModule, ObSchemaValidationDirective, ObSchemaRequiredDirective, MatFormField, MatInput, MatLabel],
 	template: `<form [obSchemaValidation]="schema">
 		<mat-form-field appearance="outline">
@@ -55,6 +56,7 @@ class TestTemplateComponent {
 }
 
 @Component({
+	selector: 'ob-without-form-field',
 	imports: [FormsModule, ObSchemaValidationDirective, ObSchemaRequiredDirective, MatInput],
 	template: `<form [obSchemaValidation]="schema">
 		<input matInput obSchemaValidate type="text" name="text" [(ngModel)]="text" />
@@ -71,6 +73,7 @@ class TestWithoutFormFieldComponent {
 }
 
 @Component({
+	selector: 'ob-without-label',
 	imports: [FormsModule, ObSchemaValidationDirective, ObSchemaRequiredDirective, MatFormField, MatInput],
 	template: `<form [obSchemaValidation]="schema">
 		<mat-form-field appearance="outline">
@@ -89,6 +92,7 @@ class TestWithoutLabelComponent {
 }
 
 @Component({
+	selector: 'ob-optional-template',
 	imports: [FormsModule, ObSchemaValidationDirective, ObSchemaRequiredDirective, MatFormField, MatInput, MatLabel],
 	template: `<form [obSchemaValidation]="schema">
 		<mat-form-field appearance="outline">
@@ -108,6 +112,7 @@ class TestOptionalTemplateComponent {
 }
 
 @Component({
+	selector: 'ob-nested-template',
 	imports: [FormsModule, ObSchemaValidationDirective, ObSchemaRequiredDirective, MatFormField, MatInput, MatLabel],
 	template: `<form [obSchemaValidation]="schema">
 		<div ngModelGroup="nested">
@@ -133,8 +138,27 @@ class TestNestedTemplateComponent {
 	};
 }
 
+@Component({
+	imports: [FormsModule, ReactiveFormsModule, ObSchemaValidationDirective, ObSchemaRequiredDirective, MatInput],
+	template: `<form [obSchemaValidation]="schema" [formGroup]="form">
+		<div formArrayName="items">
+			<input matInput obSchemaValidate type="text" [formControlName]="0" />
+		</div>
+	</form>`,
+})
+class TestNumericFormArrayComponent {
+	form = inject(FormBuilder).group({items: inject(FormBuilder).array([''])});
+	schema = {
+		title: 'SampleSchemaValidation',
+		type: 'object',
+		properties: {items: {type: 'array'}},
+	};
+}
+
 describe(ObSchemaRequiredDirective.name, () => {
-	let fixture: ComponentFixture<TestReactiveComponent | TestTemplateComponent>;
+	let fixture: ComponentFixture<
+		TestReactiveComponent | TestTemplateComponent | TestNumericFormArrayComponent | TestNestedTemplateComponent
+	>;
 	let directive: ObSchemaRequiredDirective;
 
 	describe('Reactive form', () => {
@@ -237,6 +261,27 @@ describe(ObSchemaRequiredDirective.name, () => {
 
 		test('uses the model group path for required checks', () => {
 			expect(directive.required).toBe(true);
+		});
+	});
+
+	describe('Numeric form control name', () => {
+		beforeEach(async () => {
+			await TestBed.configureTestingModule({
+				imports: [ObSchemaRequiredDirective, TestNumericFormArrayComponent],
+			}).compileComponents();
+
+			fixture = TestBed.createComponent(TestNumericFormArrayComponent);
+			const debugElement = fixture.debugElement.query(By.directive(ObSchemaRequiredDirective));
+			directive = debugElement.injector.get(ObSchemaRequiredDirective);
+			fixture.detectChanges();
+		});
+
+		test('is required "false"', () => {
+			expect(directive.required).toBe(false);
+		});
+
+		test('span is not inserted', () => {
+			expect(fixture.debugElement.query(By.css('label > span'))).toBeNull();
 		});
 	});
 

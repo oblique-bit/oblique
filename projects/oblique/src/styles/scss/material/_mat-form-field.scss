@@ -580,7 +580,8 @@
 	}
 
 	.mat-mdc-input-element:not([class*="autocomplete"]) ~ .ob-input-clear {
-		margin-top: core-variables.$ob-spacing-xs * 0.75;
+		margin-top: -3px;
+		font-size: 1.5em;
 	}
 
 	&.mat-mdc-form-field-type-mat-native-select .mat-mdc-form-field-infix::after {

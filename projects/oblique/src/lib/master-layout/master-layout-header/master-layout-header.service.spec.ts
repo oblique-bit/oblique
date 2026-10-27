@@ -1,7 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 import {ObMasterLayoutHeaderService} from './master-layout-header.service';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
-import {Observable} from 'rxjs';
+import {Observable, firstValueFrom} from 'rxjs';
 import {first} from 'rxjs/operators';
 import {ObMasterLayoutConfig} from '../master-layout.config';
 
@@ -51,22 +51,18 @@ describe('ObMasterLayoutHeaderService', () => {
 	});
 
 	describe('emitLoginState', () => {
-		it('should emit the given state through loginState$', done => {
-			service.loginState$.subscribe(loginState => {
-				expect(loginState).toBe('SA');
-				done();
-			});
+		it('should emit the given state through loginState$', async () => {
+			const loginState = firstValueFrom(service.loginState$);
 			service.emitLoginState('SA');
+			expect(await loginState).toBe('SA');
 		});
 	});
 
 	describe('emitLogoutUrl', () => {
-		it('should emit the given URL through logoutUrl$', done => {
-			service.logoutUrl$.subscribe(logoutUrl => {
-				expect(logoutUrl).toBe('http://logout');
-				done();
-			});
+		it('should emit the given URL through logoutUrl$', async () => {
+			const logoutUrl = firstValueFrom(service.logoutUrl$);
 			service.emitLogoutUrl('http://logout');
+			expect(await logoutUrl).toBe('http://logout');
 		});
 	});
 
@@ -126,12 +122,10 @@ describe('ObMasterLayoutHeaderService', () => {
 
 			describe('when given a value', () => {
 				let event: ObIMasterLayoutEvent;
-				beforeEach(done => {
-					service.configEvents$.pipe(first()).subscribe(evt => {
-						event = evt;
-						done();
-					});
+				beforeEach(async () => {
+					const configEvent = firstValueFrom(service.configEvents$.pipe(first()));
 					service[property] = true;
+					event = await configEvent;
 				});
 
 				it(`should emit a ${enumValue} event`, () => {

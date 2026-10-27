@@ -1,4 +1,5 @@
 import {TestBed} from '@angular/core/testing';
+import {firstValueFrom} from 'rxjs';
 import {provideObliqueTestingConfiguration} from '../utilities';
 import {ObGlobalEventsService} from './global-events.service';
 
@@ -21,12 +22,10 @@ describe('ObGlobalEventsService', () => {
 		it('should be defined', () => {
 			expect(service.beforeUnload$).toBeTruthy();
 		});
-		it('should emit a BeforeUnloadEvent', done => {
-			service.beforeUnload$.subscribe(event => {
-				expect(event.type).toBe('beforeunload');
-				done();
-			});
+		it('should emit a BeforeUnloadEvent', async () => {
+			const event = firstValueFrom(service.beforeUnload$);
 			window.dispatchEvent(new Event('beforeunload'));
+			expect((await event).type).toBe('beforeunload');
 		});
 	});
 
@@ -34,12 +33,10 @@ describe('ObGlobalEventsService', () => {
 		it('should be defined', () => {
 			expect(service.click$).toBeTruthy();
 		});
-		it('should emit a MouseEvent', done => {
-			service.click$.subscribe(event => {
-				expect(event instanceof MouseEvent).toBe(true);
-				done();
-			});
+		it('should emit a MouseEvent', async () => {
+			const event = firstValueFrom(service.click$);
 			document.querySelector('body').click();
+			expect((await event) instanceof MouseEvent).toBe(true);
 		});
 	});
 
@@ -47,12 +44,10 @@ describe('ObGlobalEventsService', () => {
 		it('should be defined', () => {
 			expect(service.mouseDown$).toBeTruthy();
 		});
-		it('should emit a MouseEvent', done => {
-			service.mouseDown$.subscribe(event => {
-				expect(event instanceof MouseEvent).toBe(true);
-				done();
-			});
+		it('should emit a MouseEvent', async () => {
+			const event = firstValueFrom(service.mouseDown$);
 			document.dispatchEvent(new MouseEvent('mousedown'));
+			expect((await event) instanceof MouseEvent).toBe(true);
 		});
 	});
 
@@ -60,12 +55,10 @@ describe('ObGlobalEventsService', () => {
 		it('should be defined', () => {
 			expect(service.mouseMove$).toBeTruthy();
 		});
-		it('should emit a MouseEvent', done => {
-			service.mouseMove$.subscribe(event => {
-				expect(event instanceof MouseEvent).toBe(true);
-				done();
-			});
+		it('should emit a MouseEvent', async () => {
+			const event = firstValueFrom(service.mouseMove$);
 			document.dispatchEvent(new MouseEvent('mousemove'));
+			expect((await event) instanceof MouseEvent).toBe(true);
 		});
 	});
 
@@ -73,12 +66,10 @@ describe('ObGlobalEventsService', () => {
 		it('should be defined', () => {
 			expect(service.keyDown$).toBeTruthy();
 		});
-		it('should emit a KeyboardEvent', done => {
-			service.keyDown$.subscribe(event => {
-				expect(event instanceof KeyboardEvent).toBe(true);
-				done();
-			});
+		it('should emit a KeyboardEvent', async () => {
+			const event = firstValueFrom(service.keyDown$);
 			document.dispatchEvent(new KeyboardEvent('keydown'));
+			expect((await event) instanceof KeyboardEvent).toBe(true);
 		});
 	});
 
@@ -86,12 +77,10 @@ describe('ObGlobalEventsService', () => {
 		it('should be defined', () => {
 			expect(service.keyUp$).toBeTruthy();
 		});
-		it('should emit a KeyboardEvent', done => {
-			service.keyUp$.subscribe(event => {
-				expect(event instanceof KeyboardEvent).toBe(true);
-				done();
-			});
+		it('should emit a KeyboardEvent', async () => {
+			const event = firstValueFrom(service.keyUp$);
 			document.dispatchEvent(new KeyboardEvent('keyup'));
+			expect((await event) instanceof KeyboardEvent).toBe(true);
 		});
 	});
 
@@ -99,12 +88,10 @@ describe('ObGlobalEventsService', () => {
 		it('should be defined', () => {
 			expect(service.scroll$).toBeTruthy();
 		});
-		it('should emit an Event', done => {
-			service.scroll$.subscribe(event => {
-				expect(event instanceof Event).toBe(true);
-				done();
-			});
+		it('should emit an Event', async () => {
+			const event = firstValueFrom(service.scroll$);
 			window.dispatchEvent(new Event('scroll'));
+			expect((await event) instanceof Event).toBe(true);
 		});
 	});
 
@@ -112,12 +99,10 @@ describe('ObGlobalEventsService', () => {
 		it('should be defined', () => {
 			expect(service.wheel$).toBeTruthy();
 		});
-		it('should emit an Event', done => {
-			service.wheel$.subscribe(event => {
-				expect(event instanceof Event).toBe(true);
-				done();
-			});
+		it('should emit an Event', async () => {
+			const event = firstValueFrom(service.wheel$);
 			window.dispatchEvent(new Event('wheel'));
+			expect((await event) instanceof Event).toBe(true);
 		});
 	});
 
@@ -125,12 +110,10 @@ describe('ObGlobalEventsService', () => {
 		it('should be defined', () => {
 			expect(service.resize$).toBeTruthy();
 		});
-		it('should emit an UIEvent', done => {
-			service.resize$.subscribe(event => {
-				expect(event instanceof UIEvent).toBe(true);
-				done();
-			});
+		it('should emit an UIEvent', async () => {
+			const event = firstValueFrom(service.resize$);
 			window.dispatchEvent(new UIEvent('resize'));
+			expect((await event) instanceof UIEvent).toBe(true);
 		});
 	});
 
@@ -145,12 +128,10 @@ describe('ObGlobalEventsService', () => {
 				expect(service.navigate$).toBeTruthy();
 			});
 
-			it('should emit a NavigateEvent', done => {
-				service.navigate$.subscribe(event => {
-					expect(event.destination.url).toBe('https://example.com');
-					done();
-				});
+			it('should emit a NavigateEvent', async () => {
+				const event = firstValueFrom(service.navigate$);
 				mockNavigation.dispatchEvent(Object.assign(new Event('navigate'), {destination: {url: 'https://example.com'}}));
+				expect((await event).destination.url).toBe('https://example.com');
 			});
 		});
 
@@ -159,15 +140,15 @@ describe('ObGlobalEventsService', () => {
 				expect(service.navigate$).toBeTruthy();
 			});
 
-			it('should not emit', done => {
+			it('should not emit', async () => {
 				let emitted = false;
 				service.navigate$.subscribe(() => {
 					emitted = true;
 				});
-				setTimeout(() => {
-					expect(emitted).toBe(false);
-					done();
-				}, 0);
+				await new Promise(resolve => {
+					setTimeout(resolve, 0);
+				});
+				expect(emitted).toBe(false);
 			});
 		});
 	});

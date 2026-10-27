@@ -2,7 +2,7 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
-import {Observable, Subject} from 'rxjs';
+import {Observable, Subject, firstValueFrom} from 'rxjs';
 import {ObISpinnerEvent} from './spinner.model';
 import {ObSpinnerComponent} from './spinner.component';
 import {ObSpinnerService} from './spinner.service';
@@ -161,17 +161,15 @@ describe('ObSpinnerComponent', () => {
 			let stateValue: boolean;
 			let announcer: LiveAnnouncer;
 
-			beforeEach(done => {
+			beforeEach(async () => {
 				announcer = TestBed.inject(LiveAnnouncer);
 				jest.spyOn(announcer, 'announce');
 				fixture.componentInstance.fixed = fixed;
 				fixture.changeDetectorRef.detectChanges();
 
-				component.isActive$.subscribe(value => {
-					stateValue = value;
-					done();
-				});
+				const value = firstValueFrom(component.isActive$);
 				mockObSpinnerService.events$.next({active, channel: ObSpinnerService.CHANNEL});
+				stateValue = await value;
 			});
 
 			it(`should emit "${isActive}"`, () => {
@@ -193,16 +191,15 @@ describe('ObSpinnerComponent', () => {
 			let outsideButton: HTMLButtonElement;
 			let element: HTMLElement;
 
-			beforeEach(done => {
+			beforeEach(async () => {
 				outsideButton = fixture.debugElement.query(By.css('#outside')).nativeElement;
 				outsideButton.focus();
 
-				component.isActive$.subscribe(() => {
-					element = document.querySelector('.cdk-visually-hidden[tabindex="-1"]');
-					done();
-				});
-
+				const value = firstValueFrom(component.isActive$);
 				mockObSpinnerService.events$.next({active: true, channel: ObSpinnerService.CHANNEL});
+				await value;
+
+				element = document.querySelector('.cdk-visually-hidden[tabindex="-1"]');
 			});
 
 			test('no focusable element is created', () => {
@@ -222,19 +219,18 @@ describe('ObSpinnerComponent', () => {
 			let insideButton: HTMLButtonElement;
 			let element: HTMLElement;
 
-			beforeEach(done => {
+			beforeEach(async () => {
 				outsideButton = fixture.debugElement.query(By.css('#outside')).nativeElement;
 				insideButton = fixture.debugElement.query(By.css('#inside')).nativeElement;
 				insideButton.focus();
 				fixture.componentInstance.fixed = fixed;
 				fixture.changeDetectorRef.detectChanges();
 
-				component.isActive$.subscribe(() => {
-					element = document.querySelector('.cdk-visually-hidden[tabindex="-1"]');
-					done();
-				});
-
+				const value = firstValueFrom(component.isActive$);
 				mockObSpinnerService.events$.next({active: true, channel: ObSpinnerService.CHANNEL});
+				await value;
+
+				element = document.querySelector('.cdk-visually-hidden[tabindex="-1"]');
 			});
 
 			test('a focusable element is created', () => {
@@ -250,13 +246,12 @@ describe('ObSpinnerComponent', () => {
 			});
 
 			describe('spinner is deactivated without changing the focus', () => {
-				beforeEach(done => {
-					component.isActive$.subscribe(() => {
-						element = document.querySelector('.cdk-visually-hidden[tabindex="-1"]');
-						done();
-					});
-
+				beforeEach(async () => {
+					const value = firstValueFrom(component.isActive$);
 					mockObSpinnerService.events$.next({active: false, channel: ObSpinnerService.CHANNEL});
+					await value;
+
+					element = document.querySelector('.cdk-visually-hidden[tabindex="-1"]');
 				});
 
 				test('the focusable element is destroyed', () => {
@@ -269,15 +264,14 @@ describe('ObSpinnerComponent', () => {
 			});
 
 			describe('spinner is deactivated after the focus have been changed', () => {
-				beforeEach(done => {
+				beforeEach(async () => {
 					outsideButton.focus();
 
-					component.isActive$.subscribe(() => {
-						element = document.querySelector('.cdk-visually-hidden[tabindex="-1"]');
-						done();
-					});
-
+					const value = firstValueFrom(component.isActive$);
 					mockObSpinnerService.events$.next({active: false, channel: ObSpinnerService.CHANNEL});
+					await value;
+
+					element = document.querySelector('.cdk-visually-hidden[tabindex="-1"]');
 				});
 
 				test('the focusable element is destroyed', () => {

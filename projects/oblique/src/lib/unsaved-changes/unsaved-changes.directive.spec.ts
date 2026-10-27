@@ -1,14 +1,14 @@
 import {CommonModule} from '@angular/common';
-import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Signal, signal} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {ControlContainer} from '@angular/forms';
 import {By} from '@angular/platform-browser';
-import {ObMockUnsavedChangesService} from './_mocks/mock-unsaved-changes.service';
 import {ObUnsavedChangesDirective} from './unsaved-changes.directive';
 import {ObUnsavedChangesService} from './unsaved-changes.service';
 
 @Component({
-	standalone: false,
+	selector: 'ob-test',
+	imports: [ObUnsavedChangesDirective, CommonModule],
 	template: `<form [isActive]="isActive()" [id]="formId()" obUnsavedChanges></form>`,
 	changeDetection: ChangeDetectionStrategy.Eager,
 })
@@ -18,7 +18,8 @@ class TestComponent {
 }
 
 @Component({
-	standalone: false,
+	selector: 'ob-test-empty-id',
+	imports: [ObUnsavedChangesDirective, CommonModule],
 	template: `<form [isActive]="isActive()" [id]="emptyId()" obUnsavedChanges></form>`,
 	changeDetection: ChangeDetectionStrategy.Eager,
 })
@@ -30,7 +31,13 @@ class TestComponentWithEmptyId {
 describe(ObUnsavedChangesDirective.name, () => {
 	let fixture: ComponentFixture<TestComponent>;
 	let directive: ObUnsavedChangesDirective;
-	let unsavedChangesServiceMock: ObMockUnsavedChangesService;
+	let unsavedChangesServiceMock: {
+		isActive: Signal<boolean>;
+		watch: jest.Mock;
+		unWatch: jest.Mock;
+		canDeactivate: jest.Mock;
+		ignoreChanges: jest.Mock;
+	};
 	const initFixture = (): void => {
 		fixture = TestBed.createComponent(TestComponent);
 		fixture.detectChanges();
@@ -41,16 +48,16 @@ describe(ObUnsavedChangesDirective.name, () => {
 
 	beforeEach(async () => {
 		unsavedChangesServiceMock = {
-			watch: jest.fn() as () => void,
-			unWatch: jest.fn() as () => void,
+			isActive: signal(true),
+			watch: jest.fn(),
+			unWatch: jest.fn(),
 			canDeactivate: jest.fn(),
 			ignoreChanges: jest.fn(),
 		};
 
 		await TestBed.configureTestingModule({
-			declarations: [TestComponent, TestComponentWithEmptyId],
 			providers: [ControlContainer, {provide: ObUnsavedChangesService, useValue: unsavedChangesServiceMock}],
-			imports: [ObUnsavedChangesDirective, CommonModule],
+			imports: [ObUnsavedChangesDirective, CommonModule, TestComponent, TestComponentWithEmptyId],
 		}).compileComponents();
 	});
 

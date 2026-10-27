@@ -1,43 +1,48 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {ChangeDetectionStrategy, Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
+import {Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {Router, RouterModule} from '@angular/router';
 import {TranslatePipe} from '@ngx-translate/core';
-import {Subject} from 'rxjs';
+import {Subject, firstValueFrom} from 'rxjs';
 import {ObMasterLayoutNavigationComponent} from '../master-layout-navigation/master-layout-navigation.component';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 import {provideObliqueTestingConfiguration} from '../../utilities';
 import {ObMockMasterLayoutNavigationItemDirective} from '../_mocks/mock-master-layout-navigation-item.directive';
+import {ObMasterLayoutNavigationItemDirective} from './master-layout-navigation-item.directive';
 import {ObMasterLayoutNavigationSubMenuItemComponent} from './sub-menu-item/master-layout-navigation-sub-menu-item.component';
 import {mockLinksWithChildren} from './master-layout-navigation.component.spec-mock-links-with-data';
 import {basicMockLinks} from './master-layout-navigation.component.spec-basic-mocks-links';
 import {ObNavigationLink} from './navigation-link.model';
 import {ObMasterLayoutNavigationGoToChildrenComponent} from './go-to-children/master-layout-navigation-go-to-children.component';
-import {OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION, ObEScrollMode, ObINavigationLink} from '../master-layout.model';
+import {
+	OB_HIDE_EXTERNAL_LINKS_IN_MAIN_NAVIGATION,
+	ObEMasterLayoutEventValues,
+	ObEScrollMode,
+	ObIMasterLayoutEvent,
+	ObINavigationLink,
+} from '../master-layout.model';
 import {ObLocalizePipe} from '../../router/ob-localize.pipe';
 import {ObMasterLayoutNavigationService} from './master-layout-navigation.service';
 import * as scrollDelta from './scroll-delta';
 import {ObMasterLayoutService} from '../master-layout.service';
 import {OB_HAS_LANGUAGE_IN_URL} from '../../language/language.provider';
+import {outputToObservable} from '@angular/core/rxjs-interop';
 
 @Component({
 	standalone: false,
 	template: '',
-	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class DummyFullPathComponent {}
 
 @Component({
 	standalone: false,
 	template: '',
-	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class DummyPrefixPathComponent {}
 
 @Component({
 	standalone: false,
 	template: '',
-	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class DummyDefaultPathComponent {}
 
@@ -51,7 +56,6 @@ class DummyDefaultPathComponent {}
 			</ul>
 		</ob-master-layout-navigation>
 	`,
-	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class CustomNavigationHostComponent {}
 
@@ -250,13 +254,11 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 		describe('removeItem (legacy)', () => {
 			const mockMouseEvent = new MouseEvent('click');
 			let emittedValue: ObINavigationLink[];
-			beforeEach(done => {
+			beforeEach(async () => {
 				jest.spyOn(mockMouseEvent, 'preventDefault');
-				component.linksChanged.subscribe(list => {
-					emittedValue = list;
-					done();
-				});
+				const emit = firstValueFrom(outputToObservable(component.linksChanged));
 				component.removeMenuItem(component.navigationLinks()[0], mockMouseEvent);
+				emittedValue = await emit;
 			});
 
 			test('first item is removed from initialized links', () => {
@@ -279,7 +281,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				fixture.componentRef.setInput('links', null);
 				const mouseEvent = new MouseEvent('click');
 
-				component.removeMenuItem(new ObNavigationLink({id: 'missing'}), mouseEvent);
+				component.removeMenuItem(new ObNavigationLink({id: 'missing', label: ''}), mouseEvent);
 
 				expect(component.links()).toEqual([]);
 			});
@@ -288,13 +290,11 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 		describe('removeItem', () => {
 			const mockMouseEvent = new MouseEvent('click');
 			let emittedValue: ObINavigationLink[];
-			beforeEach(done => {
+			beforeEach(async () => {
 				jest.spyOn(mockMouseEvent, 'preventDefault');
-				component.links.subscribe(list => {
-					emittedValue = list;
-					done();
-				});
+				const emit = firstValueFrom(outputToObservable(component.links));
 				component.removeMenuItem(component.navigationLinks()[0], mockMouseEvent);
+				emittedValue = await emit;
 			});
 
 			test('first item is removed from initialized links', () => {
@@ -317,14 +317,14 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				fixture.componentRef.setInput('links', null);
 				const mouseEvent = new MouseEvent('click');
 
-				component.removeMenuItem(new ObNavigationLink({id: 'missing'}), mouseEvent);
+				component.removeMenuItem(new ObNavigationLink({id: 'missing', label: ''}), mouseEvent);
 
 				expect(component.links()).toEqual([]);
 			});
 		});
 
 		describe('sub menu state', () => {
-			let itemDirective: ObMockMasterLayoutNavigationItemDirective;
+			let itemDirective: ObMasterLayoutNavigationItemDirective;
 			let parent: ObNavigationLink;
 			let child: ObNavigationLink;
 
@@ -333,7 +333,10 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				fixture.componentRef.changeDetectorRef.detectChanges();
 				parent = component.navigationLinks()[2];
 				child = parent.children![0];
-				itemDirective = new ObMockMasterLayoutNavigationItemDirective();
+				itemDirective = {
+					closeSubMenu: () => {},
+					toggleSubMenu: () => {},
+				} as unknown as ObMasterLayoutNavigationItemDirective;
 			});
 
 			it('should close the current parent menu', () => {
@@ -357,7 +360,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			it('should reset the current parent when backing up from the root menu', () => {
 				component.changeCurrentParentLink(parent);
 
-				(component as unknown as {backUpSubMenu: () => void}).backUpSubMenu();
+				component.backUpOrCloseSubMenu(child, itemDirective);
 
 				expect(component.currentParentLink().id).toBe('');
 				expect(component.currentParentRouterLinkBase()).toBe('');
@@ -371,7 +374,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			});
 
 			it('should throw when backing up without a current parent ancestor', () => {
-				expect(() => (component as unknown as {backUpSubMenu: () => void}).backUpSubMenu()).toThrow(
+				expect(() => component.backUpOrCloseSubMenu(parent, itemDirective)).toThrow(
 					`parentIndex is: -1 in ${ObMasterLayoutNavigationComponent.name}.backUpSubMenu`
 				);
 			});
@@ -380,14 +383,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				component.changeCurrentParentLink(parent);
 				itemDirective.isExpanded = false;
 
-				(
-					component as unknown as {
-						onSubMenuExpandedChanges: (
-							obMasterLayoutNavigationItem: ObMockMasterLayoutNavigationItemDirective,
-							link: ObNavigationLink
-						) => void;
-					}
-				).onSubMenuExpandedChanges(itemDirective, parent);
+				component.toggleSubMenu(itemDirective, parent);
 
 				expect(component.currentParentLink().id).toBe('');
 			});
@@ -395,93 +391,62 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			it('should change the current parent when a sub menu is expanded', () => {
 				itemDirective.isExpanded = true;
 
-				(
-					component as unknown as {
-						onSubMenuExpandedChanges: (
-							obMasterLayoutNavigationItem: ObMockMasterLayoutNavigationItemDirective,
-							link: ObNavigationLink
-						) => void;
-					}
-				).onSubMenuExpandedChanges(itemDirective, parent);
+				component.toggleSubMenu(itemDirective, parent);
 
 				expect(component.currentParentLink()).toBe(parent);
 			});
 
 			it('should toggle a sub menu', () => {
+				itemDirective.isExpanded = true;
 				jest.spyOn(itemDirective, 'toggleSubMenu');
-				jest.spyOn(
-					component as unknown as {
-						onSubMenuExpandedChanges: (
-							obMasterLayoutNavigationItem: ObMockMasterLayoutNavigationItemDirective,
-							link: ObNavigationLink
-						) => void;
-					},
-					'onSubMenuExpandedChanges'
-				);
 
 				component.toggleSubMenu(itemDirective, parent);
 
 				expect(itemDirective.toggleSubMenu).toHaveBeenCalled();
-				expect(
-					(
-						component as unknown as {
-							onSubMenuExpandedChanges: (
-								obMasterLayoutNavigationItem: ObMockMasterLayoutNavigationItemDirective,
-								link: ObNavigationLink
-							) => void;
-						}
-					).onSubMenuExpandedChanges
-				).toHaveBeenCalledWith(itemDirective, parent);
+				expect(component.currentParentLink()).toBe(parent);
 			});
 		});
 
 		describe('scrolling', () => {
 			test('click on right scroll button', () => {
-				component.isScrollable.set(true);
-				component.maxScroll.set(100);
-				fixture.componentRef.changeDetectorRef.detectChanges();
-
 				jest.useFakeTimers();
-				fixture.debugElement.query(By.css('#ob-navigation-scrollable-control-right')).nativeElement.click();
+				makeNavigationScrollable();
+				getHTMLSelectElementByQueryCSS('#ob-navigation-scrollable-control-right').click();
 				jest.runAllTimers();
-				fixture.componentRef.changeDetectorRef.detectChanges();
-				expect(component.currentScroll()).toBe(95);
+				expect(getFirstNavigationItemMarginLeft()).toBe('-95px');
 				jest.useRealTimers();
 			});
 
 			test('click on left scroll button', () => {
-				component.isScrollable.set(true);
-				component.currentScroll.set(15);
-				component.maxScroll.set(100);
-				fixture.componentRef.changeDetectorRef.detectChanges();
-
 				jest.useFakeTimers();
-				fixture.debugElement.query(By.css('#ob-navigation-scrollable-control-left')).nativeElement.click();
+				makeNavigationScrollable();
+				TestBed.inject(ObMasterLayoutNavigationService).scrollRight(15);
+				jest.advanceTimersToNextFrame();
+				const leftControl = getHTMLSelectElementByQueryCSS('#ob-navigation-scrollable-control-left');
+				leftControl.click();
 				jest.runAllTimers();
-				fixture.componentRef.changeDetectorRef.detectChanges();
-				expect(component.currentScroll()).toBe(0);
+				fixture.detectChanges();
+				expect(getFirstNavigationItemMarginLeft()).toBe('0px');
 				jest.useRealTimers();
 			});
 
 			test('focusing an element scrolls it into view', () => {
-				component.isScrollable.set(true);
-				component.maxScroll.set(100);
-				fixture.componentRef.changeDetectorRef.detectChanges();
+				jest.useFakeTimers();
+				makeNavigationScrollable();
 				jest.spyOn(scrollDelta, 'getScrollIntoViewDelta').mockReturnValue(42);
 				component.focusIn('ob-main-nav-item-', 'full');
-				expect(component.currentScroll()).toBe(42);
+				expect(getFirstNavigationItemMarginLeft()).toBe('-42px');
+				jest.useRealTimers();
 			});
 
 			test('focus handling tolerates a missing navigation container', () => {
-				jest.spyOn(component as never, 'getNav').mockReturnValue(null);
+				// adding the sub nav class hides the main navigation from getNav()
+				getHTMLSelectElementByQueryCSS('#navigation').classList.add('ob-sub-nav');
 
 				expect(() => component.focusIn('ob-main-nav-item-', 'full')).not.toThrow();
 			});
 
 			test('focusing a keyboard-focused element marks the navigation item', () => {
-				component.isScrollable.set(true);
-				component.maxScroll.set(100);
-				fixture.componentRef.changeDetectorRef.detectChanges();
 				const focusedElement = getHTMLSelectElementByQueryCSS('#full');
 				focusedElement.classList.add('cdk-keyboard-focused');
 
@@ -493,12 +458,12 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			});
 
 			test("focusing out of an element doesn't scroll it", () => {
-				component.isScrollable.set(true);
-				component.maxScroll.set(100);
-				fixture.componentRef.changeDetectorRef.detectChanges();
+				jest.useFakeTimers();
+				makeNavigationScrollable();
 				jest.spyOn(scrollDelta, 'getScrollIntoViewDelta').mockReturnValue(42);
 				component.focusOut('ob-main-nav-item-', 'full');
-				expect(component.currentScroll()).toBe(0);
+				expect(getFirstNavigationItemMarginLeft()).toBe('0px');
+				jest.useRealTimers();
 			});
 
 			test('ignores focus changes for missing navigation elements', () => {
@@ -513,16 +478,6 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 				expect(component.isFullWidth()).toBe(true);
 			});
 
-			test('ignores full-width events without a value', () => {
-				const navigationService = TestBed.inject(ObMasterLayoutNavigationService);
-				const events = (navigationService as unknown as {events: Subject<unknown>}).events;
-				const initialValue = component.isFullWidth();
-
-				events.next({name: 11});
-
-				expect(component.isFullWidth()).toBe(initialValue);
-			});
-
 			test('scrollMode changes refresh the navigation', () => {
 				const navigationService = TestBed.inject(ObMasterLayoutNavigationService);
 				jest.spyOn(navigationService, 'refresh');
@@ -533,11 +488,12 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			});
 
 			test('shift-tab from the right control focuses the last navigation item without scrolling', () => {
-				component.isScrollable.set(true);
-				fixture.componentRef.changeDetectorRef.detectChanges();
+				jest.useFakeTimers();
+				makeNavigationScrollable();
 				const event = new KeyboardEvent('keydown', {code: 'Tab', shiftKey: true});
 				const rightControl = getHTMLSelectElementByQueryCSS('#ob-navigation-scrollable-control-right');
-				const lastNavigationLink = component.getNav()!.lastElementChild!.firstElementChild as HTMLElement;
+				const lastNavigationLink = getHTMLSelectElementByQueryCSS('#navigation').lastElementChild
+					.firstElementChild as HTMLElement;
 				Object.defineProperty(event, 'target', {value: rightControl});
 				jest.spyOn(event, 'preventDefault');
 				jest.spyOn(lastNavigationLink, 'focus');
@@ -546,6 +502,7 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 
 				expect(event.preventDefault).toHaveBeenCalled();
 				expect(lastNavigationLink.focus).toHaveBeenCalledWith({preventScroll: true});
+				jest.useRealTimers();
 			});
 
 			test('shift-tab from the right control tolerates an empty navigation', () => {
@@ -563,40 +520,46 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			test('refresh should reset the current scroll when scrolling is disabled', () => {
 				jest.useFakeTimers();
 				const navigationService = TestBed.inject(ObMasterLayoutNavigationService);
-				component.isScrollable.set(true);
-				component.currentScroll.set(42);
-				fixture.componentRef.changeDetectorRef.detectChanges();
+				makeNavigationScrollable();
+				navigationService.scrollRight(42);
+				jest.advanceTimersToNextFrame();
+				expect(getFirstNavigationItemMarginLeft()).toBe('-42px');
 
 				navigationService.scrollMode = ObEScrollMode.DISABLED;
 				navigationService.refresh();
 				jest.advanceTimersToNextFrame();
+				fixture.detectChanges();
 
-				expect(component.isScrollable()).toBe(false);
-				expect(component.currentScroll()).toBe(0);
+				// #ob-navigation-scrollable-control-left is null if isScrollable() is false
+				expect(fixture.debugElement.query(By.css('#ob-navigation-scrollable-control-left'))).toBeNull();
+				expect(getFirstNavigationItemMarginLeft()).toBe('0px');
 				jest.useRealTimers();
 			});
 
 			test('refresh should force scrollability when scrolling is enabled', () => {
 				jest.useFakeTimers();
 				const navigationService = TestBed.inject(ObMasterLayoutNavigationService);
-				component.isScrollable.set(false);
-				fixture.componentRef.changeDetectorRef.detectChanges();
-
 				navigationService.scrollMode = ObEScrollMode.ENABLED;
 				navigationService.refresh();
 				jest.advanceTimersToNextFrame();
+				fixture.detectChanges();
 
-				expect(component.isScrollable()).toBe(true);
+				// #ob-navigation-scrollable-control-left is not null if isScrollable() is true
+				expect(fixture.debugElement.query(By.css('#ob-navigation-scrollable-control-right'))).toBeTruthy();
 				jest.useRealTimers();
 			});
 
 			test('scroll updates tolerate an empty navigation fixture', () => {
+				jest.useFakeTimers();
 				const emptyFixture = TestBed.createComponent(ObMasterLayoutNavigationComponent);
 				emptyFixture.detectChanges();
+				const navigationService = TestBed.inject(ObMasterLayoutNavigationService);
 
 				expect(() => {
-					(emptyFixture.componentInstance as unknown as {updateScroll: (delta: number) => void}).updateScroll(42);
+					navigationService.scrollRight(42);
+					jest.runAllTimers();
 				}).not.toThrow();
+				jest.useRealTimers();
 			});
 		});
 	});
@@ -646,6 +609,36 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 		});
 	});
 
+	describe('full-width events', () => {
+		let configEvents$: Subject<ObIMasterLayoutEvent>;
+
+		beforeEach(() => {
+			configEvents$ = new Subject<ObIMasterLayoutEvent>();
+			TestBed.overrideProvider(ObMasterLayoutNavigationService, {
+				useValue: {
+					isFullWidth: false,
+					refreshed: new Subject<void>(),
+					scrolled: new Subject<number>(),
+					configEvents$,
+					refresh: () => {},
+					scrollLeft: () => {},
+					scrollRight: () => {},
+				},
+			});
+			fixture = TestBed.createComponent(ObMasterLayoutNavigationComponent);
+			component = fixture.componentInstance;
+			fixture.detectChanges();
+		});
+
+		test('ignores full-width events without a value', () => {
+			const initialValue = component.isFullWidth();
+
+			configEvents$.next({name: ObEMasterLayoutEventValues.NAVIGATION_IS_FULL_WIDTH});
+
+			expect(component.isFullWidth()).toBe(initialValue);
+		});
+	});
+
 	describe('with projected custom navigation', () => {
 		test('refresh ignores missing navigation content', () => {
 			jest.useFakeTimers();
@@ -664,10 +657,8 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			jest.useFakeTimers();
 			const hostFixture = TestBed.createComponent(CustomNavigationHostComponent);
 			hostFixture.detectChanges();
-			const hostDebugElement = hostFixture.debugElement.query(By.directive(ObMasterLayoutNavigationComponent));
 			const projectedNavigation = hostFixture.nativeElement.querySelector('.ob-main-nav') as HTMLElement;
 			const projectedNavigationChildren = projectedNavigation.children as HTMLCollectionOf<HTMLElement>;
-			const projectedNavigationComponent = hostDebugElement.componentInstance as ObMasterLayoutNavigationComponent;
 			const navigationService = TestBed.inject(ObMasterLayoutNavigationService);
 
 			Object.defineProperty(projectedNavigation, 'clientWidth', {value: 120});
@@ -678,11 +669,8 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 			navigationService.refresh();
 			jest.advanceTimersToNextFrame();
 
-			expect(projectedNavigationComponent.isScrollable()).toBe(true);
-			expect(
-				(hostFixture.nativeElement.querySelector('#ob-navigation-scrollable-control-right') as HTMLButtonElement)
-					.disabled
-			).toBe(false);
+			// #ob-navigation-scrollable-control-right is disabled if isScrollable it true
+			expect(hostFixture.nativeElement.querySelector('#ob-navigation-scrollable-control-right').disabled).toBe(false);
 			jest.useRealTimers();
 		});
 	});
@@ -721,5 +709,25 @@ describe(ObMasterLayoutNavigationComponent.name, () => {
 		getHTMLSelectElementByQueryCSS(`#ob-main-nav-item-${component.navigationLinks()[linkIndex].id}`).classList.add(
 			'ob-expanded'
 		);
+	}
+
+	function makeNavigationScrollable(): void {
+		// tests suppose a maxScroll of 100, since it's a private property, it can only be set indirectly.
+		// maxScroll is computed as -(nav.clientWidth - childWidth - 2 * MasterLayoutNavigationComponentBase.buttonWidth)
+		// with MasterLayoutNavigationComponentBase.buttonWidth being 40
+		// Since there are 4 children is basicMockLinks, we get 4 * childClientWidth - clientWidth = 20
+		// arbitrarily setting childClientWidth to 50 gives a clientWidth to 180
+		const navigationService = TestBed.inject(ObMasterLayoutNavigationService);
+		const navigation = getHTMLSelectElementByQueryCSS('#navigation');
+		Object.defineProperty(navigation, 'clientWidth', {value: 180});
+		Array.from(navigation.children).forEach(item => Object.defineProperty(item, 'clientWidth', {value: 50}));
+		navigationService.scrollMode = ObEScrollMode.ENABLED;
+		navigationService.refresh();
+		jest.advanceTimersToNextFrame();
+		fixture.detectChanges();
+	}
+
+	function getFirstNavigationItemMarginLeft(): string {
+		return fixture.debugElement.query(By.css('#navigation > li')).nativeElement.style.marginLeft;
 	}
 });

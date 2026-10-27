@@ -9,25 +9,47 @@ import {
 } from './column-toggle.directive';
 import {ObColumnPanelDirective, ObColumnPanelDirective as ObRealColumnPanelDirective} from './column-panel.directive';
 import {TranslatePipe} from '@ngx-translate/core';
+import {ObTColumnState} from './column-layout.model';
 
-let resizerCallback: (entries: {contentRect: {height: number}}[]) => void;
+type ResizeCallback = (entries: {contentRect: {height: number}}[]) => void;
+const resizeCallbacks = new Map<Element | null, ResizeCallback>();
+
 class ResizeObserver {
-	constructor(public callback) {
-		resizerCallback = callback;
+	constructor(public callback) {}
+	observe(target: Element | null): void {
+		resizeCallbacks.set(target, this.callback);
 	}
-	observe(): void {}
 	unobserve(): void {}
 	disconnect(): void {}
 }
 window.ResizeObserver = ResizeObserver;
 
 @Component({
-	standalone: false,
+	selector: 'ob-test',
+	imports: [ObColumnLayoutComponent],
 	template: `<ob-column-layout [left]="left()" [right]="right()" />`,
 })
 class TestComponent {
-	left = signal('NONE');
-	right = signal('NONE');
+	left = signal<ObTColumnState>('NONE');
+	right = signal<ObTColumnState>('NONE');
+}
+
+@Component({
+	selector: 'ob-master-layout',
+	standalone: true,
+	template: `<div class="ob-master-layout-header"></div>
+		<ng-content />`,
+})
+class MockMasterLayout {}
+
+@Component({
+	selector: 'ob-test-master-layout',
+	imports: [ObColumnLayoutComponent, MockMasterLayout],
+	template: `<ob-master-layout><ob-column-layout /></ob-master-layout>`,
+})
+class TestComponentMasterLayout {
+	left = signal<ObTColumnState>('NONE');
+	right = signal<ObTColumnState>('NONE');
 }
 
 describe(ObColumnLayoutComponent.name, () => {
@@ -180,6 +202,24 @@ describe(ObColumnLayoutComponent.name, () => {
 					expect(element.nativeElement.style.top).toBe(top);
 				});
 			});
+
+			describe('with a resize of the layout', () => {
+				test('that it is centered on the new height without a change detection', () => {
+					jest
+						.spyOn(fixture.debugElement.nativeElement, 'getBoundingClientRect')
+						.mockReturnValue({top: 0, height: 100});
+					resizeCallbacks.get(fixture.debugElement.nativeElement)([{contentRect: {height: 100}}]);
+					expect(element.nativeElement.style.top).toBe('50px');
+				});
+
+				test('that it is centered on the new top of the layout', () => {
+					jest
+						.spyOn(fixture.debugElement.nativeElement, 'getBoundingClientRect')
+						.mockReturnValue({top: 10, height: 759});
+					resizeCallbacks.get(fixture.debugElement.nativeElement)([{contentRect: {height: 759}}]);
+					expect(element.nativeElement.style.top).toBe('379px');
+				});
+			});
 		});
 	});
 
@@ -193,8 +233,7 @@ describe(ObColumnLayoutComponent.name, () => {
 				add: {imports: [ObColumnPanelDirective, ObColumnToggleDirective]},
 			});
 			await TestBed.configureTestingModule({
-				imports: [ObColumnLayoutComponent, TranslatePipe],
-				declarations: [TestComponent],
+				imports: [ObColumnLayoutComponent, TranslatePipe, TestComponent],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});
@@ -259,38 +298,26 @@ describe(ObColumnLayoutComponent.name, () => {
 	});
 
 	describe('with change to the header height', () => {
-		let fixture: ComponentFixture<TestComponent>;
+		let fixture: ComponentFixture<TestComponentMasterLayout>;
 		let element: DebugElement;
 
 		beforeEach(async () => {
-			TestBed.overrideComponent(ObColumnLayoutComponent, {
-				remove: {imports: [ObRealColumnPanelDirective, ObRealColumnToggleDirective]},
-				add: {imports: [ObColumnPanelDirective, ObColumnToggleDirective]},
-			});
 			await TestBed.configureTestingModule({
-				imports: [ObColumnLayoutComponent, TranslatePipe],
-				declarations: [TestComponent],
+				imports: [ObColumnLayoutComponent, TranslatePipe, TestComponentMasterLayout],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});
 
 		beforeEach(() => {
-			jest.useFakeTimers();
-			TestBed.overrideTemplate(
-				TestComponent,
-				`<ob-master-layout><div class="ob-master-layout-header"></div><ob-column-layout></ob-column-layout></ob-master-layout>`
-			);
-			fixture = TestBed.createComponent(TestComponent);
+			fixture = TestBed.createComponent(TestComponentMasterLayout);
+			fixture.detectChanges();
 			component = fixture.debugElement
 				.query(By.directive(ObColumnLayoutComponent))
 				.injector.get(ObColumnLayoutComponent);
-			fixture.detectChanges();
-			jest.runOnlyPendingTimers();
 		});
 
 		describe('property top', () => {
 			beforeEach(() => {
-				jest.runOnlyPendingTimers();
 				fixture.detectChanges();
 				element = fixture.debugElement.query(By.css('.ob-column-toggle-left'));
 			});
@@ -304,7 +331,9 @@ describe(ObColumnLayoutComponent.name, () => {
 				{description: 'empty with the header height equal to the element height', height: 50, top: ''},
 				{description: 'empty with the header height greater than the element height', height: 51, top: ''},
 			])('that it is $description', ({height, top}) => {
-				resizerCallback([{contentRect: {height}}]);
+				resizeCallbacks.get(fixture.debugElement.query(By.css('.ob-master-layout-header')).nativeElement)([
+					{contentRect: {height}},
+				]);
 				jest
 					.spyOn(fixture.debugElement.query(By.css('ob-column-layout')).nativeElement, 'getBoundingClientRect')
 					.mockReturnValue({

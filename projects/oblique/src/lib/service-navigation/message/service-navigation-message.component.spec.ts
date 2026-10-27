@@ -52,7 +52,7 @@ describe('ObServiceNavigationMessageComponent', () => {
 			fixture.componentRef.setInput('linkHref', '/foo');
 			fixture.componentRef.changeDetectorRef.detectChanges();
 			const link = await harness.getLink();
-			expect(await link.getProperty('href')).toBe('http://localhost/foo');
+			expect(await link.getProperty('href')).toBe(`${window.location.origin}/foo`);
 		});
 	});
 

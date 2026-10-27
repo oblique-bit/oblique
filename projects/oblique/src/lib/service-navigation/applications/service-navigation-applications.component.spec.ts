@@ -410,7 +410,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 				it.each([
 					{
 						property: 'href',
-						value: `http://localhost/?favoritesOnly=true`,
+						value: `${window.location.origin}/?favoritesOnly=true`,
 					},
 					{
 						property: 'isExternalLink',
@@ -789,7 +789,7 @@ describe(ObServiceNavigationApplicationsComponent.name, () => {
 					it.each([
 						{
 							property: 'href',
-							value: `http://localhost/?favoritesOnly=false`,
+							value: `${window.location.origin}/?favoritesOnly=false`,
 						},
 						{
 							property: 'isExternalLink',

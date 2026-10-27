@@ -1,5 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-import {Subject, of} from 'rxjs';
+import {Subject, firstValueFrom, of} from 'rxjs';
 import {WINDOW} from '../../window/window.provider';
 import {ObIServiceNavigationApplicationInfo} from '../api/service-navigation.api.model';
 import {ObServiceNavigationApplicationsStoreService} from './service-navigation-applications-store.service';
@@ -21,7 +21,7 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 	});
 
 	afterEach(() => {
-		jest.resetAllMocks();
+		jest.clearAllMocks();
 	});
 
 	describe.each([
@@ -44,19 +44,16 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 			describe('one run', () => {
 				let result: ObIServiceNavigationApplicationInfo[];
 				const mockData = buildMockData(1);
-				beforeEach(done => {
+				beforeEach(async () => {
 					jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
-					service
-						.fetchApplicationsInfo('rootUrl', [
+					result = await firstValueFrom(
+						service.fetchApplicationsInfo('rootUrl', [
 							{
 								applicationID: 1,
 								childApplicationID: 0,
 							},
 						])
-						.subscribe(data => {
-							result = data;
-							done();
-						});
+					);
 				});
 
 				it('should call ObServiceNavigationApplicationsService.fetchApplicationsInfo once', () => {
@@ -80,33 +77,31 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 			describe('two identical runs', () => {
 				const results: ObIServiceNavigationApplicationInfo[][] = [];
 				const mockData = buildMockData(1);
-				beforeEach(done => {
+				beforeEach(async () => {
 					jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
-					service
-						.fetchApplicationsInfo('rootUrl', [
-							{
-								applicationID: 1,
-								childApplicationID: 0,
-							},
-						])
-						.subscribe(data => {
-							results.push(data);
-							done();
-						});
+					results.push(
+						await firstValueFrom(
+							service.fetchApplicationsInfo('rootUrl', [
+								{
+									applicationID: 1,
+									childApplicationID: 0,
+								},
+							])
+						)
+					);
 				});
-				beforeEach(done => {
+				beforeEach(async () => {
 					jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
-					service
-						.fetchApplicationsInfo('rootUrl', [
-							{
-								applicationID: 1,
-								childApplicationID: 0,
-							},
-						])
-						.subscribe(data => {
-							results.push(data);
-							done();
-						});
+					results.push(
+						await firstValueFrom(
+							service.fetchApplicationsInfo('rootUrl', [
+								{
+									applicationID: 1,
+									childApplicationID: 0,
+								},
+							])
+						)
+					);
 				});
 
 				it('should call ObServiceNavigationApplicationsService.fetchApplicationsInfo once', () => {
@@ -130,34 +125,32 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 			describe('two runs with different inputs', () => {
 				const mockData = buildMockData(1, 2);
 				const results: ObIServiceNavigationApplicationInfo[][] = [];
-				beforeEach(done => {
+				beforeEach(async () => {
 					jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of([mockData[0]]));
-					service
-						.fetchApplicationsInfo('rootUrl', [
-							{
-								applicationID: 1,
-								childApplicationID: 0,
-							},
-						])
-						.subscribe(data => {
-							results.push(data);
-							done();
-						});
+					results.push(
+						await firstValueFrom(
+							service.fetchApplicationsInfo('rootUrl', [
+								{
+									applicationID: 1,
+									childApplicationID: 0,
+								},
+							])
+						)
+					);
 				});
 
-				beforeEach(done => {
+				beforeEach(async () => {
 					jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of([mockData[1]]));
-					service
-						.fetchApplicationsInfo('rootUrl', [
-							{
-								applicationID: 2,
-								childApplicationID: 0,
-							},
-						])
-						.subscribe(data => {
-							results.push(data);
-							done();
-						});
+					results.push(
+						await firstValueFrom(
+							service.fetchApplicationsInfo('rootUrl', [
+								{
+									applicationID: 2,
+									childApplicationID: 0,
+								},
+							])
+						)
+					);
 				});
 
 				it('should call ObServiceNavigationApplicationsService.fetchApplicationsInfo twice', () => {
@@ -187,38 +180,36 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 			describe('two runs with partial different inputs', () => {
 				const mockData = buildMockData(1, 2);
 				const results: ObIServiceNavigationApplicationInfo[][] = [];
-				beforeEach(done => {
+				beforeEach(async () => {
 					jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of([mockData[0]]));
-					service
-						.fetchApplicationsInfo('rootUrl', [
-							{
-								applicationID: 1,
-								childApplicationID: 0,
-							},
-						])
-						.subscribe(data => {
-							results.push(data);
-							done();
-						});
+					results.push(
+						await firstValueFrom(
+							service.fetchApplicationsInfo('rootUrl', [
+								{
+									applicationID: 1,
+									childApplicationID: 0,
+								},
+							])
+						)
+					);
 				});
 
-				beforeEach(done => {
+				beforeEach(async () => {
 					jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
-					service
-						.fetchApplicationsInfo('rootUrl', [
-							{
-								applicationID: 1,
-								childApplicationID: 0,
-							},
-							{
-								applicationID: 2,
-								childApplicationID: 0,
-							},
-						])
-						.subscribe(data => {
-							results.push(data);
-							done();
-						});
+					results.push(
+						await firstValueFrom(
+							service.fetchApplicationsInfo('rootUrl', [
+								{
+									applicationID: 1,
+									childApplicationID: 0,
+								},
+								{
+									applicationID: 2,
+									childApplicationID: 0,
+								},
+							])
+						)
+					);
 				});
 
 				it('should call ObServiceNavigationApplicationsService.fetchApplicationsInfo twice', () => {
@@ -293,19 +284,16 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 				describe('one run', () => {
 					let result: ObIServiceNavigationApplicationInfo[];
 					const mockData = buildMockData(1);
-					beforeEach(done => {
+					beforeEach(async () => {
 						jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
-						service
-							.fetchApplicationsInfo('rootUrl', [
+						result = await firstValueFrom(
+							service.fetchApplicationsInfo('rootUrl', [
 								{
 									applicationID: 1,
 									childApplicationID: 0,
 								},
 							])
-							.subscribe(data => {
-								result = data;
-								done();
-							});
+						);
 					});
 
 					it('should call ObServiceNavigationApplicationsService.fetchApplicationsInfo once', () => {
@@ -340,33 +328,31 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 				describe('two identical runs', () => {
 					const results: ObIServiceNavigationApplicationInfo[][] = [];
 					const mockData = buildMockData(1);
-					beforeEach(done => {
+					beforeEach(async () => {
 						jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
-						service
-							.fetchApplicationsInfo('rootUrl', [
-								{
-									applicationID: 1,
-									childApplicationID: 0,
-								},
-							])
-							.subscribe(data => {
-								results.push(data);
-								done();
-							});
+						results.push(
+							await firstValueFrom(
+								service.fetchApplicationsInfo('rootUrl', [
+									{
+										applicationID: 1,
+										childApplicationID: 0,
+									},
+								])
+							)
+						);
 					});
-					beforeEach(done => {
+					beforeEach(async () => {
 						jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
-						service
-							.fetchApplicationsInfo('rootUrl', [
-								{
-									applicationID: 1,
-									childApplicationID: 0,
-								},
-							])
-							.subscribe(data => {
-								results.push(data);
-								done();
-							});
+						results.push(
+							await firstValueFrom(
+								service.fetchApplicationsInfo('rootUrl', [
+									{
+										applicationID: 1,
+										childApplicationID: 0,
+									},
+								])
+							)
+						);
 					});
 
 					it('should call ObServiceNavigationApplicationsService.fetchApplicationsInfo once', () => {
@@ -401,34 +387,32 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 				describe('two runs with different inputs', () => {
 					const mockData = buildMockData(1, 2);
 					const results: ObIServiceNavigationApplicationInfo[][] = [];
-					beforeEach(done => {
+					beforeEach(async () => {
 						jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of([mockData[0]]));
-						service
-							.fetchApplicationsInfo('rootUrl', [
-								{
-									applicationID: 1,
-									childApplicationID: 0,
-								},
-							])
-							.subscribe(data => {
-								results.push(data);
-								done();
-							});
+						results.push(
+							await firstValueFrom(
+								service.fetchApplicationsInfo('rootUrl', [
+									{
+										applicationID: 1,
+										childApplicationID: 0,
+									},
+								])
+							)
+						);
 					});
 
-					beforeEach(done => {
+					beforeEach(async () => {
 						jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of([mockData[1]]));
-						service
-							.fetchApplicationsInfo('rootUrl', [
-								{
-									applicationID: 2,
-									childApplicationID: 0,
-								},
-							])
-							.subscribe(data => {
-								results.push(data);
-								done();
-							});
+						results.push(
+							await firstValueFrom(
+								service.fetchApplicationsInfo('rootUrl', [
+									{
+										applicationID: 2,
+										childApplicationID: 0,
+									},
+								])
+							)
+						);
 					});
 
 					it('should call ObServiceNavigationApplicationsService.fetchApplicationsInfo twice', () => {
@@ -478,38 +462,36 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 				describe('two runs with partial different inputs', () => {
 					const mockData = buildMockData(1, 2);
 					const results: ObIServiceNavigationApplicationInfo[][] = [];
-					beforeEach(done => {
+					beforeEach(async () => {
 						jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of([mockData[0]]));
-						service
-							.fetchApplicationsInfo('rootUrl', [
-								{
-									applicationID: 1,
-									childApplicationID: 0,
-								},
-							])
-							.subscribe(data => {
-								results.push(data);
-								done();
-							});
+						results.push(
+							await firstValueFrom(
+								service.fetchApplicationsInfo('rootUrl', [
+									{
+										applicationID: 1,
+										childApplicationID: 0,
+									},
+								])
+							)
+						);
 					});
 
-					beforeEach(done => {
+					beforeEach(async () => {
 						jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
-						service
-							.fetchApplicationsInfo('rootUrl', [
-								{
-									applicationID: 1,
-									childApplicationID: 0,
-								},
-								{
-									applicationID: 2,
-									childApplicationID: 0,
-								},
-							])
-							.subscribe(data => {
-								results.push(data);
-								done();
-							});
+						results.push(
+							await firstValueFrom(
+								service.fetchApplicationsInfo('rootUrl', [
+									{
+										applicationID: 1,
+										childApplicationID: 0,
+									},
+									{
+										applicationID: 2,
+										childApplicationID: 0,
+									},
+								])
+							)
+						);
 					});
 
 					it('should call ObServiceNavigationApplicationsService.fetchApplicationsInfo twice', () => {
@@ -593,19 +575,16 @@ describe('ObServiceNavigationApplicationsStoreService', () => {
 				describe('one run', () => {
 					let result: ObIServiceNavigationApplicationInfo[];
 					const mockData = buildMockData(1);
-					beforeEach(done => {
+					beforeEach(async () => {
 						jest.spyOn(applicationService, 'fetchApplicationsInfo').mockReturnValue(of(mockData));
-						service
-							.fetchApplicationsInfo('rootUrl', [
+						result = await firstValueFrom(
+							service.fetchApplicationsInfo('rootUrl', [
 								{
 									applicationID: 1,
 									childApplicationID: 0,
 								},
 							])
-							.subscribe(data => {
-								result = data;
-								done();
-							});
+						);
 					});
 
 					it('should not call ObServiceNavigationApplicationsService.fetchApplicationsInfo', () => {

@@ -1,5 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {
 	AbstractControl,
 	FormBuilder,
@@ -17,6 +17,7 @@ import {ObMockTranslatePipe} from '../_mocks/mock-translate.pipe';
 import {ObInputClearDirective} from './input-clear.directive';
 import {TranslatePipe} from '@ngx-translate/core';
 import {ObConsoleService} from '../console/ob-console.service';
+import {MatDatepicker} from '@angular/material/datepicker';
 
 interface ObInputClearDirectivePrivate {
 	setFocus: () => void;
@@ -25,7 +26,8 @@ interface ObInputClearDirectivePrivate {
 }
 
 @Component({
-	standalone: false,
+	selector: 'ob-untyped-reactive',
+	imports: [ObInputClearDirective, ReactiveFormsModule, MatFormFieldModule, MatInputModule, TranslatePipe],
 	template: ` <div [formGroup]="testForm">
 		<mat-form-field>
 			<mat-label>Test input</mat-label>
@@ -35,7 +37,6 @@ interface ObInputClearDirectivePrivate {
 			</button>
 		</mat-form-field>
 	</div>`,
-	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class UntypedReactiveFormTestComponent {
 	testForm: FormGroup;
@@ -49,7 +50,8 @@ class UntypedReactiveFormTestComponent {
 }
 
 @Component({
-	standalone: false,
+	selector: 'ob-typed-reactive',
+	imports: [ObInputClearDirective, ReactiveFormsModule, MatFormFieldModule, MatInputModule, TranslatePipe],
 	template: ` <div [formGroup]="testForm">
 		<mat-form-field>
 			<mat-label>Test input</mat-label>
@@ -59,7 +61,6 @@ class UntypedReactiveFormTestComponent {
 			</button>
 		</mat-form-field>
 	</div>`,
-	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class StronglyTypedReactiveFormTestComponent {
 	testForm: FormGroup<{field1: FormControl<string>}>;
@@ -73,7 +74,8 @@ class StronglyTypedReactiveFormTestComponent {
 }
 
 @Component({
-	standalone: false,
+	selector: 'ob-template',
+	imports: [ObInputClearDirective, FormsModule, MatFormFieldModule, MatInputModule, TranslatePipe],
 	template: ` <div>
 		<mat-form-field>
 			<mat-label>Mandatory</mat-label>
@@ -83,14 +85,14 @@ class StronglyTypedReactiveFormTestComponent {
 			</button>
 		</mat-form-field>
 	</div>`,
-	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TemplateDrivenFormTestComponent {
 	testModel: string;
 }
 
 @Component({
-	standalone: false,
+	selector: 'ob-html-input',
+	imports: [ObInputClearDirective, MatFormFieldModule, MatInputModule, TranslatePipe],
 	template: ` <div>
 		<mat-form-field>
 			<mat-label>Mandatory</mat-label>
@@ -100,14 +102,14 @@ class TemplateDrivenFormTestComponent {
 			</button>
 		</mat-form-field>
 	</div>`,
-	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class HtmlInputTestComponent {
 	focusOnClear: boolean;
 }
 
 @Component({
-	standalone: false,
+	selector: 'ob-html-input-with-datepicker',
+	imports: [ObInputClearDirective, MatFormFieldModule, MatInputModule, TranslatePipe],
 	template: ` <div>
 		<mat-form-field>
 			<mat-label>Mandatory</mat-label>
@@ -119,25 +121,23 @@ class HtmlInputTestComponent {
 	</div>`,
 })
 class HtmlInputWithDatePickerTestComponent {
-	datePicker = {select: jest.fn()};
+	datePicker = {select: jest.fn()} as unknown as MatDatepicker<unknown>;
 }
 
 @Component({
-	standalone: false,
+	selector: 'ob-wrong-configuration',
+	imports: [ObInputClearDirective, MatFormFieldModule, MatInputModule, TranslatePipe],
 	template: ` <div>
 		<mat-form-field>
 			<mat-label>Mandatory</mat-label>
 			<input type="text" matInput placeholder="Mandatory" required />
-			<button type="button" [obInputClear]="testModel">
+			<button type="button" [obInputClear]="undefined">
 				<span class="ob-screen-reader-only">{{ 'i18n.common.clear' | translate }}</span>
 			</button>
 		</mat-form-field>
 	</div>`,
-	changeDetection: ChangeDetectionStrategy.Eager,
 })
-class WrongConfigurationTestComponent {
-	testModel: string;
-}
+class WrongConfigurationTestComponent {}
 
 describe('InputClear', () => {
 	describe('with reactive forms', () => {
@@ -149,8 +149,14 @@ describe('InputClear', () => {
 
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				declarations: [UntypedReactiveFormTestComponent],
-				imports: [ObInputClearDirective, ReactiveFormsModule, MatFormFieldModule, MatInputModule, TranslatePipe],
+				imports: [
+					ObInputClearDirective,
+					ReactiveFormsModule,
+					MatFormFieldModule,
+					MatInputModule,
+					TranslatePipe,
+					UntypedReactiveFormTestComponent,
+				],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});
@@ -216,8 +222,14 @@ describe('InputClear', () => {
 
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				declarations: [StronglyTypedReactiveFormTestComponent],
-				imports: [ObInputClearDirective, ReactiveFormsModule, MatFormFieldModule, MatInputModule, TranslatePipe],
+				imports: [
+					ObInputClearDirective,
+					ReactiveFormsModule,
+					MatFormFieldModule,
+					MatInputModule,
+					TranslatePipe,
+					StronglyTypedReactiveFormTestComponent,
+				],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});
@@ -283,8 +295,14 @@ describe('InputClear', () => {
 
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				declarations: [TemplateDrivenFormTestComponent],
-				imports: [ObInputClearDirective, FormsModule, MatFormFieldModule, MatInputModule, TranslatePipe],
+				imports: [
+					ObInputClearDirective,
+					FormsModule,
+					MatFormFieldModule,
+					MatInputModule,
+					TranslatePipe,
+					TemplateDrivenFormTestComponent,
+				],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
 		});
@@ -350,7 +368,6 @@ describe('InputClear', () => {
 
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				declarations: [HtmlInputTestComponent],
 				imports: [
 					ObMockTranslatePipe,
 					ObInputClearDirective,
@@ -358,6 +375,7 @@ describe('InputClear', () => {
 					MatFormFieldModule,
 					MatInputModule,
 					TranslatePipe,
+					HtmlInputTestComponent,
 				],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
@@ -445,7 +463,6 @@ describe('InputClear', () => {
 
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				declarations: [HtmlInputWithDatePickerTestComponent],
 				imports: [
 					ObMockTranslatePipe,
 					ObInputClearDirective,
@@ -453,6 +470,7 @@ describe('InputClear', () => {
 					MatFormFieldModule,
 					MatInputModule,
 					TranslatePipe,
+					HtmlInputWithDatePickerTestComponent,
 				],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();
@@ -478,7 +496,6 @@ describe('InputClear', () => {
 
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				declarations: [WrongConfigurationTestComponent],
 				imports: [
 					ObMockTranslatePipe,
 					ObInputClearDirective,
@@ -486,6 +503,7 @@ describe('InputClear', () => {
 					MatFormFieldModule,
 					MatInputModule,
 					TranslatePipe,
+					WrongConfigurationTestComponent,
 				],
 				providers: [provideObliqueTestingConfiguration()],
 			}).compileComponents();

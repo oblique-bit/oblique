@@ -8,12 +8,12 @@ import {
 	input,
 } from '@angular/core';
 import {By} from '@angular/platform-browser';
-import {ObIAlertType} from '@oblique/oblique';
+import {ObIAlertType} from '../alert/alert.model';
 import {provideObliqueTestingConfiguration} from '../utilities';
 import {OBLIQUE_HAS_ROLE_ALERT, ObAlertComponent} from './alert.component';
 
 @Component({
-	standalone: false,
+	imports: [ObAlertComponent],
 	template: `
 		<ob-alert [type]="outerType()" [hasRoleAlert]="outerHasRoleAlert()">
 			The following text should be shown as hyperlink:
@@ -28,7 +28,7 @@ class DefaultTestComponent {
 }
 
 @Component({
-	standalone: false,
+	imports: [ObAlertComponent],
 	template: ` <ob-alert role="alert" [hasRoleAlert]="outerHasRoleAlert()" type="success">
 		The following text should be shown as hyperlink:
 		<a href="www.google.com">www.google.com</a></ob-alert
@@ -40,7 +40,7 @@ class AlertRoleTestComponent {
 }
 
 @Component({
-	standalone: false,
+	imports: [ObAlertComponent],
 	template: ` <ob-alert type="success">
 		The following text should be shown as hyperlink:
 		<a href="www.google.com">www.google.com</a></ob-alert
@@ -51,16 +51,15 @@ class ConfiguredTestComponent {}
 
 describe('ObAlertComponent', () => {
 	let obAlertComponent: ObAlertComponent;
-	let fixture: ComponentFixture<DefaultTestComponent>;
-	let testComponent: DefaultTestComponent;
 	let debugElement: DebugElement;
 	let hostChangeDetector: ChangeDetectorRef;
 
 	describe('with default inputs', () => {
+		let fixture: ComponentFixture<DefaultTestComponent>;
+		let testComponent: DefaultTestComponent;
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				imports: [ObAlertComponent],
-				declarations: [DefaultTestComponent],
+				imports: [ObAlertComponent, DefaultTestComponent],
 				providers: [provideObliqueTestingConfiguration()],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA],
 			}).compileComponents();
@@ -133,10 +132,11 @@ describe('ObAlertComponent', () => {
 	});
 
 	describe('with custom inputs', () => {
+		let fixture: ComponentFixture<ConfiguredTestComponent>;
+		let testComponent: ConfiguredTestComponent;
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				imports: [ObAlertComponent],
-				declarations: [ConfiguredTestComponent],
+				imports: [ObAlertComponent, ConfiguredTestComponent],
 				providers: [provideObliqueTestingConfiguration()],
 				schemas: [CUSTOM_ELEMENTS_SCHEMA],
 			}).compileComponents();
@@ -173,12 +173,12 @@ describe('ObAlertComponent', () => {
 	});
 
 	describe('live region role alert', () => {
+		let fixture: ComponentFixture<AlertRoleTestComponent>;
 		describe('with  role from user over DOM, undefined token and input', () => {
 			beforeEach(async () => {
 				TestBed.resetTestingModule();
 				await TestBed.configureTestingModule({
-					imports: [ObAlertComponent],
-					declarations: [AlertRoleTestComponent],
+					imports: [ObAlertComponent, AlertRoleTestComponent],
 					providers: [provideObliqueTestingConfiguration()],
 					schemas: [CUSTOM_ELEMENTS_SCHEMA],
 				}).compileComponents();
@@ -186,7 +186,6 @@ describe('ObAlertComponent', () => {
 
 			beforeEach(() => {
 				fixture = TestBed.createComponent(AlertRoleTestComponent);
-				testComponent = fixture.componentInstance;
 				fixture.detectChanges();
 				debugElement = fixture.debugElement.query(By.directive(ObAlertComponent));
 				obAlertComponent = debugElement.injector.get(ObAlertComponent);
@@ -226,8 +225,7 @@ describe('ObAlertComponent', () => {
 			beforeEach(async () => {
 				TestBed.resetTestingModule();
 				await TestBed.configureTestingModule({
-					imports: [ObAlertComponent],
-					declarations: [DefaultTestComponent],
+					imports: [ObAlertComponent, DefaultTestComponent],
 					providers: [provideObliqueTestingConfiguration()],
 					schemas: [CUSTOM_ELEMENTS_SCHEMA],
 				}).compileComponents();
@@ -235,7 +233,6 @@ describe('ObAlertComponent', () => {
 
 			beforeEach(() => {
 				fixture = TestBed.createComponent(DefaultTestComponent);
-				testComponent = fixture.componentInstance;
 				fixture.detectChanges();
 				debugElement = fixture.debugElement.query(By.directive(ObAlertComponent));
 				obAlertComponent = debugElement.injector.get(ObAlertComponent);
@@ -326,8 +323,7 @@ describe('ObAlertComponent', () => {
 			beforeEach(async () => {
 				TestBed.resetTestingModule();
 				await TestBed.configureTestingModule({
-					imports: [ObAlertComponent],
-					declarations: [DefaultTestComponent],
+					imports: [ObAlertComponent, DefaultTestComponent],
 					providers: [provideObliqueTestingConfiguration(), {provide: OBLIQUE_HAS_ROLE_ALERT, useValue: true}],
 					schemas: [CUSTOM_ELEMENTS_SCHEMA],
 				}).compileComponents();
@@ -335,7 +331,6 @@ describe('ObAlertComponent', () => {
 
 			beforeEach(() => {
 				fixture = TestBed.createComponent(DefaultTestComponent);
-				testComponent = fixture.componentInstance;
 				fixture.detectChanges();
 				debugElement = fixture.debugElement.query(By.directive(ObAlertComponent));
 				obAlertComponent = debugElement.injector.get(ObAlertComponent);
@@ -388,8 +383,7 @@ describe('ObAlertComponent', () => {
 			beforeEach(async () => {
 				TestBed.resetTestingModule();
 				await TestBed.configureTestingModule({
-					imports: [ObAlertComponent],
-					declarations: [DefaultTestComponent],
+					imports: [ObAlertComponent, DefaultTestComponent],
 					providers: [provideObliqueTestingConfiguration(), {provide: OBLIQUE_HAS_ROLE_ALERT, useValue: false}],
 					schemas: [CUSTOM_ELEMENTS_SCHEMA],
 				}).compileComponents();
@@ -397,7 +391,6 @@ describe('ObAlertComponent', () => {
 
 			beforeEach(() => {
 				fixture = TestBed.createComponent(DefaultTestComponent);
-				testComponent = fixture.componentInstance;
 				fixture.detectChanges();
 				debugElement = fixture.debugElement.query(By.directive(ObAlertComponent));
 				obAlertComponent = debugElement.injector.get(ObAlertComponent);

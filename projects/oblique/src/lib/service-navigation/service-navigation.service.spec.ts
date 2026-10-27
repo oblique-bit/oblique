@@ -115,7 +115,7 @@ describe('ObServiceNavigationService', () => {
 		});
 
 		afterEach(() => {
-			jest.resetAllMocks();
+			jest.clearAllMocks();
 		});
 
 		describe('infoBackend', () => {

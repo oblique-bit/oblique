@@ -5,7 +5,7 @@ import type {ObDateFormat, ObTimeFormat} from '@oblique/language/date-adapter/da
 	selector: 'sb-language-sample',
 	standalone: false,
 	templateUrl: './language-sample.component.html',
-	changeDetection: ChangeDetectionStrategy.Eager,
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LanguageSampleComponent {
 	readonly dateFormats: ObDateFormat[] = [

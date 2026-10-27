@@ -6,10 +6,24 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {provideObliqueTestingConfiguration} from '../utilities';
+import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from '@angular/material/datepicker';
 import {ObFocusInvalidDirective} from './focus-invalid.directive';
 
 @Component({
-	standalone: false,
+	imports: [
+		ObFocusInvalidDirective,
+		ReactiveFormsModule,
+		MatFormFieldModule,
+		MatInputModule,
+		MatSelectModule,
+		MatCheckboxModule,
+		MatRadioModule,
+		MatDatepickerToggle,
+		MatDatepicker,
+		MatDatepickerInput,
+	],
 	template: `
 		<form [formGroup]="focusInvalidFormGroup" obFocusInvalid>
 			<mat-form-field>
@@ -48,7 +62,7 @@ import {ObFocusInvalidDirective} from './focus-invalid.directive';
 				<mat-radio-button value="2">two</mat-radio-button>
 			</mat-radio-group>
 
-			<button type="submit">submit</button>
+			<button type="submit" id="submit">submit</button>
 		</form>
 	`,
 	changeDetection: ChangeDetectionStrategy.Eager,
@@ -72,7 +86,7 @@ class UntypedReactiveFormTestComponent implements OnInit {
 describe(ObFocusInvalidDirective.name, () => {
 	const values = {
 		text: 'some text',
-		datepicker: '2024.01.01',
+		datepicker: new Date('2024.01.01'),
 		select: 2,
 		checkbox: true,
 		textarea: 'some text',
@@ -83,7 +97,6 @@ describe(ObFocusInvalidDirective.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [UntypedReactiveFormTestComponent],
 			imports: [
 				ObFocusInvalidDirective,
 				ReactiveFormsModule,
@@ -91,8 +104,11 @@ describe(ObFocusInvalidDirective.name, () => {
 				MatInputModule,
 				MatSelectModule,
 				MatCheckboxModule,
+				MatDatepickerModule,
 				MatRadioModule,
+				UntypedReactiveFormTestComponent,
 			],
+			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(UntypedReactiveFormTestComponent);
@@ -101,7 +117,7 @@ describe(ObFocusInvalidDirective.name, () => {
 	});
 
 	test('the text field is focused when no fields received a value', () => {
-		fixture.nativeElement.querySelector('button').click();
+		fixture.nativeElement.querySelector('#submit').click();
 		expect(document.activeElement.id).toBe('text');
 	});
 
@@ -116,14 +132,14 @@ describe(ObFocusInvalidDirective.name, () => {
 			setValues.reduce((patchValues, key) => ({...patchValues, [key]: values[key]}), {})
 		);
 		fixture.detectChanges();
-		fixture.nativeElement.querySelector('button').click();
+		fixture.nativeElement.querySelector('#submit').click();
 		expect(document.activeElement.id).toBe(id ?? result);
 	});
 
 	test('no field is focused when all fields received a value', () => {
 		component.focusInvalidFormGroup.patchValue(values);
 		fixture.detectChanges();
-		fixture.nativeElement.querySelector('button').click();
+		fixture.nativeElement.querySelector('#submit').click();
 		expect(document.activeElement.id).toBe('');
 	});
 });

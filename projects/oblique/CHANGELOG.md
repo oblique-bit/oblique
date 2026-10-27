@@ -1,3 +1,13 @@
+# [16.0.3](https://github.com/oblique-bit/oblique/compare/16.0.2...16.0.3) (2026-10-27)
+
+## Bug Fixes
+
+- **column-layout:** center toggles when the layout is resized ([a927bfdd](https://github.com/oblique-bit/oblique/commit/a927bfdd94ef97bb5ea0e0ce60a7107a1143272a), OUI-4640)
+- **input-clear:** harmonize icon size across form fields ([a1e128e8](https://github.com/oblique-bit/oblique/commit/a1e128e8841f0e4655e8cdad857c26be0c95ef7b), OUI-4329)
+- **schema-validation:** preserve empty required array when converting schemas ([8a01a9a3](https://github.com/oblique-bit/oblique/commit/8a01a9a3bd51407d100f311e209a407e0ede6c0d), OUI-4772)
+- **schema-validation:** add `ajv` and `ajv-formats` as optional peer dependencies ([d6f03636](https://github.com/oblique-bit/oblique/commit/d6f03636c84a964080f29b7297438c2a8f00b2c9), OUI-4772)
+- **schema-validation:** export `ObSchemaValidatorInstance` again ([0c3b1d50](https://github.com/oblique-bit/oblique/commit/0c3b1d50f690fbd67b44025d249f5bb36382afdb), OUI-4772)
+
 # [16.0.2](https://github.com/oblique-bit/oblique/compare/16.0.1...16.0.2) (2026-10-15)
 
 ## Bug Fixes

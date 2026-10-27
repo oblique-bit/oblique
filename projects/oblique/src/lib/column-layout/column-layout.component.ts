@@ -51,22 +51,25 @@ export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestro
 	private readonly unsubscribe = new Subject<void>();
 	private readonly dimensionChange = new Subject<{top: number; height: number; windowHeight: number}>();
 	private readonly window = inject<ObWindow>(WINDOW);
-	private observer: ResizeObserver;
+	private headerObserver: ResizeObserver;
+	private hostObserver: ResizeObserver;
 
 	ngDoCheck(): void {
-		const {top, height} = this.el.nativeElement.getBoundingClientRect();
-		this.dimensionChange.next({top, height, windowHeight: this.window.innerHeight});
+		this.measure();
 	}
 
 	ngAfterViewInit(): void {
 		this.getDimensionChangeObservable().subscribe(dimension => this.center(dimension));
+		this.hostObserver = new ResizeObserver(() => this.measure());
+		this.hostObserver.observe(this.el.nativeElement);
 	}
 
 	ngOnDestroy(): void {
 		this.unsubscribe.next();
 		this.unsubscribe.complete();
 		this.dimensionChange.complete();
-		this.observer?.disconnect();
+		this.headerObserver?.disconnect();
+		this.hostObserver?.disconnect();
 	}
 
 	toggleLeft(): void {
@@ -75,6 +78,11 @@ export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestro
 
 	toggleRight(): void {
 		this.rightCollapsed.update(state => !state);
+	}
+
+	private measure(): void {
+		const {top, height} = this.el.nativeElement.getBoundingClientRect();
+		this.dimensionChange.next({top, height, windowHeight: this.window.innerHeight});
 	}
 
 	private getDimensionChangeObservable(): Observable<ObIDimension> {
@@ -95,8 +103,8 @@ export class ObColumnLayoutComponent implements AfterViewInit, DoCheck, OnDestro
 	private getHeaderHeightObservable(): Observable<number> {
 		// this ensures a value is emitted even when the master layout isn't there
 		const headerHeight$ = new BehaviorSubject<number>(0);
-		this.observer = new ResizeObserver(entries => headerHeight$.next(entries[0].contentRect.height));
-		this.observer.observe(
+		this.headerObserver = new ResizeObserver(entries => headerHeight$.next(entries[0].contentRect.height));
+		this.headerObserver.observe(
 			this.getMasterLayout(this.el.nativeElement.parentElement).querySelector('.ob-master-layout-header')
 		);
 

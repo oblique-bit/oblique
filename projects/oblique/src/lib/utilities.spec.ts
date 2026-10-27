@@ -28,7 +28,7 @@ import {
 import {MAT_TABS_CONFIG} from '@angular/material/tabs';
 import {ObPaginatorService} from './material/ob-paginator.service';
 import {ObIconService} from './icon/icon.service';
-import {Observable, of} from 'rxjs';
+import {Observable, firstValueFrom, of} from 'rxjs';
 import {ObLanguageService} from './language/language.service';
 import {ObIObliqueConfiguration, ObIObliqueConfigurationWithDefaults} from './utilities.model';
 import {ObIAccessibilityStatementConfiguration} from './accessibility-statement/accessibility-statement.model';
@@ -60,7 +60,10 @@ class FakeLoader implements TranslateLoader {
 describe('utilities', () => {
 	const getDefaultObliqueConfiguration = (): ObIObliqueConfigurationWithDefaults => ({
 		accessibilityStatement,
+		historyState: {initialLength: 0},
+		banner: undefined,
 		material: {
+			OB_MAT_ERROR_PREFIX: null,
 			MAT_FORM_FIELD_DEFAULT_OPTIONS: {appearance: 'outline'},
 			STEPPER_GLOBAL_OPTIONS: {displayDefaultIndicatorType: false},
 			MAT_CHECKBOX_OPTIONS: {color: 'primary'},
@@ -203,9 +206,7 @@ describe('utilities', () => {
 				});
 
 				it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
-					const translateService = TestBed.inject(TranslateService);
-
-					expect(translateService.currentLoader).toBeInstanceOf(ObMultiTranslateLoader);
+					expect(TestBed.inject(TranslateLoader)).toBeInstanceOf(ObMultiTranslateLoader);
 				});
 
 				it('should provide "OB_TRANSLATION_CONFIGURATION"', () => {
@@ -354,9 +355,8 @@ describe('utilities', () => {
 					});
 				});
 
-				it('should use "TranslateNoOpCompiler " as "TranslateCompiler"', () => {
-					const translateService = TestBed.inject(TranslateService);
-					expect(translateService.compiler).toBeInstanceOf(TranslateNoOpCompiler);
+				it('should use "TranslateNoOpCompiler" as "TranslateCompiler"', () => {
+					expect(TestBed.inject(TranslateCompiler)).toBeInstanceOf(TranslateNoOpCompiler);
 				});
 			});
 
@@ -592,7 +592,7 @@ describe('utilities', () => {
 				const translationConfiguration = TestBed.inject(OB_TRANSLATION_CONFIGURATION);
 
 				expect(translationConfiguration).toEqual({flatten: true});
-				expect(TestBed.inject(TranslateService).compiler).toBeInstanceOf(TranslateNoOpCompiler);
+				expect(TestBed.inject(TranslateCompiler)).toBeInstanceOf(TranslateNoOpCompiler);
 			});
 		});
 
@@ -623,7 +623,7 @@ describe('utilities', () => {
 				const translationConfiguration = TestBed.inject(OB_TRANSLATION_CONFIGURATION);
 
 				expect(translationConfiguration).toEqual({flatten: true});
-				expect(TestBed.inject(TranslateService).currentLoader).toBeInstanceOf(TranslateNoOpLoader);
+				expect(TestBed.inject(TranslateLoader)).toBeInstanceOf(TranslateNoOpLoader);
 			});
 
 			describe('Date adapter', () => {
@@ -696,8 +696,7 @@ describe('utilities', () => {
 			});
 
 			it('should use "ObMultiTranslateLoader" as "TranslateLoader"', () => {
-				const translateService = TestBed.inject(TranslateService);
-				expect(translateService.currentLoader).toBeInstanceOf(ObMultiTranslateLoader);
+				expect(TestBed.inject(TranslateLoader)).toBeInstanceOf(ObMultiTranslateLoader);
 			});
 
 			it('should provide "TRANSLATION_FILES"', () => {
@@ -766,9 +765,8 @@ describe('utilities', () => {
 				});
 			});
 
-			it('should use "TranslateNoOpCompiler " as "TranslateCompiler"', () => {
-				const translateService = TestBed.inject(TranslateService);
-				expect(translateService.compiler).toBeInstanceOf(TranslateNoOpCompiler);
+			it('should use "TranslateNoOpCompiler" as "TranslateCompiler"', () => {
+				expect(TestBed.inject(TranslateCompiler)).toBeInstanceOf(TranslateNoOpCompiler);
 			});
 
 			describe('loader', () => {
@@ -826,9 +824,8 @@ describe('utilities', () => {
 				});
 			});
 
-			it('should use "TranslateNoOpCompiler " as "TranslateLoader"', () => {
-				const translateService = TestBed.inject(TranslateService);
-				expect(translateService.compiler instanceof TranslateNoOpCompiler).toBe(true);
+			it('should use "TranslateNoOpCompiler" as "TranslateCompiler"', () => {
+				expect(TestBed.inject(TranslateCompiler)).toBeInstanceOf(TranslateNoOpCompiler);
 			});
 
 			describe('loader', () => {
@@ -913,7 +910,7 @@ describe('utilities', () => {
 			expect(TestBed.inject(ObLanguageService).initialize).toHaveBeenCalledWith(defaultLocale);
 		});
 
-		it('should provide a translate loader returning empty translations', done => {
+		it('should provide a translate loader returning empty translations', async () => {
 			TestBed.configureTestingModule({
 				providers: [
 					{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
@@ -923,12 +920,7 @@ describe('utilities', () => {
 				],
 			});
 
-			TestBed.inject(TranslateService)
-				.currentLoader.getTranslation('de')
-				.subscribe(value => {
-					expect(value).toEqual({});
-					done();
-				});
+			expect(await firstValueFrom(TestBed.inject(TranslateLoader).getTranslation('de'))).toEqual({});
 		});
 	});
 

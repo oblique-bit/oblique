@@ -1,6 +1,7 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, DebugElement, signal} from '@angular/core';
-import {EMPTY, Observable, Subject} from 'rxjs';
+import {outputToObservable} from '@angular/core/rxjs-interop';
+import {EMPTY, Observable, Subject, firstValueFrom} from 'rxjs';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
 import {provideObliqueTestingConfiguration} from '../../utilities';
 import {OB_PAMS_CONFIGURATION} from '../../service-navigation/service-navigation.provider';
@@ -314,12 +315,10 @@ describe('ObMasterLayoutHeaderComponent', () => {
 		});
 
 		let emittedValue: ObINavigationLink[];
-		beforeEach(done => {
-			component.navigationChanged.subscribe(list => {
-				emittedValue = list;
-				done();
-			});
+		beforeEach(async () => {
+			const emit = firstValueFrom(outputToObservable(component.navigationChanged));
 			component.emitNavigation([{id: 'id', url: 'url', label: 'label'}]);
+			emittedValue = await emit;
 		});
 
 		test('navigationChanged emits the given parameter', () => {
@@ -333,12 +332,10 @@ describe('ObMasterLayoutHeaderComponent', () => {
 		});
 
 		let emittedValue: ObINavigationLink[];
-		beforeEach(done => {
-			component.navigation.subscribe(list => {
-				emittedValue = list;
-				done();
-			});
+		beforeEach(async () => {
+			const emit = firstValueFrom(outputToObservable(component.navigation));
 			component.navigation.set([{id: 'id', url: 'url', label: 'label'}]);
+			emittedValue = await emit;
 		});
 
 		test('navigationChange emits the given parameter', () => {

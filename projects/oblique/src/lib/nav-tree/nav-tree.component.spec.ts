@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
+import {ChangeDetectorRef, Component, DebugElement, NO_ERRORS_SCHEMA} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {ActivatedRoute, RouterLinkActive, RouterModule} from '@angular/router';
@@ -9,7 +9,7 @@ import {ObNavTreeComponent, defaultPatternMatcherFactory} from './nav-tree.compo
 import {provideObliqueTestingConfiguration} from '../utilities';
 
 @Component({
-	standalone: false,
+	imports: [ObNavTreeComponent],
 	template: ` <ob-nav-tree
 		[items]="items"
 		[prefix]="prefix"
@@ -18,7 +18,6 @@ import {provideObliqueTestingConfiguration} from '../utilities';
 		[labelFormatter]="labelFormatter"
 		[patternMatcher]="patternMatcher"
 	/>`,
-	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestComponent {
 	items = [
@@ -60,9 +59,8 @@ class TestComponent {
 }
 
 @Component({
-	standalone: false,
+	imports: [ObNavTreeComponent],
 	template: ` <ob-nav-tree [items]="items" />`,
-	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class TestComponentDefault {
 	items = [
@@ -107,8 +105,7 @@ describe(ObNavTreeComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [ObNavTreeComponent, RouterModule.forRoot([])],
-			declarations: [TestComponent, TestComponentDefault],
+			imports: [ObNavTreeComponent, RouterModule.forRoot([]), TestComponent, TestComponentDefault],
 			providers: [provideObliqueTestingConfiguration()],
 			schemas: [NO_ERRORS_SCHEMA],
 		}).compileComponents();
@@ -319,8 +316,7 @@ describe(ObNavTreeComponent.name, () => {
 		beforeEach(async () => {
 			fragment$ = new BehaviorSubject<string | null>(null);
 			await TestBed.configureTestingModule({
-				imports: [ObNavTreeComponent, RouterModule.forRoot([])],
-				declarations: [TestComponentDefault],
+				imports: [ObNavTreeComponent, RouterModule.forRoot([]), TestComponentDefault],
 				providers: [provideObliqueTestingConfiguration(), {provide: ActivatedRoute, useValue: {fragment: fragment$}}],
 				schemas: [NO_ERRORS_SCHEMA],
 			}).compileComponents();

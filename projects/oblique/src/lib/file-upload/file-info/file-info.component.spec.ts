@@ -166,11 +166,12 @@ describe('ObFileInfoComponent', () => {
 
 			describe('with erroneous back-end call', () => {
 				const errorMessage = new Error('Back-end error');
+				let event: ObIUploadEvent;
 
 				beforeEach(async () => {
 					jest.spyOn(uploadService, 'getUploadedFiles').mockReturnValue(throwError(() => errorMessage));
 					const eventPromise = new Promise<ObIUploadEvent>(resolve => {
-						component.uploadEvent.subscribe(event => resolve(event));
+						component.uploadEvent.subscribe(evt => resolve(evt));
 					});
 					uploadComplete.next();
 					event = await eventPromise;
@@ -267,10 +268,11 @@ describe('ObFileInfoComponent', () => {
 			});
 
 			describe('should emit', () => {
+				let event: ObIUploadEvent;
 				beforeEach(async () => {
 					component.selection.clear();
 					const eventPromise = new Promise<ObIUploadEvent>(resolve => {
-						component.uploadEvent.subscribe(event => resolve(event));
+						component.uploadEvent.subscribe(evt => resolve(evt));
 					});
 					component.selectOrUnselectAllItems();
 					event = await eventPromise;
@@ -390,13 +392,13 @@ describe('ObFileInfoComponent', () => {
 				const errorMessage = new Error('Back-end error');
 				const deletedFile = files[0];
 
-				beforeEach(done => {
+				beforeEach(async () => {
 					jest.spyOn(uploadService, 'delete').mockReturnValue(throwError(() => errorMessage));
-					component.uploadEvent.subscribe(evt => {
-						event = evt;
-						done();
+					const eventPromise = new Promise<ObIUploadEvent>(resolve => {
+						component.uploadEvent.subscribe(evt => resolve(evt));
 					});
 					component.delete([deletedFile]);
+					event = await eventPromise;
 				});
 
 				it('should emit an ERRORED event', () => {

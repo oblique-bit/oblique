@@ -14,7 +14,7 @@ describe('accessibility-statement.provider', () => {
 		contact: [{email: 'oblique@bit.admin.ch'}],
 	};
 	beforeEach(() => {
-		TestBed.configureTestingModule({providers: [obProvideAccessibilityStatement(config)]});
+		TestBed.configureTestingModule({providers: [obProvideAccessibilityStatement(config, {initialLength: 0})]});
 	});
 
 	test(obProvideAccessibilityStatement.name, () => {

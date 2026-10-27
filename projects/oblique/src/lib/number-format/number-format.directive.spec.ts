@@ -5,7 +5,7 @@ import {FormsModule} from '@angular/forms';
 import {ObNumberFormatDirective} from './number-format.directive';
 
 @Component({
-	standalone: false,
+	imports: [ObNumberFormatDirective, FormsModule],
 	template: '<input name="number" [(ngModel)]="number" obNumberFormat/>',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -14,7 +14,7 @@ class TestDefaultComponent {
 }
 
 @Component({
-	standalone: false,
+	imports: [ObNumberFormatDirective, FormsModule],
 	template: '<input name="number" [(ngModel)]="number" obNumberFormat [persistent]="false" [decimals]="3"/>',
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -42,8 +42,7 @@ describe(ObNumberFormatDirective.name, () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [ObNumberFormatDirective, FormsModule],
-			declarations: [TestDefaultComponent, TestNonPersistentComponent],
+			imports: [ObNumberFormatDirective, FormsModule, TestDefaultComponent, TestNonPersistentComponent],
 		});
 	});
 
