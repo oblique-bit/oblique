@@ -1,0 +1,120 @@
+{
+	"ob": {
+		"h": {
+			"button": {
+				"color": {
+					"primary": {
+						"bg": {
+							"rest": {
+								"surface": {
+									"inversity_normal": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.primary.bg.rest.inversity_normal}",
+										"$description": "Primary button background, rest state, follows the elevation, inversity normal."
+									},
+									"inversity_flipped": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.primary.bg.rest.inversity_flipped}",
+										"$description": "Primary button background, rest state, follows the elevation, inversity flipped."
+									}
+								}
+							},
+							"hover": {
+								"surface": {
+									"inversity_normal": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.primary.bg.hover.inversity_normal}",
+										"$description": "Primary button background, hover state, follows the elevation, inversity normal."
+									},
+									"inversity_flipped": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.primary.bg.hover.inversity_flipped}",
+										"$description": "Primary button background, hover state, follows the elevation, inversity flipped."
+									}
+								}
+							},
+							"active": {
+								"surface": {
+									"inversity_normal": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.primary.bg.active.inversity_normal}",
+										"$description": "Primary button background, active state, follows the elevation, inversity normal."
+									},
+									"inversity_flipped": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.primary.bg.active.inversity_flipped}",
+										"$description": "Primary button background, active state, follows the elevation, inversity flipped."
+									}
+								}
+							}
+						}
+					},
+					"secondary": {
+						"bg": {
+							"hover": {
+								"surface": {
+									"inversity_normal": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.secondary.bg.hover.inversity_normal}",
+										"$description": "Secondary button background, hover state, follows the elevation, inversity normal."
+									},
+									"inversity_flipped": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.secondary.bg.hover.inversity_flipped}",
+										"$description": "Secondary button background, hover state, follows the elevation, inversity flipped."
+									}
+								}
+							},
+							"active": {
+								"surface": {
+									"inversity_normal": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.secondary.bg.active.inversity_normal}",
+										"$description": "Secondary button background, active state, follows the elevation, inversity normal."
+									},
+									"inversity_flipped": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.secondary.bg.active.inversity_flipped}",
+										"$description": "Secondary button background, active state, follows the elevation, inversity flipped."
+									}
+								}
+							}
+						}
+					},
+					"tertiary": {
+						"bg": {
+							"hover": {
+								"surface": {
+									"inversity_normal": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.tertiary.bg.hover.inversity_normal}",
+										"$description": "Tertiary button background, hover state, follows the elevation, inversity normal."
+									},
+									"inversity_flipped": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.tertiary.bg.hover.inversity_flipped}",
+										"$description": "Tertiary button background, hover state, follows the elevation, inversity flipped."
+									}
+								}
+							},
+							"active": {
+								"surface": {
+									"inversity_normal": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.tertiary.bg.active.inversity_normal}",
+										"$description": "Tertiary button background, active state, follows the elevation, inversity normal."
+									},
+									"inversity_flipped": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.tertiary.bg.active.inversity_flipped}",
+										"$description": "Tertiary button background, active state, follows the elevation, inversity flipped."
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,106 @@
+{
+  "ob": {
+    "s": {
+      "color": {
+        "neutral": {
+          "bg": {
+            "surface": {
+              "inversity_normal": {
+                "$type": "color",
+                "$value": "{ob.s.color.neutral.bg.contrast_high.inversity_normal}",
+                "$description": "Role: Surface. Neutral background of the level_1 elevation, inversity normal. Page areas and containers."
+              },
+              "inversity_flipped": {
+                "$type": "color",
+                "$value": "{ob.s.color.neutral.bg.contrast_high.inversity_flipped}",
+                "$description": "Role: Surface. Neutral background of the level_1 elevation, inversity flipped. Page areas and containers."
+              }
+            }
+          }
+        },
+        "status": {
+          "info": {
+            "bg": {
+              "surface": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.status.info.bg.contrast_high.inversity_normal}",
+                  "$description": "Role: Surface. Info status background of the level_1 elevation, inversity normal. Page areas and containers."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.status.info.bg.contrast_high.inversity_flipped}",
+                  "$description": "Role: Surface. Info status background of the level_1 elevation, inversity flipped. Page areas and containers."
+                }
+              }
+            }
+          },
+          "attention": {
+            "bg": {
+              "surface": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.status.attention.bg.contrast_high.inversity_normal}",
+                  "$description": "Role: Surface. Attention status background of the level_1 elevation, inversity normal. Page areas and containers."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.status.attention.bg.contrast_high.inversity_flipped}",
+                  "$description": "Role: Surface. Attention status background of the level_1 elevation, inversity flipped. Page areas and containers."
+                }
+              }
+            }
+          },
+          "critical": {
+            "bg": {
+              "surface": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.status.critical.bg.contrast_high.inversity_normal}",
+                  "$description": "Role: Surface. Critical status background of the level_1 elevation, inversity normal. Page areas and containers."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.status.critical.bg.contrast_high.inversity_flipped}",
+                  "$description": "Role: Surface. Critical status background of the level_1 elevation, inversity flipped. Page areas and containers."
+                }
+              }
+            }
+          },
+          "fatal": {
+            "bg": {
+              "surface": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.status.fatal.bg.contrast_high.inversity_normal}",
+                  "$description": "Role: Surface. Fatal status background of the level_1 elevation, inversity normal. Page areas and containers."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.status.fatal.bg.contrast_high.inversity_flipped}",
+                  "$description": "Role: Surface. Fatal status background of the level_1 elevation, inversity flipped. Page areas and containers."
+                }
+              }
+            }
+          },
+          "resolved": {
+            "bg": {
+              "surface": {
+                "inversity_normal": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.status.resolved.bg.contrast_high.inversity_normal}",
+                  "$description": "Role: Surface. Resolved status background of the level_1 elevation, inversity normal. Page areas and containers."
+                },
+                "inversity_flipped": {
+                  "$type": "color",
+                  "$value": "{ob.s.color.status.resolved.bg.contrast_high.inversity_flipped}",
+                  "$description": "Role: Surface. Resolved status background of the level_1 elevation, inversity flipped. Page areas and containers."
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

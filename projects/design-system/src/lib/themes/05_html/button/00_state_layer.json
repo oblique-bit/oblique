@@ -48,6 +48,16 @@
 							"$type": "number",
 							"$value": "{ob.p.modifier.650}"
 						}
+					},
+					"intense": {
+						"hover": {
+							"$type": "number",
+							"$value": "{ob.p.modifier.500}"
+						},
+						"active": {
+							"$type": "number",
+							"$value": "{ob.p.modifier.750}"
+						}
 					}
 				}
 			}

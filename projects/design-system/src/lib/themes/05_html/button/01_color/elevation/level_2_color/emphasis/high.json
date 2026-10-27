@@ -1,0 +1,106 @@
+{
+	"ob": {
+		"h": {
+			"button": {
+				"color": {
+					"primary": {
+						"bg": {
+							"rest": {
+								"level_2": {
+									"inversity_normal": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.primary.bg.rest.level_2.inversity_normal}"
+									},
+									"inversity_flipped": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.primary.bg.rest.level_2.inversity_flipped}"
+									}
+								}
+							},
+							"hover": {
+								"level_2": {
+									"inversity_normal": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.primary.bg.hover.level_2.inversity_normal}"
+									},
+									"inversity_flipped": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.primary.bg.hover.level_2.inversity_flipped}"
+									}
+								}
+							},
+							"active": {
+								"level_2": {
+									"inversity_normal": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.primary.bg.active.level_2.inversity_normal}"
+									},
+									"inversity_flipped": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.primary.bg.active.level_2.inversity_flipped}"
+									}
+								}
+							}
+						}
+					},
+					"secondary": {
+						"bg": {
+							"hover": {
+								"level_2": {
+									"inversity_normal": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover.level_2.inversity_normal}"
+									},
+									"inversity_flipped": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover.level_2.inversity_flipped}"
+									}
+								}
+							},
+							"active": {
+								"level_2": {
+									"inversity_normal": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active.level_2.inversity_normal}"
+									},
+									"inversity_flipped": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active.level_2.inversity_flipped}"
+									}
+								}
+							}
+						}
+					},
+					"tertiary": {
+						"bg": {
+							"hover": {
+								"level_2": {
+									"inversity_normal": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover.level_2.inversity_normal}"
+									},
+									"inversity_flipped": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover.level_2.inversity_flipped}"
+									}
+								}
+							},
+							"active": {
+								"level_2": {
+									"inversity_normal": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active.level_2.inversity_normal}"
+									},
+									"inversity_flipped": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active.level_2.inversity_flipped}"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
