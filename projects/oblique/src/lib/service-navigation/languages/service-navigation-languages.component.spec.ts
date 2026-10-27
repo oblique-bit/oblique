@@ -59,6 +59,15 @@ describe('ObServiceNavigationLanguagesComponent', () => {
 	});
 
 	describe('languageChange', () => {
+		beforeEach(() => {
+			fixture.componentRef.setInput('languages', [
+				{code: 'de', label: 'Deutsch'},
+				{code: 'fr', label: 'Français'},
+				{code: 'it', label: 'Italiano'},
+				{code: 'en', label: 'English'},
+			]);
+			fixture.componentRef.changeDetectorRef.detectChanges();
+		});
 		test('that it emits', () => {
 			const hostFixture = TestBed.createComponent(TestHostComponent);
 			const hostComponent = hostFixture.componentInstance;
@@ -66,6 +75,14 @@ describe('ObServiceNavigationLanguagesComponent', () => {
 				.componentInstance as ObServiceNavigationLanguagesComponent;
 			languagesComponent.changeLanguage('de');
 			expect(hostComponent.languageChanges).toEqual(['de']);
+		});
+		test('aria label is correct', () => {
+			const languagesComponent = fixture.componentInstance;
+			languagesComponent.changeLanguage('de');
+			fixture.detectChanges();
+
+			const matSelect = fixture.debugElement.query(By.css('mat-select'));
+			expect(matSelect.nativeElement.getAttribute('aria-label')).toEqual('Deutsch');
 		});
 	});
 
