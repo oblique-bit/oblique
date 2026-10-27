@@ -4,18 +4,8 @@ import {By} from '@angular/platform-browser';
 import {ObSelectableDirective} from './selectable.directive';
 import {ObSelectableGroupDirective} from './selectable-group.directive';
 
-@Component({
-	standalone: false,
-	template: ` <div obSelectableGroup>
-		<div obSelectable value="test"></div>
-	</div>`,
-	changeDetection: ChangeDetectionStrategy.Eager,
-})
-class TestComponent {}
-
 @Directive({
 	selector: '[obSelectableGroup]',
-	standalone: false,
 	exportAs: 'obSelectableGroup',
 })
 export class ObMockSelectableGroupDirective {
@@ -29,7 +19,6 @@ export class ObMockSelectableGroupDirective {
 
 @Directive({
 	selector: '[obSelectableGroup]',
-	standalone: false,
 	exportAs: 'obSelectableGroup',
 })
 export class ObMockDisabledSelectableGroupDirective {
@@ -42,6 +31,15 @@ export class ObMockDisabledSelectableGroupDirective {
 	isDisabled = true;
 }
 
+@Component({
+	imports: [ObSelectableDirective, ObMockSelectableGroupDirective],
+	template: ` <div obSelectableGroup>
+		<div obSelectable value="test"></div>
+	</div>`,
+	changeDetection: ChangeDetectionStrategy.Eager,
+})
+class TestComponent {}
+
 describe(ObSelectableDirective.name, () => {
 	let directive: ObSelectableDirective<string>;
 	let group: ObSelectableGroupDirective<string>;
@@ -52,8 +50,7 @@ describe(ObSelectableDirective.name, () => {
 	describe('with obSelectableGroup', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				imports: [ObSelectableDirective],
-				declarations: [ObMockSelectableGroupDirective, TestComponent],
+				imports: [ObSelectableDirective, ObMockSelectableGroupDirective, TestComponent],
 				providers: [{provide: ObSelectableGroupDirective, useClass: ObMockSelectableGroupDirective}],
 			}).compileComponents();
 		});
@@ -172,8 +169,7 @@ describe(ObSelectableDirective.name, () => {
 	describe('onclick', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				imports: [ObSelectableDirective],
-				declarations: [ObMockSelectableGroupDirective, TestComponent],
+				imports: [ObSelectableDirective, ObMockSelectableGroupDirective, TestComponent],
 				providers: [{provide: ObSelectableGroupDirective, useClass: ObMockSelectableGroupDirective}],
 			}).compileComponents();
 
@@ -204,9 +200,12 @@ describe(ObSelectableDirective.name, () => {
 
 	describe('the parent ObSelectableGroupDirective is disabled', () => {
 		beforeEach(async () => {
+			TestBed.overrideComponent(TestComponent, {
+				remove: {imports: [ObMockSelectableGroupDirective]},
+				add: {imports: [ObMockDisabledSelectableGroupDirective]},
+			});
 			await TestBed.configureTestingModule({
-				imports: [ObSelectableDirective],
-				declarations: [ObMockDisabledSelectableGroupDirective, TestComponent],
+				imports: [ObSelectableDirective, ObMockDisabledSelectableGroupDirective, TestComponent],
 				providers: [{provide: ObSelectableGroupDirective, useClass: ObMockDisabledSelectableGroupDirective}],
 			}).compileComponents();
 		});
@@ -238,8 +237,7 @@ describe(ObSelectableDirective.name, () => {
 	describe('focus', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				imports: [ObSelectableDirective],
-				declarations: [ObMockSelectableGroupDirective, TestComponent],
+				imports: [ObSelectableDirective, ObMockSelectableGroupDirective, TestComponent],
 				providers: [{provide: ObSelectableGroupDirective, useClass: ObMockSelectableGroupDirective}],
 			}).compileComponents();
 
@@ -269,8 +267,7 @@ describe(ObSelectableDirective.name, () => {
 	describe('onFocus', () => {
 		beforeEach(async () => {
 			await TestBed.configureTestingModule({
-				imports: [ObSelectableDirective],
-				declarations: [ObMockSelectableGroupDirective, TestComponent],
+				imports: [ObSelectableDirective, ObMockSelectableGroupDirective, TestComponent],
 				providers: [{provide: ObSelectableGroupDirective, useClass: ObMockSelectableGroupDirective}],
 			}).compileComponents();
 

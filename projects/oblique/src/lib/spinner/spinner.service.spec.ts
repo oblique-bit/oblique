@@ -1,6 +1,5 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {first} from 'rxjs/operators';
-import {ObISpinnerEvent} from './spinner.model';
+import {firstValueFrom} from 'rxjs';
 import {ObSpinnerService} from './spinner.service';
 import {ObSpinnerComponent} from './spinner.component';
 import {ObSpinnerRegistry} from './spinner.registry';
@@ -30,15 +29,13 @@ describe(ObSpinnerService.name, () => {
 	});
 
 	afterEach(() => {
-		jest.resetAllMocks();
+		jest.clearAllMocks();
 	});
 
-	it('should emit a SpinnerEvent if activated', done => {
-		service.events$.pipe(first()).subscribe((event: ObISpinnerEvent) => {
-			expect(event).toEqual({active: true, channel: ObSpinnerService.CHANNEL});
-			done();
-		});
+	it('should emit a SpinnerEvent if activated', async () => {
+		const event = firstValueFrom(service.events$);
 		service.activate();
+		expect(await event).toEqual({active: true, channel: ObSpinnerService.CHANNEL});
 	});
 
 	it('should log a warning if activated with a non-registered channel', () => {
@@ -75,30 +72,24 @@ describe(ObSpinnerService.name, () => {
 		expect(obConsoleService.warn).not.toHaveBeenCalled();
 	});
 
-	it('should emit a SpinnerEvent on a custom channel if activated', done => {
+	it('should emit a SpinnerEvent on a custom channel if activated', async () => {
 		const channel = 'CUSTOM';
-		service.events$.pipe(first()).subscribe((event: ObISpinnerEvent) => {
-			expect(event).toEqual({active: true, channel});
-			done();
-		});
+		const event = firstValueFrom(service.events$);
 		service.activate(channel);
+		expect(await event).toEqual({active: true, channel});
 	});
 
-	it('should emit a SpinnerEvent if deactivated', done => {
-		service.events$.pipe(first()).subscribe((event: ObISpinnerEvent) => {
-			expect(event).toEqual({active: false, channel: ObSpinnerService.CHANNEL});
-			done();
-		});
+	it('should emit a SpinnerEvent if deactivated', async () => {
+		const event = firstValueFrom(service.events$);
 		service.deactivate();
+		expect(await event).toEqual({active: false, channel: ObSpinnerService.CHANNEL});
 	});
 
-	it('should emit a SpinnerEvent on a custom channel if deactivated', done => {
+	it('should emit a SpinnerEvent on a custom channel if deactivated', async () => {
 		const channel = 'CUSTOM';
-		service.events$.pipe(first()).subscribe((event: ObISpinnerEvent) => {
-			expect(event).toEqual({active: false, channel});
-			done();
-		});
+		const event = firstValueFrom(service.events$);
 		service.deactivate(channel);
+		expect(await event).toEqual({active: false, channel});
 	});
 
 	it('should not emit if there more activations than deactivation', () => {
@@ -112,28 +103,26 @@ describe(ObSpinnerService.name, () => {
 		expect(emitted).toBe(false);
 	});
 
-	it('should emit deactivate event when activate and deactivate are called equally', done => {
+	it('should emit deactivate event when activate and deactivate are called equally', async () => {
 		service.activate();
 		service.activate();
 
-		service.events$.pipe().subscribe((event: ObISpinnerEvent) => {
-			expect(event).toEqual({active: false, channel: ObSpinnerService.CHANNEL});
-			done();
-		});
+		const event = firstValueFrom(service.events$);
 
 		service.deactivate();
 		service.deactivate(); // Only now, deactivate event is emitted.
+
+		expect(await event).toEqual({active: false, channel: ObSpinnerService.CHANNEL});
 	});
 
-	it('should deactivate immediately, when forceDeactivate is called.', done => {
+	it('should deactivate immediately, when forceDeactivate is called.', async () => {
 		service.activate();
 		service.activate();
 
-		service.events$.pipe().subscribe((event: ObISpinnerEvent) => {
-			expect(event).toEqual({active: false, channel: ObSpinnerService.CHANNEL});
-			done();
-		});
+		const event = firstValueFrom(service.events$);
 
 		service.forceDeactivate();
+
+		expect(await event).toEqual({active: false, channel: ObSpinnerService.CHANNEL});
 	});
 });

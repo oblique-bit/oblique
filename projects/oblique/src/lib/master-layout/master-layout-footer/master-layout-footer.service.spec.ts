@@ -1,9 +1,8 @@
 import {TestBed} from '@angular/core/testing';
-import {Observable} from 'rxjs';
+import {Observable, firstValueFrom} from 'rxjs';
 import {ObMasterLayoutFooterService} from './master-layout-footer.service';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
 import {ObMasterLayoutConfig} from '../master-layout.config';
-import {first} from 'rxjs/operators';
 
 describe('ObMasterLayoutFooterService', () => {
 	let service: ObMasterLayoutFooterService;
@@ -46,12 +45,10 @@ describe('ObMasterLayoutFooterService', () => {
 
 			describe('when given a value', () => {
 				let event: ObIMasterLayoutEvent;
-				beforeEach(done => {
-					service.configEvents$.pipe(first()).subscribe(evt => {
-						event = evt;
-						done();
-					});
+				beforeEach(async () => {
+					const eventPromise = firstValueFrom(service.configEvents$);
 					service[property] = true;
+					event = await eventPromise;
 				});
 
 				it(`should emit a ${enumValue} event`, () => {

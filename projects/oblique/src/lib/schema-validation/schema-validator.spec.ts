@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, OnInit, inject} from '@angular/core'
 import {TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {AbstractControl, FormBuilder, FormGroup, FormsModule, NgForm, ReactiveFormsModule} from '@angular/forms';
-import {WINDOW} from '@oblique/oblique';
+import {WINDOW} from '../window/window.provider';
 import {ObSchemaValidationService} from './schema-validation.service';
 import {ObSchemaValidationDirective} from './schema-validation.directive';
 import {ObSchemaValidateDirective} from './schema-validator';
@@ -29,7 +29,7 @@ describe(ObSchemaValidateDirective.name, () => {
 	};
 
 	@Component({
-		standalone: false,
+		imports: [ObSchemaValidationDirective, ObSchemaValidateDirective, FormsModule],
 		template: `
 			<form [obSchemaValidation]="schema">
 				<input type="text" name="string" ngModel obSchemaValidate />
@@ -45,7 +45,7 @@ describe(ObSchemaValidateDirective.name, () => {
 	}
 
 	@Component({
-		standalone: false,
+		imports: [ReactiveFormsModule],
 		template: `
 			<form [formGroup]="sampleForm">
 				<input type="text" formControlName="string" />
@@ -102,8 +102,7 @@ describe(ObSchemaValidateDirective.name, () => {
 
 			beforeEach(async () => {
 				await TestBed.configureTestingModule({
-					declarations: [config.testComponent],
-					imports: [ObSchemaValidationDirective, ObSchemaValidateDirective, config.formModule],
+					imports: [ObSchemaValidationDirective, ObSchemaValidateDirective, config.formModule, config.testComponent],
 					providers: [{provide: WINDOW, useValue: window}],
 				}).compileComponents();
 			});

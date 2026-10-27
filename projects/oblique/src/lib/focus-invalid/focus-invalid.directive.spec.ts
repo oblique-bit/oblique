@@ -8,10 +8,22 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {provideObliqueTestingConfiguration} from '../utilities';
+import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from '@angular/material/datepicker';
 import {ObFocusInvalidDirective} from './focus-invalid.directive';
 
 @Component({
-	standalone: false,
+	imports: [
+		ObFocusInvalidDirective,
+		ReactiveFormsModule,
+		MatFormFieldModule,
+		MatInputModule,
+		MatSelectModule,
+		MatCheckboxModule,
+		MatRadioModule,
+		MatDatepickerToggle,
+		MatDatepicker,
+		MatDatepickerInput,
+	],
 	template: `
 		<form [formGroup]="focusInvalidFormGroup" obFocusInvalid>
 			<mat-form-field>
@@ -85,7 +97,6 @@ describe(ObFocusInvalidDirective.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [UntypedReactiveFormTestComponent],
 			imports: [
 				ObFocusInvalidDirective,
 				ReactiveFormsModule,
@@ -95,6 +106,7 @@ describe(ObFocusInvalidDirective.name, () => {
 				MatCheckboxModule,
 				MatDatepickerModule,
 				MatRadioModule,
+				UntypedReactiveFormTestComponent,
 			],
 			providers: [provideObliqueTestingConfiguration()],
 		}).compileComponents();

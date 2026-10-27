@@ -1,5 +1,5 @@
 import {TestBed} from '@angular/core/testing';
-import {Observable} from 'rxjs';
+import {Observable, firstValueFrom} from 'rxjs';
 import {first} from 'rxjs/operators';
 import {ObMasterLayoutComponentService} from './master-layout.component.service';
 import {ObEMasterLayoutEventValues, ObIMasterLayoutEvent} from '../master-layout.model';
@@ -54,12 +54,10 @@ describe('ObMasterLayoutComponentService', () => {
 
 			describe('when given a value', () => {
 				let event: ObIMasterLayoutEvent;
-				beforeEach(done => {
-					service.configEvents$.pipe(first()).subscribe(evt => {
-						event = evt;
-						done();
-					});
+				beforeEach(async () => {
+					const configEvent = firstValueFrom(service.configEvents$.pipe(first()));
 					service[property] = true;
+					event = await configEvent;
 				});
 
 				it(`should emit a ${enumValue} event`, () => {

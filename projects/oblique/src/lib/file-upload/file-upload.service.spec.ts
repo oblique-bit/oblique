@@ -202,12 +202,10 @@ describe('ObFilesUploadService', () => {
 	});
 
 	describe('notifyUploadComplete', () => {
-		it('should emit uploadComplete', done => {
-			service.uploadComplete$.subscribe(() => {
-				expect(true).toBe(true);
-				done();
-			});
+		it('should emit uploadComplete', async () => {
+			const hasEmitted = firstValueFrom(service.uploadComplete$).then(() => true);
 			service.notifyUploadComplete();
+			expect(await hasEmitted).toBe(true);
 		});
 	});
 

@@ -30,7 +30,7 @@ describe(ObOutlineDirective.name, () => {
 	});
 
 	afterEach(() => {
-		jest.restoreAllMocks();
+		jest.clearAllMocks();
 	});
 
 	test('that creation works', () => {

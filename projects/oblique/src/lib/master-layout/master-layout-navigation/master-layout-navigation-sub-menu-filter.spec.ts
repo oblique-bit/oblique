@@ -1,15 +1,11 @@
-import {Subject, fromEvent, of} from 'rxjs';
+import {Subject, firstValueFrom, fromEvent, of} from 'rxjs';
 import {obMasterLayoutNavigationSubMenuFilter} from './master-layout-navigation-sub-menu-filter';
 
 describe(obMasterLayoutNavigationSubMenuFilter.name, () => {
-	test('that a MouseEvent is emitted on document click', done => {
-		fromEvent(document, 'click')
-			.pipe(obMasterLayoutNavigationSubMenuFilter())
-			.subscribe(event => {
-				expect(event instanceof MouseEvent).toBe(true);
-				done();
-			});
+	test('that a MouseEvent is emitted on document click', async () => {
+		const event = firstValueFrom(fromEvent(document, 'click').pipe(obMasterLayoutNavigationSubMenuFilter()));
 		document.querySelector('body').click();
+		expect((await event) instanceof MouseEvent).toBe(true);
 	});
 
 	test('that an event without a DOM target is emitted', () => {

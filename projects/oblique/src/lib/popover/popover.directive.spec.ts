@@ -11,7 +11,7 @@ import {
 import {ObEToggleType} from './popover.model';
 
 @Component({
-	standalone: false,
+	imports: [ObPopoverDirective],
 	template: `
 		<button
 			type="button"
@@ -47,8 +47,7 @@ describe(ObPopoverDirective.name, () => {
 		// not added in a beforeAll() because not all issues could be resolved
 		jest.useFakeTimers();
 		TestBed.configureTestingModule({
-			imports: [ObPopoverDirective],
-			declarations: [TestPopoverComponent],
+			imports: [ObPopoverDirective, TestPopoverComponent],
 			providers: [{provide: WINDOW, useValue: window}],
 			schemas: [NO_ERRORS_SCHEMA],
 		});

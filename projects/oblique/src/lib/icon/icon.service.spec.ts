@@ -2,6 +2,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {TestBed} from '@angular/core/testing';
 import {MatIconTestingModule} from '@angular/material/icon/testing';
 import {MatIconRegistry} from '@angular/material/icon';
+import {firstValueFrom} from 'rxjs';
 import {ObIconService} from './icon.service';
 import {provideObliqueTestingConfiguration} from '../utilities';
 
@@ -51,39 +52,31 @@ describe('IconService', () => {
 		});
 
 		describe('registerIcons', () => {
-			it('should register icons', done => {
+			it('should register icons', async () => {
 				iconService.registerIcons({name: 'test_1', svg: icons.test1.literal});
-				registry.getNamedSvgIcon('test_1').subscribe(svg => {
-					expect(serializer.serializeToString(svg)).toContain(icons.test1.core);
-					done();
-				});
+				const svg = await firstValueFrom(registry.getNamedSvgIcon('test_1'));
+				expect(serializer.serializeToString(svg)).toContain(icons.test1.core);
 			});
-			it('should overwrite icons with same name', done => {
+			it('should overwrite icons with same name', async () => {
 				iconService.registerIcons(
 					{name: 'test_1', svg: icons.test1.literal},
 					{name: 'test_1', svg: icons.test2.literal}
 				);
-				registry.getNamedSvgIcon('test_1').subscribe(svg => {
-					expect(serializer.serializeToString(svg)).toContain(icons.test2.core);
-					done();
-				});
+				const svg = await firstValueFrom(registry.getNamedSvgIcon('test_1'));
+				expect(serializer.serializeToString(svg)).toContain(icons.test2.core);
 			});
 		});
 
 		describe('registerIconSets', () => {
-			it('should register icon sets', done => {
+			it('should register icon sets', async () => {
 				iconService.registerIconSets(iconSet1);
-				registry.getNamedSvgIcon('test_1').subscribe(svg => {
-					expect(serializer.serializeToString(svg)).toContain(icons.test1.core);
-					done();
-				});
+				const svg = await firstValueFrom(registry.getNamedSvgIcon('test_1'));
+				expect(serializer.serializeToString(svg)).toContain(icons.test1.core);
 			});
-			it('should overwrite icons with same name', done => {
+			it('should overwrite icons with same name', async () => {
 				iconService.registerIconSets(iconSet1, iconSet2);
-				registry.getNamedSvgIcon('test_1').subscribe(svg => {
-					expect(serializer.serializeToString(svg)).toContain(icons.test2.core);
-					done();
-				});
+				const svg = await firstValueFrom(registry.getNamedSvgIcon('test_1'));
+				expect(serializer.serializeToString(svg)).toContain(icons.test2.core);
 			});
 		});
 
@@ -229,11 +222,9 @@ describe('IconService', () => {
 			expect(iconService).toBeTruthy();
 		});
 
-		it('should register additional icons', done => {
-			registry.getNamedSvgIcon('test_1').subscribe(svg => {
-				expect(serializer.serializeToString(svg)).toContain(icons.test1.core);
-				done();
-			});
+		it('should register additional icons', async () => {
+			const svg = await firstValueFrom(registry.getNamedSvgIcon('test_1'));
+			expect(serializer.serializeToString(svg)).toContain(icons.test1.core);
 		});
 	});
 });

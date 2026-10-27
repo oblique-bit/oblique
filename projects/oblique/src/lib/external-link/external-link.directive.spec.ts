@@ -9,7 +9,7 @@ import {ObExternalLinkDirective} from './external-link.directive';
 import {EXTERNAL_LINK, ObEExternalLinkIcon} from './external-link.model';
 
 @Component({
-	standalone: false,
+	imports: [ObExternalLinkDirective],
 	template: `<a href="http://www.google.ch" [icon]="icon()">External Link</a>`,
 	changeDetection: ChangeDetectionStrategy.Eager,
 })
@@ -41,8 +41,7 @@ describe(ObExternalLinkDirective.name, () => {
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [ObExternalLinkDirective],
-			declarations: [TestComponent],
+			imports: [ObExternalLinkDirective, TestComponent],
 			providers: [
 				{provide: WINDOW, useValue: window},
 				{
@@ -365,8 +364,8 @@ describe(ObExternalLinkDirective.name, () => {
 		});
 
 		test.each([
-			{case: 'internal link', href: 'http://localhost:3001', isExternal: true},
-			{case: 'internal link', href: 'http://localhost', isExternal: false},
+			{case: 'internal link', href: `${window.location.host}:3001`, isExternal: true},
+			{case: 'internal link', href: window.location.origin, isExternal: false},
 			{case: 'external link', href: 'http://www.google.ch/', isExternal: true},
 			{case: 'internal link with href internal', href: 'internal', isExternal: false},
 			{case: 'internal link with href /', href: '/', isExternal: false},

@@ -1,6 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {TranslateService} from '@ngx-translate/core';
-import {Observable, Subject} from 'rxjs';
+import {Observable, Subject, firstValueFrom} from 'rxjs';
 import {ObMasterLayoutHeaderService} from './master-layout-header/master-layout-header.service';
 import {ObMasterLayoutFooterService} from './master-layout-footer/master-layout-footer.service';
 import {ObMasterLayoutComponentService} from './master-layout/master-layout.component.service';
@@ -46,12 +46,9 @@ describe('ObMasterLayoutService', () => {
 			expect(masterLayoutService.homePageRouteChange$ instanceof Observable).toBe(true);
 		});
 
-		it('should emit the new homePageRoute when homePageRoute is set', done => {
+		it('should emit the new homePageRoute when homePageRoute is set', async () => {
 			masterLayoutService.homePageRoute = 'test';
-			masterLayoutService.homePageRouteChange$.subscribe(home => {
-				expect(home).toBe('test');
-				done();
-			});
+			await expect(firstValueFrom(masterLayoutService.homePageRouteChange$)).resolves.toBe('test');
 		});
 	});
 

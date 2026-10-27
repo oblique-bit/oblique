@@ -9,7 +9,7 @@ describe(obPauseWhenPageHidden.name, () => {
 	});
 
 	afterEach(() => {
-		jest.resetAllMocks();
+		jest.clearAllMocks();
 	});
 
 	describe.each([undefined, document])('with "%s" as parameter', doc => {
