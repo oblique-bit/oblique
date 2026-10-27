@@ -242,6 +242,30 @@ BREAKING CHANGE:
 
 If there is neither a ticket nor a breaking change, the footer may be omitted.
 
+The footer must start after a blank line. Nothing else may appear in the footer.
+
+The footer is the last block of the commit message. A line that contains only ticket numbers is an issues declaration,
+and only one is allowed. The footer is either the issues declaration alone, or the issues declaration immediately
+followed by `BREAKING CHANGE:`. A breaking changes block without a ticket number must be preceded by a blank line.
+Ticket numbers belong in the footer; a body line may mention a ticket, but must not consist only of ticket numbers.
+
+A blank line between the issues declaration and `BREAKING CHANGE:` is an error:
+
+```
+OUI-715
+
+BREAKING CHANGE:
+* function `funcA` has been removed in favor of `funcB`
+```
+
+The correct form has no blank line between the two:
+
+```
+OUI-715
+BREAKING CHANGE:
+* function `funcA` has been removed in favor of `funcB`
+```
+
 ##### <a name="ticket_number"></a> Ticket number
 
 If a ticket is referenced:
@@ -262,8 +286,13 @@ OUI-1234, GitHub-1234, AnyOtherTicket-1234
 
 If there are any breaking changes, include them immediately after the ticket number:
 
-- the section must starts on a new line containing exactly "BREAKING CHANGE:"
+- the section must start on a new line containing exactly "BREAKING CHANGE:"
+- only one breaking changes block is allowed
+- the line before "BREAKING CHANGE:" must be the ticket number line, or a blank line when there is no ticket number. A
+  blank line between the ticket number and "BREAKING CHANGE:" is an error
 - list multiple breaking changes with bullet points
+- the first line after "BREAKING CHANGE:" must start with a bullet point "*"; continuation lines may wrap
+- no blank lines and no lines starting with a dash "-" are allowed after "BREAKING CHANGE:"
 - each breaking change must include:
   - what isn't available anymore
   - what replaces it. If there's no replacement, then state "without replacement"
