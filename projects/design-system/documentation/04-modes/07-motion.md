@@ -127,9 +127,9 @@ table.
 ## **Relation to the other mode collections**
 
 Motion changes timing and nothing else, so it combines with any state of the
-other six collections without conflict: a disabled-motion interface can be
+other seven collections without conflict: a disabled-motion interface can be
 dark, high-emphasis, compact, `lg`, prose and `2xl` at the same time. See
-[Modes Interplay](08-interplay.md) for how the modes combine.
+[Modes Interplay](09-interplay.md) for how the modes combine.
 
 ---
 

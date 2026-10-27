@@ -94,7 +94,7 @@ The primitive names describe raw magnitude (`fast`, `slow`); the semantic names 
 
 ## The `motion` mode
 
-`motion` is one of the seven mode collections — alongside `lightness`, `emphasis`, `ui_scale`, `density`, `typography_context` and `viewport`. It has two modes: **`enabled`** and **`disabled`**.
+`motion` is one of the eight mode collections — alongside `lightness`, `emphasis`, `ui_scale`, `density`, `typography_context`, `viewport` and `elevation`. It has two modes: **`enabled`** and **`disabled`**.
 
 The collection is registered at the global tier in [`01_global/mode_collection/motion.json`](../../src/lib/themes/01_global/mode_collection/motion.json):
 

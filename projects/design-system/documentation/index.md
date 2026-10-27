@@ -91,7 +91,8 @@ Sorted along two axes. **Tiers** define where a token sits in the reference chai
 - [Density](04-modes/05-density.md)
 - [Viewport](04-modes/06-viewport.md)
 - [Motion](04-modes/07-motion.md)
-- [Interplay between modes](04-modes/08-interplay.md)
+- [Elevation](04-modes/08-elevation.md)
+- [Interplay between modes](04-modes/09-interplay.md)
 
 ## Components
 

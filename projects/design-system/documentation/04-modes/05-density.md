@@ -69,7 +69,7 @@ Apply density by adding a class to a container: `.ob-density-compact` or `.ob-de
 - Individual component dimensions or internal padding — that's **UI Scale** mode (`sm`/`md`/`lg`)
 - Typography density — that's **Typography-Context** mode (`interface`/`prose`)
 
-Density works independently alongside these modes; a compact container can sit inside an `lg` UI Scale context without conflict. See [Modes Interplay](08-interplay.md) for how the modes combine, device-responsive selection, and conflict resolution.
+Density works independently alongside these modes; a compact container can sit inside an `lg` UI Scale context without conflict. See [Modes Interplay](09-interplay.md) for how the modes combine, device-responsive selection, and conflict resolution.
 
 ## **Usage Guidelines**
 

@@ -30,7 +30,11 @@ Different modes control different aspects of component behavior:
 
 **Motion Mode** controls animation preference:
 - **Scope**: Every animated or transitioning element uniformly — no component-type scoping, unlike UI Scale or Density
-- **Behavior**: Fully orthogonal; combines with any state of every other mode (Lightness, Emphasis, UI Scale, Density, Typography-Context, Viewport) with no conflicts. Disabling it shortens transitions to zero rather than removing them, so it never changes which mode a component reacts to elsewhere — see [07-motion.md](07-motion.md).
+- **Behavior**: Fully orthogonal; combines with any state of every other mode (Lightness, Emphasis, UI Scale, Density, Typography-Context, Viewport, Elevation) with no conflicts. Disabling it shortens transitions to zero rather than removing them, so it never changes which mode a component reacts to elsewhere — see [07-motion.md](07-motion.md).
+
+**Elevation Mode** controls the surface level:
+- **Scope**: The background of a surface and the Button backgrounds that depend on it
+- **Interplay**: Independent of every other mode. For the Button backgrounds that change with the level, the result depends on lightness, emphasis and elevation together; see [08-elevation.md](08-elevation.md)
 
 ### **Key Patterns**
 1. **Individual interactive controls** → UI Scale mode only

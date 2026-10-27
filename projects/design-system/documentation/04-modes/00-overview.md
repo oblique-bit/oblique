@@ -13,6 +13,7 @@ Navigation hub for all token mode documentation.
 | **Density** | Interface density control | Compact/Standard/Spacious | [05-density.md](05-density.md) |
 | **Viewport** | Responsive width ranges | `xs` / `sm` / `md` / `lg` / `xl` / `2xl` | [06-viewport.md](06-viewport.md) |
 | **Motion** | Animation preference | `enabled.json` / `disabled.json` | [07-motion.md](07-motion.md) |
+| **Elevation** | Surface level | `level_0.json` / `level_1.json` / `level_2.json` | [08-elevation.md](08-elevation.md) |
 
 
 ## **How Modes Work**
