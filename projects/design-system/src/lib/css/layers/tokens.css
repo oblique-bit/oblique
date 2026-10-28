@@ -317,6 +317,8 @@
 	--ob-s-border_width-xl: 8px;
 	--ob-s-border_width-xs: 1px;
 	--ob-s-color-_docs-token_family_info: Fully resolved semantic color tokens — neutral, interaction, status, free, and brand. No mode resolution required. Light/Dark modes are pre-integrated — no manual mode switching needed. Use: Assign in component and HTML token files. Avoid: Referencing S1 tokens directly in components — S1 is a bridging layer where mode resolution is partial. Figma variable names for this tier trim the ob/s/ prefix (e.g. color/neutral/fg/contrast_medium) for usability in the variables panel; the JSON token keeps the full ob.s.color path.;
+	--ob-s-color-backdrop: rgb(7.451% 10.588% 13.333% / 0.5);
+	--ob-s-color-backdrop_inverse: rgb(7.451% 10.588% 13.333% / 0.6);
 	--ob-s-color-brand-1: #ff0000;
 	--ob-s-color-brand-2: #ffffff;
 	--ob-s-color-brand-_docs-token_family_info: Official federal identity color (Bundesrot). Light/Dark modes apply — no emphasis modes. Use: Primary brand accent in navigation active states and official federal identity elements. Avoid: Interactive states or status feedback — use the interaction or status scale instead.;
@@ -1022,6 +1024,8 @@
 	--ob-s-typography-scale-static-token_family_docs-description: Size-mode-independent individual typography tokens.;
 	--ob-s-typography-token_family_docs-description: Typography foundation — every text-related token in the system. Covers font families, font weights, font sizes, line heights, paragraph spacing, letter spacing and text-decoration / text-case / text-align. Composite text styles (Figma styles) are built by combining tokens from these sub-families.;
 	--ob-s1-color-_docs-token_family_info: Source file for S1 color tokens in the Light theme. Usage guidelines are documented per color family — see Neutral, Interaction, Status, and Free.;
+	--ob-s1-color-backdrop: rgb(7.451% 10.588% 13.333% / 0.5);
+	--ob-s1-color-backdrop_inverse: rgb(7.451% 10.588% 13.333% / 0.6);
 	--ob-s1-color-free-cobalt-bg-contrast_high: #f0f4f7;
 	--ob-s1-color-free-cobalt-bg-contrast_high_inverse: #1c2834;
 	--ob-s1-color-free-cobalt-bg-contrast_highest: #ffffff;
@@ -1579,6 +1583,8 @@
 		--ob-h-button-color-emphasis_low-token_family_docs-description: Button state colors, low emphasis branch, dark mode: rest, hover and active for primary, secondary and the border of secondary. Tertiary reuses secondary. Hover and active are made with color modifiers (mix, alpha). Each color has an inversion pair: the plain name for the dark surfaces, the name with _inverse for inverted surfaces (it holds the light mode colors).;
 		--ob-s-border-focus_ring-color: #a78bfa;
 		--ob-s-border-focus_ring_inverse-color: #8b5cf6;
+		--ob-s-color-backdrop: rgb(7.451% 10.588% 13.333% / 0.6);
+		--ob-s-color-backdrop_inverse: rgb(7.451% 10.588% 13.333% / 0.5);
 		--ob-s-color-free-cobalt-bg-contrast_high: #1c2834;
 		--ob-s-color-free-cobalt-bg-contrast_high_inverse: #acb4bd;
 		--ob-s-color-free-cobalt-bg-contrast_highest: #131b22;
@@ -1822,6 +1828,8 @@
 		--ob-s-color-status-resolved-fg-contrast_medium: #6ee7b7;
 		--ob-s-color-status-resolved-fg-contrast_medium_inverse: #065f46;
 		--ob-s1-color-_docs-token_family_info: Source file for S1 color tokens in the Dark theme. Usage guidelines are documented per color family — see Neutral, Interaction, Status, and Free.;
+		--ob-s1-color-backdrop: rgb(7.451% 10.588% 13.333% / 0.6);
+		--ob-s1-color-backdrop_inverse: rgb(7.451% 10.588% 13.333% / 0.5);
 		--ob-s1-color-free-cobalt-bg-contrast_high: #1c2834;
 		--ob-s1-color-free-cobalt-bg-contrast_high_inverse: #acb4bd;
 		--ob-s1-color-free-cobalt-bg-contrast_highest: #131b22;

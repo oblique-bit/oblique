@@ -193,6 +193,16 @@
             }
           }
         },
+        "backdrop": {
+          "$type": "color",
+          "$value": "{ob.s1.color.backdrop}",
+          "$description": "Backdrop behind overlays such as dialogs. Dims the page under the overlay; adapts to light and dark mode."
+        },
+        "backdrop_inverse": {
+          "$type": "color",
+          "$value": "{ob.s1.color.backdrop_inverse}",
+          "$description": "Backdrop for inverted surfaces. Dims the page under the overlay; uses the colors of the opposite mode."
+        },
         "interaction": {
           "_docs": {
             "token_family_info": {

@@ -192,6 +192,16 @@
             }
           }
         },
+        "backdrop": {
+          "$type": "color",
+          "$value": "{ob.p.color.cobalt_alpha.500}",
+          "$description": "Backdrop color behind overlays such as dialogs, light mode."
+        },
+        "backdrop_inverse": {
+          "$type": "color",
+          "$value": "{ob.p.color.cobalt_alpha.600}",
+          "$description": "Backdrop color for inverted surfaces, light mode (colors of the opposite mode)."
+        },
         "status": {
           "_docs": {
             "token_family_info": {

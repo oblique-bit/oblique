@@ -76,6 +76,13 @@ Colors with no built-in semantic meaning, available for project-specific purpose
 
 [View Free Colors Documentation →](08-semantic-free.md)
 
+#### Backdrop
+The color behind an overlay, such as a dialog. It dims the page under the overlay.
+- **`ob.s.color.backdrop`**: `cobalt_alpha.500` (50%) in light mode, `cobalt_alpha.600` (60%) in dark mode
+- **`ob.s.color.backdrop_inverse`**: the same pair for inverted surfaces (colors of the opposite mode)
+
+The backdrop is not an elevation level. It is a plain color token next to the color families.
+
 ## Token Structure
 
 ### Semantic Naming Convention
@@ -84,7 +91,7 @@ ob.s.{category}.{property}.{contrast_level}{inversion}
 ```
 
 #### Structure Components
-- **`category`**: Color's semantic purpose (neutral, status, interaction, brand)
+- **`category`**: Color's semantic purpose (neutral, status, interaction, brand). `backdrop` is a single color without property or contrast level.
 - **`property`**: Visual property (bg, fg, border, shadow)
 - **`contrast_level`**: Relationship to surrounding elements (contrast_highest to contrast_lowest)
 - **`inversion`**: Component-level theming: blank (normal) or `_inverse`
