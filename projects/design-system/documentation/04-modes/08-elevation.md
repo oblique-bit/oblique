@@ -66,7 +66,7 @@ Seven Button backgrounds change with the surface level: `primary` (rest, hover, 
 
 For `inversity_normal` the `level_2` colors differ from `level_0` only in light mode (high emphasis: `primary`, and `secondary` and `tertiary` hover and active; low emphasis: `secondary` and `tertiary` hover and active). In dark mode `level_0` and `level_2` are the same. `inversity_flipped` is the mirror image and differs only in dark mode.
 
-The families `interaction` and `free` do not have a `surface` token. The `interaction` steps are not the Button colors, and the `free` colors are not surfaces.
+The Button adapts to the context it sits on: when the elevation of the container changes, the Button backgrounds change with it. The `surface` background of the neutral family is meant for the containers the Button sits in.
 
 ## **Interactive Feedback Direction**
 
@@ -81,7 +81,7 @@ The table shows the direction of `secondary` and `tertiary` for hover and active
 | `level_1` | darker | lighter | lighter | darker |
 | `level_2` | lighter | lighter | lighter | lighter |
 
-On `level_2` the direction is the same in every combination: hover and active get lighter. Only the Button has surface-aware hover and active backgrounds. Other components do not follow this table yet, because the `interaction` family has no `surface` token.
+On `level_2` the direction is the same in every combination: hover and active get lighter. Only the Button has surface-aware hover and active backgrounds. Other components do not follow this table yet.
 
 ## **Mode Collection Registration**
 
