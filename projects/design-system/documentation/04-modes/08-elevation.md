@@ -68,6 +68,21 @@ For `inversity_normal` the `level_2` colors differ from `level_0` only in light 
 
 The families `interaction` and `free` do not have a `surface` token. The `interaction` steps are not the Button colors, and the `free` colors are not surfaces.
 
+## **Interactive Feedback Direction**
+
+Hover and active change the Button background compared to the rest state. The direction of the change depends on the elevation, on lightness and on inversity. The values are set per mode in the helper sets, they are not computed.
+
+The table shows the direction of `secondary` and `tertiary` for hover and active, measured as the luminance of the background over the surface of the mode. It is the same for `neutral` and the five status families, in high and low emphasis. `primary` gets darker in every combination.
+
+| Elevation | Light, `inversity_normal` | Dark, `inversity_normal` | Light, `inversity_flipped` | Dark, `inversity_flipped` |
+|---|---|---|---|---|
+| `level_minus_1` | darker | lighter | lighter | darker |
+| `level_0` | darker | lighter | lighter | darker |
+| `level_1` | darker | lighter | lighter | darker |
+| `level_2` | lighter | lighter | lighter | lighter |
+
+On `level_2` the direction is the same in every combination: hover and active get lighter. Only the Button has surface-aware hover and active backgrounds. Other components do not follow this table yet, because the `interaction` family has no `surface` token.
+
 ## **Mode Collection Registration**
 
 The collection is registered in `01_global/mode_collection/elevation.json`. `level_0` is the base mode and applies no class. `level_minus_1` is activated by `.ob-elevation-level-minus-1`, `level_1` by `.ob-elevation-level-1` and `level_2` by `.ob-elevation-level-2`. The application adds the class to the container that should switch.
