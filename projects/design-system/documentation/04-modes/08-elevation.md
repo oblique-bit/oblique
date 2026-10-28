@@ -17,9 +17,9 @@ The mode does not add new colors. It picks a step of the existing contrast ladde
 | `level_1` | `contrast_high` |
 | `level_2` | `contrast_medium` |
 
-`level_0` is the base mode and the first-paint default. The names carry a number only. For the neutral surface (`inversity_normal`) a higher level is a darker surface in light mode and a lighter one in dark mode, so the names do not promise "above" or "below". The status surfaces follow the steps of their own families.
+`level_0` is the base mode and the first-paint default. The names carry a number only. For the neutral surface (`inversity_normal`) a higher level is a darker surface in light mode and a lighter one in dark mode, so the names do not promise "above" or "below". The elevation changes only the neutral surface and the Button backgrounds. A status surface is the same on every level.
 
-`level_minus_1` is the level below `level_0`. It differs from `level_0` only for the neutral surface in dark mode: `cobalt.900` is one step darker than `contrast_highest` (`cobalt.800`). In light mode `level_minus_1` is the same as `level_0` (white), because no lighter surface exists. The status surfaces and the Button backgrounds are the same as in `level_0`. The name spells out `minus` because token and mode names use snake_case only.
+`level_minus_1` is the level below `level_0`. It differs from `level_0` only for the neutral surface in dark mode: `cobalt.900` is one step darker than `contrast_highest` (`cobalt.800`). In light mode `level_minus_1` is the same as `level_0` (white), because no lighter surface exists. The Button backgrounds are the same as in `level_0`. The name spells out `minus` because token and mode names use snake_case only.
 
 ## **Implementation**
 
@@ -33,7 +33,7 @@ The mode does not add new colors. It picks a step of the existing contrast ladde
 
 ### **Surface Tokens**
 
-The families `neutral` and the five statuses (`info`, `attention`, `critical`, `fatal`, `resolved`) get a `surface` token that follows the mode. Each of them has the steps `contrast_highest`, `contrast_high`, `contrast_medium` and `contrast_low`.
+The family `neutral` gets a `surface` token that follows the mode. The status families do not get one: a status surface does not change with the elevation.
 
 ```json
 {
@@ -55,7 +55,7 @@ The families `neutral` and the five statuses (`info`, `attention`, `critical`, `
 }
 ```
 
-In `level_1` the same token points to `contrast_high`, in `level_2` to `contrast_medium`. In `level_minus_1` the status tokens point to `contrast_highest` like `level_0`, and the neutral token points to the helper token `ob.s1.color.neutral.bg.level_minus_1.inversity_<normal|flipped>`. `inversity_flipped` points to the flipped token of the same step. The existing tokens are not changed.
+In `level_1` the same token points to `contrast_high`, in `level_2` to `contrast_medium`. In `level_minus_1` the token points to the helper token `ob.s1.color.neutral.bg.level_minus_1.inversity_<normal|flipped>`. `inversity_flipped` points to the flipped token of the same step. The existing tokens are not changed.
 
 ### **Button Tokens**
 
@@ -72,7 +72,7 @@ The families `interaction` and `free` do not have a `surface` token. The `intera
 
 Hover and active change the Button background compared to the rest state. The direction of the change depends on the elevation, on lightness and on inversity. The values are set per mode in the helper sets, they are not computed.
 
-The table shows the direction of `secondary` and `tertiary` for hover and active, measured as the luminance of the background over the surface of the mode. It is the same for `neutral` and the five status families, in high and low emphasis. `primary` gets darker in every combination.
+The table shows the direction of `secondary` and `tertiary` for hover and active, measured as the luminance of the background over the surface of the mode. It is measured on the neutral surface, in high and low emphasis. `primary` gets darker in every combination.
 
 | Elevation | Light, `inversity_normal` | Dark, `inversity_normal` | Light, `inversity_flipped` | Dark, `inversity_flipped` |
 |---|---|---|---|---|
