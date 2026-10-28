@@ -4,7 +4,14 @@
       "mode_collection": {
         "elevation": {
           "token_family_docs": {
-            "$description": "Elevation mode collection \u2014 surface level. Modes: level_0 (the base \u2014 no class is applied), level_1 (.ob-elevation-level-1), level_2 (.ob-elevation-level-2). Each mode carries the CSS class string the application adds to a container to activate it. The mode picks the background of a surface and the Button backgrounds that depend on it."
+            "$description": "Elevation mode collection \u2014 surface level. Modes: level_minus_1 (.ob-elevation-level-minus-1), level_0 (the base \u2014 no class is applied), level_1 (.ob-elevation-level-1), level_2 (.ob-elevation-level-2). Each mode carries the CSS class string the application adds to a container to activate it. The mode picks the background of a surface and the Button backgrounds that depend on it."
+          },
+          "level_minus_1": {
+            "selector": {
+              "$type": "other",
+              "$value": ".ob-elevation-level-minus-1",
+              "$description": "level_minus_1 is activated by a class the application adds to the container."
+            }
           },
           "level_0": {
             "selector": {

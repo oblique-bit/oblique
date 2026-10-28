@@ -395,7 +395,8 @@
       "02_primitive/modifier": "source",
       "05_html/button/00_state_layer": "source",
       "05_html/button/01_color/lightness/light": "enabled",
-      "05_html/button/01_color/elevation/level_2_color/lightness/light": "enabled"
+      "05_html/button/01_color/elevation/level_2_color/lightness/light": "enabled",
+      "03_semantic/color/elevation/level_minus_1_color/lightness/light": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:8:3",
     "$figmaModeId": "8:1",
@@ -711,7 +712,8 @@
       "02_primitive/modifier": "source",
       "05_html/button/00_state_layer": "source",
       "05_html/button/01_color/lightness/dark": "enabled",
-      "05_html/button/01_color/elevation/level_2_color/lightness/dark": "enabled"
+      "05_html/button/01_color/elevation/level_2_color/lightness/dark": "enabled",
+      "03_semantic/color/elevation/level_minus_1_color/lightness/dark": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:8:3",
     "$figmaModeId": "8:2",
@@ -1085,6 +1087,16 @@
     "$figmaCollectionId": "VariableCollectionId:8:4",
     "$figmaModeId": "8:4",
     "group": "emphasis"
+  },
+  {
+    "id": "537nc632z0y0e6hamukhqq7w1lrndd2rty4lj0n3",
+    "name": "level_minus_1",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "03_semantic/color/elevation/level_minus_1": "enabled",
+      "05_html/button/01_color/elevation/level_minus_1": "enabled"
+    },
+    "group": "elevation"
   },
   {
     "id": "jdimm0gobb5009cf1o5nqylm5u0iqxufahnrt8mr",
