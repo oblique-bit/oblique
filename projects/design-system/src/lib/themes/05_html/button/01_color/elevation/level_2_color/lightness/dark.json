@@ -15,7 +15,7 @@
 										},
 										"inversity_flipped": {
 											"$type": "color",
-											"$value": "{ob.p.color.steelblue.500}",
+											"$value": "{ob.p.color.steelblue.600}",
 											"$description": "Primary button background on level_2, rest state, high emphasis, dark mode, inversity flipped (light mode colors)."
 										}
 									}
