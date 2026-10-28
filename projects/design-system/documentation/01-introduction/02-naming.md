@@ -46,7 +46,7 @@ ob.s.type.component.property.variant.state
 
 ### **Core Rules**
 1. **Singular naming** - Use `color` not `colors`
-2. **Lowercase only** - All segments lowercase (exception: Tokens Studio `$type` values — see [Tokens Studio `$type` Exceptions](#tokens-studio-type-exceptions) below)
+2. **Lowercase only** - All segments lowercase (exceptions: Tokens Studio `$type` values — see [Tokens Studio `$type` Exceptions](#tokens-studio-type-exceptions) — and official codes — see [Official Codes Exception](#official-codes-exception) below)
 3. **Hyphen separation** - Connect compound words with hyphens in file paths
 4. **Underscore compounds** - Use underscores for multi-word identifiers within tokens
 5. **Two words max** - Keep compound terms concise
@@ -97,6 +97,19 @@ The token **path segment** for these types follows Oblique's snake_case rule as 
 ```
 
 Here `shadow` (path segment) is snake_case per Oblique convention; `boxShadow` (`$type`) is camelCase per Tokens Studio convention. Both are correct.
+
+### **Official Codes Exception** {#official-codes-exception}
+
+Official codes keep their official uppercase spelling: country codes (`CH`), canton codes (`ZH`, `BE`, …) and language codes (`DE`, `FR`, `IT`, `EN`, `RM`). A part after an underscore stays lowercase.
+
+| Name | Reason |
+|---|---|
+| `CH_app` | `CH` is the country code, `app` is the variant |
+| `CH_marketing` | `CH` is the country code, `marketing` is the variant |
+| `ZH` | canton code |
+| `DE` | language code |
+
+These codes are the mode names of the `brand` and `language` mode collections. Both collections are planned and are not in the token files yet.
 
 ### **Layer-Specific Patterns**
 
