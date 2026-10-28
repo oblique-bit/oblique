@@ -150,14 +150,14 @@ ob.h.heading.H1                                    (text style)
 
 ob.h.typography.context.h1.color.fg
   → ob.s.color.neutral.fg.contrast_low   (both contexts)
-      → ob.s1.color.neutral.fg.contrast_low   (resolved with the lightness mode)
+      → ob.s1.color.neutral.fg.contrast_low   (resolved with the color scheme mode)
 
 ob.h.typography.context.h1.spacing.bottom
   → ob.s.dimension.static.typography_context.xs   (interface, 8 px)
   → ob.s.dimension.static.typography_context.sm   (prose, 12 px)
 ```
 
-The text tokens use only the static tokens `ob.s.typography.scale.static.*` and `ob.s.dimension.static.*`. They do not react to the `ui_scale` mode. The text color tokens are neutral colors. They follow the `lightness` mode and have no `emphasis` variant. See [Typography Tokens](../../03-token-categories/01-typography.md), [Dimension Tokens](../../03-token-categories/00-dimension.md) and [Typography-Context Mode](../../04-modes/04-typography-context.md).
+The text tokens use only the static tokens `ob.s.typography.scale.static.*` and `ob.s.dimension.static.*`. They do not react to the `scale` mode. The text color tokens are neutral colors. They follow the `color_scheme` mode and have no `emphasis` variant. See [Typography Tokens](../../03-token-categories/01-typography.md), [Dimension Tokens](../../03-token-categories/00-dimension.md) and [Typography-Context Mode](../../04-modes/04-typography-context.md).
 
 ## Design Decisions
 
@@ -202,10 +202,10 @@ The link text style `body/link` adds an underline. The text decoration of the li
 | `ob.s.typography.scale.static.paragraph_spacing.*` | `paragraph_spacing` tokens | `none` 0 px, `3xl` 24 px |
 | `ob.s.typography.scale.static.text_decoration.link.emphasis_high` | `ob.h.body.link` | underline |
 | `ob.s.dimension.static.typography_context.*` | `spacing.top`, `spacing.bottom`, `p`, `p_lead` | `none` 0 px, `xs` 8 px, `sm` 12 px, `md` 16 px, `2xl` 28 px |
-| `ob.s.color.neutral.fg.contrast_low` | heading color (H1, and H2 to H4 in prose) | follows `lightness` |
-| `ob.s.color.neutral.fg.contrast_medium` | heading color (H2 in interface, H5 in prose) | follows `lightness` |
-| `ob.s.color.neutral.fg.contrast_high` | heading color (H3 to H6 in interface, H6 in prose) | follows `lightness` |
-| `ob.s.color.neutral.fg.contrast_highest` | body color | follows `lightness` |
+| `ob.s.color.neutral.fg.contrast_low` | heading color (H1, and H2 to H4 in prose) | follows `color_scheme` |
+| `ob.s.color.neutral.fg.contrast_medium` | heading color (H2 in interface, H5 in prose) | follows `color_scheme` |
+| `ob.s.color.neutral.fg.contrast_high` | heading color (H3 to H6 in interface, H6 in prose) | follows `color_scheme` |
+| `ob.s.color.neutral.fg.contrast_highest` | body color | follows `color_scheme` |
 
 ---
 

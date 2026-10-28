@@ -41,7 +41,7 @@ Every file also has a `token_family_docs.description` token that describes the f
 ## How to Read the Tables
 
 - A table with three columns lists tokens that have the same value in every viewport. The second column shows the reference as written in the token file, without braces, or the literal value of the token.
-- A table with the columns xs, sm, md, lg, xl and 2xl lists tokens from `03_viewport/`. The path of the token is shown without the prefix `ob.c.infobox.`. The reference is shown without the prefix `ob.s.dimension.static.ui_scale.`. A reference that starts with `ob.s.` is shown in full. The full tokens and their values in px are in [Consumed Tokens](#consumed-tokens).
+- A table with the columns xs, sm, md, lg, xl and 2xl lists tokens from `03_viewport/`. The path of the token is shown without the prefix `ob.c.infobox.`. The reference is shown without the prefix `ob.s.dimension.static.scale.`. A reference that starts with `ob.s.` is shown in full. The full tokens and their values in px are in [Consumed Tokens](#consumed-tokens).
 - The columns `xs`, `sm` and `md` are identical. The columns `lg`, `xl` and `2xl` are identical.
 - The description text is shortened. If a token has no `$description`, the Description column only restates the token name.
 
@@ -72,7 +72,7 @@ File: `01_color.json`. The family description is "Color tokens for the Infobox m
 | `ob.c.infobox.color.fg.resolved` | `ob.s.color.neutral.fg.contrast_high` | Foreground color, `resolved` |
 | `ob.c.infobox.color.fg.fatal` | `ob.s.color.neutral.fg.contrast_medium_inverse` | Foreground color, `fatal` |
 
-All color tokens reference semantic color tokens, which follow the `lightness` mode. Inversion is part of the referenced token name (plain or `_inverse`). See [Component Tokens](../../02-token-tiers/04-component.md#inversion-component-level-contrast-inversion).
+All color tokens reference semantic color tokens, which follow the `color_scheme` mode. Inversion is part of the referenced token name (plain or `_inverse`). See [Component Tokens](../../02-token-tiers/04-component.md#inversion-component-level-contrast-inversion).
 
 ## Container Tokens
 
@@ -80,7 +80,7 @@ All color tokens reference semantic color tokens, which follow the `lightness` m
 
 | Token | References | Description |
 |---|---|---|
-| `ob.c.infobox.container.padding_bottom` | `ob.s.dimension.static.ui_scale.spacing.xl.px` | Extends the padding of the infobox so the spacing to the right of and below the button stays consistent and looks good. |
+| `ob.c.infobox.container.padding_bottom` | `ob.s.dimension.static.scale.spacing.xl.px` | Extends the padding of the infobox so the spacing to the right of and below the button stays consistent and looks good. |
 
 ### Container spacing (`03_viewport/`)
 
@@ -199,11 +199,11 @@ Infobox tokens sit in the `ob.c.*` component tier. They reference semantic token
 ```
 ob.c.infobox.color.surface.info
   → ob.s.color.status.info.bg.contrast_high
-      → ob.s1.color.status.info.bg.contrast_high  (lightness layer: light or dark)
+      → ob.s1.color.status.info.bg.contrast_high  (color scheme layer: light or dark)
           → ob.p.color.*
 
 ob.c.infobox.spacing.padding_top  (xs, sm, md)
-  → ob.s.dimension.static.ui_scale.spacing.xs.px  (static = no mode)
+  → ob.s.dimension.static.scale.spacing.xs.px  (static = no mode)
       → ob.p.dimension.px.16
 ```
 
@@ -280,19 +280,19 @@ The infobox references only semantic tokens. It does not reference primitives (`
 
 ### Semantic dimension and border tokens
 
-The dimension tokens are in the group `ob.s.dimension.static.ui_scale.*`. The short form is the one used in the viewport tables.
+The dimension tokens are in the group `ob.s.dimension.static.scale.*`. The short form is the one used in the viewport tables.
 
 | Short form | Token | Primitive | px |
 |---|---|---|---|
-| `none.px` | `ob.s.dimension.static.ui_scale.none.px` | `ob.p.dimension.px.0` | 0 |
-| `micro.sm.px` | `ob.s.dimension.static.ui_scale.micro.sm.px` | `ob.p.dimension.px.2` | 2 |
-| `element.xs.px` | `ob.s.dimension.static.ui_scale.element.xs.px` | `ob.p.dimension.px.4` | 4 |
-| `element.xl.px` | `ob.s.dimension.static.ui_scale.element.xl.px` | `ob.p.dimension.px.12` | 12 |
-| `spacing.xs.px` | `ob.s.dimension.static.ui_scale.spacing.xs.px` | `ob.p.dimension.px.16` | 16 |
-| `spacing.sm.px` | `ob.s.dimension.static.ui_scale.spacing.sm.px` | `ob.p.dimension.px.20` | 20 |
-| `spacing.md.px` | `ob.s.dimension.static.ui_scale.spacing.md.px` | `ob.p.dimension.px.24` | 24 |
-| `spacing.xl.px` | `ob.s.dimension.static.ui_scale.spacing.xl.px` | `ob.p.dimension.px.32` | 32 |
-| `container.xl.px` | `ob.s.dimension.static.ui_scale.container.xl.px` | `ob.p.dimension.px.64` | 64 |
+| `none.px` | `ob.s.dimension.static.scale.none.px` | `ob.p.dimension.px.0` | 0 |
+| `micro.sm.px` | `ob.s.dimension.static.scale.micro.sm.px` | `ob.p.dimension.px.2` | 2 |
+| `element.xs.px` | `ob.s.dimension.static.scale.element.xs.px` | `ob.p.dimension.px.4` | 4 |
+| `element.xl.px` | `ob.s.dimension.static.scale.element.xl.px` | `ob.p.dimension.px.12` | 12 |
+| `spacing.xs.px` | `ob.s.dimension.static.scale.spacing.xs.px` | `ob.p.dimension.px.16` | 16 |
+| `spacing.sm.px` | `ob.s.dimension.static.scale.spacing.sm.px` | `ob.p.dimension.px.20` | 20 |
+| `spacing.md.px` | `ob.s.dimension.static.scale.spacing.md.px` | `ob.p.dimension.px.24` | 24 |
+| `spacing.xl.px` | `ob.s.dimension.static.scale.spacing.xl.px` | `ob.p.dimension.px.32` | 32 |
+| `container.xl.px` | `ob.s.dimension.static.scale.container.xl.px` | `ob.p.dimension.px.64` | 64 |
 | (full path) | `ob.s.border_width.sm` | `ob.p.dimension.px.2` | 2 |
 | (full path) | `ob.s.border_width.md` | `ob.p.dimension.px.3` | 3 |
 | (full path) | `ob.s.border_radius.none` | `ob.p.dimension.px.0` | 0 |
@@ -310,7 +310,7 @@ The dimension tokens are in the group `ob.s.dimension.static.ui_scale.*`. The sh
 The primitives are reached through the semantic tokens above:
 
 - `ob.p.dimension.px.*` for all dimension, border width and border radius tokens (the values 0, 2, 3, 4, 12, 16, 20, 24, 32 and 64).
-- `ob.p.color.*` for all colors. The primitive depends on the active `lightness` mode.
+- `ob.p.color.*` for all colors. The primitive depends on the active `color_scheme` mode.
 - The typography primitives for font family, font weight, font size, line height and letter spacing.
 
 ---

@@ -6,13 +6,13 @@ Navigation hub for all token mode documentation.
 
 | Mode | Purpose | Files | Documentation |
 |---|---|---|---|
-| **Lightness** | User mode preference | `light.json` / `dark.json` | [01-lightness.md](01-lightness.md) |
+| **Color scheme** | User mode preference | `light.json` / `dark.json` | [01-color-scheme.md](01-color-scheme.md) |
 | **Emphasis** | Design emphasis levels | `high.json` / `low.json` | [02-emphasis.md](02-emphasis.md) |
-| **UI Scale** | Component size variations | `sm.json` / `md.json` / `lg.json` | [03-ui-scale.md](03-ui-scale.md) |
+| **Scale** | Component size variations | `sm.json` / `md.json` / `lg.json` | [03-scale.md](03-scale.md) |
 | **Typography-Context** | Typography contexts | `interface.json` / `prose.json` | [04-typography-context.md](04-typography-context.md) |
 | **Density** | Interface density control | Compact/Standard/Spacious | [05-density.md](05-density.md) |
 | **Viewport** | Responsive width ranges | `xs` / `sm` / `md` / `lg` / `xl` / `2xl` | [06-viewport.md](06-viewport.md) |
-| **Motion** | Animation preference | `enabled.json` / `disabled.json` | [07-motion.md](07-motion.md) |
+| **Motion** | Animation preference | `on.json` / `off.json` | [07-motion.md](07-motion.md) |
 | **Elevation** | Surface level | `level_minus_1.json` / `level_0.json` / `level_1.json` / `level_2.json` | [08-elevation.md](08-elevation.md) |
 
 

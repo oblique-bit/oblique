@@ -165,9 +165,9 @@ Exit policy: any error → exit 1. Warnings print but don't block.
   fontSize / lineHeight / letterSpacing on the specimen — this keeps the
   visual close, but variable bindings on the style won't be reflected.
 - **Dynamic styles** (e.g. `s/typography/grouped/dynamic/...`) render at
-  whatever ui_scale mode the containing frame is in. The build page has
+  whatever scale mode the containing frame is in. The build page has
   no explicit mode set, so it picks the default `md`. Switch the frame's
-  ui_scale mode in Figma to inspect sm or lg.
+  scale mode in Figma to inspect sm or lg.
 - **No preview-bar** — typography doesn't have a 1-D magnitude in the
   way dimension does, so the row component does not include a preview
   rectangle. The specimen itself is the visual preview.

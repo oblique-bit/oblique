@@ -30,7 +30,7 @@ Foundation Layers:
   p  → Primitive (raw foundation values)
 
 Semantic Layers:
-  s1 → Lightness (light/dark mode switching)
+  s1 → Color scheme (light/dark mode switching)
   s2 → Emphasis (high/low emphasis variations)  
   s  → Compilation (complete semantic colors)
 
@@ -43,7 +43,7 @@ Application Layers:
 1. **Components consume ob.s** - Primary consumption layer for component tokens
 2. **Never consume primitives directly** - Components must never reference `ob.p.*` tokens
 3. **S2/ob.s reference S1 directly** - Simplified reference chain: S2→S1→Primitive, ob.s→S1→Primitive  
-4. **S1 handles lightness mode switching** - Light/dark values resolved at S1 level
+4. **S1 handles color scheme mode switching** - Light/dark values resolved at S1 level
 5. **Global tokens exception** - `ob.g.*` tokens can be referenced from any level
 
 ### **Token Naming**
@@ -53,7 +53,7 @@ Complete naming conventions and patterns are documented in [Token Naming Convent
 
 ## **Semantic Layer System (S1/S2/ob.s)**
 
-### **S1: Lightness Layer**
+### **S1: Color scheme Layer**
 - **Purpose**: Light/dark mode switching
 - **Files**: `light.json`, `dark.json`  
 - **References**: Direct primitive consumption
@@ -62,13 +62,13 @@ Complete naming conventions and patterns are documented in [Token Naming Convent
 ### **S2: Emphasis Layer**  
 - **Purpose**: High/low emphasis variations
 - **Files**: `high.json`, `low.json`
-- **References**: S1 lightness tokens  
+- **References**: S1 color scheme tokens  
 - **Usage**: Non-interactive components, fallback for missing ob.s tokens
 
 ### **ob.s: Compilation Layer**
 - **Purpose**: Complete semantic color collection (no modes)
 - **Files**: `semantic.json` 
-- **References**: S1 lightness tokens
+- **References**: S1 color scheme tokens
 - **Usage**: **Primary consumption layer** for interactive components
 
 
@@ -80,11 +80,11 @@ Complete naming conventions and patterns are documented in [Token Naming Convent
 ### **Color Tokens**
 - **Structure**: `ob.{layer}.color.{color_name}.{shade}`
 - **Examples**: `ob.p.color.red.50`, `ob.s.color.neutral.fg.contrast_high`
-- **Modes**: Handled through S1 lightness layer (light/dark)
+- **Modes**: Handled through S1 color scheme layer (light/dark)
 
 ### **Spacing Tokens**  
 - **Structure**: `ob.{layer}.spacing.{size}`
-- **Examples**: `ob.s.dimension.dynamic.ui_scale.spacing.md.px`, `ob.c.{component}.spacing.padding`
+- **Examples**: `ob.s.dimension.dynamic.scale.spacing.md.px`, `ob.c.{component}.spacing.padding`
 - **Scaling**: Mathematical multipliers prevent token explosion
 
 ### **Typography Tokens**
@@ -94,8 +94,8 @@ Complete naming conventions and patterns are documented in [Token Naming Convent
 
 ### **Dimension/Sizing Tokens**
 - **Structure**: `ob.{layer}.dimension.{category}.{size}`  
-- **Examples**: `ob.s.dimension.dynamic.ui_scale.element.md.px`, `ob.c.{component}.dimension.height`
-- **Modes**: Support density and ui_scale scaling
+- **Examples**: `ob.s.dimension.dynamic.scale.element.md.px`, `ob.c.{component}.dimension.height`
+- **Modes**: Support density and scale scaling
 
 ---
 
@@ -206,13 +206,13 @@ Most tokens resolve to a CSS custom property — the styling output the componen
 
 ### **Mode-collection config — `ob.g.mode_collection.*`**
 
-Defines the eight mode axes: lightness, emphasis, ui_scale, density, typography_context, motion, viewport, elevation. Per mode it holds the `selector` — the CSS class the application adds to activate the mode (`.ob-color-scheme-dark`). The `ui_scale` and `density` collections also carry the multipliers; the `viewport` collection carries the breakpoints and per-range bounds. The build reads these to discover the modes and to name the CSS mode blocks; in Figma each collection becomes a variable collection. The tokens are not themselves emitted as custom properties.
+Defines the eight mode axes: color scheme, emphasis, scale, density, typography_context, motion, viewport, elevation. Per mode it holds the `selector` — the CSS class the application adds to activate the mode (`.ob-color-scheme-dark`). The `scale` and `density` collections also carry the multipliers; the `viewport` collection carries the breakpoints and per-range bounds. The build reads these to discover the modes and to name the CSS mode blocks; in Figma each collection becomes a variable collection. The tokens are not themselves emitted as custom properties.
 
 The single-mode base groups `static` and `semantic` do **not** have files under `mode_collection/`. Token Studio's single-mode-group semantics already encode them as always-on, and the build pipeline identifies them via set-difference: `$themes.json` groups with no matching `mode_collection/<axis>.json` file are always-on base groups.
 
 ### **Component settings — `ob.g.component.*`**
 
-Per-component overrides at the global tier. An entry pins one component to a fixed value, whatever mode is active: for example `ob.g.component.footer.lightness` holds `"dark"`, keeping the footer dark whatever the active lightness mode. This group exists on the development line only; Oblique 16 does not contain it.
+Per-component overrides at the global tier. An entry pins one component to a fixed value, whatever mode is active: for example `ob.g.component.footer.color_scheme` holds `"dark"`, keeping the footer dark whatever the active color scheme mode. This group exists on the development line only; Oblique 16 does not contain it.
 
 ### **Documentation nodes — `token_family_docs`**
 

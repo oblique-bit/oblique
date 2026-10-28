@@ -64,8 +64,8 @@ The folder name and the token path segment differ on purpose: `grouped/` describ
 
 Each folder splits its tokens into two flavours:
 
-- **`static`** — fixed values. `static.json` carries them, and they do not change when the `ui_scale` mode switches.
-- **`dynamic`** — scaled values. `sm.json`, `md.json` and `lg.json` each supply the same token names for their own `ui_scale` mode, applying the global multiplier `{ob.g.mode_collection.scale.multiplier.typography.*}` to the primitive.
+- **`static`** — fixed values. `static.json` carries them, and they do not change when the `scale` mode switches.
+- **`dynamic`** — scaled values. `sm.json`, `md.json` and `lg.json` each supply the same token names for their own `scale` mode, applying the global multiplier `{ob.g.mode_collection.scale.multiplier.typography.*}` to the primitive.
 
 ```json
 // 03_semantic/typography/single/md.json — dynamic, multiplier applied
@@ -74,7 +74,7 @@ Each folder splits its tokens into two flavours:
 }
 ```
 
-See [`../04-modes/03-ui-scale.md`](../04-modes/03-ui-scale.md) for the mode mechanics.
+See [`../04-modes/03-scale.md`](../04-modes/03-scale.md) for the mode mechanics.
 
 ### How grouped tokens reference single tokens
 
@@ -127,10 +127,10 @@ The vertical spacing around these elements comes from the `typography_context` d
 
 ## Token resolution flow
 
-Example for a medium `ui_scale`:
+Example for a medium `scale`:
 
 1. **Primitive** — `ob.p.font_size_rem.300` is `1rem`.
-2. **Semantic (scaled)** — `ob.s.typography.scale.dynamic.font_size.*` in `single/md.json` references that primitive step and multiplies it by the `ui_scale` typography multiplier.
+2. **Semantic (scaled)** — `ob.s.typography.scale.dynamic.font_size.*` in `single/md.json` references that primitive step and multiplies it by the `scale` typography multiplier.
 3. **HTML context** — `ob.h.typography.context.h1.font_size` references `ob.s.typography.scale.static.font_size.3xl` directly, because the heading scale is the fixed, non-scaling part.
 
 ---
@@ -165,6 +165,6 @@ Headings need Figma typography styles so the design application stays consistent
 - [`../02-token-tiers/03-semantic.md`](../02-token-tiers/03-semantic.md) — Semantic layer architecture
 - [`../02-token-tiers/04-component.md`](../02-token-tiers/04-component.md) — `ob.c.*` and `ob.h.*` token patterns
 - [`00-dimension.md`](00-dimension.md) — vertical spacing around typography (`typography_context` group)
-- [`../04-modes/03-ui-scale.md`](../04-modes/03-ui-scale.md) — UI Scale mode
+- [`../04-modes/03-scale.md`](../04-modes/03-scale.md) — Scale mode
 - [`../04-modes/04-typography-context.md`](../04-modes/04-typography-context.md) — Typography context mode
 - [`../02-token-tiers/00-overview.md`](../02-token-tiers/00-overview.md) — `$type` values, including the Tokens Studio typography type

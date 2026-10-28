@@ -48,15 +48,15 @@ A component token follows a mode when the token it references follows that mode.
 
 | Tokens | They reference | Mode reaction |
 |--------|----------------|---------------|
-| `spacing.*` (9 tokens) | `ob.s.dimension.static.ui_scale.*` | None. Static dimension tokens do not change with a mode. |
-| `size.*` (5 tokens) | `ob.s.dimension.dynamic.ui_scale.*` | `ui_scale` (`sm`, `md`, `lg`). See [UI Scale Mode](../../04-modes/03-ui-scale.md). |
-| `color.*` (3 tokens) | `ob.s.color.neutral.*` | `lightness` (`light`, `dark`). The semantic neutral tokens reference the `ob.s1` lightness tier. See [Lightness Mode](../../04-modes/01-lightness.md). |
+| `spacing.*` (9 tokens) | `ob.s.dimension.static.scale.*` | None. Static dimension tokens do not change with a mode. |
+| `size.*` (5 tokens) | `ob.s.dimension.dynamic.scale.*` | `scale` (`sm`, `md`, `lg`). See [Scale Mode](../../04-modes/03-scale.md). |
+| `color.*` (3 tokens) | `ob.s.color.neutral.*` | `color_scheme` (`light`, `dark`). The semantic neutral tokens reference the `ob.s1` color scheme tier. See [Color scheme Mode](../../04-modes/01-color-scheme.md). |
 | `typography.*` (3 tokens) | `ob.s.typography.authoring.static.*` | None. These authoring typography tokens are independent of the component size mode. |
 | `border_radius`, `border_width` | `ob.s.border_radius.lg`, `ob.s.border_width.xs` | None. They resolve to the primitives `ob.p.dimension.px.4` and `ob.p.dimension.px.1`. |
 
 The popover tokens do not reference tokens of the modes `density`, `typography_context`, `viewport` or `motion`. The color references do not pass the `ob.s2` emphasis tier, so the popover does not follow the `emphasis` mode.
 
-The `padded_container` width is described as a fixed default width of 320 px. The token references a dynamic `ui_scale` token, so its value is 320 px in `md`, 256 px in `sm` and 400 px in `lg`.
+The `padded_container` width is described as a fixed default width of 320 px. The token references a dynamic `scale` token, so its value is 320 px in `md`, 256 px in `sm` and 400 px in `lg`.
 
 ## Units
 

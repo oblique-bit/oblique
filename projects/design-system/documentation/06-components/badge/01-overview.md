@@ -40,7 +40,7 @@ The disabled tokens of all four variants reference the same neutral tokens. The 
 
 ## Sizes
 
-The sizes `sm` and `lg` are segments of the token names. They are not the `ui_scale` mode. The values below come from the token descriptions.
+The sizes `sm` and `lg` are segments of the token names. They are not the `scale` mode. The values below come from the token descriptions.
 
 | Size | Padding (horizontal and vertical) | Min width | Max width | Height |
 |------|-----------------------------------|-----------|-----------|--------|
@@ -55,15 +55,15 @@ A component token follows a mode when the token it references follows that mode.
 
 | Mode | Reaction | Reason |
 |------|----------|--------|
-| `lightness` | Colors follow | The color tokens reference `ob.s.color.status.*` and `ob.s.color.neutral.*`. These resolve through the lightness level, which has a light file and a dark file. |
-| `ui_scale` | Label text follows | `badge_label` references a `dynamic` typography token. The padding and size tokens reference `static` dimension tokens and do not react. |
+| `color_scheme` | Colors follow | The color tokens reference `ob.s.color.status.*` and `ob.s.color.neutral.*`. These resolve through the color scheme level, which has a light file and a dark file. |
+| `scale` | Label text follows | `badge_label` references a `dynamic` typography token. The padding and size tokens reference `static` dimension tokens and do not react. |
 | `emphasis` | No | The status and neutral colors are not part of the emphasis level. It only holds the interaction colors. |
 | `density` | No | No density token is referenced. |
 | `typography_context` | No | No typography context token is referenced. |
 | `motion` | No | The badge has no animation token. |
 | `viewport` | No | No viewport token is referenced. |
 
-See [Mode Overview](../../04-modes/00-overview.md), [Lightness](../../04-modes/01-lightness.md) and [UI Scale](../../04-modes/03-ui-scale.md).
+See [Mode Overview](../../04-modes/00-overview.md), [Color scheme](../../04-modes/01-color-scheme.md) and [Scale](../../04-modes/03-scale.md).
 
 ## Tokens
 

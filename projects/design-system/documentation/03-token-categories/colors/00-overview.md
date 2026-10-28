@@ -101,7 +101,7 @@ ob.s.{category}.{property}.{contrast_level}{inversion}
 The color system operates through multiple semantic layers. For detailed architectural information, see [Semantic Color Architecture](03-semantic.md).
 
 #### Key Layers Overview
-- **Lightness Semantic Level (S1)**: Lightness mode adaptation (light/dark modes)
+- **Color scheme Semantic Level (S1)**: Color scheme mode adaptation (light/dark modes)
 - **Emphasis Semantic Level (S2)**: Interaction emphasis modes (high/low emphasis variations for interactive components)
 - **Semantic Compilation (ob.s)**: Complete semantic color compilation including static colors
 
@@ -139,7 +139,7 @@ When combining categories, maintain:
 
 ### File Organization
 - `src/lib/themes/03_semantic/color/` - Semantic color definitions by layer
-  - `s1_lightness/` - Light and dark mode definitions
+  - `s1_color_scheme/` - Light and dark mode definitions
   - `s2_emphasis/` - High and low emphasis variations
   - `compiled.json` - Complete semantic color compilation
 - `documentation/03-token-categories/colors/` - Color system documentation
@@ -176,7 +176,7 @@ For detailed token selection examples and technical implementation, see [Semanti
 ### Standard Practices
 - **Use semantic tokens exclusively** - Never reference primitive color values directly in components
 - **Respect contrast hierarchies** - Higher contrast levels for more important content
-- **Maintain lightness-mode neutrality** - Let the system handle light/dark adaptation
+- **Maintain color scheme neutrality** - Let the system handle light/dark adaptation
 - **Test cross-mode behavior** - Verify components work correctly in all modes
 
 ### Decorative vs Semantic Color Usage

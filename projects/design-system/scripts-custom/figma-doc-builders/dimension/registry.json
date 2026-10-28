@@ -42,7 +42,7 @@
       "section": { "tier": "S", "title": "UI Scale — Static", "purpose": "Sizing tokens for static-scale UI elements.", "guideline": "Use for UI sizing when scale does not vary by mode." },
       "kind": "static",
       "collection": "semantic",
-      "prefix": "ob/s/dimension/static/ui_scale/",
+      "prefix": "ob/s/dimension/static/scale/",
       "grouping": "category"
     },
     {
@@ -73,8 +73,8 @@
       "tableName": "Table: ui_scale/dynamic",
       "section": { "tier": "S", "title": "UI Scale — Dynamic", "purpose": "Mode-aware sizing tokens (sm / md / lg).", "guideline": "UI scale is selected at the layout level." },
       "kind": "dynamic",
-      "collection": "ui_scale",
-      "prefix": "ob/s/dimension/dynamic/ui_scale/",
+      "collection": "scale",
+      "prefix": "ob/s/dimension/dynamic/scale/",
       "modes": ["sm", "md", "lg"],
       "grouping": "category"
     }

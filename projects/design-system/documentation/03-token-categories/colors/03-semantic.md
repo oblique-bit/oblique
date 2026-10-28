@@ -14,7 +14,7 @@ The semantic color system is organized into **dimensional layers** and **static 
 
 ```
 src/lib/themes/03_semantic/color/
-├── s1_lightness/          # Semantic Level 1: Light/Dark mode variations
+├── s1_color_scheme/          # Semantic Level 1: Light/Dark mode variations
 │   ├── light.json         # Light mode colors
 │   └── dark.json          # Dark mode colors
 ├── s2_emphasis/           # Semantic Level 2: High/Low emphasis variations
@@ -25,7 +25,7 @@ src/lib/themes/03_semantic/color/
 
 ### **Semantic Level System Logic**
 
-#### **S1 - Lightness Semantic Level** (`s1_lightness/`)
+#### **S1 - Color scheme Semantic Level** (`s1_color_scheme/`)
 - **Purpose**: Light/dark mode adaptation
 - **Contains**: `neutral`, `interaction`, and `status` categories
 - **Files**: `light.json`, `dark.json`
@@ -52,7 +52,7 @@ src/lib/themes/03_semantic/color/
 
 ## **Static Colors**
 
-Static colors are **non-mode-dependent** values that remain constant across all lightness modes and variations. These are now integrated into the **compiled semantic level**.
+Static colors are **non-mode-dependent** values that remain constant across all color scheme modes and variations. These are now integrated into the **compiled semantic level**.
 
 ### **Brand Colors**
 
@@ -69,7 +69,7 @@ Static colors are **non-mode-dependent** values that remain constant across all 
 
 - **Purpose**: Consistent brand identity
 - **Usage**: Brand elements, logos, primary brand touches  
-- **Behavior**: Never changes with lightness mode
+- **Behavior**: Never changes with color scheme mode
 - **Location**: `src/lib/themes/03_semantic/color/compiled.json`
 
 ### **Neutral Utilities**
@@ -125,7 +125,7 @@ The semantic color system is organized into **four main categories**:
 - **Includes**: Single brand color for consistent identity
 
 ### **Neutral Category**
-- **Location**: L1 semantic level files (`s1_lightness/`) + ob.s compilation (`compiled.json`)
+- **Location**: L1 semantic level files (`s1_color_scheme/`) + ob.s compilation (`compiled.json`)
 - **Purpose**: Non-interactive UI elements
 - **Includes**: 
   - Background colors (`bg`)
@@ -135,7 +135,7 @@ The semantic color system is organized into **four main categories**:
   - Utility colors (transparent/no_color)
 
 ### **Interaction Category**
-- **Location**: L1 semantic level files (`s1_lightness/`) + S2 emphasis (`s2_emphasis/`) + ob.s compilation (`compiled.json`)
+- **Location**: L1 semantic level files (`s1_color_scheme/`) + S2 emphasis (`s2_emphasis/`) + ob.s compilation (`compiled.json`)
 - **Purpose**: Interactive UI elements
 - **Includes**:
   - Button colors
@@ -146,7 +146,7 @@ The semantic color system is organized into **four main categories**:
   - Emphasis variations
 
 ### **Status Category**
-- **Location**: L1 semantic level files (`s1_lightness/`) + ob.s compilation (`compiled.json`)
+- **Location**: L1 semantic level files (`s1_color_scheme/`) + ob.s compilation (`compiled.json`)
 - **Purpose**: System state communication
 - **Includes**:
   - Reserved statuses (info, resolved, critical, attention)
@@ -173,7 +173,7 @@ Currently, the full 5-level scale is provided only for the **Neutral** category 
 ```
 ob.s.color.brand → {ob.p.color.basic.federal_red} → #ff0000
 │
-└─ ob.s (Semantic): Direct static value (federal_red) - no lightness mode, emphasis, or inversion variants
+└─ ob.s (Semantic): Direct static value (federal_red) - no color scheme mode, emphasis, or inversion variants
 ```
 
 ### **Inversion as Part of the Name**
@@ -187,7 +187,7 @@ ob.s.color.brand → {ob.p.color.basic.federal_red} → #ff0000
 ## **Usage Guidelines**
 
 ### **When to Use Layered Colors (L1/L2/L3)**
-- **UI backgrounds** that should adapt to lightness mode
+- **UI backgrounds** that should adapt to color scheme mode
 - **Interactive elements** that need emphasis variations
 - **Text colors** that should maintain contrast in all modes
 - **Component colors** that should be themeable

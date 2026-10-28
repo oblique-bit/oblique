@@ -78,19 +78,19 @@ The pill reacts to a mode when a token references a token that follows that mode
 
 | Tokens | They reference | Mode reaction |
 |--------|----------------|---------------|
-| `spacing.padding.vertical`, `spacing.gap` | `ob.s.dimension.dynamic.ui_scale.element.*.px` | `ui_scale` |
-| `spacing.padding.horizontal`, `surface.min_height.*`, `min_height` | `ob.s.dimension.dynamic.ui_scale.spacing.*.px` | `ui_scale` |
-| `icon_size` | `ob.s.dimension.static.ui_scale.spacing.md.px` | None. The token is static. |
-| `typography.text_label.font_size`, `line_height`, `letter_spacing`, `font_weight` | `ob.s.typography.scale.dynamic.*` | `ui_scale` |
+| `spacing.padding.vertical`, `spacing.gap` | `ob.s.dimension.dynamic.scale.element.*.px` | `scale` |
+| `spacing.padding.horizontal`, `surface.min_height.*`, `min_height` | `ob.s.dimension.dynamic.scale.spacing.*.px` | `scale` |
+| `icon_size` | `ob.s.dimension.static.scale.spacing.md.px` | None. The token is static. |
+| `typography.text_label.font_size`, `line_height`, `letter_spacing`, `font_weight` | `ob.s.typography.scale.dynamic.*` | `scale` |
 | `typography.text_label.font_family` | `ob.s.typography.scale.static.font_family.body` | None. The token is static. |
 | `border_radius.default`, `focus_ring.border_radius` | `ob.s.border_radius.*` | None. These tokens do not reference a mode token. |
-| `color.*` | `ob.s.color.neutral.*`, `ob.s.color.status.*`, `ob.s.color.free.*` | `lightness` |
+| `color.*` | `ob.s.color.neutral.*`, `ob.s.color.status.*`, `ob.s.color.free.*` | `color_scheme` |
 
 Notes:
 
 - The dimension tokens reference the `.px` variants. The unit rule is in the [Token Usage Guide](../../05-reference/01-token-usage-guide.md#px-vs-rem--which-unit-when-building-a-component).
-- The dynamic typography tokens belong to the `ui_scale` collection. See [Typography Tokens](../../03-token-categories/01-typography.md) and [UI Scale Mode](../../04-modes/03-ui-scale.md). The description of `font_weight` says it is consistent across all sizes.
-- The color tokens resolve through the [lightness mode](../../04-modes/01-lightness.md) (light and dark) because the semantic color tokens they reference do.
+- The dynamic typography tokens belong to the `scale` collection. See [Typography Tokens](../../03-token-categories/01-typography.md) and [Scale Mode](../../04-modes/03-scale.md). The description of `font_weight` says it is consistent across all sizes.
+- The color tokens resolve through the [color scheme mode](../../04-modes/01-color-scheme.md) (light and dark) because the semantic color tokens they reference do.
 - All color tokens reference the plain name (not `_inverse`). Inversion is part of the token name and is not a mode. See [Inversion](../../02-token-tiers/04-component.md#inversion-component-level-contrast-inversion).
 - No pill token references a `density`, `typography_context`, `viewport` or `motion` token. The color tokens reference the neutral, status and free families and not the interaction family, so the `emphasis` mode does not apply to them.
 

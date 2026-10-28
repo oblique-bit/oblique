@@ -8,7 +8,7 @@
 
 Density mode controls the outer spacing and layout breathing room of containers, letting a product designer match interface density to the user's context. Compact density maximizes screen real estate for data-heavy workflows; spacious density gives focus-intensive tasks room to breathe. Standard density is the balanced default.
 
-Unlike lightness, density is not typically offered as an end-user toggle — a product designer sets it per interface to match product needs. Products may still expose it as an application setting for specific use cases.
+Unlike color scheme, density is not typically offered as an end-user toggle — a product designer sets it per interface to match product needs. Products may still expose it as an application setting for specific use cases.
 
 ## **Implementation**
 
@@ -66,10 +66,10 @@ Apply density by adding a class to a container: `.ob-density-compact` or `.ob-de
 - Information efficiency — how much content fits on screen without compromising usability
 
 **Density does not control:**
-- Individual component dimensions or internal padding — that's **UI Scale** mode (`sm`/`md`/`lg`)
+- Individual component dimensions or internal padding — that's **Scale** mode (`sm`/`md`/`lg`)
 - Typography density — that's **Typography-Context** mode (`interface`/`prose`)
 
-Density works independently alongside these modes; a compact container can sit inside an `lg` UI Scale context without conflict. See [Modes Interplay](09-interplay.md) for how the modes combine, device-responsive selection, and conflict resolution.
+Density works independently alongside these modes; a compact container can sit inside an `lg` Scale context without conflict. See [Modes Interplay](09-interplay.md) for how the modes combine, device-responsive selection, and conflict resolution.
 
 ## **Usage Guidelines**
 
@@ -113,4 +113,4 @@ Density tokens use a flat T-shirt scale (`xs` through `11xl`) rather than hierar
 
 ---
 
-*Density mode gives product designers a single, system-wide lever for layout breathing room, kept independent of component sizing and typography so it can combine freely with UI Scale and Typography-Context.*
+*Density mode gives product designers a single, system-wide lever for layout breathing room, kept independent of component sizing and typography so it can combine freely with Scale and Typography-Context.*

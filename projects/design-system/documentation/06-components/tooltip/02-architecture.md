@@ -12,7 +12,7 @@ The tooltip tokens are the component layer (`ob.c.*`) of the Tooltip atom. They 
 04_component/atom/tooltip.json
 ├── ob.c.tooltip.token_family_docs.description   — family description
 ├── ob.c.tooltip.spacing.padding_*               — four paddings, no mode
-├── ob.c.tooltip.color.bg / fg                   — follows lightness
+├── ob.c.tooltip.color.bg / fg                   — follows color scheme
 ├── ob.c.tooltip.typography.label
 ├── ob.c.tooltip.border_radius
 ├── ob.c.tooltip.shadow
@@ -25,10 +25,10 @@ All four padding tokens reference the same static semantic dimension token.
 
 | Token | References | Description |
 |-------|-----------|-------------|
-| `ob.c.tooltip.spacing.padding_top` | `ob.s.dimension.static.ui_scale.element.xl.px` | Increased padding around the text boosts its readability. |
-| `ob.c.tooltip.spacing.padding_right` | `ob.s.dimension.static.ui_scale.element.xl.px` | Increased padding around the text boosts its readability. |
-| `ob.c.tooltip.spacing.padding_bottom` | `ob.s.dimension.static.ui_scale.element.xl.px` | Increased padding around the text boosts its readability. |
-| `ob.c.tooltip.spacing.padding_left` | `ob.s.dimension.static.ui_scale.element.xl.px` | Increased padding around the text boosts its readability. |
+| `ob.c.tooltip.spacing.padding_top` | `ob.s.dimension.static.scale.element.xl.px` | Increased padding around the text boosts its readability. |
+| `ob.c.tooltip.spacing.padding_right` | `ob.s.dimension.static.scale.element.xl.px` | Increased padding around the text boosts its readability. |
+| `ob.c.tooltip.spacing.padding_bottom` | `ob.s.dimension.static.scale.element.xl.px` | Increased padding around the text boosts its readability. |
+| `ob.c.tooltip.spacing.padding_left` | `ob.s.dimension.static.scale.element.xl.px` | Increased padding around the text boosts its readability. |
 
 ## Color
 
@@ -68,10 +68,10 @@ Both tokens reference the `_inverse` variant.
 ```
 ob.c.tooltip.color.bg
   → ob.s.color.neutral.bg.contrast_high_inverse
-      → S1 lightness level (light file or dark file)  (mode-reactive: lightness)
+      → S1 color scheme level (light file or dark file)  (mode-reactive: color scheme)
 
 ob.c.tooltip.spacing.padding_top
-  → ob.s.dimension.static.ui_scale.element.xl.px  (static = no mode)
+  → ob.s.dimension.static.scale.element.xl.px  (static = no mode)
       → ob.p.dimension.px.12 (always)
 
 ob.c.tooltip.animation.speed
@@ -101,9 +101,9 @@ The tooltip references semantic tokens only. It does not reference primitives di
 
 | Semantic token | Used for | Resolves to |
 |----------------|----------|-------------|
-| `ob.s.dimension.static.ui_scale.element.xl.px` | The four paddings | `ob.p.dimension.px.12` |
-| `ob.s.color.neutral.bg.contrast_high_inverse` | Background | S1 lightness level |
-| `ob.s.color.neutral.fg.contrast_highest_inverse` | Text color | S1 lightness level |
+| `ob.s.dimension.static.scale.element.xl.px` | The four paddings | `ob.p.dimension.px.12` |
+| `ob.s.color.neutral.bg.contrast_high_inverse` | Background | S1 color scheme level |
+| `ob.s.color.neutral.fg.contrast_highest_inverse` | Text color | S1 color scheme level |
 | `ob.s.typography.authoring.static.sm.strong` | Label text style | `ob.s.typography.scale.static.*` tokens |
 | `ob.s.border_radius.sm` | Border radius | `ob.p.dimension.px.1` |
 | `ob.s.shadow.md` | Shadow | Composite shadow value (`ob.p.color.cobalt_alpha.50` as color) |

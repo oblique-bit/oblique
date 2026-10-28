@@ -15,7 +15,7 @@ The only file that differs from the developer's:
 - **`themes.mjs`** — mode discovery, rewritten for the `tokens-dev` token
   structure: per-axis `01_global/mode_collection/<axis>.json` (not the original
   `modes.json`), local working copy (no remote git-checkout), group-aware
-  lookup (`ui_scale` and `viewport` both carry `sm`/`md`/`lg`). Identifies
+  lookup (`scale` and `viewport` both carry `sm`/`md`/`lg`). Identifies
   the always-on base themes (`static`, `semantic`) as the set-difference:
   `$themes.json` groups that have no matching `mode_collection/<axis>.json`
   file. Token Studio's single-mode-group semantics already encode this — the

@@ -204,7 +204,7 @@ This produces near-black text (`cobalt.900`) instead of dark blue (`contrast_hig
 
 **Rule: Never pair neutral foreground tokens (`ob.s.color.neutral.fg.contrast_high`, `contrast_medium`, or `contrast_low`) with status background colors.**
 
-`contrast_highest` already provides the only neutral shade that safely pairs with any status background — `cobalt.900` (#131B22) in light mode, `basic.white` (#FFFFFF) in dark mode. These are the absolute extremes of the lightness scale, which guarantees sufficient contrast against any colored background.
+`contrast_highest` already provides the only neutral shade that safely pairs with any status background — `cobalt.900` (#131B22) in light mode, `basic.white` (#FFFFFF) in dark mode. These are the absolute extremes of the color scheme scale, which guarantees sufficient contrast against any colored background.
 
 All other neutral foreground shades (gray tones from `contrast_high` through `contrast_low`) produce grayish text on colored backgrounds. This causes contrast failures because:
 
@@ -523,7 +523,7 @@ All status colors have been validated and meet WCAG 2.1 AA conformity standards 
 ## Mode Integration
 
 ### Automatic Adaptation
-Status colors automatically adapt to lightness mode changes through inversion variants:
+Status colors automatically adapt to color scheme mode changes through inversion variants:
 
 ```scss
 /* Light mode context */

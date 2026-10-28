@@ -4,7 +4,7 @@
  * with roundTo(<expr>, 2). Idempotent (skips already-wrapped). Dry-run by
  * default; pass --apply to write changes.
  *
- * Scope: src/lib/themes/03_semantic/dimension/{density,ui_scale,typography_context}/<mode>.json
+ * Scope: src/lib/themes/03_semantic/dimension/{density,scale,typography_context}/<mode>.json
  *        (static files have literal values, no math — skipped automatically)
  *
  * Targets: $value strings that contain math operators (*, /, +, -). Pure

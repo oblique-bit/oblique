@@ -1,4 +1,4 @@
-# UI Scale Mode
+# Scale Mode
 
 **Component scaling through unified size modes for consistent component relationships**
 
@@ -6,7 +6,7 @@
 
 ## Overview
 
-This document outlines the **UI Scale** mode system for component scaling through unified size modes, ensuring consistent component relationships and accessible user experiences.
+This document outlines the **Scale** mode system for component scaling through unified size modes, ensuring consistent component relationships and accessible user experiences.
 
 ## Key principles
 
@@ -48,8 +48,8 @@ This document outlines the **UI Scale** mode system for component scaling throug
 ### **Implementation**
 - **Figma**: Variable collection with modes `sm`, `md`, `lg`
 - **Tokens Studio**: Theme group with themes `sm`, `md`, `lg`
-- **Current naming**: Uses `ui_scale` theme group in `$themes.json` (located at `/src/lib/themes/`)
-- **Token files**: `.px` tokens in `03_semantic/dimension/ui_scale/`, `.rem` tokens in `03_semantic/dimension/rem/ui_scale/` (same file names)
+- **Current naming**: Uses `scale` theme group in `$themes.json` (located at `/src/lib/themes/`)
+- **Token files**: `.px` tokens in `03_semantic/dimension/scale/`, `.rem` tokens in `03_semantic/dimension/rem/scale/` (same file names)
 
 ### **Shared component sizes philosophy**
 Shared sizes are beneficial for:
@@ -96,11 +96,11 @@ Some components require **width = height** to maintain visual proportion:
 
 **Token structure, using the icon tokens of the development line:**
 ```json
-"ob.c.icon.ui_scale.size.md": {
-  "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.md.px}"
+"ob.c.icon.scale.size.md": {
+  "$value": "{ob.s.dimension.dynamic.scale.spacing.md.px}"
 },
-"ob.c.icon.ui_scale.size.xs": {
-  "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.xs.px}"
+"ob.c.icon.scale.size.xs": {
+  "$value": "{ob.s.dimension.dynamic.scale.spacing.xs.px}"
 }
 ```
 See [Icon](../06-components/icon/01-overview.md).
@@ -130,7 +130,7 @@ See [Icon](../06-components/icon/01-overview.md).
 - **`tag`** - Inherits from input fields
 - **`button`** - Inherits in form/dialog contexts
 - **`badge`** - Inherits from nearby components
-- **`icon`** - `icon-component` inherits `ui_scale` from the parent; `icon-static` and `inline-text` do not (see [Icon](../06-components/icon/01-overview.md))
+- **`icon`** - `icon-component` inherits `scale` from the parent; `icon-static` and `inline-text` do not (see [Icon](../06-components/icon/01-overview.md))
 
 ### **Size coordination principle**
 - **Input text field LG ≠ badge LG** (different visual sizes)

@@ -72,7 +72,7 @@ ob.s.color.neutral.{property}.{contrast_level}{inversion}
 
 ## Neutral Color Architecture
 
-**Note**: Neutral colors skip the s2 emphasis level in the semantic hierarchy, going directly from s1 (lightness) to ob.s (compiled semantic). For complete architectural details, see [Semantic Colors Architecture](03-semantic.md).
+**Note**: Neutral colors skip the s2 emphasis level in the semantic hierarchy, going directly from s1 (color scheme) to ob.s (compiled semantic). For complete architectural details, see [Semantic Colors Architecture](03-semantic.md).
 
 ### Static Utilities
 ```json
@@ -92,8 +92,8 @@ ob.s.color.neutral.{property}.{contrast_level}{inversion}
 ## Technical Implementation
 
 ### File Structure
-- `src/lib/themes/03_semantic/color/s1_lightness/light.json` - Light mode neutral colors
-- `src/lib/themes/03_semantic/color/s1_lightness/dark.json` - Dark mode neutral colors
+- `src/lib/themes/03_semantic/color/s1_color_scheme/light.json` - Light mode neutral colors
+- `src/lib/themes/03_semantic/color/s1_color_scheme/dark.json` - Dark mode neutral colors
 - `src/lib/themes/03_semantic/color/compiled.json` - Complete neutral compilation (neutral has no S2 emphasis file — see note above)
 
 

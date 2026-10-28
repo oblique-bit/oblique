@@ -154,7 +154,7 @@ finds something.
 
 **The problem.** A node, frame or text layer keeps showing variable-mode
 pickers for collections you no longer want (e.g. `typography_context`,
-`ui_scale` from an old `DesignSystem@Tokens` library). Re-applying or
+`scale` from an old `DesignSystem@Tokens` library). Re-applying or
 resetting modes by hand does nothing — they always come back.
 
 **The cause — deterministic, no guessing.** Figma lists a collection in the
@@ -366,7 +366,7 @@ restriction" and lists the variable in every applicable picker for its type.
 |---|---|
 | `mode` | `'scan'` (report only) or `'apply'` (write) |
 | `namePrefixes` | array of name prefixes to match, e.g. `['ob/s1/color/']`; empty = all |
-| `collectionNames` | array of variable-collection names, e.g. `['s1-lightness']`; empty = all |
+| `collectionNames` | array of variable-collection names, e.g. `['color_scheme']`; empty = all |
 | `resolvedTypes` | e.g. `['COLOR']`; empty = all |
 | `currentScopes` | only match vars whose scopes set-equals one of these, e.g. `[['ALL_SCOPES']]` |
 | `setScopes` | scopes array to write, e.g. `['EFFECT_COLOR']`; `null` = don't change |

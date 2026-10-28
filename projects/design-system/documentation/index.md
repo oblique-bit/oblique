@@ -35,7 +35,7 @@ Design tokens are the natural next step, answering these demands directly.
 
 ### What this Design System release contains
 - Design tokens as JSON files for color, typography, dimension, and more
-- Modes: lightness (light/dark), emphasis, UI scale, typography context, density, viewport, motion
+- Modes: color scheme (light/dark), emphasis, Scale, typography context, density, viewport, motion
 - Figma library with token-based variables, styles and variable modes
 - Token-based CSS
 
@@ -84,9 +84,9 @@ Sorted along two axes. **Tiers** define where a token sits in the reference chai
 ## Modes
 
 - [Modes Overview](04-modes/00-overview.md)
-- [Lightness](04-modes/01-lightness.md)
+- [Color scheme](04-modes/01-color-scheme.md)
 - [Emphasis](04-modes/02-emphasis.md)
-- [UI Scale](04-modes/03-ui-scale.md)
+- [Scale](04-modes/03-scale.md)
 - [Typography Context](04-modes/04-typography-context.md)
 - [Density](04-modes/05-density.md)
 - [Viewport](04-modes/06-viewport.md)

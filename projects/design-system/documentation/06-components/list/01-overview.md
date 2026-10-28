@@ -24,12 +24,12 @@ All list tokens start with `ob.h.list.`.
 
 | Variant | Token | References |
 |---------|-------|------------|
-| `high` | `ob.h.list.group.spacing.high.margin_top` | `ob.s.dimension.static.ui_scale.element.xl.px` |
-| `low` | `ob.h.list.group.spacing.low.margin_top` | `ob.s.dimension.static.ui_scale.none.px` |
+| `high` | `ob.h.list.group.spacing.high.margin_top` | `ob.s.dimension.static.scale.element.xl.px` |
+| `low` | `ob.h.list.group.spacing.low.margin_top` | `ob.s.dimension.static.scale.none.px` |
 
 ## Modes
 
-All four list tokens reference static dimension tokens (`ob.s.dimension.static.ui_scale.*`). Static tokens point to a primitive and do not change when a mode changes. The list tokens do not react to any mode: not `ui_scale`, `density`, `typography_context`, `viewport`, `lightness`, `emphasis` or `motion`.
+All four list tokens reference static dimension tokens (`ob.s.dimension.static.scale.*`). Static tokens point to a primitive and do not change when a mode changes. The list tokens do not react to any mode: not `scale`, `density`, `typography_context`, `viewport`, `color_scheme`, `emphasis` or `motion`.
 
 ## Units
 

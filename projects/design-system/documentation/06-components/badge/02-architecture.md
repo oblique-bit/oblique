@@ -48,23 +48,23 @@ All four padding tokens reference the same static semantic dimension token.
 
 | Token | References | Description |
 |-------|-----------|-------------|
-| `ob.c.badge.spacing.padding.horizontal.sm` | `ob.s.dimension.static.ui_scale.element.xs.px` | Horizontal padding of the small badge (4px). Absolute minimum for compact display. |
-| `ob.c.badge.spacing.padding.horizontal.lg` | `ob.s.dimension.static.ui_scale.element.xs.px` | Horizontal padding of the large badge (4px). Minimal spacing for consistency. |
-| `ob.c.badge.spacing.padding.vertical.sm` | `ob.s.dimension.static.ui_scale.element.xs.px` | Vertical padding of the small badge (4px). Absolute minimum for compact display. |
-| `ob.c.badge.spacing.padding.vertical.lg` | `ob.s.dimension.static.ui_scale.element.xs.px` | Vertical padding of the large badge (4px). Minimal spacing for consistency. |
+| `ob.c.badge.spacing.padding.horizontal.sm` | `ob.s.dimension.static.scale.element.xs.px` | Horizontal padding of the small badge (4px). Absolute minimum for compact display. |
+| `ob.c.badge.spacing.padding.horizontal.lg` | `ob.s.dimension.static.scale.element.xs.px` | Horizontal padding of the large badge (4px). Minimal spacing for consistency. |
+| `ob.c.badge.spacing.padding.vertical.sm` | `ob.s.dimension.static.scale.element.xs.px` | Vertical padding of the small badge (4px). Absolute minimum for compact display. |
+| `ob.c.badge.spacing.padding.vertical.lg` | `ob.s.dimension.static.scale.element.xs.px` | Vertical padding of the large badge (4px). Minimal spacing for consistency. |
 
 ## Size
 
-All size tokens reference static semantic dimension tokens. They do not react to the `ui_scale` mode.
+All size tokens reference static semantic dimension tokens. They do not react to the `scale` mode.
 
 | Token | References | Description |
 |-------|-----------|-------------|
-| `ob.c.badge.size.max_width.sm` | `ob.s.dimension.static.ui_scale.spacing.sm.px` | Maximum width of the small badge (20px, the standard icon size). |
-| `ob.c.badge.size.max_width.lg` | `ob.s.dimension.static.ui_scale.container.xl.px` | Maximum width of the large badge (64px, the XL surface size). |
-| `ob.c.badge.size.min_width.sm` | `ob.s.dimension.static.ui_scale.spacing.sm.px` | Minimal width of the small badge (20px). This makes the badge round. |
-| `ob.c.badge.size.min_width.lg` | `ob.s.dimension.static.ui_scale.spacing.md.px` | Minimal width of the large badge (24px). This makes the badge round. |
-| `ob.c.badge.size.height.sm` | `ob.s.dimension.static.ui_scale.spacing.sm.px` | Height of the small badge (20px). This makes the badge round. |
-| `ob.c.badge.size.height.lg` | `ob.s.dimension.static.ui_scale.spacing.md.px` | Height of the large badge (24px). This makes the badge round. |
+| `ob.c.badge.size.max_width.sm` | `ob.s.dimension.static.scale.spacing.sm.px` | Maximum width of the small badge (20px, the standard icon size). |
+| `ob.c.badge.size.max_width.lg` | `ob.s.dimension.static.scale.container.xl.px` | Maximum width of the large badge (64px, the XL surface size). |
+| `ob.c.badge.size.min_width.sm` | `ob.s.dimension.static.scale.spacing.sm.px` | Minimal width of the small badge (20px). This makes the badge round. |
+| `ob.c.badge.size.min_width.lg` | `ob.s.dimension.static.scale.spacing.md.px` | Minimal width of the large badge (24px). This makes the badge round. |
+| `ob.c.badge.size.height.sm` | `ob.s.dimension.static.scale.spacing.sm.px` | Height of the small badge (20px). This makes the badge round. |
+| `ob.c.badge.size.height.lg` | `ob.s.dimension.static.scale.spacing.md.px` | Height of the large badge (24px). This makes the badge round. |
 
 ## Border Radius
 
@@ -78,21 +78,21 @@ All size tokens reference static semantic dimension tokens. They do not react to
 |-------|-----------|-------------|
 | `ob.c.badge.typography.badge_label` | `ob.s.typography.authoring.dynamic.sm.strong` | Strong font weight for optimal scannability. |
 
-This is the only token of the family that follows the `ui_scale` mode. It references a `dynamic` typography token.
+This is the only token of the family that follows the `scale` mode. It references a `dynamic` typography token.
 
 ## Token Architecture Integration
 
 ```
 ob.c.badge.color.bg.info.enabled
   → ob.s.color.status.info.bg.contrast_low
-      → S1 lightness level (light file or dark file)  (mode-reactive: lightness)
+      → S1 color scheme level (light file or dark file)  (mode-reactive: color scheme)
 
 ob.c.badge.size.height.lg
-  → ob.s.dimension.static.ui_scale.spacing.md.px  (static = no mode)
+  → ob.s.dimension.static.scale.spacing.md.px  (static = no mode)
       → ob.p.dimension.px.24 (always)
 
 ob.c.badge.typography.badge_label
-  → ob.s.typography.authoring.dynamic.sm.strong  (dynamic = follows ui_scale)
+  → ob.s.typography.authoring.dynamic.sm.strong  (dynamic = follows scale)
 ```
 
 The dimension tokens reference `.px` siblings. See [Dimension Tokens](../../03-token-categories/00-dimension.md) and the [Token Usage Guide](../../05-reference/01-token-usage-guide.md#px-vs-rem--which-unit-when-building-a-component).
@@ -117,14 +117,14 @@ The badge references semantic tokens only. It does not reference primitives dire
 
 | Semantic token | Used for | Resolves to |
 |----------------|----------|-------------|
-| `ob.s.color.status.{attention,info,critical,resolved}.bg.contrast_low` | Enabled backgrounds | S1 lightness level |
-| `ob.s.color.status.{attention,info,critical,resolved}.fg.contrast_highest` | Enabled text | S1 lightness level |
-| `ob.s.color.neutral.bg.contrast_low` | Disabled backgrounds | S1 lightness level |
-| `ob.s.color.neutral.fg.contrast_highest` | Disabled text | S1 lightness level |
-| `ob.s.dimension.static.ui_scale.element.xs.px` | Padding | `ob.p.dimension.px.4` |
-| `ob.s.dimension.static.ui_scale.spacing.sm.px` | Small size: min width, max width, height | `ob.p.dimension.px.20` |
-| `ob.s.dimension.static.ui_scale.spacing.md.px` | Large size: min width, height | `ob.p.dimension.px.24` |
-| `ob.s.dimension.static.ui_scale.container.xl.px` | Large size: max width | `ob.p.dimension.px.64` |
+| `ob.s.color.status.{attention,info,critical,resolved}.bg.contrast_low` | Enabled backgrounds | S1 color scheme level |
+| `ob.s.color.status.{attention,info,critical,resolved}.fg.contrast_highest` | Enabled text | S1 color scheme level |
+| `ob.s.color.neutral.bg.contrast_low` | Disabled backgrounds | S1 color scheme level |
+| `ob.s.color.neutral.fg.contrast_highest` | Disabled text | S1 color scheme level |
+| `ob.s.dimension.static.scale.element.xs.px` | Padding | `ob.p.dimension.px.4` |
+| `ob.s.dimension.static.scale.spacing.sm.px` | Small size: min width, max width, height | `ob.p.dimension.px.20` |
+| `ob.s.dimension.static.scale.spacing.md.px` | Large size: min width, height | `ob.p.dimension.px.24` |
+| `ob.s.dimension.static.scale.container.xl.px` | Large size: max width | `ob.p.dimension.px.64` |
 | `ob.s.border_radius.rounded` | Border radius | `ob.p.dimension.px.9999` |
 | `ob.s.typography.authoring.dynamic.sm.strong` | Label text style | `ob.s.typography.scale.*` tokens |
 

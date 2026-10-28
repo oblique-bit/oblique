@@ -3,7 +3,7 @@
     "g": {
       "component": {
         "footer": {
-          "lightness": {
+          "color_scheme": {
             "$type": "other",
             "$value": "dark"
           }

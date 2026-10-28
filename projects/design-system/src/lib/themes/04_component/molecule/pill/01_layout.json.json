@@ -12,18 +12,18 @@
           "padding": {
             "vertical": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.dynamic.ui_scale.element.xs.px}",
+              "$value": "{ob.s.dimension.dynamic.scale.element.xs.px}",
               "$description": "Top and bottom padding  – for medium size pills."
             },
             "horizontal": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.xs.px}",
+              "$value": "{ob.s.dimension.dynamic.scale.spacing.xs.px}",
               "$description": "Left and right padding  – for medium size pills."
             }
           },
           "gap": {
             "$type": "spacing",
-            "$value": "{ob.s.dimension.dynamic.ui_scale.element.xl.px}",
+            "$value": "{ob.s.dimension.dynamic.scale.element.xl.px}",
             "$description": "Horizontal gap between icon and text label  – for medium size pills."
           }
         },
@@ -38,15 +38,15 @@
           "min_height": {
             "sm": {
               "$type": "dimension",
-              "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.xs.px}"
+              "$value": "{ob.s.dimension.dynamic.scale.spacing.xs.px}"
             },
             "md": {
               "$type": "dimension",
-              "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.xs.px}"
+              "$value": "{ob.s.dimension.dynamic.scale.spacing.xs.px}"
             },
             "lg": {
               "$type": "dimension",
-              "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.xl.px}"
+              "$value": "{ob.s.dimension.dynamic.scale.spacing.xl.px}"
             }
           }
         },
@@ -354,11 +354,11 @@
         },
         "icon_size": {
           "$type": "sizing",
-          "$value": "{ob.s.dimension.static.ui_scale.spacing.md.px}"
+          "$value": "{ob.s.dimension.static.scale.spacing.md.px}"
         },
         "min_height": {
           "$type": "sizing",
-          "$value": "{ob.s.dimension.dynamic.ui_scale.spacing.xl.px}"
+          "$value": "{ob.s.dimension.dynamic.scale.spacing.xl.px}"
         }
       }
     }

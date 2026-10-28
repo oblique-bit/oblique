@@ -32,7 +32,7 @@ The primitive color system is organized within a single complete file containing
 
 ## Token Resolution Flow
 
-Primitive colors serve as the foundation for all semantic color compilation, feeding into S1 (lightness), S2 (emphasis), ob.s (semantic compilation), and ultimately Component layers.
+Primitive colors serve as the foundation for all semantic color compilation, feeding into S1 (color scheme), S2 (emphasis), ob.s (semantic compilation), and ultimately Component layers.
 
 ### Implementation Example
 ```json
@@ -62,9 +62,9 @@ Primitive colors serve as the foundation for all semantic color compilation, fee
 **Reserved Primitive Examples (Light/Dark Mode Pairs):**
 - **purple.400, purple.500**: Reserved for accessibility focus outlines (purple.500/400 in light mode, purple.400/500 in dark mode) - do not use decoratively nor for other semantic purposes
 - **red.50-900** (most of the scale): Reserved for critical/error status across light/dark and normal/flipped combinations - do not use for decoration or other semantics
-- **green.100-200, green.600-700**: Reserved for success/resolved status (different shades per lightness mode) - do not use for decoration or other semantics  
-- **orange.100-200, orange.600-700**: Reserved for warning/attention status (different shades per lightness mode) - do not use for decoration or other semantics
-- **blue.100-200, blue.600-700**: Reserved for informational status (different shades per lightness mode) - do not use for decoration or other semantics
+- **green.100-200, green.600-700**: Reserved for success/resolved status (different shades per color scheme mode) - do not use for decoration or other semantics  
+- **orange.100-200, orange.600-700**: Reserved for warning/attention status (different shades per color scheme mode) - do not use for decoration or other semantics
+- **blue.100-200, blue.600-700**: Reserved for informational status (different shades per color scheme mode) - do not use for decoration or other semantics
 - **steelblue.100-900**: Reserved for interaction colors (links, hover/focus states) - entire scale semantically consumed
 - **cobalt.100-900**: Consumed for low-emphasis neutral and interaction colors - desaturated alternative that maintains semantic meaning while reducing visual prominence
 - **indigo.900/800/700 (light), indigo.50/100/200 (dark)**: Consumed by the `ob.s.color.interaction.visited.fg.*` semantic path for visited-link foreground color - a second claim on indigo alongside the `free` tier below

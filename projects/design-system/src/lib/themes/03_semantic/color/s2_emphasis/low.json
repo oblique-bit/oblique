@@ -5,7 +5,7 @@
         "_docs": {
           "token_family_info": {
             "$type": "text",
-            "$value": "State-based color mapping for interaction elements. Interactive state colors for components. Both Lightness (Light/Dark) and Emphasis (High/Low) modes affect resolved values across all 4 columns. Do: Reference when authoring compiled interaction tokens that require emphasis resolution. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead."
+            "$value": "State-based color mapping for interaction elements. Interactive state colors for components. Both Color scheme (Light/Dark) and Emphasis (High/Low) modes affect resolved values across all 4 columns. Do: Reference when authoring compiled interaction tokens that require emphasis resolution. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead."
           }
         },
         "interaction": {

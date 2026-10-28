@@ -23,9 +23,9 @@ Layout tokens in `01_layout.json.json`.
 
 | Token | References | Description |
 |-------|------------|-------------|
-| `ob.c.pill.spacing.padding.vertical` | `ob.s.dimension.dynamic.ui_scale.element.xs.px` | Top and bottom padding for medium size pills. |
-| `ob.c.pill.spacing.padding.horizontal` | `ob.s.dimension.dynamic.ui_scale.spacing.xs.px` | Left and right padding for medium size pills. |
-| `ob.c.pill.spacing.gap` | `ob.s.dimension.dynamic.ui_scale.element.xl.px` | Horizontal gap between icon and text label for medium size pills. |
+| `ob.c.pill.spacing.padding.vertical` | `ob.s.dimension.dynamic.scale.element.xs.px` | Top and bottom padding for medium size pills. |
+| `ob.c.pill.spacing.padding.horizontal` | `ob.s.dimension.dynamic.scale.spacing.xs.px` | Left and right padding for medium size pills. |
+| `ob.c.pill.spacing.gap` | `ob.s.dimension.dynamic.scale.element.xl.px` | Horizontal gap between icon and text label for medium size pills. |
 
 ## Border Radius
 
@@ -39,9 +39,9 @@ Minimum height tokens in three sizes. The tokens have no description.
 
 | Token | References | Description |
 |-------|------------|-------------|
-| `ob.c.pill.surface.min_height.sm` | `ob.s.dimension.dynamic.ui_scale.spacing.xs.px` | - |
-| `ob.c.pill.surface.min_height.md` | `ob.s.dimension.dynamic.ui_scale.spacing.xs.px` | - |
-| `ob.c.pill.surface.min_height.lg` | `ob.s.dimension.dynamic.ui_scale.spacing.xl.px` | - |
+| `ob.c.pill.surface.min_height.sm` | `ob.s.dimension.dynamic.scale.spacing.xs.px` | - |
+| `ob.c.pill.surface.min_height.md` | `ob.s.dimension.dynamic.scale.spacing.xs.px` | - |
+| `ob.c.pill.surface.min_height.lg` | `ob.s.dimension.dynamic.scale.spacing.xl.px` | - |
 
 ## Icon Size and Minimum Height
 
@@ -49,8 +49,8 @@ The tokens have no description.
 
 | Token | References | Description |
 |-------|------------|-------------|
-| `ob.c.pill.icon_size` | `ob.s.dimension.static.ui_scale.spacing.md.px` | - |
-| `ob.c.pill.min_height` | `ob.s.dimension.dynamic.ui_scale.spacing.xl.px` | - |
+| `ob.c.pill.icon_size` | `ob.s.dimension.static.scale.spacing.md.px` | - |
+| `ob.c.pill.min_height` | `ob.s.dimension.dynamic.scale.spacing.xl.px` | - |
 
 ## Color
 
@@ -169,8 +169,8 @@ The pill tokens reference semantic tokens (`ob.s.*`). No pill token references a
 
 | Group | Tokens |
 |-------|--------|
-| Dimension, dynamic (`ui_scale`) | `ob.s.dimension.dynamic.ui_scale.element.xs.px`, `ob.s.dimension.dynamic.ui_scale.element.xl.px`, `ob.s.dimension.dynamic.ui_scale.spacing.xs.px`, `ob.s.dimension.dynamic.ui_scale.spacing.xl.px` |
-| Dimension, static | `ob.s.dimension.static.ui_scale.spacing.md.px` |
+| Dimension, dynamic (`scale`) | `ob.s.dimension.dynamic.scale.element.xs.px`, `ob.s.dimension.dynamic.scale.element.xl.px`, `ob.s.dimension.dynamic.scale.spacing.xs.px`, `ob.s.dimension.dynamic.scale.spacing.xl.px` |
+| Dimension, static | `ob.s.dimension.static.scale.spacing.md.px` |
 | Border radius | `ob.s.border_radius.rounded`, `ob.s.border_radius.md` |
 | Typography, dynamic | `ob.s.typography.scale.dynamic.font_size.md`, `ob.s.typography.scale.dynamic.line_height.xs`, `ob.s.typography.scale.dynamic.letter_spacing_px.wide`, `ob.s.typography.scale.dynamic.font_weight.medium`, `ob.s.typography.scale.dynamic.paragraph_spacing.xs` (only in `fg_label`) |
 | Typography, static | `ob.s.typography.scale.static.font_family.body` |

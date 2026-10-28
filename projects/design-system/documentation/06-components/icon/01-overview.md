@@ -1,6 +1,6 @@
 # Icon Component Overview
 
-> Working version on the development line (git branch `tokens-dev`). The icon tokens are not part of Oblique 16. The Figma behavior described on this page (the `base-size` property, the `ui_scale` mode on a parent frame) is the intended design of the component.
+> Working version on the development line (git branch `tokens-dev`). The icon tokens are not part of Oblique 16. The Figma behavior described on this page (the `base-size` property, the `scale` mode on a parent frame) is the intended design of the component.
 
 ## Component Introduction
 
@@ -11,11 +11,11 @@ Three specialized variants handle distinct use cases: interactive components tha
 ## Variants
 
 ### icon-component
-Scales with the `ui_scale` variable mode set on an ancestor frame.
+Scales with the `scale` variable mode set on an ancestor frame.
 
-Use for icons inside interactive components — buttons, list items, inputs, navigation items. The icon inherits size automatically when a product designer sets the `ui_scale` mode on a parent frame.
+Use for icons inside interactive components — buttons, list items, inputs, navigation items. The icon inherits size automatically when a product designer sets the `scale` mode on a parent frame.
 
-**Token**: `ob.c.icon.ui_scale.size.*` (reacts to `ui_scale` mode)
+**Token**: `ob.c.icon.scale.size.*` (reacts to `scale` mode)
 
 ### icon-static
 Fixed size, does not react to any variable mode.
@@ -45,8 +45,8 @@ The system maintainer selects `xs`, `sm`, `md`, or `lg` when constructing the co
 | md        | 24 (default) |
 | lg        | 32   |
 
-**Phase 2 — ui_scale mode (design time)**  
-The product designer sets the `ui_scale` mode on a parent frame in Figma. All nested `icon-component` instances scale simultaneously — the icon inherits the mode, no per-icon overrides needed.
+**Phase 2 — scale mode (design time)**  
+The product designer sets the `scale` mode on a parent frame in Figma. All nested `icon-component` instances scale simultaneously — the icon inherits the mode, no per-icon overrides needed.
 
 This separation means: system maintainers control tier proportion; product designers control contextual scaling.
 
@@ -58,9 +58,9 @@ This separation means: system maintainers control tier proportion; product desig
 
 ## When Not to Use
 
-- Do not place `inline-text` inside interactive components — it does not react to `ui_scale`
+- Do not place `inline-text` inside interactive components — it does not react to `scale`
 - Do not use raw icon assets without a wrapper — the wrapper provides the sizing token binding
-- Do not set the `ui_scale` mode on the icon instance itself; set it on the parent frame so all children inherit it
+- Do not set the `scale` mode on the icon instance itself; set it on the parent frame so all children inherit it
 
 ## Accessibility
 
@@ -70,7 +70,7 @@ Decide for every icon whether it is decorative or meaningful:
 
 ## Tokens
 
-The icon tokens are `ob.c.icon.*`. They live in `04_component/atom/icon/`: `01_color.json` holds the color and `02_layout.json` holds the sizes. The variant names above differ from the token path segments: `icon-component` uses `ui_scale`, `icon-static` uses `static`, and `inline-text` uses `typography_context`.
+The icon tokens are `ob.c.icon.*`. They live in `04_component/atom/icon/`: `01_color.json` holds the color and `02_layout.json` holds the sizes. The variant names above differ from the token path segments: `icon-component` uses `scale`, `icon-static` uses `static`, and `inline-text` uses `typography_context`.
 
 ---
 

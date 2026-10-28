@@ -53,19 +53,19 @@ The tag reacts to a mode when a token references a token that follows that mode.
 
 | Tokens | They reference | Mode reaction |
 |--------|----------------|---------------|
-| `container.spacing.gap`, `spacing.padding.horizontal` | `ob.s.dimension.dynamic.ui_scale.element.xl.px` | `ui_scale` |
-| `spacing.padding.vertical`, `spacing.gap` | `ob.s.dimension.dynamic.ui_scale.element.xs.px` | `ui_scale` |
-| `typography.font_size` | `ob.s.typography.scale.dynamic.font_size.sm` | `ui_scale` |
-| `typography.text_decoration` | `ob.s.typography.scale.dynamic.text_decoration.link.emphasis_low` | `ui_scale` |
+| `container.spacing.gap`, `spacing.padding.horizontal` | `ob.s.dimension.dynamic.scale.element.xl.px` | `scale` |
+| `spacing.padding.vertical`, `spacing.gap` | `ob.s.dimension.dynamic.scale.element.xs.px` | `scale` |
+| `typography.font_size` | `ob.s.typography.scale.dynamic.font_size.sm` | `scale` |
+| `typography.text_decoration` | `ob.s.typography.scale.dynamic.text_decoration.link.emphasis_low` | `scale` |
 | `typography.font_family`, `typography.font_weight` | `ob.s.typography.scale.static.*` | None. The tokens are static. |
 | `border_radius.default`, `filter.focus_ring.border_radius` | `ob.s.border_radius.rounded` | None. These tokens do not reference a mode token. |
-| `color.*` | `ob.s.color.neutral.*` | `lightness` |
+| `color.*` | `ob.s.color.neutral.*` | `color_scheme` |
 
 Notes:
 
 - The dimension tokens reference the `.px` variants. The unit rule is in the [Token Usage Guide](../../05-reference/01-token-usage-guide.md#px-vs-rem--which-unit-when-building-a-component).
-- The dynamic typography tokens belong to the `ui_scale` collection. See [Typography Tokens](../../03-token-categories/01-typography.md) and [UI Scale Mode](../../04-modes/03-ui-scale.md). The name of the referenced text decoration token contains `emphasis_low`. It is a typography token and not the `emphasis` mode.
-- The color tokens resolve through the [lightness mode](../../04-modes/01-lightness.md) (light and dark) because the semantic color tokens they reference do.
+- The dynamic typography tokens belong to the `scale` collection. See [Typography Tokens](../../03-token-categories/01-typography.md) and [Scale Mode](../../04-modes/03-scale.md). The name of the referenced text decoration token contains `emphasis_low`. It is a typography token and not the `emphasis` mode.
+- The color tokens resolve through the [color scheme mode](../../04-modes/01-color-scheme.md) (light and dark) because the semantic color tokens they reference do.
 - Inversion (plain name and `_inverse`) is part of the token name and is not a mode. See [Inversion](../../02-token-tiers/04-component.md#inversion-component-level-contrast-inversion).
 - No tag token references a `density`, `typography_context`, `viewport` or `motion` token. The color tokens reference the neutral family and not the interaction family, so the `emphasis` mode does not apply to them.
 

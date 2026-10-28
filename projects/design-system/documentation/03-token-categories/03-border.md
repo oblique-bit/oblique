@@ -163,9 +163,9 @@ The `_inverse` suffix is **part of the token name, not a mode**. A component can
 
 The two focus-ring variants are the border category's only use of the suffix — radius, width and outline offset have no inversion split, because a length does not change with the surface it sits on.
 
-### Inversion and lightness are different axes
+### Inversion and color scheme are different axes
 
-The `_inverse` suffix picks **which** of the two focus-ring colours a component uses. The `lightness` mode decides **what each one resolves to**, one layer down in the colour chain. The generated CSS shows both at work:
+The `_inverse` suffix picks **which** of the two focus-ring colours a component uses. The `color_scheme` mode decides **what each one resolves to**, one layer down in the colour chain. The generated CSS shows both at work:
 
 ```css
 :root {
@@ -179,7 +179,7 @@ The `_inverse` suffix picks **which** of the two focus-ring colours a component 
 }
 ```
 
-The `width` and `style` sub-properties are not re-emitted in the lightness block — only the colour changes with the mode.
+The `width` and `style` sub-properties are not re-emitted in the color scheme block — only the colour changes with the mode.
 
 ---
 

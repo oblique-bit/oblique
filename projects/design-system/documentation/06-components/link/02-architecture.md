@@ -23,7 +23,7 @@ All tokens of the topic are listed here. The column "References" shows the token
 
 | Token | References | Description |
 |-------|------------|-------------|
-| `ob.h.link.spacing.gap` | `ob.s.dimension.static.ui_scale.micro.sm.px` | Gap between icon and text in the text link. Value: 2 px. |
+| `ob.h.link.spacing.gap` | `ob.s.dimension.static.scale.micro.sm.px` | Gap between icon and text in the text link. Value: 2 px. |
 | `ob.h.link.motion.duration` | `ob.s.motion.duration.micro` | Link transition duration for hover and focus states. Value: 100 ms in the `enabled` motion mode, 0 ms in the `disabled` motion mode. |
 | `ob.h.link.motion.easing` | `ob.s.motion.easing.standard` | Link transition easing. Value: `cubic-bezier(0, 0, 0.2, 1)`. |
 
@@ -88,9 +88,9 @@ ob.h.link.color.visited
       → ob.s1.color.interaction.visited.fg.contrast_low   (no emphasis variant)
 ```
 
-The hover and active colors follow the same path as the default color, with the contrast levels `contrast_low` and `contrast_high`. The S1 tokens resolve with the `lightness` mode. See [Interaction Colors](../../03-token-categories/colors/06-semantic-interaction.md).
+The hover and active colors follow the same path as the default color, with the contrast levels `contrast_low` and `contrast_high`. The S1 tokens resolve with the `color_scheme` mode. See [Interaction Colors](../../03-token-categories/colors/06-semantic-interaction.md).
 
-The gap and the icon size are values, not colors. The gap references a static dimension token, so it does not react to the `ui_scale` mode. See [Dimension Tokens](../../03-token-categories/00-dimension.md). The icon size references the static font size scale and changes with the `typography_context` mode collection. See [Typography-Context Mode](../../04-modes/04-typography-context.md).
+The gap and the icon size are values, not colors. The gap references a static dimension token, so it does not react to the `scale` mode. See [Dimension Tokens](../../03-token-categories/00-dimension.md). The icon size references the static font size scale and changes with the `typography_context` mode collection. See [Typography-Context Mode](../../04-modes/04-typography-context.md).
 
 ## Design Decisions
 
@@ -114,13 +114,13 @@ The default link color is dark and has little saturation on thin letters. It may
 
 | Token | Used by | Value |
 |-------|---------|-------|
-| `ob.s.dimension.static.ui_scale.micro.sm.px` | `ob.h.link.spacing.gap` | 2 px |
+| `ob.s.dimension.static.scale.micro.sm.px` | `ob.h.link.spacing.gap` | 2 px |
 | `ob.s.motion.duration.micro` | `ob.h.link.motion.duration` | 100 ms (`enabled`), 0 ms (`disabled`) |
 | `ob.s.motion.easing.standard` | `ob.h.link.motion.easing` | `cubic-bezier(0, 0, 0.2, 1)` |
-| `ob.s.color.interaction.fg.contrast_medium` | `ob.h.link.color.default` | follows `lightness` and `emphasis` |
-| `ob.s.color.interaction.visited.fg.contrast_low` | `ob.h.link.color.visited` | follows `lightness` |
-| `ob.s.color.interaction.fg.contrast_low` | `ob.h.link.color.hover` | follows `lightness` and `emphasis` |
-| `ob.s.color.interaction.fg.contrast_high` | `ob.h.link.color.active` | follows `lightness` and `emphasis` |
+| `ob.s.color.interaction.fg.contrast_medium` | `ob.h.link.color.default` | follows `color_scheme` and `emphasis` |
+| `ob.s.color.interaction.visited.fg.contrast_low` | `ob.h.link.color.visited` | follows `color_scheme` |
+| `ob.s.color.interaction.fg.contrast_low` | `ob.h.link.color.hover` | follows `color_scheme` and `emphasis` |
+| `ob.s.color.interaction.fg.contrast_high` | `ob.h.link.color.active` | follows `color_scheme` and `emphasis` |
 | `ob.s.typography.scale.static.text_decoration.link.emphasis_high` | `ob.h.link.enabled`, `ob.h.link.hover`, `ob.h.link.active` | underline |
 | `ob.s.typography.scale.static.text_decoration.link.emphasis_low` | `ob.h.link.focus` | none |
 | `ob.s.typography.scale.static.font_size.md` | `ob.h.link.icon.size` (interface) | 1rem (16 px) |

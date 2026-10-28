@@ -81,9 +81,9 @@ The infobox reacts to a mode only when its tokens reference a token that follows
 
 | Mode collection | Reaction | Reason |
 |---|---|---|
-| `lightness` | Color tokens react | The color tokens reference `ob.s.color.status.*` and `ob.s.color.neutral.*`. These point to `ob.s1.color.*`, the lightness layer. See [Lightness Mode](../../04-modes/01-lightness.md). |
+| `color_scheme` | Color tokens react | The color tokens reference `ob.s.color.status.*` and `ob.s.color.neutral.*`. These point to `ob.s1.color.*`, the color scheme layer. See [Color scheme Mode](../../04-modes/01-color-scheme.md). |
 | `emphasis` | No reaction | No infobox token references an interaction color token. |
-| `ui_scale` | No reaction | All dimension tokens reference `ob.s.dimension.static.ui_scale.*`. These static tokens do not react to a mode. |
+| `scale` | No reaction | All dimension tokens reference `ob.s.dimension.static.scale.*`. These static tokens do not react to a mode. |
 | `density` | No reaction | No infobox token references a density token. |
 | `typography_context` | No reaction | The typography tokens reference `ob.s.typography.authoring.static.md.*`. The description of this semantic group says it is independent of the component size mode. |
 | `viewport` | Layout tokens differ | One token set exists for each viewport mode (see below). |
@@ -123,7 +123,7 @@ The six sets hold the same 25 tokens, but only two different value sets exist:
 | `container.spacing.padding_top` | `micro.sm.px` | `spacing.sm.px` |
 | `buttons_order_figma` | `primary-first` | `primary-last` |
 
-The short forms such as `spacing.xs.px` stand for `ob.s.dimension.static.ui_scale.spacing.xs.px`. The values in px are in the [Architecture](02-architecture.md#consumed-tokens) page.
+The short forms such as `spacing.xs.px` stand for `ob.s.dimension.static.scale.spacing.xs.px`. The values in px are in the [Architecture](02-architecture.md#consumed-tokens) page.
 
 **Tokens with the same value in all viewports:** `spacing.container_top.col_gap`, `spacing.text_blocks.row_gap`, `spacing.parentof_buttons_container.padding_left`, `spacing.parentof_buttons_container.padding_right`, `spacing.infobox_icon_container.padding_top`, `spacing.title.padding_top`, `container.spacing.padding_left` and `container.spacing.padding_right`.
 

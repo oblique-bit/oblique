@@ -12,12 +12,12 @@
           "spacing": {
             "marker_gap": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.ui_scale.element.xl.px}",
+              "$value": "{ob.s.dimension.static.scale.element.xl.px}",
               "$description": "Gap between icon and text."
             },
             "margin_bottom": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.ui_scale.element.xl.px}",
+              "$value": "{ob.s.dimension.static.scale.element.xl.px}",
               "$description": "margin bottom of single elements"
             }
           }
@@ -27,14 +27,14 @@
             "high": {
               "margin_top": {
                 "$type": "spacing",
-                "$value": "{ob.s.dimension.static.ui_scale.element.xl.px}",
+                "$value": "{ob.s.dimension.static.scale.element.xl.px}",
                 "$description": "margin bottom of single elements"
               }
             },
             "low": {
               "margin_top": {
                 "$type": "spacing",
-                "$value": "{ob.s.dimension.static.ui_scale.none.px}",
+                "$value": "{ob.s.dimension.static.scale.none.px}",
                 "$description": "margin bottom of single elements"
               }
             }

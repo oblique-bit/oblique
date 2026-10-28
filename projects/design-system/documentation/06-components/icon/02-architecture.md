@@ -13,7 +13,7 @@ The icon component family is the foundational sizing layer for all icons in Obli
 ├── 01_color.json     — color token (ob.c.icon.color.fg)
 └── 02_layout.json    — sizing tokens
     ├── ob.c.icon.static.size.*                — fixed sizes, no mode
-    ├── ob.c.icon.ui_scale.size.*              — reacts to ui_scale mode
+    ├── ob.c.icon.scale.size.*              — reacts to scale mode
     ├── ob.c.icon.typography_context.size.*    — reacts to typography_context mode
     └── ob.c.icon.inline_text.body.spacing.vertical.offset
 ```
@@ -24,12 +24,12 @@ The icon component family is the foundational sizing layer for all icons in Obli
 
 | Token | Mode | Default px |
 |-------|------|-----------|
-| `ob.c.icon.ui_scale.size.xs` | `ui_scale` | 16 |
-| `ob.c.icon.ui_scale.size.sm` | `ui_scale` | 20 |
-| `ob.c.icon.ui_scale.size.md` | `ui_scale` | 24 |
-| `ob.c.icon.ui_scale.size.lg` | `ui_scale` | 32 |
+| `ob.c.icon.scale.size.xs` | `scale` | 16 |
+| `ob.c.icon.scale.size.sm` | `scale` | 20 |
+| `ob.c.icon.scale.size.md` | `scale` | 24 |
+| `ob.c.icon.scale.size.lg` | `scale` | 32 |
 
-Tokens reference `ob.s.dimension.dynamic.ui_scale.spacing.*` — they resolve to different values depending on which `ui_scale` mode is active on an ancestor frame. The multipliers are 0.8 (sm), 1 (md, default) and 1.25 (lg), rounded to whole pixels: the `md` icon is 19 px in mode sm, 24 px in md and 30 px in lg.
+Tokens reference `ob.s.dimension.dynamic.scale.spacing.*` — they resolve to different values depending on which `scale` mode is active on an ancestor frame. The multipliers are 0.8 (sm), 1 (md, default) and 1.25 (lg), rounded to whole pixels: the `md` icon is 19 px in mode sm, 24 px in md and 30 px in lg.
 
 ### icon-static
 
@@ -40,7 +40,7 @@ Tokens reference `ob.s.dimension.dynamic.ui_scale.spacing.*` — they resolve to
 | `ob.c.icon.static.size.md` | none | 24 |
 | `ob.c.icon.static.size.lg` | none | 32 |
 
-Tokens reference `ob.s.dimension.static.ui_scale.spacing.*` — static dimension tokens that do not react to any mode.
+Tokens reference `ob.s.dimension.static.scale.spacing.*` — static dimension tokens that do not react to any mode.
 
 ### inline-text
 
@@ -56,13 +56,13 @@ The vertical offset corrects optical baseline misalignment between icons and adj
 Icon tokens sit in the `ob.c.*` component layer. They reference semantic dimension tokens from `ob.s.dimension.*`:
 
 ```
-ob.c.icon.ui_scale.size.md
-  → ob.s.dimension.dynamic.ui_scale.spacing.md.px  (dynamic = mode-reactive)
-      → roundTo(ob.p.dimension.px.24 × ui_scale multiplier, 0)
-        (the multiplier comes from the active ui_scale mode: sm 0.8, md 1 (default), lg 1.25)
+ob.c.icon.scale.size.md
+  → ob.s.dimension.dynamic.scale.spacing.md.px  (dynamic = mode-reactive)
+      → roundTo(ob.p.dimension.px.24 × scale multiplier, 0)
+        (the multiplier comes from the active scale mode: sm 0.8, md 1 (default), lg 1.25)
 
 ob.c.icon.static.size.md
-  → ob.s.dimension.static.ui_scale.spacing.md.px  (static = no mode)
+  → ob.s.dimension.static.scale.spacing.md.px  (static = no mode)
       → ob.p.dimension.px.24 (always)
 ```
 
@@ -80,7 +80,7 @@ Static and dynamic tokens resolve through different semantic dimension paths (`s
 
 ### Why does inline-text exist separately?
 
-Inline text icons are sized relative to typography, not to ui_scale. They require a different mode relationship (`typography_context` instead of `ui_scale`). A separate variant makes this explicit and prevents a product designer from accidentally applying `ui_scale` to an inline icon.
+Inline text icons are sized relative to typography, not to scale. They require a different mode relationship (`typography_context` instead of `scale`). A separate variant makes this explicit and prevents a product designer from accidentally applying `scale` to an inline icon.
 
 ---
 

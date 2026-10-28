@@ -30,7 +30,7 @@ ob.s1.color.interaction.{emphasis_level}.{element_type}.{contrast_level}{inversi
 - `_inverse` - Dark mode / inverted contexts
 
 ### The S2 (Emphasis-Resolved) Tier
-Component code more commonly consumes the emphasis-resolved tier: `ob.s2.color.interaction.{fg|bg}.{contrast_high|contrast_medium|contrast_low}{inversion}` and `ob.s2.color.interaction.border.{strong|medium|subtle}{inversion}`. Unlike S1, emphasis is not a path segment at S2 — the same token name resolves to a different value depending on which emphasis mode (high or low) is active for that part of the UI, the same way a lightness-mode token resolves differently under light vs. dark without "light" or "dark" appearing in its name. S2 does not define `fg_visited`, `fg_disabled`, or `bg_disabled` — component code references those S1 tokens directly for visited-link and disabled styling.
+Component code more commonly consumes the emphasis-resolved tier: `ob.s2.color.interaction.{fg|bg}.{contrast_high|contrast_medium|contrast_low}{inversion}` and `ob.s2.color.interaction.border.{strong|medium|subtle}{inversion}`. Unlike S1, emphasis is not a path segment at S2 — the same token name resolves to a different value depending on which emphasis mode (high or low) is active for that part of the UI, the same way a color_scheme token resolves differently under light vs. dark without "light" or "dark" appearing in its name. S2 does not define `fg_visited`, `fg_disabled`, or `bg_disabled` — component code references those S1 tokens directly for visited-link and disabled styling.
 
 ## High Emphasis Interactions
 
@@ -413,7 +413,7 @@ Focus rings ensure keyboard navigation accessibility:
 ## Mode Integration
 
 ### Automatic Adaptation
-Interaction colors automatically adapt to lightness mode changes through inversion variants:
+Interaction colors automatically adapt to color scheme mode changes through inversion variants:
 
 ```scss
 /* Light mode context */

@@ -8,7 +8,7 @@
 
 ## Brand Color Architecture
 
-Brand colors maintain consistent visual identity across all modes and contexts. They are static values that never change, ensuring brand recognition regardless of user preferences or lightness mode.
+Brand colors maintain consistent visual identity across all modes and contexts. They are static values that never change, ensuring brand recognition regardless of user preferences or color scheme mode.
 
 ### Brand Token Structure
 ```
@@ -108,7 +108,7 @@ The brand color system uses Swiss federal red (federal_red) to maintain visual c
 ### Contrast Requirements
 - **Brand on neutral backgrounds**: Meets WCAG 2.1 AA contrast requirements
 - **Text applications**: Ensure sufficient contrast when used for text elements
-- **Icon visibility**: Brand icons maintain readability across lightness modes
+- **Icon visibility**: Brand icons maintain readability across color scheme modes
 
 ### Color Dependencies
 - **Independent behavior**: Brand color doesn't rely on mode variations

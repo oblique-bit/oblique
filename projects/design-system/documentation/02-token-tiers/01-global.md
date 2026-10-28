@@ -6,7 +6,7 @@ Global tokens (`ob.g.*`) sit outside the strict tier-to-tier reference chain tha
 
 Most levels reference only the tier directly below them. Global tokens are the exception: they can be referenced directly by any other level, including:
 
-- **Semantic tokens** — e.g. `ob.s.dimension.dynamic.ui_scale.spacing.md.px` references `ob.g.mode_collection.scale.multiplier.dimension.md`
+- **Semantic tokens** — e.g. `ob.s.dimension.dynamic.scale.spacing.md.px` references `ob.g.mode_collection.scale.multiplier.dimension.md`
 - **Component tokens** (no component ships one yet in this release) — e.g. `ob.c.{component}.container.spacing.gap` would reference `ob.g.mode_collection.density.multiplier.dimension.standard`
 
 This cross-level referencing is intentional and reflects the foundational role of global tokens: they define system-wide constants and settings that are agnostic to theming depth.
@@ -23,7 +23,7 @@ Global tokens (`ob.g.*`) can be consumed by any level (Primitive, Semantic, or C
 
 ## Component Settings
 
-`ob.g.component.*` holds per-component overrides at the global tier. An entry pins one component to a fixed value, whatever mode is active. For example `ob.g.component.footer.lightness` is `dark`, so the footer stays dark in every lightness mode. These tokens have the type `other` because they carry no styling value. They exist on the development line (git branch `tokens-dev`); Oblique 16 does not contain them.
+`ob.g.component.*` holds per-component overrides at the global tier. An entry pins one component to a fixed value, whatever mode is active. For example `ob.g.component.footer.color_scheme` is `dark`, so the footer stays dark in every color scheme mode. These tokens have the type `other` because they carry no styling value. They exist on the development line (git branch `tokens-dev`); Oblique 16 does not contain them.
 
 ## Hierarchy Diagram
 

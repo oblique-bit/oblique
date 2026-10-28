@@ -4,7 +4,7 @@
 
 ## Component Overview
 
-The list tokens (`ob.h.list.*`) hold the spacing of the HTML list elements. The token family description names two groups: single-item spacing and group spacing. Every token references a semantic dimension token (`ob.s.dimension.static.ui_scale.*`). No token references a primitive directly.
+The list tokens (`ob.h.list.*`) hold the spacing of the HTML list elements. The token family description names two groups: single-item spacing and group spacing. Every token references a semantic dimension token (`ob.s.dimension.static.scale.*`). No token references a primitive directly.
 
 ## Component Structure
 
@@ -21,15 +21,15 @@ The list tokens (`ob.h.list.*`) hold the spacing of the HTML list elements. The 
 
 | Token | References | Description |
 |-------|------------|-------------|
-| `ob.h.list.single_item.spacing.marker_gap` | `ob.s.dimension.static.ui_scale.element.xl.px` | Gap between icon and text. |
-| `ob.h.list.single_item.spacing.margin_bottom` | `ob.s.dimension.static.ui_scale.element.xl.px` | Margin bottom of single elements. |
+| `ob.h.list.single_item.spacing.marker_gap` | `ob.s.dimension.static.scale.element.xl.px` | Gap between icon and text. |
+| `ob.h.list.single_item.spacing.margin_bottom` | `ob.s.dimension.static.scale.element.xl.px` | Margin bottom of single elements. |
 
 ## Group Spacing
 
 | Token | References | Description |
 |-------|------------|-------------|
-| `ob.h.list.group.spacing.high.margin_top` | `ob.s.dimension.static.ui_scale.element.xl.px` | The description in the token file says "margin bottom of single elements". This does not match the token name `margin_top`. |
-| `ob.h.list.group.spacing.low.margin_top` | `ob.s.dimension.static.ui_scale.none.px` | The description in the token file says "margin bottom of single elements". This does not match the token name `margin_top`. |
+| `ob.h.list.group.spacing.high.margin_top` | `ob.s.dimension.static.scale.element.xl.px` | The description in the token file says "margin bottom of single elements". This does not match the token name `margin_top`. |
+| `ob.h.list.group.spacing.low.margin_top` | `ob.s.dimension.static.scale.none.px` | The description in the token file says "margin bottom of single elements". This does not match the token name `margin_top`. |
 
 ## Design Decisions
 
@@ -41,8 +41,8 @@ The list tokens reference these semantic tokens. Both are static and do not reac
 
 | Semantic token | Value | Used by |
 |----------------|-------|---------|
-| `ob.s.dimension.static.ui_scale.element.xl.px` | 12 px (`ob.p.dimension.px.12`) | `single_item.spacing.marker_gap`, `single_item.spacing.margin_bottom`, `group.spacing.high.margin_top` |
-| `ob.s.dimension.static.ui_scale.none.px` | 0 px (`ob.p.dimension.px.0`) | `group.spacing.low.margin_top` |
+| `ob.s.dimension.static.scale.element.xl.px` | 12 px (`ob.p.dimension.px.12`) | `single_item.spacing.marker_gap`, `single_item.spacing.margin_bottom`, `group.spacing.high.margin_top` |
+| `ob.s.dimension.static.scale.none.px` | 0 px (`ob.p.dimension.px.0`) | `group.spacing.low.margin_top` |
 
 See [Dimension Tokens](../../03-token-categories/00-dimension.md).
 

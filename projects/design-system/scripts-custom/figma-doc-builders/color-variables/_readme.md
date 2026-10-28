@@ -65,7 +65,7 @@ node scripts-custom/figma-doc-builders/color-variables/build-color-variables.js
 | Tier | Figma collection | Modes | Path prefix |
 |---|---|---|---|
 | primitive | `static` | (single) | `ob/p/color/...` |
-| s1 | `s1_lightness` | light, dark | `ob/s1/color/...` |
+| s1 | `s1_color_scheme` | light, dark | `ob/s1/color/...` |
 | s2 | `s2_emphasis` | high, low | `ob/s2/color/...` |
 | s3 | `semantic` | (single, resolved) | `ob/s/color/...` |
 

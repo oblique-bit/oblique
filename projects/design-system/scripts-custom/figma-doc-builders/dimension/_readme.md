@@ -1,6 +1,6 @@
 # Dimension Builder
 
-Generates the **📐 Dimension: Spacing & Sizing** Figma docs page from the live dimension variables. Renders 6 tables (3 categories × static|dynamic): Typography Context, Density, UI Scale.
+Generates the **📐 Dimension: Spacing & Sizing** Figma docs page from the live dimension variables. Renders 6 tables (3 categories × static|dynamic): Typography Context, Density, Scale.
 
 Mirrors the architecture of `../color-variables/build-color-variables.js` and `../color-pairings/build-color-pairings.js`: a single `figma-ds-cli run` call with an embedded `PLUGIN_CODE` string + a `registry.json` that lists the 6 tables and the components used.
 
@@ -27,10 +27,10 @@ No local file artifacts — the Figma page is the only output.
 |---|---|---|---|
 | typography_context — static | `semantic` | (single) | `ob/s/dimension/static/typography_context/` |
 | density — static | `semantic` | (single) | `ob/s/dimension/static/density/` |
-| ui_scale — static | `semantic` | (single) | `ob/s/dimension/static/ui_scale/` |
+| scale — static | `semantic` | (single) | `ob/s/dimension/static/scale/` |
 | typography_context — dynamic | `typography_context` | `interface`, `prose` | `ob/s/dimension/dynamic/typography_context/` |
 | density — dynamic | `density` | `standard`, `compact`, `spacious` | `ob/s/dimension/dynamic/density/` |
-| ui_scale — dynamic | `ui_scale` | `sm`, `md`, `lg` | `ob/s/dimension/dynamic/ui_scale/` |
+| scale — dynamic | `scale` | `sm`, `md`, `lg` | `ob/s/dimension/dynamic/scale/` |
 
 Per-leaf description comes from `variable.description`. Family-doc variables (paths containing `/_docs/`) are filtered out.
 

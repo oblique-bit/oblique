@@ -27,9 +27,9 @@ The mode does not add new colors. It picks a step of the existing contrast ladde
 
 - **`01_global/mode_collection/elevation.json`** — registers the four modes and the CSS class of each mode.
 - **`03_semantic/color/elevation/level_minus_1.json`, `level_0.json`, `level_1.json`, `level_2.json`** — the `surface` background tokens. One file per mode. The files keep the underscore names of the first draft: `level_minus_1` is `level-1`, `level_0` is `level0`, and so on.
-- **`03_semantic/color/elevation/level_minus_1_color/`** — helper sets (`lightness/light.json`, `lightness/dark.json`) with the neutral surface of `level-1`. They follow lightness, so the mode can pick them. The dark value points to `cobalt.900`, the other values to the same primitives as `contrast_highest`.
+- **`03_semantic/color/elevation/level_minus_1_color/`** — helper sets (`color_scheme/light.json`, `color_scheme/dark.json`) with the neutral surface of `level-1`. They follow color scheme, so the mode can pick them. The dark value points to `cobalt.900`, the other values to the same primitives as `contrast_highest`.
 - **`05_html/button/01_color/elevation/level_minus_1.json`, `level_0.json`, `level_1.json`, `level_2.json`** — the Button background tokens that follow the mode.
-- **`05_html/button/01_color/elevation/level_2_color/`** — helper sets (`lightness/light.json`, `lightness/dark.json`, `emphasis/high.json`, `emphasis/low.json`) with the Button colors used on a `level2` surface. They follow lightness and emphasis, so the mode can pick them.
+- **`05_html/button/01_color/elevation/level_2_color/`** — helper sets (`color_scheme/light.json`, `color_scheme/dark.json`, `emphasis/high.json`, `emphasis/low.json`) with the Button colors used on a `level2` surface. They follow color scheme and emphasis, so the mode can pick them.
 
 ### **Surface Tokens**
 
@@ -68,7 +68,7 @@ The Button adapts to the context it sits on: when the elevation of the container
 
 ## **Interactive Feedback Direction**
 
-Hover and active change the Button background compared to the rest state. The direction of the change depends on the elevation, on lightness and on inversion. The values are set per mode in the helper sets, they are not computed.
+Hover and active change the Button background compared to the rest state. The direction of the change depends on the elevation, on color scheme and on inversion. The values are set per mode in the helper sets, they are not computed.
 
 The table shows the direction of `secondary` and `tertiary` for hover and active, measured as the luminance of the background over the surface of the mode. It is measured on the neutral surface, in high and low emphasis. `primary` gets darker in every combination.
 
@@ -87,4 +87,4 @@ The collection is registered in `01_global/mode_collection/elevation.json`. `lev
 
 ## **Mode Interplay**
 
-Elevation is independent of the other mode collections. For the seven Button backgrounds the result depends on three axes: lightness, emphasis and elevation. See [09-interplay.md](09-interplay.md).
+Elevation is independent of the other mode collections. For the seven Button backgrounds the result depends on three axes: color scheme, emphasis and elevation. See [09-interplay.md](09-interplay.md).

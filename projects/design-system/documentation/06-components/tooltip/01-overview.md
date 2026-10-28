@@ -44,9 +44,9 @@ A component token follows a mode when the token it references follows that mode.
 
 | Mode | Reaction | Reason |
 |------|----------|--------|
-| `lightness` | Colors follow | The color tokens reference `ob.s.color.neutral.*`. These resolve through the lightness level, which has a light file and a dark file. |
+| `color_scheme` | Colors follow | The color tokens reference `ob.s.color.neutral.*`. These resolve through the color scheme level, which has a light file and a dark file. |
 | `motion` | Animation follows | `animation.speed` references `ob.s.motion.duration.smooth`. In the `enabled` mode it resolves to `ob.p.motion.duration.medium` (200ms). In the `disabled` mode it resolves to `ob.p.motion.duration.instant` (0ms). |
-| `ui_scale` | No | The padding tokens reference `static` dimension tokens and the label references a `static` typography token. |
+| `scale` | No | The padding tokens reference `static` dimension tokens and the label references a `static` typography token. |
 | `emphasis` | No | The neutral colors are not part of the emphasis level. It only holds the interaction colors. |
 | `density` | No | No density token is referenced. |
 | `typography_context` | No | No typography context token is referenced. |
@@ -54,7 +54,7 @@ A component token follows a mode when the token it references follows that mode.
 
 The border radius and the shadow reference semantic tokens that are not mode-reactive.
 
-See [Mode Overview](../../04-modes/00-overview.md), [Lightness](../../04-modes/01-lightness.md) and [Motion](../../04-modes/07-motion.md).
+See [Mode Overview](../../04-modes/00-overview.md), [Color scheme](../../04-modes/01-color-scheme.md) and [Motion](../../04-modes/07-motion.md).
 
 ## Tokens
 

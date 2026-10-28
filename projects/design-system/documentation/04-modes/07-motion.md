@@ -16,9 +16,9 @@ referencing the same duration token; the active mode decides whether that
 token resolves to a real duration or to zero. No component needs a separate
 no-animation variant.
 
-Like lightness, motion is an end-user accessibility preference, not a
+Like color scheme, motion is an end-user accessibility preference, not a
 product-design decision: the person using the interface decides whether they
-want animation. Density and UI Scale, by contrast, are set per interface by
+want animation. Density and Scale, by contrast, are set per interface by
 the product designer.
 
 ## **Implementation**
@@ -27,10 +27,10 @@ the product designer.
 
 Located in: `03_semantic/motion/`
 
-- **`mode/enabled.json`** — the base mode `on`. The five semantic durations
+- **`mode/on.json`** — the base mode `on`. The five semantic durations
   resolve to the primitive steps `instant` / `fast` / `medium` / `slow` /
   `slower`.
-- **`mode/disabled.json`** — the mode `off`. Every duration resolves to
+- **`mode/off.json`** — the mode `off`. Every duration resolves to
   `ob.p.motion.duration.instant` (`0ms`).
 - **`static.json`** — the four easing curves. Mode-independent: this file is
   loaded whichever motion mode is active, so the curves are identical in
@@ -49,8 +49,8 @@ duplicated per mode.
       "motion": {
         "duration": {
           "micro": {
-            "$value": "{ob.p.motion.duration.fast}",     // enabled.json  → 100ms
-            "$value": "{ob.p.motion.duration.instant}"   // disabled.json →   0ms
+            "$value": "{ob.p.motion.duration.fast}",     // on.json  → 100ms
+            "$value": "{ob.p.motion.duration.instant}"   // off.json →   0ms
           }
         }
       }
@@ -80,15 +80,14 @@ mode:
 ### **For Developers**
 
 Apply the `off` mode by adding `.ob-motion-off` to `<body>`. `on`
-is the base — no class needed. The set files keep the names `enabled.json`
-and `disabled.json` for now.
+is the base — no class needed.
 
 The token source does not wire that class to a media query. The generated
 CSS contains no `@media (prefers-reduced-motion: reduce)` block, so mapping
 the operating-system preference to the class is the application's job. The
 preference is exposed to CSS as `prefers-reduced-motion: reduce` and to
 script through `matchMedia`. An in-app toggle can override it, the same way
-lightness pairs automatic detection with a manual switch.
+color scheme pairs automatic detection with a manual switch.
 
 ### **For Designers**
 

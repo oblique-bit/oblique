@@ -109,9 +109,9 @@ For headings, the `paragraph_spacing` value in the text style is Figma only. It 
 | Mode collection | Effect on the text components |
 |-----------------|-------------------------------|
 | `typography_context` (`interface`, `prose`) | Font size, line height, weight, letter spacing, color and spacing change. See the tables above |
-| `lightness` (`light`, `dark`) | The text colors change. See [Lightness](../../04-modes/01-lightness.md) |
+| `color_scheme` (`light`, `dark`) | The text colors change. See [Color scheme](../../04-modes/01-color-scheme.md) |
 | `emphasis` (`high`, `low`) | No effect on the heading and body colors. They are neutral colors, which have only light and dark values |
-| `ui_scale` | No effect. The text tokens reference the static typography scale and static dimension tokens. See [UI Scale](../../04-modes/03-ui-scale.md) |
+| `scale` | No effect. The text tokens reference the static typography scale and static dimension tokens. See [Scale](../../04-modes/03-scale.md) |
 
 The text context tokens are variables in the Figma file, in the `typography_context` collection.
 

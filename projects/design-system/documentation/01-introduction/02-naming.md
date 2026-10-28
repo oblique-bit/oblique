@@ -126,7 +126,7 @@ For backward compatibility, existing technical token paths may still use legacy 
 When this happens, document the mapping explicitly:
 
 - `static` -> `ob.c.{component}.static.*`
-- `component` -> `ob.c.{component}.ui_scale.*`
+- `component` -> `ob.c.{component}.scale.*`
 - `inline_text` -> `ob.c.{component}.typography_context.*` (the vertical offset keeps the segment `inline_text`: `ob.c.icon.inline_text.body.spacing.vertical.offset`)
 
 > **`inline_text` spacing note**: The horizontal gap between the icon and adjacent text is provided by a literal space character inserted by the consumer (`<ob-icon/> label`). This spacing is font-metric-driven (space glyph width) and cannot be tokenized. Token-driven gap control would require a flex container, which changes the layout contract from inline to block—not appropriate for inline text flow.
@@ -217,7 +217,7 @@ ob.s2.color.interaction.fg.contrast_low → {ob.s.color.interaction.fg.contrast_
 
 ### **Global Token Exception**
 ```
-ob.s.dimension.dynamic.ui_scale.element.md.px → roundTo({ob.p.dimension.px.8} * {ob.g.mode_collection.scale.multiplier.dimension.md}, 0)
+ob.s.dimension.dynamic.scale.element.md.px → roundTo({ob.p.dimension.px.8} * {ob.g.mode_collection.scale.multiplier.dimension.md}, 0)
 ```
 A semantic token may reference a global token (`ob.g.*`) directly alongside a primitive, in the same formula — global tokens are the one exception to the reference hierarchy, referenceable from any layer.
 
@@ -250,12 +250,12 @@ Only the path separators change (`.` to `-`), while compound identifiers remain 
 ### **Color Tokens**
 - **Structure**: `ob.{layer}.color.{color_name}.{shade}`
 - **Examples**: `ob.p.color.red.500`, `ob.s.color.neutral.fg.contrast_high`
-- **Modes**: Handled through S1 lightness layer (light/dark)
+- **Modes**: Handled through S1 color scheme layer (light/dark)
 
 ### **Dimension Tokens**  
 - **Structure**: `ob.{layer}.dimension.{size_name}`
-- **Examples**: `ob.p.dimension.px.16`, `ob.s.dimension.dynamic.ui_scale.element.md.px`
-- **Modes**: Handled through ui_scale modes (sm/md/lg)
+- **Examples**: `ob.p.dimension.px.16`, `ob.s.dimension.dynamic.scale.element.md.px`
+- **Modes**: Handled through scale modes (sm/md/lg)
 
 ### **Typography Tokens**
 - **Structure**: `ob.{layer}.typography.{property}.{variant}`

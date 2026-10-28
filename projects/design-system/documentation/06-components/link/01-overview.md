@@ -83,11 +83,11 @@ The icon size depends on the typography context:
 
 | Mode collection | Effect on the link |
 |-----------------|--------------------|
-| `lightness` (`light`, `dark`) | The link colors change. See [Lightness](../../04-modes/01-lightness.md) |
+| `color_scheme` (`light`, `dark`) | The link colors change. See [Color scheme](../../04-modes/01-color-scheme.md) |
 | `emphasis` (`high`, `low`) | The enabled, hover and active colors change, because the semantic interaction colors follow this mode. The visited color has no emphasis variant. See [Emphasis](../../04-modes/02-emphasis.md) |
 | `typography_context` (`interface`, `prose`) | The icon size changes. See [Typography-Context Mode](../../04-modes/04-typography-context.md) |
 | `motion` (`enabled`, `disabled`) | The transition duration is 100 ms in `enabled` and 0 ms in `disabled`. See [Motion](../../04-modes/07-motion.md) |
-| `ui_scale` | No effect. The gap references a static dimension token. See [UI Scale](../../04-modes/03-ui-scale.md) |
+| `scale` | No effect. The gap references a static dimension token. See [Scale](../../04-modes/03-scale.md) |
 
 ## In Figma
 

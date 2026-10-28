@@ -30,37 +30,37 @@ The popover tokens are the component tokens (`ob.c.popover.*`) of the Popover mo
 
 ## Spacing
 
-Spacing tokens reference static dimension tokens (`ob.s.dimension.static.ui_scale.*`). They do not react to a mode.
+Spacing tokens reference static dimension tokens (`ob.s.dimension.static.scale.*`). They do not react to a mode.
 
 | Token | References | Description |
 |-------|------------|-------------|
-| `ob.c.popover.spacing.padded_container.padding_top` | `ob.s.dimension.static.ui_scale.spacing.sm.px` | Top and right padding are the same so that the position of the close button looks good. |
-| `ob.c.popover.spacing.padded_container.padding_right` | `ob.s.dimension.static.ui_scale.spacing.sm.px` | Top and right padding are the same so that the position of the close button looks good. |
-| `ob.c.popover.spacing.padded_container.padding_bottom` | `ob.s.dimension.static.ui_scale.spacing.sm.px` | Improves readability and appearance. The text does not look cramped. |
-| `ob.c.popover.spacing.padded_container.padding_left` | `ob.s.dimension.static.ui_scale.spacing.sm.px` | Improves readability and appearance. The text does not look cramped. |
-| `ob.c.popover.spacing.padded_container.row_gap` | `ob.s.dimension.static.ui_scale.element.xs.px` | Sets a minimum vertical gap between the top container and the buttons container to improve readability. |
-| `ob.c.popover.spacing.text_bar.col_gap` | `ob.s.dimension.static.ui_scale.spacing.xs.px` | Keeps the title from coming too close to the close button (X). |
-| `ob.c.popover.spacing.text_bar.padding_bottom` | `ob.s.dimension.static.ui_scale.spacing.xs.px` | - |
-| `ob.c.popover.spacing.text_variant_container.padding_top` | `ob.s.dimension.static.ui_scale.micro.xs.px` | Aligns the title with the status icon and the close button on desktop. |
-| `ob.c.popover.spacing.buttons_container.margin_top` | `ob.s.dimension.static.ui_scale.spacing.xs.px` | Sets a good distance from the buttons to the text above. A gap in the padded container was not used because it also increases the gap between the title and the body. |
+| `ob.c.popover.spacing.padded_container.padding_top` | `ob.s.dimension.static.scale.spacing.sm.px` | Top and right padding are the same so that the position of the close button looks good. |
+| `ob.c.popover.spacing.padded_container.padding_right` | `ob.s.dimension.static.scale.spacing.sm.px` | Top and right padding are the same so that the position of the close button looks good. |
+| `ob.c.popover.spacing.padded_container.padding_bottom` | `ob.s.dimension.static.scale.spacing.sm.px` | Improves readability and appearance. The text does not look cramped. |
+| `ob.c.popover.spacing.padded_container.padding_left` | `ob.s.dimension.static.scale.spacing.sm.px` | Improves readability and appearance. The text does not look cramped. |
+| `ob.c.popover.spacing.padded_container.row_gap` | `ob.s.dimension.static.scale.element.xs.px` | Sets a minimum vertical gap between the top container and the buttons container to improve readability. |
+| `ob.c.popover.spacing.text_bar.col_gap` | `ob.s.dimension.static.scale.spacing.xs.px` | Keeps the title from coming too close to the close button (X). |
+| `ob.c.popover.spacing.text_bar.padding_bottom` | `ob.s.dimension.static.scale.spacing.xs.px` | - |
+| `ob.c.popover.spacing.text_variant_container.padding_top` | `ob.s.dimension.static.scale.micro.xs.px` | Aligns the title with the status icon and the close button on desktop. |
+| `ob.c.popover.spacing.buttons_container.margin_top` | `ob.s.dimension.static.scale.spacing.xs.px` | Sets a good distance from the buttons to the text above. A gap in the padded container was not used because it also increases the gap between the title and the body. |
 
 ## Size
 
-Size tokens reference dynamic dimension tokens (`ob.s.dimension.dynamic.ui_scale.*`). They follow the `ui_scale` mode.
+Size tokens reference dynamic dimension tokens (`ob.s.dimension.dynamic.scale.*`). They follow the `scale` mode.
 
 | Token | References | Description |
 |-------|------------|-------------|
-| `ob.c.popover.size.custom_buttons_container.width` | `ob.s.dimension.dynamic.ui_scale.macro.sm.px` | - |
-| `ob.c.popover.size.custom_buttons.min_width` | `ob.s.dimension.dynamic.ui_scale.container.xl.px` | - |
-| `ob.c.popover.size.padded_container.width` | `ob.s.dimension.dynamic.ui_scale.macro.sm.px` | Sets a fixed default width (320 px) for popover consistency. It can be overridden for specific requirements. |
-| `ob.c.popover.size.close_button.width` | `ob.s.dimension.dynamic.ui_scale.spacing.sm.px` | - |
-| `ob.c.popover.size.text_variant_container.min_height` | `ob.s.dimension.dynamic.ui_scale.spacing.md.px` | - |
+| `ob.c.popover.size.custom_buttons_container.width` | `ob.s.dimension.dynamic.scale.macro.sm.px` | - |
+| `ob.c.popover.size.custom_buttons.min_width` | `ob.s.dimension.dynamic.scale.container.xl.px` | - |
+| `ob.c.popover.size.padded_container.width` | `ob.s.dimension.dynamic.scale.macro.sm.px` | Sets a fixed default width (320 px) for popover consistency. It can be overridden for specific requirements. |
+| `ob.c.popover.size.close_button.width` | `ob.s.dimension.dynamic.scale.spacing.sm.px` | - |
+| `ob.c.popover.size.text_variant_container.min_height` | `ob.s.dimension.dynamic.scale.spacing.md.px` | - |
 
 The referenced token is dynamic, so the 320 px of `padded_container.width` is the value in the `md` mode. In `sm` it is 256 px and in `lg` it is 400 px.
 
 ## Color
 
-Color tokens reference semantic neutral colors with the plain name (no `_inverse` suffix). They follow the `lightness` mode through the semantic tier.
+Color tokens reference semantic neutral colors with the plain name (no `_inverse` suffix). They follow the `color_scheme` mode through the semantic tier.
 
 | Token | References | Description |
 |-------|------------|-------------|
@@ -108,14 +108,14 @@ The popover tokens reference these semantic tokens. Dynamic tokens show the valu
 
 | Semantic token | Value | Used by |
 |----------------|-------|---------|
-| `ob.s.dimension.static.ui_scale.micro.xs.px` | 1 px (`ob.p.dimension.px.1`) | `spacing.text_variant_container.padding_top` |
-| `ob.s.dimension.static.ui_scale.element.xs.px` | 4 px (`ob.p.dimension.px.4`) | `spacing.padded_container.row_gap` |
-| `ob.s.dimension.static.ui_scale.spacing.xs.px` | 16 px (`ob.p.dimension.px.16`) | `spacing.text_bar.col_gap`, `spacing.text_bar.padding_bottom`, `spacing.buttons_container.margin_top` |
-| `ob.s.dimension.static.ui_scale.spacing.sm.px` | 20 px (`ob.p.dimension.px.20`) | `spacing.padded_container.padding_top`, `padding_right`, `padding_bottom`, `padding_left` |
-| `ob.s.dimension.dynamic.ui_scale.spacing.sm.px` | 16 / 20 / 25 px | `size.close_button.width` |
-| `ob.s.dimension.dynamic.ui_scale.spacing.md.px` | 19 / 24 / 30 px | `size.text_variant_container.min_height` |
-| `ob.s.dimension.dynamic.ui_scale.container.xl.px` | 51 / 64 / 80 px | `size.custom_buttons.min_width` |
-| `ob.s.dimension.dynamic.ui_scale.macro.sm.px` | 256 / 320 / 400 px | `size.custom_buttons_container.width`, `size.padded_container.width` |
+| `ob.s.dimension.static.scale.micro.xs.px` | 1 px (`ob.p.dimension.px.1`) | `spacing.text_variant_container.padding_top` |
+| `ob.s.dimension.static.scale.element.xs.px` | 4 px (`ob.p.dimension.px.4`) | `spacing.padded_container.row_gap` |
+| `ob.s.dimension.static.scale.spacing.xs.px` | 16 px (`ob.p.dimension.px.16`) | `spacing.text_bar.col_gap`, `spacing.text_bar.padding_bottom`, `spacing.buttons_container.margin_top` |
+| `ob.s.dimension.static.scale.spacing.sm.px` | 20 px (`ob.p.dimension.px.20`) | `spacing.padded_container.padding_top`, `padding_right`, `padding_bottom`, `padding_left` |
+| `ob.s.dimension.dynamic.scale.spacing.sm.px` | 16 / 20 / 25 px | `size.close_button.width` |
+| `ob.s.dimension.dynamic.scale.spacing.md.px` | 19 / 24 / 30 px | `size.text_variant_container.min_height` |
+| `ob.s.dimension.dynamic.scale.container.xl.px` | 51 / 64 / 80 px | `size.custom_buttons.min_width` |
+| `ob.s.dimension.dynamic.scale.macro.sm.px` | 256 / 320 / 400 px | `size.custom_buttons_container.width`, `size.padded_container.width` |
 | `ob.s.color.neutral.bg.contrast_highest` | Light: `ob.p.color.basic.white`. Dark: `ob.p.color.cobalt.800`. | `color.bg` |
 | `ob.s.color.neutral.border.strong` | `ob.p.color.cobalt.300` in light and dark | `color.border` |
 | `ob.s.color.neutral.fg.contrast_highest` | Light: `ob.p.color.cobalt.900`. Dark: `ob.p.color.basic.white`. | `color.fg` |
@@ -125,7 +125,7 @@ The popover tokens reference these semantic tokens. Dynamic tokens show the valu
 | `ob.s.border_radius.lg` | 4 px (`ob.p.dimension.px.4`) | `border_radius` |
 | `ob.s.border_width.xs` | 1 px (`ob.p.dimension.px.1`) | `border_width` |
 
-The dynamic dimension tokens are the base primitive times the `ui_scale` multiplier (0.8, 1 and 1.25), rounded to whole pixels. See [UI Scale Mode](../../04-modes/03-ui-scale.md) and [Dimension Tokens](../../03-token-categories/00-dimension.md).
+The dynamic dimension tokens are the base primitive times the `scale` multiplier (0.8, 1 and 1.25), rounded to whole pixels. See [Scale Mode](../../04-modes/03-scale.md) and [Dimension Tokens](../../03-token-categories/00-dimension.md).
 
 ---
 

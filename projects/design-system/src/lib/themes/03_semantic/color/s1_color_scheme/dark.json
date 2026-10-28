@@ -12,7 +12,7 @@
           "_docs": {
             "token_family_info": {
               "$type": "text",
-              "$value": "Lightness-resolved neutral colors. Only Light/Dark modes apply. References Primitives, referenced by S3. Do: Reference when authoring compiled semantic tokens that resolve to neutral foreground, background, border, or shadow values. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead."
+              "$value": "Color-scheme-resolved neutral colors. Only Light/Dark modes apply. References Primitives, referenced by S3. Do: Reference when authoring compiled semantic tokens that resolve to neutral foreground, background, border, or shadow values. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead."
             }
           },
           "bg": {
@@ -206,7 +206,7 @@
           "_docs": {
             "token_family_info": {
               "$type": "text",
-              "$value": "Lightness-resolved status colors. Only Light/Dark modes apply. References Primitives, referenced by S3. Do: Reference when authoring compiled tokens that resolve to status colors. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead."
+              "$value": "Color-scheme-resolved status colors. Only Light/Dark modes apply. References Primitives, referenced by S3. Do: Reference when authoring compiled tokens that resolve to status colors. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead."
             }
           },
           "info": {
@@ -1076,7 +1076,7 @@
           "_docs": {
             "token_family_info": {
               "$type": "text",
-              "$value": "Lightness-resolved interaction colors. Only Light/Dark modes apply. References Primitives, referenced by S2. Do: Reference when authoring S2 or compiled tokens that resolve to interaction state colors. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead."
+              "$value": "Color-scheme-resolved interaction colors. Only Light/Dark modes apply. References Primitives, referenced by S2. Do: Reference when authoring S2 or compiled tokens that resolve to interaction state colors. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead."
             }
           },
           "emphasis_high": {
@@ -1633,7 +1633,7 @@
           "fg": {
             "$type": "color",
             "$value": "{ob.p.color.basic.white}",
-            "$description": "Navigation foreground — text. Always uses the highest contrast cobalt value; navigation text is black regardless of lightness mode."
+            "$description": "Navigation foreground — text. Always uses the highest contrast cobalt value; navigation text is black regardless of color_scheme mode."
           },
           "fg_disabled": {
             "$type": "color",

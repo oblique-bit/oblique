@@ -39,7 +39,7 @@ Located in: `03_semantic/color/s2_emphasis/`
 
 ### **Reference Chain**
 ```
-Components → S2 Emphasis → S1 Lightness → Primitives
+Components → S2 Emphasis → S1 Color scheme → Primitives
               ↑
        Emphasis selection occurs here
 ```

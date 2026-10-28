@@ -8,7 +8,7 @@
  * Source-of-truth contract:
  *   - Static dims:  `ob/s/dimension/static/<category>/...` in the `semantic` collection
  *   - Dynamic dims: `ob/s/dimension/dynamic/<category>/...` in the per-category
- *                   collection (density, ui_scale, typography_context)
+ *                   collection (density, scale, typography_context)
  *   - Per-token description: `variable.description`
  *
  * Usage:
@@ -188,8 +188,8 @@ function rankSize(size) {
 // Parse a token name into { category, size, unit } regardless of which family
 // it belongs to. Token paths vary by table:
 //   density:            .../density/<size>/<unit>
-//   ui_scale flat:      .../ui_scale/<size>/<unit>            (e.g. none/px)
-//   ui_scale category:  .../ui_scale/<category>/<size>/<unit>
+//   scale flat:         .../scale/<size>/<unit>            (e.g. none/px)
+//   scale category:     .../scale/<category>/<size>/<unit>
 //   typography_context: .../typography_context/<size>         (no unit segment)
 function parseTokenName(varName, prefix) {
   const rest = varName.slice(prefix.length); // drop the table prefix
@@ -204,7 +204,7 @@ function parseTokenName(varName, prefix) {
   return { category: null, size: last, unit: '' };
 }
 
-// Category ranks for ui_scale, derived from actual token px-ranges in the file:
+// Category ranks for scale, derived from actual token px-ranges in the file:
 // micro 1-3 < element 4-12 < spacing 16-32 < container 36-64 < layout 80-192
 // < macro 256+. Top-level tokens (null category, size='none', 0px) come first.
 // Unknown categories fall through to alphabetical at the end so the build
@@ -456,7 +456,7 @@ const WRAPPER_NAME = 'Dimension Tables';
 const WRAPPER_GAP  = 96;
 const BG_VAR_NAME  = 'ob/s1/color/neutral/bg/contrast_highest';
 // s1-tier color vars live in the "color_scheme" collection (formerly "lightness"). A legacy numbered
-// collection (e.g. 03_semantic/color/s1_lightness/light) can carry a
+// collection (e.g. 03_semantic/color/s1_color_scheme/light) can carry a
 // variable with this exact same name, and an unscoped find() over allVars
 // is not guaranteed to pick the current one. Scope to the live collection
 // by name; fall back to unscoped only if that collection can't be found.

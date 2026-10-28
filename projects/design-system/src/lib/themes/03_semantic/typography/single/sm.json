@@ -14,7 +14,7 @@
               "token_family_docs": {
                 "description": {
                   "$type": "other",
-                  "$value": "Dynamic font-size scale — values scale with the active ui_scale mode (sm/md/lg) via the typography multiplier."
+                  "$value": "Dynamic font-size scale — values scale with the active scale mode (sm/md/lg) via the typography multiplier."
                 }
               },
               "xs": {
@@ -67,7 +67,7 @@
               "token_family_docs": {
                 "description": {
                   "$type": "other",
-                  "$value": "Dynamic line-height scale — paired with the dynamic font-size scale. Scales with ui_scale (sm/md/lg)."
+                  "$value": "Dynamic line-height scale — paired with the dynamic font-size scale. Scales with the scale mode (sm/md/lg)."
                 }
               },
               "xs": {
@@ -107,7 +107,7 @@
               "token_family_docs": {
                 "description": {
                   "$type": "other",
-                  "$value": "Dynamic paragraph-spacing scale — half the matching dynamic line-height, so paragraph rhythm scales with ui_scale."
+                  "$value": "Dynamic paragraph-spacing scale — half the matching dynamic line-height, so paragraph rhythm scales with the scale mode."
                 }
               },
               "xs": {
@@ -147,17 +147,17 @@
               "heading": {
                 "top": {
                   "$type": "spacing",
-                  "$value": "{ob.s.dimension.static.ui_scale.none.px}",
+                  "$value": "{ob.s.dimension.static.scale.none.px}",
                   "$description": "Standard spacing above H1 is none to use vertical space."
                 },
                 "top_after_p": {
                   "$type": "spacing",
-                  "$value": "{ob.s.dimension.static.ui_scale.container.md.px}",
+                  "$value": "{ob.s.dimension.static.scale.container.md.px}",
                   "$description": "SPecial spacing above H1 after a paragraph"
                 },
                 "bottom": {
                   "$type": "spacing",
-                  "$value": "{ob.s.dimension.static.ui_scale.element.md.px}"
+                  "$value": "{ob.s.dimension.static.scale.element.md.px}"
                 }
               },
               "paragraph": {
@@ -171,7 +171,7 @@
               "token_family_docs": {
                 "description": {
                   "$type": "other",
-                  "$value": "Dynamic font weight tokens — identical numeric mapping to the static set, exposed in the ui_scale collection for parity."
+                  "$value": "Dynamic font weight tokens — identical numeric mapping to the static set, exposed in the scale collection for parity."
                 }
               },
               "regular": {
@@ -219,7 +219,7 @@
               "token_family_docs": {
                 "description": {
                   "$type": "other",
-                  "$value": "Dynamic letter spacing (rem) — tracking values authored in rem in the ui_scale collection."
+                  "$value": "Dynamic letter spacing (rem) — tracking values authored in rem in the scale collection."
                 }
               },
               "superNarrow": {
@@ -252,7 +252,7 @@
               "token_family_docs": {
                 "description": {
                   "$type": "other",
-                  "$value": "Dynamic letter spacing (px) — tracking values authored in px in the ui_scale collection."
+                  "$value": "Dynamic letter spacing (px) — tracking values authored in px in the scale collection."
                 }
               },
               "superNarrow": {

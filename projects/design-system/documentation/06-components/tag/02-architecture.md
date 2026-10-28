@@ -21,15 +21,15 @@ The tables use the token path with dots and the reference as written in the toke
 
 | Token | References | Description |
 |-------|------------|-------------|
-| `ob.c.tag.container.spacing.gap` | `ob.s.dimension.dynamic.ui_scale.element.xl.px` | Spacing between single tags. |
+| `ob.c.tag.container.spacing.gap` | `ob.s.dimension.dynamic.scale.element.xl.px` | Spacing between single tags. |
 
 ## Spacing
 
 | Token | References | Description |
 |-------|------------|-------------|
-| `ob.c.tag.spacing.padding.vertical` | `ob.s.dimension.dynamic.ui_scale.element.xs.px` | Top and bottom padding for medium size tags. |
-| `ob.c.tag.spacing.padding.horizontal` | `ob.s.dimension.dynamic.ui_scale.element.xl.px` | Left and right padding for medium size tags. |
-| `ob.c.tag.spacing.gap` | `ob.s.dimension.dynamic.ui_scale.element.xs.px` | Horizontal gap between icon and text label for medium size tags. |
+| `ob.c.tag.spacing.padding.vertical` | `ob.s.dimension.dynamic.scale.element.xs.px` | Top and bottom padding for medium size tags. |
+| `ob.c.tag.spacing.padding.horizontal` | `ob.s.dimension.dynamic.scale.element.xl.px` | Left and right padding for medium size tags. |
+| `ob.c.tag.spacing.gap` | `ob.s.dimension.dynamic.scale.element.xs.px` | Horizontal gap between icon and text label for medium size tags. |
 
 ## Border Radius
 
@@ -91,7 +91,7 @@ The tag tokens reference semantic tokens (`ob.s.*`). No tag token references a p
 
 | Group | Tokens |
 |-------|--------|
-| Dimension, dynamic (`ui_scale`) | `ob.s.dimension.dynamic.ui_scale.element.xs.px`, `ob.s.dimension.dynamic.ui_scale.element.xl.px` |
+| Dimension, dynamic (`scale`) | `ob.s.dimension.dynamic.scale.element.xs.px`, `ob.s.dimension.dynamic.scale.element.xl.px` |
 | Border radius | `ob.s.border_radius.rounded` |
 | Typography, dynamic | `ob.s.typography.scale.dynamic.font_size.sm`, `ob.s.typography.scale.dynamic.text_decoration.link.emphasis_low` |
 | Typography, static | `ob.s.typography.scale.static.font_family.code`, `ob.s.typography.scale.static.font_weight.medium` |

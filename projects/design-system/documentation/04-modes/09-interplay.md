@@ -16,7 +16,7 @@ Token modes are designed to be **deliberately independent** - product designers 
 
 Different modes control different aspects of component behavior:
 
-**UI Scale Mode** controls individual component dimensions:
+**Scale Mode** controls individual component dimensions:
 - **Scope**: Primarily affects individual interactive controls - small, self-contained elements such as buttons, inputs, tags, or pills
 - **Control**: System consumer can override default component size based on contextual importance (sm/md/lg)
 
@@ -29,15 +29,15 @@ Different modes control different aspects of component behavior:
 - **Purpose**: Optimal text presentation for different content types (interface vs prose)
 
 **Motion Mode** controls animation preference:
-- **Scope**: Every animated or transitioning element uniformly — no component-type scoping, unlike UI Scale or Density
-- **Behavior**: Fully orthogonal; combines with any state of every other mode (Lightness, Emphasis, UI Scale, Density, Typography-Context, Viewport, Elevation) with no conflicts. Disabling it shortens transitions to zero rather than removing them, so it never changes which mode a component reacts to elsewhere — see [07-motion.md](07-motion.md).
+- **Scope**: Every animated or transitioning element uniformly — no component-type scoping, unlike Scale or Density
+- **Behavior**: Fully orthogonal; combines with any state of every other mode (Color scheme, Emphasis, Scale, Density, Typography-Context, Viewport, Elevation) with no conflicts. Disabling it shortens transitions to zero rather than removing them, so it never changes which mode a component reacts to elsewhere — see [07-motion.md](07-motion.md).
 
 **Elevation Mode** controls the surface level:
 - **Scope**: The background of a surface and the Button backgrounds that depend on it
-- **Interplay**: Independent of every other mode. For the Button backgrounds that change with the level, the result depends on lightness, emphasis and elevation together; see [08-elevation.md](08-elevation.md)
+- **Interplay**: Independent of every other mode. For the Button backgrounds that change with the level, the result depends on color scheme, emphasis and elevation together; see [08-elevation.md](08-elevation.md)
 
 ### **Key Patterns**
-1. **Individual interactive controls** → UI Scale mode only
+1. **Individual interactive controls** → Scale mode only
 2. **Layout containers** (elements arranging multiple children, e.g. tabular or list structures) → Density mode only
 3. **Text-heavy content** → Typography-Context mode only
 4. **Elements that combine structure and substantial text content** → Multiple modes (Density + Typography-Context)
@@ -78,17 +78,17 @@ Different screen sizes impose constraints on mode combinations:
 
 **Mobile (≤768px)**:
 - **Density**: Compact recommended (space limitations)
-- **UI Scale**: Small to medium (touch targets vs space)
+- **Scale**: Small to medium (touch targets vs space)
 - **Typography**: Interface context (scanning efficiency)
 
 **Tablet (769px-1024px)**:
 - **Density**: Compact + standard available
-- **UI Scale**: Medium preferred (hybrid interaction)
+- **Scale**: Medium preferred (hybrid interaction)
 - **Typography**: Context-dependent (interface for apps, prose for content)
 
 **Desktop (≥1025px)**:
 - **Density**: All densities available
-- **UI Scale**: All sizes available
+- **Scale**: All sizes available
 - **Typography**: Full context flexibility
 
 ### **Accessibility Considerations**
@@ -140,7 +140,7 @@ Different screen sizes impose constraints on mode combinations:
 ### **Design System Governance**
 
 - **Mode Responsibility Patterns**: These patterns may be refined as components are designed and tested in mode interplay scenarios
-- **Core Principles**: Individual interactive controls → ui_scale, layout containers → density remain the stable core patterns
+- **Core Principles**: Individual interactive controls → scale, layout containers → density remain the stable core patterns
 - **Documentation**: Keep mode interplay documentation updated as system evolves
 
 ---

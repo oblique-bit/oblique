@@ -12,7 +12,7 @@ Semantic tokens provide context to primitive values and are the bridge between t
     *   **`static`**: Tokens that have a fixed value and do not change with global multipliers.
     *   **`dynamic`**: Tokens that scale based on a global multiplier (e.g., `{ob.p.dimension.px.8} * {ob.g.mode_collection.scale.multiplier.dimension.md}`).
 
-5.  **Semantic Dimension Structure**: The `ob.s.dimension.dynamic.ui_scale` tokens follow a tiered semantic model to provide clear, intuitive meaning for spacing and sizing: `micro`, `element`, `spacing`, `container`, `layout`, `macro` (plus a `none` tier for zero).
+5.  **Semantic Dimension Structure**: The `ob.s.dimension.dynamic.scale` tokens follow a tiered semantic model to provide clear, intuitive meaning for spacing and sizing: `micro`, `element`, `spacing`, `container`, `layout`, `macro` (plus a `none` tier for zero).
 
 ### Examples
 
@@ -21,7 +21,7 @@ Semantic tokens provide context to primitive values and are the bridge between t
 The semantic layer is the correct and only place to create dynamic tokens by multiplying a primitive by a global multiplier.
 
 ```json
-// In: 03_semantic/dimension/ui_scale/md.json
+// In: 03_semantic/dimension/scale/md.json
 "spacing": {
   "xs": {
     "px": {
@@ -57,7 +57,7 @@ Some utility color tokens (e.g., `ob.s.color.neutral.no_color`) are **intentiona
 
 This is a deliberate architectural exception for values that are:
 - **Static and invariant** — the value does not change between light/dark or emphasis modes.
-- **Not subject to theming** — routing through S1 (lightness) and S2 (emphasis) would add ceremony with no semantic benefit.
+- **Not subject to theming** — routing through S1 (color scheme) and S2 (emphasis) would add ceremony with no semantic benefit.
 
 For these tokens, ob.s references `ob.p.*` directly instead of going through the full `ob.s → S2 → S1 → primitive` chain.
 

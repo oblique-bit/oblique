@@ -41,8 +41,8 @@ A component token follows a mode when the token it references follows that mode.
 
 | Mode | Reaction | Reason |
 |------|----------|--------|
-| `lightness` | Colors follow | The color tokens reference `ob.s.color.free.indigo.*`. These resolve through the lightness level, which has a light file and a dark file. |
-| `ui_scale` | Size follows | `size` references `ob.s.dimension.dynamic.ui_scale.container.xl.px`, a `dynamic` token. |
+| `color_scheme` | Colors follow | The color tokens reference `ob.s.color.free.indigo.*`. These resolve through the color scheme level, which has a light file and a dark file. |
+| `scale` | Size follows | `size` references `ob.s.dimension.dynamic.scale.container.xl.px`, a `dynamic` token. |
 | `motion` | No change in value | The animation tokens reference `ob.s.motion.duration.instant`. This token resolves to `ob.p.motion.duration.instant` in both the `enabled` and the `disabled` motion mode. |
 | `emphasis` | No | The free colors are not part of the emphasis level. It only holds the interaction colors. |
 | `density` | No | No density token is referenced. |
@@ -51,7 +51,7 @@ A component token follows a mode when the token it references follows that mode.
 
 The border radius and the border width reference semantic border tokens, which are not mode-reactive.
 
-See [Mode Overview](../../04-modes/00-overview.md), [Lightness](../../04-modes/01-lightness.md), [UI Scale](../../04-modes/03-ui-scale.md) and [Motion](../../04-modes/07-motion.md).
+See [Mode Overview](../../04-modes/00-overview.md), [Color scheme](../../04-modes/01-color-scheme.md), [Scale](../../04-modes/03-scale.md) and [Motion](../../04-modes/07-motion.md).
 
 ## Tokens
 

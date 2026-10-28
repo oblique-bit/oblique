@@ -8,7 +8,7 @@
  *
  * Source-of-truth contract:
  *   - Primitives: `static` Figma collection, vars matching `^ob/p/color/...`
- *   - s1:         `s1_lightness` collection (modes: light, dark)
+ *   - s1:         `color_scheme` collection (modes: light, dark)
  *   - s2:         `s2_emphasis`  collection (modes: high, low)
  *   - s3:         `semantic`     collection (single mode; resolves both
  *                                                lightness and emphasis)
@@ -193,7 +193,7 @@ async function discoverCollections() {
 // Legacy collections that are 100%-duplicate-by-name copies of a current
 // collection — verified live: every single variable in each of these
 // collides by exact name with a variable in a current collection (290/290
-// for s1_lightness/light, 18/18 for s2_emphasis/high). Excluding them
+// for s1_color_scheme/light, 18/18 for s2_emphasis/high). Excluding them
 // removes only genuine duplicates, which is what caused duplicate table
 // rows and swatches resolving to a stale legacy color (byName was
 // last-write-wins with zero collection filtering, so whichever variable
@@ -213,7 +213,7 @@ async function discoverCollections() {
 // "looks current", on purpose: this only ever removes what is provably
 // redundant, never something merely differently-named.
 const LEGACY_DUPLICATE_COLLECTION_NAMES = new Set([
-  '03_semantic/color/s1_lightness/light',
+  '03_semantic/color/s1_color_scheme/light',
   '03_semantic/color/s2_emphasis/high',
 ]);
 
@@ -1639,7 +1639,7 @@ async function main() {
   try {
     const repoRoot = path.resolve(__dirname, '..', '..', '..');
     for (const mode of ['light', 'dark']) {
-      const modeJsonPath = path.join(repoRoot, 'src', 'lib', 'themes', '03_semantic', 'color', 's1_lightness', `${mode}.json`);
+      const modeJsonPath = path.join(repoRoot, 'src', 'lib', 'themes', '03_semantic', 'color', 's1_color_scheme', `${mode}.json`);
       const tree = JSON.parse(fs.readFileSync(modeJsonPath, 'utf8'));
       const map = {};
       (function walk(node, segs) {

@@ -10,7 +10,7 @@
 |---|---|---|---|
 | **Primitive** | `ob.p.motion.duration.*`, `ob.p.motion.easing.*` | [`02_primitive/motion.json`](../../src/lib/themes/02_primitive/motion.json) | Atomic timing steps and curves. Not for direct consumption. |
 | **Semantic — static** | `ob.s.motion.easing.*` | [`03_semantic/motion/static.json`](../../src/lib/themes/03_semantic/motion/static.json) | 4 named curves. Identical in both motion modes. |
-| **Semantic — mode** | `ob.s.motion.duration.*` | [`03_semantic/motion/mode/enabled.json`](../../src/lib/themes/03_semantic/motion/mode/enabled.json), [`disabled.json`](../../src/lib/themes/03_semantic/motion/mode/disabled.json) | 5 named durations. Re-resolve when the motion mode switches. |
+| **Semantic — mode** | `ob.s.motion.duration.*` | [`03_semantic/motion/mode/on.json`](../../src/lib/themes/03_semantic/motion/mode/on.json), [`off.json`](../../src/lib/themes/03_semantic/motion/mode/off.json) | 5 named durations. Re-resolve when the motion mode switches. |
 | **HTML** | `ob.h.{element}.motion.*` | [`05_html/link/link.json`](../../src/lib/themes/05_html/link/link.json) | Consumes the semantic motion tokens. |
 
 Motion is the one token category with **no Figma binding at all**. Figma has no variable type for `duration` or `cubicBezier`, and neither is exportable as a Figma Style, so motion tokens ship in CSS only — see [`../02-token-tiers/00-overview.md`](../02-token-tiers/00-overview.md).
@@ -57,7 +57,7 @@ The two sub-families are split across files by whether the motion mode changes t
 | Sub-family | File(s) | Mode-scoped | Tokens |
 |---|---|---|---|
 | `ob.s.motion.easing.*` | `motion/static.json` | no | 4 |
-| `ob.s.motion.duration.*` | `motion/mode/enabled.json`, `motion/mode/disabled.json` | yes | 5 per mode |
+| `ob.s.motion.duration.*` | `motion/mode/on.json`, `motion/mode/off.json` | yes | 5 per mode |
 
 ### `ob.s.motion.easing.*` — the curves
 
@@ -78,9 +78,9 @@ The two sub-families are split across files by whether the motion mode changes t
 
 > Motion tokens for the Enabled motion mode — durations from instant to relaxed for animated UI interactions.
 >
-> *(`$description` from `motion/mode/enabled.json`)*
+> *(`$description` from `motion/mode/on.json`)*
 
-| Token | `$description` (from `enabled.json`) |
+| Token | `$description` (from `on.json`) |
 |---|---|
 | `instant` | No animation - immediate state changes |
 | `micro` | For hover states, focus rings, and micro-interactions |
@@ -94,7 +94,7 @@ The primitive names describe raw magnitude (`fast`, `slow`); the semantic names 
 
 ## The `motion` mode
 
-`motion` is one of the eight mode collections — alongside `color_scheme`, `emphasis`, `scale`, `density`, `typography_context`, `viewport` and `elevation`. It has two modes: **`on`** and **`off`**. The set files keep the names `enabled.json` and `disabled.json` for now.
+`motion` is one of the eight mode collections — alongside `color_scheme`, `emphasis`, `scale`, `density`, `typography_context`, `viewport` and `elevation`. It has two modes: **`on`** and **`off`**.
 
 The collection is registered at the global tier in [`01_global/mode_collection/motion.json`](../../src/lib/themes/01_global/mode_collection/motion.json):
 
@@ -111,7 +111,7 @@ The collection is registered at the global tier in [`01_global/mode_collection/m
 
 Only `ob.s.motion.duration.*`. Nothing else in the category is duplicated per mode.
 
-| Token | `enabled.json` resolves to | `disabled.json` resolves to |
+| Token | `on.json` resolves to | `off.json` resolves to |
 |---|---|---|
 | `instant` | `ob.p.motion.duration.instant` → `0ms` | `ob.p.motion.duration.instant` → `0ms` |
 | `micro` | `ob.p.motion.duration.fast` → `100ms` | `ob.p.motion.duration.instant` → `0ms` |
@@ -119,11 +119,11 @@ Only `ob.s.motion.duration.*`. Nothing else in the category is duplicated per mo
 | `comfortable` | `ob.p.motion.duration.slow` → `300ms` | `ob.p.motion.duration.instant` → `0ms` |
 | `relaxed` | `ob.p.motion.duration.slower` → `500ms` | `ob.p.motion.duration.instant` → `0ms` |
 
-In `disabled.json` the four non-instant tokens carry the `$description` "Reduced motion: instant transition", and the file's own family description states the intent:
+In `off.json` the four non-instant tokens carry the `$description` "Reduced motion: instant transition", and the file's own family description states the intent:
 
 > Motion tokens for the Disabled motion mode — all durations set to zero for reduced-motion accessibility.
 >
-> *(`$description` from `motion/mode/disabled.json`)*
+> *(`$description` from `motion/mode/off.json`)*
 
 **Easing is not duplicated per mode.** `motion/static.json` is loaded whichever motion mode is active, so the four curves are identical in both.
 

@@ -1,7 +1,7 @@
 /**
  * unbind-variables.js — find & detach Figma variable bindings deterministically
  * ----------------------------------------------------------------------------
- * WHY: "Ghost" variable-mode pickers (e.g. typography_context / ui_scale from an
+ * WHY: "Ghost" variable-mode pickers (e.g. typography_context / scale from an
  * old library) never come from stale data on nodes. Figma shows a collection in
  * the "Apply variable mode" panel for as long as ANY node still *consumes* a
  * variable from it. Clear the bindings and the picker entry disappears.

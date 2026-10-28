@@ -6,7 +6,7 @@
 					"token_family_docs": {
 						"description": {
 							"$type": "other",
-							"$value": "Button state colors for the low emphasis mode: primary, secondary and tertiary, each rest, hover and active. Aliases of the low branch of the lightness sets, each with the inversion pair."
+							"$value": "Button state colors for the low emphasis mode: primary, secondary and tertiary, each rest, hover and active. Aliases of the low branch of the color_scheme sets, each with the inversion pair."
 						}
 					},
 					"primary": {
