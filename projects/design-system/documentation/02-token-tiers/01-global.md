@@ -6,7 +6,7 @@ Global tokens (`ob.g.*`) sit outside the strict tier-to-tier reference chain tha
 
 Most levels reference only the tier directly below them. Global tokens are the exception: they can be referenced directly by any other level, including:
 
-- **Semantic tokens** — e.g. `ob.s.dimension.dynamic.ui_scale.spacing.md.px` references `ob.g.mode_collection.ui_scale.multiplier.dimension.md`
+- **Semantic tokens** — e.g. `ob.s.dimension.dynamic.ui_scale.spacing.md.px` references `ob.g.mode_collection.scale.multiplier.dimension.md`
 - **Component tokens** (no component ships one yet in this release) — e.g. `ob.c.{component}.container.spacing.gap` would reference `ob.g.mode_collection.density.multiplier.dimension.standard`
 
 This cross-level referencing is intentional and reflects the foundational role of global tokens: they define system-wide constants and settings that are agnostic to theming depth.

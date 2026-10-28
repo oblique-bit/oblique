@@ -94,18 +94,18 @@ The primitive names describe raw magnitude (`fast`, `slow`); the semantic names 
 
 ## The `motion` mode
 
-`motion` is one of the eight mode collections — alongside `lightness`, `emphasis`, `ui_scale`, `density`, `typography_context`, `viewport` and `elevation`. It has two modes: **`enabled`** and **`disabled`**.
+`motion` is one of the eight mode collections — alongside `color_scheme`, `emphasis`, `scale`, `density`, `typography_context`, `viewport` and `elevation`. It has two modes: **`on`** and **`off`**. The set files keep the names `enabled.json` and `disabled.json` for now.
 
 The collection is registered at the global tier in [`01_global/mode_collection/motion.json`](../../src/lib/themes/01_global/mode_collection/motion.json):
 
-> Motion mode collection — animation preference. Modes: enabled (the base — no class is applied), disabled (.ob-motion-disabled). Each mode carries the CSS class string the application adds to `<body>` to activate it.
+> Motion mode collection — animation preference. Modes: on (the base — no class is applied), off (.ob-motion-off). Each mode carries the CSS class string the application adds to `<body>` to activate it.
 >
 > *(`ob.g.mode_collection.motion.token_family_docs.$description`)*
 
 | Mode | Selector | Activation |
 |---|---|---|
-| `enabled` | `default` | The base mode. No class is applied; it is the first-paint default. |
-| `disabled` | `.ob-motion-disabled` | The application adds the class to `<body>`. |
+| `on` | `default` | The base mode. No class is applied; it is the first-paint default. |
+| `off` | `.ob-motion-off` | The application adds the class to `<body>`. |
 
 ### What the two mode files differ on
 
@@ -129,7 +129,7 @@ In `disabled.json` the four non-instant tokens carry the `$description` "Reduced
 
 ### How it lands in CSS
 
-The base block carries the `enabled` values; a single class block overrides what changes.
+The base block carries the `on` values; a single class block overrides what changes.
 
 ```css
 :root {
@@ -141,7 +141,7 @@ The base block carries the `enabled` values; a single class block overrides what
   --ob-s-motion-easing-standard: cubic-bezier(0, 0, 0.2, 1);
 }
 
-.ob-motion-disabled {
+.ob-motion-off {
   --ob-s-motion-duration-micro:       0ms;
   --ob-s-motion-duration-smooth:      0ms;
   --ob-s-motion-duration-comfortable: 0ms;
@@ -151,7 +151,7 @@ The base block carries the `enabled` values; a single class block overrides what
 
 `--ob-s-motion-duration-instant` is not re-emitted in the override block — its value is already `0ms` in both modes.
 
-The token source does not wire `.ob-motion-disabled` to any media query. Per the mode collection's description, applying the class is the application's job.
+The token source does not wire `.ob-motion-off` to any media query. Per the mode collection's description, applying the class is the application's job.
 
 ---
 

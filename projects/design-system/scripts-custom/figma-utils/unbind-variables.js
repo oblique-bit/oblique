@@ -36,7 +36,7 @@
     propertyFilter: ['paragraphSpacing', 'fills', 'strokes'],
 
     // Only match bindings whose collection name is in this list. null = any.
-    // Example: ['typography_context', 'ui_scale', 'semantic']
+    // Example: ['typography_context', 'scale', 'semantic']
     collectionFilter: null,
 
     // Safety net: only ever detach bindings to REMOTE (library) variables.

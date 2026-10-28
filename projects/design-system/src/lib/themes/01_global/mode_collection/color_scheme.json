@@ -1,0 +1,30 @@
+{
+  "ob": {
+    "g": {
+      "mode_collection": {
+        "token_family_docs": {
+          "$description": "Mode collections \u2014 the eight axes along which the design system varies: color_scheme, emphasis, scale, density, typography_context, motion, viewport, elevation. Each collection holds its modes (single values like light / dark / sm / md / xs) and the CSS class string the application adds to activate each mode (the selector). The scale and density collections also carry the multipliers that the active mode applies to base values. The viewport collection also carries the breakpoint primitives and per-range bounds (from / to). In Figma, each mode collection surfaces as a variable collection with one Figma mode per Oblique mode."
+        },
+        "color_scheme": {
+          "token_family_docs": {
+            "$description": "Color scheme mode collection \u2014 user theme preference. Modes: light (the base \u2014 no class is applied), dark (.ob-color-scheme-dark). Each mode carries the CSS class string the application adds to <body> to activate it."
+          },
+          "light": {
+            "selector": {
+              "$type": "other",
+              "$value": "default",
+              "$description": "Light is the base color_scheme mode \u2014 no class is applied to <body>. It is the first-paint default; dark overrides it via .ob-color-scheme-dark."
+            }
+          },
+          "dark": {
+            "selector": {
+              "$type": "other",
+              "$value": ".ob-color-scheme-dark",
+              "$description": "Developer-facing class. The application adds it to <body> to activate the dark color_scheme mode, overriding the light base."
+            }
+          }
+        }
+      }
+    }
+  }
+}

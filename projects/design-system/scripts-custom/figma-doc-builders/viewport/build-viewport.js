@@ -354,7 +354,7 @@ const COLUMN_GAP  = 64;
 // Vertical gap inside the outer frame between [foundation_bar, tables, applied].
 const OUTER_GAP   = 64;
 const BG_VAR_NAME = 'ob/s1/color/neutral/bg/contrast_highest';
-const BG_VAR_COLLECTION_NAMES = ['lightness', 's1_lightness', 's1-lightness', 'Lightness'];
+const BG_VAR_COLLECTION_NAMES = ['color_scheme', 'lightness', 's1_lightness', 's1-lightness', 'Lightness'];
 
 // Builder-managed instance names — the page-chrome instance the outer frame
 // owns alongside the "Viewport Tables" wrapper. The applied-modes instance is

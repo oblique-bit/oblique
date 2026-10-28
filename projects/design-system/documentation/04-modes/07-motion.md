@@ -7,7 +7,7 @@
 ## **Overview**
 
 The **motion** mode collection carries the animation preference. It has two
-modes — `enabled` and `disabled`. Switching to `disabled` collapses every
+modes — `on` and `off`. Switching to `off` collapses every
 semantic duration token to `0ms`, so animated transitions resolve to an
 immediate state change.
 
@@ -27,10 +27,10 @@ the product designer.
 
 Located in: `03_semantic/motion/`
 
-- **`mode/enabled.json`** — the base mode. The five semantic durations
+- **`mode/enabled.json`** — the base mode `on`. The five semantic durations
   resolve to the primitive steps `instant` / `fast` / `medium` / `slow` /
   `slower`.
-- **`mode/disabled.json`** — every duration resolves to
+- **`mode/disabled.json`** — the mode `off`. Every duration resolves to
   `ob.p.motion.duration.instant` (`0ms`).
 - **`static.json`** — the four easing curves. Mode-independent: this file is
   loaded whichever motion mode is active, so the curves are identical in
@@ -74,13 +74,14 @@ mode:
 
 | Mode | Selector | Activation |
 |---|---|---|
-| `enabled` | `default` | The base mode. No class is applied; it is the first-paint default. |
-| `disabled` | `.ob-motion-disabled` | The application adds the class to `<body>`. |
+| `on` | `default` | The base mode. No class is applied; it is the first-paint default. |
+| `off` | `.ob-motion-off` | The application adds the class to `<body>`. |
 
 ### **For Developers**
 
-Apply the disabled mode by adding `.ob-motion-disabled` to `<body>`. Enabled
-is the base — no class needed.
+Apply the `off` mode by adding `.ob-motion-off` to `<body>`. `on`
+is the base — no class needed. The set files keep the names `enabled.json`
+and `disabled.json` for now.
 
 The token source does not wire that class to a media query. The generated
 CSS contains no `@media (prefers-reduced-motion: reduce)` block, so mapping
@@ -127,7 +128,7 @@ table.
 ## **Relation to the other mode collections**
 
 Motion changes timing and nothing else, so it combines with any state of the
-other seven collections without conflict: a disabled-motion interface can be
+other seven collections without conflict: an interface with motion `off` can be
 dark, high-emphasis, compact, `lg`, prose and `2xl` at the same time. See
 [Modes Interplay](09-interplay.md) for how the modes combine.
 

@@ -180,14 +180,14 @@ async function resolveColor(v) {
   return null;
 }
 
-// Like resolveColor, but pins the "lightness" collection to a specific mode
+// Like resolveColor, but pins the "color_scheme" collection (formerly "lightness") to a specific mode
 // while walking the alias chain (compiled/S3 tokens route through S1, which
 // is multi-mode) instead of always taking modes[0] (= light).
 async function resolveColorForMode(v, lightnessModeId) {
   let cur = v;
   for (let depth = 0; depth < 8; depth++) {
     const collection = await figma.variables.getVariableCollectionByIdAsync(cur.variableCollectionId);
-    const modeId = (lightnessModeId && collection.name === 'lightness') ? lightnessModeId : collection.modes[0].modeId;
+    const modeId = (lightnessModeId && (collection.name === 'color_scheme' || collection.name === 'lightness')) ? lightnessModeId : collection.modes[0].modeId;
     const val = cur.valuesByMode[modeId];
     if (!val) return null;
     if (val.type === 'VARIABLE_ALIAS') {
@@ -889,7 +889,7 @@ async function validatePage(modeName, targetPage, modeId) {
   if (!root) { errors.push({ severity: 'error', code: 'ROOT', msg: 'root frame not found: ' + registry.rootFrameName }); return { errors, warnings, stats }; }
 
   if (modeId == null) {
-    const lightnessCollection = (await figma.variables.getLocalVariableCollectionsAsync()).find(c => c.name === 'lightness');
+    const lightnessCollection = (await figma.variables.getLocalVariableCollectionsAsync()).find(c => c.name === 'color_scheme' || c.name === 'lightness');
     modeId = lightnessCollection ? (lightnessCollection.modes.find(m => m.name === modeName) || {}).modeId : null;
   }
   const wrapName = modeName === 'dark' ? 'Dark mode' : 'Light mode';
@@ -1034,7 +1034,7 @@ try {
   // finish to its own lightness mode (setExplicitVariableModeForCollection),
   // so bound swatch/text/background fills render correctly regardless of
   // any ambient mode switch elsewhere in the file.
-  const lightnessCollection = WRITE ? (await figma.variables.getLocalVariableCollectionsAsync()).find(c => c.name === 'lightness') : null;
+  const lightnessCollection = WRITE ? (await figma.variables.getLocalVariableCollectionsAsync()).find(c => c.name === 'color_scheme' || c.name === 'lightness') : null;
 
   async function buildModePage(modeName) {
     const modeId = lightnessCollection ? (lightnessCollection.modes.find(m => m.name === modeName) || {}).modeId : null;

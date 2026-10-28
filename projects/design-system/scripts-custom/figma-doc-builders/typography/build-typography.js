@@ -326,7 +326,7 @@ const TABLE_WIDTH = 2280;
 const WRAPPER_NAME = 'Typography Tables';
 const WRAPPER_GAP  = 192;
 const BG_VAR_NAME  = 'ob/s1/color/neutral/bg/contrast_highest';
-const BG_VAR_COLLECTION_NAMES = ['lightness', 's1_lightness', 's1-lightness', 'Lightness'];
+const BG_VAR_COLLECTION_NAMES = ['color_scheme', 'lightness', 's1_lightness', 's1-lightness', 'Lightness'];
 
 let _bgVar = undefined;
 async function getBgVar() {

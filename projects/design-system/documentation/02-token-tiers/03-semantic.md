@@ -10,7 +10,7 @@ Semantic tokens provide context to primitive values and are the bridge between t
 
 4.  **Static and Dynamic Variants**:
     *   **`static`**: Tokens that have a fixed value and do not change with global multipliers.
-    *   **`dynamic`**: Tokens that scale based on a global multiplier (e.g., `{ob.p.dimension.px.8} * {ob.g.mode_collection.ui_scale.multiplier.dimension.md}`).
+    *   **`dynamic`**: Tokens that scale based on a global multiplier (e.g., `{ob.p.dimension.px.8} * {ob.g.mode_collection.scale.multiplier.dimension.md}`).
 
 5.  **Semantic Dimension Structure**: The `ob.s.dimension.dynamic.ui_scale` tokens follow a tiered semantic model to provide clear, intuitive meaning for spacing and sizing: `micro`, `element`, `spacing`, `container`, `layout`, `macro` (plus a `none` tier for zero).
 
@@ -26,7 +26,7 @@ The semantic layer is the correct and only place to create dynamic tokens by mul
   "xs": {
     "px": {
       "$type": "dimension",
-      "$value": "{ob.p.dimension.px.16} * {ob.g.mode_collection.ui_scale.multiplier.dimension.md}",
+      "$value": "{ob.p.dimension.px.16} * {ob.g.mode_collection.scale.multiplier.dimension.md}",
       "$description": "16px - Small spacing, gaps between elements (dynamic)"
     }
   }

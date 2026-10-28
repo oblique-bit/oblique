@@ -78,7 +78,7 @@ The primitive's own `$description` reads: "Role: Shared. Transparent neutral. Us
 
 **These are primitive-direct references from the semantic tier.** That is the documented exception for static utility colours — values that do not vary by lightness or emphasis, where routing through S1 and S2 would add ceremony with no semantic benefit. See [Intentional Primitive Bypass for Static Utility Colors](../02-token-tiers/03-semantic.md#intentional-primitive-bypass-for-static-utility-colors).
 
-The consequence is visible in the build: `--ob-s-shadow-*` is emitted once in the base block and never re-emitted inside `.ob-lightness-dark` or any other mode block. The shadows are mode-invariant.
+The consequence is visible in the build: `--ob-s-shadow-*` is emitted once in the base block and never re-emitted inside `.ob-color-scheme-dark` or any other mode block. The shadows are mode-invariant.
 
 ### Not to be confused with `ob.s.color.neutral.shadow.*`
 

@@ -15,7 +15,7 @@ Runs the developer's official build on your local `tokens-dev` tokens.
 overlay (`themes.mjs`) — plus a driver, `resolve.mjs`, that applies the
 overlay in the `oblique-build` worktree and runs his real, unmodified
 `extract-tokens.mjs` there. Output is his exact format — layered `tokens.css`
-(`:root` plus `.ob-lightness-dark`, `.ob-density-*`, … mode blocks).
+(`:root` plus `.ob-color-scheme-dark`, `.ob-density-*`, … mode blocks).
 
 ```sh
 npm run resolve

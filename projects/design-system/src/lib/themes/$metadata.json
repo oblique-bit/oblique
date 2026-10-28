@@ -1,8 +1,8 @@
 {
 	"tokenSetOrder": [
 		"01_global/mode_collection/emphasis",
-		"01_global/mode_collection/lightness",
-		"01_global/mode_collection/ui_scale",
+		"01_global/mode_collection/color_scheme",
+		"01_global/mode_collection/scale",
 		"01_global/mode_collection/density",
 		"01_global/mode_collection/typography_context",
 		"01_global/mode_collection/motion",

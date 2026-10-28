@@ -183,7 +183,7 @@ async function discoverCollections() {
   }
   const aliases = {
     'static':       map['static']       || null,
-    's1-lightness': map['s1-lightness'] || map['s1_lightness'] || map['Lightness'] || map['lightness'] || null,
+    's1-lightness': map['color_scheme'] || map['s1-lightness'] || map['s1_lightness'] || map['Lightness'] || map['lightness'] || null,
     's2-emphasis':  map['s2-emphasis']  || map['s2_emphasis']  || map['Emphasis']  || map['emphasis']  || null,
     'semantic':     map['semantic']     || map['Semantic']     || null
   };

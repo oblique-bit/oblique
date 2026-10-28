@@ -65,12 +65,12 @@ The folder name and the token path segment differ on purpose: `grouped/` describ
 Each folder splits its tokens into two flavours:
 
 - **`static`** — fixed values. `static.json` carries them, and they do not change when the `ui_scale` mode switches.
-- **`dynamic`** — scaled values. `sm.json`, `md.json` and `lg.json` each supply the same token names for their own `ui_scale` mode, applying the global multiplier `{ob.g.mode_collection.ui_scale.multiplier.typography.*}` to the primitive.
+- **`dynamic`** — scaled values. `sm.json`, `md.json` and `lg.json` each supply the same token names for their own `ui_scale` mode, applying the global multiplier `{ob.g.mode_collection.scale.multiplier.typography.*}` to the primitive.
 
 ```json
 // 03_semantic/typography/single/md.json — dynamic, multiplier applied
 "ob.s.typography.scale.dynamic.font_size.md": {
-  "$value": "{ob.p.font_size_rem.300} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}"
+  "$value": "{ob.p.font_size_rem.300} * {ob.g.mode_collection.scale.multiplier.typography.md}"
 }
 ```
 

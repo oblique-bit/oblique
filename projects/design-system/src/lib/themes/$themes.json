@@ -36,10 +36,10 @@
       "04_component/molecule/tag/01_layout.json": "enabled",
       "04_component/molecule/tag/02_typography.json": "source",
       "01_global/mode_collection/emphasis": "source",
-      "01_global/mode_collection/lightness": "source",
+      "01_global/mode_collection/color_scheme": "source",
       "01_global/component/footer/lightness/static": "source",
       "01_global/mode_collection/viewport": "source",
-      "01_global/mode_collection/ui_scale": "source",
+      "01_global/mode_collection/scale": "source",
       "01_global/mode_collection/density": "source",
       "01_global/mode_collection/typography_context": "source",
       "01_global/mode_collection/motion": "source",
@@ -781,7 +781,7 @@
       "ob.s1.color.neutral.bg.level_minus_1_inverse": "860464e95dd32ffb07bd3f187aac40b0151c45fd",
       "ob.s1.color.neutral.bg.level_minus_1": "b627813fea98cb7f3e511d9ceafd5fec929f6a97"
     },
-    "group": "lightness"
+    "group": "color_scheme"
   },
   {
     "id": "ce28bc429f67b042f21d44ea8744f4a9409b2c77",
@@ -1180,7 +1180,7 @@
       "ob.s1.color.neutral.bg.level_minus_1_inverse": "860464e95dd32ffb07bd3f187aac40b0151c45fd",
       "ob.s1.color.neutral.bg.level_minus_1": "b627813fea98cb7f3e511d9ceafd5fec929f6a97"
     },
-    "group": "lightness"
+    "group": "color_scheme"
   },
   {
     "id": "f2d909efb2ab1aae1de104db99d4e047d72ccf0f",
@@ -1532,7 +1532,7 @@
       "03_semantic/dimension/rem/density/static": "source",
       "03_semantic/dimension/typography_context/static": "enabled",
       "03_semantic/color/compiled": "enabled",
-      "01_global/mode_collection/ui_scale": "source",
+      "01_global/mode_collection/scale": "source",
       "01_global/mode_collection/density": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:8:5",
@@ -2032,7 +2032,7 @@
       "ob.s.dimension.dynamic.ui_scale.macro.sm.px": "f06e72e01e1da2ddfeceaa106e56b10b4457f73c",
       "ob.s.typography.scale.dynamic.spacing.paragraph.bottom": "2e189c22569e2108435ddf105037823a5786236c"
     },
-    "group": "ui_scale"
+    "group": "scale"
   },
   {
     "id": "comp-size-sm-2025-09-12-multipliers",
@@ -2136,7 +2136,7 @@
       "ob.s.dimension.dynamic.ui_scale.macro.sm.px": "f06e72e01e1da2ddfeceaa106e56b10b4457f73c",
       "ob.s.typography.scale.dynamic.spacing.paragraph.bottom": "2e189c22569e2108435ddf105037823a5786236c"
     },
-    "group": "ui_scale"
+    "group": "scale"
   },
   {
     "id": "comp-size-lg-2025-09-12-multipliers",
@@ -2240,7 +2240,7 @@
       "ob.s.dimension.dynamic.ui_scale.macro.sm.px": "f06e72e01e1da2ddfeceaa106e56b10b4457f73c",
       "ob.s.typography.scale.dynamic.spacing.paragraph.bottom": "2e189c22569e2108435ddf105037823a5786236c"
     },
-    "group": "ui_scale"
+    "group": "scale"
   },
   {
     "id": "interface-context",
@@ -2541,7 +2541,7 @@
   },
   {
     "id": "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0",
-    "name": "enabled",
+    "name": "on",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "03_semantic/motion/mode/enabled": "enabled"
@@ -2559,7 +2559,7 @@
   },
   {
     "id": "z9y8x7w6v5u4t3s2r1q0p9o8n7m6l5k4j3i2h1g0",
-    "name": "disabled",
+    "name": "off",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "03_semantic/motion/mode/disabled": "enabled"

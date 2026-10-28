@@ -13,7 +13,7 @@
  * Base-theme detection: Token Studio's single-mode groups in $themes.json
  * (static, semantic) are always-on by virtue of being single-mode. The
  * parser identifies them as the set-difference: $themes.json groups that
- * have no matching mode_collection/<axis>.json file. Real axes (lightness,
+ * have no matching mode_collection/<axis>.json file. Real axes (color_scheme,
  * density, …) each have a mode_collection file; one mode per file carries
  * selector.$value === 'default' and that mode's tokens are the axis's
  * always-on contribution.
@@ -90,7 +90,7 @@ function readModeGroups(themesFolder) {
 		// direct children of the collection.
 		const container = axis === 'viewport' ? raw.range : raw;
 		// Skip non-mode siblings: token_family_docs and any other sub-tree (e.g.
-		// ui_scale/density `multiplier`) have no `selector` field.
+		// scale/density `multiplier`) have no `selector` field.
 		const modes = Object.entries(container)
 			.filter(([, def]) => def.selector?.$value !== undefined)
 			.map(([name, def]) => {
@@ -102,7 +102,7 @@ function readModeGroups(themesFolder) {
 }
 
 function themeFor(themes, name, group) {
-	// Match on name AND group: `ui_scale` and `viewport` both have sm/md/lg,
+	// Match on name AND group: `scale` and `viewport` both have sm/md/lg,
 	// so a name-only lookup (as in the original) would pick the wrong theme.
 	const theme = themes.find((t) => t.name === name && t.group === group);
 	if (!theme) {

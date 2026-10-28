@@ -173,7 +173,7 @@ The `_inverse` suffix picks **which** of the two focus-ring colours a component 
   --ob-s-border-focus_ring_inverse-color: #a78bfa;
 }
 
-.ob-lightness-dark {
+.ob-color-scheme-dark {
   --ob-s-border-focus_ring-color:  #a78bfa;
   --ob-s-border-focus_ring_inverse-color: #8b5cf6;
 }

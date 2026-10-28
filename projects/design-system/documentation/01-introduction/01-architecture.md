@@ -111,9 +111,9 @@ ob.g.mode_collection.{mode_collection}.multiplier.{category}.{size}
 
 **Examples**:
 ```
-ob.g.mode_collection.ui_scale.multiplier.dimension.sm    → 0.8   (80% scaling)
-ob.g.mode_collection.ui_scale.multiplier.dimension.md    → 1     (100% baseline)  
-ob.g.mode_collection.ui_scale.multiplier.dimension.lg    → 1.25  (125% scaling)
+ob.g.mode_collection.scale.multiplier.dimension.sm    → 0.8   (80% scaling)
+ob.g.mode_collection.scale.multiplier.dimension.md    → 1     (100% baseline)  
+ob.g.mode_collection.scale.multiplier.dimension.lg    → 1.25  (125% scaling)
 ```
 
 **Usage**: Mathematical scaling maintains relationships while enabling modes
@@ -132,8 +132,8 @@ ob.g.mode_collection.ui_scale.multiplier.dimension.lg    → 1.25  (125% scaling
 
 **Example**:
 ```
-File: src/lib/themes/01_global/mode_collection/ui_scale.json
-Token Name: ob.g.mode_collection.ui_scale.multiplier.dimension.md
+File: src/lib/themes/01_global/mode_collection/scale.json
+Token Name: ob.g.mode_collection.scale.multiplier.dimension.md
 ```
 
 **Rule**: You cannot create tokens by knowing only file paths. You must understand the documented architecture patterns and naming conventions.
@@ -183,7 +183,7 @@ Calculations using global-tier (01_global) multipliers (`ob.g.*`) are strictly f
 // THIS IS FORBIDDEN!
 {
   "font_size": {
-    "$value": "{ob.p.font_size_unitless.400} * {ob.g.mode_collection.ui_scale.multiplier.typography.md}"
+    "$value": "{ob.p.font_size_unitless.400} * {ob.g.mode_collection.scale.multiplier.typography.md}"
   }
 }
 ```
@@ -206,7 +206,7 @@ Most tokens resolve to a CSS custom property — the styling output the componen
 
 ### **Mode-collection config — `ob.g.mode_collection.*`**
 
-Defines the eight mode axes: lightness, emphasis, ui_scale, density, typography_context, motion, viewport, elevation. Per mode it holds the `selector` — the CSS class the application adds to activate the mode (`.ob-lightness-dark`). The `ui_scale` and `density` collections also carry the multipliers; the `viewport` collection carries the breakpoints and per-range bounds. The build reads these to discover the modes and to name the CSS mode blocks; in Figma each collection becomes a variable collection. The tokens are not themselves emitted as custom properties.
+Defines the eight mode axes: lightness, emphasis, ui_scale, density, typography_context, motion, viewport, elevation. Per mode it holds the `selector` — the CSS class the application adds to activate the mode (`.ob-color-scheme-dark`). The `ui_scale` and `density` collections also carry the multipliers; the `viewport` collection carries the breakpoints and per-range bounds. The build reads these to discover the modes and to name the CSS mode blocks; in Figma each collection becomes a variable collection. The tokens are not themselves emitted as custom properties.
 
 The single-mode base groups `static` and `semantic` do **not** have files under `mode_collection/`. Token Studio's single-mode-group semantics already encode them as always-on, and the build pipeline identifies them via set-difference: `$themes.json` groups with no matching `mode_collection/<axis>.json` file are always-on base groups.
 
@@ -264,7 +264,7 @@ Each token family carries one `token_family_docs` node holding the family's huma
 
 ### **Purpose and location**
 
-- The node lives **inside the token file that owns the family**, at the family's namespace root. For `ob.g.mode_collection.lightness` the node is `ob.g.mode_collection.lightness.token_family_docs` inside `01_global/mode_collection/lightness.json`. It is **not** a separate file or folder. (A handful of files — `03_semantic/color/compiled.json` among them — use a `_docs.token_family_info` node instead; check the file before assuming which one applies.)
+- The node lives **inside the token file that owns the family**, at the family's namespace root. For `ob.g.mode_collection.color_scheme` the node is `ob.g.mode_collection.color_scheme.token_family_docs` inside `01_global/mode_collection/color_scheme.json`. It is **not** a separate file or folder. (A handful of files — `03_semantic/color/compiled.json` among them — use a `_docs.token_family_info` node instead; check the file before assuming which one applies.)
 - It is identified by its **key name**, `token_family_docs`.
 - It holds only a `$description`. It has **no `$value`** — so it is not a token, and the build, resolver and exporters skip it automatically. It carries **no `$extensions`**.
 

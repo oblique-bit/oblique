@@ -455,12 +455,12 @@ const TABLE_WIDTH = 1580; // matches the section bar / row natural width
 const WRAPPER_NAME = 'Dimension Tables';
 const WRAPPER_GAP  = 96;
 const BG_VAR_NAME  = 'ob/s1/color/neutral/bg/contrast_highest';
-// s1-tier color vars live in the "lightness" collection. A legacy numbered
+// s1-tier color vars live in the "color_scheme" collection (formerly "lightness"). A legacy numbered
 // collection (e.g. 03_semantic/color/s1_lightness/light) can carry a
 // variable with this exact same name, and an unscoped find() over allVars
 // is not guaranteed to pick the current one. Scope to the live collection
 // by name; fall back to unscoped only if that collection can't be found.
-const BG_VAR_COLLECTION_NAMES = ['lightness', 's1_lightness', 's1-lightness', 'Lightness'];
+const BG_VAR_COLLECTION_NAMES = ['color_scheme', 'lightness', 's1_lightness', 's1-lightness', 'Lightness'];
 
 let _bgVar = undefined; // undefined = not searched yet, null = searched + missing
 function getBgVar() {

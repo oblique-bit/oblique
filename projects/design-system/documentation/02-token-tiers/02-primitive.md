@@ -51,7 +51,7 @@ This file is the source of truth for all **unitless** or abstract numeric values
 
 ## Scaling and Theming
 
--   **Dynamic Scaling**: Dynamic semantic tokens (e.g., `ob.s.dimension.dynamic.ui_scale.spacing.sm`) achieve different sizes for modes (e.g., `sm`, `md`, `lg`) by applying a multiplier (`ob.g.mode_collection.ui_scale.multiplier.dimension.*`) to a base primitive value.
+-   **Dynamic Scaling**: Dynamic semantic tokens (e.g., `ob.s.dimension.dynamic.ui_scale.spacing.sm`) achieve different sizes for modes (e.g., `sm`, `md`, `lg`) by applying a multiplier (`ob.g.mode_collection.scale.multiplier.dimension.*`) to a base primitive value.
 -   **Static Tokens**: Static semantic tokens (e.g., `ob.s.border_width.md`) reference primitives directly without a multiplier. They remain constant across all modes.
 -   **Unit Choice**: The primitive layer has px only. The semantic layer holds each `ui_scale` and `density` step as a `.px` token and, for now, a `.rem` sibling computed from it. Which unit a value gets in CSS follows the rule in the [Token Usage Guide](../05-reference/01-token-usage-guide.md#px-vs-rem--which-unit-when-building-a-component): tokens are px, and the CSS build, which the developers maintain, is meant to convert to rem where rem is better for CSS (not implemented yet).
 

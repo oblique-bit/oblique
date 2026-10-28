@@ -78,7 +78,7 @@ console.log(`
   ✓ Resolved — ran the developer’s official build in the oblique-build worktree.
 
   CSS written to  projects/design-system/${cssRelative}
-                  :root + mode blocks (.ob-lightness-dark, .ob-density-*, …)
+                  :root + mode blocks (.ob-color-scheme-dark, .ob-density-*, …)
 
   Next: the handoff — push the token JSON to tokens-main.
   Full workflow → scripts-custom/style-dictionary/WORKFLOW.md
