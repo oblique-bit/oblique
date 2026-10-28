@@ -14,11 +14,11 @@
               "padding": {
                 "vertical": {
                   "$type": "spacing",
-                  "$value": "{ob.s.dimension.dynamic.scale.element.sm.rem}"
+                  "$value": "{ob.s.dimension.dynamic.scale.element.sm.px}"
                 },
                 "horizontal": {
                   "$type": "spacing",
-                  "$value": "{ob.s.dimension.dynamic.scale.element.xl.rem}"
+                  "$value": "{ob.s.dimension.dynamic.scale.element.xl.px}"
                 }
               },
               "gap": {
@@ -31,13 +31,13 @@
                 "min_height": {
                   "$type": "sizing",
                   "$value": "{ob.s.dimension.dynamic.scale.container.xs.px}",
-                  "$description": "old {ob.s.dimension.dynamic.scale.spacing.md.rem}\n"
+                  "$description": "old {ob.s.dimension.dynamic.scale.spacing.md.px}\n"
                 }
               }
             },
             "icon_size": {
               "$type": "sizing",
-              "$value": "{ob.s.dimension.static.scale.spacing.md.rem}",
+              "$value": "{ob.s.dimension.static.scale.spacing.md.px}",
               "$description": "Standard proportional size of the icon inside the label_icon button subcomponent."
             }
           },
@@ -46,11 +46,11 @@
               "padding": {
                 "vertical": {
                   "$type": "spacing",
-                  "$value": "{ob.s.dimension.dynamic.scale.element.sm.rem}"
+                  "$value": "{ob.s.dimension.dynamic.scale.element.sm.px}"
                 },
                 "horizontal": {
                   "$type": "spacing",
-                  "$value": "{ob.s.dimension.dynamic.scale.element.sm.rem}"
+                  "$value": "{ob.s.dimension.dynamic.scale.element.sm.px}"
                 }
               }
             }
@@ -60,12 +60,12 @@
               "padding": {
                 "vertical": {
                   "$type": "spacing",
-                  "$value": "{ob.s.dimension.static.scale.none.rem}",
+                  "$value": "{ob.s.dimension.static.scale.none.px}",
                   "$description": "Remove button requires zero padding."
                 },
                 "horizontal": {
                   "$type": "spacing",
-                  "$value": "{ob.s.dimension.static.scale.none.rem}",
+                  "$value": "{ob.s.dimension.static.scale.none.px}",
                   "$description": "Remove button requires zero padding."
                 }
               }
@@ -74,7 +74,7 @@
           "icon": {
             "size": {
               "$type": "sizing",
-              "$value": "{ob.s.dimension.static.scale.spacing.md.rem}"
+              "$value": "{ob.s.dimension.static.scale.spacing.md.px}"
             }
           }
         },
@@ -103,11 +103,11 @@
               "padding": {
                 "vertical": {
                   "$type": "spacing",
-                  "$value": "{ob.s.dimension.static.scale.element.sm.rem}"
+                  "$value": "{ob.s.dimension.static.scale.element.sm.px}"
                 },
                 "horizontal": {
                   "$type": "spacing",
-                  "$value": "{ob.s.dimension.static.scale.element.xl.rem}"
+                  "$value": "{ob.s.dimension.static.scale.element.xl.px}"
                 }
               },
               "gap": {
@@ -120,13 +120,13 @@
                 "min_height": {
                   "$type": "sizing",
                   "$value": "{ob.s.dimension.static.scale.spacing.lg.px}",
-                  "$description": "old {ob.s.dimension.dynamic.scale.spacing.md.rem}\n"
+                  "$description": "old {ob.s.dimension.dynamic.scale.spacing.md.px}\n"
                 }
               }
             },
             "icon_size": {
               "$type": "sizing",
-              "$value": "{ob.s.dimension.static.scale.spacing.md.rem}",
+              "$value": "{ob.s.dimension.static.scale.spacing.md.px}",
               "$description": "Standard proportional size of the icon inside the label_icon button subcomponent."
             }
           },
@@ -135,11 +135,11 @@
               "padding": {
                 "vertical": {
                   "$type": "spacing",
-                  "$value": "{ob.s.dimension.static.scale.element.sm.rem}"
+                  "$value": "{ob.s.dimension.static.scale.element.sm.px}"
                 },
                 "horizontal": {
                   "$type": "spacing",
-                  "$value": "{ob.s.dimension.static.scale.element.sm.rem}"
+                  "$value": "{ob.s.dimension.static.scale.element.sm.px}"
                 }
               }
             }
@@ -149,12 +149,12 @@
               "padding": {
                 "vertical": {
                   "$type": "spacing",
-                  "$value": "{ob.s.dimension.static.scale.none.rem}",
+                  "$value": "{ob.s.dimension.static.scale.none.px}",
                   "$description": "Remove button requires zero padding."
                 },
                 "horizontal": {
                   "$type": "spacing",
-                  "$value": "{ob.s.dimension.static.scale.none.rem}",
+                  "$value": "{ob.s.dimension.static.scale.none.px}",
                   "$description": "Remove button requires zero padding."
                 }
               }
@@ -163,7 +163,7 @@
           "icon": {
             "size": {
               "$type": "sizing",
-              "$value": "{ob.s.dimension.static.scale.spacing.md.rem}"
+              "$value": "{ob.s.dimension.static.scale.spacing.md.px}"
             }
           }
         }
