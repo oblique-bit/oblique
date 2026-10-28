@@ -92,24 +92,22 @@
       },
       "border": {
         "focus_ring": {
-          "inversity_normal": {
-            "$type": "border",
-            "$value": {
-              "color": "{ob.s.color.interaction.focus_ring.inversity_normal}",
-              "width": "{ob.s.border_width.md}",
-              "style": "solid"
-            },
-            "$description": "CSS implementation of focus ring for accessibility compliance. Use with outline property."
+          "$type": "border",
+          "$value": {
+            "color": "{ob.s.color.interaction.focus_ring}",
+            "width": "{ob.s.border_width.md}",
+            "style": "solid"
           },
-          "inversity_flipped": {
-            "$type": "border",
-            "$value": {
-              "color": "{ob.s.color.interaction.focus_ring.inversity_flipped}",
-              "width": "{ob.s.border_width.md}",
-              "style": "solid"
-            },
-            "$description": "CSS implementation of focus ring for accessibility compliance. Use with outline property."
-          }
+          "$description": "CSS implementation of focus ring for accessibility compliance. Use with outline property."
+        },
+        "focus_ring_inverse": {
+          "$type": "border",
+          "$value": {
+            "color": "{ob.s.color.interaction.focus_ring_inverse}",
+            "width": "{ob.s.border_width.md}",
+            "style": "solid"
+          },
+          "$description": "CSS implementation of focus ring for accessibility compliance. Use with outline property."
         }
       }
     }

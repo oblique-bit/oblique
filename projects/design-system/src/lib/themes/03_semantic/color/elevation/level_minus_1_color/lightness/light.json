@@ -5,16 +5,14 @@
 				"neutral": {
 					"bg": {
 						"level_minus_1": {
-							"inversity_normal": {
-								"$type": "color",
-								"$value": "{ob.p.color.basic.white}",
-								"$description": "Role: Surface. Neutral background of level_minus_1, same as level_0. No lighter surface exists."
-							},
-							"inversity_flipped": {
-								"$type": "color",
-								"$value": "{ob.p.color.cobalt.700}",
-								"$description": "Role: Surface. Inverse neutral background of level_minus_1, same as level_0. Inverse surface."
-							}
+							"$type": "color",
+							"$value": "{ob.p.color.basic.white}",
+							"$description": "Role: Surface. Neutral background of level_minus_1, same as level_0. No lighter surface exists."
+						},
+						"level_minus_1_inverse": {
+							"$type": "color",
+							"$value": "{ob.p.color.cobalt.700}",
+							"$description": "Role: Surface. Inverse neutral background of level_minus_1, same as level_0. Inverse surface."
 						}
 					}
 				}

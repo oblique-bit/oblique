@@ -5,16 +5,14 @@
         "neutral": {
           "bg": {
             "surface": {
-              "inversity_normal": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast_medium.inversity_normal}",
-                "$description": "Role: Surface. Neutral background of the level_2 elevation, inversity normal. Page areas and containers."
-              },
-              "inversity_flipped": {
-                "$type": "color",
-                "$value": "{ob.s.color.neutral.bg.contrast_medium.inversity_flipped}",
-                "$description": "Role: Surface. Neutral background of the level_2 elevation, inversity flipped. Page areas and containers."
-              }
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.bg.contrast_medium}",
+              "$description": "Role: Surface. Neutral background of the level_2 elevation. Page areas and containers."
+            },
+            "surface_inverse": {
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.bg.contrast_medium_inverse}",
+              "$description": "Role: Surface. Neutral background of the level_2 elevation, inverse. Page areas and containers."
             }
           }
         }

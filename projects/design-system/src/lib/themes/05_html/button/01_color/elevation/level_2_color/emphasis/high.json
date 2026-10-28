@@ -5,97 +5,69 @@
 				"color": {
 					"primary": {
 						"bg": {
-							"rest": {
-								"level_2": {
-									"inversity_normal": {
-										"$type": "color",
-										"$value": "{ob.h.button.color.emphasis_high.primary.bg.rest.level_2.inversity_normal}"
-									},
-									"inversity_flipped": {
-										"$type": "color",
-										"$value": "{ob.h.button.color.emphasis_high.primary.bg.rest.level_2.inversity_flipped}"
-									}
-								}
+							"rest_level_2": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.primary.bg.rest_level_2}"
 							},
-							"hover": {
-								"level_2": {
-									"inversity_normal": {
-										"$type": "color",
-										"$value": "{ob.h.button.color.emphasis_high.primary.bg.hover.level_2.inversity_normal}"
-									},
-									"inversity_flipped": {
-										"$type": "color",
-										"$value": "{ob.h.button.color.emphasis_high.primary.bg.hover.level_2.inversity_flipped}"
-									}
-								}
+							"rest_level_2_inverse": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.primary.bg.rest_level_2_inverse}"
 							},
-							"active": {
-								"level_2": {
-									"inversity_normal": {
-										"$type": "color",
-										"$value": "{ob.h.button.color.emphasis_high.primary.bg.active.level_2.inversity_normal}"
-									},
-									"inversity_flipped": {
-										"$type": "color",
-										"$value": "{ob.h.button.color.emphasis_high.primary.bg.active.level_2.inversity_flipped}"
-									}
-								}
+							"hover_level_2": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.primary.bg.hover_level_2}"
+							},
+							"hover_level_2_inverse": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.primary.bg.hover_level_2_inverse}"
+							},
+							"active_level_2": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.primary.bg.active_level_2}"
+							},
+							"active_level_2_inverse": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.primary.bg.active_level_2_inverse}"
 							}
 						}
 					},
 					"secondary": {
 						"bg": {
-							"hover": {
-								"level_2": {
-									"inversity_normal": {
-										"$type": "color",
-										"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover.level_2.inversity_normal}"
-									},
-									"inversity_flipped": {
-										"$type": "color",
-										"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover.level_2.inversity_flipped}"
-									}
-								}
+							"hover_level_2": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover_level_2}"
 							},
-							"active": {
-								"level_2": {
-									"inversity_normal": {
-										"$type": "color",
-										"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active.level_2.inversity_normal}"
-									},
-									"inversity_flipped": {
-										"$type": "color",
-										"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active.level_2.inversity_flipped}"
-									}
-								}
+							"hover_level_2_inverse": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover_level_2_inverse}"
+							},
+							"active_level_2": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active_level_2}"
+							},
+							"active_level_2_inverse": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active_level_2_inverse}"
 							}
 						}
 					},
 					"tertiary": {
 						"bg": {
-							"hover": {
-								"level_2": {
-									"inversity_normal": {
-										"$type": "color",
-										"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover.level_2.inversity_normal}"
-									},
-									"inversity_flipped": {
-										"$type": "color",
-										"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover.level_2.inversity_flipped}"
-									}
-								}
+							"hover_level_2": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover_level_2}"
 							},
-							"active": {
-								"level_2": {
-									"inversity_normal": {
-										"$type": "color",
-										"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active.level_2.inversity_normal}"
-									},
-									"inversity_flipped": {
-										"$type": "color",
-										"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active.level_2.inversity_flipped}"
-									}
-								}
+							"hover_level_2_inverse": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover_level_2_inverse}"
+							},
+							"active_level_2": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active_level_2}"
+							},
+							"active_level_2_inverse": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active_level_2_inverse}"
 							}
 						}
 					}

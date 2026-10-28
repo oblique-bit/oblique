@@ -78,41 +78,41 @@
         },
         "fatal": {
           "button": {
-            "inversity": {
+            "inversion": {
               "$type": "text",
-              "$value": "flipped"
+              "$value": "inverse"
             }
           }
         },
         "info": {
           "button": {
-            "inversity": {
+            "inversion": {
               "$type": "text",
-              "$value": "normal"
+              "$value": "none"
             }
           }
         },
         "resolved": {
           "button": {
-            "inversity": {
+            "inversion": {
               "$type": "text",
-              "$value": "normal"
+              "$value": "none"
             }
           }
         },
         "attention": {
           "button": {
-            "inversity": {
+            "inversion": {
               "$type": "text",
-              "$value": "normal"
+              "$value": "none"
             }
           }
         },
         "critical": {
           "button": {
-            "inversity": {
+            "inversion": {
               "$type": "text",
-              "$value": "normal"
+              "$value": "none"
             }
           }
         }

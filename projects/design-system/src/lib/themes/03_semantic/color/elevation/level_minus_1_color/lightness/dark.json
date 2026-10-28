@@ -5,16 +5,14 @@
 				"neutral": {
 					"bg": {
 						"level_minus_1": {
-							"inversity_normal": {
-								"$type": "color",
-								"$value": "{ob.p.color.cobalt.900}",
-								"$description": "Role: Surface. Neutral background one step below level_0. Deepest page area in dark mode."
-							},
-							"inversity_flipped": {
-								"$type": "color",
-								"$value": "{ob.p.color.basic.white}",
-								"$description": "Role: Surface. Inverse neutral background of level_minus_1, same as level_0. Inverse surface."
-							}
+							"$type": "color",
+							"$value": "{ob.p.color.cobalt.900}",
+							"$description": "Role: Surface. Neutral background one step below level_0. Deepest page area in dark mode."
+						},
+						"level_minus_1_inverse": {
+							"$type": "color",
+							"$value": "{ob.p.color.basic.white}",
+							"$description": "Role: Surface. Inverse neutral background of level_minus_1, same as level_0. Inverse surface."
 						}
 					}
 				}
