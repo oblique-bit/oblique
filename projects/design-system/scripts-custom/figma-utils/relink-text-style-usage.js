@@ -40,7 +40,7 @@
     // Fallback safety when figma.fileKey is unavailable in this eval context
     // (observed via figma-ds-cli): refuse to run unless the open file has
     // this exact name. null = any name.
-    fileNameGuard: 'DesignSystem@Tokens V9.9',
+    fileNameGuard: 'DesignSystem@Tokens V10.0',
 
     // Scope the walk to one page by name (recommended — this file has more
     // than one page, and other pages may use these styles legitimately for

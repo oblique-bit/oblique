@@ -76,7 +76,7 @@
 
     // Fallback safety when figma.fileKey is unavailable in this eval context
     // (observed via figma-ds-cli — see rename-text-styles.js). null = any name.
-    fileNameGuard: 'DesignSystem@Tokens V9.9',
+    fileNameGuard: 'DesignSystem@Tokens V10.0',
 
     // The frame/group holding this one cover's pasted content, e.g. the id
     // from the Figma URL's node-id after pasting into the library file.

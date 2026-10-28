@@ -33,7 +33,7 @@ Not covered here.
 
 GitHub sync → Pull. Brings the latest JSON from `tokens-dev` into the
 Token Studio plugin. Pull and export only in the working Figma file
-(`DesignSystem@Tokens V9.9`), never in a file that was delivered to developers.
+(`DesignSystem@Tokens V10.0`), never in a file that was delivered to developers.
 
 ### 3. Push from Token Studio to Figma
 

@@ -84,7 +84,7 @@ const THEMES_JSON = path.join(THEMES_DIR, '$themes.json');
 // figma-ds-cli's `run`/`eval` shim resolves its own src/figma-client.js
 // relative to cwd — same requirement as build-color-variables.js.
 const FIG_CLI_DIR = process.env.FIG_CLI_DIR || path.join(process.env.HOME || '', 'figma-cli');
-const FILE_KEY_GUARD = process.env.FIGMA_FILE_KEY || '7A7MvoktM02XVA7smntGvD'; // DesignSystem@Tokens V9.9
+const FILE_KEY_GUARD = process.env.FIGMA_FILE_KEY || 'QOcr0cvwuFDH9AAUdjMZgx'; // DesignSystem@Tokens V10.0
 
 // ─── CLI args ────────────────────────────────────────────────────────────
 const args = process.argv.slice(2);
