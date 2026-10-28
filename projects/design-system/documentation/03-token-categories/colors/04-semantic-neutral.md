@@ -36,7 +36,7 @@ ob.s.color.neutral.{property}.{contrast_level}.{inversity_variation}
 
 **Inversity:** `inversity_normal` (default) | `inversity_flipped` (inverted contrast)
 
-**Surface:** `bg.surface` follows the elevation mode: `contrast_highest` at `level_0`, `contrast_high` at `level_1`, `contrast_medium` at `level_2`. `level_minus_1` is the same as `level_0` in light mode and `cobalt.900` in dark mode. See [Elevation Mode](../../04-modes/08-elevation.md).
+**Surface:** `bg.surface` follows the elevation mode: `contrast_highest` at `level0`, `contrast_high` at `level1`, `contrast_medium` at `level2`. `level-1` is the same as `level0` in light mode and `cobalt.900` in dark mode. See [Elevation Mode](../../04-modes/08-elevation.md).
 
 ## Component Applications
 

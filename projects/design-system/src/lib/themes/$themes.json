@@ -1089,28 +1089,18 @@
     "group": "emphasis"
   },
   {
-    "id": "537nc632z0y0e6hamukhqq7w1lrndd2rty4lj0n3",
-    "name": "level_minus_1",
+    "id": "u8vyzzvhzws5677aeh7o73w4cksdvioe6pon73si",
+    "name": "level2",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "03_semantic/color/elevation/level_minus_1": "enabled",
-      "05_html/button/01_color/elevation/level_minus_1": "enabled"
-    },
-    "group": "elevation"
-  },
-  {
-    "id": "jdimm0gobb5009cf1o5nqylm5u0iqxufahnrt8mr",
-    "name": "level_0",
-    "$figmaStyleReferences": {},
-    "selectedTokenSets": {
-      "03_semantic/color/elevation/level_0": "enabled",
-      "05_html/button/01_color/elevation/level_0": "enabled"
+      "03_semantic/color/elevation/level_2": "enabled",
+      "05_html/button/01_color/elevation/level_2": "enabled"
     },
     "group": "elevation"
   },
   {
     "id": "ftj7yuxgyyuw1sjcpy6vtmd77dob4i8iptmro3f8",
-    "name": "level_1",
+    "name": "level1",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "03_semantic/color/elevation/level_1": "enabled",
@@ -1119,12 +1109,22 @@
     "group": "elevation"
   },
   {
-    "id": "u8vyzzvhzws5677aeh7o73w4cksdvioe6pon73si",
-    "name": "level_2",
+    "id": "jdimm0gobb5009cf1o5nqylm5u0iqxufahnrt8mr",
+    "name": "level0",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "03_semantic/color/elevation/level_2": "enabled",
-      "05_html/button/01_color/elevation/level_2": "enabled"
+      "03_semantic/color/elevation/level_0": "enabled",
+      "05_html/button/01_color/elevation/level_0": "enabled"
+    },
+    "group": "elevation"
+  },
+  {
+    "id": "537nc632z0y0e6hamukhqq7w1lrndd2rty4lj0n3",
+    "name": "level-1",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "03_semantic/color/elevation/level_minus_1": "enabled",
+      "05_html/button/01_color/elevation/level_minus_1": "enabled"
     },
     "group": "elevation"
   },
