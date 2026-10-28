@@ -17,7 +17,7 @@ The mode does not add new colors. It picks a step of the existing contrast ladde
 | `level0` | `contrast_highest` |
 | `level-1` | `contrast_highest`, and in dark mode `cobalt.900` for the neutral surface |
 
-`level0` is the base mode and the first-paint default. The names carry a number only. For the neutral surface (`inversity_normal`) a higher level is a darker surface in light mode and a lighter one in dark mode, so the names do not promise "above" or "below". The elevation changes only the neutral surface and the Button backgrounds. A status surface is the same on every level.
+`level0` is the base mode and the first-paint default. The names carry a number only. For the neutral surface (plain name, not `_inverse`) a higher level is a darker surface in light mode and a lighter one in dark mode, so the names do not promise "above" or "below". The elevation changes only the neutral surface and the Button backgrounds. A status surface is the same on every level.
 
 `level-1` is the level below `level0`. It differs from `level0` only for the neutral surface in dark mode: `cobalt.900` is one step darker than `contrast_highest` (`cobalt.800`). In light mode `level-1` is the same as `level0` (white), because no lighter surface exists. The Button backgrounds are the same as in `level0`. The minus sign is part of the mode name.
 
@@ -43,9 +43,7 @@ The family `neutral` gets a `surface` token that follows the mode. The status fa
         "neutral": {
           "bg": {
             "surface": {
-              "inversity_normal": {
-                "$value": "{ob.s.color.neutral.bg.contrast_highest.inversity_normal}"  // level0
-              }
+              "$value": "{ob.s.color.neutral.bg.contrast_highest}"  // level0
             }
           }
         }
@@ -55,26 +53,26 @@ The family `neutral` gets a `surface` token that follows the mode. The status fa
 }
 ```
 
-In `level1` the same token points to `contrast_high`, in `level2` to `contrast_medium`. In `level-1` the token points to the helper token `ob.s1.color.neutral.bg.level_minus_1.inversity_<normal|flipped>`. `inversity_flipped` points to the flipped token of the same step. The existing tokens are not changed.
+In `level1` the same token points to `contrast_high`, in `level2` to `contrast_medium`. In `level-1` the token points to the helper token `ob.s1.color.neutral.bg.level_minus_1` (and `level_minus_1_inverse`). `surface_inverse` points to the `_inverse` token of the same step. The existing tokens are not changed.
 
 ### **Button Tokens**
 
-Seven Button backgrounds change with the surface level: `primary` (rest, hover, active) and `secondary` and `tertiary` (hover, active). They exist as `ob.h.button.color.<intent>.bg.<state>.surface.inversity_<normal|flipped>`.
+Seven Button backgrounds change with the surface level: `primary` (rest, hover, active) and `secondary` and `tertiary` (hover, active). They exist as `ob.h.button.color.<intent>.bg.<state>_surface` and `<state>_surface_inverse`. `_surface` is a suffix of the state, like `_inverse`, because `ob.h.button.color.<intent>.bg.<state>` is itself a token and a token cannot hold other tokens.
 
 - `level-1`, `level0` and `level1` point to the existing Button tokens.
-- `level2` points to the helper tokens `...level_2.inversity_<normal|flipped>`.
+- `level2` points to the helper tokens `<state>_level_2` and `<state>_level_2_inverse`.
 
-For `inversity_normal` the `level2` colors differ from `level0` only in light mode (high emphasis: `primary`, and `secondary` and `tertiary` hover and active; low emphasis: `secondary` and `tertiary` hover and active). In dark mode `level_0` and `level_2` are the same. `inversity_flipped` is the mirror image and differs only in dark mode.
+For the plain name the `level2` colors differ from `level0` only in light mode (high emphasis: `primary`, and `secondary` and `tertiary` hover and active; low emphasis: `secondary` and `tertiary` hover and active). In dark mode `level_0` and `level_2` are the same. `_inverse` is the mirror image and differs only in dark mode.
 
 The Button adapts to the context it sits on: when the elevation of the container changes, the Button backgrounds change with it. The `surface` background of the neutral family is meant for the containers the Button sits in.
 
 ## **Interactive Feedback Direction**
 
-Hover and active change the Button background compared to the rest state. The direction of the change depends on the elevation, on lightness and on inversity. The values are set per mode in the helper sets, they are not computed.
+Hover and active change the Button background compared to the rest state. The direction of the change depends on the elevation, on lightness and on inversion. The values are set per mode in the helper sets, they are not computed.
 
 The table shows the direction of `secondary` and `tertiary` for hover and active, measured as the luminance of the background over the surface of the mode. It is measured on the neutral surface, in high and low emphasis. `primary` gets darker in every combination.
 
-| Elevation | Light, `inversity_normal` | Dark, `inversity_normal` | Light, `inversity_flipped` | Dark, `inversity_flipped` |
+| Elevation | Light, plain | Dark, plain | Light, `_inverse` | Dark, `_inverse` |
 |---|---|---|---|---|
 | `level2` | lighter | lighter | lighter | lighter |
 | `level1` | darker | lighter | lighter | darker |

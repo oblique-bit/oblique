@@ -29,7 +29,7 @@ Every primitive color family is claimed by the semantic layer. There is currentl
 Since no primitive family is unclaimed, an application (or an extension of the design system) that needs a color with **no predefined semantic role** — for categorical distinction in tags, badges, or contextual accents — consumes the existing free tier instead of picking a primitive directly:
 
 ```
-ob.s.color.free.{cobalt|yellow|teal|indigo|pink}.{bg|fg}.{contrast_low|contrast_medium|contrast_high|contrast_highest}.{inversity_normal|inversity_flipped}
+ob.s.color.free.{cobalt|yellow|teal|indigo|pink}.{bg|fg}.{contrast_low|contrast_medium|contrast_high|contrast_highest}[_inverse]
 ```
 
 **Guidelines:**
@@ -42,7 +42,7 @@ ob.s.color.free.{cobalt|yellow|teal|indigo|pink}.{bg|fg}.{contrast_low|contrast_
 ```json
 {
   "ob.c.{component}.color.bg.default": {
-    "$value": "{ob.s.color.free.indigo.bg.contrast_medium.inversity_normal}",
+    "$value": "{ob.s.color.free.indigo.bg.contrast_medium}",
     "$description": "Application-defined accent color — indigo has no fixed system meaning."
   }
 }

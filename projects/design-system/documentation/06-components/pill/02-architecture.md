@@ -56,7 +56,7 @@ The tokens have no description.
 
 The color group has 60 tokens: ten color names, two parts (`fg` and `bg`) and three states. The token path is `ob.c.pill.color.<name>.<part>.<state>`.
 
-Every reference in the two tables starts with `ob.s.color.` and ends with `.inversity_normal`. The prefix and the suffix are removed from the cells to keep the tables readable. The tokens have no description.
+Every reference in the two tables starts with `ob.s.color.`. The prefix is removed from the cells to keep the tables readable. The tokens have no description.
 
 ### Foreground (`fg`)
 
@@ -190,7 +190,7 @@ The color families and contrast levels that the pill color tokens reference:
 | `ob.s.color.free.pink` | `contrast_high` | `contrast_medium` |
 | `ob.s.color.free.cobalt` | `contrast_high` | `contrast_medium` |
 
-Every color reference ends with `.inversity_normal`. The `.px` dimension variants are used. See the [Token Usage Guide](../../05-reference/01-token-usage-guide.md#px-vs-rem--which-unit-when-building-a-component) and [Dimension Tokens](../../03-token-categories/00-dimension.md).
+Every color reference uses the plain name (not `_inverse`). The `.px` dimension variants are used. See the [Token Usage Guide](../../05-reference/01-token-usage-guide.md#px-vs-rem--which-unit-when-building-a-component) and [Dimension Tokens](../../03-token-categories/00-dimension.md).
 
 ---
 

@@ -147,11 +147,11 @@ Rebuilds the row (or the high and low rows of a 4-mode token) of one token in pl
 
 ```bash
 # token as shown in the Name column (dots, S3 paths always with ob.s.)
-node build-color-variables.js --token ob.s.color.neutral.bg.contrast_highest.inversity_normal
+node build-color-variables.js --token ob.s.color.neutral.bg.contrast_highest
 
 # Figma variable name (slashes or dots accepted; the trimmed forms without ob/s/ or without
 # ob/s/color/, as run-cosmetics.js leaves them in Figma, also work)
-node build-color-variables.js --variable ob/s/color/neutral/bg/contrast_highest/inversity_normal
+node build-color-variables.js --variable ob/s/color/neutral/bg/contrast_highest
 ```
 
 Every row of these tables is built from a Figma variable (primitives included), so both flags point to the same row. A name with no variable stops the run, and so does a flag without a value (exit 2). A row that is not on the page yet is not created: the run prints the reason and exits 1 (use `--table <id>`). The whole page is validated afterwards, so problems in other rows are reported too: use them as the list of rows to refresh.

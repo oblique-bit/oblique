@@ -5,7 +5,7 @@ Interaction colors provide visual feedback for user interactions and establish c
 ## Token Structure
 
 ```
-ob.s1.color.interaction.{emphasis_level}.{element_type}.{contrast_level}.{inversity_variation}
+ob.s1.color.interaction.{emphasis_level}.{element_type}.{contrast_level}{inversion}
 ```
 
 ### Emphasis Levels
@@ -25,12 +25,12 @@ ob.s1.color.interaction.{emphasis_level}.{element_type}.{contrast_level}.{invers
 - `contrast_medium` - Medium contrast for secondary interactions
 - `contrast_low` - Low contrast for subtle interactions
 
-### Inversity Variations
-- `inversity_normal` - Standard light mode
-- `inversity_flipped` - Dark mode / inverted contexts
+### Inversion
+- plain name (no suffix) - Standard light mode
+- `_inverse` - Dark mode / inverted contexts
 
 ### The S2 (Emphasis-Resolved) Tier
-Component code more commonly consumes the emphasis-resolved tier: `ob.s2.color.interaction.{fg|bg}.{contrast_high|contrast_medium|contrast_low}.{inversity_variation}` and `ob.s2.color.interaction.border.{strong|medium|subtle}.{inversity_variation}`. Unlike S1, emphasis is not a path segment at S2 — the same token name resolves to a different value depending on which emphasis mode (high or low) is active for that part of the UI, the same way a lightness-mode token resolves differently under light vs. dark without "light" or "dark" appearing in its name. S2 does not define `fg_visited`, `fg_disabled`, or `bg_disabled` — component code references those S1 tokens directly for visited-link and disabled styling.
+Component code more commonly consumes the emphasis-resolved tier: `ob.s2.color.interaction.{fg|bg}.{contrast_high|contrast_medium|contrast_low}{inversion}` and `ob.s2.color.interaction.border.{strong|medium|subtle}{inversion}`. Unlike S1, emphasis is not a path segment at S2 — the same token name resolves to a different value depending on which emphasis mode (high or low) is active for that part of the UI, the same way a lightness-mode token resolves differently under light vs. dark without "light" or "dark" appearing in its name. S2 does not define `fg_visited`, `fg_disabled`, or `bg_disabled` — component code references those S1 tokens directly for visited-link and disabled styling.
 
 ## High Emphasis Interactions
 
@@ -104,29 +104,29 @@ These examples reference the S2 contrast-level tokens for base, hover, and activ
 ```scss
 .btn-primary {
   // Default state
-  background-color: var(--ob-s2-color-interaction-bg-contrast_high-inversity_normal);
-  color: var(--ob-s2-color-interaction-fg-contrast_high-inversity_normal);
+  background-color: var(--ob-s2-color-interaction-bg-contrast_high);
+  color: var(--ob-s2-color-interaction-fg-contrast_high);
 
   // Hover state
   &:hover {
-    background-color: var(--ob-s2-color-interaction-bg-contrast_medium-inversity_normal);
+    background-color: var(--ob-s2-color-interaction-bg-contrast_medium);
   }
 
   // Focus state
   &:focus {
-    outline: var(--ob-s-border-focus_ring-inversity_normal-width) var(--ob-s-border-focus_ring-inversity_normal-style) var(--ob-s-border-focus_ring-inversity_normal-color);
+    outline: var(--ob-s-border-focus_ring-width) var(--ob-s-border-focus_ring-style) var(--ob-s-border-focus_ring-color);
     outline-offset: 2px;
   }
 
   // Active state
   &:active {
-    background-color: var(--ob-s2-color-interaction-bg-contrast_low-inversity_normal);
+    background-color: var(--ob-s2-color-interaction-bg-contrast_low);
   }
 
   // Disabled state
   &:disabled {
-    background-color: var(--ob-s1-color-interaction-emphasis_high-bg_disabled-solid-inversity_normal);
-    color: var(--ob-s1-color-interaction-emphasis_high-fg_disabled-contrast_low-inversity_normal);
+    background-color: var(--ob-s1-color-interaction-emphasis_high-bg_disabled-solid);
+    color: var(--ob-s1-color-interaction-emphasis_high-fg_disabled-contrast_low);
     cursor: not-allowed;
   }
 }
@@ -136,31 +136,31 @@ These examples reference the S2 contrast-level tokens for base, hover, and activ
 ```scss
 .btn-secondary {
   // Default state
-  background-color: var(--ob-s2-color-interaction-bg-contrast_high-inversity_normal);
-  color: var(--ob-s2-color-interaction-fg-contrast_high-inversity_normal);
-  border: 1px solid var(--ob-s2-color-interaction-border-medium-inversity_normal);
+  background-color: var(--ob-s2-color-interaction-bg-contrast_high);
+  color: var(--ob-s2-color-interaction-fg-contrast_high);
+  border: 1px solid var(--ob-s2-color-interaction-border-medium);
 
   // Hover state
   &:hover {
-    background-color: var(--ob-s2-color-interaction-bg-contrast_medium-inversity_normal);
+    background-color: var(--ob-s2-color-interaction-bg-contrast_medium);
   }
 
   // Focus state
   &:focus {
-    outline: var(--ob-s-border-focus_ring-inversity_normal-width) var(--ob-s-border-focus_ring-inversity_normal-style) var(--ob-s-border-focus_ring-inversity_normal-color);
+    outline: var(--ob-s-border-focus_ring-width) var(--ob-s-border-focus_ring-style) var(--ob-s-border-focus_ring-color);
     outline-offset: 2px;
   }
 
   // Active state
   &:active {
-    background-color: var(--ob-s2-color-interaction-bg-contrast_low-inversity_normal);
+    background-color: var(--ob-s2-color-interaction-bg-contrast_low);
   }
 
   // Disabled state
   &:disabled {
-    background-color: var(--ob-s1-color-interaction-emphasis_low-bg_disabled-solid-inversity_normal);
-    color: var(--ob-s1-color-interaction-emphasis_low-fg_disabled-contrast_low-inversity_normal);
-    border-color: var(--ob-s1-color-interaction-emphasis_low-fg_disabled-contrast_low-inversity_normal);
+    background-color: var(--ob-s1-color-interaction-emphasis_low-bg_disabled-solid);
+    color: var(--ob-s1-color-interaction-emphasis_low-fg_disabled-contrast_low);
+    border-color: var(--ob-s1-color-interaction-emphasis_low-fg_disabled-contrast_low);
   }
 }
 ```
@@ -169,31 +169,31 @@ These examples reference the S2 contrast-level tokens for base, hover, and activ
 ```scss
 .link-primary {
   // Default state
-  color: var(--ob-s2-color-interaction-fg-contrast_high-inversity_normal);
+  color: var(--ob-s2-color-interaction-fg-contrast_high);
   text-decoration: underline;
-  text-decoration-color: var(--ob-s2-color-interaction-fg-contrast_medium-inversity_normal);
+  text-decoration-color: var(--ob-s2-color-interaction-fg-contrast_medium);
 
   // Hover state
   &:hover {
-    color: var(--ob-s2-color-interaction-fg-contrast_medium-inversity_normal);
-    text-decoration-color: var(--ob-s2-color-interaction-fg-contrast_medium-inversity_normal);
+    color: var(--ob-s2-color-interaction-fg-contrast_medium);
+    text-decoration-color: var(--ob-s2-color-interaction-fg-contrast_medium);
   }
 
   // Focus state
   &:focus {
-    outline: var(--ob-s-border-focus_ring-inversity_normal-width) var(--ob-s-border-focus_ring-inversity_normal-style) var(--ob-s-border-focus_ring-inversity_normal-color);
+    outline: var(--ob-s-border-focus_ring-width) var(--ob-s-border-focus_ring-style) var(--ob-s-border-focus_ring-color);
     outline-offset: 2px;
   }
 
   // Active state
   &:active {
-    color: var(--ob-s2-color-interaction-fg-contrast_low-inversity_normal);
+    color: var(--ob-s2-color-interaction-fg-contrast_low);
   }
 
   // Visited state
   &:visited {
-    color: var(--ob-s1-color-interaction-emphasis_high-fg_visited-contrast_high-inversity_normal);
-    text-decoration-color: var(--ob-s1-color-interaction-emphasis_high-fg_visited-contrast_medium-inversity_normal);
+    color: var(--ob-s1-color-interaction-emphasis_high-fg_visited-contrast_high);
+    text-decoration-color: var(--ob-s1-color-interaction-emphasis_high-fg_visited-contrast_medium);
   }
 }
 ```
@@ -202,29 +202,29 @@ These examples reference the S2 contrast-level tokens for base, hover, and activ
 ```scss
 .link-secondary {
   // Default state
-  color: var(--ob-s2-color-interaction-fg-contrast_high-inversity_normal);
+  color: var(--ob-s2-color-interaction-fg-contrast_high);
   text-decoration: underline;
-  text-decoration-color: var(--ob-s2-color-interaction-fg-contrast_medium-inversity_normal);
+  text-decoration-color: var(--ob-s2-color-interaction-fg-contrast_medium);
 
   // Hover state
   &:hover {
-    color: var(--ob-s2-color-interaction-fg-contrast_medium-inversity_normal);
+    color: var(--ob-s2-color-interaction-fg-contrast_medium);
   }
 
   // Focus state
   &:focus {
-    outline: var(--ob-s-border-focus_ring-inversity_normal-width) var(--ob-s-border-focus_ring-inversity_normal-style) var(--ob-s-border-focus_ring-inversity_normal-color);
+    outline: var(--ob-s-border-focus_ring-width) var(--ob-s-border-focus_ring-style) var(--ob-s-border-focus_ring-color);
     outline-offset: 2px;
   }
 
   // Active state
   &:active {
-    color: var(--ob-s2-color-interaction-fg-contrast_low-inversity_normal);
+    color: var(--ob-s2-color-interaction-fg-contrast_low);
   }
 
   // Visited state
   &:visited {
-    color: var(--ob-s1-color-interaction-emphasis_low-fg_visited-contrast_high-inversity_normal);
+    color: var(--ob-s1-color-interaction-emphasis_low-fg_visited-contrast_high);
   }
 }
 ```
@@ -233,22 +233,22 @@ These examples reference the S2 contrast-level tokens for base, hover, and activ
 ```scss
 .form-input {
   // Default state
-  background-color: var(--ob-s2-color-interaction-bg-contrast_high-inversity_normal);
-  color: var(--ob-s2-color-interaction-fg-contrast_high-inversity_normal);
-  border: 1px solid var(--ob-s2-color-interaction-border-medium-inversity_normal);
+  background-color: var(--ob-s2-color-interaction-bg-contrast_high);
+  color: var(--ob-s2-color-interaction-fg-contrast_high);
+  border: 1px solid var(--ob-s2-color-interaction-border-medium);
 
   // Focus state
   &:focus {
-    border-color: var(--ob-s2-color-interaction-border-strong-inversity_normal);
-    outline: var(--ob-s-border-focus_ring-inversity_normal-width) var(--ob-s-border-focus_ring-inversity_normal-style) var(--ob-s-border-focus_ring-inversity_normal-color);
+    border-color: var(--ob-s2-color-interaction-border-strong);
+    outline: var(--ob-s-border-focus_ring-width) var(--ob-s-border-focus_ring-style) var(--ob-s-border-focus_ring-color);
     outline-offset: 1px;
   }
 
   // Disabled state
   &:disabled {
-    background-color: var(--ob-s1-color-interaction-emphasis_low-bg_disabled-solid-inversity_normal);
-    color: var(--ob-s1-color-interaction-emphasis_low-fg_disabled-contrast_low-inversity_normal);
-    border-color: var(--ob-s1-color-interaction-emphasis_low-fg_disabled-contrast_low-inversity_normal);
+    background-color: var(--ob-s1-color-interaction-emphasis_low-bg_disabled-solid);
+    color: var(--ob-s1-color-interaction-emphasis_low-fg_disabled-contrast_low);
+    border-color: var(--ob-s1-color-interaction-emphasis_low-fg_disabled-contrast_low);
   }
 }
 ```
@@ -257,23 +257,23 @@ These examples reference the S2 contrast-level tokens for base, hover, and activ
 ```scss
 .nav-item {
   // Default state
-  color: var(--ob-s2-color-interaction-fg-contrast_medium-inversity_normal);
+  color: var(--ob-s2-color-interaction-fg-contrast_medium);
 
   // Hover state
   &:hover {
-    color: var(--ob-s2-color-interaction-fg-contrast_high-inversity_normal);
-    background-color: var(--ob-s2-color-interaction-bg-contrast_low-inversity_normal);
+    color: var(--ob-s2-color-interaction-fg-contrast_high);
+    background-color: var(--ob-s2-color-interaction-bg-contrast_low);
   }
 
   // Active/Current state
   &.active {
-    color: var(--ob-s2-color-interaction-fg-contrast_high-inversity_normal);
-    background-color: var(--ob-s2-color-interaction-bg-contrast_medium-inversity_normal);
+    color: var(--ob-s2-color-interaction-fg-contrast_high);
+    background-color: var(--ob-s2-color-interaction-bg-contrast_medium);
   }
 
   // Focus state
   &:focus {
-    outline: var(--ob-s-border-focus_ring-inversity_normal-width) var(--ob-s-border-focus_ring-inversity_normal-style) var(--ob-s-border-focus_ring-inversity_normal-color);
+    outline: var(--ob-s-border-focus_ring-width) var(--ob-s-border-focus_ring-style) var(--ob-s-border-focus_ring-color);
     outline-offset: 2px;
   }
 }
@@ -365,14 +365,14 @@ Focus rings use a border token for CSS and separate width, offset and color vari
 **CSS Implementation:**
 ```scss
 .interactive-element:focus {
-  outline: var(--ob-s-border-focus_ring-inversity_normal-width) var(--ob-s-border-focus_ring-inversity_normal-style) var(--ob-s-border-focus_ring-inversity_normal-color);
+  outline: var(--ob-s-border-focus_ring-width) var(--ob-s-border-focus_ring-style) var(--ob-s-border-focus_ring-color);
   outline-offset: 2px;
 }
 ```
 
 **Token Reference:**
 - `ob.s.border.focus_ring` - CSS implementation using border token type
-- `ob.s.color.interaction.focus_ring.inversity_normal` (and `.inversity_flipped`) - Focus ring color
+- `ob.s.color.interaction.focus_ring` (and `ob.s.color.interaction.focus_ring_inverse`) - Focus ring color
 
 ### Implementation Guidelines
 
@@ -398,13 +398,13 @@ Focus rings ensure keyboard navigation accessibility:
 ```scss
 /* Proper focus implementation */
 .button:focus {
-  outline: var(--ob-s-border-focus_ring-inversity_normal-width) var(--ob-s-border-focus_ring-inversity_normal-style) var(--ob-s-border-focus_ring-inversity_normal-color);
+  outline: var(--ob-s-border-focus_ring-width) var(--ob-s-border-focus_ring-style) var(--ob-s-border-focus_ring-color);
   outline-offset: 2px;
 }
 
 /* Focus with custom styling */
 .custom-focus:focus {
-  outline: 2px solid var(--ob-s1-color-interaction-focus_ring-inversity_normal);
+  outline: 2px solid var(--ob-s1-color-interaction-focus_ring);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -413,19 +413,19 @@ Focus rings ensure keyboard navigation accessibility:
 ## Mode Integration
 
 ### Automatic Adaptation
-Interaction colors automatically adapt to lightness mode changes through inversity variations:
+Interaction colors automatically adapt to lightness mode changes through inversion variants:
 
 ```scss
 /* Light mode context */
 .mode-light .btn-primary {
-  background-color: var(--ob-s2-color-interaction-bg-contrast_high-inversity_normal);
-  color: var(--ob-s2-color-interaction-fg-contrast_high-inversity_normal);
+  background-color: var(--ob-s2-color-interaction-bg-contrast_high);
+  color: var(--ob-s2-color-interaction-fg-contrast_high);
 }
 
 /* Dark mode context */
 .mode-dark .btn-primary {
-  background-color: var(--ob-s2-color-interaction-bg-contrast_high-inversity_flipped);
-  color: var(--ob-s2-color-interaction-fg-contrast_high-inversity_flipped);
+  background-color: var(--ob-s2-color-interaction-bg-contrast_high_inverse);
+  color: var(--ob-s2-color-interaction-fg-contrast_high_inverse);
 }
 ```
 
@@ -433,16 +433,16 @@ Interaction colors automatically adapt to lightness mode changes through inversi
 ```scss
 .interactive-element {
   /* Base styles that work in any context */
-  --interaction-fg: var(--ob-s2-color-interaction-fg-contrast_high-inversity_normal);
-  --interaction-bg: var(--ob-s2-color-interaction-bg-contrast_high-inversity_normal);
+  --interaction-fg: var(--ob-s2-color-interaction-fg-contrast_high);
+  --interaction-bg: var(--ob-s2-color-interaction-bg-contrast_high);
   
   color: var(--interaction-fg);
   background-color: var(--interaction-bg);
   
-  /* Automatically adapts when inversity context changes */
-  .inversity_flipped & {
-    --interaction-fg: var(--ob-s2-color-interaction-fg-contrast_high-inversity_flipped);
-    --interaction-bg: var(--ob-s2-color-interaction-bg-contrast_high-inversity_flipped);
+  /* Automatically adapts when inversion context changes */
+  .inverse & {
+    --interaction-fg: var(--ob-s2-color-interaction-fg-contrast_high_inverse);
+    --interaction-bg: var(--ob-s2-color-interaction-bg-contrast_high_inverse);
   }
 }
 ```

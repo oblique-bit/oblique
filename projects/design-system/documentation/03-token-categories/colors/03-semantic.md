@@ -29,15 +29,15 @@ src/lib/themes/03_semantic/color/
 - **Purpose**: Light/dark mode adaptation
 - **Contains**: `neutral`, `interaction`, and `status` categories
 - **Files**: `light.json`, `dark.json`
-- **Inversity**: Each token has flat `inversity_normal` and `inversity_flipped` variants (not a separate semantic level)
-- **Example token**: `ob.s1.color.neutral.bg.contrast_high.inversity_normal`
+- **Inversion**: Each token has a plain name and an `_inverse` variant (not a separate semantic level)
+- **Example token**: `ob.s1.color.neutral.bg.contrast_high`
 
 #### **S2 - Emphasis Semantic Level** (`s2_emphasis/`)
 - **Purpose**: High/low emphasis variations for interaction elements  
 - **Contains**: `interaction` category only (buttons, links, form controls)
 - **Files**: `high.json`, `low.json`
 - **Reference**: All S2 tokens reference S1 tokens directly
-- **Example token**: `ob.s2.color.interaction.fg.contrast_low.inversity_normal`
+- **Example token**: `ob.s2.color.interaction.fg.contrast_low`
 
 #### **ob.s - Semantic Compilation** (`compiled.json`)
 - **Purpose**: Complete, clean collection of all semantic colors
@@ -45,8 +45,8 @@ src/lib/themes/03_semantic/color/
 - **File**: `compiled.json`
 - **Reference**: Compiles tokens from S1, S2, and static sources
 - **Usage**: Primary consumption point for component tokens
-- **Inversity**: Flat inversity variants preserved in final compilation (not dimensional)
-- **Example token**: `ob.s.color.neutral.fg.contrast_highest.inversity_normal`
+- **Inversion**: The `_inverse` variants are preserved in final compilation (not dimensional)
+- **Example token**: `ob.s.color.neutral.fg.contrast_highest`
 
 ---
 
@@ -96,14 +96,14 @@ Static colors are **non-mode-dependent** values that remain constant across all 
 Interaction colors are not named after a state (`selected`, `enabled`, ...) — they use a visual-weight scale instead, consumed by whichever mode/state the component is in:
 ```json
 {
-  "ob.s.color.interaction.fg.contrast_low.inversity_normal": {
+  "ob.s.color.interaction.fg.contrast_low": {
     "$type": "color",
-    "$value": "{ob.s2.color.interaction.fg.contrast_low.inversity_normal}",
+    "$value": "{ob.s2.color.interaction.fg.contrast_low}",
     "$description": "Low contrast foreground for interaction. Use for text and icons in subtle or secondary interactive states."
   },
-  "ob.s.color.interaction.fg.contrast_high.inversity_normal": {
+  "ob.s.color.interaction.fg.contrast_high": {
     "$type": "color",
-    "$value": "{ob.s2.color.interaction.fg.contrast_high.inversity_normal}",
+    "$value": "{ob.s2.color.interaction.fg.contrast_high}",
     "$description": "High contrast foreground for interaction. Use for text and icons where maximum contrast is required."
   }
 }
@@ -173,13 +173,13 @@ Currently, the full 5-level scale is provided only for the **Neutral** category 
 ```
 ob.s.color.brand → {ob.p.color.basic.federal_red} → #ff0000
 │
-└─ ob.s (Semantic): Direct static value (federal_red) - no lightness mode, emphasis, or inversity variations
+└─ ob.s (Semantic): Direct static value (federal_red) - no lightness mode, emphasis, or inversion variants
 ```
 
-### **Inversity as Flat Property**
-- **Not a layer or mode** - inversity is simply a token variant
-- **Available everywhere** - most tokens have both `inversity_normal` and `inversity_flipped`
-- **Component-level choice** - developers choose which inversity variant to use
+### **Inversion as Part of the Name**
+- **Not a layer or mode** - inversion is simply a token variant
+- **Available everywhere** - most tokens have both the plain name and the `_inverse` variant
+- **Component-level choice** - developers choose which variant to use
 - **Simple implementation** - no complex mode switching, just token selection
 
 ---

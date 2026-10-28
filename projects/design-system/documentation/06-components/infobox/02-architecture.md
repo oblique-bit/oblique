@@ -16,7 +16,7 @@ The infobox is a molecule in Oblique DS. It has five status variants (`info`, `c
 │   ├── ob.c.infobox.icon.asset.status.*
 │   ├── ob.c.infobox.border_radius.*
 │   ├── ob.c.infobox.typography.*
-│   └── ob.c.infobox.{status}.button.inversity
+│   └── ob.c.infobox.{status}.button.inversion
 └── 03_viewport/       — 25 tokens in each file, one file for each viewport mode
     ├── xs.json
     ├── sm.json
@@ -51,28 +51,28 @@ File: `01_color.json`. The family description is "Color tokens for the Infobox m
 
 | Token | References | Description |
 |---|---|---|
-| `ob.c.infobox.color.icon.info` | `ob.s.color.status.info.fg.contrast_medium.inversity_normal` | Icon color, `info` |
-| `ob.c.infobox.color.icon.critical` | `ob.s.color.status.critical.fg.contrast_medium.inversity_normal` | Icon color, `critical` |
-| `ob.c.infobox.color.icon.attention` | `ob.s.color.status.attention.fg.contrast_medium.inversity_normal` | Icon color, `attention` |
-| `ob.c.infobox.color.icon.resolved` | `ob.s.color.status.resolved.fg.contrast_medium.inversity_normal` | Icon color, `resolved` |
-| `ob.c.infobox.color.icon.fatal` | `ob.s.color.status.fatal.fg.contrast_medium.inversity_flipped` | Icon color, `fatal` |
-| `ob.c.infobox.color.border.info` | `ob.s.color.status.info.fg.contrast_medium.inversity_normal` | Border color, `info` |
-| `ob.c.infobox.color.border.critical` | `ob.s.color.status.critical.fg.contrast_medium.inversity_normal` | Border color, `critical` |
-| `ob.c.infobox.color.border.attention` | `ob.s.color.status.attention.fg.contrast_medium.inversity_normal` | Border color, `attention` |
-| `ob.c.infobox.color.border.resolved` | `ob.s.color.status.resolved.fg.contrast_medium.inversity_normal` | Border color, `resolved` |
-| `ob.c.infobox.color.border.fatal` | `ob.s.color.status.fatal.fg.contrast_medium.inversity_flipped` | Border color, `fatal` |
-| `ob.c.infobox.color.surface.info` | `ob.s.color.status.info.bg.contrast_high.inversity_normal` | Surface color, `info` |
-| `ob.c.infobox.color.surface.critical` | `ob.s.color.status.critical.bg.contrast_high.inversity_normal` | Surface color, `critical` |
-| `ob.c.infobox.color.surface.attention` | `ob.s.color.status.attention.bg.contrast_high.inversity_normal` | Surface color, `attention` |
-| `ob.c.infobox.color.surface.resolved` | `ob.s.color.status.resolved.bg.contrast_high.inversity_normal` | Surface color, `resolved` |
-| `ob.c.infobox.color.surface.fatal` | `ob.s.color.status.fatal.bg.contrast_high.inversity_flipped` | Surface color, `fatal` |
-| `ob.c.infobox.color.fg.info` | `ob.s.color.neutral.fg.contrast_high.inversity_normal` | Foreground color, `info` |
-| `ob.c.infobox.color.fg.critical` | `ob.s.color.neutral.fg.contrast_high.inversity_normal` | Foreground color, `critical` |
-| `ob.c.infobox.color.fg.attention` | `ob.s.color.neutral.fg.contrast_high.inversity_normal` | Foreground color, `attention` |
-| `ob.c.infobox.color.fg.resolved` | `ob.s.color.neutral.fg.contrast_high.inversity_normal` | Foreground color, `resolved` |
-| `ob.c.infobox.color.fg.fatal` | `ob.s.color.neutral.fg.contrast_medium.inversity_flipped` | Foreground color, `fatal` |
+| `ob.c.infobox.color.icon.info` | `ob.s.color.status.info.fg.contrast_medium` | Icon color, `info` |
+| `ob.c.infobox.color.icon.critical` | `ob.s.color.status.critical.fg.contrast_medium` | Icon color, `critical` |
+| `ob.c.infobox.color.icon.attention` | `ob.s.color.status.attention.fg.contrast_medium` | Icon color, `attention` |
+| `ob.c.infobox.color.icon.resolved` | `ob.s.color.status.resolved.fg.contrast_medium` | Icon color, `resolved` |
+| `ob.c.infobox.color.icon.fatal` | `ob.s.color.status.fatal.fg.contrast_medium_inverse` | Icon color, `fatal` |
+| `ob.c.infobox.color.border.info` | `ob.s.color.status.info.fg.contrast_medium` | Border color, `info` |
+| `ob.c.infobox.color.border.critical` | `ob.s.color.status.critical.fg.contrast_medium` | Border color, `critical` |
+| `ob.c.infobox.color.border.attention` | `ob.s.color.status.attention.fg.contrast_medium` | Border color, `attention` |
+| `ob.c.infobox.color.border.resolved` | `ob.s.color.status.resolved.fg.contrast_medium` | Border color, `resolved` |
+| `ob.c.infobox.color.border.fatal` | `ob.s.color.status.fatal.fg.contrast_medium_inverse` | Border color, `fatal` |
+| `ob.c.infobox.color.surface.info` | `ob.s.color.status.info.bg.contrast_high` | Surface color, `info` |
+| `ob.c.infobox.color.surface.critical` | `ob.s.color.status.critical.bg.contrast_high` | Surface color, `critical` |
+| `ob.c.infobox.color.surface.attention` | `ob.s.color.status.attention.bg.contrast_high` | Surface color, `attention` |
+| `ob.c.infobox.color.surface.resolved` | `ob.s.color.status.resolved.bg.contrast_high` | Surface color, `resolved` |
+| `ob.c.infobox.color.surface.fatal` | `ob.s.color.status.fatal.bg.contrast_high_inverse` | Surface color, `fatal` |
+| `ob.c.infobox.color.fg.info` | `ob.s.color.neutral.fg.contrast_high` | Foreground color, `info` |
+| `ob.c.infobox.color.fg.critical` | `ob.s.color.neutral.fg.contrast_high` | Foreground color, `critical` |
+| `ob.c.infobox.color.fg.attention` | `ob.s.color.neutral.fg.contrast_high` | Foreground color, `attention` |
+| `ob.c.infobox.color.fg.resolved` | `ob.s.color.neutral.fg.contrast_high` | Foreground color, `resolved` |
+| `ob.c.infobox.color.fg.fatal` | `ob.s.color.neutral.fg.contrast_medium_inverse` | Foreground color, `fatal` |
 
-All color tokens reference semantic color tokens, which follow the `lightness` mode. Inversity is part of the referenced token name (`inversity_normal` or `inversity_flipped`). See [Component Tokens](../../02-token-tiers/04-component.md#inversity-component-level-contrast-inversion).
+All color tokens reference semantic color tokens, which follow the `lightness` mode. Inversion is part of the referenced token name (plain or `_inverse`). See [Component Tokens](../../02-token-tiers/04-component.md#inversion-component-level-contrast-inversion).
 
 ## Container Tokens
 
@@ -172,17 +172,17 @@ File: `02_layout.json`. These tokens have the `$type` `typography`.
 
 ## Button Tokens
 
-### Button inversity (`02_layout.json`)
+### Button inversion (`02_layout.json`)
 
 These tokens have the `$type` `text`. Their value is a literal text, not a reference. They have no description.
 
 | Token | Value | Description |
 |---|---|---|
-| `ob.c.infobox.info.button.inversity` | `normal` | Inversity of the buttons in the `info` infobox. |
-| `ob.c.infobox.critical.button.inversity` | `normal` | Inversity of the buttons in the `critical` infobox. |
-| `ob.c.infobox.attention.button.inversity` | `normal` | Inversity of the buttons in the `attention` infobox. |
-| `ob.c.infobox.resolved.button.inversity` | `normal` | Inversity of the buttons in the `resolved` infobox. |
-| `ob.c.infobox.fatal.button.inversity` | `flipped` | Inversity of the buttons in the `fatal` infobox. |
+| `ob.c.infobox.info.button.inversion` | `none` | Inversion of the buttons in the `info` infobox. |
+| `ob.c.infobox.critical.button.inversion` | `none` | Inversion of the buttons in the `critical` infobox. |
+| `ob.c.infobox.attention.button.inversion` | `none` | Inversion of the buttons in the `attention` infobox. |
+| `ob.c.infobox.resolved.button.inversion` | `none` | Inversion of the buttons in the `resolved` infobox. |
+| `ob.c.infobox.fatal.button.inversion` | `inverse` | Inversion of the buttons in the `fatal` infobox. |
 
 ### Buttons order (`03_viewport/`)
 
@@ -198,8 +198,8 @@ Infobox tokens sit in the `ob.c.*` component tier. They reference semantic token
 
 ```
 ob.c.infobox.color.surface.info
-  → ob.s.color.status.info.bg.contrast_high.inversity_normal
-      → ob.s1.color.status.info.bg.contrast_high.inversity_normal  (lightness layer: light or dark)
+  → ob.s.color.status.info.bg.contrast_high
+      → ob.s1.color.status.info.bg.contrast_high  (lightness layer: light or dark)
           → ob.p.color.*
 
 ob.c.infobox.spacing.padding_top  (xs, sm, md)
@@ -265,18 +265,18 @@ The infobox references only semantic tokens. It does not reference primitives (`
 
 | Token | Used by |
 |---|---|
-| `ob.s.color.status.info.fg.contrast_medium.inversity_normal` | `color.icon.info`, `color.border.info` |
-| `ob.s.color.status.critical.fg.contrast_medium.inversity_normal` | `color.icon.critical`, `color.border.critical` |
-| `ob.s.color.status.attention.fg.contrast_medium.inversity_normal` | `color.icon.attention`, `color.border.attention` |
-| `ob.s.color.status.resolved.fg.contrast_medium.inversity_normal` | `color.icon.resolved`, `color.border.resolved` |
-| `ob.s.color.status.fatal.fg.contrast_medium.inversity_flipped` | `color.icon.fatal`, `color.border.fatal` |
-| `ob.s.color.status.info.bg.contrast_high.inversity_normal` | `color.surface.info` |
-| `ob.s.color.status.critical.bg.contrast_high.inversity_normal` | `color.surface.critical` |
-| `ob.s.color.status.attention.bg.contrast_high.inversity_normal` | `color.surface.attention` |
-| `ob.s.color.status.resolved.bg.contrast_high.inversity_normal` | `color.surface.resolved` |
-| `ob.s.color.status.fatal.bg.contrast_high.inversity_flipped` | `color.surface.fatal` |
-| `ob.s.color.neutral.fg.contrast_high.inversity_normal` | `color.fg.info`, `color.fg.critical`, `color.fg.attention`, `color.fg.resolved` |
-| `ob.s.color.neutral.fg.contrast_medium.inversity_flipped` | `color.fg.fatal` |
+| `ob.s.color.status.info.fg.contrast_medium` | `color.icon.info`, `color.border.info` |
+| `ob.s.color.status.critical.fg.contrast_medium` | `color.icon.critical`, `color.border.critical` |
+| `ob.s.color.status.attention.fg.contrast_medium` | `color.icon.attention`, `color.border.attention` |
+| `ob.s.color.status.resolved.fg.contrast_medium` | `color.icon.resolved`, `color.border.resolved` |
+| `ob.s.color.status.fatal.fg.contrast_medium_inverse` | `color.icon.fatal`, `color.border.fatal` |
+| `ob.s.color.status.info.bg.contrast_high` | `color.surface.info` |
+| `ob.s.color.status.critical.bg.contrast_high` | `color.surface.critical` |
+| `ob.s.color.status.attention.bg.contrast_high` | `color.surface.attention` |
+| `ob.s.color.status.resolved.bg.contrast_high` | `color.surface.resolved` |
+| `ob.s.color.status.fatal.bg.contrast_high_inverse` | `color.surface.fatal` |
+| `ob.s.color.neutral.fg.contrast_high` | `color.fg.info`, `color.fg.critical`, `color.fg.attention`, `color.fg.resolved` |
+| `ob.s.color.neutral.fg.contrast_medium_inverse` | `color.fg.fatal` |
 
 ### Semantic dimension and border tokens
 

@@ -454,7 +454,7 @@ async function deprecateOldScratchPages(basePageName, currentPageId) {
 const TABLE_WIDTH = 1580; // matches the section bar / row natural width
 const WRAPPER_NAME = 'Dimension Tables';
 const WRAPPER_GAP  = 96;
-const BG_VAR_NAME  = 'ob/s1/color/neutral/bg/contrast_highest/inversity_normal';
+const BG_VAR_NAME  = 'ob/s1/color/neutral/bg/contrast_highest';
 // s1-tier color vars live in the "lightness" collection. A legacy numbered
 // collection (e.g. 03_semantic/color/s1_lightness/light) can carry a
 // variable with this exact same name, and an unscoped find() over allVars
@@ -632,7 +632,7 @@ async function ensureWrapper(page) {
 // reflow every sibling on each row append, which slows the build ~10×. Tables
 // are batch-migrated into the wrapper at the end of main().
 // Each table gets a white bg fill bound to the variable
-// ob/s1/color/neutral/bg/contrast_highest/inversity_normal.
+// ob/s1/color/neutral/bg/contrast_highest.
 async function ensureTableFrame(page, tableName) {
   let table = page.findOne(n => n.type === 'FRAME' && n.name === tableName);
   if (table && table.parent !== page) {

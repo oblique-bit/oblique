@@ -35,16 +35,16 @@ The table shows the references. The paths are shortened: every reference starts 
 
 | State | `fg` | `bg` |
 |---|---|---|
-| `enabled` | `fg.contrast_high.inversity_normal` | `bg.contrast_medium.inversity_normal` |
-| `hover` | `fg.contrast_high.inversity_normal` | `bg.contrast_high.inversity_normal` |
-| `focus` | `fg.contrast_high.inversity_normal` | `bg.contrast_medium.inversity_normal` |
-| `selected` | `fg.contrast_medium.inversity_flipped` | `bg.contrast_high.inversity_flipped` |
-| `disabled` | `fg.contrast_lowest.inversity_normal` | `bg.contrast_medium.inversity_normal` |
+| `enabled` | `fg.contrast_high` | `bg.contrast_medium` |
+| `hover` | `fg.contrast_high` | `bg.contrast_high` |
+| `focus` | `fg.contrast_high` | `bg.contrast_medium` |
+| `selected` | `fg.contrast_medium_inverse` | `bg.contrast_high_inverse` |
+| `disabled` | `fg.contrast_lowest` | `bg.contrast_medium` |
 
 What the references show:
 
 - The `enabled` and `focus` states use the same tokens.
-- The `selected` state references the `inversity_flipped` tokens. All other states reference `inversity_normal`.
+- The `selected` state references the `_inverse` tokens. All other states reference the plain tokens.
 - The `disabled` background is the same token as the `enabled` background.
 
 ## Modes
@@ -66,7 +66,7 @@ Notes:
 - The dimension tokens reference the `.px` variants. The unit rule is in the [Token Usage Guide](../../05-reference/01-token-usage-guide.md#px-vs-rem--which-unit-when-building-a-component).
 - The dynamic typography tokens belong to the `ui_scale` collection. See [Typography Tokens](../../03-token-categories/01-typography.md) and [UI Scale Mode](../../04-modes/03-ui-scale.md). The name of the referenced text decoration token contains `emphasis_low`. It is a typography token and not the `emphasis` mode.
 - The color tokens resolve through the [lightness mode](../../04-modes/01-lightness.md) (light and dark) because the semantic color tokens they reference do.
-- Inversity (`inversity_normal` and `inversity_flipped`) is part of the token path and is not a mode. See [Inversity](../../02-token-tiers/04-component.md#inversity-component-level-contrast-inversion).
+- Inversion (plain name and `_inverse`) is part of the token name and is not a mode. See [Inversion](../../02-token-tiers/04-component.md#inversion-component-level-contrast-inversion).
 - No tag token references a `density`, `typography_context`, `viewport` or `motion` token. The color tokens reference the neutral family and not the interaction family, so the `emphasis` mode does not apply to them.
 
 ## Reference-Only Set

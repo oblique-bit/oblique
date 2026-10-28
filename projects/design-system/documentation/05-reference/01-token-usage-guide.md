@@ -28,7 +28,7 @@ Only when all component possibilities are exhausted — when no existing compone
 
 ---
 
-Color is by far the most complex token category. The system has multiple semantic layers (S1, S2, ob.s), multiple color families, and two inversity variants. This section starts with the absolute basics and then walks you through the full decision path.
+Color is by far the most complex token category. The system has multiple semantic layers (S1, S2, ob.s), multiple color families, and two inversion variants (plain name and `_inverse`). This section starts with the absolute basics and then walks you through the full decision path.
 
 ### Getting Started: Your First Two Tokens
 
@@ -36,14 +36,14 @@ Before diving into the full system, here are the two most fundamental color toke
 
 | What | Token | Description |
 |---|---|---|
-| **Background** | `ob.s.color.neutral.bg.contrast_highest.inversity_normal` | The standard page/canvas background. Highest contrast — the primary surface everything else sits on. |
-| **Foreground (text)** | `ob.s.color.neutral.fg.contrast_highest.inversity_normal` | The standard body text / heading color. Highest contrast — maximum legibility against the background. |
+| **Background** | `ob.s.color.neutral.bg.contrast_highest` | The standard page/canvas background. Highest contrast — the primary surface everything else sits on. |
+| **Foreground (text)** | `ob.s.color.neutral.fg.contrast_highest` | The standard body text / heading color. Highest contrast — maximum legibility against the background. |
 
 These two tokens give you the most basic readable layout: dark text on a light surface (or light text on a dark surface — the tokens adapt automatically via lightness mode).
 
 From here, you can layer in more tokens as needed:
-- A **high-contrast background** (`ob.s.color.neutral.bg.contrast_high.inversity_normal`) for cards or surfaces that need to stand out from the page
-- A **high-contrast foreground** (`ob.s.color.neutral.fg.contrast_high.inversity_normal`) for body text and primary labels (one step below the absolute maximum)
+- A **high-contrast background** (`ob.s.color.neutral.bg.contrast_high`) for cards or surfaces that need to stand out from the page
+- A **high-contrast foreground** (`ob.s.color.neutral.fg.contrast_high`) for body text and primary labels (one step below the absolute maximum)
 - [**Border**](../03-token-categories/03-border.md) and [**shadow**](../03-token-categories/04-shadow.md) tokens for structural separation
 
 Once you have the basics, use the decision steps below to find the right token for more specific needs.
@@ -55,7 +55,7 @@ Once you have the basics, use the decision steps below to find the right token f
 
 ### Step 2: Does a Component Token Already Exist?
 
-Before reaching for a semantic token, check if an `ob.c.*` (component-level) token already covers your use case. Component tokens are the highest abstraction and would encode the correct semantic + emphasis + inversity decisions. No custom Oblique components (`ob.c.*`) ship token definitions in this release yet, so this step currently always falls through to Step 3 — it applies once a component tier ships. The development line (git branch `tokens-dev`) already has working versions of some component tokens, for example the icon tokens; they can change.
+Before reaching for a semantic token, check if an `ob.c.*` (component-level) token already covers your use case. Component tokens are the highest abstraction and would encode the correct semantic + emphasis + inversion decisions. No custom Oblique components (`ob.c.*`) ship token definitions in this release yet, so this step currently always falls through to Step 3 — it applies once a component tier ships. The development line (git branch `tokens-dev`) already has working versions of some component tokens, for example the icon tokens; they can change.
 
 - If a component token exists → **use it**.
 - If you're building a new component, or no component token covers your case yet → continue to Step 3.
@@ -88,24 +88,24 @@ Once you know the family, pick the property that matches what you're styling:
 | `border` | Border / stroke | Input border, divider line |
 | `shadow` | Drop shadow | Card, dropdown |
 
-### Step 5: Inversity — Normal vs. Flipped
+### Step 5: Inversion — Normal vs. Inverse
 
-Every semantic color token exists in two inversity variants. This is one of the most important decisions when building components.
+Every semantic color token exists in two variants: the plain name and the `_inverse` variant. This is one of the most important decisions when building components.
 
-#### `inversity_normal` — The Default
+#### Plain name — The Default
 
-Use `inversity_normal` unless you have a specific reason to flip. This is the recommended, standard appearance. The vast majority of components use `inversity_normal`.
+Use the plain name unless you have a specific reason to invert. This is the recommended, standard appearance. The vast majority of components use the plain name.
 
-#### `inversity_flipped` — The Exception
+#### `_inverse` — The Exception
 
-Use `inversity_flipped` only in these cases:
+Use `_inverse` only in these cases:
 
 | Reason | Examples | Rationale |
 |---|---|---|
 | **Small elements that must visually stand out** | Primary button, badge, tag | Compact elements need the inverted color scheme to create sufficient visual contrast and draw attention |
-| **Design decision based on expected component appearance** | Footer | Users expect the footer to appear flipped — this is a deliberate design convention and brand alignment choice |
+| **Design decision based on expected component appearance** | Footer | Users expect the footer to appear inverted — this is a deliberate design convention and brand alignment choice |
 
-**Rule of thumb**: If the element is small and needs to pop, or if convention dictates a flipped appearance — use `inversity_flipped`. Otherwise, default to `inversity_normal`.
+**Rule of thumb**: If the element is small and needs to pop, or if convention dictates an inverted appearance — use `_inverse`. Otherwise, default to the plain name.
 
 ### Step 6: Which Semantic Level?
 
@@ -147,9 +147,9 @@ Need to style something with color?
 │
 ├─ Pick property: bg, fg, border, shadow
 │
-├─ Pick inversity:
-│   ├─ Default → inversity_normal
-│   └─ Small & must stand out, or design convention → inversity_flipped
+├─ Pick inversion:
+│   ├─ Default → plain name
+│   └─ Small & must stand out, or design convention → _inverse
 │
 ├─ Pick semantic level:
 │   └─ Default → ob.s (ob.s.*), the primary consumption layer
@@ -163,7 +163,7 @@ Need to style something with color?
 |---|---|---|
 | Using a primitive token (`ob.p.*`) directly in a component | Violates the architecture rule: primitives exist only as the foundation for the reference chain. They don't adapt to modes (lightness, emphasis). | Use semantic tokens (`ob.s.*`) or component tokens (`ob.c.*`) |
 | Hardcoding a hex value | Breaks theming entirely | Always use a token |
-| Using `inversity_flipped` "just because it looks better" | Flipped has specific use cases; inconsistent inversity breaks the system | Default to `inversity_normal`; only flip for prominence or convention |
+| Using `_inverse` "just because it looks better" | Inverse has specific use cases; inconsistent inversion breaks the system | Default to the plain name; only invert for prominence or convention |
 | Skipping S2 for interactive components in emphasis contexts | Your component won't respond to emphasis mode changes | ob.s compiles from S2 for interaction tokens. If ob.s covers your case, use that. If not, S2 is the fallback for emphasis-aware interaction tokens. |
 | Reaching for S1 directly | S1 is an internal layer — never consumed directly by components | Use ob.s tokens (`ob.s.color.*`). S1 feeds into ob.s via the reference chain. |
 | Pairing `contrast_low` fg with `contrast_low` bg | Low-contrast text on low-contrast background likely fails WCAG 1.4.3 (4.5:1 minimum) | Pair high-contrast foreground with high-contrast background, or verify the combination meets the required ratio |
@@ -347,7 +347,7 @@ The token architecture is designed to help components meet [Web Content Accessib
 | **1.4.10** | AA | Reflow | Using rem in CSS for the spatial groups helps components reflow naturally at 320 CSS pixel width (equivalent to 400% zoom at 1280px). When spatial values scale with the user's font-size, layout adapts without requiring horizontal scrolling. | The same groups |
 | **1.4.11** | AA | Non-text Contrast | Border tokens and foreground tokens provide the 3:1 contrast needed for UI component boundaries (input borders, button outlines) and graphical objects (icons). The border contrast scale (`subtle`, `medium`, `strong`) lets maintainers pick the right visual weight. | `ob.s.color.neutral.border.{contrast}.*`, `ob.s.color.{family}.fg.*` |
 | **1.4.12** | AA | Text Spacing | Typography tokens bundle line-height with font-size so components don't hardcode a ratio that could fall under the 1.5× minimum. Typography tokens built on these values allow user-overridden spacing without content clipping or overlap. | `ob.s.typography.scale.dynamic.line_height.*` |
-| **2.4.7** | AA | Focus Visible | Dedicated focus ring tokens bundle color, width (3px), and style into a ready-to-use CSS outline value. Using these tokens ensures every interactive component has a visible keyboard focus indicator. | `ob.s.border.focus_ring.inversity_normal`, `ob.s.border.focus_ring.inversity_flipped` |
+| **2.4.7** | AA | Focus Visible | Dedicated focus ring tokens bundle color, width (3px), and style into a ready-to-use CSS outline value. Using these tokens ensures every interactive component has a visible keyboard focus indicator. | `ob.s.border.focus_ring`, `ob.s.border.focus_ring_inverse` |
 | **2.4.13** | AAA | Focus Appearance | The focus ring tokens use a 3px solid border (≥ 2 CSS pixel perimeter required) with a distinct purple color that provides ≥ 3:1 contrast between focused and unfocused states. The outline offset tokens (`ob.s.outline_offset.*`) control the gap between the focus indicator and the component edge. | `ob.s.border.focus_ring.*`, `ob.s.outline_offset.{xs…lg}`, `ob.s.border_width.md` (3px) |
 | **2.5.8** | AA | Target Size (Minimum) | Interactive components are expected to enforce a mobile touch target minimum exceeding the 24px WCAG minimum, once they ship a dedicated touch-target token. Desktop components deliberately have no minimum constraint (mouse precision). | `ob.h.button.touch_target.min_size` (planned, not shipped in this release) |
 

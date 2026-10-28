@@ -21,7 +21,7 @@ The illustration comes from the component `_docs/viewport/applied_viewport_modes
 - kept: the `template/app1` frames (one per viewport mode, each with its mode set), the text layers (labels and the note) and the section bar, at their position;
 - so the frames are easy to reach on the canvas and in the layers panel, with the mode chip next to the name;
 - the width of each mode frame is bound to `ob/s/dimension/viewport/min_width`, so changing the viewport mode of a frame also changes its width (min and max alone only limit a fixed width);
-- the frame fill is set to `ob/s/color/neutral/bg/contrast_highest/inversity_normal`, and an extra `template/app1` wrapper layer around the header (2xl frame and the 2xl alternative frame) is removed. The builder does this itself, so the output does not depend on hand edits of the master;
+- the frame fill is set to `ob/s/color/neutral/bg/contrast_highest`, and an extra `template/app1` wrapper layer around the header (2xl frame and the 2xl alternative frame) is removed. The builder does this itself, so the output does not depend on hand edits of the master;
 - the master only has to provide the artwork: the `template/app1` frames with their viewport mode (one per mode, plus the alternative 2xl frame), the labels, the note and the header instances.
 
 No manual step is needed after a build. The builder also adds the hidden `__sectionSubTitle` text layer to the `_docs/shared/section_bar` variants if they do not have it (needed for "Global Tokens").
@@ -172,7 +172,7 @@ The builder picks the row component variant from `kind`: `single` or `multi`.
 - The multi-value variant in the master is misspelled `type=muliti_value` (missing the second `t`). Discovery matches both spellings — don't "fix" the master without also updating the regex.
 - Section bar inner `Layout` frame is FIXED at 794px in the master. The build overrides `layoutSizingHorizontal=FILL` on every nested frame in the chain (Section Content → Layout → Content → Title Row → Section Header → Section Info → Description Group) so subtitle text stretches to the table width.
 - Range `from` / `to` math is parsed Node-side: regex `^{<ref>} ([+-]) <n>$`. Anything more complex (parentheses, multiple terms) is not supported — keep `{ref} - 1` style only.
-- The Figma bg color variable `ob/s1/color/neutral/bg/contrast_highest/inversity_normal` is bound on each box's fill. If missing, falls back to literal white and logs a warning.
+- The Figma bg color variable `ob/s1/color/neutral/bg/contrast_highest` is bound on each box's fill. If missing, falls back to literal white and logs a warning.
 
 ## Fixed bugs worth knowing about
 

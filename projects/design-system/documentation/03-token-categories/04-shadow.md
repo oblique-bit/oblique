@@ -104,7 +104,7 @@ ob.s.shadow.<size>
 
 - `<size>` ∈ `none, sm, md, lg`
 
-The flattest path in the token system. There is no inversity split, no mode split, no `px`/`rem` split and no primitive tier — one segment names the elevation step and that is the whole category.
+The flattest path in the token system. There is no inversion split, no mode split, no `px`/`rem` split and no primitive tier — one segment names the elevation step and that is the whole category.
 
 ---
 

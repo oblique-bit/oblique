@@ -48,7 +48,7 @@ The color names are `closed`, `resolved`, `attention`, `pending`, `confirmed`, `
 - Four names reference `ob.s.color.status.*`: `resolved`, `attention`, `info` and `critical`.
 - Five names reference `ob.s.color.free.*`: `pending` (yellow), `confirmed` (teal), `progress` (indigo), `scheduled` (pink) and `waiting` (cobalt).
 
-The table shows which contrast level each color name uses. The paths are shortened: every reference starts with `ob.s.color.` and ends with `.inversity_normal`. The columns `fg`, `bg` enabled and `bg` pressed show the contrast level of the color family in the second column. The column `bg` hover shows the full shortened reference.
+The table shows which contrast level each color name uses. The paths are shortened: every reference starts with `ob.s.color.`. The columns `fg`, `bg` enabled and `bg` pressed show the contrast level of the color family in the second column. The column `bg` hover shows the full shortened reference.
 
 | Color name | Color family referenced | `fg` (all three states) | `bg` enabled | `bg` hover | `bg` pressed |
 |---|---|---|---|---|---|
@@ -91,7 +91,7 @@ Notes:
 - The dimension tokens reference the `.px` variants. The unit rule is in the [Token Usage Guide](../../05-reference/01-token-usage-guide.md#px-vs-rem--which-unit-when-building-a-component).
 - The dynamic typography tokens belong to the `ui_scale` collection. See [Typography Tokens](../../03-token-categories/01-typography.md) and [UI Scale Mode](../../04-modes/03-ui-scale.md). The description of `font_weight` says it is consistent across all sizes.
 - The color tokens resolve through the [lightness mode](../../04-modes/01-lightness.md) (light and dark) because the semantic color tokens they reference do.
-- All color tokens reference `inversity_normal`. Inversity is part of the token path and is not a mode. See [Inversity](../../02-token-tiers/04-component.md#inversity-component-level-contrast-inversion).
+- All color tokens reference the plain name (not `_inverse`). Inversion is part of the token name and is not a mode. See [Inversion](../../02-token-tiers/04-component.md#inversion-component-level-contrast-inversion).
 - No pill token references a `density`, `typography_context`, `viewport` or `motion` token. The color tokens reference the neutral, status and free families and not the interaction family, so the `emphasis` mode does not apply to them.
 
 ## Reference-Only Set

@@ -27,7 +27,7 @@ The color tokens use two segments in their names:
 - Variant: `attention`, `info`, `critical`, `resolved`
 - State: `enabled`, `disabled`
 
-Every color token references the `inversity_normal` variant of a semantic color.
+Every color token references the plain (not `_inverse`) variant of a semantic color.
 
 | Variant | Background, enabled | Text, enabled | Background, disabled | Text, disabled |
 |---------|--------------------|---------------|----------------------|----------------|

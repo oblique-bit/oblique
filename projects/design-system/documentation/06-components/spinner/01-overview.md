@@ -29,7 +29,7 @@ The spinner token names have no variant segment and no interaction state segment
 | Active | `ob.c.spinner.color.active` | `free.indigo` fg `contrast_medium` |
 | Inactive | `ob.c.spinner.color.inactive` | `free.indigo` bg `contrast_low` |
 
-Both colors reference the `inversity_normal` variant of a semantic color.
+Both colors reference the plain (not `_inverse`) variant of a semantic color.
 
 ## Animation
 

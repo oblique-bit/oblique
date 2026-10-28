@@ -9,7 +9,7 @@
 ## Token Structure
 
 ```
-ob.s.color.neutral.{property}.{contrast_level}.{inversity_variation}
+ob.s.color.neutral.{property}.{contrast_level}{inversion}
 ```
 
 **Properties:**
@@ -34,7 +34,7 @@ ob.s.color.neutral.{property}.{contrast_level}.{inversity_variation}
 - `contrast_low` - Subtle text
 - `contrast_lowest` - Disabled text
 
-**Inversity:** `inversity_normal` (default) | `inversity_flipped` (inverted contrast)
+**Inversion:** plain name (default) | `_inverse` (inverted contrast)
 
 **Surface:** `bg.surface` follows the elevation mode: `contrast_highest` at `level0`, `contrast_high` at `level1`, `contrast_medium` at `level2`. `level-1` is the same as `level0` in light mode and `cobalt.900` in dark mode. See [Elevation Mode](../../04-modes/08-elevation.md).
 
@@ -53,22 +53,22 @@ ob.s.color.neutral.{property}.{contrast_level}.{inversity_variation}
 ### Use Cases by Contrast Level
 
 #### Page Structure
-- **Page backgrounds**: `bg.contrast_highest.inversity_normal`
-- **Card/panel backgrounds**: `bg.contrast_high.inversity_normal`
-- **Form field backgrounds**: `bg.contrast_medium.inversity_normal`
-- **Disabled backgrounds**: `bg.contrast_low.inversity_normal`
+- **Page backgrounds**: `bg.contrast_highest`
+- **Card/panel backgrounds**: `bg.contrast_high`
+- **Form field backgrounds**: `bg.contrast_medium`
+- **Disabled backgrounds**: `bg.contrast_low`
 
 #### Typography Hierarchy
-- **Primary text**: `fg.contrast_highest.inversity_normal`
-- **Secondary text**: `fg.contrast_high.inversity_normal`
-- **Supporting text**: `fg.contrast_medium.inversity_normal`
-- **Placeholder text**: `fg.contrast_low.inversity_normal`
-- **Disabled text**: `fg.contrast_lowest.inversity_normal`
+- **Primary text**: `fg.contrast_highest`
+- **Secondary text**: `fg.contrast_high`
+- **Supporting text**: `fg.contrast_medium`
+- **Placeholder text**: `fg.contrast_low`
+- **Disabled text**: `fg.contrast_lowest`
 
 #### Structural Elements
-- **Visible borders**: `border.medium.inversity_normal`
-- **Subtle dividers**: `border.subtle.inversity_normal`
-- **Depth shadows**: `shadow.contrast_low.inversity_normal`
+- **Visible borders**: `border.medium`
+- **Subtle dividers**: `border.subtle`
+- **Depth shadows**: `shadow.contrast_low`
 
 ## Neutral Color Architecture
 

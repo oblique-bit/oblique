@@ -36,16 +36,16 @@ The focus state shows a border already. It needs no additional visual emphasis, 
 
 ## Colors
 
-The link colors reference the semantic interaction colors (`ob.s.color.interaction.*`). All four use the `inversity_normal` value.
+The link colors reference the semantic interaction colors (`ob.s.color.interaction.*`). All four use the plain (not `_inverse`) value.
 
 | State | Color | Semantic token it references |
 |-------|-------|------------------------------|
-| Enabled | `ob.h.link.color.default` | `ob.s.color.interaction.fg.contrast_medium.inversity_normal` |
-| Visited | `ob.h.link.color.visited` | `ob.s.color.interaction.visited.fg.contrast_low.inversity_normal` |
-| Hover | `ob.h.link.color.hover` | `ob.s.color.interaction.fg.contrast_low.inversity_normal` |
-| Active | `ob.h.link.color.active` | `ob.s.color.interaction.fg.contrast_high.inversity_normal` |
+| Enabled | `ob.h.link.color.default` | `ob.s.color.interaction.fg.contrast_medium` |
+| Visited | `ob.h.link.color.visited` | `ob.s.color.interaction.visited.fg.contrast_low` |
+| Hover | `ob.h.link.color.hover` | `ob.s.color.interaction.fg.contrast_low` |
+| Active | `ob.h.link.color.active` | `ob.s.color.interaction.fg.contrast_high` |
 
-There are no link color tokens for the `inversity_flipped` surface.
+There are no link color tokens for the `_inverse` surface.
 
 > **Open point:** the default link color is dark and has little saturation on thin letters; it may be swapped with the hover color in a later round.
 

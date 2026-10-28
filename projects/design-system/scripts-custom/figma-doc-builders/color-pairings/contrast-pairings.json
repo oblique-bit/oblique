@@ -4,8 +4,8 @@
   "categories": {
     "neutral": [
       {
-        "fg": "ob.s.color.neutral.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_highest",
+        "bg": "ob.s.color.neutral.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
@@ -30,8 +30,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_highest",
+        "bg": "ob.s.color.neutral.bg.contrast_high",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
@@ -56,8 +56,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_highest",
+        "bg": "ob.s.color.neutral.bg.contrast_medium",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
@@ -82,8 +82,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_highest",
+        "bg": "ob.s.color.neutral.bg.contrast_low",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
@@ -108,8 +108,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_lowest.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_highest",
+        "bg": "ob.s.color.neutral.bg.contrast_lowest",
         "rowKey": "highest",
         "colKey": "lowest",
         "isTextLink": false,
@@ -134,8 +134,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_high",
+        "bg": "ob.s.color.neutral.bg.contrast_highest",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
@@ -160,8 +160,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_high",
+        "bg": "ob.s.color.neutral.bg.contrast_high",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
@@ -186,8 +186,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_high",
+        "bg": "ob.s.color.neutral.bg.contrast_medium",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
@@ -212,8 +212,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_high",
+        "bg": "ob.s.color.neutral.bg.contrast_low",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
@@ -238,8 +238,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_lowest.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_high",
+        "bg": "ob.s.color.neutral.bg.contrast_lowest",
         "rowKey": "high",
         "colKey": "lowest",
         "isTextLink": false,
@@ -264,8 +264,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_medium",
+        "bg": "ob.s.color.neutral.bg.contrast_highest",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
@@ -290,8 +290,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_medium",
+        "bg": "ob.s.color.neutral.bg.contrast_high",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
@@ -316,8 +316,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_medium",
+        "bg": "ob.s.color.neutral.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
@@ -342,8 +342,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_medium",
+        "bg": "ob.s.color.neutral.bg.contrast_low",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
@@ -368,8 +368,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_lowest.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_medium",
+        "bg": "ob.s.color.neutral.bg.contrast_lowest",
         "rowKey": "medium",
         "colKey": "lowest",
         "isTextLink": false,
@@ -394,8 +394,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_low",
+        "bg": "ob.s.color.neutral.bg.contrast_highest",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
@@ -420,8 +420,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_low",
+        "bg": "ob.s.color.neutral.bg.contrast_high",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
@@ -446,8 +446,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_low",
+        "bg": "ob.s.color.neutral.bg.contrast_medium",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
@@ -472,8 +472,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_low",
+        "bg": "ob.s.color.neutral.bg.contrast_low",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
@@ -498,8 +498,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_lowest.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_low",
+        "bg": "ob.s.color.neutral.bg.contrast_lowest",
         "rowKey": "low",
         "colKey": "lowest",
         "isTextLink": false,
@@ -524,8 +524,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_lowest.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_lowest",
+        "bg": "ob.s.color.neutral.bg.contrast_highest",
         "rowKey": "lowest",
         "colKey": "highest",
         "isTextLink": false,
@@ -550,8 +550,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_lowest.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_lowest",
+        "bg": "ob.s.color.neutral.bg.contrast_high",
         "rowKey": "lowest",
         "colKey": "high",
         "isTextLink": false,
@@ -576,8 +576,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_lowest.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_lowest",
+        "bg": "ob.s.color.neutral.bg.contrast_medium",
         "rowKey": "lowest",
         "colKey": "medium",
         "isTextLink": false,
@@ -602,8 +602,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_lowest.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_lowest",
+        "bg": "ob.s.color.neutral.bg.contrast_low",
         "rowKey": "lowest",
         "colKey": "low",
         "isTextLink": false,
@@ -628,8 +628,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.neutral.fg.contrast_lowest.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_lowest.inversity_normal",
+        "fg": "ob.s.color.neutral.fg.contrast_lowest",
+        "bg": "ob.s.color.neutral.bg.contrast_lowest",
         "rowKey": "lowest",
         "colKey": "lowest",
         "isTextLink": false,
@@ -654,8 +654,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.neutral.bg.contrast_highest",
         "rowKey": "text-link",
         "colKey": "highest",
         "isTextLink": true,
@@ -680,8 +680,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.neutral.bg.contrast_high",
         "rowKey": "text-link",
         "colKey": "high",
         "isTextLink": true,
@@ -706,8 +706,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.neutral.bg.contrast_medium",
         "rowKey": "text-link",
         "colKey": "medium",
         "isTextLink": true,
@@ -732,8 +732,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.neutral.bg.contrast_low",
         "rowKey": "text-link",
         "colKey": "low",
         "isTextLink": true,
@@ -758,8 +758,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.neutral.bg.contrast_lowest.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.neutral.bg.contrast_lowest",
         "rowKey": "text-link",
         "colKey": "lowest",
         "isTextLink": true,
@@ -786,8 +786,8 @@
     ],
     "interaction": [
       {
-        "fg": "ob.s.color.interaction.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.interaction.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_high",
+        "bg": "ob.s.color.interaction.bg.contrast_high",
         "rowKey": "states",
         "colKey": "high",
         "isTextLink": false,
@@ -812,8 +812,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.interaction.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.interaction.bg.contrast_medium",
         "rowKey": "states",
         "colKey": "medium",
         "isTextLink": false,
@@ -838,8 +838,8 @@
         "emph": null
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.interaction.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_low",
+        "bg": "ob.s.color.interaction.bg.contrast_low",
         "rowKey": "states",
         "colKey": "low",
         "isTextLink": false,
@@ -866,8 +866,8 @@
     ],
     "status": [
       {
-        "fg": "ob.s.color.status.info.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_highest",
+        "bg": "ob.s.color.status.info.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
@@ -893,8 +893,8 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_high",
+        "bg": "ob.s.color.status.info.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
@@ -920,8 +920,8 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_medium",
+        "bg": "ob.s.color.status.info.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
@@ -947,8 +947,8 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_low",
+        "bg": "ob.s.color.status.info.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
@@ -974,8 +974,8 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_highest",
+        "bg": "ob.s.color.status.info.bg.contrast_high",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
@@ -1001,8 +1001,8 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_high",
+        "bg": "ob.s.color.status.info.bg.contrast_high",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
@@ -1028,8 +1028,8 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_medium",
+        "bg": "ob.s.color.status.info.bg.contrast_high",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
@@ -1055,8 +1055,8 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_low",
+        "bg": "ob.s.color.status.info.bg.contrast_high",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
@@ -1082,8 +1082,8 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_highest",
+        "bg": "ob.s.color.status.info.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
@@ -1109,8 +1109,8 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_high",
+        "bg": "ob.s.color.status.info.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
@@ -1136,8 +1136,8 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_medium",
+        "bg": "ob.s.color.status.info.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
@@ -1163,8 +1163,8 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_low",
+        "bg": "ob.s.color.status.info.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
@@ -1190,8 +1190,8 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_highest",
+        "bg": "ob.s.color.status.info.bg.contrast_low",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
@@ -1217,8 +1217,8 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_high",
+        "bg": "ob.s.color.status.info.bg.contrast_low",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
@@ -1244,8 +1244,8 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_medium",
+        "bg": "ob.s.color.status.info.bg.contrast_low",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
@@ -1271,8 +1271,8 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.status.info.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.info.fg.contrast_low",
+        "bg": "ob.s.color.status.info.bg.contrast_low",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
@@ -1298,8 +1298,8 @@
         "group": "info"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.status.info.bg.contrast_highest",
         "rowKey": "text-link",
         "colKey": "highest",
         "isTextLink": true,
@@ -1325,8 +1325,8 @@
         "group": "info (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.status.info.bg.contrast_high",
         "rowKey": "text-link",
         "colKey": "high",
         "isTextLink": true,
@@ -1352,8 +1352,8 @@
         "group": "info (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.status.info.bg.contrast_medium",
         "rowKey": "text-link",
         "colKey": "medium",
         "isTextLink": true,
@@ -1379,8 +1379,8 @@
         "group": "info (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.info.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.status.info.bg.contrast_low",
         "rowKey": "text-link",
         "colKey": "low",
         "isTextLink": true,
@@ -1406,8 +1406,8 @@
         "group": "info (text-link)"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_highest",
+        "bg": "ob.s.color.status.critical.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
@@ -1433,8 +1433,8 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_high",
+        "bg": "ob.s.color.status.critical.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
@@ -1460,8 +1460,8 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_medium",
+        "bg": "ob.s.color.status.critical.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
@@ -1487,8 +1487,8 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_low",
+        "bg": "ob.s.color.status.critical.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
@@ -1514,8 +1514,8 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_highest",
+        "bg": "ob.s.color.status.critical.bg.contrast_high",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
@@ -1541,8 +1541,8 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_high",
+        "bg": "ob.s.color.status.critical.bg.contrast_high",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
@@ -1568,8 +1568,8 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_medium",
+        "bg": "ob.s.color.status.critical.bg.contrast_high",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
@@ -1595,8 +1595,8 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_low",
+        "bg": "ob.s.color.status.critical.bg.contrast_high",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
@@ -1622,8 +1622,8 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_highest",
+        "bg": "ob.s.color.status.critical.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
@@ -1649,8 +1649,8 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_high",
+        "bg": "ob.s.color.status.critical.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
@@ -1676,8 +1676,8 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_medium",
+        "bg": "ob.s.color.status.critical.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
@@ -1703,8 +1703,8 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_low",
+        "bg": "ob.s.color.status.critical.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
@@ -1730,8 +1730,8 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_highest",
+        "bg": "ob.s.color.status.critical.bg.contrast_low",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
@@ -1757,8 +1757,8 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_high",
+        "bg": "ob.s.color.status.critical.bg.contrast_low",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
@@ -1784,8 +1784,8 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_medium",
+        "bg": "ob.s.color.status.critical.bg.contrast_low",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
@@ -1811,8 +1811,8 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.status.critical.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.critical.fg.contrast_low",
+        "bg": "ob.s.color.status.critical.bg.contrast_low",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
@@ -1838,8 +1838,8 @@
         "group": "critical"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.status.critical.bg.contrast_highest",
         "rowKey": "text-link",
         "colKey": "highest",
         "isTextLink": true,
@@ -1865,8 +1865,8 @@
         "group": "critical (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.status.critical.bg.contrast_high",
         "rowKey": "text-link",
         "colKey": "high",
         "isTextLink": true,
@@ -1892,8 +1892,8 @@
         "group": "critical (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.status.critical.bg.contrast_medium",
         "rowKey": "text-link",
         "colKey": "medium",
         "isTextLink": true,
@@ -1919,8 +1919,8 @@
         "group": "critical (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.critical.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.status.critical.bg.contrast_low",
         "rowKey": "text-link",
         "colKey": "low",
         "isTextLink": true,
@@ -1946,8 +1946,8 @@
         "group": "critical (text-link)"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_highest",
+        "bg": "ob.s.color.status.resolved.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
@@ -1973,8 +1973,8 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_high",
+        "bg": "ob.s.color.status.resolved.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
@@ -2000,8 +2000,8 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_medium",
+        "bg": "ob.s.color.status.resolved.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
@@ -2027,8 +2027,8 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_low",
+        "bg": "ob.s.color.status.resolved.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
@@ -2054,8 +2054,8 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_highest",
+        "bg": "ob.s.color.status.resolved.bg.contrast_high",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
@@ -2081,8 +2081,8 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_high",
+        "bg": "ob.s.color.status.resolved.bg.contrast_high",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
@@ -2108,8 +2108,8 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_medium",
+        "bg": "ob.s.color.status.resolved.bg.contrast_high",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
@@ -2135,8 +2135,8 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_low",
+        "bg": "ob.s.color.status.resolved.bg.contrast_high",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
@@ -2162,8 +2162,8 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_highest",
+        "bg": "ob.s.color.status.resolved.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
@@ -2189,8 +2189,8 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_high",
+        "bg": "ob.s.color.status.resolved.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
@@ -2216,8 +2216,8 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_medium",
+        "bg": "ob.s.color.status.resolved.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
@@ -2243,8 +2243,8 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_low",
+        "bg": "ob.s.color.status.resolved.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
@@ -2270,8 +2270,8 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_highest",
+        "bg": "ob.s.color.status.resolved.bg.contrast_low",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
@@ -2297,8 +2297,8 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_high",
+        "bg": "ob.s.color.status.resolved.bg.contrast_low",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
@@ -2324,8 +2324,8 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_medium",
+        "bg": "ob.s.color.status.resolved.bg.contrast_low",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
@@ -2351,8 +2351,8 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.status.resolved.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.resolved.fg.contrast_low",
+        "bg": "ob.s.color.status.resolved.bg.contrast_low",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
@@ -2378,8 +2378,8 @@
         "group": "resolved"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.status.resolved.bg.contrast_highest",
         "rowKey": "text-link",
         "colKey": "highest",
         "isTextLink": true,
@@ -2405,8 +2405,8 @@
         "group": "resolved (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.status.resolved.bg.contrast_high",
         "rowKey": "text-link",
         "colKey": "high",
         "isTextLink": true,
@@ -2432,8 +2432,8 @@
         "group": "resolved (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.status.resolved.bg.contrast_medium",
         "rowKey": "text-link",
         "colKey": "medium",
         "isTextLink": true,
@@ -2459,8 +2459,8 @@
         "group": "resolved (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.resolved.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.status.resolved.bg.contrast_low",
         "rowKey": "text-link",
         "colKey": "low",
         "isTextLink": true,
@@ -2486,8 +2486,8 @@
         "group": "resolved (text-link)"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_highest",
+        "bg": "ob.s.color.status.attention.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
@@ -2513,8 +2513,8 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_high",
+        "bg": "ob.s.color.status.attention.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
@@ -2540,8 +2540,8 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_medium",
+        "bg": "ob.s.color.status.attention.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
@@ -2567,8 +2567,8 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_low",
+        "bg": "ob.s.color.status.attention.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
@@ -2594,8 +2594,8 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_highest",
+        "bg": "ob.s.color.status.attention.bg.contrast_high",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
@@ -2621,8 +2621,8 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_high",
+        "bg": "ob.s.color.status.attention.bg.contrast_high",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
@@ -2648,8 +2648,8 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_medium",
+        "bg": "ob.s.color.status.attention.bg.contrast_high",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
@@ -2675,8 +2675,8 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_low",
+        "bg": "ob.s.color.status.attention.bg.contrast_high",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
@@ -2702,8 +2702,8 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_highest",
+        "bg": "ob.s.color.status.attention.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
@@ -2729,8 +2729,8 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_high",
+        "bg": "ob.s.color.status.attention.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
@@ -2756,8 +2756,8 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_medium",
+        "bg": "ob.s.color.status.attention.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
@@ -2783,8 +2783,8 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_low",
+        "bg": "ob.s.color.status.attention.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
@@ -2810,8 +2810,8 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_highest",
+        "bg": "ob.s.color.status.attention.bg.contrast_low",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
@@ -2837,8 +2837,8 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_high",
+        "bg": "ob.s.color.status.attention.bg.contrast_low",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
@@ -2864,8 +2864,8 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_medium",
+        "bg": "ob.s.color.status.attention.bg.contrast_low",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
@@ -2891,8 +2891,8 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.status.attention.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.attention.fg.contrast_low",
+        "bg": "ob.s.color.status.attention.bg.contrast_low",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
@@ -2918,8 +2918,8 @@
         "group": "attention"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.status.attention.bg.contrast_highest",
         "rowKey": "text-link",
         "colKey": "highest",
         "isTextLink": true,
@@ -2945,8 +2945,8 @@
         "group": "attention (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.status.attention.bg.contrast_high",
         "rowKey": "text-link",
         "colKey": "high",
         "isTextLink": true,
@@ -2972,8 +2972,8 @@
         "group": "attention (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.status.attention.bg.contrast_medium",
         "rowKey": "text-link",
         "colKey": "medium",
         "isTextLink": true,
@@ -2999,8 +2999,8 @@
         "group": "attention (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.attention.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.status.attention.bg.contrast_low",
         "rowKey": "text-link",
         "colKey": "low",
         "isTextLink": true,
@@ -3026,8 +3026,8 @@
         "group": "attention (text-link)"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_highest",
+        "bg": "ob.s.color.status.fatal.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
@@ -3053,8 +3053,8 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_high",
+        "bg": "ob.s.color.status.fatal.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
@@ -3080,8 +3080,8 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_medium",
+        "bg": "ob.s.color.status.fatal.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
@@ -3107,8 +3107,8 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_low",
+        "bg": "ob.s.color.status.fatal.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
@@ -3134,8 +3134,8 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_highest",
+        "bg": "ob.s.color.status.fatal.bg.contrast_high",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
@@ -3161,8 +3161,8 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_high",
+        "bg": "ob.s.color.status.fatal.bg.contrast_high",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
@@ -3188,8 +3188,8 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_medium",
+        "bg": "ob.s.color.status.fatal.bg.contrast_high",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
@@ -3215,8 +3215,8 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_low",
+        "bg": "ob.s.color.status.fatal.bg.contrast_high",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
@@ -3242,8 +3242,8 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_highest",
+        "bg": "ob.s.color.status.fatal.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
@@ -3269,8 +3269,8 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_high",
+        "bg": "ob.s.color.status.fatal.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
@@ -3296,8 +3296,8 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_medium",
+        "bg": "ob.s.color.status.fatal.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
@@ -3323,8 +3323,8 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_low",
+        "bg": "ob.s.color.status.fatal.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
@@ -3350,8 +3350,8 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_highest",
+        "bg": "ob.s.color.status.fatal.bg.contrast_low",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
@@ -3377,8 +3377,8 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_high",
+        "bg": "ob.s.color.status.fatal.bg.contrast_low",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
@@ -3404,8 +3404,8 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_medium",
+        "bg": "ob.s.color.status.fatal.bg.contrast_low",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
@@ -3431,8 +3431,8 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.status.fatal.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.status.fatal.fg.contrast_low",
+        "bg": "ob.s.color.status.fatal.bg.contrast_low",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
@@ -3458,8 +3458,8 @@
         "group": "fatal"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.status.fatal.bg.contrast_highest",
         "rowKey": "text-link",
         "colKey": "highest",
         "isTextLink": true,
@@ -3485,8 +3485,8 @@
         "group": "fatal (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.status.fatal.bg.contrast_high",
         "rowKey": "text-link",
         "colKey": "high",
         "isTextLink": true,
@@ -3512,8 +3512,8 @@
         "group": "fatal (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.status.fatal.bg.contrast_medium",
         "rowKey": "text-link",
         "colKey": "medium",
         "isTextLink": true,
@@ -3539,8 +3539,8 @@
         "group": "fatal (text-link)"
       },
       {
-        "fg": "ob.s.color.interaction.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.status.fatal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.interaction.fg.contrast_medium",
+        "bg": "ob.s.color.status.fatal.bg.contrast_low",
         "rowKey": "text-link",
         "colKey": "low",
         "isTextLink": true,
@@ -3727,8 +3727,8 @@
     ],
     "free": [
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_highest",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
@@ -3754,8 +3754,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_high",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
@@ -3781,8 +3781,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_medium",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
@@ -3808,8 +3808,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_low",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
@@ -3835,8 +3835,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_highest",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_high",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
@@ -3862,8 +3862,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_high",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_high",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
@@ -3889,8 +3889,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_medium",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_high",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
@@ -3916,8 +3916,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_low",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_high",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
@@ -3943,8 +3943,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_highest",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
@@ -3970,8 +3970,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_high",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
@@ -3997,8 +3997,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_medium",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
@@ -4024,8 +4024,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_low",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
@@ -4051,8 +4051,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_highest",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_low",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
@@ -4078,8 +4078,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_high",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_low",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
@@ -4105,8 +4105,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_medium",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_low",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
@@ -4132,8 +4132,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.cobalt.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.cobalt.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.cobalt.fg.contrast_low",
+        "bg": "ob.s.color.free.cobalt.bg.contrast_low",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
@@ -4159,8 +4159,8 @@
         "group": "cobalt"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_highest",
+        "bg": "ob.s.color.free.teal.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
@@ -4186,8 +4186,8 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_high",
+        "bg": "ob.s.color.free.teal.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
@@ -4213,8 +4213,8 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_medium",
+        "bg": "ob.s.color.free.teal.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
@@ -4240,8 +4240,8 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_low",
+        "bg": "ob.s.color.free.teal.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
@@ -4267,8 +4267,8 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_highest",
+        "bg": "ob.s.color.free.teal.bg.contrast_high",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
@@ -4294,8 +4294,8 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_high",
+        "bg": "ob.s.color.free.teal.bg.contrast_high",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
@@ -4321,8 +4321,8 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_medium",
+        "bg": "ob.s.color.free.teal.bg.contrast_high",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
@@ -4348,8 +4348,8 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_low",
+        "bg": "ob.s.color.free.teal.bg.contrast_high",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
@@ -4375,8 +4375,8 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_highest",
+        "bg": "ob.s.color.free.teal.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
@@ -4402,8 +4402,8 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_high",
+        "bg": "ob.s.color.free.teal.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
@@ -4429,8 +4429,8 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_medium",
+        "bg": "ob.s.color.free.teal.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
@@ -4456,8 +4456,8 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_low",
+        "bg": "ob.s.color.free.teal.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
@@ -4483,8 +4483,8 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_highest",
+        "bg": "ob.s.color.free.teal.bg.contrast_low",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
@@ -4510,8 +4510,8 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_high",
+        "bg": "ob.s.color.free.teal.bg.contrast_low",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
@@ -4537,8 +4537,8 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_medium",
+        "bg": "ob.s.color.free.teal.bg.contrast_low",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
@@ -4564,8 +4564,8 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.teal.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.teal.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.teal.fg.contrast_low",
+        "bg": "ob.s.color.free.teal.bg.contrast_low",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
@@ -4591,8 +4591,8 @@
         "group": "teal"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_highest",
+        "bg": "ob.s.color.free.indigo.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
@@ -4618,8 +4618,8 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_high",
+        "bg": "ob.s.color.free.indigo.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
@@ -4645,8 +4645,8 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_medium",
+        "bg": "ob.s.color.free.indigo.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
@@ -4672,8 +4672,8 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_low",
+        "bg": "ob.s.color.free.indigo.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
@@ -4699,8 +4699,8 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_highest",
+        "bg": "ob.s.color.free.indigo.bg.contrast_high",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
@@ -4726,8 +4726,8 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_high",
+        "bg": "ob.s.color.free.indigo.bg.contrast_high",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
@@ -4753,8 +4753,8 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_medium",
+        "bg": "ob.s.color.free.indigo.bg.contrast_high",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
@@ -4780,8 +4780,8 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_low",
+        "bg": "ob.s.color.free.indigo.bg.contrast_high",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
@@ -4807,8 +4807,8 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_highest",
+        "bg": "ob.s.color.free.indigo.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
@@ -4834,8 +4834,8 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_high",
+        "bg": "ob.s.color.free.indigo.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
@@ -4861,8 +4861,8 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_medium",
+        "bg": "ob.s.color.free.indigo.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
@@ -4888,8 +4888,8 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_low",
+        "bg": "ob.s.color.free.indigo.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
@@ -4915,8 +4915,8 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_highest",
+        "bg": "ob.s.color.free.indigo.bg.contrast_low",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
@@ -4942,8 +4942,8 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_high",
+        "bg": "ob.s.color.free.indigo.bg.contrast_low",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
@@ -4969,8 +4969,8 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_medium",
+        "bg": "ob.s.color.free.indigo.bg.contrast_low",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
@@ -4996,8 +4996,8 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.indigo.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.indigo.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.indigo.fg.contrast_low",
+        "bg": "ob.s.color.free.indigo.bg.contrast_low",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
@@ -5023,8 +5023,8 @@
         "group": "indigo"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_highest",
+        "bg": "ob.s.color.free.pink.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
@@ -5050,8 +5050,8 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_high",
+        "bg": "ob.s.color.free.pink.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
@@ -5077,8 +5077,8 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_medium",
+        "bg": "ob.s.color.free.pink.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
@@ -5104,8 +5104,8 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_low",
+        "bg": "ob.s.color.free.pink.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
@@ -5131,8 +5131,8 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_highest",
+        "bg": "ob.s.color.free.pink.bg.contrast_high",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
@@ -5158,8 +5158,8 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_high",
+        "bg": "ob.s.color.free.pink.bg.contrast_high",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
@@ -5185,8 +5185,8 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_medium",
+        "bg": "ob.s.color.free.pink.bg.contrast_high",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
@@ -5212,8 +5212,8 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_low",
+        "bg": "ob.s.color.free.pink.bg.contrast_high",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
@@ -5239,8 +5239,8 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_highest",
+        "bg": "ob.s.color.free.pink.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
@@ -5266,8 +5266,8 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_high",
+        "bg": "ob.s.color.free.pink.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
@@ -5293,8 +5293,8 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_medium",
+        "bg": "ob.s.color.free.pink.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
@@ -5320,8 +5320,8 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_low",
+        "bg": "ob.s.color.free.pink.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
@@ -5347,8 +5347,8 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_highest",
+        "bg": "ob.s.color.free.pink.bg.contrast_low",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
@@ -5374,8 +5374,8 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_high",
+        "bg": "ob.s.color.free.pink.bg.contrast_low",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
@@ -5401,8 +5401,8 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_medium",
+        "bg": "ob.s.color.free.pink.bg.contrast_low",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
@@ -5428,8 +5428,8 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.pink.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.pink.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.pink.fg.contrast_low",
+        "bg": "ob.s.color.free.pink.bg.contrast_low",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,
@@ -5455,8 +5455,8 @@
         "group": "pink"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_highest",
+        "bg": "ob.s.color.free.yellow.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "highest",
         "isTextLink": false,
@@ -5482,8 +5482,8 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_high",
+        "bg": "ob.s.color.free.yellow.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "high",
         "isTextLink": false,
@@ -5509,8 +5509,8 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_medium",
+        "bg": "ob.s.color.free.yellow.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "medium",
         "isTextLink": false,
@@ -5536,8 +5536,8 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_highest.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_low",
+        "bg": "ob.s.color.free.yellow.bg.contrast_highest",
         "rowKey": "highest",
         "colKey": "low",
         "isTextLink": false,
@@ -5563,8 +5563,8 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_highest",
+        "bg": "ob.s.color.free.yellow.bg.contrast_high",
         "rowKey": "high",
         "colKey": "highest",
         "isTextLink": false,
@@ -5590,8 +5590,8 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_high",
+        "bg": "ob.s.color.free.yellow.bg.contrast_high",
         "rowKey": "high",
         "colKey": "high",
         "isTextLink": false,
@@ -5617,8 +5617,8 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_medium",
+        "bg": "ob.s.color.free.yellow.bg.contrast_high",
         "rowKey": "high",
         "colKey": "medium",
         "isTextLink": false,
@@ -5644,8 +5644,8 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_high.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_low",
+        "bg": "ob.s.color.free.yellow.bg.contrast_high",
         "rowKey": "high",
         "colKey": "low",
         "isTextLink": false,
@@ -5671,8 +5671,8 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_highest",
+        "bg": "ob.s.color.free.yellow.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "highest",
         "isTextLink": false,
@@ -5698,8 +5698,8 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_high",
+        "bg": "ob.s.color.free.yellow.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "high",
         "isTextLink": false,
@@ -5725,8 +5725,8 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_medium",
+        "bg": "ob.s.color.free.yellow.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "medium",
         "isTextLink": false,
@@ -5752,8 +5752,8 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_medium.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_low",
+        "bg": "ob.s.color.free.yellow.bg.contrast_medium",
         "rowKey": "medium",
         "colKey": "low",
         "isTextLink": false,
@@ -5779,8 +5779,8 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_highest.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_highest",
+        "bg": "ob.s.color.free.yellow.bg.contrast_low",
         "rowKey": "low",
         "colKey": "highest",
         "isTextLink": false,
@@ -5806,8 +5806,8 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_high.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_high",
+        "bg": "ob.s.color.free.yellow.bg.contrast_low",
         "rowKey": "low",
         "colKey": "high",
         "isTextLink": false,
@@ -5833,8 +5833,8 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_medium.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_medium",
+        "bg": "ob.s.color.free.yellow.bg.contrast_low",
         "rowKey": "low",
         "colKey": "medium",
         "isTextLink": false,
@@ -5860,8 +5860,8 @@
         "group": "yellow"
       },
       {
-        "fg": "ob.s.color.free.yellow.fg.contrast_low.inversity_normal",
-        "bg": "ob.s.color.free.yellow.bg.contrast_low.inversity_normal",
+        "fg": "ob.s.color.free.yellow.fg.contrast_low",
+        "bg": "ob.s.color.free.yellow.bg.contrast_low",
         "rowKey": "low",
         "colKey": "low",
         "isTextLink": false,

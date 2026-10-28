@@ -114,7 +114,7 @@ you.
 **One row only: `--token` / `--variable`.** When a single token changed (a
 value, a description), refresh just its row instead of rebuilding the page,
 for example
-`node scripts-custom/figma-doc-builders/color-variables/build-color-variables.js --token ob.s.color.neutral.bg.contrast_highest.inversity_normal`.
+`node scripts-custom/figma-doc-builders/color-variables/build-color-variables.js --token ob.s.color.neutral.bg.contrast_highest`.
 The color, dimension and viewport builders take the same two flags. The page
 is edited in place under its canonical name, so there is no scratch page to
 rename. Viewport replaces only that row. Color replaces only that row too, but

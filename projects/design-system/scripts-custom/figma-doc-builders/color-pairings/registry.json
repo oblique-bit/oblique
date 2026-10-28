@@ -62,15 +62,15 @@
         {
           "type": "grid",
           "rowAxis": "fg",
-          "fgPath": "neutral/fg/contrast_{fg}/inversity_normal",
-          "bgPath": "neutral/bg/contrast_{bg}/inversity_normal",
+          "fgPath": "neutral/fg/contrast_{fg}",
+          "bgPath": "neutral/bg/contrast_{bg}",
           "fgLevels": ["highest", "high", "medium", "low", "lowest"],
           "bgLevels": ["highest", "high", "medium", "low", "lowest"]
         },
         {
           "type": "textlink-row",
-          "fgPath": "interaction/fg/contrast_medium/inversity_normal",
-          "bgPath": "neutral/bg/contrast_{bg}/inversity_normal",
+          "fgPath": "interaction/fg/contrast_medium",
+          "bgPath": "neutral/bg/contrast_{bg}",
           "bgLevels": ["highest", "high", "medium", "low", "lowest"]
         }
       ]
@@ -86,8 +86,8 @@
         {
           "type": "states-row",
           "states": ["high", "medium", "low"],
-          "fgPath": "interaction/fg/contrast_{state}/inversity_normal",
-          "bgPath": "interaction/bg/contrast_{state}/inversity_normal"
+          "fgPath": "interaction/fg/contrast_{state}",
+          "bgPath": "interaction/bg/contrast_{state}"
         }
       ]
     },
@@ -109,15 +109,15 @@
       "perGroup": {
         "type": "grid",
         "rowAxis": "bg",
-        "fgPath": "status/{group}/fg/contrast_{fg}/inversity_normal",
-        "bgPath": "status/{group}/bg/contrast_{bg}/inversity_normal",
+        "fgPath": "status/{group}/fg/contrast_{fg}",
+        "bgPath": "status/{group}/bg/contrast_{bg}",
         "fgLevels": ["highest", "high", "medium", "low"],
         "bgLevels": ["highest", "high", "medium", "low"]
       },
       "textLink": {
         "type": "textlink-row",
-        "fgPath": "interaction/fg/contrast_medium/inversity_normal",
-        "bgPath": "status/{group}/bg/contrast_{bg}/inversity_normal",
+        "fgPath": "interaction/fg/contrast_medium",
+        "bgPath": "status/{group}/bg/contrast_{bg}",
         "bgLevels": ["highest", "high", "medium", "low"]
       }
     },
@@ -155,8 +155,8 @@
       "perGroup": {
         "type": "grid",
         "rowAxis": "bg",
-        "fgPath": "free/{group}/fg/contrast_{fg}/inversity_normal",
-        "bgPath": "free/{group}/bg/contrast_{bg}/inversity_normal",
+        "fgPath": "free/{group}/fg/contrast_{fg}",
+        "bgPath": "free/{group}/bg/contrast_{bg}",
         "fgLevels": ["highest", "high", "medium", "low"],
         "bgLevels": ["highest", "high", "medium", "low"]
       }

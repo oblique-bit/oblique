@@ -376,7 +376,7 @@ async function customizeSectionBar(instance, tier, varMap) {
   }
 }
 
-const WRAPPER_BG_VAR_NAME = 'ob/s/color/neutral/bg/contrast_highest/inversity_normal';
+const WRAPPER_BG_VAR_NAME = 'ob/s/color/neutral/bg/contrast_highest';
 const WRAPPER_BG_FALLBACK_HEX = '#FFFFFF';
 
 function applyWrapperBg(node, varMap) {
@@ -1581,8 +1581,8 @@ async function main() {
     else if (a === '--no-cache') useCache = false;
     else if (a === '--validate') validateOnly = true;
     // Row refresh. Both flags name a row, here always a Figma variable (every color table row is built
-    // from one): --token ob.s.color.neutral.bg.contrast_highest.inversity_normal (as shown in the table)
-    // or --variable ob/s/color/neutral/bg/contrast_highest/inversity_normal (slashes or dots accepted; the
+    // from one): --token ob.s.color.neutral.bg.contrast_highest (as shown in the table)
+    // or --variable ob/s/color/neutral/bg/contrast_highest (slashes or dots accepted; the
     // trimmed forms color/neutral/... and neutral/... that run-cosmetics.js leaves in Figma work too).
     else if (a === '--token' || a === '--variable') {
       // A row flag without a value must not fall back to a full build.

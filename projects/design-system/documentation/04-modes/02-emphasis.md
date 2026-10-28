@@ -26,10 +26,8 @@ Located in: `03_semantic/color/s2_emphasis/`
         "interaction": {
           "fg": {
             "low": {
-              "inversity_normal": {
-                "$value": "{ob.s1.color.interaction.emphasis_high.fg.contrast_low.inversity_normal}"  // high.json
-                // "$value": "{ob.s1.color.interaction.emphasis_low.fg.contrast_low.inversity_normal}" -- low.json
-              }
+              "$value": "{ob.s1.color.interaction.emphasis_high.fg.contrast_low}"  // high.json
+              // "$value": "{ob.s1.color.interaction.emphasis_low.fg.contrast_low}" -- low.json
             }
           }
         }
@@ -109,14 +107,14 @@ Low Emphasis: Secondary Actions → Supporting Information → Inactive States
 ```scss
 /* High-contrast interaction color - primary button */
 .button-primary {
-  background-color: var(--ob-s2-color-interaction-bg-contrast_high-inversity_normal);
-  color: var(--ob-s2-color-interaction-fg-contrast_high-inversity_normal);
+  background-color: var(--ob-s2-color-interaction-bg-contrast_high);
+  color: var(--ob-s2-color-interaction-fg-contrast_high);
 }
 
 /* Low-contrast interaction color - secondary button */
 .button-secondary {
-  background-color: var(--ob-s2-color-interaction-bg-contrast_low-inversity_normal);
-  color: var(--ob-s2-color-interaction-fg-contrast_low-inversity_normal);
+  background-color: var(--ob-s2-color-interaction-bg-contrast_low);
+  color: var(--ob-s2-color-interaction-fg-contrast_low);
 }
 ```
 
@@ -124,12 +122,12 @@ Low Emphasis: Secondary Actions → Supporting Information → Inactive States
 ```scss
 /* High-contrast interaction color - emphasized text */
 .text-emphasized {
-  color: var(--ob-s2-color-interaction-fg-contrast_high-inversity_normal);
+  color: var(--ob-s2-color-interaction-fg-contrast_high);
 }
 
 /* Low-contrast interaction color - supporting text */
 .text-supporting {
-  color: var(--ob-s2-color-interaction-fg-contrast_low-inversity_normal);
+  color: var(--ob-s2-color-interaction-fg-contrast_low);
 }
 ```
 

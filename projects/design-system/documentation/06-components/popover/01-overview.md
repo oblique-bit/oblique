@@ -40,7 +40,7 @@ The parts below come from the token names. Each part has the tokens listed.
 
 - **States:** the popover tokens do not define any states.
 - **Variants:** the token paths do not name variants. The part `text_variant_container` has "variant" in its name, but the tokens do not say which variants exist.
-- **Color:** the popover has one set of color tokens. They reference the `inversity_normal` tokens. The component has no tokens for `inversity_flipped`.
+- **Color:** the popover has one set of color tokens. They reference the plain tokens. The component has no tokens for `_inverse`.
 
 ## Modes
 

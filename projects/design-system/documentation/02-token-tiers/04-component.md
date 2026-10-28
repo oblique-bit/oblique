@@ -56,9 +56,9 @@ ob.h.{element}.{category}.{property}.{variant}
 **Real example** (from `05_html/link/link.json`):
 ```json
 {
-  "ob.h.link.color.default": { "$value": "{ob.s.color.interaction.fg.contrast_medium.inversity_normal}" },
-  "ob.h.link.color.hover": { "$value": "{ob.s.color.interaction.fg.contrast_low.inversity_normal}" },
-  "ob.h.link.color.active": { "$value": "{ob.s.color.interaction.fg.contrast_high.inversity_normal}" }
+  "ob.h.link.color.default": { "$value": "{ob.s.color.interaction.fg.contrast_medium}" },
+  "ob.h.link.color.hover": { "$value": "{ob.s.color.interaction.fg.contrast_low}" },
+  "ob.h.link.color.active": { "$value": "{ob.s.color.interaction.fg.contrast_high}" }
 }
 ```
 
@@ -87,12 +87,12 @@ Component tokens consume the compiled semantic layer (`ob.s.*`) only — never S
 ```json
 // DO: reference ob.s.* (compiled semantic tokens)
 {
-  "ob.h.link.color.hover": { "$value": "{ob.s.color.interaction.fg.contrast_low.inversity_normal}" }
+  "ob.h.link.color.hover": { "$value": "{ob.s.color.interaction.fg.contrast_low}" }
 }
 
 // DON'T: reference S1 or S2 directly
 {
-  "ob.h.link.color.hover": { "$value": "{ob.s2.color.interaction.fg.contrast_low.inversity_normal}" }
+  "ob.h.link.color.hover": { "$value": "{ob.s2.color.interaction.fg.contrast_low}" }
 }
 
 // DON'T: reference primitives directly
@@ -105,7 +105,7 @@ Component tokens consume the compiled semantic layer (`ob.s.*`) only — never S
 - [ ] No primitive consumption (`ob.p.*` referenced directly)
 - [ ] No S1/S2 consumption (`ob.s1.*` / `ob.s2.*` referenced directly)
 - [ ] Consistent naming, following the conventions above
-- [ ] Works with emphasis and inversity theming (see below)
+- [ ] Works with emphasis and inversion (see below)
 - [ ] `$description` documents the token's purpose and default status
 - [ ] Dimension tokens reference the `.px` sibling (see px vs rem in the [Token Usage Guide](../05-reference/01-token-usage-guide.md#px-vs-rem--which-unit-when-building-a-component))
 
@@ -113,7 +113,7 @@ Component tokens consume the compiled semantic layer (`ob.s.*`) only — never S
 
 When a component token needs an interaction color, it consumes one of four groups in the semantic interaction color family — not a raw state name:
 
-- **`fg`, `bg`, `border`** — a visual-weight scale directly under `interaction`: `contrast_low` / `contrast_medium` / `contrast_high` for `fg` and `bg`, and `subtle` / `medium` / `strong` for `border`, e.g. `ob.s.color.interaction.fg.contrast_medium.inversity_normal`. These follow the emphasis mode. This is what most interactive elements reference for their default/hover/active colors, as in the link example above.
+- **`fg`, `bg`, `border`** — a visual-weight scale directly under `interaction`: `contrast_low` / `contrast_medium` / `contrast_high` for `fg` and `bg`, and `subtle` / `medium` / `strong` for `border`, e.g. `ob.s.color.interaction.fg.contrast_medium`. These follow the emphasis mode. This is what most interactive elements reference for their default/hover/active colors, as in the link example above.
 - **`emphasis_none`** — a separate S1-tier interaction category (a peer of `emphasis_high` / `emphasis_low`) for elements that need hover/active feedback but must not follow the emphasis mode — cards, table rows, menu items, tags.
 - **`visited`** — the visited-link color, kept as its own segment rather than a `contrast_low` / `contrast_medium` / `contrast_high` step.
 - **`focus_ring`** — the focus-indicator color, kept as its own segment rather than a `contrast_low` / `contrast_medium` / `contrast_high` step.
@@ -137,18 +137,18 @@ Component tokens support theming through `03_semantic` token selection, without 
 }
 ```
 
-## Inversity: Component-Level Contrast Inversion
+## Inversion: Component-Level Contrast Inversion
 
-`inversity_normal` / `inversity_flipped` provide component-level contrast inversion, similar to Material's `onSurface` pattern. Inversity is a designer's decision at the component level (does this component need to stand out against its surroundings?), not a user preference like light/dark switching.
+The plain token name and its `_inverse` variant provide component-level contrast inversion, similar to Material's `onSurface` pattern. Inversion is a designer's decision at the component level (does this component need to stand out against its surroundings?), not a user preference like light/dark switching.
 
 ```json
 {
-  "ob.c.{component}.color.bg.surface.inversity_normal": { "$value": "{ob.s.color.neutral.bg.contrast_lowest.inversity_normal}" },
-  "ob.c.{component}.color.bg.surface.inversity_flipped": { "$value": "{ob.s.color.neutral.bg.contrast_lowest.inversity_flipped}" }
+  "ob.c.{component}.color.bg.surface": { "$value": "{ob.s.color.neutral.bg.contrast_lowest}" },
+  "ob.c.{component}.color.bg.surface_inverse": { "$value": "{ob.s.color.neutral.bg.contrast_lowest_inverse}" }
 }
 ```
 
-**Double inversion:** when a component that is inherently flipped by nature sits inside a container that is itself flipped, the nested component uses `inversity_normal` to cancel the double inversion and stay readable. Which components are "inherently flipped" is a per-component decision to be documented here once that component ships — not asserted in advance.
+**Double inversion:** when a component that is inherently flipped by nature sits inside a container that is itself flipped, the nested component uses the plain name (without `_inverse`) to cancel the double inversion and stay readable. Which components are "inherently flipped" is a per-component decision to be documented here once that component ships — not asserted in advance.
 
 ## When to Create a Component Token
 
@@ -170,7 +170,7 @@ When migrating a component onto this token tier:
 1. Audit the component's existing color/spacing/typography usage
 2. Map each usage to the right `03_semantic` reference (see above)
 3. Preserve visual consistency across the migration
-4. Verify emphasis and inversity theming still resolve correctly
+4. Verify emphasis and inversion still resolve correctly
 5. Document the new tokens' purpose in their `$description`
 
 **Validation:** `node scripts-custom/figma-doc-builders/validate-all.js` runs the repo's cross-page token health check.

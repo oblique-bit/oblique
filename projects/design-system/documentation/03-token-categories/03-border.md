@@ -37,7 +37,7 @@ There is deliberately no parallel `ob.p.border.*` scale to keep in sync. The onl
 | Radius | `ob.s.border_radius.<size>` | `borderRadius` | 5 | `ob.p.dimension.px.*` |
 | Width | `ob.s.border_width.<size>` | `borderWidth` | 8 | `ob.p.dimension.px.*` |
 | Outline offset | `ob.s.outline_offset.<size>` | `dimension` | 5 | `ob.p.dimension.px.*` |
-| Focus ring | `ob.s.border.focus_ring.<inversity>` | `border` | 2 | composite — see below |
+| Focus ring | `ob.s.border.focus_ring`, `ob.s.border.focus_ring_inverse` | `border` | 2 | composite — see below |
 
 `borderRadius` and `borderWidth` are Tokens Studio unofficial types that convert to `dimension` on export. `outline_offset` already uses the official `dimension` type.
 
@@ -99,10 +99,10 @@ The gap between an outline and the element edge. This is the only group in the f
 The only composite tokens in the file. Each bundles colour, width and style into one `$type: "border"` value, ready to apply as a CSS `outline`.
 
 ```json
-"ob.s.border.focus_ring.inversity_normal": {
+"ob.s.border.focus_ring": {
   "$type": "border",
   "$value": {
-    "color": "{ob.s.color.interaction.focus_ring.inversity_normal}",
+    "color": "{ob.s.color.interaction.focus_ring}",
     "width": "{ob.s.border_width.md}",
     "style": "solid"
   },
@@ -112,8 +112,8 @@ The only composite tokens in the file. Each bundles colour, width and style into
 
 | Token | Colour reference | Width | Style |
 |---|---|---|---|
-| `inversity_normal` | `ob.s.color.interaction.focus_ring.inversity_normal` | `ob.s.border_width.md` (3px) | `solid` |
-| `inversity_flipped` | `ob.s.color.interaction.focus_ring.inversity_flipped` | `ob.s.border_width.md` (3px) | `solid` |
+| `focus_ring` | `ob.s.color.interaction.focus_ring` | `ob.s.border_width.md` (3px) | `solid` |
+| `focus_ring_inverse` | `ob.s.color.interaction.focus_ring_inverse` | `ob.s.border_width.md` (3px) | `solid` |
 
 Both carry the same `$description`.
 
@@ -122,17 +122,17 @@ Both carry the same `$description`.
 Style Dictionary expands each composite into one custom property per sub-property:
 
 ```css
---ob-s-border-focus_ring-inversity_normal-color: #8b5cf6;
---ob-s-border-focus_ring-inversity_normal-style: solid;
---ob-s-border-focus_ring-inversity_normal-width: 3px;
+--ob-s-border-focus_ring-color: #8b5cf6;
+--ob-s-border-focus_ring-style: solid;
+--ob-s-border-focus_ring-width: 3px;
 ```
 
 Applied together as an outline:
 
 ```css
-outline: var(--ob-s-border-focus_ring-inversity_normal-width)
-         var(--ob-s-border-focus_ring-inversity_normal-style)
-         var(--ob-s-border-focus_ring-inversity_normal-color);
+outline: var(--ob-s-border-focus_ring-width)
+         var(--ob-s-border-focus_ring-style)
+         var(--ob-s-border-focus_ring-color);
 ```
 
 ### Reference chain
@@ -140,11 +140,11 @@ outline: var(--ob-s-border-focus_ring-inversity_normal-width)
 The width stays inside the border category; the colour leaves it and walks the full semantic colour chain:
 
 ```
-ob.s.border.focus_ring.inversity_normal
+ob.s.border.focus_ring
   ├── width → ob.s.border_width.md → ob.p.dimension.px.3
   ├── style → "solid" (literal, no token)
-  └── color → ob.s.color.interaction.focus_ring.inversity_normal
-                → ob.s1.color.interaction.focus_ring.inversity_normal
+  └── color → ob.s.color.interaction.focus_ring
+                → ob.s1.color.interaction.focus_ring
                   → ob.p.color.purple.*
 ```
 
@@ -152,30 +152,30 @@ ob.s.border.focus_ring.inversity_normal
 
 ---
 
-## Inversity
+## Inversion
 
-`inversity_normal` / `inversity_flipped` is a **flat key segment, not a mode**. A component can need both values at the same time — a flipped element nested inside a normal surface — and a mode has only one active value at a time. Inversity is a designer's decision at the component level, not a user preference. See [Inversity: Component-Level Contrast Inversion](../02-token-tiers/04-component.md#inversity-component-level-contrast-inversion).
+The `_inverse` suffix is **part of the token name, not a mode**. A component can need both values at the same time — an inverse element nested inside a normal surface — and a mode has only one active value at a time. Inversion is a designer's decision at the component level, not a user preference. See [Inversion: Component-Level Contrast Inversion](../02-token-tiers/04-component.md#inversion-component-level-contrast-inversion).
 
-| Segment | Meaning |
+| Name | Meaning |
 |---|---|
-| `inversity_normal` | Standard surface. The default. |
-| `inversity_flipped` | Inverse surface. |
+| plain name (no suffix) | Standard surface. The default. |
+| `_inverse` | Inverse surface. |
 
-The two focus-ring variants are the border category's only use of the segment — radius, width and outline offset have no inversity split, because a length does not change with the surface it sits on.
+The two focus-ring variants are the border category's only use of the suffix — radius, width and outline offset have no inversion split, because a length does not change with the surface it sits on.
 
-### Inversity and lightness are different axes
+### Inversion and lightness are different axes
 
-The inversity segment picks **which** of the two focus-ring colours a component uses. The `lightness` mode decides **what each one resolves to**, one layer down in the colour chain. The generated CSS shows both at work:
+The `_inverse` suffix picks **which** of the two focus-ring colours a component uses. The `lightness` mode decides **what each one resolves to**, one layer down in the colour chain. The generated CSS shows both at work:
 
 ```css
 :root {
-  --ob-s-border-focus_ring-inversity_normal-color:  #8b5cf6;
-  --ob-s-border-focus_ring-inversity_flipped-color: #a78bfa;
+  --ob-s-border-focus_ring-color:  #8b5cf6;
+  --ob-s-border-focus_ring_inverse-color: #a78bfa;
 }
 
 .ob-lightness-dark {
-  --ob-s-border-focus_ring-inversity_normal-color:  #a78bfa;
-  --ob-s-border-focus_ring-inversity_flipped-color: #8b5cf6;
+  --ob-s-border-focus_ring-color:  #a78bfa;
+  --ob-s-border-focus_ring_inverse-color: #8b5cf6;
 }
 ```
 
@@ -195,20 +195,20 @@ The focus-ring tokens are the system's focus indicator. Their role in WCAG confo
 ob.s.border_radius.<size>
 ob.s.border_width.<size>
 ob.s.outline_offset.<size>
-ob.s.border.focus_ring.<inversity>
+ob.s.border.focus_ring<inversion>
 ```
 
 The category spans four sibling top-level keys rather than one `border` tree: three compound property segments (`border_radius`, `border_width`, `outline_offset`) and one nested path (`border.focus_ring`). `border_radius` is listed among the property compounds in [`../01-introduction/02-naming.md`](../01-introduction/02-naming.md).
 
 - `<size>` ∈ `none, xs, sm, md, lg, xl, 2xl, 3xl` — the subset differs per group (see the tables above)
-- `<inversity>` ∈ `inversity_normal | inversity_flipped`
+- `<inversion>` is blank (normal) or `_inverse`
 
 ---
 
 ## Related docs
 
 - [`../02-token-tiers/03-semantic.md`](../02-token-tiers/03-semantic.md) — Semantic layer architecture
-- [`../02-token-tiers/04-component.md`](../02-token-tiers/04-component.md) — Inversity, and the `ob.c.*` / `ob.h.*` patterns
+- [`../02-token-tiers/04-component.md`](../02-token-tiers/04-component.md) — Inversion, and the `ob.c.*` / `ob.h.*` patterns
 - [`00-dimension.md`](00-dimension.md) — the `ob.p.dimension.px.*` scale every border length resolves to
 - [`colors/06-semantic-interaction.md`](colors/06-semantic-interaction.md) — the focus-ring colour tokens and their use in interactive components
 - [`../02-token-tiers/00-overview.md`](../02-token-tiers/00-overview.md) — `borderRadius`, `borderWidth` and the `border` composite's Figma export behaviour

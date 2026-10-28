@@ -25,14 +25,14 @@ The family also holds `ob.c.tooltip.token_family_docs.description`. This token o
 
 The tooltip token names have no variant segment and no state segment. There is one color pair (`bg` and `fg`) and one label style.
 
-Both color tokens reference the `inversity_flipped` variant of the neutral colors:
+Both color tokens reference the `_inverse` variant of the neutral colors:
 
 | Token | Color it references |
 |-------|--------------------|
-| `ob.c.tooltip.color.bg` | `neutral` bg `contrast_high`, `inversity_flipped` |
-| `ob.c.tooltip.color.fg` | `neutral` fg `contrast_highest`, `inversity_flipped` |
+| `ob.c.tooltip.color.bg` | `neutral` bg `contrast_high`, `_inverse` |
+| `ob.c.tooltip.color.fg` | `neutral` fg `contrast_highest`, `_inverse` |
 
-See the section on inversity in [Component Tokens](../../02-token-tiers/04-component.md).
+See the section on inversion in [Component Tokens](../../02-token-tiers/04-component.md).
 
 ## Animation
 
