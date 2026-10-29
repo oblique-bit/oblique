@@ -1,0 +1,41 @@
+{
+  "ob": {
+    "g": {
+      "mode_collection": {
+        "brand": {
+          "token_family_docs": {
+            "$description": "Brand mode collection (proof of concept). Modes: CH_app (the base — no class is applied), CH_marketing (.ob-brand-ch-marketing), ZH (.ob-brand-zh), FR (.ob-brand-fr). Each mode carries the CSS class string the application adds to a container to activate it. The mode picks the brand ramp for emphasis_high interaction and the brand accent."
+          },
+          "CH_app": {
+            "selector": {
+              "$type": "other",
+              "$value": "default",
+              "$description": "CH_app is the base brand mode — no class is applied. It is the first-paint default."
+            }
+          },
+          "CH_marketing": {
+            "selector": {
+              "$type": "other",
+              "$value": ".ob-brand-ch-marketing",
+              "$description": "CH_marketing is activated by a class the application adds to the container."
+            }
+          },
+          "ZH": {
+            "selector": {
+              "$type": "other",
+              "$value": ".ob-brand-zh",
+              "$description": "ZH is activated by a class the application adds to the container."
+            }
+          },
+          "FR": {
+            "selector": {
+              "$type": "other",
+              "$value": ".ob-brand-fr",
+              "$description": "FR is activated by a class the application adds to the container."
+            }
+          }
+        }
+      }
+    }
+  }
+}

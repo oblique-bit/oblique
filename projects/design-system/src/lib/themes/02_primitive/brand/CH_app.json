@@ -1,0 +1,71 @@
+{
+  "ob": {
+    "p": {
+      "color": {
+        "brand": {
+          "token_family_docs": {
+            "description": {
+              "$type": "other",
+              "$value": "Brand ramp, mode CH_app (the base): the steelblue ramp and the federal red accent. Same values as before the brand mode collection."
+            }
+          },
+          "50": {
+            "$type": "color",
+            "$value": "{ob.p.color.steelblue.50}",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. CH_app: steelblue 50."
+          },
+          "100": {
+            "$type": "color",
+            "$value": "{ob.p.color.steelblue.100}",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. CH_app: steelblue 100."
+          },
+          "200": {
+            "$type": "color",
+            "$value": "{ob.p.color.steelblue.200}",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. CH_app: steelblue 200."
+          },
+          "300": {
+            "$type": "color",
+            "$value": "{ob.p.color.steelblue.300}",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. CH_app: steelblue 300."
+          },
+          "400": {
+            "$type": "color",
+            "$value": "{ob.p.color.steelblue.400}",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. CH_app: steelblue 400."
+          },
+          "500": {
+            "$type": "color",
+            "$value": "{ob.p.color.steelblue.500}",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. CH_app: steelblue 500."
+          },
+          "600": {
+            "$type": "color",
+            "$value": "{ob.p.color.steelblue.600}",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. CH_app: steelblue 600."
+          },
+          "700": {
+            "$type": "color",
+            "$value": "{ob.p.color.steelblue.700}",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. CH_app: steelblue 700."
+          },
+          "800": {
+            "$type": "color",
+            "$value": "{ob.p.color.steelblue.800}",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. CH_app: steelblue 800."
+          },
+          "900": {
+            "$type": "color",
+            "$value": "{ob.p.color.steelblue.900}",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. CH_app: steelblue 900."
+          },
+          "accent": {
+            "$type": "color",
+            "$value": "{ob.p.color.basic.federal_red}",
+            "$description": "Role: Exclusive. Brand accent for the selected navigation line. CH_app: federal red."
+          }
+        }
+      }
+    }
+  }
+}

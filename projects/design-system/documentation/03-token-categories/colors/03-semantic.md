@@ -59,9 +59,9 @@ Static colors are **non-mode-dependent** values that remain constant across all 
 #### **Static Brand**
 ```json
 {
-  "ob.s.color.brand": {
+  "ob.s.color.brand.1": {
     "$type": "color",
-    "$value": "{ob.p.color.basic.federal_red}",
+    "$value": "{ob.p.color.brand.accent}",
     "$description": "Static color to be used in the brand relevant UI elements."
   }
 }
@@ -69,7 +69,7 @@ Static colors are **non-mode-dependent** values that remain constant across all 
 
 - **Purpose**: Consistent brand identity
 - **Usage**: Brand elements, logos, primary brand touches  
-- **Behavior**: Never changes with color scheme mode
+- **Behavior**: Never changes with color scheme mode; the brand mode picks the accent
 - **Location**: `src/lib/themes/03_semantic/color/compiled.json`
 
 ### **Neutral Utilities**
@@ -171,9 +171,9 @@ Currently, the full 5-level scale is provided only for the **Neutral** category 
 
 ### **Layered Token Example**
 ```
-ob.s.color.brand → {ob.p.color.basic.federal_red} → #ff0000
+ob.s.color.brand.1 → {ob.p.color.brand.accent} → {ob.p.color.basic.federal_red} (brand mode CH_app) → #ff0000
 │
-└─ ob.s (Semantic): Direct static value (federal_red) - no color scheme mode, emphasis, or inversion variants
+└─ ob.s (Semantic): no color scheme mode, emphasis, or inversion variants; the brand mode picks the accent
 ```
 
 ### **Inversion as Part of the Name**

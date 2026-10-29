@@ -8,14 +8,14 @@
 
 ## Brand Color Architecture
 
-Brand colors maintain consistent visual identity across all modes and contexts. They are static values that never change, ensuring brand recognition regardless of user preferences or color scheme mode.
+Brand colors maintain consistent visual identity across all modes and contexts. They do not change with color scheme or emphasis, ensuring brand recognition regardless of user preferences. The brand mode collection (proof of concept) picks the accent per brand, see [Brand Mode](../../04-modes/10-brand.md).
 
 ### Brand Token Structure
 ```
-ob.s.color.brand` references `{ob.p.color.basic.federal_red}` (Swiss federal red)
+ob.s.color.brand.1 references {ob.p.color.brand.accent}, which is {ob.p.color.basic.federal_red} (Swiss federal red) in the CH_app brand mode
 ```
 
-- **Static Behavior**: Never changes with light/dark modes or other variations  
+- **Static Behavior**: Never changes with light/dark or emphasis modes; the brand mode picks the accent
 - **Usage**: Brand elements, logos, primary brand touches, selected states
 
 ### Usage Examples
@@ -23,7 +23,7 @@ ob.s.color.brand` references `{ob.p.color.basic.federal_red}` (Swiss federal red
 {
   "brand": {
     "$type": "color",
-    "$value": "{ob.p.color.basic.federal_red}",
+    "$value": "{ob.p.color.brand.accent}",
     "$description": "Static color to be used in the brand relevant UI elements."
   }
 }
@@ -78,7 +78,7 @@ The brand color system uses Swiss federal red (federal_red) to maintain visual c
 ### File Location
 - **Path**: `src/lib/themes/03_semantic/color/compiled.json`
 - **Layer**: Semantic (ob.s) - static brand color integrated in final compilation
-- **References**: `{ob.p.color.basic.federal_red}` primitive
+- **References**: `{ob.p.color.brand.accent}` primitive, set by the brand mode (`{ob.p.color.basic.federal_red}` in `CH_app`)
 
 ### Integration Pattern
 ```json
@@ -88,7 +88,7 @@ The brand color system uses Swiss federal red (federal_red) to maintain visual c
       "color": {
         "brand": {
           "$type": "color",
-          "$value": "{ob.p.color.basic.federal_red}",
+          "$value": "{ob.p.color.brand.accent}",
           "$description": "Static color to be used in the brand relevant UI elements."
         }
       }

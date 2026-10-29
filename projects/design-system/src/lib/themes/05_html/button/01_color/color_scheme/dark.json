@@ -14,12 +14,12 @@
 							"bg": {
 								"rest": {
 									"$type": "color",
-									"$value": "{ob.p.color.steelblue.600}",
+									"$value": "{ob.p.color.brand.600}",
 									"$description": "Primary button background, rest state, high emphasis, dark mode."
 								},
 								"rest_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.steelblue.600}",
+									"$value": "{ob.p.color.brand.600}",
 									"$description": "Primary button background, rest state, high emphasis, dark mode, inverse (inverted surface, colors of the light mode)."
 								},
 								"hover": {
@@ -130,7 +130,7 @@
 								},
 								"hover": {
 									"$type": "color",
-									"$value": "{ob.p.color.steelblue.500}",
+									"$value": "{ob.p.color.brand.500}",
 									"$extensions": {
 										"studio.tokens": {
 											"modify": {
@@ -145,7 +145,7 @@
 								},
 								"hover_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.steelblue.500}",
+									"$value": "{ob.p.color.brand.500}",
 									"$extensions": {
 										"studio.tokens": {
 											"modify": {
@@ -160,7 +160,7 @@
 								},
 								"active": {
 									"$type": "color",
-									"$value": "{ob.p.color.steelblue.500}",
+									"$value": "{ob.p.color.brand.500}",
 									"$extensions": {
 										"studio.tokens": {
 											"modify": {
@@ -175,7 +175,7 @@
 								},
 								"active_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.steelblue.500}",
+									"$value": "{ob.p.color.brand.500}",
 									"$extensions": {
 										"studio.tokens": {
 											"modify": {
@@ -192,32 +192,32 @@
 							"fg": {
 								"rest": {
 									"$type": "color",
-									"$value": "{ob.p.color.steelblue.50}",
+									"$value": "{ob.p.color.brand.50}",
 									"$description": "Secondary button foreground, rest state, high emphasis, dark mode."
 								},
 								"rest_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.steelblue.700}",
+									"$value": "{ob.p.color.brand.700}",
 									"$description": "Secondary button foreground, rest state, high emphasis, dark mode, inverse (inverted surface, colors of the light mode)."
 								},
 								"hover": {
 									"$type": "color",
-									"$value": "{ob.p.color.steelblue.50}",
+									"$value": "{ob.p.color.brand.50}",
 									"$description": "Secondary button foreground, hover state, high emphasis, dark mode."
 								},
 								"hover_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.steelblue.800}",
+									"$value": "{ob.p.color.brand.800}",
 									"$description": "Secondary button foreground, hover state, high emphasis, dark mode, inverse (inverted surface, colors of the light mode)."
 								},
 								"active": {
 									"$type": "color",
-									"$value": "{ob.p.color.steelblue.50}",
+									"$value": "{ob.p.color.brand.50}",
 									"$description": "Secondary button foreground, active state, high emphasis, dark mode."
 								},
 								"active_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.steelblue.800}",
+									"$value": "{ob.p.color.brand.800}",
 									"$description": "Secondary button foreground, active state, high emphasis, dark mode, inverse (inverted surface, colors of the light mode)."
 								}
 							},
@@ -229,7 +229,7 @@
 								},
 								"rest_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.steelblue.700}",
+									"$value": "{ob.p.color.brand.700}",
 									"$description": "Secondary button border, rest state, high emphasis, dark mode, inverse (inverted surface, colors of the light mode)."
 								},
 								"hover": {
@@ -239,7 +239,7 @@
 								},
 								"hover_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.steelblue.800}",
+									"$value": "{ob.p.color.brand.800}",
 									"$description": "Secondary button border, hover state, high emphasis, dark mode, inverse (inverted surface, colors of the light mode)."
 								},
 								"active": {
@@ -249,7 +249,7 @@
 								},
 								"active_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.steelblue.800}",
+									"$value": "{ob.p.color.brand.800}",
 									"$description": "Secondary button border, active state, high emphasis, dark mode, inverse (inverted surface, colors of the light mode)."
 								}
 							}

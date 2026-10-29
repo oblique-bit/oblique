@@ -1,0 +1,54 @@
+# Brand Mode (CH_app / CH_marketing / ZH / FR)
+
+**Proof of concept: a mode collection that switches the brand ramp of the high emphasis interaction colors and the brand accent**
+
+---
+
+## **Overview**
+
+The **brand** mode collection lets one set of tokens carry several brands. It has four modes:
+
+| Mode | Brand | Ramp (`ob.p.color.brand.50`–`900`) | Accent (`ob.p.color.brand.accent`) |
+|---|---|---|---|
+| `CH_app` | Oblique today (base mode) | `steelblue` | `basic.federal_red` |
+| `CH_marketing` | Swiss Confederation (BK, Swiss DS) | `red` (the Swiss DS primary ramp) | `basic.federal_red` |
+| `ZH` | Canton of Zurich | blue ramp, step 600 = ZH Blau `#0070B4` | `#0070B4` |
+| `FR` | Canton of Fribourg | teal ramp, step 600 = fr.ch primary `#008094` | `#008094` |
+
+`CH_app` is the base mode and the first-paint default. Its values are the same as before the collection existed.
+
+The mode changes only the colors that took `steelblue` before: the high emphasis interaction colors (`ob.s1.color.interaction.emphasis_high.*`) and the Button colors that use `steelblue` directly. Low emphasis uses `cobalt` and is the same for every brand. The status colors do not change.
+
+## **The ZH and FR ramps**
+
+ZH and FR have no official 50–900 ramp. The ramps are built around the brand color at step 600, the step of the primary Button background. Every other step has the same contrast against white as the `steelblue` step of the same number: the brand color is mixed toward white for the lighter steps and toward black for the darker steps. So the existing tokens keep their contrast when the brand changes. The `ZH` step 50 is the ZH Softblau `#EDF5FA`.
+
+White label on step 600: `steelblue` 4.84:1, `red` 5.01:1, `ZH` 5.28:1, `FR` 4.65:1.
+
+## **Implementation**
+
+### **Mode Files**
+
+- **`01_global/mode_collection/brand.json`**: registers the four modes and the CSS class of each mode.
+- **`02_primitive/brand/CH_app.json`, `CH_marketing.json`, `ZH.json`, `FR.json`**: the brand ramp `ob.p.color.brand.50`–`900` and `ob.p.color.brand.accent`. One file per mode. `CH_app` and `CH_marketing` point to existing primitives, `ZH` and `FR` hold the ramp values.
+
+### **Tokens that follow the mode**
+
+- `ob.s1.color.interaction.emphasis_high.*` (light and dark) point to `ob.p.color.brand.*`.
+- `ob.h.button.color.emphasis_high.*` in `05_html/button/01_color/color_scheme/` and `05_html/button/01_color/elevation/level_2_color/color_scheme/` point to `ob.p.color.brand.*`.
+- `ob.s.color.brand.1` and `ob.s1.color.navigation.border.brand` point to `ob.p.color.brand.accent`.
+
+The brand mode files are primitives. They stay in the primitive tier, so the semantic tokens keep their tier chain.
+
+## **Mode Collection Registration**
+
+The collection is registered in `01_global/mode_collection/brand.json`. `CH_app` is the base mode and applies no class. `CH_marketing` is activated by `.ob-brand-ch-marketing`, `ZH` by `.ob-brand-zh` and `FR` by `.ob-brand-fr`. The application adds the class to the container that should switch.
+
+## **Limits of the proof of concept**
+
+- The mode swaps the ramp only. The real brands also use other roles: the Swiss DS filled Button is slate (`cobalt.500`), the ZH Buttons are black, and red is the Swiss DS outline Button and link color. These roles are not part of this mode yet.
+- The brand logo is not part of the mode yet.
+
+## **Mode Interplay**
+
+Brand is independent of the other mode collections. The colors it changes also follow color scheme, emphasis and elevation. See [09-interplay.md](09-interplay.md).

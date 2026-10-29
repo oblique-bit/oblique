@@ -8,12 +8,12 @@
 							"bg": {
 								"rest_level_2": {
 									"$type": "color",
-									"$value": "{ob.p.color.steelblue.600}",
+									"$value": "{ob.p.color.brand.600}",
 									"$description": "Primary button background on level_2, rest state, high emphasis, dark mode."
 								},
 								"rest_level_2_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.steelblue.600}",
+									"$value": "{ob.p.color.brand.600}",
 									"$description": "Primary button background on level_2, rest state, high emphasis, dark mode, inverse (light mode colors)."
 								},
 								"hover_level_2": {
@@ -82,7 +82,7 @@
 							"bg": {
 								"hover_level_2": {
 									"$type": "color",
-									"$value": "{ob.p.color.steelblue.500}",
+									"$value": "{ob.p.color.brand.500}",
 									"$extensions": {
 										"studio.tokens": {
 											"modify": {
@@ -112,7 +112,7 @@
 								},
 								"active_level_2": {
 									"$type": "color",
-									"$value": "{ob.p.color.steelblue.500}",
+									"$value": "{ob.p.color.brand.500}",
 									"$extensions": {
 										"studio.tokens": {
 											"modify": {

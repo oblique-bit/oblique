@@ -1083,32 +1083,32 @@
             "bg": {
               "contrast_high": {
                 "$type": "color",
-                "$value": "{ob.p.color.steelblue.800}",
+                "$value": "{ob.p.color.brand.800}",
                 "$description": "High contrast background for emphasis-high interactive elements. Standard surface."
               },
               "contrast_high_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.steelblue.200}",
+                "$value": "{ob.p.color.brand.200}",
                 "$description": "High contrast background for emphasis-high interactive elements. Inverse surface."
               },
               "contrast_medium": {
                 "$type": "color",
-                "$value": "{ob.p.color.steelblue.700}",
+                "$value": "{ob.p.color.brand.700}",
                 "$description": "Medium contrast background for emphasis-high interactive elements. Standard surface."
               },
               "contrast_medium_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.steelblue.100}",
+                "$value": "{ob.p.color.brand.100}",
                 "$description": "Medium contrast background for emphasis-high interactive elements. Inverse surface."
               },
               "contrast_low": {
                 "$type": "color",
-                "$value": "{ob.p.color.steelblue.600}",
+                "$value": "{ob.p.color.brand.600}",
                 "$description": "Low contrast background for emphasis-high interactive elements. Standard surface."
               },
               "contrast_low_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.steelblue.50}",
+                "$value": "{ob.p.color.brand.50}",
                 "$description": "Low contrast background for emphasis-high interactive elements. Inverse surface."
               }
             },
@@ -1120,27 +1120,27 @@
               },
               "contrast_high_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.steelblue.800}",
+                "$value": "{ob.p.color.brand.800}",
                 "$description": "High contrast foreground for emphasis-high interactive elements. Inverse surface."
               },
               "contrast_medium": {
                 "$type": "color",
-                "$value": "{ob.p.color.steelblue.50}",
+                "$value": "{ob.p.color.brand.50}",
                 "$description": "Medium contrast foreground for emphasis-high interactive elements. Standard surface."
               },
               "contrast_medium_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.steelblue.700}",
+                "$value": "{ob.p.color.brand.700}",
                 "$description": "Medium contrast foreground for emphasis-high interactive elements. Inverse surface."
               },
               "contrast_low": {
                 "$type": "color",
-                "$value": "{ob.p.color.steelblue.100}",
+                "$value": "{ob.p.color.brand.100}",
                 "$description": "Low contrast foreground for emphasis-high interactive elements. Standard surface."
               },
               "contrast_low_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.steelblue.600}",
+                "$value": "{ob.p.color.brand.600}",
                 "$description": "Low contrast foreground for emphasis-high interactive elements. Inverse surface."
               }
             },
@@ -1152,27 +1152,27 @@
               },
               "strong_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.steelblue.700}",
+                "$value": "{ob.p.color.brand.700}",
                 "$description": "Strong border for emphasis-high interactive elements. Inverse surface."
               },
               "medium": {
                 "$type": "color",
-                "$value": "{ob.p.color.steelblue.100}",
+                "$value": "{ob.p.color.brand.100}",
                 "$description": "Medium border for emphasis-high interactive elements. Standard surface."
               },
               "medium_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.steelblue.600}",
+                "$value": "{ob.p.color.brand.600}",
                 "$description": "Medium border for emphasis-high interactive elements. Inverse surface."
               },
               "subtle": {
                 "$type": "color",
-                "$value": "{ob.p.color.steelblue.200}",
+                "$value": "{ob.p.color.brand.200}",
                 "$description": "Subtle border for emphasis-high interactive elements. Standard surface."
               },
               "subtle_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.steelblue.500}",
+                "$value": "{ob.p.color.brand.500}",
                 "$description": "Subtle border for emphasis-high interactive elements. Inverse surface."
               }
             },
@@ -1672,8 +1672,8 @@
           "border": {
             "brand": {
               "$type": "color",
-              "$value": "{ob.p.color.basic.federal_red}",
-              "$description": "Navigation border — brand. Uses ob.p.color.basic.federal_red. Applied to selected and pressed states as the primary brand indicator line."
+              "$value": "{ob.p.color.brand.accent}",
+              "$description": "Navigation border — brand. Uses ob.p.color.brand.accent (federal red in CH_app). Applied to selected and pressed states as the primary brand indicator line."
             },
             "subtle": {
               "$type": "color",

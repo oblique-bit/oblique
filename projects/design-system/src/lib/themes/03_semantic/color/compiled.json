@@ -17,8 +17,8 @@
         "brand": {
           "1": {
             "$type": "color",
-            "$value": "{ob.p.color.basic.federal_red}",
-            "$description": "Federal identity color. Use for Bundesrot brand accent in navigation active states and primary brand elements. Numbering starts at 1 to support scalable multi-brand setups."
+            "$value": "{ob.p.color.brand.accent}",
+            "$description": "Brand accent color, set by the brand mode (federal red in CH_app). Use in navigation active states and primary brand elements. Numbering starts at 1 to support scalable multi-brand setups."
           },
           "2": {
             "$type": "color",
@@ -1436,7 +1436,7 @@
             "selected": {
               "$type": "color",
               "$value": "{ob.s1.color.navigation.border.brand}",
-              "$description": "Border for Navigation. Selected state: Brand-red indicator line marking the currently active navigation item. Uses ob.p.color.basic.federal_red."
+              "$description": "Border for Navigation. Selected state: Brand-red indicator line marking the currently active navigation item. Uses ob.p.color.brand.accent (federal red in CH_app)."
             },
             "disabled": {
               "$type": "color",

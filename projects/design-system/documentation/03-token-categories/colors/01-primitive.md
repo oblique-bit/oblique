@@ -120,7 +120,7 @@ The primitive color system contains the following categories:
 - **blue**: Blue color scale — *blue.500 reserved for informational status*
 
 **Custom colors (created by Oblique Team):**
-- **steelblue**: Steel blue color scale — *entire scale reserved for interaction colors (links, hover/focus states)*
+- **steelblue**: Steel blue color scale — *entire scale reserved for interaction colors (links, hover/focus states)*. The semantic tokens reach it through the brand ramp `ob.p.color.brand.*` in the brand mode `CH_app`, see [Brand Mode](../../04-modes/10-brand.md).
 
 ### Basic Colors
 - **basic.white**: Pure white (#ffffff)

@@ -16,7 +16,7 @@ Every primitive color family is claimed by the semantic layer. There is currentl
 | **Orange** | Status Attention | `ob.s.color.status.attention.*` |
 | **Green** | Status Resolved | `ob.s.color.status.resolved.*` |
 | **Blue** | Status Info | `ob.s.color.status.info.*` |
-| **Steelblue** | Interaction | `ob.s.color.interaction.*` |
+| **Steelblue** | Interaction, through the brand ramp `ob.p.color.brand.*` (brand mode `CH_app`) | `ob.s.color.interaction.*` |
 | **Purple** | Interaction Focus Ring | `ob.s.color.interaction.focus_ring.*` |
 | **Yellow** | Free | `ob.s.color.free.yellow.*` |
 | **Teal** | Free | `ob.s.color.free.teal.*` |

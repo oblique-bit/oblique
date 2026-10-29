@@ -44,6 +44,7 @@
       "01_global/mode_collection/typography_context": "source",
       "01_global/mode_collection/motion": "source",
       "01_global/mode_collection/elevation": "source",
+      "01_global/mode_collection/brand": "source",
       "02_primitive/modifier": "enabled",
       "05_html/button/00_state_layer": "enabled",
       "05_html/button/02_typography": "enabled",
@@ -437,11 +438,52 @@
     "group": "static"
   },
   {
+    "id": "cwuna9i7g15dl2hfcst1dndffhe4sjpl9nyjeprl",
+    "name": "CH_app",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/color": "source",
+      "02_primitive/brand/CH_app": "enabled"
+    },
+    "group": "brand"
+  },
+  {
+    "id": "z4ofe9s95dj1nwt1u4ebxamvl4wwdfya9tp8l98s",
+    "name": "CH_marketing",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/color": "source",
+      "02_primitive/brand/CH_marketing": "enabled"
+    },
+    "group": "brand"
+  },
+  {
+    "id": "qz6h4ue2t3ik6yr3avxbk9onobcqygwv1pm0u3g7",
+    "name": "ZH",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/color": "source",
+      "02_primitive/brand/ZH": "enabled"
+    },
+    "group": "brand"
+  },
+  {
+    "id": "vjax0fc79fer5twd7niqo0z42di2bttjcgt9npxd",
+    "name": "FR",
+    "$figmaStyleReferences": {},
+    "selectedTokenSets": {
+      "02_primitive/color": "source",
+      "02_primitive/brand/FR": "enabled"
+    },
+    "group": "brand"
+  },
+  {
     "id": "e8cd1884456dc69cce5fbd1dc0fb23d17ee11d8d",
     "name": "light",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "02_primitive/color": "source",
+      "02_primitive/brand/CH_app": "source",
       "01_global/component/footer/color_scheme/dynamic/light": "enabled",
       "03_semantic/color/s1_color_scheme/light": "enabled",
       "02_primitive/modifier": "source",
@@ -849,6 +891,7 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "02_primitive/color": "source",
+      "02_primitive/brand/CH_app": "source",
       "01_global/component/footer/color_scheme/dynamic/dark": "enabled",
       "03_semantic/color/s1_color_scheme/dark": "enabled",
       "02_primitive/modifier": "source",

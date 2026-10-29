@@ -1,0 +1,71 @@
+{
+  "ob": {
+    "p": {
+      "color": {
+        "brand": {
+          "token_family_docs": {
+            "description": {
+              "$type": "other",
+              "$value": "Brand ramp, mode FR (Canton of Fribourg): built around the fr.ch primary teal #008094 at step 600. Every other step has the same contrast against white as the steelblue step."
+            }
+          },
+          "50": {
+            "$type": "color",
+            "$value": "#ECF6F7",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. FR: teal, same white contrast as steelblue 50."
+          },
+          "100": {
+            "$type": "color",
+            "$value": "#C5E2E7",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. FR: teal, same white contrast as steelblue 100."
+          },
+          "200": {
+            "$type": "color",
+            "$value": "#9ECFD6",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. FR: teal, same white contrast as steelblue 200."
+          },
+          "300": {
+            "$type": "color",
+            "$value": "#76BBC6",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. FR: teal, same white contrast as steelblue 300."
+          },
+          "400": {
+            "$type": "color",
+            "$value": "#4FA7B5",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. FR: teal, same white contrast as steelblue 400."
+          },
+          "500": {
+            "$type": "color",
+            "$value": "#2693A4",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. FR: teal, same white contrast as steelblue 500."
+          },
+          "600": {
+            "$type": "color",
+            "$value": "#008094",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. FR: fr.ch primary teal #008094."
+          },
+          "700": {
+            "$type": "color",
+            "$value": "#006878",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. FR: teal, same white contrast as steelblue 700."
+          },
+          "800": {
+            "$type": "color",
+            "$value": "#005461",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. FR: teal, same white contrast as steelblue 800."
+          },
+          "900": {
+            "$type": "color",
+            "$value": "#00404A",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. FR: teal, same white contrast as steelblue 900."
+          },
+          "accent": {
+            "$type": "color",
+            "$value": "#008094",
+            "$description": "Role: Exclusive. Brand accent for the selected navigation line. FR: fr.ch primary teal #008094."
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "ob": {
+    "p": {
+      "color": {
+        "brand": {
+          "token_family_docs": {
+            "description": {
+              "$type": "other",
+              "$value": "Brand ramp, mode ZH (Canton of Zurich): built around the ZH Blau #0070B4 at step 600. Every other step has the same contrast against white as the steelblue step."
+            }
+          },
+          "50": {
+            "$type": "color",
+            "$value": "#EDF5FA",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. ZH: blue, same white contrast as steelblue 50."
+          },
+          "100": {
+            "$type": "color",
+            "$value": "#C8E0EF",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. ZH: blue, same white contrast as steelblue 100."
+          },
+          "200": {
+            "$type": "color",
+            "$value": "#A4CCE4",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. ZH: blue, same white contrast as steelblue 200."
+          },
+          "300": {
+            "$type": "color",
+            "$value": "#7FB7D9",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. ZH: blue, same white contrast as steelblue 300."
+          },
+          "400": {
+            "$type": "color",
+            "$value": "#5BA3CF",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. ZH: blue, same white contrast as steelblue 400."
+          },
+          "500": {
+            "$type": "color",
+            "$value": "#358EC4",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. ZH: blue, same white contrast as steelblue 500."
+          },
+          "600": {
+            "$type": "color",
+            "$value": "#0070B4",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. ZH: official Blau #0070B4."
+          },
+          "700": {
+            "$type": "color",
+            "$value": "#00629E",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. ZH: blue, same white contrast as steelblue 700."
+          },
+          "800": {
+            "$type": "color",
+            "$value": "#004F7F",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. ZH: blue, same white contrast as steelblue 800."
+          },
+          "900": {
+            "$type": "color",
+            "$value": "#003C61",
+            "$description": "Role: Exclusive. Brand step for emphasis_high interaction. ZH: blue, same white contrast as steelblue 900."
+          },
+          "accent": {
+            "$type": "color",
+            "$value": "#0070B4",
+            "$description": "Role: Exclusive. Brand accent for the selected navigation line. ZH: official Blau #0070B4."
+          }
+        }
+      }
+    }
+  }
+}
