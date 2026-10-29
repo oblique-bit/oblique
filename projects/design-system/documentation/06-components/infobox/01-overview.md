@@ -9,7 +9,7 @@ The infobox is a molecule in Oblique DS. Its tokens describe a message box with 
 The tokens are split into three families:
 
 - **Color tokens**: icon, border, surface and foreground colors.
-- **Layout tokens**: container padding, icon asset, border radius, typography and button inversion.
+- **Layout tokens**: container padding, icon asset, border radius, typography and button inverse.
 - **Viewport-specific layout tokens**: spacing, sizes, border width and button order. There is one token set for each of the six viewport modes. The sets of `xs`, `sm` and `md` are described as the mobile breakpoint. The sets of `lg`, `xl` and `2xl` are described as the desktop breakpoint.
 
 Five status variants exist: `info`, `critical`, `attention`, `resolved` and `fatal`.
@@ -38,7 +38,7 @@ The token names and descriptions refer to these parts of the infobox:
 | Icon asset | `ob.c.infobox.icon.asset.status.*` | 5 | `02_layout.json` |
 | Border radius | `ob.c.infobox.border_radius.*` | 4 | `02_layout.json` |
 | Typography | `ob.c.infobox.typography.{title, body}` | 2 | `02_layout.json` |
-| Button inversion | `ob.c.infobox.{status}.button.inversion` | 5 | `02_layout.json` |
+| Button inverse | `ob.c.infobox.{status}.button.inverse` | 5 | `02_layout.json` |
 | Spacing | `ob.c.infobox.spacing.*` | 15 per viewport | `03_viewport/{viewport}.json` |
 | Size | `ob.c.infobox.size.*` | 3 per viewport | `03_viewport/{viewport}.json` |
 | Border width | `ob.c.infobox.border_width.left` | 1 per viewport | `03_viewport/{viewport}.json` |
@@ -51,13 +51,13 @@ The component has 62 token paths. The 25 viewport paths exist once in each of th
 
 The status names in the token paths are `info`, `critical`, `attention`, `resolved` and `fatal`. Four of them reference plain tokens. `fatal` is the only variant that references `_inverse` tokens. Its foreground uses `contrast_medium`, the other variants use `contrast_high`.
 
-| Variant | Icon and border color | Surface color | Foreground color | Button inversion |
+| Variant | Icon and border color | Surface color | Foreground color | Button inverse |
 |---|---|---|---|---|
-| `info` | `ob.s.color.status.info.fg.contrast_medium` | `ob.s.color.status.info.bg.contrast_high` | `ob.s.color.neutral.fg.contrast_high` | `none` |
-| `critical` | `ob.s.color.status.critical.fg.contrast_medium` | `ob.s.color.status.critical.bg.contrast_high` | `ob.s.color.neutral.fg.contrast_high` | `none` |
-| `attention` | `ob.s.color.status.attention.fg.contrast_medium` | `ob.s.color.status.attention.bg.contrast_high` | `ob.s.color.neutral.fg.contrast_high` | `none` |
-| `resolved` | `ob.s.color.status.resolved.fg.contrast_medium` | `ob.s.color.status.resolved.bg.contrast_high` | `ob.s.color.neutral.fg.contrast_high` | `none` |
-| `fatal` | `ob.s.color.status.fatal.fg.contrast_medium_inverse` | `ob.s.color.status.fatal.bg.contrast_high_inverse` | `ob.s.color.neutral.fg.contrast_medium_inverse` | `inverse` |
+| `info` | `ob.s.color.status.info.fg.contrast_medium` | `ob.s.color.status.info.bg.contrast_high` | `ob.s.color.neutral.fg.contrast_high` | `false` |
+| `critical` | `ob.s.color.status.critical.fg.contrast_medium` | `ob.s.color.status.critical.bg.contrast_high` | `ob.s.color.neutral.fg.contrast_high` | `false` |
+| `attention` | `ob.s.color.status.attention.fg.contrast_medium` | `ob.s.color.status.attention.bg.contrast_high` | `ob.s.color.neutral.fg.contrast_high` | `false` |
+| `resolved` | `ob.s.color.status.resolved.fg.contrast_medium` | `ob.s.color.status.resolved.bg.contrast_high` | `ob.s.color.neutral.fg.contrast_high` | `false` |
+| `fatal` | `ob.s.color.status.fatal.fg.contrast_medium_inverse` | `ob.s.color.status.fatal.bg.contrast_high_inverse` | `ob.s.color.neutral.fg.contrast_medium_inverse` | `true` |
 
 Each variant has four color tokens: `icon`, `border`, `surface` and `fg`. The `icon` and `border` tokens of a variant reference the same token. See [Status Colors](../../03-token-categories/colors/07-semantic-status.md) for the status color families.
 

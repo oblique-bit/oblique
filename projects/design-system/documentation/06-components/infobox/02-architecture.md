@@ -16,7 +16,7 @@ The infobox is a molecule in Oblique DS. It has five status variants (`info`, `c
 │   ├── ob.c.infobox.icon.asset.status.*
 │   ├── ob.c.infobox.border_radius.*
 │   ├── ob.c.infobox.typography.*
-│   └── ob.c.infobox.{status}.button.inversion
+│   └── ob.c.infobox.{status}.button.inverse
 └── 03_viewport/       — 25 tokens in each file, one file for each viewport mode
     ├── xs.json
     ├── sm.json
@@ -172,17 +172,21 @@ File: `02_layout.json`. These tokens have the `$type` `typography`.
 
 ## Button Tokens
 
-### Button inversion (`02_layout.json`)
+### Button inverse (`02_layout.json`)
 
-These tokens have the `$type` `text`. Their value is a literal text, not a reference. They have no description.
+These tokens have the `$type` `boolean`. Their value is a literal `true` or `false`, not a reference. They have no description. The value tells which value of the Button variant property `inverse` the buttons in the infobox use: `true` means the Button uses its `_inverse` colors.
 
 | Token | Value | Description |
 |---|---|---|
-| `ob.c.infobox.info.button.inversion` | `none` | Inversion of the buttons in the `info` infobox. |
-| `ob.c.infobox.critical.button.inversion` | `none` | Inversion of the buttons in the `critical` infobox. |
-| `ob.c.infobox.attention.button.inversion` | `none` | Inversion of the buttons in the `attention` infobox. |
-| `ob.c.infobox.resolved.button.inversion` | `none` | Inversion of the buttons in the `resolved` infobox. |
-| `ob.c.infobox.fatal.button.inversion` | `inverse` | Inversion of the buttons in the `fatal` infobox. |
+| `ob.c.infobox.info.button.inverse` | `false` | Button variant `inverse` in the `info` infobox. |
+| `ob.c.infobox.critical.button.inverse` | `false` | Button variant `inverse` in the `critical` infobox. |
+| `ob.c.infobox.attention.button.inverse` | `false` | Button variant `inverse` in the `attention` infobox. |
+| `ob.c.infobox.resolved.button.inverse` | `false` | Button variant `inverse` in the `resolved` infobox. |
+| `ob.c.infobox.fatal.button.inverse` | `true` | Button variant `inverse` in the `fatal` infobox. |
+
+A boolean token cannot set a component property in Figma, so the designer picks the Button variant by hand. In Figma the tokens become Boolean variables.
+
+**Change 2026-10-29:** these tokens were `ob.c.infobox.{status}.button.inversion` with the `$type` `text` and the values `none` and `inverse`. They were renamed and changed to `boolean` to match the new Button variant property `inverse` (`true` / `false`), which replaces the separate flipped Button set. The change is not final; it can be reverted if the text form fits better.
 
 ### Buttons order (`03_viewport/`)
 

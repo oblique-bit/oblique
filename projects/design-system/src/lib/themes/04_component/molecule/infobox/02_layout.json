@@ -78,41 +78,41 @@
         },
         "fatal": {
           "button": {
-            "inversion": {
-              "$type": "text",
-              "$value": "inverse"
+            "inverse": {
+              "$type": "boolean",
+              "$value": "true"
             }
           }
         },
         "info": {
           "button": {
-            "inversion": {
-              "$type": "text",
-              "$value": "none"
+            "inverse": {
+              "$type": "boolean",
+              "$value": "false"
             }
           }
         },
         "resolved": {
           "button": {
-            "inversion": {
-              "$type": "text",
-              "$value": "none"
+            "inverse": {
+              "$type": "boolean",
+              "$value": "false"
             }
           }
         },
         "attention": {
           "button": {
-            "inversion": {
-              "$type": "text",
-              "$value": "none"
+            "inverse": {
+              "$type": "boolean",
+              "$value": "false"
             }
           }
         },
         "critical": {
           "button": {
-            "inversion": {
-              "$type": "text",
-              "$value": "none"
+            "inverse": {
+              "$type": "boolean",
+              "$value": "false"
             }
           }
         }
