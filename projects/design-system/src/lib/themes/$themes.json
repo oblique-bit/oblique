@@ -836,7 +836,10 @@
       "ob.s1.color.backdrop": "0fb01e85bf8a19fcd86f1558500b1d71400541a3",
       "ob.s1.color.backdrop_inverse": "d71e67106f3c7acce468eabbd9b95a8234544f64",
       "ob.s1.color.neutral.shadow.first_inverse": "07d2b07244cc3156478d35f000407f54afc07ead",
-      "ob.s1.color.neutral.shadow.second_inverse": "6910797de78ac6085bed1536f3ea37e202f373a5"
+      "ob.s1.color.neutral.shadow.second_inverse": "6910797de78ac6085bed1536f3ea37e202f373a5",
+      "ob.h.typography.heading.color.fg.contrast_low": "6f60c3872f228b66fa60048f76add947958fa3b7",
+      "ob.h.typography.heading.color.fg.contrast_medium": "91fa032b27424d5e9e884024dfaad841c0a75484",
+      "ob.h.typography.heading.color.fg.contrast_high": "5127dbf5f3e99fe979311dbd67011a4bce4ca671"
     },
     "group": "color_scheme"
   },
@@ -1240,7 +1243,10 @@
       "ob.s1.color.backdrop": "0fb01e85bf8a19fcd86f1558500b1d71400541a3",
       "ob.s1.color.backdrop_inverse": "d71e67106f3c7acce468eabbd9b95a8234544f64",
       "ob.s1.color.neutral.shadow.first_inverse": "07d2b07244cc3156478d35f000407f54afc07ead",
-      "ob.s1.color.neutral.shadow.second_inverse": "6910797de78ac6085bed1536f3ea37e202f373a5"
+      "ob.s1.color.neutral.shadow.second_inverse": "6910797de78ac6085bed1536f3ea37e202f373a5",
+      "ob.h.typography.heading.color.fg.contrast_low": "6f60c3872f228b66fa60048f76add947958fa3b7",
+      "ob.h.typography.heading.color.fg.contrast_medium": "91fa032b27424d5e9e884024dfaad841c0a75484",
+      "ob.h.typography.heading.color.fg.contrast_high": "5127dbf5f3e99fe979311dbd67011a4bce4ca671"
     },
     "group": "color_scheme"
   },
