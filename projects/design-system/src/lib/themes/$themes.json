@@ -3775,7 +3775,7 @@
   },
   {
     "id": "92d0300e0296df35a8b9b72149791049c914b944",
-    "name": "light_low_info_level1-TEST",
+    "name": "light_low_info_level1",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "02_primitive/modifier": "source",
@@ -3811,7 +3811,7 @@
   },
   {
     "id": "9646d5cc0f8d2b9f2f446845e4c8d911961c0a02",
-    "name": "dark_low_info_level1-TEST",
+    "name": "dark_low_info_level1",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "01_global/mode_collection/motion": "source",
