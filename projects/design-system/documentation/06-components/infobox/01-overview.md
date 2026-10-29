@@ -52,10 +52,10 @@ The status names in the token paths are `info`, `critical`, `attention`, `resolv
 
 | Variant | Icon and border color | Surface color | Foreground color | Button inverse |
 |---|---|---|---|---|
-| `info` | `ob.s.color.status.info.fg.contrast_medium` | `ob.s.color.status.info.bg.contrast_high` | `ob.s.color.neutral.fg.contrast_high` | `false` |
-| `critical` | `ob.s.color.status.critical.fg.contrast_medium` | `ob.s.color.status.critical.bg.contrast_high` | `ob.s.color.neutral.fg.contrast_high` | `false` |
-| `attention` | `ob.s.color.status.attention.fg.contrast_medium` | `ob.s.color.status.attention.bg.contrast_high` | `ob.s.color.neutral.fg.contrast_high` | `false` |
-| `resolved` | `ob.s.color.status.resolved.fg.contrast_medium` | `ob.s.color.status.resolved.bg.contrast_high` | `ob.s.color.neutral.fg.contrast_high` | `false` |
+| `info` | `ob.s.color.status.info.fg.contrast_medium` | `ob.s.color.status.info.bg.contrast_medium` | `ob.s.color.neutral.fg.contrast_high` | `false` |
+| `critical` | `ob.s.color.status.critical.fg.contrast_medium` | `ob.s.color.status.critical.bg.contrast_medium` | `ob.s.color.neutral.fg.contrast_high` | `false` |
+| `attention` | `ob.s.color.status.attention.fg.contrast_medium` | `ob.s.color.status.attention.bg.contrast_medium` | `ob.s.color.neutral.fg.contrast_high` | `false` |
+| `resolved` | `ob.s.color.status.resolved.fg.contrast_medium` | `ob.s.color.status.resolved.bg.contrast_medium` | `ob.s.color.neutral.fg.contrast_high` | `false` |
 | `fatal` | `ob.s.color.status.fatal.fg.contrast_medium_inverse` | `ob.s.color.status.fatal.bg.contrast_high_inverse` | `ob.s.color.neutral.fg.contrast_medium_inverse` | `true` |
 
 Each variant has four color tokens: `icon`, `border`, `surface` and `fg`. The `icon` and `border` tokens of a variant reference the same token. See [Status Colors](../../03-token-categories/colors/07-semantic-status.md) for the status color families.

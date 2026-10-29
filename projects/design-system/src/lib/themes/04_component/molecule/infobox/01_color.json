@@ -56,19 +56,19 @@
           "surface": {
             "info": {
               "$type": "color",
-              "$value": "{ob.s.color.status.info.bg.contrast_high}"
+              "$value": "{ob.s.color.status.info.bg.contrast_medium}"
             },
             "critical": {
               "$type": "color",
-              "$value": "{ob.s.color.status.critical.bg.contrast_high}"
+              "$value": "{ob.s.color.status.critical.bg.contrast_medium}"
             },
             "attention": {
               "$type": "color",
-              "$value": "{ob.s.color.status.attention.bg.contrast_high}"
+              "$value": "{ob.s.color.status.attention.bg.contrast_medium}"
             },
             "resolved": {
               "$type": "color",
-              "$value": "{ob.s.color.status.resolved.bg.contrast_high}"
+              "$value": "{ob.s.color.status.resolved.bg.contrast_medium}"
             },
             "fatal": {
               "$type": "color",

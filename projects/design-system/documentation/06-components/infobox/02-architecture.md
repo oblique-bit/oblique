@@ -60,10 +60,10 @@ File: `01_color.json`. The family description is "Color tokens for the Infobox m
 | `ob.c.infobox.color.border.attention` | `ob.s.color.status.attention.fg.contrast_medium` | Border color, `attention` |
 | `ob.c.infobox.color.border.resolved` | `ob.s.color.status.resolved.fg.contrast_medium` | Border color, `resolved` |
 | `ob.c.infobox.color.border.fatal` | `ob.s.color.status.fatal.fg.contrast_medium_inverse` | Border color, `fatal` |
-| `ob.c.infobox.color.surface.info` | `ob.s.color.status.info.bg.contrast_high` | Surface color, `info` |
-| `ob.c.infobox.color.surface.critical` | `ob.s.color.status.critical.bg.contrast_high` | Surface color, `critical` |
-| `ob.c.infobox.color.surface.attention` | `ob.s.color.status.attention.bg.contrast_high` | Surface color, `attention` |
-| `ob.c.infobox.color.surface.resolved` | `ob.s.color.status.resolved.bg.contrast_high` | Surface color, `resolved` |
+| `ob.c.infobox.color.surface.info` | `ob.s.color.status.info.bg.contrast_medium` | Surface color, `info` |
+| `ob.c.infobox.color.surface.critical` | `ob.s.color.status.critical.bg.contrast_medium` | Surface color, `critical` |
+| `ob.c.infobox.color.surface.attention` | `ob.s.color.status.attention.bg.contrast_medium` | Surface color, `attention` |
+| `ob.c.infobox.color.surface.resolved` | `ob.s.color.status.resolved.bg.contrast_medium` | Surface color, `resolved` |
 | `ob.c.infobox.color.surface.fatal` | `ob.s.color.status.fatal.bg.contrast_high_inverse` | Surface color, `fatal` |
 | `ob.c.infobox.color.fg.info` | `ob.s.color.neutral.fg.contrast_high` | Foreground color, `info` |
 | `ob.c.infobox.color.fg.critical` | `ob.s.color.neutral.fg.contrast_high` | Foreground color, `critical` |
@@ -199,8 +199,8 @@ Infobox tokens sit in the `ob.c.*` component tier. They reference semantic token
 
 ```
 ob.c.infobox.color.surface.info
-  → ob.s.color.status.info.bg.contrast_high
-      → ob.s1.color.status.info.bg.contrast_high  (color scheme layer: light or dark)
+  → ob.s.color.status.info.bg.contrast_medium
+      → ob.s1.color.status.info.bg.contrast_medium  (color scheme layer: light or dark)
           → ob.p.color.*
 
 ob.c.infobox.spacing.padding_top  (xs, sm, md)
@@ -272,10 +272,10 @@ The infobox references only semantic tokens. It does not reference primitives (`
 | `ob.s.color.status.attention.fg.contrast_medium` | `color.icon.attention`, `color.border.attention` |
 | `ob.s.color.status.resolved.fg.contrast_medium` | `color.icon.resolved`, `color.border.resolved` |
 | `ob.s.color.status.fatal.fg.contrast_medium_inverse` | `color.icon.fatal`, `color.border.fatal` |
-| `ob.s.color.status.info.bg.contrast_high` | `color.surface.info` |
-| `ob.s.color.status.critical.bg.contrast_high` | `color.surface.critical` |
-| `ob.s.color.status.attention.bg.contrast_high` | `color.surface.attention` |
-| `ob.s.color.status.resolved.bg.contrast_high` | `color.surface.resolved` |
+| `ob.s.color.status.info.bg.contrast_medium` | `color.surface.info` |
+| `ob.s.color.status.critical.bg.contrast_medium` | `color.surface.critical` |
+| `ob.s.color.status.attention.bg.contrast_medium` | `color.surface.attention` |
+| `ob.s.color.status.resolved.bg.contrast_medium` | `color.surface.resolved` |
 | `ob.s.color.status.fatal.bg.contrast_high_inverse` | `color.surface.fatal` |
 | `ob.s.color.neutral.fg.contrast_high` | `color.fg.info`, `color.fg.critical`, `color.fg.attention`, `color.fg.resolved` |
 | `ob.s.color.neutral.fg.contrast_medium_inverse` | `color.fg.fatal` |
