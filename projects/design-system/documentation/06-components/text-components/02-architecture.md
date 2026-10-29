@@ -8,6 +8,7 @@ The text components are heading (H1 to H6), paragraph, lead and link. They are n
 
 - a text style from `05_html/typography/style.json`,
 - a color and the spacing above and below from the typography context token set,
+- for the headings, the heading color tokens `ob.h.typography.heading.color.fg.*` from the color scheme token set,
 - for the link, the link tokens `ob.h.link.*`.
 
 The typography context token set exists twice, once for each mode of the `typography_context` mode collection. Both files define the same token names. Only the values differ.
@@ -16,6 +17,9 @@ The typography context token set exists twice, once for each mode of the `typogr
 
 ```
 05_html/typography/
+├── color_scheme/
+│   ├── light.json        — ob.h.typography.heading.color.fg.* for the light mode
+│   └── dark.json         — ob.h.typography.heading.color.fg.* for the dark mode (all white)
 ├── context/
 │   ├── interface.json    — ob.h.typography.context.* for the interface context
 │   └── prose.json        — ob.h.typography.context.* for the prose context
@@ -67,7 +71,7 @@ These tokens exist in `interface.json` and in `prose.json` with the same names.
 | `ob.h.typography.context.h<n>.font_weight` | `ob.s.typography.scale.static.font_weight.<weight>` | Font weight of the heading. |
 | `ob.h.typography.context.h<n>.line_height` | `ob.s.typography.scale.static.line_height.<step>` | Line height of the heading. |
 | `ob.h.typography.context.h<n>.letter_spacing` | `ob.s.typography.scale.static.letter_spacing_px.<step>` | Letter spacing of the heading. |
-| `ob.h.typography.context.h<n>.color.fg` | `ob.s.color.neutral.fg.<contrast>` | Foreground color of the heading. The contrast level differs between the interface and prose typography contexts. |
+| `ob.h.typography.context.h<n>.color.fg` | `ob.h.typography.heading.color.fg.<contrast>` | Foreground color of the heading. Light: the contrast step differs between the interface and prose typography contexts. Dark: white. |
 | `ob.h.typography.context.h<n>.paragraph_spacing` | `ob.s.typography.scale.static.paragraph_spacing.<step>` | Figma only. Spacing after manual line breaks. |
 | `ob.h.typography.context.h<n>.spacing.top` | `ob.s.dimension.static.typography_context.<step>` | Space above the heading. |
 | `ob.h.typography.context.h<n>.spacing.bottom` | `ob.s.dimension.static.typography_context.<step>` | Space below the heading. |
@@ -149,8 +153,9 @@ ob.h.heading.H1                                    (text style)
           → ob.p.font_size_rem.1000                  (3rem = 48 px)
 
 ob.h.typography.context.h1.color.fg
-  → ob.s.color.neutral.fg.contrast_low   (both contexts)
-      → ob.s1.color.neutral.fg.contrast_low   (resolved with the color scheme mode)
+  → ob.h.typography.heading.color.fg.contrast_low   (both contexts)
+      → ob.s.color.neutral.fg.contrast_low       (light mode)
+      → ob.s.color.neutral.fg.contrast_highest   (dark mode, white)
 
 ob.h.typography.context.h1.spacing.bottom
   → ob.s.dimension.static.typography_context.xs   (interface, 8 px)
@@ -168,6 +173,8 @@ Approved: in the `interface` context, the H3 font size is 20 px. The token `ob.s
 ### Heading color differs between levels and contexts
 
 The foreground color of each heading level has its own token. The contrast level differs between the interface and the prose typography context. The larger headings use lower contrast levels. See the value tables above.
+
+This applies to the light mode only. In the dark mode all heading levels are white. The typography context picks a contrast step `ob.h.typography.heading.color.fg.<contrast>`. The color scheme set resolves this step: in the light mode to the neutral foreground step of the same name, in the dark mode always to `contrast_highest`.
 
 ### Body color
 
@@ -202,10 +209,10 @@ The link text style `body/link` adds an underline. The text decoration of the li
 | `ob.s.typography.scale.static.paragraph_spacing.*` | `paragraph_spacing` tokens | `none` 0 px, `3xl` 24 px |
 | `ob.s.typography.scale.static.text_decoration.link.emphasis_high` | `ob.h.body.link` | underline |
 | `ob.s.dimension.static.typography_context.*` | `spacing.top`, `spacing.bottom`, `p`, `p_lead` | `none` 0 px, `xs` 8 px, `sm` 12 px, `md` 16 px, `2xl` 28 px |
-| `ob.s.color.neutral.fg.contrast_low` | heading color (H1, and H2 to H4 in prose) | follows `color_scheme` |
-| `ob.s.color.neutral.fg.contrast_medium` | heading color (H2 in interface, H5 in prose) | follows `color_scheme` |
-| `ob.s.color.neutral.fg.contrast_high` | heading color (H3 to H6 in interface, H6 in prose) | follows `color_scheme` |
-| `ob.s.color.neutral.fg.contrast_highest` | body color | follows `color_scheme` |
+| `ob.s.color.neutral.fg.contrast_low` | heading color in the light mode (H1, and H2 to H4 in prose) | follows `color_scheme` |
+| `ob.s.color.neutral.fg.contrast_medium` | heading color in the light mode (H2 in interface, H5 in prose) | follows `color_scheme` |
+| `ob.s.color.neutral.fg.contrast_high` | heading color in the light mode (H3 to H6 in interface, H6 in prose) | follows `color_scheme` |
+| `ob.s.color.neutral.fg.contrast_highest` | body color, all heading colors in the dark mode | follows `color_scheme` |
 
 ---
 

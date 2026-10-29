@@ -1,0 +1,35 @@
+{
+  "ob": {
+    "h": {
+      "typography": {
+        "heading": {
+          "color": {
+            "token_family_docs": {
+              "description": {
+                "$type": "other",
+                "$value": "Heading colors, dark mode: every step is white, so all headings have the highest contrast."
+              }
+            },
+            "fg": {
+              "contrast_low": {
+                "$type": "color",
+                "$value": "{ob.s.color.neutral.fg.contrast_highest}",
+                "$description": "Heading foreground, low contrast step. Dark mode: white on every heading level."
+              },
+              "contrast_medium": {
+                "$type": "color",
+                "$value": "{ob.s.color.neutral.fg.contrast_highest}",
+                "$description": "Heading foreground, medium contrast step. Dark mode: white on every heading level."
+              },
+              "contrast_high": {
+                "$type": "color",
+                "$value": "{ob.s.color.neutral.fg.contrast_highest}",
+                "$description": "Heading foreground, high contrast step. Dark mode: white on every heading level."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

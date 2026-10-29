@@ -12,6 +12,7 @@
 | **Semantic — single** | `ob.s.typography.scale.{static\|dynamic}.*` | [`03_semantic/typography/single/`](../../src/lib/themes/03_semantic/typography/single) | One property per token. Building blocks for components. |
 | **Semantic — grouped** | `ob.s.typography.authoring.{static\|dynamic}.*` | [`03_semantic/typography/grouped/`](../../src/lib/themes/03_semantic/typography/grouped) | Composite tokens (`$type: "typography"`) that become Figma text styles. |
 | **HTML — context** | `ob.h.typography.context.*` | [`05_html/typography/context/`](../../src/lib/themes/05_html/typography/context) | Per-element values for `h1`–`h6`, `body`, `p`, `p_lead`, per typography context. |
+| **HTML — heading color** | `ob.h.typography.heading.color.*` | [`05_html/typography/color_scheme/`](../../src/lib/themes/05_html/typography/color_scheme) | Heading color steps per color scheme. Light: the neutral foreground step. Dark: white. |
 | **HTML — style** | `ob.h.heading.*`, `ob.h.body.*` | [`05_html/typography/style.json`](../../src/lib/themes/05_html/typography/style.json) | The reusable named text styles. |
 
 ---

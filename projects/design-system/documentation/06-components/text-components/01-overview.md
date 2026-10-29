@@ -21,7 +21,7 @@ The text components react to the `typography_context` mode collection. It has tw
 Six levels. Each level has its own tokens for typography, color and spacing.
 
 - **Text style**: `heading/H1` to `heading/H6` (tokens `ob.h.heading.H1` to `ob.h.heading.H6`)
-- **Color**: `ob.h.typography.context.h1.color.fg` to `ob.h.typography.context.h6.color.fg`. The contrast level differs between the levels and between the two typography contexts.
+- **Color**: `ob.h.typography.context.h1.color.fg` to `ob.h.typography.context.h6.color.fg`. In the light mode the contrast level differs between the levels and between the two typography contexts. In the dark mode all headings are white.
 - **Spacing**: `ob.h.typography.context.h1.spacing.top` and `.bottom`, and the same for H2 to H6. H1 has no space above in both contexts.
 
 ### Paragraph
@@ -138,6 +138,7 @@ The body text color is the highest contrast level of the neutral colors. This gi
 | Tokens | Location |
 |--------|----------|
 | `ob.h.typography.context.*` | `05_html/typography/context/interface.json` and `prose.json` |
+| `ob.h.typography.heading.color.*` | `05_html/typography/color_scheme/light.json` and `dark.json` |
 | `ob.h.heading.*` and `ob.h.body.*` | `05_html/typography/style.json` |
 | `ob.h.link.*` | `05_html/link/` (see [Link Architecture](../link/02-architecture.md)) |
 

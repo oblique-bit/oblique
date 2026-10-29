@@ -447,6 +447,7 @@
       "02_primitive/modifier": "source",
       "05_html/button/00_state_layer": "source",
       "05_html/button/01_color/color_scheme/light": "enabled",
+      "05_html/typography/color_scheme/light": "enabled",
       "05_html/button/01_color/elevation/level_2_color/color_scheme/light": "enabled",
       "03_semantic/color/elevation/level_minus_1_color/color_scheme/light": "enabled"
     },
@@ -850,6 +851,7 @@
       "02_primitive/modifier": "source",
       "05_html/button/00_state_layer": "source",
       "05_html/button/01_color/color_scheme/dark": "enabled",
+      "05_html/typography/color_scheme/dark": "enabled",
       "05_html/button/01_color/elevation/level_2_color/color_scheme/dark": "enabled",
       "03_semantic/color/elevation/level_minus_1_color/color_scheme/dark": "enabled"
     },

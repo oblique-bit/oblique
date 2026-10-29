@@ -1,0 +1,35 @@
+{
+  "ob": {
+    "h": {
+      "typography": {
+        "heading": {
+          "color": {
+            "token_family_docs": {
+              "description": {
+                "$type": "other",
+                "$value": "Heading colors, light mode: each step equals the neutral foreground step of the same name."
+              }
+            },
+            "fg": {
+              "contrast_low": {
+                "$type": "color",
+                "$value": "{ob.s.color.neutral.fg.contrast_low}",
+                "$description": "Heading foreground, low contrast step. Light mode: same as the neutral foreground step."
+              },
+              "contrast_medium": {
+                "$type": "color",
+                "$value": "{ob.s.color.neutral.fg.contrast_medium}",
+                "$description": "Heading foreground, medium contrast step. Light mode: same as the neutral foreground step."
+              },
+              "contrast_high": {
+                "$type": "color",
+                "$value": "{ob.s.color.neutral.fg.contrast_high}",
+                "$description": "Heading foreground, high contrast step. Light mode: same as the neutral foreground step."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

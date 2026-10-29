@@ -33,8 +33,8 @@
             "color": {
               "fg": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast_low}",
-                "$description": "Foreground color of H1 headings. The contrast level differs between the interface and prose typography contexts."
+                "$value": "{ob.h.typography.heading.color.fg.contrast_low}",
+                "$description": "Foreground color of H1 headings. Light: contrast step per typography context. Dark: white."
               }
             },
             "paragraph_spacing": {
@@ -77,8 +77,8 @@
             "color": {
               "fg": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast_medium}",
-                "$description": "Foreground color of H2 headings. The contrast level differs between the interface and prose typography contexts."
+                "$value": "{ob.h.typography.heading.color.fg.contrast_medium}",
+                "$description": "Foreground color of H2 headings. Light: contrast step per typography context. Dark: white."
               }
             },
             "paragraph_spacing": {
@@ -122,8 +122,8 @@
             "color": {
               "fg": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast_high}",
-                "$description": "Foreground color of H3 headings. The contrast level differs between the interface and prose typography contexts."
+                "$value": "{ob.h.typography.heading.color.fg.contrast_high}",
+                "$description": "Foreground color of H3 headings. Light: contrast step per typography context. Dark: white."
               }
             },
             "paragraph_spacing": {
@@ -166,8 +166,8 @@
             "color": {
               "fg": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast_high}",
-                "$description": "Foreground color of H4 headings. The contrast level differs between the interface and prose typography contexts."
+                "$value": "{ob.h.typography.heading.color.fg.contrast_high}",
+                "$description": "Foreground color of H4 headings. Light: contrast step per typography context. Dark: white."
               }
             },
             "paragraph_spacing": {
@@ -210,8 +210,8 @@
             "color": {
               "fg": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast_high}",
-                "$description": "Foreground color of H5 headings. The contrast level differs between the interface and prose typography contexts."
+                "$value": "{ob.h.typography.heading.color.fg.contrast_high}",
+                "$description": "Foreground color of H5 headings. Light: contrast step per typography context. Dark: white."
               }
             },
             "paragraph_spacing": {
@@ -254,8 +254,8 @@
             "color": {
               "fg": {
                 "$type": "color",
-                "$value": "{ob.s.color.neutral.fg.contrast_high}",
-                "$description": "Foreground color of H6 headings. The contrast level differs between the interface and prose typography contexts."
+                "$value": "{ob.h.typography.heading.color.fg.contrast_high}",
+                "$description": "Foreground color of H6 headings. Light: contrast step per typography context. Dark: white."
               }
             },
             "paragraph_spacing": {
