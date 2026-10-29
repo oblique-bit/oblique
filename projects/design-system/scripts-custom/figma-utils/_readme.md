@@ -437,17 +437,15 @@ so it is measured per cell, on what the cell actually renders: cell fills,
 then the Button fill (with its alpha), then the label, icon and border paints.
 The component sheet alone cannot show this.
 
-Checks: label text 4.5:1 (WCAG 1.4.3, 3:1 for large text), icon 3:1 (1.4.11)
-as AA fails; fill of the filled priorities (`primary`) and borders against the
-cell surface below 3:1 as informative notes, since 1.4.11 does not require a
-boundary when the label identifies the button, nor a contrast between the
-colours of two states. Disabled variants are skipped (inactive components are
-exempt).
+Checks: label text 4.5:1 (WCAG 1.4.3, 3:1 for large text) and icon 3:1
+(1.4.11). Only AA fails are annotated. Fill or border against the surface is
+not checked: the label identifies the button, so 1.4.11 does not require it.
+Disabled variants are skipped (inactive components are exempt).
 
 `scan` reports only. `write` removes the annotations this script wrote before
 (label starts with `**Contrast check**`) and writes one annotation on each
-Button instance with findings, in the `Accessibility` category: one short
-line with the ratio, e.g. `Contrast fill vs surface 1.07:1 (under 3:1)`.
+Button instance with an AA fail, in the `Accessibility` category: one short
+line with the ratio, e.g. `Contrast AA fail: label 4.14:1 (needs 4.5:1)`.
 Other annotations are kept. Figma lists an
 annotation on an instance as an `annotations` override: metadata only, the
 colours and the behaviour still come from the main. When the script removes

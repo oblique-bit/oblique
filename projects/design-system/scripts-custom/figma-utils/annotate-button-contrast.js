@@ -6,17 +6,15 @@
  * so it must be measured in every cell, not on the component sheet.
  *
  * For each cell (direct FRAME child of CONFIG.rootId) the script composites the
- * cell fills, the Button fill and the label / icon / border paints, then checks:
- *   - label text  >= 4.5:1  (WCAG 1.4.3, AA fail otherwise)
- *   - icon        >= 3:1    (WCAG 1.4.11, AA fail otherwise)
- *   - fill/border >= 3:1    against the cell surface, for filled priorities and
- *                           borders (informative only: 1.4.11 does not require a
- *                           boundary when text identifies the button, and not
- *                           for colour changes between states)
+ * cell fills, the Button fill and the label / icon paints, then checks:
+ *   - label text  >= 4.5:1  (WCAG 1.4.3, 3:1 for large text)
+ *   - icon        >= 3:1    (WCAG 1.4.11)
+ * Only AA fails are annotated. Fill or border against the surface is not
+ * checked: the label identifies the button, so 1.4.11 does not require it.
  * Disabled variants are skipped (inactive components are exempt in WCAG).
  *
  * Each run first removes the annotations it wrote before (label starts with
- * MARKER), then writes one annotation on each Button instance with findings.
+ * MARKER), then writes one annotation on each Button instance with an AA fail.
  * Other annotations are kept. Figma lists an annotation on an instance as an
  * `annotations` override (metadata only, colours and behaviour still come from
  * the main). When the last annotation of this script leaves an instance whose
@@ -41,7 +39,6 @@
     fileKeyGuard: 'QOcr0cvwuFDH9AAUdjMZgx', // DesignSystem@Tokens V10.0
     rootId: '4027:330', // Elevation demo
     componentSetName: 'button/button_standard',
-    filledPriorities: ['primary'], // priorities whose fill is the button shape
     category: 'Accessibility',
     MARKER: '**Contrast**', // own annotations start with this (older runs wrote '**Contrast check**')
   };
@@ -69,15 +66,11 @@
       const v = Object.fromEntries(m.name.split(', ').map(s => s.split('=')));
       const bg = over(layers(b.fills), surface);
       const label = b.findOne(n => n.type === 'TEXT'), icon = b.findOne(n => n.type === 'VECTOR');
-      const fails = [], info = [];
+      const fails = [];
       if (label) { const need = isLarge(label) ? 3 : 4.5; const t = ratio(over(layers(label.fills), bg), bg); if (t < need) fails.push(`label ${fmt(t)} (needs ${need}:1)`); }
       if (icon) { const t = ratio(over(layers(icon.fills), bg), bg); if (t < 3) fails.push(`icon ${fmt(t)} (needs 3:1)`); }
-      const stroke = layers(b.strokes);
-      const edge = stroke.length ? ['border', ratio(over(stroke, surface), surface)] : CONFIG.filledPriorities.includes(v.priority) ? ['fill', ratio(bg, surface)] : null;
-      if (edge && edge[1] < 3) info.push(`${edge[0]} vs surface ${fmt(edge[1])} (under 3:1)`);
-      if (!fails.length && !info.length) continue;
-      const parts = [...(fails.length ? ['AA fail: ' + fails.join(', ')] : []), ...info];
-      report.push({ node: b, cell: cell.name, button: `${v.priority} ${v.interaction}`, text: `${CONFIG.MARKER} ${parts.join('; ')}` });
+      if (!fails.length) continue;
+      report.push({ node: b, cell: cell.name, button: `${v.priority} ${v.interaction}`, text: `${CONFIG.MARKER} AA fail: ${fails.join(', ')}` });
     }
   }
 
@@ -87,11 +80,19 @@
     const targets = new Set(report.map(r => r.node.id));
     const own = a => (a.labelMarkdown || a.label || '').startsWith(CONFIG.MARKER.replace(/\*+$/, ''));
     const mineOf = n => n.annotations.filter(own);
+    // paint bindings of text and vectors, to see whether an instance still matches its main after a reset
+    const bindings = n => n.findAll(x => x.type === 'TEXT' || x.type === 'VECTOR').map(x => { const p = Array.isArray(x.fills) && x.fills[0]; return p && p.boundVariables && p.boundVariables.color ? p.boundVariables.color.id : '-'; }).join();
     for (const n of [root, ...root.findAll(x => 'annotations' in x && x.annotations.length > 0)]) {
       const count = mineOf(n).length; if (!count) continue;
       n.annotations = n.annotations.filter(a => !own(a)); removed += count;
       const onlyAnnotationOverride = n.type === 'INSTANCE' && !n.annotations.length && (n.overrides || []).every(o => o.overriddenFields.every(f => f === 'annotations'));
-      if (onlyAnnotationOverride && !targets.has(n.id)) { n.resetOverrides(); reset++; }
+      if (onlyAnnotationOverride && !targets.has(n.id)) {
+        n.resetOverrides(); reset++;
+        // Figma quirk: after a reset, nested icons can show their own colour instead of the main's
+        // override; switching a variant property off and on again re-instantiates the instance
+        const m = await n.getMainComponentAsync(); const inv = n.componentProperties.inverse;
+        if (inv && bindings(n) !== bindings(m)) { const val = inv.value; n.setProperties({ inverse: val === 'true' ? 'false' : 'true' }); n.setProperties({ inverse: val }); }
+      }
     }
     for (const r of report) { r.node.annotations = [...r.node.annotations, { labelMarkdown: r.text, ...(cat ? { categoryId: cat.id } : {}) }]; written++; }
     await new Promise(r => setTimeout(r, 1500));
