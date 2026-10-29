@@ -1,6 +1,6 @@
 # Infobox Component Overview
 
-> Working version on the development line (git branch `tokens-dev`). The infobox tokens are not part of Oblique 16. The token `ob.c.infobox.buttons_order_figma` is named for Figma and holds the order of the buttons.
+> Working version on the development line (git branch `tokens-dev`). The infobox tokens are not part of Oblique 16. The order and direction of the buttons come from the button container tokens `ob.h.button.container.order_figma` and `ob.h.button.container.direction_figma`.
 
 ## Component Introduction
 
@@ -10,7 +10,7 @@ The tokens are split into three families:
 
 - **Color tokens**: icon, border, surface and foreground colors.
 - **Layout tokens**: container padding, icon asset, border radius, typography and button inverse.
-- **Viewport-specific layout tokens**: spacing, sizes, border width and button order. There is one token set for each of the six viewport modes. The sets of `xs`, `sm` and `md` are described as the mobile breakpoint. The sets of `lg`, `xl` and `2xl` are described as the desktop breakpoint.
+- **Viewport-specific layout tokens**: spacing, sizes and border width. There is one token set for each of the six viewport modes. The sets of `xs`, `sm` and `md` are described as the mobile breakpoint. The sets of `lg`, `xl` and `2xl` are described as the desktop breakpoint.
 
 Five status variants exist: `info`, `critical`, `attention`, `resolved` and `fatal`.
 
@@ -43,9 +43,8 @@ The token names and descriptions refer to these parts of the infobox:
 | Size | `ob.c.infobox.size.*` | 3 per viewport | `03_viewport/{viewport}.json` |
 | Border width | `ob.c.infobox.border_width.left` | 1 per viewport | `03_viewport/{viewport}.json` |
 | Container spacing | `ob.c.infobox.container.spacing.*` | 5 per viewport | `03_viewport/{viewport}.json` |
-| Buttons order | `ob.c.infobox.buttons_order_figma` | 1 per viewport | `03_viewport/{viewport}.json` |
 
-The component has 62 token paths. The 25 viewport paths exist once in each of the six viewport files, so the token files hold 187 tokens in total.
+The component has 61 token paths. The 24 viewport paths exist once in each of the six viewport files, so the token files hold 181 tokens in total.
 
 ## Variants
 
@@ -94,12 +93,12 @@ Border width and border radius reference `ob.s.border_width.*` and `ob.s.border_
 
 The viewport sets are `03_viewport/xs`, `sm`, `md`, `lg`, `xl` and `2xl`. The ranges of the viewport modes are listed in [Viewport Mode](../../04-modes/06-viewport.md).
 
-The six sets hold the same 25 tokens, but only two different value sets exist:
+The six sets hold the same 24 tokens, but only two different value sets exist:
 
 - `xs`, `sm` and `md` have identical values. Their family description says "mobile breakpoint".
 - `lg`, `xl` and `2xl` have identical values. Their family description says "desktop breakpoint".
 
-17 of the 25 tokens differ between the two groups. 8 tokens have the same value in all six viewports.
+16 of the 24 tokens differ between the two groups. 8 tokens have the same value in all six viewports.
 
 **Tokens that differ between `xs`, `sm`, `md` and `lg`, `xl`, `2xl`:**
 
@@ -121,7 +120,6 @@ The six sets hold the same 25 tokens, but only two different value sets exist:
 | `container.spacing.row_gap` | `element.xl.px` | `spacing.sm.px` |
 | `container.spacing.padding_bottom` | `spacing.xs.px` | `spacing.sm.px` |
 | `container.spacing.padding_top` | `micro.sm.px` | `spacing.sm.px` |
-| `buttons_order_figma` | `primary-first` | `primary-last` |
 
 The short forms such as `spacing.xs.px` stand for `ob.s.dimension.static.scale.spacing.xs.px`. The values in px are in the [Architecture](02-architecture.md#consumed-tokens) page.
 

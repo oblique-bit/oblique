@@ -146,11 +146,6 @@
               "$value": "{ob.s.dimension.static.scale.none.px}"
             }
           }
-        },
-        "buttons_order_figma": {
-          "$type": "text",
-          "$value": "primary-last",
-          "$description": "The primary button in an Infobox on Desktop should be positioned on the right side of a right-aligned button group to ensure it appears as the last element, facilitating intuitive navigation and decision-making."
         }
       }
     }

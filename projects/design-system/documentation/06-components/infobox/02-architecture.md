@@ -17,7 +17,7 @@ The infobox is a molecule in Oblique DS. It has five status variants (`info`, `c
 │   ├── ob.c.infobox.border_radius.*
 │   ├── ob.c.infobox.typography.*
 │   └── ob.c.infobox.{status}.button.inverse
-└── 03_viewport/       — 25 tokens in each file, one file for each viewport mode
+└── 03_viewport/       — 24 tokens in each file, one file for each viewport mode
     ├── xs.json
     ├── sm.json
     ├── md.json
@@ -33,7 +33,6 @@ ob.c.infobox.spacing.*
 ob.c.infobox.size.*
 ob.c.infobox.border_width.left
 ob.c.infobox.container.spacing.*
-ob.c.infobox.buttons_order_figma
 ```
 
 Every file also has a `token_family_docs.description` token that describes the file. These description tokens are not listed in the tables.
@@ -188,13 +187,9 @@ A boolean token cannot set a component property in Figma, so the designer picks 
 
 **Change 2026-10-29:** these tokens were `ob.c.infobox.{status}.button.inversion` with the `$type` `text` and the values `none` and `inverse`. They were renamed and changed to `boolean` to match the new Button variant property `inverse` (`true` / `false`), which replaces the separate flipped Button set. The change is not final; it can be reverted if the text form fits better.
 
-### Buttons order (`03_viewport/`)
+### Buttons order and direction
 
-This token has the `$type` `text`. Its value is a literal text. The path in this table starts with `ob.c.infobox.`.
-
-| Token | xs | sm | md | lg | xl | 2xl | Description |
-|---|---|---|---|---|---|---|---|
-| `buttons_order_figma` | `primary-first` | `primary-first` | `primary-first` | `primary-last` | `primary-last` | `primary-last` | Order of the buttons. On desktop the primary button is on the right of a right-aligned button group, as the last element, for intuitive navigation and decision-making. |
+**Change 2026-10-29:** the token `ob.c.infobox.buttons_order_figma` was removed. The buttons of the infobox use the `button/container` component. Its order and direction follow `ob.h.button.container.order_figma` and `ob.h.button.container.direction_figma`. On `xs`, `sm` and `md` the buttons are stacked vertically at full width, with the primary button first. On `lg`, `xl` and `2xl` they are in a right-aligned row, with the primary button last.
 
 ## Token Architecture Integration
 
@@ -251,7 +246,7 @@ The title and the body use different font weights. This builds visual contrast a
 
 ### Button order
 
-On desktop the primary button is on the right of a right-aligned button group, so that it is the last element. This helps intuitive navigation and decision-making. The token has the value `primary-last` in `lg`, `xl` and `2xl` and `primary-first` in `xs`, `sm` and `md`.
+On desktop the primary button is on the right of a right-aligned button group, so that it is the last element. This helps intuitive navigation and decision-making. On mobile the buttons are stacked at full width and the primary button comes first. The button container tokens `ob.h.button.container.order_figma` and `ob.h.button.container.direction_figma` set both.
 
 ### Fatal icon
 
