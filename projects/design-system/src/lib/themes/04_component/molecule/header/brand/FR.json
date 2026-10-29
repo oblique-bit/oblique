@@ -1,0 +1,19 @@
+{
+  "ob": {
+    "c": {
+      "header": {
+        "token_family_docs": {
+          "description": {
+            "$type": "other",
+            "$value": "[FIGMA-ONLY] Brand mode FR: selects the logo variant of the _pseudo/header component. Delete when the real header component ships."
+          }
+        },
+        "logo_figma": {
+          "$type": "text",
+          "$value": "FR",
+          "$description": "Figma variant switch for the header logo. FR: Canton of Fribourg logo (arms and name)."
+        }
+      }
+    }
+  }
+}

@@ -443,7 +443,8 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "02_primitive/color": "source",
-      "02_primitive/brand/CH_app": "enabled"
+      "02_primitive/brand/CH_app": "enabled",
+      "04_component/molecule/header/brand/CH_app": "enabled"
     },
     "group": "brand",
     "$figmaVariableReferences": {
@@ -468,7 +469,8 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "02_primitive/color": "source",
-      "02_primitive/brand/CH_marketing": "enabled"
+      "02_primitive/brand/CH_marketing": "enabled",
+      "04_component/molecule/header/brand/CH_marketing": "enabled"
     },
     "group": "brand",
     "$figmaVariableReferences": {
@@ -493,7 +495,8 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "02_primitive/color": "source",
-      "02_primitive/brand/ZH": "enabled"
+      "02_primitive/brand/ZH": "enabled",
+      "04_component/molecule/header/brand/ZH": "enabled"
     },
     "group": "brand",
     "$figmaVariableReferences": {
@@ -518,7 +521,8 @@
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
       "02_primitive/color": "source",
-      "02_primitive/brand/FR": "enabled"
+      "02_primitive/brand/FR": "enabled",
+      "04_component/molecule/header/brand/FR": "enabled"
     },
     "group": "brand",
     "$figmaVariableReferences": {

@@ -1,0 +1,19 @@
+{
+  "ob": {
+    "c": {
+      "header": {
+        "token_family_docs": {
+          "description": {
+            "$type": "other",
+            "$value": "[FIGMA-ONLY] Brand mode CH_app: selects the logo variant of the _pseudo/header component. Delete when the real header component ships."
+          }
+        },
+        "logo_figma": {
+          "$type": "text",
+          "$value": "CH",
+          "$description": "Figma variant switch for the header logo. CH_app: Federal logo (Swiss cross)."
+        }
+      }
+    }
+  }
+}

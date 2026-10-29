@@ -31,6 +31,7 @@ White label on step 600: `steelblue` 4.84:1, `red` 5.01:1, `ZH` 5.28:1, `FR` 4.6
 
 - **`01_global/mode_collection/brand.json`**: registers the four modes and the CSS class of each mode.
 - **`02_primitive/brand/CH_app.json`, `CH_marketing.json`, `ZH.json`, `FR.json`**: the brand ramp `ob.p.color.brand.50`–`900` and `ob.p.color.brand.accent`. One file per mode. `CH_app` and `CH_marketing` point to existing primitives, `ZH` and `FR` hold the ramp values.
+- **`04_component/molecule/header/brand/CH_app.json`, `CH_marketing.json`, `ZH.json`, `FR.json`**: `ob.c.header.logo_figma`, a Figma-only text token (`CH`, `CH`, `ZH`, `FR`). It is bound to the `logo` variant property of the `_pseudo/header` component, so the header shows the logo of the brand.
 
 ### **Tokens that follow the mode**
 
@@ -47,7 +48,7 @@ The collection is registered in `01_global/mode_collection/brand.json`. `CH_app`
 ## **Limits of the proof of concept**
 
 - The mode swaps the ramp only. The real brands also use other roles: the Swiss DS filled Button is slate (`cobalt.500`), the ZH Buttons are black, and red is the Swiss DS outline Button and link color. These roles are not part of this mode yet.
-- The brand logo is not part of the mode yet.
+- The logo switches only in Figma (`ob.c.header.logo_figma`). The logos are the official files of the brands: the federal logo, the Canton of Zurich lion with the arms (zh.ch) and the Canton of Fribourg logo (fr.ch).
 
 ## **Mode Interplay**
 

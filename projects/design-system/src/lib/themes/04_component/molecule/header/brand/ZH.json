@@ -1,0 +1,19 @@
+{
+  "ob": {
+    "c": {
+      "header": {
+        "token_family_docs": {
+          "description": {
+            "$type": "other",
+            "$value": "[FIGMA-ONLY] Brand mode ZH: selects the logo variant of the _pseudo/header component. Delete when the real header component ships."
+          }
+        },
+        "logo_figma": {
+          "$type": "text",
+          "$value": "ZH",
+          "$description": "Figma variant switch for the header logo. ZH: Canton of Zurich logo (lion and arms)."
+        }
+      }
+    }
+  }
+}
