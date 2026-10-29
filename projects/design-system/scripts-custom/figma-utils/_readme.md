@@ -428,3 +428,25 @@ As of 2026-09-14, every doc-builder's own `deprecateOldScratchPages()`
 move inline, right after renaming — so this script is now mainly for
 ad-hoc cleanup (e.g. after a manual rename) rather than something you need
 to remember to run after every build.
+
+## annotate-button-contrast.js — measure Button contrast per cell, write Accessibility annotations
+
+A demo frame shows the Button in many mode contexts: every cell sets its own
+`color_scheme`, `emphasis` and `elevation`. Contrast depends on that context,
+so it is measured per cell, on what the cell actually renders: cell fills,
+then the Button fill (with its alpha), then the label, icon and border paints.
+The component sheet alone cannot show this.
+
+Checks: label text 4.5:1 (WCAG 1.4.3, 3:1 for large text), icon 3:1 (1.4.11)
+as AA fails; fill of the filled priorities (`primary`) and borders against the
+cell surface below 3:1 as informative notes, since 1.4.11 does not require a
+boundary when the label identifies the button, nor a contrast between the
+colours of two states. Disabled variants are skipped (inactive components are
+exempt).
+
+`scan` reports only. `write` removes the annotations this script wrote before
+(label starts with `**Contrast check**`) and writes one annotation per cell
+with findings, in the `Accessibility` category. Other annotations and the
+Button instances are never touched. Run it again after a Token Studio export
+that changes Button or surface colours. Through the CLI, strip the header
+first (see the file).
