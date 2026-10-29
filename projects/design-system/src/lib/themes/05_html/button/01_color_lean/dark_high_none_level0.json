@@ -31,7 +31,7 @@
             "bg": {
               "rest": {
                 "$type": "color",
-                "$value": "{ob.p.color.steelblue.500}"
+                "$value": "{ob.p.color.steelblue.600}"
               },
               "hover": {
                 "$extensions": {
