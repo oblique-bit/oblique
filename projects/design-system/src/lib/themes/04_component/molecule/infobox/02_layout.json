@@ -15,6 +15,18 @@
             "$description": "Needed to extend the padding in the Infobox component, ensuring consistent and visually appealing spacing to the right and below the button."
           }
         },
+        "buttons_container": {
+          "col_gap": {
+            "$type": "spacing",
+            "$value": "{ob.s.dimension.static.scale.spacing.xs.px}",
+            "$description": "Horizontal gap between the buttons in the Infobox button group. Same on every viewport."
+          },
+          "row_gap": {
+            "$type": "spacing",
+            "$value": "{ob.s.dimension.static.scale.spacing.xs.px}",
+            "$description": "Vertical gap between button rows when the button group wraps onto a new line."
+          }
+        },
         "icon": {
           "asset": {
             "status": {
