@@ -2672,6 +2672,7 @@
       "03_semantic/dimension/viewport/xl": "enabled",
       "04_component/molecule/header/xl": "enabled",
       "04_component/molecule/infobox/03_viewport/xl": "enabled",
+      "05_html/button/03_viewport/xl": "enabled",
       "01_global/mode_collection/viewport": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:8:10",
@@ -2716,6 +2717,7 @@
       "03_semantic/dimension/viewport/xs": "enabled",
       "04_component/molecule/header/xs": "enabled",
       "04_component/molecule/infobox/03_viewport/xs": "enabled",
+      "05_html/button/03_viewport/xs": "enabled",
       "01_global/mode_collection/viewport": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:8:10",
@@ -2760,6 +2762,7 @@
       "03_semantic/dimension/viewport/sm": "enabled",
       "04_component/molecule/header/sm": "enabled",
       "04_component/molecule/infobox/03_viewport/sm": "enabled",
+      "05_html/button/03_viewport/sm": "enabled",
       "01_global/mode_collection/viewport": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:8:10",
@@ -2804,6 +2807,7 @@
       "03_semantic/dimension/viewport/md": "enabled",
       "04_component/molecule/header/md": "enabled",
       "04_component/molecule/infobox/03_viewport/md": "enabled",
+      "05_html/button/03_viewport/md": "enabled",
       "01_global/mode_collection/viewport": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:8:10",
@@ -2848,6 +2852,7 @@
       "03_semantic/dimension/viewport/lg": "enabled",
       "04_component/molecule/header/lg": "enabled",
       "04_component/molecule/infobox/03_viewport/lg": "enabled",
+      "05_html/button/03_viewport/lg": "enabled",
       "01_global/mode_collection/viewport": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:8:10",
@@ -2892,6 +2897,7 @@
       "03_semantic/dimension/viewport/2xl": "enabled",
       "04_component/molecule/header/2xl": "enabled",
       "04_component/molecule/infobox/03_viewport/2xl": "enabled",
+      "05_html/button/03_viewport/2xl": "enabled",
       "01_global/mode_collection/viewport": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:8:10",

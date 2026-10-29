@@ -183,6 +183,7 @@
 	--ob-h-button-color-tertiary-fg-rest: var(--ob-h-button-color-emphasis_high-secondary-fg-rest);
 	--ob-h-button-color-tertiary-fg-rest_inverse: var(--ob-h-button-color-emphasis_high-secondary-fg-rest_inverse);
 	--ob-h-button-color-token_family_docs-description: Button state colors for the high emphasis mode: primary, secondary and tertiary, each rest, hover and active, plus disabled. Aliases of the high branch of the color_scheme sets, each with the inversion pair. Disabled always aliases the low branch rest colors, so a disabled button is neutral (cobalt) in both emphasis modes.;
+	--ob-h-button-container-gap: var(--ob-s-dimension-static-scale-spacing-xs-px);
 	--ob-h-button-dynamic-icon-size: var(--ob-s-dimension-static-scale-spacing-md-px);
 	--ob-h-button-dynamic-icon_only-spacing-padding-horizontal: var(--ob-s-dimension-dynamic-scale-element-sm-px);
 	--ob-h-button-dynamic-icon_only-spacing-padding-vertical: var(--ob-s-dimension-dynamic-scale-element-sm-px);

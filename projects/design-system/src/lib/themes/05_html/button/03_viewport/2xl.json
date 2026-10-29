@@ -1,0 +1,26 @@
+{
+  "ob": {
+    "h": {
+      "button": {
+        "token_family_docs": {
+          "description": {
+            "$type": "other",
+            "$value": "Viewport-specific tokens for the button container at the desktop breakpoint: stack direction and button order."
+          }
+        },
+        "container": {
+          "direction_figma": {
+            "$type": "text",
+            "$value": "horizontal",
+            "$description": "Figma variant switch for the button container. Vertical with full-width buttons on mobile, horizontal from lg."
+          },
+          "order_figma": {
+            "$type": "text",
+            "$value": "primary-last",
+            "$description": "Figma variant switch for the button order. Primary button first on mobile, last from lg."
+          }
+        }
+      }
+    }
+  }
+}

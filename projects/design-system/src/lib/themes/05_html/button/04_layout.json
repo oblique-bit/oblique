@@ -166,6 +166,13 @@
               "$value": "{ob.s.dimension.static.scale.spacing.md.px}"
             }
           }
+        },
+        "container": {
+          "gap": {
+            "$type": "spacing",
+            "$value": "{ob.s.dimension.static.scale.spacing.xs.px}",
+            "$description": "Gap between the buttons in the button container, in both directions. Same on every viewport."
+          }
         }
       }
     }
