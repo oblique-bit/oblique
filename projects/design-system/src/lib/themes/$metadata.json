@@ -54,6 +54,7 @@
     "03_semantic/state-layer",
     "04_component/atom/icon/01_color",
     "04_component/atom/icon/02_layout",
+    "04_component/molecule/checkbox_PoC/01_color_all_axes",
     "04_component/molecule/infobox/01_color_lean/light_info_level0",
     "04_component/molecule/infobox/01_color_lean/light_info_level1",
     "04_component/molecule/infobox/01_color_lean/light_error_level0",
