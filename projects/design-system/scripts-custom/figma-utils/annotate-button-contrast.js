@@ -43,7 +43,7 @@
     componentSetName: 'button/button_standard',
     filledPriorities: ['primary'], // priorities whose fill is the button shape
     category: 'Accessibility',
-    MARKER: '**Contrast check**',
+    MARKER: '**Contrast**', // own annotations start with this (older runs wrote '**Contrast check**')
   };
   // ==========================================================================
 
@@ -57,7 +57,6 @@
   const over = (stack, base) => stack.reduce((c, l) => ({ r: l.c.r * l.a + c.r * (1 - l.a), g: l.c.g * l.a + c.g * (1 - l.a), b: l.c.b * l.a + c.b * (1 - l.a) }), base);
   const lum = c => { const f = x => x <= 0.04045 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4); return 0.2126 * f(c.r) + 0.7152 * f(c.g) + 0.0722 * f(c.b); };
   const ratio = (a, b) => { const x = lum(a), y = lum(b); return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05); };
-  const hex = c => '#' + [c.r, c.g, c.b].map(x => Math.round(x * 255).toString(16).padStart(2, '0')).join('');
   const fmt = r => (Math.floor(r * 100) / 100).toFixed(2) + ':1';
   const isLarge = t => t.fontSize >= 24 || (t.fontSize >= 18.66 && /bold|black|heavy|extra/i.test(t.fontName.style));
 
@@ -70,18 +69,15 @@
       const v = Object.fromEntries(m.name.split(', ').map(s => s.split('=')));
       const bg = over(layers(b.fills), surface);
       const label = b.findOne(n => n.type === 'TEXT'), icon = b.findOne(n => n.type === 'VECTOR');
-      const fails = [], info = []; let text = null;
-      if (label) { const need = isLarge(label) ? 3 : 4.5; text = [ratio(over(layers(label.fills), bg), bg), need]; if (text[0] < need) fails.push(`label ${fmt(text[0])} (needs ${need}:1, 1.4.3)`); }
-      if (icon) { const t = ratio(over(layers(icon.fills), bg), bg); if (t < 3) fails.push(`icon ${fmt(t)} (needs 3:1, 1.4.11)`); }
+      const fails = [], info = [];
+      if (label) { const need = isLarge(label) ? 3 : 4.5; const t = ratio(over(layers(label.fills), bg), bg); if (t < need) fails.push(`label ${fmt(t)} (needs ${need}:1)`); }
+      if (icon) { const t = ratio(over(layers(icon.fills), bg), bg); if (t < 3) fails.push(`icon ${fmt(t)} (needs 3:1)`); }
       const stroke = layers(b.strokes);
       const edge = stroke.length ? ['border', ratio(over(stroke, surface), surface)] : CONFIG.filledPriorities.includes(v.priority) ? ['fill', ratio(bg, surface)] : null;
-      if (edge && edge[1] < 3) info.push(`${edge[0]} against the surface ${hex(surface)}: ${fmt(edge[1])}. A boundary is not required when the label identifies the button.`);
+      if (edge && edge[1] < 3) info.push(`${edge[0]} vs surface ${fmt(edge[1])} (under 3:1)`);
       if (!fails.length && !info.length) continue;
-      const lines = [`${CONFIG.MARKER} (WCAG 2.1, ${new Date().toISOString().slice(0, 10)}): ${v.priority}, ${v.interaction}`];
-      if (fails.length) lines.push('', '**AA fail:** ' + fails.join('; ') + '.');
-      if (info.length) lines.push('', '**Not an AA fail (1.4.11, informative):** ' + info.join(' '));
-      if (text && text[0] >= text[1]) lines.push('', `Label text: ${fmt(text[0])}, passes.`);
-      report.push({ node: b, cell: cell.name, button: `${v.priority} ${v.interaction}`, text: lines.join('\n') });
+      const parts = [...(fails.length ? ['AA fail: ' + fails.join(', ')] : []), ...info];
+      report.push({ node: b, cell: cell.name, button: `${v.priority} ${v.interaction}`, text: `${CONFIG.MARKER} ${parts.join('; ')}` });
     }
   }
 
@@ -89,10 +85,11 @@
   if (CONFIG.mode === 'write') {
     const cat = (await figma.annotations.getAnnotationCategoriesAsync()).find(c => c.label === CONFIG.category);
     const targets = new Set(report.map(r => r.node.id));
-    const mineOf = n => n.annotations.filter(a => (a.labelMarkdown || a.label || '').startsWith(CONFIG.MARKER));
+    const own = a => (a.labelMarkdown || a.label || '').startsWith(CONFIG.MARKER.replace(/\*+$/, ''));
+    const mineOf = n => n.annotations.filter(own);
     for (const n of [root, ...root.findAll(x => 'annotations' in x && x.annotations.length > 0)]) {
-      const own = mineOf(n).length; if (!own) continue;
-      n.annotations = n.annotations.filter(a => !(a.labelMarkdown || a.label || '').startsWith(CONFIG.MARKER)); removed += own;
+      const count = mineOf(n).length; if (!count) continue;
+      n.annotations = n.annotations.filter(a => !own(a)); removed += count;
       const onlyAnnotationOverride = n.type === 'INSTANCE' && !n.annotations.length && (n.overrides || []).every(o => o.overriddenFields.every(f => f === 'annotations'));
       if (onlyAnnotationOverride && !targets.has(n.id)) { n.resetOverrides(); reset++; }
     }

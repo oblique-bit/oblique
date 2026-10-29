@@ -446,8 +446,9 @@ exempt).
 
 `scan` reports only. `write` removes the annotations this script wrote before
 (label starts with `**Contrast check**`) and writes one annotation on each
-Button instance with findings, in the `Accessibility` category, naming the
-priority, the state and the ratio. Other annotations are kept. Figma lists an
+Button instance with findings, in the `Accessibility` category: one short
+line with the ratio, e.g. `Contrast fill vs surface 1.07:1 (under 3:1)`.
+Other annotations are kept. Figma lists an
 annotation on an instance as an `annotations` override: metadata only, the
 colours and the behaviour still come from the main. When the script removes
 its last annotation from an instance that has no other override, it resets
