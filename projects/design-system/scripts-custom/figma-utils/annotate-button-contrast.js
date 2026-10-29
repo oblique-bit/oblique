@@ -16,8 +16,11 @@
  * Disabled variants are skipped (inactive components are exempt in WCAG).
  *
  * Each run first removes the annotations it wrote before (label starts with
- * MARKER), then writes one annotation per cell with findings. Other
- * annotations are kept. Button instances are never touched.
+ * MARKER), then writes one annotation on each Button instance with findings.
+ * Other annotations are kept. Figma lists an annotation on an instance as an
+ * `annotations` override (metadata only, colours and behaviour still come from
+ * the main). When the last annotation of this script leaves an instance whose
+ * only override is `annotations`, the instance is reset so the flag goes away.
  *
  * HOW TO RUN: paste into the Desktop Bridge plugin console, or through the CLI
  * with this header stripped (the CLI returns nothing while it is in place, same
@@ -33,7 +36,7 @@
   // ====================== CONFIG — edit this block ==========================
   const CONFIG = {
     // 'scan'  -> report only, change nothing (ALWAYS run this first)
-    // 'write' -> replace this script's annotations on the cells
+    // 'write' -> replace this script's annotations on the Button instances
     mode: 'scan',
     fileKeyGuard: 'QOcr0cvwuFDH9AAUdjMZgx', // DesignSystem@Tokens V10.0
     rootId: '4027:330', // Elevation demo
@@ -61,40 +64,42 @@
   const report = [];
   for (const cell of root.children.filter(n => n.type === 'FRAME')) {
     const surface = over(layers(cell.fills), pageBg);
-    const fails = [], info = {}; let minText = Infinity;
     for (const b of cell.findAllWithCriteria({ types: ['INSTANCE'] })) {
       const m = await b.getMainComponentAsync();
       if (!m || !m.parent || m.parent.name !== CONFIG.componentSetName || /availability=disabled/.test(m.name)) continue;
       const v = Object.fromEntries(m.name.split(', ').map(s => s.split('=')));
       const bg = over(layers(b.fills), surface);
       const label = b.findOne(n => n.type === 'TEXT'), icon = b.findOne(n => n.type === 'VECTOR');
-      if (label) { const t = ratio(over(layers(label.fills), bg), bg), need = isLarge(label) ? 3 : 4.5; minText = Math.min(minText, t); if (t < need) fails.push(`${v.priority} ${v.interaction} label ${fmt(t)} (needs ${need}:1, 1.4.3)`); }
-      if (icon) { const t = ratio(over(layers(icon.fills), bg), bg); if (t < 3) fails.push(`${v.priority} ${v.interaction} icon ${fmt(t)} (needs 3:1, 1.4.11)`); }
+      const fails = [], info = []; let text = null;
+      if (label) { const need = isLarge(label) ? 3 : 4.5; text = [ratio(over(layers(label.fills), bg), bg), need]; if (text[0] < need) fails.push(`label ${fmt(text[0])} (needs ${need}:1, 1.4.3)`); }
+      if (icon) { const t = ratio(over(layers(icon.fills), bg), bg); if (t < 3) fails.push(`icon ${fmt(t)} (needs 3:1, 1.4.11)`); }
       const stroke = layers(b.strokes);
       const edge = stroke.length ? ['border', ratio(over(stroke, surface), surface)] : CONFIG.filledPriorities.includes(v.priority) ? ['fill', ratio(bg, surface)] : null;
-      if (edge && edge[1] < 3) { const k = `${v.priority} ${edge[0]}`; (info[k] = info[k] || []).push(`${v.interaction} ${fmt(edge[1])}`); }
+      if (edge && edge[1] < 3) info.push(`${edge[0]} against the surface ${hex(surface)}: ${fmt(edge[1])}. A boundary is not required when the label identifies the button.`);
+      if (!fails.length && !info.length) continue;
+      const lines = [`${CONFIG.MARKER} (WCAG 2.1, ${new Date().toISOString().slice(0, 10)}): ${v.priority}, ${v.interaction}`];
+      if (fails.length) lines.push('', '**AA fail:** ' + fails.join('; ') + '.');
+      if (info.length) lines.push('', '**Not an AA fail (1.4.11, informative):** ' + info.join(' '));
+      if (text && text[0] >= text[1]) lines.push('', `Label text: ${fmt(text[0])}, passes.`);
+      report.push({ node: b, cell: cell.name, button: `${v.priority} ${v.interaction}`, text: lines.join('\n') });
     }
-    if (!fails.length && !Object.keys(info).length) continue;
-    const lines = [`${CONFIG.MARKER} (WCAG 2.1, ${new Date().toISOString().slice(0, 10)}), surface ${hex(surface)}`];
-    if (fails.length) lines.push('', '**AA fail:** ' + fails.join('; ') + '.');
-    for (const [k, vals] of Object.entries(info)) lines.push('', `**Not an AA fail (1.4.11, informative):** ${k} against the surface: ${vals.join(', ')}. A boundary is not required when the label identifies the button.`);
-    if (minText !== Infinity) lines.push('', `Label text: lowest ${fmt(minText)}.`);
-    report.push({ cell, name: cell.name, text: lines.join('\n') });
   }
 
-  let written = 0, removed = 0;
+  let written = 0, removed = 0, reset = 0;
   if (CONFIG.mode === 'write') {
     const cat = (await figma.annotations.getAnnotationCategoriesAsync()).find(c => c.label === CONFIG.category);
-    for (const cell of root.children.filter(n => 'annotations' in n)) {
-      const keep = cell.annotations.filter(a => !((a.labelMarkdown || a.label || '').startsWith(CONFIG.MARKER)));
-      removed += cell.annotations.length - keep.length;
-      const mine = report.find(r => r.cell === cell);
-      cell.annotations = mine ? [...keep, { labelMarkdown: mine.text, ...(cat ? { categoryId: cat.id } : {}) }] : keep;
-      if (mine) written++;
+    const targets = new Set(report.map(r => r.node.id));
+    const mineOf = n => n.annotations.filter(a => (a.labelMarkdown || a.label || '').startsWith(CONFIG.MARKER));
+    for (const n of [root, ...root.findAll(x => 'annotations' in x && x.annotations.length > 0)]) {
+      const own = mineOf(n).length; if (!own) continue;
+      n.annotations = n.annotations.filter(a => !(a.labelMarkdown || a.label || '').startsWith(CONFIG.MARKER)); removed += own;
+      const onlyAnnotationOverride = n.type === 'INSTANCE' && !n.annotations.length && (n.overrides || []).every(o => o.overriddenFields.every(f => f === 'annotations'));
+      if (onlyAnnotationOverride && !targets.has(n.id)) { n.resetOverrides(); reset++; }
     }
+    for (const r of report) { r.node.annotations = [...r.node.annotations, { labelMarkdown: r.text, ...(cat ? { categoryId: cat.id } : {}) }]; written++; }
     await new Promise(r => setTimeout(r, 1500));
   }
-  const out = JSON.stringify({ ok: true, mode: CONFIG.mode, cellsWithFindings: report.length, written, removed, findings: report.map(r => ({ cell: r.name, text: r.text })) });
+  const out = JSON.stringify({ ok: true, mode: CONFIG.mode, buttonsWithFindings: report.length, written, removed, reset, findings: report.map(r => ({ cell: r.cell, button: r.button, text: r.text })) });
   console.log(out);
   return out;
 })()
