@@ -445,8 +445,12 @@ colours of two states. Disabled variants are skipped (inactive components are
 exempt).
 
 `scan` reports only. `write` removes the annotations this script wrote before
-(label starts with `**Contrast check**`) and writes one annotation per cell
-with findings, in the `Accessibility` category. Other annotations and the
-Button instances are never touched. Run it again after a Token Studio export
+(label starts with `**Contrast check**`) and writes one annotation on each
+Button instance with findings, in the `Accessibility` category, naming the
+priority, the state and the ratio. Other annotations are kept. Figma lists an
+annotation on an instance as an `annotations` override: metadata only, the
+colours and the behaviour still come from the main. When the script removes
+its last annotation from an instance that has no other override, it resets
+the instance so the flag goes away. Run it again after a Token Studio export
 that changes Button or surface colours. Through the CLI, strip the header
 first (see the file).
