@@ -86,6 +86,18 @@ So high emphasis on a status surface (for example the fatal surface with a blue 
 
 **How to apply it:** the component sets the mode `emphasis = low` on its root, in Figma on the root frame of the main component and in HTML on the root element. Everything inside inherits the mode, so the Button and Link tokens stay unchanged.
 
+## **Disabled Is Always Neutral**
+
+A disabled Button never shows a color. In both emphasis modes it uses the rest colors of the low emphasis branch (cobalt), also for the primary Button, so high and low emphasis look the same when disabled. The whole element is shown at 40% opacity.
+
+| Token | Value in both modes |
+|---|---|
+| `ob.h.button.color.primary.{bg, fg}.disabled` | `ob.h.button.color.emphasis_low.primary.{bg, fg}.rest` |
+| `ob.h.button.color.secondary.{bg, border, fg}.disabled` | `ob.h.button.color.emphasis_low.secondary.{bg, border, fg}.rest` |
+| `ob.h.button.color.tertiary.{bg, fg}.disabled` | `ob.h.button.color.emphasis_low.secondary.{bg, fg}.rest` |
+
+Each token has the inversion pair `disabled_inverse`, which aliases the `rest_inverse` token of the same low emphasis color. Decided on 2026-10-29.
+
 ## **Design Patterns**
 
 ### **Visual Hierarchy**

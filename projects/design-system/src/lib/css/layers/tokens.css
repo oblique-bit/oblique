@@ -104,6 +104,8 @@
 	--ob-h-button-color-primary-bg-active_level_2_inverse: var(--ob-h-button-color-emphasis_high-primary-bg-active_level_2_inverse);
 	--ob-h-button-color-primary-bg-active_surface: var(--ob-h-button-color-primary-bg-active);
 	--ob-h-button-color-primary-bg-active_surface_inverse: var(--ob-h-button-color-primary-bg-active_inverse);
+	--ob-h-button-color-primary-bg-disabled: var(--ob-h-button-color-emphasis_low-primary-bg-rest);
+	--ob-h-button-color-primary-bg-disabled_inverse: var(--ob-h-button-color-emphasis_low-primary-bg-rest_inverse);
 	--ob-h-button-color-primary-bg-hover: var(--ob-h-button-color-emphasis_high-primary-bg-hover);
 	--ob-h-button-color-primary-bg-hover_inverse: var(--ob-h-button-color-emphasis_high-primary-bg-hover_inverse);
 	--ob-h-button-color-primary-bg-hover_level_2: var(--ob-h-button-color-emphasis_high-primary-bg-hover_level_2);
@@ -118,6 +120,8 @@
 	--ob-h-button-color-primary-bg-rest_surface_inverse: var(--ob-h-button-color-primary-bg-rest_inverse);
 	--ob-h-button-color-primary-fg-active: var(--ob-h-button-color-emphasis_high-primary-fg-active);
 	--ob-h-button-color-primary-fg-active_inverse: var(--ob-h-button-color-emphasis_high-primary-fg-active_inverse);
+	--ob-h-button-color-primary-fg-disabled: var(--ob-h-button-color-emphasis_low-primary-fg-rest);
+	--ob-h-button-color-primary-fg-disabled_inverse: var(--ob-h-button-color-emphasis_low-primary-fg-rest_inverse);
 	--ob-h-button-color-primary-fg-hover: var(--ob-h-button-color-emphasis_high-primary-fg-hover);
 	--ob-h-button-color-primary-fg-hover_inverse: var(--ob-h-button-color-emphasis_high-primary-fg-hover_inverse);
 	--ob-h-button-color-primary-fg-rest: var(--ob-h-button-color-emphasis_high-primary-fg-rest);
@@ -128,6 +132,8 @@
 	--ob-h-button-color-secondary-bg-active_level_2_inverse: var(--ob-h-button-color-emphasis_high-secondary-bg-active_level_2_inverse);
 	--ob-h-button-color-secondary-bg-active_surface: var(--ob-h-button-color-secondary-bg-active);
 	--ob-h-button-color-secondary-bg-active_surface_inverse: var(--ob-h-button-color-secondary-bg-active_inverse);
+	--ob-h-button-color-secondary-bg-disabled: var(--ob-h-button-color-emphasis_low-secondary-bg-rest);
+	--ob-h-button-color-secondary-bg-disabled_inverse: var(--ob-h-button-color-emphasis_low-secondary-bg-rest_inverse);
 	--ob-h-button-color-secondary-bg-hover: var(--ob-h-button-color-emphasis_high-secondary-bg-hover);
 	--ob-h-button-color-secondary-bg-hover_inverse: var(--ob-h-button-color-emphasis_high-secondary-bg-hover_inverse);
 	--ob-h-button-color-secondary-bg-hover_level_2: var(--ob-h-button-color-emphasis_high-secondary-bg-hover_level_2);
@@ -138,12 +144,16 @@
 	--ob-h-button-color-secondary-bg-rest_inverse: var(--ob-h-button-color-emphasis_high-secondary-bg-rest_inverse);
 	--ob-h-button-color-secondary-border-active: var(--ob-h-button-color-emphasis_high-secondary-border-active);
 	--ob-h-button-color-secondary-border-active_inverse: var(--ob-h-button-color-emphasis_high-secondary-border-active_inverse);
+	--ob-h-button-color-secondary-border-disabled: var(--ob-h-button-color-emphasis_low-secondary-border-rest);
+	--ob-h-button-color-secondary-border-disabled_inverse: var(--ob-h-button-color-emphasis_low-secondary-border-rest_inverse);
 	--ob-h-button-color-secondary-border-hover: var(--ob-h-button-color-emphasis_high-secondary-border-hover);
 	--ob-h-button-color-secondary-border-hover_inverse: var(--ob-h-button-color-emphasis_high-secondary-border-hover_inverse);
 	--ob-h-button-color-secondary-border-rest: var(--ob-h-button-color-emphasis_high-secondary-border-rest);
 	--ob-h-button-color-secondary-border-rest_inverse: var(--ob-h-button-color-emphasis_high-secondary-border-rest_inverse);
 	--ob-h-button-color-secondary-fg-active: var(--ob-h-button-color-emphasis_high-secondary-fg-active);
 	--ob-h-button-color-secondary-fg-active_inverse: var(--ob-h-button-color-emphasis_high-secondary-fg-active_inverse);
+	--ob-h-button-color-secondary-fg-disabled: var(--ob-h-button-color-emphasis_low-secondary-fg-rest);
+	--ob-h-button-color-secondary-fg-disabled_inverse: var(--ob-h-button-color-emphasis_low-secondary-fg-rest_inverse);
 	--ob-h-button-color-secondary-fg-hover: var(--ob-h-button-color-emphasis_high-secondary-fg-hover);
 	--ob-h-button-color-secondary-fg-hover_inverse: var(--ob-h-button-color-emphasis_high-secondary-fg-hover_inverse);
 	--ob-h-button-color-secondary-fg-rest: var(--ob-h-button-color-emphasis_high-secondary-fg-rest);
@@ -154,6 +164,8 @@
 	--ob-h-button-color-tertiary-bg-active_level_2_inverse: var(--ob-h-button-color-emphasis_high-secondary-bg-active_level_2_inverse);
 	--ob-h-button-color-tertiary-bg-active_surface: var(--ob-h-button-color-tertiary-bg-active);
 	--ob-h-button-color-tertiary-bg-active_surface_inverse: var(--ob-h-button-color-tertiary-bg-active_inverse);
+	--ob-h-button-color-tertiary-bg-disabled: var(--ob-h-button-color-emphasis_low-secondary-bg-rest);
+	--ob-h-button-color-tertiary-bg-disabled_inverse: var(--ob-h-button-color-emphasis_low-secondary-bg-rest_inverse);
 	--ob-h-button-color-tertiary-bg-hover: var(--ob-h-button-color-emphasis_high-secondary-bg-hover);
 	--ob-h-button-color-tertiary-bg-hover_inverse: var(--ob-h-button-color-emphasis_high-secondary-bg-hover_inverse);
 	--ob-h-button-color-tertiary-bg-hover_level_2: var(--ob-h-button-color-emphasis_high-secondary-bg-hover_level_2);
@@ -164,11 +176,13 @@
 	--ob-h-button-color-tertiary-bg-rest_inverse: var(--ob-h-button-color-emphasis_high-secondary-bg-rest_inverse);
 	--ob-h-button-color-tertiary-fg-active: var(--ob-h-button-color-emphasis_high-secondary-fg-active);
 	--ob-h-button-color-tertiary-fg-active_inverse: var(--ob-h-button-color-emphasis_high-secondary-fg-active_inverse);
+	--ob-h-button-color-tertiary-fg-disabled: var(--ob-h-button-color-emphasis_low-secondary-fg-rest);
+	--ob-h-button-color-tertiary-fg-disabled_inverse: var(--ob-h-button-color-emphasis_low-secondary-fg-rest_inverse);
 	--ob-h-button-color-tertiary-fg-hover: var(--ob-h-button-color-emphasis_high-secondary-fg-hover);
 	--ob-h-button-color-tertiary-fg-hover_inverse: var(--ob-h-button-color-emphasis_high-secondary-fg-hover_inverse);
 	--ob-h-button-color-tertiary-fg-rest: var(--ob-h-button-color-emphasis_high-secondary-fg-rest);
 	--ob-h-button-color-tertiary-fg-rest_inverse: var(--ob-h-button-color-emphasis_high-secondary-fg-rest_inverse);
-	--ob-h-button-color-token_family_docs-description: Button state colors for the high emphasis mode: primary, secondary and tertiary, each rest, hover and active. Aliases of the high branch of the color_scheme sets, each with the inversion pair.;
+	--ob-h-button-color-token_family_docs-description: Button state colors for the high emphasis mode: primary, secondary and tertiary, each rest, hover and active, plus disabled. Aliases of the high branch of the color_scheme sets, each with the inversion pair. Disabled always aliases the low branch rest colors, so a disabled button is neutral (cobalt) in both emphasis modes.;
 	--ob-h-button-dynamic-icon-size: var(--ob-s-dimension-static-scale-spacing-md-px);
 	--ob-h-button-dynamic-icon_only-spacing-padding-horizontal: var(--ob-s-dimension-dynamic-scale-element-sm-px);
 	--ob-h-button-dynamic-icon_only-spacing-padding-vertical: var(--ob-s-dimension-dynamic-scale-element-sm-px);
@@ -2110,7 +2124,7 @@
 		--ob-h-button-color-tertiary-fg-hover_inverse: var(--ob-h-button-color-emphasis_low-secondary-fg-hover_inverse);
 		--ob-h-button-color-tertiary-fg-rest: var(--ob-h-button-color-emphasis_low-secondary-fg-rest);
 		--ob-h-button-color-tertiary-fg-rest_inverse: var(--ob-h-button-color-emphasis_low-secondary-fg-rest_inverse);
-		--ob-h-button-color-token_family_docs-description: Button state colors for the low emphasis mode: primary, secondary and tertiary, each rest, hover and active. Aliases of the low branch of the color_scheme sets, each with the inversion pair.;
+		--ob-h-button-color-token_family_docs-description: Button state colors for the low emphasis mode: primary, secondary and tertiary, each rest, hover and active, plus disabled. Aliases of the low branch of the color_scheme sets, each with the inversion pair. Disabled always aliases the low branch rest colors, so a disabled button is neutral (cobalt) in both emphasis modes.;
 		--ob-s-color-interaction-bg-contrast_high: #acb4bd;
 		--ob-s-color-interaction-bg-contrast_high_inverse: #263645;
 		--ob-s-color-interaction-bg-contrast_low: #f0f4f7;

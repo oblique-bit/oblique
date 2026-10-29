@@ -6,7 +6,7 @@
 					"token_family_docs": {
 						"description": {
 							"$type": "other",
-							"$value": "Button state colors for the low emphasis mode: primary, secondary and tertiary, each rest, hover and active. Aliases of the low branch of the color_scheme sets, each with the inversion pair."
+							"$value": "Button state colors for the low emphasis mode: primary, secondary and tertiary, each rest, hover and active, plus disabled. Aliases of the low branch of the color_scheme sets, each with the inversion pair. Disabled always aliases the low branch rest colors, so a disabled button is neutral (cobalt) in both emphasis modes."
 						}
 					},
 					"primary": {
@@ -34,6 +34,14 @@
 							"active_inverse": {
 								"$type": "color",
 								"$value": "{ob.h.button.color.emphasis_low.primary.bg.active_inverse}"
+							},
+							"disabled": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_low.primary.bg.rest}"
+							},
+							"disabled_inverse": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_low.primary.bg.rest_inverse}"
 							}
 						},
 						"fg": {
@@ -60,6 +68,14 @@
 							"active_inverse": {
 								"$type": "color",
 								"$value": "{ob.h.button.color.emphasis_low.primary.fg.active_inverse}"
+							},
+							"disabled": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_low.primary.fg.rest}"
+							},
+							"disabled_inverse": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_low.primary.fg.rest_inverse}"
 							}
 						}
 					},
@@ -88,6 +104,14 @@
 							"active_inverse": {
 								"$type": "color",
 								"$value": "{ob.h.button.color.emphasis_low.secondary.bg.active_inverse}"
+							},
+							"disabled": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_low.secondary.bg.rest}"
+							},
+							"disabled_inverse": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_low.secondary.bg.rest_inverse}"
 							}
 						},
 						"fg": {
@@ -114,6 +138,14 @@
 							"active_inverse": {
 								"$type": "color",
 								"$value": "{ob.h.button.color.emphasis_low.secondary.fg.active_inverse}"
+							},
+							"disabled": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_low.secondary.fg.rest}"
+							},
+							"disabled_inverse": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_low.secondary.fg.rest_inverse}"
 							}
 						},
 						"border": {
@@ -140,6 +172,14 @@
 							"active_inverse": {
 								"$type": "color",
 								"$value": "{ob.h.button.color.emphasis_low.secondary.border.active_inverse}"
+							},
+							"disabled": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_low.secondary.border.rest}"
+							},
+							"disabled_inverse": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_low.secondary.border.rest_inverse}"
 							}
 						}
 					},
@@ -168,6 +208,14 @@
 							"active_inverse": {
 								"$type": "color",
 								"$value": "{ob.h.button.color.emphasis_low.secondary.bg.active_inverse}"
+							},
+							"disabled": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_low.secondary.bg.rest}"
+							},
+							"disabled_inverse": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_low.secondary.bg.rest_inverse}"
 							}
 						},
 						"fg": {
@@ -194,6 +242,14 @@
 							"active_inverse": {
 								"$type": "color",
 								"$value": "{ob.h.button.color.emphasis_low.secondary.fg.active_inverse}"
+							},
+							"disabled": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_low.secondary.fg.rest}"
+							},
+							"disabled_inverse": {
+								"$type": "color",
+								"$value": "{ob.h.button.color.emphasis_low.secondary.fg.rest_inverse}"
 							}
 						}
 					}
