@@ -98,7 +98,7 @@ The six sets hold the same 24 tokens, but only two different value sets exist:
 - `xs`, `sm` and `md` have identical values. Their family description says "mobile breakpoint".
 - `lg`, `xl` and `2xl` have identical values. Their family description says "desktop breakpoint".
 
-16 of the 24 tokens differ between the two groups. 8 tokens have the same value in all six viewports.
+18 of the 24 tokens differ between the two groups. 6 tokens have the same value in all six viewports.
 
 **Tokens that differ between `xs`, `sm`, `md` and `lg`, `xl`, `2xl`:**
 
@@ -107,13 +107,15 @@ The six sets hold the same 24 tokens, but only two different value sets exist:
 | `spacing.padding_top` | `spacing.xs.px` | `spacing.sm.px` |
 | `spacing.padding_right` | `spacing.xs.px` | `spacing.sm.px` |
 | `spacing.padding_bottom` | `spacing.xs.px` | `spacing.sm.px` |
-| `spacing.padding_left` | `element.xl.px` | `spacing.sm.px` |
+| `spacing.padding_left` | `spacing.xs.px` | `spacing.sm.px` |
 | `spacing.row_gap` | `spacing.xs.px` | `spacing.sm.px` |
+| `spacing.container_top.col_gap` | `element.xl.px` | `spacing.xs.px` |
 | `spacing.title_bar.col_gap` | `spacing.xs.px` | `spacing.sm.px` |
 | `spacing.body.padding_right` | `spacing.xs.px` | `container.xl.px` |
 | `spacing.body.padding_bottom` | `element.xl.px` | `spacing.xs.px` |
 | `spacing.parentof_buttons_container.padding_bottom` | `spacing.sm.px` | `element.xs.px` |
-| `size.icon_size` | `spacing.md.px` | `none.px` |
+| `spacing.parentof_buttons_container.padding_right` | `container.xs.px` | `none.px` |
+| `size.icon_size` | `spacing.md.px` | `spacing.lg.px` |
 | `size.close_button_size` | `spacing.xs.px` | `none.px` |
 | `size.title.min_height` | `element.xs.px` | `spacing.xl.px` |
 | `border_width.left` | `ob.s.border_width.sm` | `ob.s.border_width.md` |
@@ -123,7 +125,7 @@ The six sets hold the same 24 tokens, but only two different value sets exist:
 
 The short forms such as `spacing.xs.px` stand for `ob.s.dimension.static.scale.spacing.xs.px`. The values in px are in the [Architecture](02-architecture.md#consumed-tokens) page.
 
-**Tokens with the same value in all viewports:** `spacing.container_top.col_gap`, `spacing.text_blocks.row_gap`, `spacing.parentof_buttons_container.padding_left`, `spacing.parentof_buttons_container.padding_right`, `spacing.infobox_icon_container.padding_top`, `spacing.title.padding_top`, `container.spacing.padding_left` and `container.spacing.padding_right`.
+**Tokens with the same value in all viewports:** `spacing.text_blocks.row_gap`, `spacing.parentof_buttons_container.padding_left`, `spacing.infobox_icon_container.padding_top`, `spacing.title.padding_top`, `container.spacing.padding_left` and `container.spacing.padding_right`.
 
 The `xl` viewport is the base viewport. Values resolve to `xl` until another viewport is selected.
 

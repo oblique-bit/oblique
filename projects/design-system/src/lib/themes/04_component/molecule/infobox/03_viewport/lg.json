@@ -38,7 +38,7 @@
             "col_gap": {
               "$type": "spacing",
               "$value": "{ob.s.dimension.static.scale.spacing.xs.px}",
-              "$description": "Gap between the status icon and the text blocks for readibility and horizontal rhytm."
+              "$description": "Gap between the status icon and the text blocks, for readability and horizontal rhythm. Smaller on mobile, where the icon is smaller."
             }
           },
           "text_blocks": {
@@ -80,7 +80,8 @@
             },
             "padding_right": {
               "$type": "spacing",
-              "$value": "{ob.s.dimension.static.scale.element.xs.px}"
+              "$value": "{ob.s.dimension.static.scale.none.px}",
+              "$description": "Right padding of the buttons container. On mobile it equals the icon size plus its gap, so the full-width buttons are centered."
             }
           },
           "infobox_icon_container": {
@@ -100,7 +101,7 @@
         "size": {
           "icon_size": {
             "$type": "dimension",
-            "$value": "{ob.s.dimension.static.scale.none.px}",
+            "$value": "{ob.s.dimension.static.scale.spacing.lg.px}",
             "$description": "Icon size is slightly larger than the title to be readable since it has less contrast than the text and communicates the status. On mobile even smaller to save space for the text."
           },
           "close_button_size": {

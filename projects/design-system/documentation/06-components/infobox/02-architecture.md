@@ -102,16 +102,16 @@ File: `03_viewport/{viewport}.json`. The paths in this table start with `ob.c.in
 | `spacing.padding_top` | `spacing.xs.px` | `spacing.xs.px` | `spacing.xs.px` | `spacing.sm.px` | `spacing.sm.px` | `spacing.sm.px` | Top padding. Equal to the right padding so the close button sits well. Keeps the text from looking cramped. |
 | `spacing.padding_right` | `spacing.xs.px` | `spacing.xs.px` | `spacing.xs.px` | `spacing.sm.px` | `spacing.sm.px` | `spacing.sm.px` | Right padding. Same as the top padding so the position of the close button looks good. |
 | `spacing.padding_bottom` | `spacing.xs.px` | `spacing.xs.px` | `spacing.xs.px` | `spacing.sm.px` | `spacing.sm.px` | `spacing.sm.px` | Bottom padding. Keeps the text from looking cramped and improves readability. |
-| `spacing.padding_left` | `element.xl.px` | `element.xl.px` | `element.xl.px` | `spacing.sm.px` | `spacing.sm.px` | `spacing.sm.px` | Left padding. Keeps the text from looking cramped. Smaller on mobile to leave more room for the content. |
+| `spacing.padding_left` | `spacing.xs.px` | `spacing.xs.px` | `spacing.xs.px` | `spacing.sm.px` | `spacing.sm.px` | `spacing.sm.px` | Left padding. Keeps the text from looking cramped. Smaller on mobile to leave more room for the content. |
 | `spacing.row_gap` | `spacing.xs.px` | `spacing.xs.px` | `spacing.xs.px` | `spacing.sm.px` | `spacing.sm.px` | `spacing.sm.px` | Minimum vertical gap between `container_top` and the buttons container, for readability. |
-| `spacing.container_top.col_gap` | `spacing.xs.px` | `spacing.xs.px` | `spacing.xs.px` | `spacing.xs.px` | `spacing.xs.px` | `spacing.xs.px` | Gap between the status icon and the text blocks, for readability and horizontal rhythm. |
+| `spacing.container_top.col_gap` | `element.xl.px` | `element.xl.px` | `element.xl.px` | `spacing.xs.px` | `spacing.xs.px` | `spacing.xs.px` | Gap between the status icon and the text blocks, for readability and horizontal rhythm. Smaller on mobile, where the icon is smaller. |
 | `spacing.text_blocks.row_gap` | `element.xl.px` | `element.xl.px` | `element.xl.px` | `element.xl.px` | `element.xl.px` | `element.xl.px` | Gap between the title and the body text. Emphasizes the visual hierarchy. |
 | `spacing.title_bar.col_gap` | `spacing.xs.px` | `spacing.xs.px` | `spacing.xs.px` | `spacing.sm.px` | `spacing.sm.px` | `spacing.sm.px` | Keeps the title from coming too close to the close button (X). |
 | `spacing.body.padding_right` | `spacing.xs.px` | `spacing.xs.px` | `spacing.xs.px` | `container.xl.px` | `container.xl.px` | `container.xl.px` | Right padding of the body. Larger on larger screens, where white space lets the design breathe. Reset on mobile. |
 | `spacing.body.padding_bottom` | `element.xl.px` | `element.xl.px` | `element.xl.px` | `spacing.xs.px` | `spacing.xs.px` | `spacing.xs.px` | Bottom padding of the body. |
 | `spacing.parentof_buttons_container.padding_left` | `container.xl.px` | `container.xl.px` | `container.xl.px` | `container.xl.px` | `container.xl.px` | `container.xl.px` | Left padding of the buttons container. Aligns the buttons with the text on mobile. |
 | `spacing.parentof_buttons_container.padding_bottom` | `spacing.sm.px` | `spacing.sm.px` | `spacing.sm.px` | `element.xs.px` | `element.xs.px` | `element.xs.px` | Spacing from the last button to the lower border of the surface. |
-| `spacing.parentof_buttons_container.padding_right` | `element.xs.px` | `element.xs.px` | `element.xs.px` | `element.xs.px` | `element.xs.px` | `element.xs.px` | Right padding of the buttons container. |
+| `spacing.parentof_buttons_container.padding_right` | `container.xs.px` | `container.xs.px` | `container.xs.px` | `none.px` | `none.px` | `none.px` | Right padding of the buttons container. On mobile it equals the icon size plus its gap, so the full-width buttons are centered. |
 | `spacing.infobox_icon_container.padding_top` | `none.px` | `none.px` | `none.px` | `none.px` | `none.px` | `none.px` | Top padding of the icon container. |
 | `spacing.title.padding_top` | `micro.sm.px` | `micro.sm.px` | `micro.sm.px` | `micro.sm.px` | `micro.sm.px` | `micro.sm.px` | Aligns the title with the status icon and the close button on desktop. |
 
@@ -121,11 +121,13 @@ File: `03_viewport/{viewport}.json`. The paths in this table start with `ob.c.in
 
 | Token | xs | sm | md | lg | xl | 2xl | Description |
 |---|---|---|---|---|---|---|---|
-| `size.icon_size` | `spacing.md.px` | `spacing.md.px` | `spacing.md.px` | `none.px` | `none.px` | `none.px` | Size of the status icon. Slightly larger than the title for readability, because the icon has less contrast than the text. Smaller on mobile to save space for the text. |
+| `size.icon_size` | `spacing.md.px` | `spacing.md.px` | `spacing.md.px` | `spacing.lg.px` | `spacing.lg.px` | `spacing.lg.px` | Size of the status icon. Slightly larger than the title for readability, because the icon has less contrast than the text. Smaller on mobile to save space for the text. |
 | `size.close_button_size` | `spacing.xs.px` | `spacing.xs.px` | `spacing.xs.px` | `none.px` | `none.px` | `none.px` | Size of the close button. |
 | `size.title.min_height` | `element.xs.px` | `element.xs.px` | `element.xs.px` | `spacing.xl.px` | `spacing.xl.px` | `spacing.xl.px` | Minimum height of the title container, with or without a close button. |
 
-In `lg`, `xl` and `2xl`, `size.icon_size` and `size.close_button_size` reference `none.px`. This is the value in the token files on the development line.
+In `lg`, `xl` and `2xl`, `size.close_button_size` references `none.px`. This is the value in the token files on the development line.
+
+**Change 2026-10-29:** `size.icon_size` in `lg`, `xl` and `2xl` changed from `none.px` to `spacing.lg.px` (28 px), the icon size of the component. On mobile the left padding changed from 12 to 16 px, the gap between icon and text from 16 to 12 px, and the buttons container got a right padding of 36 px, so that the mobile infobox looks balanced.
 
 ## Border Width Token
 
@@ -229,6 +231,7 @@ Top and right padding are the same, so that the position of the close button loo
 - The status icon is smaller on mobile, to save space for the text.
 - The left border is slightly smaller on mobile, because the icon is smaller too.
 - The buttons container has a left padding that aligns the buttons with the text on mobile.
+- On mobile the buttons container also has a right padding equal to the icon size plus its gap, so the full-width buttons are centered and the left and right space look balanced.
 
 ### Icon size and border width
 
@@ -290,7 +293,9 @@ The dimension tokens are in the group `ob.s.dimension.static.scale.*`. The short
 | `spacing.xs.px` | `ob.s.dimension.static.scale.spacing.xs.px` | `ob.p.dimension.px.16` | 16 |
 | `spacing.sm.px` | `ob.s.dimension.static.scale.spacing.sm.px` | `ob.p.dimension.px.20` | 20 |
 | `spacing.md.px` | `ob.s.dimension.static.scale.spacing.md.px` | `ob.p.dimension.px.24` | 24 |
+| `spacing.lg.px` | `ob.s.dimension.static.scale.spacing.lg.px` | `ob.p.dimension.px.28` | 28 |
 | `spacing.xl.px` | `ob.s.dimension.static.scale.spacing.xl.px` | `ob.p.dimension.px.32` | 32 |
+| `container.xs.px` | `ob.s.dimension.static.scale.container.xs.px` | `ob.p.dimension.px.36` | 36 |
 | `container.xl.px` | `ob.s.dimension.static.scale.container.xl.px` | `ob.p.dimension.px.64` | 64 |
 | (full path) | `ob.s.border_width.sm` | `ob.p.dimension.px.2` | 2 |
 | (full path) | `ob.s.border_width.md` | `ob.p.dimension.px.3` | 3 |
@@ -308,7 +313,7 @@ The dimension tokens are in the group `ob.s.dimension.static.scale.*`. The short
 
 The primitives are reached through the semantic tokens above:
 
-- `ob.p.dimension.px.*` for all dimension, border width and border radius tokens (the values 0, 2, 3, 4, 12, 16, 20, 24, 32 and 64).
+- `ob.p.dimension.px.*` for all dimension, border width and border radius tokens (the values 0, 2, 3, 4, 12, 16, 20, 24, 28, 32, 36 and 64).
 - `ob.p.color.*` for all colors. The primitive depends on the active `color_scheme` mode.
 - The typography primitives for font family, font weight, font size, line height and letter spacing.
 
