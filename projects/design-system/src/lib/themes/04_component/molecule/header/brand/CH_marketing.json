@@ -5,13 +5,73 @@
         "token_family_docs": {
           "description": {
             "$type": "other",
-            "$value": "[FIGMA-ONLY] Brand mode CH_marketing: selects the logo variant of the _pseudo/header component. Delete when the real header component ships."
+            "$value": "Brand mode CH_marketing: the header colors and the logo variant of the _pseudo/header component. The colors do not follow the color scheme. logo_figma is Figma only: delete it when the real header component ships."
           }
         },
         "logo_figma": {
           "$type": "text",
           "$value": "CH",
           "$description": "Figma variant switch for the header logo. CH_marketing: Federal logo (Swiss cross)."
+        },
+        "color": {
+          "bg": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.bg.contrast_highest}",
+            "$description": "Role: Exclusive. Header background. CH_marketing: as before, follows the color scheme."
+          },
+          "fg": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.fg.contrast_highest}",
+            "$description": "Role: Exclusive. Header logo and title color. CH_marketing: as before, follows the color scheme."
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.border.subtle}",
+            "$description": "Role: Exclusive. Header divider and border. CH_marketing: as before, follows the color scheme."
+          },
+          "navigation": {
+            "bg": {
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.bg.contrast_highest}",
+              "$description": "Role: Exclusive. Main navigation background. CH_marketing: as before, follows the color scheme."
+            },
+            "fg": {
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.fg.contrast_high}",
+              "$description": "Role: Exclusive. Main navigation label and icon. CH_marketing: as before, follows the color scheme."
+            },
+            "border": {
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s.color.navigation.border.pressed}",
+                "$description": "Role: Exclusive. Main navigation underline of the current item. CH_marketing: as before, follows the color scheme."
+              }
+            }
+          },
+          "service_navigation": {
+            "fg": {
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.fg.contrast_low}",
+              "$description": "Role: Exclusive. Service navigation icons and login button. CH_marketing: as before, follows the color scheme."
+            }
+          },
+          "control": {
+            "bg": {
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.bg.contrast_highest}",
+              "$description": "Role: Exclusive. Search field and language select background. CH_marketing: as before, follows the color scheme."
+            },
+            "fg": {
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.fg.contrast_low}",
+              "$description": "Role: Exclusive. Search field and language select text and icon. CH_marketing: as before, follows the color scheme."
+            },
+            "border": {
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.border.strong}",
+              "$description": "Role: Exclusive. Search field border. CH_marketing: as before, follows the color scheme."
+            }
+          }
         }
       }
     }

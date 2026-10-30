@@ -5,13 +5,73 @@
         "token_family_docs": {
           "description": {
             "$type": "other",
-            "$value": "[FIGMA-ONLY] Brand mode ZH: selects the logo variant of the _pseudo/header component. Delete when the real header component ships."
+            "$value": "Brand mode ZH: the header colors and the logo variant of the _pseudo/header component. The colors do not follow the color scheme. logo_figma is Figma only: delete it when the real header component ships."
           }
         },
         "logo_figma": {
           "$type": "text",
           "$value": "ZH",
           "$description": "Figma variant switch for the header logo. ZH: Canton of Zurich logo (lion and arms)."
+        },
+        "color": {
+          "bg": {
+            "$type": "color",
+            "$value": "#2E6EAF",
+            "$description": "Role: Exclusive. Header background. ZH: fixed, zh.ch style."
+          },
+          "fg": {
+            "$type": "color",
+            "$value": "#FFFFFF",
+            "$description": "Role: Exclusive. Header logo and title color. ZH: fixed, zh.ch style."
+          },
+          "border": {
+            "$type": "color",
+            "$value": "#DFE4E9",
+            "$description": "Role: Exclusive. Header divider and border. ZH: fixed, zh.ch style."
+          },
+          "navigation": {
+            "bg": {
+              "$type": "color",
+              "$value": "#25588C",
+              "$description": "Role: Exclusive. Main navigation background. ZH: fixed, zh.ch style."
+            },
+            "fg": {
+              "$type": "color",
+              "$value": "#FFFFFF",
+              "$description": "Role: Exclusive. Main navigation label and icon. ZH: fixed, zh.ch style."
+            },
+            "border": {
+              "pressed": {
+                "$type": "color",
+                "$value": "#C5E2FF",
+                "$description": "Role: Exclusive. Main navigation underline of the current item. ZH: fixed, zh.ch style."
+              }
+            }
+          },
+          "service_navigation": {
+            "fg": {
+              "$type": "color",
+              "$value": "#FFFFFF",
+              "$description": "Role: Exclusive. Service navigation icons and login button. ZH: fixed, zh.ch style."
+            }
+          },
+          "control": {
+            "bg": {
+              "$type": "color",
+              "$value": "#FFFFFF",
+              "$description": "Role: Exclusive. Search field and language select background. ZH: fixed, zh.ch style."
+            },
+            "fg": {
+              "$type": "color",
+              "$value": "#2F4356",
+              "$description": "Role: Exclusive. Search field and language select text and icon. ZH: fixed, zh.ch style."
+            },
+            "border": {
+              "$type": "color",
+              "$value": "#828E9A",
+              "$description": "Role: Exclusive. Search field border. ZH: fixed, zh.ch style."
+            }
+          }
         }
       }
     }

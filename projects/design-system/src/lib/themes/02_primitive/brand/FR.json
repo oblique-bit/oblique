@@ -70,8 +70,8 @@
         "brand": {
           "sans": {
             "$type": "fontFamilies",
-            "$value": "{ob.p.font_family.sans}",
-            "$description": "Role: Exclusive. Brand font for body and headings. FR: Noto Sans, the Oblique font."
+            "$value": "'Inter', Helvetica, Arial, sans-serif",
+            "$description": "Role: Exclusive. Brand font for body and headings. FR: Inter, stands in for the system font of fr.ch."
           }
         }
       },

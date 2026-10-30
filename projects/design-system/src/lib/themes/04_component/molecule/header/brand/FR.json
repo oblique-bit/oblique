@@ -5,13 +5,73 @@
         "token_family_docs": {
           "description": {
             "$type": "other",
-            "$value": "[FIGMA-ONLY] Brand mode FR: selects the logo variant of the _pseudo/header component. Delete when the real header component ships."
+            "$value": "Brand mode FR: the header colors and the logo variant of the _pseudo/header component. The colors do not follow the color scheme. logo_figma is Figma only: delete it when the real header component ships."
           }
         },
         "logo_figma": {
           "$type": "text",
           "$value": "FR",
           "$description": "Figma variant switch for the header logo. FR: Canton of Fribourg logo (arms and name)."
+        },
+        "color": {
+          "bg": {
+            "$type": "color",
+            "$value": "#000000",
+            "$description": "Role: Exclusive. Header background. FR: fixed, fr.ch style."
+          },
+          "fg": {
+            "$type": "color",
+            "$value": "#FFFFFF",
+            "$description": "Role: Exclusive. Header logo and title color. FR: fixed, fr.ch style."
+          },
+          "border": {
+            "$type": "color",
+            "$value": "#DFE4E9",
+            "$description": "Role: Exclusive. Header divider and border. FR: fixed, fr.ch style."
+          },
+          "navigation": {
+            "bg": {
+              "$type": "color",
+              "$value": "#000000",
+              "$description": "Role: Exclusive. Main navigation background. FR: fixed, fr.ch style."
+            },
+            "fg": {
+              "$type": "color",
+              "$value": "#FFFFFF",
+              "$description": "Role: Exclusive. Main navigation label and icon. FR: fixed, fr.ch style."
+            },
+            "border": {
+              "pressed": {
+                "$type": "color",
+                "$value": "{ob.s.color.navigation.border.pressed}",
+                "$description": "Role: Exclusive. Main navigation underline of the current item. FR: brand accent."
+              }
+            }
+          },
+          "service_navigation": {
+            "fg": {
+              "$type": "color",
+              "$value": "#FFFFFF",
+              "$description": "Role: Exclusive. Service navigation icons and login button. FR: fixed, fr.ch style."
+            }
+          },
+          "control": {
+            "bg": {
+              "$type": "color",
+              "$value": "#FFFFFF",
+              "$description": "Role: Exclusive. Search field and language select background. FR: fixed, fr.ch style."
+            },
+            "fg": {
+              "$type": "color",
+              "$value": "#2F4356",
+              "$description": "Role: Exclusive. Search field and language select text and icon. FR: fixed, fr.ch style."
+            },
+            "border": {
+              "$type": "color",
+              "$value": "#828E9A",
+              "$description": "Role: Exclusive. Search field border. FR: fixed, fr.ch style."
+            }
+          }
         }
       }
     }
