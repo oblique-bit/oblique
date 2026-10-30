@@ -31,8 +31,8 @@ describe('ObSpinnerComponent', () => {
 	let mockObSpinnerService;
 	let spinnerChangeDetector: ChangeDetectorRef;
 	const mockSpinnerRegistry = {
-		register: jest.fn(),
-		unregister: jest.fn(),
+		register: vi.fn(),
+		unregister: vi.fn(),
 	} as unknown as ObSpinnerRegistry;
 
 	beforeEach(async () => {
@@ -111,7 +111,7 @@ describe('ObSpinnerComponent', () => {
 
 		it('should initially emit nothing', () => {
 			component.isActive$.subscribe(() => {
-				fail('Should not emit anything');
+				expect.unreachable('Should not emit anything');
 			});
 		});
 
@@ -163,7 +163,7 @@ describe('ObSpinnerComponent', () => {
 
 			beforeEach(async () => {
 				announcer = TestBed.inject(LiveAnnouncer);
-				jest.spyOn(announcer, 'announce');
+				vi.spyOn(announcer, 'announce');
 				fixture.componentInstance.fixed = fixed;
 				fixture.changeDetectorRef.detectChanges();
 

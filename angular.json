@@ -51,20 +51,45 @@
           "options": {
             "tsConfig": "projects/oblique/tsconfig.lib.json",
             "project": "projects/oblique/ng-package.json"
+          },
+          "configurations": {
+            "development": {}
           }
         },
         "test": {
-          "builder": "@angular-builders/jest:run",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "tsconfig.spec.json",
-            "max-workers": ["2"]
+            "tsConfig": "projects/oblique/tsconfig.spec.json",
+            "runner": "vitest",
+            "setupFiles": ["tests/setupVitest.ts"],
+            "isolate": true,
+            "coverage": true,
+            "coverageReporters": ["text", "html", "lcov"],
+            "coverageInclude": ["projects/oblique/src/lib/**/*.ts"],
+            "coverageExclude": [
+              "public_api.ts",
+              "**/index.ts",
+              "**/_mocks/**",
+              "**/*.harness.ts",
+              "**/*.model.ts",
+              "**/*.module.ts",
+              "**/*.spec.ts",
+              "**/off-canvas-container.directive.ts"
+            ],
+            "coverageThresholds": {
+              "lines": 99,
+              "functions": 75,
+              "branches": 94,
+              "statements": 87
+            }
           },
           "configurations": {
             "default": {
-              "config": "jest.config.js"
+              "watch": true
             },
             "ci": {
-              "config": "jest.config.ci.js"
+              "watch": false,
+              "reporters": [["junit", { "outputFile": "coverage/oblique/sqr.xml" }]]
             }
           },
           "defaultConfiguration": "default"

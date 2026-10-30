@@ -6,7 +6,7 @@ describe('TranslateParamsPipe', () => {
 	let pipe;
 	beforeEach(() => {
 		const mockTranslate = {
-			instant: jest
+			instant: vi
 				.fn()
 				.mockImplementation((value: string, arg?: {value: string}) =>
 					typeof arg === 'object' ? value.replace('{{value}}', arg.value) : value

@@ -45,7 +45,7 @@ describe(ObPopoverDirective.name, () => {
 	beforeEach(() => {
 		// added useFakeTimers() here because many of the tests need it and it's easier to call it here once than calling it multiple times in each describe() with cleanup.
 		// not added in a beforeAll() because not all issues could be resolved
-		jest.useFakeTimers();
+		vi.useFakeTimers();
 		TestBed.configureTestingModule({
 			imports: [ObPopoverDirective, TestPopoverComponent],
 			providers: [{provide: WINDOW, useValue: window}],
@@ -91,14 +91,14 @@ describe(ObPopoverDirective.name, () => {
 			describe('toggle', () => {
 				describe('with toggleHandle input not set', () => {
 					it("should call open if there's no popover", () => {
-						jest.spyOn(directive, 'open');
+						vi.spyOn(directive, 'open');
 						directive.close();
 						toggle.click();
 						expect(directive.open).toHaveBeenCalled();
 					});
 
 					it("should call close if there's a popover", () => {
-						jest.spyOn(directive, 'close');
+						vi.spyOn(directive, 'close');
 						directive.open();
 						toggle.click();
 						expect(directive.close).toHaveBeenCalled();
@@ -107,7 +107,7 @@ describe(ObPopoverDirective.name, () => {
 					it('should ignore keyboard events from a button', () => {
 						const event = new KeyboardEvent('keyup', {key: 'Enter'});
 						Object.defineProperty(event, 'target', {value: toggle});
-						jest.spyOn(directive, 'open');
+						vi.spyOn(directive, 'open');
 
 						directive.toggle(event);
 
@@ -123,14 +123,14 @@ describe(ObPopoverDirective.name, () => {
 					});
 
 					it("should call open if there's no popover", () => {
-						jest.spyOn(directive, 'open');
+						vi.spyOn(directive, 'open');
 						directive.close();
 						toggle.click();
 						expect(directive.open).toHaveBeenCalled();
 					});
 
 					it("should call close if there's a popover", () => {
-						jest.spyOn(directive, 'close');
+						vi.spyOn(directive, 'close');
 						directive.open();
 						toggle.click();
 						expect(directive.close).toHaveBeenCalled();
@@ -145,14 +145,14 @@ describe(ObPopoverDirective.name, () => {
 					});
 
 					it("should call open if there's no popover", () => {
-						jest.spyOn(directive, 'open');
+						vi.spyOn(directive, 'open');
 						directive.close();
 						toggle.click();
 						expect(directive.open).not.toHaveBeenCalled();
 					});
 
 					it("should call close if there's a popover", () => {
-						jest.spyOn(directive, 'close');
+						vi.spyOn(directive, 'close');
 						directive.open();
 						toggle.click();
 						expect(directive.close).not.toHaveBeenCalled();
@@ -162,7 +162,7 @@ describe(ObPopoverDirective.name, () => {
 
 			describe('open', () => {
 				beforeEach(() => {
-					jest.spyOn(directive.visibilityChange, 'emit');
+					vi.spyOn(directive.visibilityChange, 'emit');
 					setupAndOpen();
 				});
 
@@ -214,7 +214,7 @@ describe(ObPopoverDirective.name, () => {
 				});
 
 				it('should notify the visibility change', () => {
-					jest.spyOn(directive.visibilityChange, 'emit');
+					vi.spyOn(directive.visibilityChange, 'emit');
 					directive.close();
 					expect(directive.visibilityChange.emit).toHaveBeenCalledWith(false);
 				});
@@ -339,7 +339,7 @@ describe(ObPopoverDirective.name, () => {
 
 			describe('ngOnDestroy', () => {
 				it('should close the popover', () => {
-					jest.spyOn(directive, 'close');
+					vi.spyOn(directive, 'close');
 					directive.ngOnDestroy();
 					expect(directive.close).toHaveBeenCalled();
 				});
@@ -348,7 +348,7 @@ describe(ObPopoverDirective.name, () => {
 			describe('events', () => {
 				describe('with closeOnlyOnToggle input not set', () => {
 					beforeEach(() => {
-						jest.spyOn(directive, 'close');
+						vi.spyOn(directive, 'close');
 						directive.open();
 						runPendingOpenTimers();
 						popover = document.querySelector('.ob-popover-content');
@@ -380,7 +380,7 @@ describe(ObPopoverDirective.name, () => {
 						fixture.componentInstance.closeOnlyOnToggle.set(false);
 						fixture.detectChanges();
 						directive.ngOnChanges();
-						jest.spyOn(directive, 'close');
+						vi.spyOn(directive, 'close');
 						directive.open();
 						runPendingOpenTimers();
 						popover = document.querySelector('.ob-popover-content');
@@ -413,7 +413,7 @@ describe(ObPopoverDirective.name, () => {
 						fixture.detectChanges();
 						directive.ngOnChanges();
 
-						jest.spyOn(directive, 'close');
+						vi.spyOn(directive, 'close');
 						directive.open();
 						runPendingOpenTimers();
 						popover = document.querySelector('.ob-popover-content');
@@ -574,14 +574,14 @@ describe(ObPopoverDirective.name, () => {
 		describe('toggle', () => {
 			describe('with toggleHandle input not set', () => {
 				it("should call open if there's no popover", () => {
-					jest.spyOn(directive, 'open');
+					vi.spyOn(directive, 'open');
 					directive.close();
 					toggle.click();
 					expect(directive.open).toHaveBeenCalled();
 				});
 
 				it("should call close if there's a popover", () => {
-					jest.spyOn(directive, 'close');
+					vi.spyOn(directive, 'close');
 					directive.open();
 					toggle.click();
 					expect(directive.close).toHaveBeenCalled();
@@ -596,14 +596,14 @@ describe(ObPopoverDirective.name, () => {
 				});
 
 				it("should call open if there's no popover", () => {
-					jest.spyOn(directive, 'open');
+					vi.spyOn(directive, 'open');
 					directive.close();
 					toggle.click();
 					expect(directive.open).toHaveBeenCalled();
 				});
 
 				it("should call close if there's a popover", () => {
-					jest.spyOn(directive, 'close');
+					vi.spyOn(directive, 'close');
 					directive.open();
 					toggle.click();
 					expect(directive.close).toHaveBeenCalled();
@@ -618,14 +618,14 @@ describe(ObPopoverDirective.name, () => {
 				});
 
 				it("should call open if there's no popover", () => {
-					jest.spyOn(directive, 'open');
+					vi.spyOn(directive, 'open');
 					directive.close();
 					toggle.click();
 					expect(directive.open).not.toHaveBeenCalled();
 				});
 
 				it("should call close if there's a popover", () => {
-					jest.spyOn(directive, 'close');
+					vi.spyOn(directive, 'close');
 					directive.open();
 					toggle.click();
 					expect(directive.close).not.toHaveBeenCalled();
@@ -757,14 +757,14 @@ describe(ObPopoverDirective.name, () => {
 		describe('toggle', () => {
 			describe('with toggleHandle input not set', () => {
 				it("should call open if there's no popover", () => {
-					jest.spyOn(directive, 'open');
+					vi.spyOn(directive, 'open');
 					directive.close();
 					toggle.click();
 					expect(directive.open).not.toHaveBeenCalled();
 				});
 
 				it("should call close if there's a popover", () => {
-					jest.spyOn(directive, 'close');
+					vi.spyOn(directive, 'close');
 					directive.open();
 					toggle.click();
 					expect(directive.close).not.toHaveBeenCalled();
@@ -779,14 +779,14 @@ describe(ObPopoverDirective.name, () => {
 				});
 
 				it("should call open if there's no popover", () => {
-					jest.spyOn(directive, 'open');
+					vi.spyOn(directive, 'open');
 					directive.close();
 					toggle.click();
 					expect(directive.open).toHaveBeenCalled();
 				});
 
 				it("should call close if there's a popover", () => {
-					jest.spyOn(directive, 'close');
+					vi.spyOn(directive, 'close');
 					directive.open();
 					toggle.click();
 					expect(directive.close).toHaveBeenCalled();
@@ -801,14 +801,14 @@ describe(ObPopoverDirective.name, () => {
 				});
 
 				it("should call open if there's no popover", () => {
-					jest.spyOn(directive, 'open');
+					vi.spyOn(directive, 'open');
 					directive.close();
 					toggle.click();
 					expect(directive.open).not.toHaveBeenCalled();
 				});
 
 				it("should call close if there's a popover", () => {
-					jest.spyOn(directive, 'close');
+					vi.spyOn(directive, 'close');
 					directive.open();
 					toggle.click();
 					expect(directive.close).not.toHaveBeenCalled();
@@ -952,7 +952,7 @@ describe(ObPopoverDirective.name, () => {
 		describe('with closeOnlyOnToggle input not set', () => {
 			describe('events', () => {
 				beforeEach(() => {
-					jest.spyOn(directive, 'close');
+					vi.spyOn(directive, 'close');
 					directive.open();
 					runPendingOpenTimers();
 					popover = document.querySelector('.ob-popover-content');
@@ -989,7 +989,7 @@ describe(ObPopoverDirective.name, () => {
 
 			describe('events', () => {
 				beforeEach(() => {
-					jest.spyOn(directive, 'close');
+					vi.spyOn(directive, 'close');
 					directive.open();
 					runPendingOpenTimers();
 					popover = document.querySelector('.ob-popover-content');
@@ -1026,7 +1026,7 @@ describe(ObPopoverDirective.name, () => {
 
 			describe('events', () => {
 				beforeEach(() => {
-					jest.spyOn(directive, 'close');
+					vi.spyOn(directive, 'close');
 					directive.open();
 					runPendingOpenTimers();
 					popover = document.querySelector('.ob-popover-content');
@@ -1080,7 +1080,7 @@ describe(ObPopoverDirective.name, () => {
 
 			describe('events', () => {
 				beforeEach(() => {
-					jest.spyOn(directive, 'close');
+					vi.spyOn(directive, 'close');
 					directive.open();
 					runPendingOpenTimers();
 					popover = document.querySelector('.ob-popover-content');
@@ -1118,7 +1118,7 @@ describe(ObPopoverDirective.name, () => {
 
 			describe('events', () => {
 				beforeEach(() => {
-					jest.spyOn(directive, 'close');
+					vi.spyOn(directive, 'close');
 					directive.open();
 					runPendingOpenTimers();
 					popover = document.querySelector('.ob-popover-content');
@@ -1156,7 +1156,7 @@ describe(ObPopoverDirective.name, () => {
 
 			describe('events', () => {
 				beforeEach(() => {
-					jest.spyOn(directive, 'close');
+					vi.spyOn(directive, 'close');
 					directive.open();
 					runPendingOpenTimers();
 					popover = document.querySelector('.ob-popover-content');
@@ -1209,6 +1209,6 @@ describe(ObPopoverDirective.name, () => {
 
 	function runPendingOpenTimers(): void {
 		fixture.componentRef.changeDetectorRef.detectChanges();
-		jest.runOnlyPendingTimers();
+		vi.runOnlyPendingTimers();
 	}
 });

@@ -131,8 +131,8 @@ describe('utilities', () => {
 			beforeEach(() => {
 				TestBed.configureTestingModule({
 					providers: [
-						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
-						{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+						{provide: ObIconService, useValue: {registerOnAppInit: vi.fn()} as unknown as ObIconService},
+						{provide: ObLanguageService, useValue: {initialize: vi.fn()} as unknown as ObLanguageService},
 						provideHttpClient(),
 						provideObliqueConfiguration({accessibilityStatement}),
 					],
@@ -152,8 +152,8 @@ describe('utilities', () => {
 			beforeEach(() => {
 				TestBed.configureTestingModule({
 					providers: [
-						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
-						{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+						{provide: ObIconService, useValue: {registerOnAppInit: vi.fn()} as unknown as ObIconService},
+						{provide: ObLanguageService, useValue: {initialize: vi.fn()} as unknown as ObLanguageService},
 						provideHttpClient(),
 						provideObliqueConfiguration({
 							accessibilityStatement: {
@@ -295,7 +295,7 @@ describe('utilities', () => {
 			beforeEach(() => {
 				TestBed.configureTestingModule({
 					providers: [
-						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
+						{provide: ObIconService, useValue: {registerOnAppInit: vi.fn()} as unknown as ObIconService},
 						{provide: TranslateLoader, useClass: FakeLoader},
 						provideHttpClient(),
 						provideObliqueConfiguration({
@@ -420,8 +420,8 @@ describe('utilities', () => {
 			beforeEach(() => {
 				TestBed.configureTestingModule({
 					providers: [
-						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
-						{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+						{provide: ObIconService, useValue: {registerOnAppInit: vi.fn()} as unknown as ObIconService},
+						{provide: ObLanguageService, useValue: {initialize: vi.fn()} as unknown as ObLanguageService},
 						provideHttpClient(),
 						provideObliqueConfiguration({
 							accessibilityStatement: {
@@ -448,8 +448,8 @@ describe('utilities', () => {
 			beforeEach(() => {
 				TestBed.configureTestingModule({
 					providers: [
-						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
-						{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+						{provide: ObIconService, useValue: {registerOnAppInit: vi.fn()} as unknown as ObIconService},
+						{provide: ObLanguageService, useValue: {initialize: vi.fn()} as unknown as ObLanguageService},
 						provideHttpClient(),
 						provideObliqueConfiguration({
 							accessibilityStatement,
@@ -472,8 +472,8 @@ describe('utilities', () => {
 			beforeEach(() => {
 				TestBed.configureTestingModule({
 					providers: [
-						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
-						{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+						{provide: ObIconService, useValue: {registerOnAppInit: vi.fn()} as unknown as ObIconService},
+						{provide: ObLanguageService, useValue: {initialize: vi.fn()} as unknown as ObLanguageService},
 						provideHttpClient(),
 						provideObliqueConfiguration({
 							accessibilityStatement,
@@ -498,8 +498,8 @@ describe('utilities', () => {
 			beforeEach(() => {
 				TestBed.configureTestingModule({
 					providers: [
-						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
-						{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+						{provide: ObIconService, useValue: {registerOnAppInit: vi.fn()} as unknown as ObIconService},
+						{provide: ObLanguageService, useValue: {initialize: vi.fn()} as unknown as ObLanguageService},
 						provideHttpClient(),
 						provideObliqueConfiguration({
 							accessibilityStatement,
@@ -531,8 +531,8 @@ describe('utilities', () => {
 
 				TestBed.configureTestingModule({
 					providers: [
-						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
-						{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+						{provide: ObIconService, useValue: {registerOnAppInit: vi.fn()} as unknown as ObIconService},
+						{provide: ObLanguageService, useValue: {initialize: vi.fn()} as unknown as ObLanguageService},
 						provideHttpClient(),
 						provideObliqueConfiguration(
 							new NonPlainConfig() as unknown as Parameters<typeof provideObliqueConfiguration>[0]
@@ -558,8 +558,8 @@ describe('utilities', () => {
 
 				TestBed.configureTestingModule({
 					providers: [
-						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
-						{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+						{provide: ObIconService, useValue: {registerOnAppInit: vi.fn()} as unknown as ObIconService},
+						{provide: ObLanguageService, useValue: {initialize: vi.fn()} as unknown as ObLanguageService},
 						provideHttpClient(),
 						provideObliqueConfiguration(config),
 					],
@@ -575,8 +575,8 @@ describe('utilities', () => {
 			beforeEach(() => {
 				TestBed.configureTestingModule({
 					providers: [
-						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
-						{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+						{provide: ObIconService, useValue: {registerOnAppInit: vi.fn()} as unknown as ObIconService},
+						{provide: ObLanguageService, useValue: {initialize: vi.fn()} as unknown as ObLanguageService},
 						provideHttpClient(),
 						provideObliqueConfiguration({
 							accessibilityStatement,
@@ -600,8 +600,8 @@ describe('utilities', () => {
 			beforeEach(() => {
 				TestBed.configureTestingModule({
 					providers: [
-						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
-						{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+						{provide: ObIconService, useValue: {registerOnAppInit: vi.fn()} as unknown as ObIconService},
+						{provide: ObLanguageService, useValue: {initialize: vi.fn()} as unknown as ObLanguageService},
 						provideHttpClient(),
 						provideObliqueConfiguration({
 							accessibilityStatement,
@@ -662,8 +662,8 @@ describe('utilities', () => {
 			beforeEach(() => {
 				TestBed.configureTestingModule({
 					providers: [
-						{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
-						{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+						{provide: ObIconService, useValue: {registerOnAppInit: vi.fn()} as unknown as ObIconService},
+						{provide: ObLanguageService, useValue: {initialize: vi.fn()} as unknown as ObLanguageService},
 						provideHttpClient(),
 						provideObliqueConfiguration({
 							accessibilityStatement: {
@@ -716,12 +716,12 @@ describe('utilities', () => {
 				let httpClient: HttpClient;
 				beforeEach(() => {
 					httpClient = TestBed.inject(HttpClient);
-					jest.spyOn(httpClient, 'get');
+					vi.spyOn(httpClient, 'get');
 					TestBed.inject(TranslateLoader).getTranslation('en');
 				});
 
 				afterEach(() => {
-					jest.clearAllMocks();
+					vi.clearAllMocks();
 				});
 
 				it(`should do 2 http calls`, () => {
@@ -780,12 +780,12 @@ describe('utilities', () => {
 				let httpClient: HttpClient;
 				beforeEach(() => {
 					httpClient = TestBed.inject(HttpClient);
-					jest.spyOn(httpClient, 'get');
+					vi.spyOn(httpClient, 'get');
 					TestBed.inject(TranslateLoader).getTranslation('en');
 				});
 
 				afterEach(() => {
-					jest.clearAllMocks();
+					vi.clearAllMocks();
 				});
 
 				it(`should do 3 http calls`, () => {
@@ -839,12 +839,12 @@ describe('utilities', () => {
 				let httpClient: HttpClient;
 				beforeEach(() => {
 					httpClient = TestBed.inject(HttpClient);
-					jest.spyOn(httpClient, 'get');
+					vi.spyOn(httpClient, 'get');
 					TestBed.inject(TranslateLoader).getTranslation('en');
 				});
 
 				afterEach(() => {
-					jest.clearAllMocks();
+					vi.clearAllMocks();
 				});
 
 				it(`should do 0 http calls`, () => {
@@ -869,8 +869,8 @@ describe('utilities', () => {
 		it('should initialize language with locales from translate configuration when provided', () => {
 			TestBed.configureTestingModule({
 				providers: [
-					{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
-					{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+					{provide: ObIconService, useValue: {registerOnAppInit: vi.fn()} as unknown as ObIconService},
+					{provide: ObLanguageService, useValue: {initialize: vi.fn()} as unknown as ObLanguageService},
 					provideHttpClient(),
 					provideObliqueTestingConfiguration({
 						translate: {locales: localeFromTranslate},
@@ -885,8 +885,8 @@ describe('utilities', () => {
 		it('should initialize language with default locale when translate locales are not provided', () => {
 			TestBed.configureTestingModule({
 				providers: [
-					{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
-					{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+					{provide: ObIconService, useValue: {registerOnAppInit: vi.fn()} as unknown as ObIconService},
+					{provide: ObLanguageService, useValue: {initialize: vi.fn()} as unknown as ObLanguageService},
 					provideHttpClient(),
 					provideObliqueTestingConfiguration(),
 				],
@@ -898,8 +898,8 @@ describe('utilities', () => {
 		it('should initialize language with default locale when translate is provided without locales', () => {
 			TestBed.configureTestingModule({
 				providers: [
-					{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
-					{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+					{provide: ObIconService, useValue: {registerOnAppInit: vi.fn()} as unknown as ObIconService},
+					{provide: ObLanguageService, useValue: {initialize: vi.fn()} as unknown as ObLanguageService},
 					provideHttpClient(),
 					provideObliqueTestingConfiguration({
 						translate: {flatten: true},
@@ -913,8 +913,8 @@ describe('utilities', () => {
 		it('should provide a translate loader returning empty translations', async () => {
 			TestBed.configureTestingModule({
 				providers: [
-					{provide: ObIconService, useValue: {registerOnAppInit: jest.fn()} as unknown as ObIconService},
-					{provide: ObLanguageService, useValue: {initialize: jest.fn()} as unknown as ObLanguageService},
+					{provide: ObIconService, useValue: {registerOnAppInit: vi.fn()} as unknown as ObIconService},
+					{provide: ObLanguageService, useValue: {initialize: vi.fn()} as unknown as ObLanguageService},
 					provideHttpClient(),
 					provideObliqueTestingConfiguration(),
 				],

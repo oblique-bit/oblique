@@ -125,7 +125,7 @@ describe('ObFileInfoComponent', () => {
 			});
 
 			it('should reload files on uploadComplete', () => {
-				jest.spyOn(uploadService, 'getUploadedFiles');
+				vi.spyOn(uploadService, 'getUploadedFiles');
 				uploadComplete.next();
 				TestBed.tick();
 				expect(uploadService.getUploadedFiles).toHaveBeenCalled();
@@ -135,7 +135,7 @@ describe('ObFileInfoComponent', () => {
 				"should not reload files on uploadComplete when there's no getUploadedFilesUrl (½s)",
 				value => {
 					fixture.componentRef.setInput('getUploadedFilesUrl', value);
-					jest.spyOn(uploadService, 'getUploadedFiles');
+					vi.spyOn(uploadService, 'getUploadedFiles');
 					uploadComplete.next();
 					TestBed.tick();
 					expect(uploadService.getUploadedFiles).not.toHaveBeenCalled();
@@ -145,8 +145,8 @@ describe('ObFileInfoComponent', () => {
 			describe('add new row while rows are selected', () => {
 				beforeEach(() => {
 					component.selection.select(component.dataSource.data[0]);
-					jest.spyOn(component.selection, 'clear');
-					jest.spyOn(component.selection, 'select');
+					vi.spyOn(component.selection, 'clear');
+					vi.spyOn(component.selection, 'select');
 					uploadComplete.next();
 					TestBed.tick();
 				});
@@ -169,7 +169,7 @@ describe('ObFileInfoComponent', () => {
 				let event: ObIUploadEvent;
 
 				beforeEach(async () => {
-					jest.spyOn(uploadService, 'getUploadedFiles').mockReturnValue(throwError(() => errorMessage));
+					vi.spyOn(uploadService, 'getUploadedFiles').mockReturnValue(throwError(() => errorMessage));
 					const eventPromise = new Promise<ObIUploadEvent>(resolve => {
 						component.uploadEvent.subscribe(evt => resolve(evt));
 					});
@@ -218,7 +218,7 @@ describe('ObFileInfoComponent', () => {
 
 				describe('with no data', () => {
 					beforeEach(() => {
-						jest.spyOn(uploadService, 'getUploadedFiles').mockReturnValue(of([]));
+						vi.spyOn(uploadService, 'getUploadedFiles').mockReturnValue(of([]));
 						// Recreate the component so ngOnInit runs once against the empty response.
 						fixture.destroy();
 						fixture = TestBed.createComponent(ObFileInfoComponent);
@@ -245,7 +245,7 @@ describe('ObFileInfoComponent', () => {
 
 		describe('ngOnDestroy', () => {
 			it('should not reload files on uploadComplete', () => {
-				jest.spyOn(uploadService, 'getUploadedFiles');
+				vi.spyOn(uploadService, 'getUploadedFiles');
 				component.ngOnDestroy();
 				uploadComplete.next();
 				expect(uploadService.getUploadedFiles).not.toHaveBeenCalled();
@@ -316,23 +316,23 @@ describe('ObFileInfoComponent', () => {
 
 		it('should ask for confirmation', () => {
 			fixture.componentRef.setInput('deleteUrl', 'url');
-			jest.spyOn(window, 'confirm');
+			vi.spyOn(window, 'confirm');
 			component.delete([files[0]]);
 			expect(window.confirm).toHaveBeenCalled();
 		});
 
 		it('should do nothing if not confirmed', () => {
 			fixture.componentRef.setInput('deleteUrl', 'url');
-			jest.spyOn(window, 'confirm').mockReturnValue(false);
-			jest.spyOn(uploadService, 'delete');
+			vi.spyOn(window, 'confirm').mockReturnValue(false);
+			vi.spyOn(uploadService, 'delete');
 			component.delete([files[0]]);
 			expect(uploadService.delete).not.toHaveBeenCalled();
 		});
 
 		it('should do nothing if confirmed without deleteUrl', () => {
 			fixture.componentRef.setInput('deleteUrl', undefined);
-			jest.spyOn(window, 'confirm').mockReturnValue(true);
-			jest.spyOn(uploadService, 'delete').mockReturnValue(of());
+			vi.spyOn(window, 'confirm').mockReturnValue(true);
+			vi.spyOn(uploadService, 'delete').mockReturnValue(of());
 			component.delete([files[0]]);
 			expect(uploadService.delete).not.toHaveBeenCalled();
 		});
@@ -340,16 +340,14 @@ describe('ObFileInfoComponent', () => {
 		describe('if confirmed with deleteUrl', () => {
 			beforeEach(() => {
 				fixture.componentRef.setInput('deleteUrl', 'url');
-				jest.spyOn(window, 'confirm').mockReturnValue(true);
+				vi.spyOn(window, 'confirm').mockReturnValue(true);
 			});
 
 			describe.each([
 				{case: 'default', mapper: undefined, fileId: 'WyJmaWxlLnR4dCJd'},
 				{
 					case: 'custom',
-					mapper: jest.fn((filesDesc: ObIFileDescription[]) =>
-						filesDesc.map(file => file.name.split('.')[0]).join('-')
-					),
+					mapper: vi.fn((filesDesc: ObIFileDescription[]) => filesDesc.map(file => file.name.split('.')[0]).join('-')),
 					fileId: 'file',
 				},
 			])('with %case mapFilesToDeleteUrlFunction', ({mapper, fileId}) => {
@@ -357,7 +355,7 @@ describe('ObFileInfoComponent', () => {
 					if (mapper) {
 						fixture.componentRef.setInput('mapFilesToDeleteUrlFunction', mapper);
 					}
-					jest.spyOn(uploadService, 'delete').mockReturnValue(of({}));
+					vi.spyOn(uploadService, 'delete').mockReturnValue(of({}));
 					component.selection.select(files[0]);
 					component.selection.select(files[1]);
 
@@ -393,7 +391,7 @@ describe('ObFileInfoComponent', () => {
 				const deletedFile = files[0];
 
 				beforeEach(async () => {
-					jest.spyOn(uploadService, 'delete').mockReturnValue(throwError(() => errorMessage));
+					vi.spyOn(uploadService, 'delete').mockReturnValue(throwError(() => errorMessage));
 					const eventPromise = new Promise<ObIUploadEvent>(resolve => {
 						component.uploadEvent.subscribe(evt => resolve(evt));
 					});

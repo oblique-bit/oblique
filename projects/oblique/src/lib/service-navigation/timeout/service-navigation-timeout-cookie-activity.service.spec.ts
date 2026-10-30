@@ -4,14 +4,14 @@ import {ObServiceNavigationTimeoutCookieService} from './service-navigation-time
 import {ObServiceNavigationTimeoutCookieActivityService} from './service-navigation-timeout-cookie-activity.service';
 import {ObGlobalEventsService} from '../../global-events/global-events.service';
 
-jest.useFakeTimers();
+vi.useFakeTimers();
 describe('ServiceNavigationTimeoutCookieActivityService', () => {
 	let service: ObServiceNavigationTimeoutCookieActivityService;
 	let fakeWheel: Subject<string>;
 	let fakeMouseMove: Subject<string>;
 	let fakeClick: Subject<string>;
 	let fakeKeyDown: Subject<string>;
-	const fakeSetCookie = jest.fn();
+	const fakeSetCookie = vi.fn();
 
 	beforeEach(() => {
 		fakeWheel = new Subject<string>();
@@ -36,7 +36,7 @@ describe('ServiceNavigationTimeoutCookieActivityService', () => {
 		});
 		service = TestBed.inject(ObServiceNavigationTimeoutCookieActivityService);
 		fakeSetCookie.mockReset();
-		jest.clearAllTimers();
+		vi.clearAllTimers();
 	});
 
 	it('create an instance', () => {
@@ -60,13 +60,13 @@ describe('ServiceNavigationTimeoutCookieActivityService', () => {
 
 		it('should be able to handle multiple events', () => {
 			fakeWheel.next('');
-			jest.advanceTimersByTime(10000);
+			vi.advanceTimersByTime(10000);
 			fakeMouseMove.next('');
-			jest.advanceTimersByTime(10000);
+			vi.advanceTimersByTime(10000);
 			fakeClick.next('');
-			jest.advanceTimersByTime(10000);
+			vi.advanceTimersByTime(10000);
 			fakeKeyDown.next('');
-			jest.advanceTimersByTime(10000);
+			vi.advanceTimersByTime(10000);
 			expect(fakeSetCookie).toHaveBeenCalledTimes(4);
 		});
 

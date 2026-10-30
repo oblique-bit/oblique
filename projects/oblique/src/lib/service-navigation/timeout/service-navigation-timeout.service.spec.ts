@@ -13,7 +13,7 @@ import {ObEPamsEnvironment} from '../service-navigation.model';
 import {ObServiceNavigationTimeoutApiService} from '../api/service-navigation-timeout-api.service';
 import {ObServiceNavigationTimeoutReturnUrlService} from './service-navigation-timeout-return-url.service';
 
-jest.useFakeTimers();
+vi.useFakeTimers();
 describe('ServiceNavigationTimeout', () => {
 	let service: ObServiceNavigationTimeoutService;
 	const fakeLogoutUrl = 'http://fakeLogoutUrl.com';
@@ -21,7 +21,7 @@ describe('ServiceNavigationTimeout', () => {
 	const fakeWindow = {location: {href: fakeRootUrl}, setInterval: window.setInterval};
 	const getLoginStateEmitter = new BehaviorSubject<string>('');
 	const fakeHeaderService = {
-		getLogoutUrl$: jest.fn(() => of(fakeLogoutUrl)),
+		getLogoutUrl$: vi.fn(() => of(fakeLogoutUrl)),
 		getLoginState$: () => getLoginStateEmitter.asObservable(),
 	};
 	const validCookieTime = '999999999999999';
@@ -34,17 +34,17 @@ describe('ServiceNavigationTimeout', () => {
 	const logoutReminderCookieName = 'eportal-logout-reminder';
 
 	const fakeRedirectorService = {
-		redirectOrEmit: jest.fn(),
-		shouldRedirect: jest.fn(() => true),
+		redirectOrEmit: vi.fn(),
+		shouldRedirect: vi.fn(() => true),
 		logoutCookieName,
 	};
 	const fakeApiService = {
-		refreshPamsToken: jest.fn(() => of()),
+		refreshPamsToken: vi.fn(() => of()),
 	};
 	const fakeCookieService = {
-		deleteCookie: jest.fn(() => of()),
-		setShortCookie: jest.fn(() => of()),
-		setCookie: jest.fn(() => of()),
+		deleteCookie: vi.fn(() => of()),
+		setShortCookie: vi.fn(() => of()),
+		setCookie: vi.fn(() => of()),
 	};
 
 	beforeEach(() => {
@@ -56,7 +56,7 @@ describe('ServiceNavigationTimeout', () => {
 				{provide: ObServiceNavigationService, useValue: fakeHeaderService},
 				{
 					provide: ObServiceNavigationTimeoutCookieActivityService,
-					useValue: {activityCookieName: eportalLastUserActivityCookieName, initialize: jest.fn()},
+					useValue: {activityCookieName: eportalLastUserActivityCookieName, initialize: vi.fn()},
 				},
 				{provide: ObServiceNavigationTimeoutRedirectorService, useValue: fakeRedirectorService},
 				{provide: ObServiceNavigationTimeoutApiService, useValue: fakeApiService},
@@ -76,7 +76,7 @@ describe('ServiceNavigationTimeout', () => {
 		Cookies.remove(pamsLastRefreshCookieName);
 		Cookies.remove(eportalLastUserActivityCookieName);
 		Cookies.remove(logoutReminderCookieName);
-		jest.clearAllTimers();
+		vi.clearAllTimers();
 	});
 
 	describe('With service initialised in the beforeEach', () => {
@@ -109,7 +109,7 @@ describe('ServiceNavigationTimeout', () => {
 			it('should not be redirected', () => {
 				Cookies.set(pamsLastRefreshCookieName, expiredCookieTime);
 				Cookies.set(eportalLastUserActivityCookieName, expiredCookieTime);
-				jest.advanceTimersByTime(5000);
+				vi.advanceTimersByTime(5000);
 				expect(fakeRedirectorService.redirectOrEmit).not.toHaveBeenCalled();
 			});
 		});
@@ -119,7 +119,7 @@ describe('ServiceNavigationTimeout', () => {
 				it('should logout with timeout', () => {
 					Cookies.set(pamsLastRefreshCookieName, expiredCookieTime);
 					Cookies.set(eportalLastUserActivityCookieName, expiredCookieTime);
-					jest.advanceTimersByTime(5000);
+					vi.advanceTimersByTime(5000);
 					expect(fakeRedirectorService.redirectOrEmit).toHaveBeenCalledWith(fakeLogoutUrl);
 				});
 			});
@@ -128,7 +128,7 @@ describe('ServiceNavigationTimeout', () => {
 				it('should do nothing', () => {
 					Cookies.set(pamsLastRefreshCookieName, validCookieTime);
 					Cookies.set(eportalLastUserActivityCookieName, expiredCookieTime);
-					jest.advanceTimersByTime(5000);
+					vi.advanceTimersByTime(5000);
 					expect(fakeApiService.refreshPamsToken).not.toHaveBeenCalled();
 				});
 			});
@@ -139,7 +139,7 @@ describe('ServiceNavigationTimeout', () => {
 				it('should logout refresh cookie', () => {
 					Cookies.set(pamsLastRefreshCookieName, expiredCookieTime);
 					Cookies.set(eportalLastUserActivityCookieName, validCookieTime);
-					jest.advanceTimersByTime(5000);
+					vi.advanceTimersByTime(5000);
 					expect(fakeApiService.refreshPamsToken).toHaveBeenCalledWith(fakeRootUrl);
 				});
 			});
@@ -148,9 +148,9 @@ describe('ServiceNavigationTimeout', () => {
 		describe('setCookieDetector()', () => {
 			describe('logout cookie appear', () => {
 				beforeEach(() => {
-					jest.advanceTimersByTime(1000);
+					vi.advanceTimersByTime(1000);
 					Cookies.set(logoutCookieName, '');
-					jest.advanceTimersByTime(1000);
+					vi.advanceTimersByTime(1000);
 				});
 
 				it('should redirect only once', () => {
@@ -164,9 +164,9 @@ describe('ServiceNavigationTimeout', () => {
 			describe('logout cookie appear but checkCookie is false', () => {
 				it('should not redirect', () => {
 					fakeRedirectorService.shouldRedirect.mockReturnValue(false);
-					jest.advanceTimersByTime(1000);
+					vi.advanceTimersByTime(1000);
 					Cookies.set(logoutCookieName, '');
-					jest.advanceTimersByTime(1000);
+					vi.advanceTimersByTime(1000);
 
 					expect(fakeRedirectorService.redirectOrEmit).toHaveBeenCalledTimes(0);
 				});
@@ -174,9 +174,9 @@ describe('ServiceNavigationTimeout', () => {
 
 			describe('timeout cookie appear', () => {
 				beforeEach(() => {
-					jest.advanceTimersByTime(1000);
+					vi.advanceTimersByTime(1000);
 					Cookies.set(timeoutCookieName, '');
-					jest.advanceTimersByTime(1000);
+					vi.advanceTimersByTime(1000);
 				});
 
 				it('should redirect only once', () => {
@@ -197,7 +197,7 @@ describe('ServiceNavigationTimeout', () => {
 			service = TestBed.inject(ObServiceNavigationTimeoutService);
 			service.initialize(ObEPamsEnvironment.DEV);
 			service.loginState = 'S3OK';
-			jest.advanceTimersByTime(10000);
+			vi.advanceTimersByTime(10000);
 		});
 
 		it('should redirect when the eportal-logout-reminder cookie exist', () => {
@@ -217,7 +217,7 @@ describe('ServiceNavigationTimeout', () => {
 			service = TestBed.inject(ObServiceNavigationTimeoutService);
 			service.initialize(ObEPamsEnvironment.DEV);
 			service.loginState = 'S3OK';
-			jest.advanceTimersByTime(10000);
+			vi.advanceTimersByTime(10000);
 		});
 
 		it('should sanitize the url', () => {

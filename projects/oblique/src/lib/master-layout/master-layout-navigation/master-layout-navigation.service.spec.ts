@@ -24,7 +24,7 @@ describe('MasterLayoutNavigationService', () => {
 		navigation: {isFullWidth: false, scrollDelta: 95, scrollMode: ObEScrollMode.AUTO},
 	};
 	beforeEach(() => {
-		jest.useFakeTimers();
+		vi.useFakeTimers();
 		onLangChange$ = new Subject<void>();
 		opened$ = new Subject<boolean>();
 		resize$ = new Subject<UIEvent>();
@@ -43,8 +43,8 @@ describe('MasterLayoutNavigationService', () => {
 	});
 
 	afterEach(() => {
-		jest.clearAllTimers();
-		jest.useRealTimers();
+		vi.clearAllTimers();
+		vi.useRealTimers();
 	});
 
 	it('should be created', () => {
@@ -57,7 +57,7 @@ describe('MasterLayoutNavigationService', () => {
 			emitted = true;
 		});
 		service.scrollLeft();
-		jest.runOnlyPendingTimers();
+		vi.runOnlyPendingTimers();
 		expect(emitted).toBe(true);
 	});
 
@@ -67,7 +67,7 @@ describe('MasterLayoutNavigationService', () => {
 			emitted = true;
 		});
 		service.scrollRight();
-		jest.runOnlyPendingTimers();
+		vi.runOnlyPendingTimers();
 		expect(emitted).toBe(true);
 	});
 
@@ -77,7 +77,7 @@ describe('MasterLayoutNavigationService', () => {
 			emitted = true;
 		});
 		service.refresh();
-		jest.runOnlyPendingTimers();
+		vi.runOnlyPendingTimers();
 		expect(emitted).toBe(true);
 	});
 
@@ -91,7 +91,7 @@ describe('MasterLayoutNavigationService', () => {
 	});
 
 	it('should emit isFullWidth configuration changes', () => {
-		const observer = jest.fn();
+		const observer = vi.fn();
 		service.configEvents$.subscribe(observer);
 
 		service.isFullWidth = true;
@@ -100,7 +100,7 @@ describe('MasterLayoutNavigationService', () => {
 	});
 
 	it('should emit scrollMode configuration changes', () => {
-		const observer = jest.fn();
+		const observer = vi.fn();
 		service.configEvents$.subscribe(observer);
 
 		service.scrollMode = ObEScrollMode.ENABLED;
@@ -112,52 +112,52 @@ describe('MasterLayoutNavigationService', () => {
 	});
 
 	it('should use the configured offset when scrolling left', () => {
-		const observer = jest.fn();
+		const observer = vi.fn();
 		service.scrolled.subscribe(observer);
 
 		service.scrollLeft(42);
-		jest.runOnlyPendingTimers();
+		vi.runOnlyPendingTimers();
 
 		expect(observer).toHaveBeenCalledWith(-42);
 	});
 
 	it('should use the configured offset when scrolling right', () => {
-		const observer = jest.fn();
+		const observer = vi.fn();
 		service.scrolled.subscribe(observer);
 
 		service.scrollRight(42);
-		jest.runOnlyPendingTimers();
+		vi.runOnlyPendingTimers();
 
 		expect(observer).toHaveBeenCalledWith(42);
 	});
 
 	it('should refresh on language changes', () => {
-		const observer = jest.fn();
+		const observer = vi.fn();
 		service.refreshed.subscribe(observer);
 
 		onLangChange$.next();
-		jest.runOnlyPendingTimers();
+		vi.runOnlyPendingTimers();
 
 		expect(observer).toHaveBeenCalled();
 	});
 
 	it('should refresh after the off canvas opens', () => {
-		const observer = jest.fn();
+		const observer = vi.fn();
 		service.refreshed.subscribe(observer);
 
 		opened$.next(true);
-		jest.advanceTimersByTime(600);
-		jest.runOnlyPendingTimers();
+		vi.advanceTimersByTime(600);
+		vi.runOnlyPendingTimers();
 
 		expect(observer).toHaveBeenCalled();
 	});
 
 	it('should refresh on resize', () => {
-		const observer = jest.fn();
+		const observer = vi.fn();
 		service.refreshed.subscribe(observer);
 
 		resize$.next(new UIEvent('resize'));
-		jest.runOnlyPendingTimers();
+		vi.runOnlyPendingTimers();
 
 		expect(observer).toHaveBeenCalled();
 	});

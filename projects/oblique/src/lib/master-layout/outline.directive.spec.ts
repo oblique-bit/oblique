@@ -1,6 +1,6 @@
 import {ObOutlineDirective} from './outline.directive';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, ChangeDetectionStrategy, Component, NgModule} from '@angular/core';
 import {By} from '@angular/platform-browser';
 
 @Component({
@@ -9,6 +9,16 @@ import {By} from '@angular/platform-browser';
 	changeDetection: ChangeDetectionStrategy.Eager,
 })
 class OutLineDirectiveTestComponent {}
+
+// TODO remove once Master Layout have been migrated to standalone
+@NgModule({
+	declarations: [OutLineDirectiveTestComponent],
+	schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+// With Angular 22.2+, non-standalone components with dependencies have to be part of a Module to satisfy the AOT compiler
+// The module is unused but must still exist until the directive have been refactored into standalone
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+class OutLineDirectiveTestModule {}
 
 describe(ObOutlineDirective.name, () => {
 	let fixture: ComponentFixture<OutLineDirectiveTestComponent>;
@@ -23,14 +33,14 @@ describe(ObOutlineDirective.name, () => {
 		directive = fixture.debugElement.query(By.directive(ObOutlineDirective)).injector.get(ObOutlineDirective);
 		fixture.detectChanges();
 
-		jest.spyOn(document.body.classList, 'add');
-		jest.spyOn(document.body.classList, 'remove');
-		jest.spyOn(directive, 'addOutline');
-		jest.spyOn(directive, 'removeOutline');
+		vi.spyOn(document.body.classList, 'add');
+		vi.spyOn(document.body.classList, 'remove');
+		vi.spyOn(directive, 'addOutline');
+		vi.spyOn(directive, 'removeOutline');
 	});
 
 	afterEach(() => {
-		jest.clearAllMocks();
+		vi.clearAllMocks();
 	});
 
 	test('that creation works', () => {

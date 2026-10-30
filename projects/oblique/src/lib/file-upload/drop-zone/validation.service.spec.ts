@@ -46,7 +46,7 @@ describe(ObValidationService.name, () => {
 			let filteredFiles;
 			describe('single', () => {
 				beforeEach(() => {
-					jest.spyOn(notification, 'error');
+					vi.spyOn(notification, 'error');
 					filteredFiles = service.filterInvalidFiles({
 						files,
 						accept: ['*'],
@@ -72,7 +72,7 @@ describe(ObValidationService.name, () => {
 			describe('file limit', () => {
 				describe('accept 1 file', () => {
 					beforeEach(() => {
-						jest.spyOn(notification, 'error');
+						vi.spyOn(notification, 'error');
 						filteredFiles = service.filterInvalidFiles({
 							files,
 							accept: ['*'],
@@ -97,7 +97,7 @@ describe(ObValidationService.name, () => {
 
 				describe('accept 2 files', () => {
 					beforeEach(() => {
-						jest.spyOn(notification, 'error');
+						vi.spyOn(notification, 'error');
 						filteredFiles = service.filterInvalidFiles({
 							files,
 							accept: ['*'],
@@ -121,7 +121,7 @@ describe(ObValidationService.name, () => {
 		describe('invalid extension', () => {
 			let filteredFiles;
 			beforeEach(() => {
-				jest.spyOn(notification, 'error');
+				vi.spyOn(notification, 'error');
 				filteredFiles = service.filterInvalidFiles({
 					files,
 					accept: ['.txt'],
@@ -146,7 +146,7 @@ describe(ObValidationService.name, () => {
 
 		describe('invalid mime', () => {
 			beforeEach(() => {
-				jest.spyOn(notification, 'error');
+				vi.spyOn(notification, 'error');
 			});
 
 			describe('accepting text', () => {
@@ -224,7 +224,7 @@ describe(ObValidationService.name, () => {
 		describe('tooLarge', () => {
 			let filteredFiles;
 			beforeEach(() => {
-				jest.spyOn(notification, 'error');
+				vi.spyOn(notification, 'error');
 				filteredFiles = service.filterInvalidFiles({
 					files,
 					accept: ['*'],

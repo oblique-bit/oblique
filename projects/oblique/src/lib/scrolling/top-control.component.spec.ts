@@ -34,7 +34,7 @@ describe('ObTopControlComponent', () => {
 			expect(topControlComponent.scrollToTop instanceof OutputEmitterRef).toBe(true);
 		});
 		it('should emit when scrollTop is called', () => {
-			jest.spyOn(topControlComponent.scrollToTop, 'emit');
+			vi.spyOn(topControlComponent.scrollToTop, 'emit');
 			topControlComponent.scrollTop();
 			expect(topControlComponent.scrollToTop.emit).toHaveBeenCalledWith();
 		});

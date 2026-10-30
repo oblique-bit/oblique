@@ -24,12 +24,12 @@ describe(ObSpinnerService.name, () => {
 		fixture = TestBed.createComponent(ObSpinnerComponent);
 		spinner = fixture.componentInstance;
 		obConsoleService = TestBed.inject(ObConsoleService);
-		jest.spyOn(obConsoleService, 'warn');
+		vi.spyOn(obConsoleService, 'warn');
 		fixture.detectChanges();
 	});
 
 	afterEach(() => {
-		jest.clearAllMocks();
+		vi.clearAllMocks();
 	});
 
 	it('should emit a SpinnerEvent if activated', async () => {

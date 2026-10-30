@@ -11,6 +11,8 @@ import {NgOptimizedImage} from '@angular/common';
 import {TranslatePipe} from '@ngx-translate/core';
 import {ObMockExternalLinkModule} from '../../external-link/_mocks/mock-external-link.module';
 import {ObPopoverModule} from '../../popover/popover.module';
+import {ObPopoverDirective} from '../../popover/popover.directive';
+import {ObExternalLinkDirective} from '../../external-link/external-link.directive';
 import {ObServiceNavigationPopoverSectionComponent} from '../shared/popover-section/service-navigation-popover-section.component';
 import {ObServiceNavigationProfileHarness} from './service-navigation-profile.harness';
 import {ObServiceNavigationProfileComponent} from './service-navigation-profile.component';
@@ -27,6 +29,8 @@ describe('ObServiceNavigationProfileComponent', () => {
 			imports: [
 				ObMockExternalLinkModule,
 				ObPopoverModule,
+				ObPopoverDirective,
+				ObExternalLinkDirective,
 				MatIconModule,
 				MatTooltipModule,
 				NgOptimizedImage,

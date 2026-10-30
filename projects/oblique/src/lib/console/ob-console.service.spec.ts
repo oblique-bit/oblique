@@ -10,13 +10,13 @@ describe(ObConsoleService.name, () => {
 	});
 
 	afterEach(() => {
-		jest.clearAllMocks();
+		vi.clearAllMocks();
 	});
 
 	describe('with default config', () => {
 		it('warn() should delegate to console.warn', () => {
 			service = TestBed.inject(ObConsoleService);
-			jest.spyOn(console, 'warn');
+			vi.spyOn(console, 'warn');
 			service.warn('Foo', 'Bar', 123);
 
 			expect(console.warn).toHaveBeenCalledWith('Foo', 'Bar', 123);
@@ -24,7 +24,7 @@ describe(ObConsoleService.name, () => {
 
 		it('info() should delegate to console.info', () => {
 			service = TestBed.inject(ObConsoleService);
-			jest.spyOn(console, 'info');
+			vi.spyOn(console, 'info');
 			service.info('Foo', 'Bar', 123);
 
 			expect(console.info).toHaveBeenCalledWith('Foo', 'Bar', 123);
@@ -32,7 +32,7 @@ describe(ObConsoleService.name, () => {
 
 		it('error() should delegate to console.error', () => {
 			service = TestBed.inject(ObConsoleService);
-			jest.spyOn(console, 'error');
+			vi.spyOn(console, 'error');
 			service.error('Foo', 'Bar', 123);
 
 			expect(console.error).toHaveBeenCalledWith('Foo', 'Bar', 123);
@@ -50,7 +50,7 @@ describe(ObConsoleService.name, () => {
 
 		it('warn() should not log silenced labels', () => {
 			service = TestBed.inject(ObConsoleService);
-			jest.spyOn(console, 'warn');
+			vi.spyOn(console, 'warn');
 			service.warn('Foo', 'Bar');
 
 			expect(console.warn).not.toHaveBeenCalled();
@@ -58,7 +58,7 @@ describe(ObConsoleService.name, () => {
 
 		it('info() should not log silenced labels', () => {
 			service = TestBed.inject(ObConsoleService);
-			jest.spyOn(console, 'info');
+			vi.spyOn(console, 'info');
 			service.info('Foo', 'Bar');
 
 			expect(console.info).not.toHaveBeenCalled();
@@ -66,7 +66,7 @@ describe(ObConsoleService.name, () => {
 
 		it('error() should not log silenced labels', () => {
 			service = TestBed.inject(ObConsoleService);
-			jest.spyOn(console, 'error');
+			vi.spyOn(console, 'error');
 			service.error('Foo', 'Bar');
 
 			expect(console.error).not.toHaveBeenCalled();

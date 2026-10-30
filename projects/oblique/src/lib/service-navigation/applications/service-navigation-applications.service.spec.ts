@@ -43,7 +43,7 @@ describe('ObServiceNavigationApplicationsService', () => {
 				ObServiceNavigationApplicationsService,
 				{
 					provide: ObServiceNavigationApplicationsStoreService,
-					useValue: {fetchApplicationsInfo: jest.fn().mockReturnValue(of(mockApplications))},
+					useValue: {fetchApplicationsInfo: vi.fn().mockReturnValue(of(mockApplications))},
 				},
 			],
 		});

@@ -84,7 +84,7 @@ describe('ObMasterLayoutService', () => {
 		});
 
 		it('should ignore unchanged route data properties', () => {
-			const observer = jest.fn();
+			const observer = vi.fn();
 			masterLayoutService.homePageRouteChange$.subscribe(observer);
 
 			routerEvents.next(new NavigationEnd(1, '/route', '/route'));

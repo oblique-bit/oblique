@@ -1,12 +1,15 @@
 {
   "extends": "./tsconfig.lib.json",
   "compilerOptions": {
-    "types": ["jest", "node"],
-    "target": "ES2016",
+    "types": ["vitest/globals", "node"],
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "composite": true
+    "paths": {
+      "@oblique/oblique": ["./src/public_api"]
+    }
   },
-  "include": ["**/*.spec.ts"],
+  "angularCompilerOptions": {
+    "compilationMode": "full"
+  },
+  "include": ["**/*.spec.ts", "../../tests/setupVitest.ts"],
   "exclude": []
 }

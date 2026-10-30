@@ -46,13 +46,13 @@ describe(ObExternalLinkDirective.name, () => {
 				{provide: WINDOW, useValue: window},
 				{
 					provide: MatIconRegistry,
-					useValue: {getNamedSvgIcon: jest.fn().mockReturnValue(of(document.createElement('svg')))},
+					useValue: {getNamedSvgIcon: vi.fn().mockReturnValue(of(document.createElement('svg')))},
 				},
 				{
 					provide: TranslateService,
 					useValue: {
 						onLangChange: lang,
-						instant: jest.fn().mockReturnValue('Opens in new tab'),
+						instant: vi.fn().mockReturnValue('Opens in new tab'),
 						stream: () => subject.asObservable(),
 					},
 				},

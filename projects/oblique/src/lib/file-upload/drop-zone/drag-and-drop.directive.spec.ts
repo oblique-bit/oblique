@@ -40,7 +40,7 @@ describe(ObDragDropDirective.name, () => {
 			let event;
 			beforeEach(() => {
 				event = new CustomEvent('dragover', {bubbles: true, cancelable: true});
-				jest.spyOn(event, 'stopPropagation');
+				vi.spyOn(event, 'stopPropagation');
 				input.nativeElement.dispatchEvent(event);
 				fixture.detectChanges();
 			});
@@ -72,7 +72,7 @@ describe(ObDragDropDirective.name, () => {
 			let event;
 			beforeEach(() => {
 				event = new CustomEvent('dragleave', {bubbles: true, cancelable: true});
-				jest.spyOn(event, 'stopPropagation');
+				vi.spyOn(event, 'stopPropagation');
 				input.nativeElement.dispatchEvent(event);
 				fixture.detectChanges();
 			});
@@ -109,7 +109,7 @@ describe(ObDragDropDirective.name, () => {
 			beforeEach(() => {
 				event = new CustomEvent('drop', {bubbles: true, cancelable: true});
 				event.dataTransfer = {files: []};
-				jest.spyOn(event, 'stopPropagation');
+				vi.spyOn(event, 'stopPropagation');
 				input.nativeElement.dispatchEvent(event);
 				fixture.detectChanges();
 			});
@@ -130,7 +130,7 @@ describe(ObDragDropDirective.name, () => {
 				event.dataTransfer = {
 					files: JSON.parse('{"0":{},"1":{},"length": 2}'),
 				} as DataTransfer;
-				jest.spyOn(event, 'stopPropagation');
+				vi.spyOn(event, 'stopPropagation');
 				input.nativeElement.dispatchEvent(event);
 				fixture.detectChanges();
 			});

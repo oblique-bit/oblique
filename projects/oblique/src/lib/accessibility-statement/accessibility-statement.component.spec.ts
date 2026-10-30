@@ -432,8 +432,8 @@ describe(AccessibilityStatementComponent.name, () => {
 		it('should navigate back when there is in-app history', () => {
 			const location = TestBed.inject(Location);
 			const router = TestBed.inject(Router);
-			jest.spyOn(location, 'back').mockImplementation();
-			jest.spyOn(router, 'navigateByUrl').mockResolvedValue(true);
+			vi.spyOn(location, 'back').mockImplementation(() => {});
+			vi.spyOn(router, 'navigateByUrl').mockResolvedValue(true);
 			historyStack.push('/in-app');
 
 			component.navigateBack();
@@ -445,8 +445,8 @@ describe(AccessibilityStatementComponent.name, () => {
 		it('should navigate to home when there is no in-app history', () => {
 			const location = TestBed.inject(Location);
 			const router = TestBed.inject(Router);
-			jest.spyOn(location, 'back').mockImplementation();
-			jest.spyOn(router, 'navigateByUrl').mockResolvedValue(true);
+			vi.spyOn(location, 'back').mockImplementation(() => {});
+			vi.spyOn(router, 'navigateByUrl').mockResolvedValue(true);
 
 			component.navigateBack();
 

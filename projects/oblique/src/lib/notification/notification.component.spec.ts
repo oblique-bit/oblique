@@ -57,12 +57,12 @@ describe('NotificationComponent', () => {
 		notificationConfig = fixture.debugElement.injector.get(ObNotificationConfig);
 		notificationService = fixture.debugElement.injector.get(ObNotificationService);
 		changeDetectorRef = fixture.componentRef.injector.get(ChangeDetectorRef);
-		jest.spyOn(component, 'close');
+		vi.spyOn(component, 'close');
 		detectChanges();
 	});
 
 	afterEach(() => {
-		jest.useRealTimers();
+		vi.useRealTimers();
 	});
 
 	describe('should display notifications via NotificationService', () => {
@@ -120,7 +120,7 @@ describe('NotificationComponent', () => {
 		});
 
 		it('should close a notification when clicked', async () => {
-			jest.useFakeTimers();
+			vi.useFakeTimers();
 			closeButton.triggerEventHandler('click', null);
 
 			// Wait for animation completion:
@@ -132,7 +132,7 @@ describe('NotificationComponent', () => {
 	});
 
 	it('should clear all notification', async () => {
-		jest.useFakeTimers();
+		vi.useFakeTimers();
 		// Send multiple notifications:
 		component.open({message: 'message 1'});
 		component.open({message: 'message 2'});
@@ -169,7 +169,7 @@ describe('NotificationComponent', () => {
 	});
 
 	it('should have only 1 message if same message is send multiple times with groupSimilar enabled', async () => {
-		jest.useFakeTimers();
+		vi.useFakeTimers();
 		// Send multiple notifications:
 		component.open({message, groupSimilar: true});
 		component.open({message, groupSimilar: true});
@@ -216,7 +216,7 @@ describe('NotificationComponent', () => {
 	});
 
 	it('should close a _non-sticky_ notification after `timeout` is reached', async () => {
-		jest.useFakeTimers();
+		vi.useFakeTimers();
 		const notification = {
 			message,
 			title,
@@ -234,7 +234,7 @@ describe('NotificationComponent', () => {
 	});
 
 	it('should *not* close a _sticky_ notification after `timeout` is reached', async () => {
-		jest.useFakeTimers();
+		vi.useFakeTimers();
 		component.open({
 			message,
 			title,
@@ -288,9 +288,9 @@ describe('NotificationComponent', () => {
 
 	async function advanceTimersAndDetectChanges(delay?: number): Promise<void> {
 		if (delay === undefined) {
-			await jest.runAllTimersAsync();
+			await vi.runAllTimersAsync();
 		} else {
-			await jest.advanceTimersByTimeAsync(delay);
+			await vi.advanceTimersByTimeAsync(delay);
 		}
 		detectChanges();
 	}

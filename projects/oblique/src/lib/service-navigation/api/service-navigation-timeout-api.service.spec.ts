@@ -20,7 +20,7 @@ describe('ObServiceNavigationTimeoutApiService', () => {
 		});
 		service = TestBed.inject(ObServiceNavigationTimeoutApiService);
 		httpClient = TestBed.inject(HttpClient);
-		jest.spyOn(httpClient, 'get').mockReturnValue(of(mockData));
+		vi.spyOn(httpClient, 'get').mockReturnValue(of(mockData));
 	});
 
 	it('should be created', () => {

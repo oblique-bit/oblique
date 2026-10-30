@@ -1,14 +1,18 @@
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {TranslateService} from '@ngx-translate/core';
 import {ObMockTranslatePipe} from '../../../_mocks/mock-translate.pipe';
-import {ObMockTranslateService} from '../../../_mocks/mock-translate.service';
 import {ObNavigationLink} from '../navigation-link.model';
 import {ObMasterLayoutNavigationSubMenuItemComponent} from './master-layout-navigation-sub-menu-item.component';
 import {ObMasterLayoutNavigationSubMenuItemHarness} from './master-layout-navigation-sub-menu-item.harness';
 import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import {Pipe, PipeTransform} from '@angular/core';
+import {ObMasterLayoutNavigationGoToChildrenComponent} from '../go-to-children/master-layout-navigation-go-to-children.component';
+import {RouterLink, RouterLinkActive, provideRouter} from '@angular/router';
+import {MatIconModule} from '@angular/material/icon';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {ObExternalLinkDirective} from '../../../external-link/external-link.directive';
+import {provideObliqueTestingConfiguration} from '@oblique/oblique';
 
 @Pipe({
 	name: 'obLocalize',
@@ -33,8 +37,19 @@ describe(ObMasterLayoutNavigationSubMenuItemComponent.name, () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			declarations: [ObMasterLayoutNavigationSubMenuItemComponent],
-			imports: [ObMockTranslatePipe, BrowserModule, CommonModule, ObMockLocalizePipe],
-			providers: [{provide: TranslateService, useClass: ObMockTranslateService}],
+			imports: [
+				ObMockTranslatePipe,
+				BrowserModule,
+				CommonModule,
+				ObMockLocalizePipe,
+				ObMasterLayoutNavigationGoToChildrenComponent,
+				RouterLink,
+				RouterLinkActive,
+				MatIconModule,
+				MatTooltipModule,
+				ObExternalLinkDirective,
+			],
+			providers: [provideObliqueTestingConfiguration(), provideRouter([])],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObMasterLayoutNavigationSubMenuItemComponent);

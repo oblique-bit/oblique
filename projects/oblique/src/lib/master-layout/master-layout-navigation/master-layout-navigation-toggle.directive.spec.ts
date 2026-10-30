@@ -16,7 +16,7 @@ describe('ObMasterLayoutNavigationToggleDirective', () => {
 	let fixture: ComponentFixture<TestComponent>;
 	let directive: ObMasterLayoutNavigationToggleDirective;
 	const mock = {
-		toggleSubMenu: jest.fn(),
+		toggleSubMenu: vi.fn(),
 	};
 
 	beforeEach(() => {
@@ -52,7 +52,7 @@ describe('ObMasterLayoutNavigationToggleDirective', () => {
 
 			it('should prevent default', () => {
 				const event = new MouseEvent('click');
-				jest.spyOn(event, 'preventDefault');
+				vi.spyOn(event, 'preventDefault');
 				element.dispatchEvent(event);
 				expect(event.preventDefault).toHaveBeenCalled();
 			});
@@ -70,7 +70,7 @@ describe('ObMasterLayoutNavigationToggleDirective', () => {
 			});
 
 			it('should prevent default', () => {
-				jest.spyOn(event, 'preventDefault');
+				vi.spyOn(event, 'preventDefault');
 				element.dispatchEvent(event);
 				expect(event.preventDefault).toHaveBeenCalled();
 			});

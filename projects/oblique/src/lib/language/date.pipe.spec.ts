@@ -7,7 +7,7 @@ import {ObDateFormat, ObTimeFormat} from './date-adapter/date.model';
 describe('DatePipe', () => {
 	let pipe: ObDatePipe;
 	const language = {locale$: of('en')} as ObLanguageService;
-	jest.spyOn(language.locale$, 'subscribe');
+	vi.spyOn(language.locale$, 'subscribe');
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({

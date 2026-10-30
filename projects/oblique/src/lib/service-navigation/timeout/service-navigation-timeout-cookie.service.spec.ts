@@ -6,7 +6,7 @@ import {CookiesMock} from './mocks/js-cookie.mock';
 
 describe('ServiceNavigationTimeoutCookieService', () => {
 	let service: ObServiceNavigationTimeoutCookieService;
-	const fakeSetCookie = jest.fn();
+	const fakeSetCookie = vi.fn();
 	const fakeLocalhostUrl = 'http://localhost:anything';
 	const fake127001Url = 'http://127.0.0.1:anything';
 	const eportalUrl = 'https://eportal.admin.ch';
@@ -24,7 +24,7 @@ describe('ServiceNavigationTimeoutCookieService', () => {
 		service = TestBed.inject(ObServiceNavigationTimeoutCookieService);
 		fakeSetCookie.mockReset();
 		fakeWindow.location.href = fakeLocalhostUrl;
-		jest.useFakeTimers();
+		vi.useFakeTimers();
 	});
 
 	it('create an instance', () => {
