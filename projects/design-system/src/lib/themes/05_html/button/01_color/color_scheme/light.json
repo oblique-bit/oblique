@@ -46,32 +46,32 @@
 							"fg": {
 								"rest": {
 									"$type": "color",
-									"$value": "{ob.p.color.basic.white}",
+									"$value": "{ob.h.button.color.brand.primary.fg.rest}",
 									"$description": "Primary button foreground, rest state, high emphasis, light mode."
 								},
 								"rest_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.basic.white}",
+									"$value": "{ob.h.button.color.brand.primary.fg.rest_inverse}",
 									"$description": "Primary button foreground, rest state, high emphasis, light mode, inverse (inverted surface, colors of the dark mode)."
 								},
 								"hover": {
 									"$type": "color",
-									"$value": "{ob.p.color.basic.white}",
+									"$value": "{ob.h.button.color.brand.primary.fg.hover}",
 									"$description": "Primary button foreground, hover state, high emphasis, light mode."
 								},
 								"hover_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.basic.white}",
+									"$value": "{ob.h.button.color.brand.primary.fg.hover_inverse}",
 									"$description": "Primary button foreground, hover state, high emphasis, light mode, inverse (inverted surface, colors of the dark mode)."
 								},
 								"active": {
 									"$type": "color",
-									"$value": "{ob.p.color.basic.white}",
+									"$value": "{ob.h.button.color.brand.primary.fg.active}",
 									"$description": "Primary button foreground, active state, high emphasis, light mode."
 								},
 								"active_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.basic.white}",
+									"$value": "{ob.h.button.color.brand.primary.fg.active_inverse}",
 									"$description": "Primary button foreground, active state, high emphasis, light mode, inverse (inverted surface, colors of the dark mode)."
 								}
 							}

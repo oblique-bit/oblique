@@ -62,6 +62,38 @@
 									},
 									"$description": "Role: Exclusive. Primary button background on dark surfaces, active. ZH: brand ramp."
 								}
+							},
+							"fg": {
+								"rest": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.white}",
+									"$description": "Role: Exclusive. Primary button label, rest, light surfaces. ZH: white."
+								},
+								"hover": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.white}",
+									"$description": "Role: Exclusive. Primary button label, hover, light surfaces. ZH: white."
+								},
+								"active": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.white}",
+									"$description": "Role: Exclusive. Primary button label, active, light surfaces. ZH: white."
+								},
+								"rest_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.white}",
+									"$description": "Role: Exclusive. Primary button label on dark surfaces, rest. ZH: white."
+								},
+								"hover_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.white}",
+									"$description": "Role: Exclusive. Primary button label on dark surfaces, hover. ZH: white."
+								},
+								"active_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.white}",
+									"$description": "Role: Exclusive. Primary button label on dark surfaces, active. ZH: white."
+								}
 							}
 						},
 						"secondary": {
@@ -189,6 +221,92 @@
 									"$type": "color",
 									"$value": "{ob.p.color.white_alpha.700}",
 									"$description": "Role: Exclusive. Secondary button border on dark surfaces, active. ZH: as before."
+								}
+							}
+						},
+						"tertiary": {
+							"bg": {
+								"rest": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.transparent}",
+									"$description": "Role: Exclusive. Tertiary button background, rest, on the surface. ZH: zh.ch plain text button."
+								},
+								"hover": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.transparent}",
+									"$description": "Role: Exclusive. Tertiary button background, hover, on the surface. ZH: zh.ch plain text button."
+								},
+								"active": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.transparent}",
+									"$description": "Role: Exclusive. Tertiary button background, active, on the surface. ZH: zh.ch plain text button."
+								},
+								"rest_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.transparent}",
+									"$description": "Role: Exclusive. Tertiary button background, rest, on inverted surfaces. ZH: zh.ch plain text button."
+								},
+								"hover_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.transparent}",
+									"$description": "Role: Exclusive. Tertiary button background, hover, on inverted surfaces. ZH: zh.ch plain text button."
+								},
+								"active_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.transparent}",
+									"$description": "Role: Exclusive. Tertiary button background, active, on inverted surfaces. ZH: zh.ch plain text button."
+								},
+								"hover_level_2": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.transparent}",
+									"$description": "Role: Exclusive. Tertiary button background on level_2, hover, on the surface. ZH: zh.ch plain text button."
+								},
+								"active_level_2": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.transparent}",
+									"$description": "Role: Exclusive. Tertiary button background on level_2, active, on the surface. ZH: zh.ch plain text button."
+								},
+								"hover_level_2_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.transparent}",
+									"$description": "Role: Exclusive. Tertiary button background on level_2, hover, on inverted surfaces. ZH: zh.ch plain text button."
+								},
+								"active_level_2_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.transparent}",
+									"$description": "Role: Exclusive. Tertiary button background on level_2, active, on inverted surfaces. ZH: zh.ch plain text button."
+								}
+							},
+							"fg": {
+								"rest": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.rest}",
+									"$description": "Role: Exclusive. Tertiary button label, rest, on the surface. ZH: zh.ch plain text button."
+								},
+								"hover": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.hover}",
+									"$description": "Role: Exclusive. Tertiary button label, hover, on the surface. ZH: zh.ch plain text button."
+								},
+								"active": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.hover}",
+									"$description": "Role: Exclusive. Tertiary button label, active, on the surface. ZH: zh.ch plain text button."
+								},
+								"rest_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.rest_inverse}",
+									"$description": "Role: Exclusive. Tertiary button label, rest, on inverted surfaces. ZH: zh.ch plain text button."
+								},
+								"hover_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.hover_inverse}",
+									"$description": "Role: Exclusive. Tertiary button label, hover, on inverted surfaces. ZH: zh.ch plain text button."
+								},
+								"active_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.hover_inverse}",
+									"$description": "Role: Exclusive. Tertiary button label, active, on inverted surfaces. ZH: zh.ch plain text button."
 								}
 							}
 						}

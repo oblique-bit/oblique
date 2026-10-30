@@ -187,27 +187,27 @@
 						"bg": {
 							"rest": {
 								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.rest}"
+								"$value": "{ob.h.button.color.brand.tertiary.bg.rest}"
 							},
 							"rest_inverse": {
 								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.rest_inverse}"
+								"$value": "{ob.h.button.color.brand.tertiary.bg.rest_inverse}"
 							},
 							"hover": {
 								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover}"
+								"$value": "{ob.h.button.color.brand.tertiary.bg.hover}"
 							},
 							"hover_inverse": {
 								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover_inverse}"
+								"$value": "{ob.h.button.color.brand.tertiary.bg.hover_inverse}"
 							},
 							"active": {
 								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active}"
+								"$value": "{ob.h.button.color.brand.tertiary.bg.active}"
 							},
 							"active_inverse": {
 								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active_inverse}"
+								"$value": "{ob.h.button.color.brand.tertiary.bg.active_inverse}"
 							},
 							"disabled": {
 								"$type": "color",
@@ -221,27 +221,27 @@
 						"fg": {
 							"rest": {
 								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.fg.rest}"
+								"$value": "{ob.h.button.color.brand.tertiary.fg.rest}"
 							},
 							"rest_inverse": {
 								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.fg.rest_inverse}"
+								"$value": "{ob.h.button.color.brand.tertiary.fg.rest_inverse}"
 							},
 							"hover": {
 								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.fg.hover}"
+								"$value": "{ob.h.button.color.brand.tertiary.fg.hover}"
 							},
 							"hover_inverse": {
 								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.fg.hover_inverse}"
+								"$value": "{ob.h.button.color.brand.tertiary.fg.hover_inverse}"
 							},
 							"active": {
 								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.fg.active}"
+								"$value": "{ob.h.button.color.brand.tertiary.fg.active}"
 							},
 							"active_inverse": {
 								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.secondary.fg.active_inverse}"
+								"$value": "{ob.h.button.color.brand.tertiary.fg.active_inverse}"
 							},
 							"disabled": {
 								"$type": "color",

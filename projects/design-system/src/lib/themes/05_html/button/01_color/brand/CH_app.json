@@ -82,6 +82,38 @@
 									},
 									"$description": "Role: Exclusive. Primary button background on dark surfaces, active. CH_app: brand ramp."
 								}
+							},
+							"fg": {
+								"rest": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.white}",
+									"$description": "Role: Exclusive. Primary button label, rest, light surfaces. CH_app: white."
+								},
+								"hover": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.white}",
+									"$description": "Role: Exclusive. Primary button label, hover, light surfaces. CH_app: white."
+								},
+								"active": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.white}",
+									"$description": "Role: Exclusive. Primary button label, active, light surfaces. CH_app: white."
+								},
+								"rest_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.white}",
+									"$description": "Role: Exclusive. Primary button label on dark surfaces, rest. CH_app: white."
+								},
+								"hover_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.white}",
+									"$description": "Role: Exclusive. Primary button label on dark surfaces, hover. CH_app: white."
+								},
+								"active_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.white}",
+									"$description": "Role: Exclusive. Primary button label on dark surfaces, active. CH_app: white."
+								}
 							}
 						},
 						"secondary": {
@@ -249,6 +281,92 @@
 									"$type": "color",
 									"$value": "{ob.p.color.white_alpha.700}",
 									"$description": "Role: Exclusive. Secondary button border on dark surfaces, active. CH_app: as before."
+								}
+							}
+						},
+						"tertiary": {
+							"bg": {
+								"rest": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.rest}",
+									"$description": "Role: Exclusive. Tertiary button background, rest, on the surface. CH_app: same as secondary."
+								},
+								"hover": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover}",
+									"$description": "Role: Exclusive. Tertiary button background, hover, on the surface. CH_app: same as secondary."
+								},
+								"active": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active}",
+									"$description": "Role: Exclusive. Tertiary button background, active, on the surface. CH_app: same as secondary."
+								},
+								"rest_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.rest_inverse}",
+									"$description": "Role: Exclusive. Tertiary button background, rest, on inverted surfaces. CH_app: same as secondary."
+								},
+								"hover_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover_inverse}",
+									"$description": "Role: Exclusive. Tertiary button background, hover, on inverted surfaces. CH_app: same as secondary."
+								},
+								"active_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active_inverse}",
+									"$description": "Role: Exclusive. Tertiary button background, active, on inverted surfaces. CH_app: same as secondary."
+								},
+								"hover_level_2": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover_level_2}",
+									"$description": "Role: Exclusive. Tertiary button background on level_2, hover, on the surface. CH_app: same as secondary."
+								},
+								"active_level_2": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active_level_2}",
+									"$description": "Role: Exclusive. Tertiary button background on level_2, active, on the surface. CH_app: same as secondary."
+								},
+								"hover_level_2_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover_level_2_inverse}",
+									"$description": "Role: Exclusive. Tertiary button background on level_2, hover, on inverted surfaces. CH_app: same as secondary."
+								},
+								"active_level_2_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active_level_2_inverse}",
+									"$description": "Role: Exclusive. Tertiary button background on level_2, active, on inverted surfaces. CH_app: same as secondary."
+								}
+							},
+							"fg": {
+								"rest": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.rest}",
+									"$description": "Role: Exclusive. Tertiary button label, rest, on the surface. CH_app: same as secondary."
+								},
+								"hover": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.hover}",
+									"$description": "Role: Exclusive. Tertiary button label, hover, on the surface. CH_app: same as secondary."
+								},
+								"active": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.active}",
+									"$description": "Role: Exclusive. Tertiary button label, active, on the surface. CH_app: same as secondary."
+								},
+								"rest_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.rest_inverse}",
+									"$description": "Role: Exclusive. Tertiary button label, rest, on inverted surfaces. CH_app: same as secondary."
+								},
+								"hover_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.hover_inverse}",
+									"$description": "Role: Exclusive. Tertiary button label, hover, on inverted surfaces. CH_app: same as secondary."
+								},
+								"active_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.active_inverse}",
+									"$description": "Role: Exclusive. Tertiary button label, active, on inverted surfaces. CH_app: same as secondary."
 								}
 							}
 						}

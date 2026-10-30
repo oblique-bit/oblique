@@ -49,12 +49,12 @@
 								},
 								"rest_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.600}",
-									"$description": "Role: Exclusive. Primary button background on dark surfaces, rest. FR: brand ramp."
+									"$value": "#57B3C2",
+									"$description": "Role: Exclusive. Primary button background on dark surfaces, rest. FR: fr.ch dark mode."
 								},
 								"hover_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.600}",
+									"$value": "#57B3C2",
 									"$extensions": {
 										"studio.tokens": {
 											"modify": {
@@ -65,11 +65,11 @@
 											}
 										}
 									},
-									"$description": "Role: Exclusive. Primary button background on dark surfaces, hover. FR: brand ramp."
+									"$description": "Role: Exclusive. Primary button background on dark surfaces, hover. FR: fr.ch dark mode."
 								},
 								"active_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.600}",
+									"$value": "#57B3C2",
 									"$extensions": {
 										"studio.tokens": {
 											"modify": {
@@ -80,7 +80,39 @@
 											}
 										}
 									},
-									"$description": "Role: Exclusive. Primary button background on dark surfaces, active. FR: brand ramp."
+									"$description": "Role: Exclusive. Primary button background on dark surfaces, active. FR: fr.ch dark mode."
+								}
+							},
+							"fg": {
+								"rest": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.white}",
+									"$description": "Role: Exclusive. Primary button label, rest, light surfaces. FR: white."
+								},
+								"hover": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.white}",
+									"$description": "Role: Exclusive. Primary button label, hover, light surfaces. FR: white."
+								},
+								"active": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.white}",
+									"$description": "Role: Exclusive. Primary button label, active, light surfaces. FR: white."
+								},
+								"rest_inverse": {
+									"$type": "color",
+									"$value": "#000000",
+									"$description": "Role: Exclusive. Primary button label on dark surfaces, rest. FR: black, as fr.ch dark mode."
+								},
+								"hover_inverse": {
+									"$type": "color",
+									"$value": "#000000",
+									"$description": "Role: Exclusive. Primary button label on dark surfaces, hover. FR: black, as fr.ch dark mode."
+								},
+								"active_inverse": {
+									"$type": "color",
+									"$value": "#000000",
+									"$description": "Role: Exclusive. Primary button label on dark surfaces, active. FR: black, as fr.ch dark mode."
 								}
 							}
 						},
@@ -93,63 +125,23 @@
 								},
 								"hover": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.500}",
-									"$extensions": {
-										"studio.tokens": {
-											"modify": {
-												"type": "alpha",
-												"value": "{ob.h.button.state_layer.soft.hover}",
-												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
-											}
-										}
-									},
-									"$description": "Role: Exclusive. Secondary button background, hover, light. FR: brand ramp."
+									"$value": "{ob.p.color.brand.600}",
+									"$description": "Role: Exclusive. Secondary button background, hover, light. FR: fr.ch, filled on hover."
 								},
 								"active": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.500}",
-									"$extensions": {
-										"studio.tokens": {
-											"modify": {
-												"type": "alpha",
-												"value": "{ob.h.button.state_layer.soft.active}",
-												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
-											}
-										}
-									},
-									"$description": "Role: Exclusive. Secondary button background, active, light. FR: brand ramp."
+									"$value": "{ob.p.color.brand.600}",
+									"$description": "Role: Exclusive. Secondary button background, active, light. FR: fr.ch, filled on hover."
 								},
 								"hover_level_2": {
 									"$type": "color",
-									"$value": "{ob.p.color.basic.white}",
-									"$extensions": {
-										"studio.tokens": {
-											"modify": {
-												"type": "alpha",
-												"value": "{ob.h.button.state_layer.intense.hover}",
-												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
-											}
-										}
-									},
-									"$description": "Role: Exclusive. Secondary button background on level_2, hover, light. FR: white overlay."
+									"$value": "{ob.p.color.brand.600}",
+									"$description": "Role: Exclusive. Secondary button background on level_2, hover, light. FR: fr.ch, filled on hover."
 								},
 								"active_level_2": {
 									"$type": "color",
-									"$value": "{ob.p.color.basic.white}",
-									"$extensions": {
-										"studio.tokens": {
-											"modify": {
-												"type": "alpha",
-												"value": "{ob.h.button.state_layer.intense.active}",
-												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
-											}
-										}
-									},
-									"$description": "Role: Exclusive. Secondary button background on level_2, active, light. FR: white overlay."
+									"$value": "{ob.p.color.brand.600}",
+									"$description": "Role: Exclusive. Secondary button background on level_2, active, light. FR: fr.ch, filled on hover."
 								},
 								"rest_inverse": {
 									"$type": "color",
@@ -158,97 +150,163 @@
 								},
 								"hover_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.500}",
-									"$extensions": {
-										"studio.tokens": {
-											"modify": {
-												"type": "alpha",
-												"value": "{ob.h.button.state_layer.soft.hover}",
-												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
-											}
-										}
-									},
-									"$description": "Role: Exclusive. Secondary button background on dark surfaces, hover. FR: brand ramp."
+									"$value": "#57B3C2",
+									"$description": "Role: Exclusive. Secondary button background on dark surfaces, hover. FR: fr.ch dark mode."
 								},
 								"active_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.500}",
-									"$extensions": {
-										"studio.tokens": {
-											"modify": {
-												"type": "alpha",
-												"value": "{ob.h.button.state_layer.soft.active}",
-												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
-											}
-										}
-									},
-									"$description": "Role: Exclusive. Secondary button background on dark surfaces, active. FR: brand ramp."
+									"$value": "#57B3C2",
+									"$description": "Role: Exclusive. Secondary button background on dark surfaces, active. FR: fr.ch dark mode."
 								}
 							},
 							"fg": {
 								"rest": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.700}",
-									"$description": "Role: Exclusive. Secondary button label, rest, light. FR: brand ramp."
+									"$value": "{ob.p.color.brand.600}",
+									"$description": "Role: Exclusive. Secondary button label, rest, light. FR: fr.ch, filled on hover."
 								},
 								"hover": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.800}",
-									"$description": "Role: Exclusive. Secondary button label, hover, light. FR: brand ramp."
+									"$value": "{ob.p.color.basic.white}",
+									"$description": "Role: Exclusive. Secondary button label, hover, light. FR: fr.ch, filled on hover."
 								},
 								"active": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.800}",
-									"$description": "Role: Exclusive. Secondary button label, active, light. FR: brand ramp."
+									"$value": "{ob.p.color.basic.white}",
+									"$description": "Role: Exclusive. Secondary button label, active, light. FR: fr.ch, filled on hover."
 								},
 								"rest_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.50}",
-									"$description": "Role: Exclusive. Secondary button label on dark surfaces, rest. FR: as before."
+									"$value": "#57B3C2",
+									"$description": "Role: Exclusive. Secondary button label on dark surfaces, rest. FR: fr.ch dark mode."
 								},
 								"hover_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.50}",
-									"$description": "Role: Exclusive. Secondary button label on dark surfaces, hover. FR: as before."
+									"$value": "#000000",
+									"$description": "Role: Exclusive. Secondary button label on dark surfaces, hover. FR: fr.ch dark mode."
 								},
 								"active_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.50}",
-									"$description": "Role: Exclusive. Secondary button label on dark surfaces, active. FR: as before."
+									"$value": "#000000",
+									"$description": "Role: Exclusive. Secondary button label on dark surfaces, active. FR: fr.ch dark mode."
 								}
 							},
 							"border": {
 								"rest": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.700}",
-									"$description": "Role: Exclusive. Secondary button border, rest, light. FR: brand ramp."
+									"$value": "{ob.p.color.brand.600}",
+									"$description": "Role: Exclusive. Secondary button border, rest, light. FR: fr.ch."
 								},
 								"hover": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.800}",
-									"$description": "Role: Exclusive. Secondary button border, hover, light. FR: brand ramp."
+									"$value": "{ob.p.color.brand.600}",
+									"$description": "Role: Exclusive. Secondary button border, hover, light. FR: fr.ch."
 								},
 								"active": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.800}",
-									"$description": "Role: Exclusive. Secondary button border, active, light. FR: brand ramp."
+									"$value": "{ob.p.color.brand.600}",
+									"$description": "Role: Exclusive. Secondary button border, active, light. FR: fr.ch."
 								},
 								"rest_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.white_alpha.700}",
-									"$description": "Role: Exclusive. Secondary button border on dark surfaces, rest. FR: as before."
+									"$value": "#57B3C2",
+									"$description": "Role: Exclusive. Secondary button border on dark surfaces, rest. FR: fr.ch dark mode."
 								},
 								"hover_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.white_alpha.700}",
-									"$description": "Role: Exclusive. Secondary button border on dark surfaces, hover. FR: as before."
+									"$value": "#57B3C2",
+									"$description": "Role: Exclusive. Secondary button border on dark surfaces, hover. FR: fr.ch dark mode."
 								},
 								"active_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.white_alpha.700}",
-									"$description": "Role: Exclusive. Secondary button border on dark surfaces, active. FR: as before."
+									"$value": "#57B3C2",
+									"$description": "Role: Exclusive. Secondary button border on dark surfaces, active. FR: fr.ch dark mode."
+								}
+							}
+						},
+						"tertiary": {
+							"bg": {
+								"rest": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.rest}",
+									"$description": "Role: Exclusive. Tertiary button background, rest, on the surface. FR: same as secondary."
+								},
+								"hover": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover}",
+									"$description": "Role: Exclusive. Tertiary button background, hover, on the surface. FR: same as secondary."
+								},
+								"active": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active}",
+									"$description": "Role: Exclusive. Tertiary button background, active, on the surface. FR: same as secondary."
+								},
+								"rest_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.rest_inverse}",
+									"$description": "Role: Exclusive. Tertiary button background, rest, on inverted surfaces. FR: same as secondary."
+								},
+								"hover_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover_inverse}",
+									"$description": "Role: Exclusive. Tertiary button background, hover, on inverted surfaces. FR: same as secondary."
+								},
+								"active_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active_inverse}",
+									"$description": "Role: Exclusive. Tertiary button background, active, on inverted surfaces. FR: same as secondary."
+								},
+								"hover_level_2": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover_level_2}",
+									"$description": "Role: Exclusive. Tertiary button background on level_2, hover, on the surface. FR: same as secondary."
+								},
+								"active_level_2": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active_level_2}",
+									"$description": "Role: Exclusive. Tertiary button background on level_2, active, on the surface. FR: same as secondary."
+								},
+								"hover_level_2_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.hover_level_2_inverse}",
+									"$description": "Role: Exclusive. Tertiary button background on level_2, hover, on inverted surfaces. FR: same as secondary."
+								},
+								"active_level_2_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.bg.active_level_2_inverse}",
+									"$description": "Role: Exclusive. Tertiary button background on level_2, active, on inverted surfaces. FR: same as secondary."
+								}
+							},
+							"fg": {
+								"rest": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.rest}",
+									"$description": "Role: Exclusive. Tertiary button label, rest, on the surface. FR: same as secondary."
+								},
+								"hover": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.hover}",
+									"$description": "Role: Exclusive. Tertiary button label, hover, on the surface. FR: same as secondary."
+								},
+								"active": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.active}",
+									"$description": "Role: Exclusive. Tertiary button label, active, on the surface. FR: same as secondary."
+								},
+								"rest_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.rest_inverse}",
+									"$description": "Role: Exclusive. Tertiary button label, rest, on inverted surfaces. FR: same as secondary."
+								},
+								"hover_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.hover_inverse}",
+									"$description": "Role: Exclusive. Tertiary button label, hover, on inverted surfaces. FR: same as secondary."
+								},
+								"active_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_high.secondary.fg.active_inverse}",
+									"$description": "Role: Exclusive. Tertiary button label, active, on inverted surfaces. FR: same as secondary."
 								}
 							}
 						}

@@ -12,33 +12,33 @@
 						},
 						"default": {
 							"$type": "color",
-							"$value": "{ob.s.color.interaction.fg.contrast_medium}",
-							"$description": "Role: Exclusive. Link color, default, light surfaces. FR: interaction color."
+							"$value": "{ob.p.color.brand.600}",
+							"$description": "Role: Exclusive. Link color, default, light surfaces. FR: fr.ch primary."
 						},
 						"default_inverse": {
 							"$type": "color",
-							"$value": "{ob.s.color.interaction.fg.contrast_medium}",
-							"$description": "Role: Exclusive. Link color, default, dark surfaces. FR: interaction color."
+							"$value": "#57B3C2",
+							"$description": "Role: Exclusive. Link color, default, dark surfaces. FR: fr.ch dark mode primary."
 						},
 						"hover": {
 							"$type": "color",
-							"$value": "{ob.s.color.interaction.fg.contrast_low}",
-							"$description": "Role: Exclusive. Link color, hover, light surfaces. FR: interaction color."
+							"$value": "{ob.p.color.brand.600}",
+							"$description": "Role: Exclusive. Link color, hover, light surfaces. FR: fr.ch primary."
 						},
 						"hover_inverse": {
 							"$type": "color",
-							"$value": "{ob.s.color.interaction.fg.contrast_low}",
-							"$description": "Role: Exclusive. Link color, hover, dark surfaces. FR: interaction color."
+							"$value": "#57B3C2",
+							"$description": "Role: Exclusive. Link color, hover, dark surfaces. FR: fr.ch dark mode primary."
 						},
 						"active": {
 							"$type": "color",
-							"$value": "{ob.s.color.interaction.fg.contrast_high}",
-							"$description": "Role: Exclusive. Link color, active, light surfaces. FR: interaction color."
+							"$value": "{ob.p.color.brand.600}",
+							"$description": "Role: Exclusive. Link color, active, light surfaces. FR: fr.ch primary."
 						},
 						"active_inverse": {
 							"$type": "color",
-							"$value": "{ob.s.color.interaction.fg.contrast_high}",
-							"$description": "Role: Exclusive. Link color, active, dark surfaces. FR: interaction color."
+							"$value": "#57B3C2",
+							"$description": "Role: Exclusive. Link color, active, dark surfaces. FR: fr.ch dark mode primary."
 						}
 					}
 				}
