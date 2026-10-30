@@ -112,6 +112,96 @@
             "$type": "color",
             "$value": "{ob.s.color.neutral.fg.contrast_medium_inverse}",
             "$description": "Color of the subtitle and the footer text on a flipped surface."
+          },
+          "bg_hover": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.bg.contrast_lowest}",
+            "$description": "Background color of the card on hover."
+          },
+          "bg_hover_inverse": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.bg.contrast_lowest_inverse}",
+            "$description": "Background color of the card on hover on a flipped surface."
+          },
+          "bg_active": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.bg.contrast_low}",
+            "$description": "Background color of the card while it is pressed."
+          },
+          "bg_active_inverse": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.bg.contrast_low_inverse}",
+            "$description": "Background color of the card while it is pressed on a flipped surface."
+          },
+          "bg_disabled": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.bg.contrast_lowest}",
+            "$description": "Background color of a disabled card."
+          },
+          "bg_disabled_inverse": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.bg.contrast_lowest_inverse}",
+            "$description": "Background color of a disabled card on a flipped surface."
+          },
+          "border_hover": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.border.medium}",
+            "$description": "Border color of the card on hover."
+          },
+          "border_hover_inverse": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.border.medium_inverse}",
+            "$description": "Border color of the card on hover on a flipped surface."
+          },
+          "border_active": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.border.strong}",
+            "$description": "Border color of the card while it is pressed."
+          },
+          "border_active_inverse": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.border.strong_inverse}",
+            "$description": "Border color of the card while it is pressed on a flipped surface."
+          },
+          "border_selected": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.border.strong}",
+            "$description": "Border color of a selected card."
+          },
+          "border_selected_inverse": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.border.strong_inverse}",
+            "$description": "Border color of a selected card on a flipped surface."
+          },
+          "border_focus": {
+            "$type": "color",
+            "$value": "{ob.s.color.interaction.focus_ring}",
+            "$description": "Border color of a focused card, the focus ring."
+          },
+          "border_focus_inverse": {
+            "$type": "color",
+            "$value": "{ob.s.color.interaction.focus_ring_inverse}",
+            "$description": "Border color of a focused card, the focus ring on a flipped surface."
+          },
+          "border_disabled": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.border.subtle}",
+            "$description": "Border color of a disabled card."
+          },
+          "border_disabled_inverse": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.border.subtle_inverse}",
+            "$description": "Border color of a disabled card on a flipped surface."
+          },
+          "fg_disabled": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.fg.contrast_low}",
+            "$description": "Text color of a disabled card."
+          },
+          "fg_disabled_inverse": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.fg.contrast_low_inverse}",
+            "$description": "Text color of a disabled card on a flipped surface."
           }
         },
         "typography": {
@@ -138,9 +228,21 @@
           "$description": "Corner radius of the card. The image slot is clipped to it."
         },
         "border_width": {
-          "$type": "borderWidth",
-          "$value": "{ob.s.border_width.xs}",
-          "$description": "Border width of the card surface."
+          "default": {
+            "$type": "borderWidth",
+            "$value": "{ob.s.border_width.xs}",
+            "$description": "Border width of the card surface."
+          },
+          "selected": {
+            "$type": "borderWidth",
+            "$value": "{ob.s.border_width.md}",
+            "$description": "Border width of a selected card."
+          },
+          "focus": {
+            "$type": "borderWidth",
+            "$value": "{ob.s.border_width.md}",
+            "$description": "Border width of a focused card, the focus ring."
+          }
         }
       }
     }
