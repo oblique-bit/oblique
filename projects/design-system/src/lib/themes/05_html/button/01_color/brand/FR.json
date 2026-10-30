@@ -61,11 +61,11 @@
 												"type": "mix",
 												"value": "{ob.h.button.state_layer.strong.hover}",
 												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
+												"color": "{ob.p.color.basic.white}"
 											}
 										}
 									},
-									"$description": "Role: Exclusive. Primary button background on dark surfaces, hover. FR: fr.ch dark mode."
+									"$description": "Role: Exclusive. Primary button background on dark surfaces, hover. FR: fr.ch dark mode, lighter for the black label."
 								},
 								"active_inverse": {
 									"$type": "color",
@@ -76,11 +76,11 @@
 												"type": "mix",
 												"value": "{ob.h.button.state_layer.strong.active}",
 												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
+												"color": "{ob.p.color.basic.white}"
 											}
 										}
 									},
-									"$description": "Role: Exclusive. Primary button background on dark surfaces, active. FR: fr.ch dark mode."
+									"$description": "Role: Exclusive. Primary button background on dark surfaces, active. FR: fr.ch dark mode, lighter for the black label."
 								}
 							},
 							"fg": {
