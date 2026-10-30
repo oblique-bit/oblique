@@ -537,10 +537,40 @@
               "$value": "#E5E5E5",
               "$description": "Role: Exclusive. Neutral step 100, light mode. FR: fr.ch light grey."
             },
+            "100_black_50": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.100}",
+              "$description": "Role: Exclusive. Neutral step 100 mixed 50% with black, for the high contrast mode.",
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "mix",
+                    "value": "0.5",
+                    "space": "srgb",
+                    "color": "{ob.p.color.basic.black}"
+                  }
+                }
+              }
+            },
             "200": {
               "$type": "color",
               "$value": "#CCCCCC",
               "$description": "Role: Exclusive. Neutral step 200, light mode. FR: fr.ch grey."
+            },
+            "200_black_50": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.200}",
+              "$description": "Role: Exclusive. Neutral step 200 mixed 50% with black, for the high contrast mode.",
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "mix",
+                    "value": "0.5",
+                    "space": "srgb",
+                    "color": "{ob.p.color.basic.black}"
+                  }
+                }
+              }
             },
             "300": {
               "$type": "color",
@@ -625,10 +655,40 @@
               "$value": "#D9D9D9",
               "$description": "Role: Exclusive. Neutral step 100, dark mode. FR: grey between the brand greys."
             },
+            "100_black_50": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral_dark.100}",
+              "$description": "Role: Exclusive. Dark neutral step 100 mixed 50% with black, for the high contrast mode.",
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "mix",
+                    "value": "0.5",
+                    "space": "srgb",
+                    "color": "{ob.p.color.basic.black}"
+                  }
+                }
+              }
+            },
             "200": {
               "$type": "color",
               "$value": "#CCCCCC",
               "$description": "Role: Exclusive. Neutral step 200, dark mode. FR: fr.ch dark mode secondary text."
+            },
+            "200_black_50": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral_dark.200}",
+              "$description": "Role: Exclusive. Dark neutral step 200 mixed 50% with black, for the high contrast mode.",
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "mix",
+                    "value": "0.5",
+                    "space": "srgb",
+                    "color": "{ob.p.color.basic.black}"
+                  }
+                }
+              }
             },
             "300": {
               "$type": "color",

@@ -88,6 +88,26 @@
             }
           },
           "border": {
+            "subtle": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.border.subtle}",
+              "$description": "Role: Border. Subtle neutral border at medium contrast, as before. Standard surface."
+            },
+            "subtle_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.border.subtle_inverse}",
+              "$description": "Role: Border. Subtle neutral border at medium contrast, as before. Inverse surface."
+            },
+            "medium": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.border.medium}",
+              "$description": "Role: Border. Medium neutral border at medium contrast, as before. Standard surface."
+            },
+            "medium_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.border.medium_inverse}",
+              "$description": "Role: Border. Medium neutral border at medium contrast, as before. Inverse surface."
+            },
             "strong": {
               "$type": "color",
               "$value": "{ob.s1.color.neutral.border.strong}",

@@ -163,22 +163,22 @@
           "border": {
             "subtle": {
               "$type": "color",
-              "$value": "{ob.s1.color.neutral.border.subtle}",
+              "$value": "{ob.s3.color.neutral.border.subtle}",
               "$description": "Border for Neutral. Subtle strength: Use for low-emphasis dividers and structural separators."
             },
             "subtle_inverse": {
               "$type": "color",
-              "$value": "{ob.s1.color.neutral.border.subtle_inverse}",
+              "$value": "{ob.s3.color.neutral.border.subtle_inverse}",
               "$description": "Border for Neutral. Subtle strength: Use for low-emphasis dividers and structural separators."
             },
             "medium": {
               "$type": "color",
-              "$value": "{ob.s1.color.neutral.border.medium}",
+              "$value": "{ob.s3.color.neutral.border.medium}",
               "$description": "Border for Neutral. Medium strength: Use for standard form controls, table cells, and contained areas."
             },
             "medium_inverse": {
               "$type": "color",
-              "$value": "{ob.s1.color.neutral.border.medium_inverse}",
+              "$value": "{ob.s3.color.neutral.border.medium_inverse}",
               "$description": "Border for Neutral. Medium strength: Use for standard form controls, table cells, and contained areas."
             },
             "strong": {

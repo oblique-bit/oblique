@@ -62,14 +62,20 @@ S3 also holds the neutral foreground levels `contrast_low`, `contrast_medium`, `
 
 ### **Borders and Status Text**
 
-S3 also holds `neutral.border.strong` and the status foreground `contrast_medium` of all five status families (`info`, `resolved`, `attention`, `critical`, `fatal`), each with `_inverse`. The `ob.s` tokens of the same names point to S3. In `low` and `medium` they point to the same S1 token as before. In `high` they point to S1 tokens with the suffix `_max`:
+S3 also holds the neutral borders `subtle`, `medium` and `strong` and the status foreground `contrast_medium` of all five status families (`info`, `resolved`, `attention`, `critical`, `fatal`), each with `_inverse`. The `ob.s` tokens of the same names point to S3. In `low` and `medium` they point to the same S1 token as before. In `high` they point to S1 tokens with the suffix `_max`:
 
 | S3 token | `high` points to | light mode | dark mode |
 |---|---|---|---|
+| `neutral.border.subtle` | `ob.s1.color.neutral.border.subtle_max` | `neutral.100` mixed 50 % with black | white at 55 % (instead of 10 %) |
+| `neutral.border.medium` | `ob.s1.color.neutral.border.medium_max` | `neutral.200` mixed 50 % with black | white at 60 % (instead of 20 %) |
 | `neutral.border.strong` | `ob.s1.color.neutral.border.strong_max` | `neutral.300` mixed 50 % with black | `neutral_dark.300` mixed 50 % with white |
 | `status.<status>.fg.contrast_medium` | `ob.s1.color.status.<status>.fg.contrast_medium_max` | the status step mixed 50 % with black | the status step mixed 50 % with white |
 
+In dark mode `subtle` and `medium` are white with 10 % and 20 % opacity. White with opacity mixed 50 % toward white is white with a higher opacity: 10 % becomes 55 %, 20 % becomes 60 %.
+
 The `_inverse` tokens mix in the other direction. The mixed colors are primitives of the brand files (`ob.p.color.brand.neutral.300_black_50`, `ob.p.color.brand.status.critical.700_black_50`, …), so each brand gets its own mixed color. `fatal` uses the `critical` steps.
+
+Border contrast on white in light mode (`CH_app`), `medium` → `high`: `subtle` 1.28 → 4.82, `medium` 2.10 → 6.95, `strong` 3.34 → 9.40. In dark mode on `level0`: `subtle` 1.37 → 6.00, `medium` 1.91 → 6.94. In `high`, `subtle` is darker than `strong` in `medium`.
 
 ### **Link**
 
@@ -84,7 +90,7 @@ Contrast on white, `medium` → `high`: `ZH` 5.74 → 12.63, `CH_marketing` 5.01
 
 ### **Not Built Yet**
 
-- The other status foreground steps (`contrast_high` for Pill, `contrast_highest` for Badge) and the borders `subtle` and `medium`.
+- The other status foreground steps (`contrast_high` for Pill, `contrast_highest` for Badge).
 - The Button and the header take their colors from the primitives and do not follow the contrast mode yet.
 - The interaction text colors (`ob.s.color.interaction.fg.*`) are not in S3. Components that use them, other than the link, do not follow the contrast mode yet.
 - The Button on a moved surface keeps the colors of its own elevation level.
@@ -92,5 +98,6 @@ Contrast on white, `medium` → `high`: `ZH` 5.74 → 12.63, `CH_marketing` 5.01
 ## **Known Limits**
 
 - In `low`, `level_1` and `level_2` have the same color.
+- The Card uses `border.subtle` also for its disabled border, so in `high` the disabled border gets darker too. Disabled text (`contrast_lowest`) does not change.
 - The CSS build writes one block per mode. A container with dark mode and `high` gets the `high` values of light mode. The same limit exists for dark mode and `low` emphasis.
 - In CSS, a token that points to another token (for example the heading colors, which point to `ob.s.color.neutral.fg.*`) is computed where it is declared. With the class on a container inside the page, these tokens keep the `medium` value; with the class on the root element they follow.

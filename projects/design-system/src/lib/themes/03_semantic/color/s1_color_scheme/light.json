@@ -149,6 +149,25 @@
               "$value": "{ob.p.color.basic.white}",
               "$description": "Subtle neutral border color. Inverse surface."
             },
+            "subtle_max": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.100_black_50}",
+              "$description": "Subtle neutral border for the high contrast mode, mixed 50% toward black. Standard surface."
+            },
+            "subtle_max_inverse": {
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "alpha",
+                    "value": "0.55",
+                    "space": "srgb"
+                  }
+                }
+              },
+              "$type": "color",
+              "$value": "{ob.p.color.basic.white}",
+              "$description": "Subtle neutral border for the high contrast mode: white at 55% instead of 10%. Inverse surface."
+            },
             "medium": {
               "$type": "color",
               "$value": "{ob.p.color.brand.neutral.200}",
@@ -167,6 +186,25 @@
               "$type": "color",
               "$value": "{ob.p.color.basic.white}",
               "$description": "Medium strength neutral border color. Inverse surface."
+            },
+            "medium_max": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.200_black_50}",
+              "$description": "Medium neutral border for the high contrast mode, mixed 50% toward black. Standard surface."
+            },
+            "medium_max_inverse": {
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "alpha",
+                    "value": "0.6",
+                    "space": "srgb"
+                  }
+                }
+              },
+              "$type": "color",
+              "$value": "{ob.p.color.basic.white}",
+              "$description": "Medium neutral border for the high contrast mode: white at 60% instead of 20%. Inverse surface."
             },
             "strong": {
               "$type": "color",

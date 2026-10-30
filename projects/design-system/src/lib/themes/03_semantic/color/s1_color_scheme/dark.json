@@ -149,6 +149,25 @@
               "$value": "{ob.p.color.brand.neutral_dark.100}",
               "$description": "Subtle neutral border color. Inverse surface."
             },
+            "subtle_max": {
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "alpha",
+                    "value": "0.55",
+                    "space": "srgb"
+                  }
+                }
+              },
+              "$type": "color",
+              "$value": "{ob.p.color.basic.white}",
+              "$description": "Subtle neutral border for the high contrast mode: white at 55% instead of 10%. Standard surface."
+            },
+            "subtle_max_inverse": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral_dark.100_black_50}",
+              "$description": "Subtle neutral border for the high contrast mode, mixed 50% toward black. Inverse surface."
+            },
             "medium": {
               "$extensions": {
                 "studio.tokens": {
@@ -167,6 +186,25 @@
               "$type": "color",
               "$value": "{ob.p.color.brand.neutral_dark.200}",
               "$description": "Medium strength neutral border color. Inverse surface."
+            },
+            "medium_max": {
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "alpha",
+                    "value": "0.6",
+                    "space": "srgb"
+                  }
+                }
+              },
+              "$type": "color",
+              "$value": "{ob.p.color.basic.white}",
+              "$description": "Medium neutral border for the high contrast mode: white at 60% instead of 20%. Standard surface."
+            },
+            "medium_max_inverse": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral_dark.200_black_50}",
+              "$description": "Medium neutral border for the high contrast mode, mixed 50% toward black. Inverse surface."
             },
             "strong": {
               "$type": "color",

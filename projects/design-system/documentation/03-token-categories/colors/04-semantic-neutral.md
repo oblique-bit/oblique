@@ -38,7 +38,7 @@ ob.s.color.neutral.{property}.{contrast_level}{inversion}
 
 **Surface:** `bg.surface` follows the elevation mode: `contrast_highest` at `level0`, `contrast_high` at `level1`, `contrast_medium` at `level2`. `level-1` is the same as `level0` in light mode and `cobalt.900` in dark mode. See [Elevation Mode](../../04-modes/08-elevation.md). The contrast mode moves the surface by one level in `low` and `high`, see [Contrast Mode](../../04-modes/11-contrast.md).
 
-**Contrast mode:** in `high`, the foreground levels `contrast_highest`, `contrast_high`, `contrast_medium` and `contrast_low` take `contrast_max` of S1: black in light mode, white in dark mode (`_inverse`: the opposite). `contrast_lowest` does not change, so disabled text does not turn black. `border.strong` takes `strong_max` of S1 in `high`: `neutral.300` mixed 50 % with black in light mode, `neutral_dark.300` mixed 50 % with white in dark mode. See [Contrast Mode](../../04-modes/11-contrast.md).
+**Contrast mode:** in `high`, the foreground levels `contrast_highest`, `contrast_high`, `contrast_medium` and `contrast_low` take `contrast_max` of S1: black in light mode, white in dark mode (`_inverse`: the opposite). `contrast_lowest` does not change, so disabled text does not turn black. The borders `subtle`, `medium` and `strong` take the `_max` tokens of S1 in `high`: in light mode `neutral.100`, `neutral.200` and `neutral.300` mixed 50 % with black; in dark mode white at 55 % and 60 % (instead of 10 % and 20 %) and `neutral_dark.300` mixed 50 % with white. See [Contrast Mode](../../04-modes/11-contrast.md).
 
 ## Component Applications
 
