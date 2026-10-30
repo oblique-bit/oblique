@@ -5,7 +5,7 @@
         "token_family_docs": {
           "description": {
             "$type": "other",
-            "$value": "Component tokens for the Card molecule — spacing, size, color (bg, border, fg, with inverse pairs), typography, border radius and border width. States (interaction, availability, selection, focus) are Figma component variants, so they have no keys here."
+            "$value": "Component tokens for the Card molecule — spacing, size, color (bg, border, fg and the state colors, with inverse pairs), shadow, typography, border radius and border width, plus the selection indicator of the checkbox and radio types. States (interaction, availability, selection, focus) are Figma component variants; their values live in the color and border_width keys."
           }
         },
         "spacing": {
@@ -135,12 +135,12 @@
           },
           "bg_disabled": {
             "$type": "color",
-            "$value": "{ob.s.color.neutral.bg.contrast_medium}",
+            "$value": "{ob.s1.color.interaction.emphasis_none.bg_disabled.solid}",
             "$description": "Background color of a disabled card."
           },
           "bg_disabled_inverse": {
             "$type": "color",
-            "$value": "{ob.s.color.neutral.bg.contrast_medium_inverse}",
+            "$value": "{ob.s1.color.interaction.emphasis_none.bg_disabled.solid_inverse}",
             "$description": "Background color of a disabled card on a flipped surface."
           },
           "border_hover": {
@@ -195,31 +195,31 @@
           },
           "fg_disabled": {
             "$type": "color",
-            "$value": "{ob.s.color.neutral.fg.contrast_lowest}",
+            "$value": "{ob.s1.color.interaction.emphasis_none.fg_disabled.contrast_low}",
             "$description": "Text color of a disabled card."
           },
           "fg_disabled_inverse": {
             "$type": "color",
-            "$value": "{ob.s.color.neutral.fg.contrast_lowest_inverse}",
+            "$value": "{ob.s1.color.interaction.emphasis_none.fg_disabled.contrast_low_inverse}",
             "$description": "Text color of a disabled card on a flipped surface."
           }
         },
         "typography": {
           "title": {
             "$type": "typography",
-            "$value": "{ob.s.typography.authoring.static.sm.strong}"
+            "$value": "{ob.s.typography.authoring.dynamic.sm.strong}"
           },
           "subtitle": {
             "$type": "typography",
-            "$value": "{ob.s.typography.authoring.static.xs.normal}"
+            "$value": "{ob.s.typography.authoring.dynamic.xs.normal}"
           },
           "text": {
             "$type": "typography",
-            "$value": "{ob.s.typography.authoring.static.sm.normal}"
+            "$value": "{ob.s.typography.authoring.dynamic.sm.normal}"
           },
           "footer": {
             "$type": "typography",
-            "$value": "{ob.s.typography.authoring.static.xs.normal}"
+            "$value": "{ob.s.typography.authoring.dynamic.xs.normal}"
           }
         },
         "border_radius": {
@@ -242,6 +242,113 @@
             "$type": "borderWidth",
             "$value": "{ob.s.border_width.md}",
             "$description": "Border width of a focused card, the focus ring."
+          }
+        },
+        "shadow": {
+          "default": {
+            "$type": "boxShadow",
+            "$value": "{ob.s.shadow.sm}",
+            "$description": "Shadow of the card at rest."
+          },
+          "hover": {
+            "$type": "boxShadow",
+            "$value": "{ob.s.shadow.md}",
+            "$description": "Shadow of the card on hover."
+          }
+        },
+        "indicator": {
+          "size": {
+            "width": {
+              "$type": "dimension",
+              "$value": "{ob.s.dimension.dynamic.scale.spacing.md.px}",
+              "$description": "Width and height of the selection indicator of the checkbox and radio card types."
+            },
+            "icon": {
+              "$type": "dimension",
+              "$value": "{ob.s.dimension.dynamic.scale.spacing.xs.px}",
+              "$description": "Size of the checkmark inside the checkbox indicator."
+            },
+            "dot": {
+              "$type": "dimension",
+              "$value": "{ob.s.dimension.dynamic.scale.element.lg.px}",
+              "$description": "Diameter of the dot inside the radio indicator."
+            }
+          },
+          "spacing": {
+            "inset": {
+              "$type": "spacing",
+              "$value": "{ob.s.dimension.dynamic.scale.spacing.xs.px}",
+              "$description": "Distance of the indicator from the top and right edge of the card."
+            }
+          },
+          "border_radius": {
+            "checkbox": {
+              "$type": "borderRadius",
+              "$value": "{ob.s.border_radius.lg}",
+              "$description": "Corner radius of the checkbox indicator."
+            },
+            "radio": {
+              "$type": "borderRadius",
+              "$value": "{ob.s.border_radius.rounded}",
+              "$description": "Corner radius of the radio indicator, a full circle."
+            }
+          },
+          "border_width": {
+            "$type": "borderWidth",
+            "$value": "{ob.s.border_width.sm}",
+            "$description": "Border width of the indicator."
+          },
+          "color": {
+            "bg": {
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.bg.surface}",
+              "$description": "Background color of the unselected indicator."
+            },
+            "bg_inverse": {
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.bg.surface_inverse}",
+              "$description": "Background color of the unselected indicator on a flipped surface."
+            },
+            "bg_selected": {
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.fg.contrast_highest}",
+              "$description": "Background color of the selected indicator."
+            },
+            "bg_selected_inverse": {
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.fg.contrast_highest_inverse}",
+              "$description": "Background color of the selected indicator on a flipped surface."
+            },
+            "fg_selected": {
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.bg.surface}",
+              "$description": "Color of the checkmark and the dot on the selected indicator."
+            },
+            "fg_selected_inverse": {
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.bg.surface_inverse}",
+              "$description": "Color of the checkmark and the dot on the selected indicator on a flipped surface."
+            },
+            "border": {
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.border.strong}",
+              "$description": "Border color of the indicator."
+            },
+            "border_inverse": {
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.border.strong_inverse}",
+              "$description": "Border color of the indicator on a flipped surface."
+            },
+            "border_disabled": {
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.border.subtle}",
+              "$description": "Border color of the indicator on a disabled card."
+            },
+            "border_disabled_inverse": {
+              "$type": "color",
+              "$value": "{ob.s.color.neutral.border.subtle_inverse}",
+              "$description": "Border color of the indicator on a disabled card on a flipped surface."
+            }
           }
         }
       }
