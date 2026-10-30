@@ -1416,9 +1416,9 @@
 	--ob-s2-color-interaction-fg-contrast_medium_inverse: #f3f4f5;
 
 	.ob-brand-ch-marketing {
-		--ob-h-button-color-brand-primary-bg-active: var(--ob-p-color-red-800);
-		--ob-h-button-color-brand-primary-bg-hover: var(--ob-p-color-red-700);
-		--ob-h-button-color-brand-primary-bg-rest: var(--ob-p-color-red-600);
+		--ob-h-button-color-brand-primary-bg-active: var(--ob-p-color-cobalt-700);
+		--ob-h-button-color-brand-primary-bg-hover: var(--ob-p-color-cobalt-600);
+		--ob-h-button-color-brand-primary-bg-rest: var(--ob-p-color-cobalt-500);
 		--ob-h-button-color-brand-secondary-bg-active: var(--ob-p-color-basic-transparent);
 		--ob-h-button-color-brand-secondary-bg-hover: var(--ob-p-color-basic-transparent);
 		--ob-h-button-color-brand-secondary-border-active: var(--ob-p-color-red-700);
