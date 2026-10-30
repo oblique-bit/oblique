@@ -230,53 +230,53 @@
             "critical": {
               "50": {
                 "$type": "color",
-                "$value": "#FCEEEC",
-                "$description": "Role: Exclusive. Status ramp critical, step 50. ZH: zh.ch Rot hue, same white contrast as red 50."
+                "$value": "#FDEEEF",
+                "$description": "Role: Exclusive. Status ramp critical, step 50. ZH: zh.ch red hue, same white contrast as red 50."
               },
               "100": {
                 "$type": "color",
-                "$value": "#F9E1DC",
-                "$description": "Role: Exclusive. Status ramp critical, step 100. ZH: zh.ch Rot hue, same white contrast as red 100."
+                "$value": "#FCE1E4",
+                "$description": "Role: Exclusive. Status ramp critical, step 100. ZH: zh.ch red hue, same white contrast as red 100."
               },
               "200": {
                 "$type": "color",
-                "$value": "#F6D1C8",
-                "$description": "Role: Exclusive. Status ramp critical, step 200. ZH: zh.ch Rot hue, same white contrast as red 200."
+                "$value": "#F9CED3",
+                "$description": "Role: Exclusive. Status ramp critical, step 200. ZH: zh.ch red hue, same white contrast as red 200."
               },
               "300": {
                 "$type": "color",
-                "$value": "#EDA495",
-                "$description": "Role: Exclusive. Status ramp critical, step 300. ZH: zh.ch Rot hue, same white contrast as red 300."
+                "$value": "#F4A0A9",
+                "$description": "Role: Exclusive. Status ramp critical, step 300. ZH: zh.ch red hue, same white contrast as red 300."
               },
               "400": {
                 "$type": "color",
-                "$value": "#E57861",
-                "$description": "Role: Exclusive. Status ramp critical, step 400. ZH: zh.ch Rot hue, same white contrast as red 400."
+                "$value": "#EF6E7D",
+                "$description": "Role: Exclusive. Status ramp critical, step 400. ZH: zh.ch red hue, same white contrast as red 400."
               },
               "500": {
                 "$type": "color",
-                "$value": "#D93C1A",
-                "$description": "Role: Exclusive. Status ramp critical, step 500. ZH: zh.ch Rot #D93C1A."
+                "$value": "#E83247",
+                "$description": "Role: Exclusive. Status ramp critical, step 500. ZH: zh.ch red hue, same white contrast as red 500."
               },
               "600": {
                 "$type": "color",
-                "$value": "#CD3919",
-                "$description": "Role: Exclusive. Status ramp critical, step 600. ZH: zh.ch Rot hue, same white contrast as red 600."
+                "$value": "#E2001A",
+                "$description": "Role: Exclusive. Status ramp critical, step 600. ZH: zh.ch red of the live site #E2001A."
               },
               "700": {
                 "$type": "color",
-                "$value": "#B63216",
-                "$description": "Role: Exclusive. Status ramp critical, step 700. ZH: zh.ch Rot hue, same white contrast as red 700."
+                "$value": "#C60017",
+                "$description": "Role: Exclusive. Status ramp critical, step 700. ZH: zh.ch red hue, same white contrast as red 700."
               },
               "800": {
                 "$type": "color",
-                "$value": "#902811",
-                "$description": "Role: Exclusive. Status ramp critical, step 800. ZH: zh.ch Rot hue, same white contrast as red 800."
+                "$value": "#A00012",
+                "$description": "Role: Exclusive. Status ramp critical, step 800. ZH: zh.ch red hue, same white contrast as red 800."
               },
               "900": {
                 "$type": "color",
-                "$value": "#79210F",
-                "$description": "Role: Exclusive. Status ramp critical, step 900. ZH: zh.ch Rot hue, same white contrast as red 900."
+                "$value": "#870010",
+                "$description": "Role: Exclusive. Status ramp critical, step 900. ZH: zh.ch red hue, same white contrast as red 900."
               }
             }
           }
