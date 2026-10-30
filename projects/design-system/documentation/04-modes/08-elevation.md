@@ -17,7 +17,7 @@ The mode does not add new colors. It picks a step of the existing contrast ladde
 | `level0` | `contrast_highest` |
 | `level-1` | `contrast_highest`, and in dark mode `cobalt.900` for the neutral surface |
 
-`level0` is the base mode and the first-paint default. The names carry a number only. For the neutral surface (plain name, not `_inverse`) a higher level is a darker surface in light mode and a lighter one in dark mode, so the names do not promise "above" or "below". The elevation changes only the neutral surface and the Button backgrounds. A status surface is the same on every level.
+`level0` is the base mode and the first-paint default. It is the first theme of the group in `$themes.json`, so it is also the first and default mode of the collection in Figma: a frame without an elevation mode shows `level0`. The names carry a number only. For the neutral surface (plain name, not `_inverse`) a higher level is a darker surface in light mode and a lighter one in dark mode, so the names do not promise "above" or "below". The elevation changes only the neutral surface and the Button backgrounds. A status surface is the same on every level.
 
 `level-1` is the level below `level0`. It differs from `level0` only for the neutral surface in dark mode: `cobalt.900` is one step darker than `contrast_highest` (`cobalt.800`). In light mode `level-1` is the same as `level0` (white), because no lighter surface exists. The Button backgrounds are the same as in `level0`. The minus sign is part of the mode name.
 
