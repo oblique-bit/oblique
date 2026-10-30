@@ -7,7 +7,7 @@
 						"token_family_docs": {
 							"description": {
 								"$type": "other",
-								"$value": "Button colors of the brand mode ZH, high emphasis, light mode. The light Button tokens point here, so the brand decides the Button colors."
+								"$value": "Button colors of the brand mode ZH, high emphasis. The plain names are for light surfaces, the names with _inverse for dark surfaces. The Button tokens point here, so the brand decides the Button colors."
 							}
 						},
 						"primary": {
@@ -72,6 +72,21 @@
 									"$type": "color",
 									"$value": "#FFFFFF",
 									"$description": "Role: Exclusive. Secondary button label, active, light. ZH: zh.ch."
+								},
+								"rest_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.brand.50}",
+									"$description": "Role: Exclusive. Secondary button label on dark surfaces, rest. ZH: as before."
+								},
+								"hover_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.brand.50}",
+									"$description": "Role: Exclusive. Secondary button label on dark surfaces, hover. ZH: as before."
+								},
+								"active_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.brand.50}",
+									"$description": "Role: Exclusive. Secondary button label on dark surfaces, active. ZH: as before."
 								}
 							},
 							"border": {
@@ -89,6 +104,21 @@
 									"$type": "color",
 									"$value": "{ob.p.color.basic.transparent}",
 									"$description": "Role: Exclusive. Secondary button border, active, light. ZH: zh.ch."
+								},
+								"rest_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.white_alpha.700}",
+									"$description": "Role: Exclusive. Secondary button border on dark surfaces, rest. ZH: as before."
+								},
+								"hover_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.white_alpha.700}",
+									"$description": "Role: Exclusive. Secondary button border on dark surfaces, hover. ZH: as before."
+								},
+								"active_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.white_alpha.700}",
+									"$description": "Role: Exclusive. Secondary button border on dark surfaces, active. ZH: as before."
 								}
 							}
 						}

@@ -192,7 +192,7 @@
 							"fg": {
 								"rest": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.50}",
+									"$value": "{ob.h.button.color.brand.secondary.fg.rest_inverse}",
 									"$description": "Secondary button foreground, rest state, high emphasis, dark mode."
 								},
 								"rest_inverse": {
@@ -202,7 +202,7 @@
 								},
 								"hover": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.50}",
+									"$value": "{ob.h.button.color.brand.secondary.fg.hover_inverse}",
 									"$description": "Secondary button foreground, hover state, high emphasis, dark mode."
 								},
 								"hover_inverse": {
@@ -212,7 +212,7 @@
 								},
 								"active": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.50}",
+									"$value": "{ob.h.button.color.brand.secondary.fg.active_inverse}",
 									"$description": "Secondary button foreground, active state, high emphasis, dark mode."
 								},
 								"active_inverse": {
@@ -224,7 +224,7 @@
 							"border": {
 								"rest": {
 									"$type": "color",
-									"$value": "{ob.p.color.white_alpha.700}",
+									"$value": "{ob.h.button.color.brand.secondary.border.rest_inverse}",
 									"$description": "Secondary button border, rest state, high emphasis, dark mode."
 								},
 								"rest_inverse": {
@@ -234,7 +234,7 @@
 								},
 								"hover": {
 									"$type": "color",
-									"$value": "{ob.p.color.white_alpha.700}",
+									"$value": "{ob.h.button.color.brand.secondary.border.hover_inverse}",
 									"$description": "Secondary button border, hover state, high emphasis, dark mode."
 								},
 								"hover_inverse": {
@@ -244,7 +244,7 @@
 								},
 								"active": {
 									"$type": "color",
-									"$value": "{ob.p.color.white_alpha.700}",
+									"$value": "{ob.h.button.color.brand.secondary.border.active_inverse}",
 									"$description": "Secondary button border, active state, high emphasis, dark mode."
 								},
 								"active_inverse": {

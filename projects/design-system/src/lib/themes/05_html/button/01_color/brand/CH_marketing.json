@@ -7,25 +7,25 @@
 						"token_family_docs": {
 							"description": {
 								"$type": "other",
-								"$value": "Button colors of the brand mode CH_marketing, high emphasis, light mode. The light Button tokens point here, so the brand decides the Button colors."
+								"$value": "Button colors of the brand mode CH_marketing, high emphasis. The plain names are for light surfaces, the names with _inverse for dark surfaces. The Button tokens point here, so the brand decides the Button colors."
 							}
 						},
 						"primary": {
 							"bg": {
 								"rest": {
 									"$type": "color",
-									"$value": "{ob.p.color.cobalt.500}",
-									"$description": "Role: Exclusive. Primary button background, rest, light. CH_marketing: Swiss DS."
+									"$value": "{ob.p.color.red.600}",
+									"$description": "Role: Exclusive. Primary button background, rest, light. CH_marketing: red, the Swiss DS outline color."
 								},
 								"hover": {
 									"$type": "color",
-									"$value": "{ob.p.color.cobalt.600}",
-									"$description": "Role: Exclusive. Primary button background, hover, light. CH_marketing: Swiss DS."
+									"$value": "{ob.p.color.red.700}",
+									"$description": "Role: Exclusive. Primary button background, hover, light. CH_marketing: red, the Swiss DS outline color."
 								},
 								"active": {
 									"$type": "color",
-									"$value": "{ob.p.color.cobalt.700}",
-									"$description": "Role: Exclusive. Primary button background, active, light. CH_marketing: Swiss DS."
+									"$value": "{ob.p.color.red.800}",
+									"$description": "Role: Exclusive. Primary button background, active, light. CH_marketing: red, the Swiss DS outline color."
 								}
 							}
 						},
@@ -92,6 +92,21 @@
 									"$type": "color",
 									"$value": "{ob.p.color.red.700}",
 									"$description": "Role: Exclusive. Secondary button label, active, light. CH_marketing: Swiss DS."
+								},
+								"rest_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.red.400}",
+									"$description": "Role: Exclusive. Secondary button label on dark surfaces, rest. CH_marketing: red, lighter for contrast."
+								},
+								"hover_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.red.300}",
+									"$description": "Role: Exclusive. Secondary button label on dark surfaces, hover. CH_marketing: red, lighter for contrast."
+								},
+								"active_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.red.300}",
+									"$description": "Role: Exclusive. Secondary button label on dark surfaces, active. CH_marketing: red, lighter for contrast."
 								}
 							},
 							"border": {
@@ -109,6 +124,21 @@
 									"$type": "color",
 									"$value": "{ob.p.color.red.700}",
 									"$description": "Role: Exclusive. Secondary button border, active, light. CH_marketing: Swiss DS."
+								},
+								"rest_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.red.400}",
+									"$description": "Role: Exclusive. Secondary button border on dark surfaces, rest. CH_marketing: red, lighter for contrast."
+								},
+								"hover_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.red.300}",
+									"$description": "Role: Exclusive. Secondary button border on dark surfaces, hover. CH_marketing: red, lighter for contrast."
+								},
+								"active_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.red.300}",
+									"$description": "Role: Exclusive. Secondary button border on dark surfaces, active. CH_marketing: red, lighter for contrast."
 								}
 							}
 						}
