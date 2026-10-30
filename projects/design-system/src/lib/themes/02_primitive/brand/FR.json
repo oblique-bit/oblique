@@ -94,8 +94,8 @@
               },
               "400": {
                 "$type": "color",
-                "$value": "#45B599",
-                "$description": "Role: Exclusive. Status ramp info, step 400. FR: fr.ch info hue, same white contrast as blue 400."
+                "$value": "#57B3C2",
+                "$description": "Role: Exclusive. Status ramp info, step 400. FR: fr.ch info, dark mode."
               },
               "500": {
                 "$type": "color",
@@ -126,28 +126,28 @@
             "resolved": {
               "50": {
                 "$type": "color",
-                "$value": "#F9FAF0",
-                "$description": "Role: Exclusive. Status ramp resolved, step 50. FR: fr.ch green hue, same white contrast as green 50."
+                "$value": "#F9FAF2",
+                "$description": "Role: Exclusive. Status ramp resolved, step 50. FR: fr.ch green 5 %."
               },
               "100": {
                 "$type": "color",
-                "$value": "#F1F3DE",
-                "$description": "Role: Exclusive. Status ramp resolved, step 100. FR: fr.ch green hue, same white contrast as green 100."
+                "$value": "#F5F6E7",
+                "$description": "Role: Exclusive. Status ramp resolved, step 100. FR: fr.ch green 10 %."
               },
               "200": {
                 "$type": "color",
-                "$value": "#E3E7BE",
-                "$description": "Role: Exclusive. Status ramp resolved, step 200. FR: fr.ch green hue, same white contrast as green 200."
+                "$value": "#E4E7C1",
+                "$description": "Role: Exclusive. Status ramp resolved, step 200. FR: fr.ch green 25 %."
               },
               "300": {
                 "$type": "color",
-                "$value": "#D0D793",
-                "$description": "Role: Exclusive. Status ramp resolved, step 300. FR: fr.ch green hue, same white contrast as green 300."
+                "$value": "#C9D082",
+                "$description": "Role: Exclusive. Status ramp resolved, step 300. FR: fr.ch green 50 %."
               },
               "400": {
                 "$type": "color",
-                "$value": "#B9C25C",
-                "$description": "Role: Exclusive. Status ramp resolved, step 400. FR: fr.ch green hue, same white contrast as green 400."
+                "$value": "#AFB945",
+                "$description": "Role: Exclusive. Status ramp resolved, step 400. FR: fr.ch green, dark mode, and 75 %."
               },
               "500": {
                 "$type": "color",
@@ -178,33 +178,33 @@
             "attention": {
               "50": {
                 "$type": "color",
-                "$value": "#FDF8EC",
-                "$description": "Role: Exclusive. Status ramp attention, step 50. FR: fr.ch yellow hue, same white contrast as orange 50."
+                "$value": "#FDFAF3",
+                "$description": "Role: Exclusive. Status ramp attention, step 50. FR: fr.ch yellow 5 %."
               },
               "100": {
                 "$type": "color",
-                "$value": "#FAEED6",
-                "$description": "Role: Exclusive. Status ramp attention, step 100. FR: fr.ch yellow hue, same white contrast as orange 100."
+                "$value": "#FCF6E8",
+                "$description": "Role: Exclusive. Status ramp attention, step 100. FR: fr.ch yellow 10 %."
               },
               "200": {
                 "$type": "color",
-                "$value": "#F3DCA7",
-                "$description": "Role: Exclusive. Status ramp attention, step 200. FR: fr.ch yellow hue, same white contrast as orange 200."
+                "$value": "#F7E7C4",
+                "$description": "Role: Exclusive. Status ramp attention, step 200. FR: fr.ch yellow 25 %."
               },
               "300": {
                 "$type": "color",
-                "$value": "#EBC269",
-                "$description": "Role: Exclusive. Status ramp attention, step 300. FR: fr.ch yellow hue, same white contrast as orange 300."
+                "$value": "#EFCF8A",
+                "$description": "Role: Exclusive. Status ramp attention, step 300. FR: fr.ch yellow 50 %."
               },
               "400": {
                 "$type": "color",
-                "$value": "#E0A116",
-                "$description": "Role: Exclusive. Status ramp attention, step 400. FR: fr.ch yellow #E0A116."
+                "$value": "#E8B950",
+                "$description": "Role: Exclusive. Status ramp attention, step 400. FR: fr.ch yellow, dark mode, and 75 %."
               },
               "500": {
                 "$type": "color",
-                "$value": "#C99014",
-                "$description": "Role: Exclusive. Status ramp attention, step 500. FR: fr.ch yellow hue, same white contrast as orange 500."
+                "$value": "#E0A116",
+                "$description": "Role: Exclusive. Status ramp attention, step 500. FR: fr.ch yellow #E0A116."
               },
               "600": {
                 "$type": "color",
@@ -230,28 +230,28 @@
             "critical": {
               "50": {
                 "$type": "color",
-                "$value": "#F8F0EE",
-                "$description": "Role: Exclusive. Status ramp critical, step 50. FR: fr.ch red hue, same white contrast as red 50."
+                "$value": "#F9F3F2",
+                "$description": "Role: Exclusive. Status ramp critical, step 50. FR: fr.ch red 5 %."
               },
               "100": {
                 "$type": "color",
-                "$value": "#F2E3E1",
-                "$description": "Role: Exclusive. Status ramp critical, step 100. FR: fr.ch red hue, same white contrast as red 100."
+                "$value": "#F5E9E7",
+                "$description": "Role: Exclusive. Status ramp critical, step 100. FR: fr.ch red 10 %."
               },
               "200": {
                 "$type": "color",
-                "$value": "#EAD3CF",
-                "$description": "Role: Exclusive. Status ramp critical, step 200. FR: fr.ch red hue, same white contrast as red 200."
+                "$value": "#E4C6C1",
+                "$description": "Role: Exclusive. Status ramp critical, step 200. FR: fr.ch red 25 %."
               },
               "300": {
                 "$type": "color",
-                "$value": "#D8ACA4",
-                "$description": "Role: Exclusive. Status ramp critical, step 300. FR: fr.ch red hue, same white contrast as red 300."
+                "$value": "#E5806C",
+                "$description": "Role: Exclusive. Status ramp critical, step 300. FR: fr.ch red, dark mode."
               },
               "400": {
                 "$type": "color",
-                "$value": "#C6887C",
-                "$description": "Role: Exclusive. Status ramp critical, step 400. FR: fr.ch red hue, same white contrast as red 400."
+                "$value": "#C98D82",
+                "$description": "Role: Exclusive. Status ramp critical, step 400. FR: fr.ch red 50 %."
               },
               "500": {
                 "$type": "color",
@@ -260,8 +260,8 @@
               },
               "600": {
                 "$type": "color",
-                "$value": "#AE5544",
-                "$description": "Role: Exclusive. Status ramp critical, step 600. FR: fr.ch red hue, same white contrast as red 600."
+                "$value": "#AF5645",
+                "$description": "Role: Exclusive. Status ramp critical, step 600. FR: fr.ch red 75 %."
               },
               "700": {
                 "$type": "color",

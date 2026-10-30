@@ -74,8 +74,8 @@
             "info": {
               "50": {
                 "$type": "color",
-                "$value": "#F0F6FB",
-                "$description": "Role: Exclusive. Status ramp info, step 50. ZH: zh.ch Blau hue, same white contrast as blue 50."
+                "$value": "#EDF5FA",
+                "$description": "Role: Exclusive. Status ramp info, step 50. ZH: zh.ch Softblau."
               },
               "100": {
                 "$type": "color",
@@ -94,8 +94,8 @@
               },
               "400": {
                 "$type": "color",
-                "$value": "#67AAD2",
-                "$description": "Role: Exclusive. Status ramp info, step 400. ZH: zh.ch Blau hue, same white contrast as blue 400."
+                "$value": "#7AB6E2",
+                "$description": "Role: Exclusive. Status ramp info, step 400. ZH: zh.ch Hellblau, dark mode."
               },
               "500": {
                 "$type": "color",
@@ -126,8 +126,8 @@
             "resolved": {
               "50": {
                 "$type": "color",
-                "$value": "#F6FAF7",
-                "$description": "Role: Exclusive. Status ramp resolved, step 50. ZH: zh.ch Grün hue, same white contrast as green 50."
+                "$value": "#EBF6EB",
+                "$description": "Role: Exclusive. Status ramp resolved, step 50. ZH: zh.ch Softgrün."
               },
               "100": {
                 "$type": "color",
@@ -146,8 +146,8 @@
               },
               "400": {
                 "$type": "color",
-                "$value": "#99C69C",
-                "$description": "Role: Exclusive. Status ramp resolved, step 400. ZH: zh.ch Grün hue, same white contrast as green 400."
+                "$value": "#6EBD72",
+                "$description": "Role: Exclusive. Status ramp resolved, step 400. ZH: zh.ch Hellgrün, dark mode."
               },
               "500": {
                 "$type": "color",
@@ -178,53 +178,53 @@
             "attention": {
               "50": {
                 "$type": "color",
-                "$value": "{ob.p.color.orange.50}",
-                "$description": "Role: Exclusive. Status ramp attention, step 50. ZH: orange 50, zh.ch has no own warning color."
+                "$value": "{ob.p.color.brand.status.critical.50}",
+                "$description": "Role: Exclusive. Status ramp attention, step 50. ZH: same as critical, zh.ch shows warnings in red."
               },
               "100": {
                 "$type": "color",
-                "$value": "{ob.p.color.orange.100}",
-                "$description": "Role: Exclusive. Status ramp attention, step 100. ZH: orange 100, zh.ch has no own warning color."
+                "$value": "{ob.p.color.brand.status.critical.100}",
+                "$description": "Role: Exclusive. Status ramp attention, step 100. ZH: same as critical, zh.ch shows warnings in red."
               },
               "200": {
                 "$type": "color",
-                "$value": "{ob.p.color.orange.200}",
-                "$description": "Role: Exclusive. Status ramp attention, step 200. ZH: orange 200, zh.ch has no own warning color."
+                "$value": "{ob.p.color.brand.status.critical.200}",
+                "$description": "Role: Exclusive. Status ramp attention, step 200. ZH: same as critical, zh.ch shows warnings in red."
               },
               "300": {
                 "$type": "color",
-                "$value": "{ob.p.color.orange.300}",
-                "$description": "Role: Exclusive. Status ramp attention, step 300. ZH: orange 300, zh.ch has no own warning color."
+                "$value": "{ob.p.color.brand.status.critical.300}",
+                "$description": "Role: Exclusive. Status ramp attention, step 300. ZH: same as critical, zh.ch shows warnings in red."
               },
               "400": {
                 "$type": "color",
-                "$value": "{ob.p.color.orange.400}",
-                "$description": "Role: Exclusive. Status ramp attention, step 400. ZH: orange 400, zh.ch has no own warning color."
+                "$value": "{ob.p.color.brand.status.critical.400}",
+                "$description": "Role: Exclusive. Status ramp attention, step 400. ZH: same as critical, zh.ch shows warnings in red."
               },
               "500": {
                 "$type": "color",
-                "$value": "{ob.p.color.orange.500}",
-                "$description": "Role: Exclusive. Status ramp attention, step 500. ZH: orange 500, zh.ch has no own warning color."
+                "$value": "{ob.p.color.brand.status.critical.500}",
+                "$description": "Role: Exclusive. Status ramp attention, step 500. ZH: same as critical, zh.ch shows warnings in red."
               },
               "600": {
                 "$type": "color",
-                "$value": "{ob.p.color.orange.600}",
-                "$description": "Role: Exclusive. Status ramp attention, step 600. ZH: orange 600, zh.ch has no own warning color."
+                "$value": "{ob.p.color.brand.status.critical.600}",
+                "$description": "Role: Exclusive. Status ramp attention, step 600. ZH: same as critical, zh.ch shows warnings in red."
               },
               "700": {
                 "$type": "color",
-                "$value": "{ob.p.color.orange.700}",
-                "$description": "Role: Exclusive. Status ramp attention, step 700. ZH: orange 700, zh.ch has no own warning color."
+                "$value": "{ob.p.color.brand.status.critical.700}",
+                "$description": "Role: Exclusive. Status ramp attention, step 700. ZH: same as critical, zh.ch shows warnings in red."
               },
               "800": {
                 "$type": "color",
-                "$value": "{ob.p.color.orange.800}",
-                "$description": "Role: Exclusive. Status ramp attention, step 800. ZH: orange 800, zh.ch has no own warning color."
+                "$value": "{ob.p.color.brand.status.critical.800}",
+                "$description": "Role: Exclusive. Status ramp attention, step 800. ZH: same as critical, zh.ch shows warnings in red."
               },
               "900": {
                 "$type": "color",
-                "$value": "{ob.p.color.orange.900}",
-                "$description": "Role: Exclusive. Status ramp attention, step 900. ZH: orange 900, zh.ch has no own warning color."
+                "$value": "{ob.p.color.brand.status.critical.900}",
+                "$description": "Role: Exclusive. Status ramp attention, step 900. ZH: same as critical, zh.ch shows warnings in red."
               }
             },
             "critical": {
