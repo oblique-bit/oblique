@@ -45,10 +45,10 @@ All four tokens use the plain (not `_inverse`) value.
 
 | Token | References | Description |
 |-------|------------|-------------|
-| `ob.h.link.color.default` | `ob.s.color.interaction.fg.contrast_medium` | Default color of unvisited links. |
+| `ob.h.link.color.default` | `ob.h.link.color.color_scheme.default` | Default color of unvisited links. |
 | `ob.h.link.color.visited` | `ob.s.color.interaction.visited.fg.contrast_low` | Color of links the user has already visited. |
-| `ob.h.link.color.hover` | `ob.s.color.interaction.fg.contrast_low` | Color of link when hovered with the mouse. |
-| `ob.h.link.color.active` | `ob.s.color.interaction.fg.contrast_high` | Color of link during click interaction. |
+| `ob.h.link.color.hover` | `ob.h.link.color.color_scheme.hover` | Color of link when hovered with the mouse. |
+| `ob.h.link.color.active` | `ob.h.link.color.color_scheme.active` | Color of link during click interaction. |
 
 > **Open point:** the default link color is dark and has little saturation on thin letters; it may be swapped with the hover color in a later round.
 
@@ -78,10 +78,12 @@ The link tokens sit in the `ob.h.*` layer for HTML elements. They reference sema
 
 ```
 ob.h.link.color.default
-  → ob.s.color.interaction.fg.contrast_medium
-      → ob.s2.color.interaction.fg.contrast_medium   (follows the emphasis mode)
-          → ob.s1.color.interaction.emphasis_high.fg.contrast_medium
-            or ob.s1.color.interaction.emphasis_low.fg.contrast_medium
+  → ob.h.link.color.color_scheme.default   (follows the color scheme mode)
+    → ob.h.link.color.brand.default         (light: plain, dark: default_inverse; follows the brand mode)
+      → ob.s.color.interaction.fg.contrast_medium   (CH_app, ZH, FR; CH_marketing: ob.p.color.red.600 / red.400)
+          → ob.s2.color.interaction.fg.contrast_medium   (follows the emphasis mode)
+              → ob.s1.color.interaction.emphasis_high.fg.contrast_medium
+                or ob.s1.color.interaction.emphasis_low.fg.contrast_medium
 
 ob.h.link.color.visited
   → ob.s.color.interaction.visited.fg.contrast_low

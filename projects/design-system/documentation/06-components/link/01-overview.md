@@ -36,7 +36,7 @@ The focus state shows a border already. It needs no additional visual emphasis, 
 
 ## Colors
 
-The link colors reference the semantic interaction colors (`ob.s.color.interaction.*`). All four use the plain (not `_inverse`) value.
+The link colors reference the semantic interaction colors (`ob.s.color.interaction.*`). All four use the plain (not `_inverse`) value. The enabled, hover and active colors go through the brand mode first: `ob.h.link.color.color_scheme.*` takes the brand link color `ob.h.link.color.brand.*` for light or dark surfaces. For `CH_app`, `ZH` and `FR` it is the semantic token in the table, `CH_marketing` uses `red` (see [Brand](../../04-modes/10-brand.md)).
 
 | State | Color | Semantic token it references |
 |-------|-------|------------------------------|
@@ -84,6 +84,7 @@ The icon size depends on the typography context:
 | Mode collection | Effect on the link |
 |-----------------|--------------------|
 | `color_scheme` (`light`, `dark`) | The link colors change. See [Color scheme](../../04-modes/01-color-scheme.md) |
+| `brand` (`CH_app`, `CH_marketing`, `ZH`, `FR`) | The enabled, hover and active colors change. `CH_marketing` uses `red`. See [Brand](../../04-modes/10-brand.md) |
 | `emphasis` (`high`, `low`) | The enabled, hover and active colors change, because the semantic interaction colors follow this mode. The visited color has no emphasis variant. See [Emphasis](../../04-modes/02-emphasis.md) |
 | `typography_context` (`interface`, `prose`) | The icon size changes. See [Typography-Context Mode](../../04-modes/04-typography-context.md) |
 | `motion` (`enabled`, `disabled`) | The transition duration is 100 ms in `enabled` and 0 ms in `disabled`. See [Motion](../../04-modes/07-motion.md) |

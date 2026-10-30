@@ -19,7 +19,7 @@
 								},
 								"rest_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.600}",
+									"$value": "{ob.h.button.color.brand.primary.bg.rest_inverse}",
 									"$description": "Primary button background, rest state, high emphasis, light mode, inverse (inverted surface, colors of the dark mode)."
 								},
 								"hover": {
@@ -29,17 +29,7 @@
 								},
 								"hover_inverse": {
 									"$type": "color",
-									"$value": "{ob.h.button.color.emphasis_high.primary.bg.rest_inverse}",
-									"$extensions": {
-										"studio.tokens": {
-											"modify": {
-												"type": "mix",
-												"value": "{ob.h.button.state_layer.strong.hover}",
-												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
-											}
-										}
-									},
+									"$value": "{ob.h.button.color.brand.primary.bg.hover_inverse}",
 									"$description": "Primary button background, hover state, high emphasis, light mode, inverse (inverted surface, colors of the dark mode)."
 								},
 								"active": {
@@ -49,17 +39,7 @@
 								},
 								"active_inverse": {
 									"$type": "color",
-									"$value": "{ob.h.button.color.emphasis_high.primary.bg.rest_inverse}",
-									"$extensions": {
-										"studio.tokens": {
-											"modify": {
-												"type": "mix",
-												"value": "{ob.h.button.state_layer.strong.active}",
-												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
-											}
-										}
-									},
+									"$value": "{ob.h.button.color.brand.primary.bg.active_inverse}",
 									"$description": "Primary button background, active state, high emphasis, light mode, inverse (inverted surface, colors of the dark mode)."
 								}
 							},
@@ -105,7 +85,7 @@
 								},
 								"rest_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.basic.transparent}",
+									"$value": "{ob.h.button.color.brand.secondary.bg.rest_inverse}",
 									"$description": "Secondary button background, rest state, high emphasis, light mode, inverse (inverted surface, colors of the dark mode)."
 								},
 								"hover": {
@@ -115,17 +95,7 @@
 								},
 								"hover_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.500}",
-									"$extensions": {
-										"studio.tokens": {
-											"modify": {
-												"type": "alpha",
-												"value": "{ob.h.button.state_layer.soft.hover}",
-												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
-											}
-										}
-									},
+									"$value": "{ob.h.button.color.brand.secondary.bg.hover_inverse}",
 									"$description": "Secondary button background, hover state, high emphasis, light mode, inverse (inverted surface, colors of the dark mode)."
 								},
 								"active": {
@@ -135,17 +105,7 @@
 								},
 								"active_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.500}",
-									"$extensions": {
-										"studio.tokens": {
-											"modify": {
-												"type": "alpha",
-												"value": "{ob.h.button.state_layer.soft.active}",
-												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
-											}
-										}
-									},
+									"$value": "{ob.h.button.color.brand.secondary.bg.active_inverse}",
 									"$description": "Secondary button background, active state, high emphasis, light mode, inverse (inverted surface, colors of the dark mode)."
 								}
 							},

@@ -1,0 +1,48 @@
+{
+	"ob": {
+		"h": {
+			"link": {
+				"color": {
+					"brand": {
+						"token_family_docs": {
+							"description": {
+								"$type": "other",
+								"$value": "Link colors of the brand mode CH_marketing. The plain names are for light surfaces, the names with _inverse for dark surfaces. The link tokens point here, so the brand decides the link colors."
+							}
+						},
+						"default": {
+							"$type": "color",
+							"$value": "{ob.p.color.red.600}",
+							"$description": "Role: Exclusive. Link color, default, light surfaces. CH_marketing: Swiss DS red."
+						},
+						"default_inverse": {
+							"$type": "color",
+							"$value": "{ob.p.color.red.400}",
+							"$description": "Role: Exclusive. Link color, default, dark surfaces. CH_marketing: red, lighter for contrast."
+						},
+						"hover": {
+							"$type": "color",
+							"$value": "{ob.p.color.red.700}",
+							"$description": "Role: Exclusive. Link color, hover, light surfaces. CH_marketing: Swiss DS red."
+						},
+						"hover_inverse": {
+							"$type": "color",
+							"$value": "{ob.p.color.red.300}",
+							"$description": "Role: Exclusive. Link color, hover, dark surfaces. CH_marketing: red, lighter for contrast."
+						},
+						"active": {
+							"$type": "color",
+							"$value": "{ob.p.color.red.700}",
+							"$description": "Role: Exclusive. Link color, active, light surfaces. CH_marketing: Swiss DS red."
+						},
+						"active_inverse": {
+							"$type": "color",
+							"$value": "{ob.p.color.red.300}",
+							"$description": "Role: Exclusive. Link color, active, dark surfaces. CH_marketing: red, lighter for contrast."
+						}
+					}
+				}
+			}
+		}
+	}
+}

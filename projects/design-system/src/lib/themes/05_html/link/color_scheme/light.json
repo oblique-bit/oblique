@@ -1,0 +1,33 @@
+{
+	"ob": {
+		"h": {
+			"link": {
+				"color": {
+					"color_scheme": {
+						"token_family_docs": {
+							"description": {
+								"$type": "other",
+								"$value": "Link colors, light mode: each points to the brand link color for light surfaces."
+							}
+						},
+						"default": {
+							"$type": "color",
+							"$value": "{ob.h.link.color.brand.default}",
+							"$description": "Role: Exclusive. Link color, default, light mode. Takes the brand link color for light surfaces."
+						},
+						"hover": {
+							"$type": "color",
+							"$value": "{ob.h.link.color.brand.hover}",
+							"$description": "Role: Exclusive. Link color, hover, light mode. Takes the brand link color for light surfaces."
+						},
+						"active": {
+							"$type": "color",
+							"$value": "{ob.h.link.color.brand.active}",
+							"$description": "Role: Exclusive. Link color, active, light mode. Takes the brand link color for light surfaces."
+						}
+					}
+				}
+			}
+		}
+	}
+}

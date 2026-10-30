@@ -1,0 +1,33 @@
+{
+	"ob": {
+		"h": {
+			"link": {
+				"color": {
+					"color_scheme": {
+						"token_family_docs": {
+							"description": {
+								"$type": "other",
+								"$value": "Link colors, dark mode: each points to the brand link color for dark surfaces."
+							}
+						},
+						"default": {
+							"$type": "color",
+							"$value": "{ob.h.link.color.brand.default_inverse}",
+							"$description": "Role: Exclusive. Link color, default, dark mode. Takes the brand link color for dark surfaces."
+						},
+						"hover": {
+							"$type": "color",
+							"$value": "{ob.h.link.color.brand.hover_inverse}",
+							"$description": "Role: Exclusive. Link color, hover, dark mode. Takes the brand link color for dark surfaces."
+						},
+						"active": {
+							"$type": "color",
+							"$value": "{ob.h.link.color.brand.active_inverse}",
+							"$description": "Role: Exclusive. Link color, active, dark mode. Takes the brand link color for dark surfaces."
+						}
+					}
+				}
+			}
+		}
+	}
+}

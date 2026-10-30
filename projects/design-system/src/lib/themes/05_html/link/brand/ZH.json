@@ -1,0 +1,48 @@
+{
+	"ob": {
+		"h": {
+			"link": {
+				"color": {
+					"brand": {
+						"token_family_docs": {
+							"description": {
+								"$type": "other",
+								"$value": "Link colors of the brand mode ZH. The plain names are for light surfaces, the names with _inverse for dark surfaces. The link tokens point here, so the brand decides the link colors."
+							}
+						},
+						"default": {
+							"$type": "color",
+							"$value": "{ob.s.color.interaction.fg.contrast_medium}",
+							"$description": "Role: Exclusive. Link color, default, light surfaces. ZH: interaction color."
+						},
+						"default_inverse": {
+							"$type": "color",
+							"$value": "{ob.s.color.interaction.fg.contrast_medium}",
+							"$description": "Role: Exclusive. Link color, default, dark surfaces. ZH: interaction color."
+						},
+						"hover": {
+							"$type": "color",
+							"$value": "{ob.s.color.interaction.fg.contrast_low}",
+							"$description": "Role: Exclusive. Link color, hover, light surfaces. ZH: interaction color."
+						},
+						"hover_inverse": {
+							"$type": "color",
+							"$value": "{ob.s.color.interaction.fg.contrast_low}",
+							"$description": "Role: Exclusive. Link color, hover, dark surfaces. ZH: interaction color."
+						},
+						"active": {
+							"$type": "color",
+							"$value": "{ob.s.color.interaction.fg.contrast_high}",
+							"$description": "Role: Exclusive. Link color, active, light surfaces. ZH: interaction color."
+						},
+						"active_inverse": {
+							"$type": "color",
+							"$value": "{ob.s.color.interaction.fg.contrast_high}",
+							"$description": "Role: Exclusive. Link color, active, dark surfaces. ZH: interaction color."
+						}
+					}
+				}
+			}
+		}
+	}
+}

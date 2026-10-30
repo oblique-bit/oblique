@@ -26,6 +26,21 @@
 									"$type": "color",
 									"$value": "{ob.p.color.cobalt.700}",
 									"$description": "Role: Exclusive. Primary button background, active, light. CH_marketing: Swiss DS."
+								},
+								"rest_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.cobalt.500}",
+									"$description": "Role: Exclusive. Primary button background on dark surfaces, rest. CH_marketing: Swiss DS."
+								},
+								"hover_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.cobalt.600}",
+									"$description": "Role: Exclusive. Primary button background on dark surfaces, hover. CH_marketing: Swiss DS."
+								},
+								"active_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.cobalt.700}",
+									"$description": "Role: Exclusive. Primary button background on dark surfaces, active. CH_marketing: Swiss DS."
 								}
 							}
 						},
@@ -75,6 +90,21 @@
 										}
 									},
 									"$description": "Role: Exclusive. Secondary button background on level_2, active, light. CH_marketing: white overlay."
+								},
+								"rest_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.transparent}",
+									"$description": "Role: Exclusive. Secondary button background on dark surfaces, rest. CH_marketing: Swiss DS."
+								},
+								"hover_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.transparent}",
+									"$description": "Role: Exclusive. Secondary button background on dark surfaces, hover. CH_marketing: Swiss DS."
+								},
+								"active_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.transparent}",
+									"$description": "Role: Exclusive. Secondary button background on dark surfaces, active. CH_marketing: Swiss DS."
 								}
 							},
 							"fg": {

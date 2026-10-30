@@ -46,6 +46,41 @@
 										}
 									},
 									"$description": "Role: Exclusive. Primary button background, active, light. CH_app: brand ramp."
+								},
+								"rest_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.brand.600}",
+									"$description": "Role: Exclusive. Primary button background on dark surfaces, rest. CH_app: brand ramp."
+								},
+								"hover_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.brand.600}",
+									"$extensions": {
+										"studio.tokens": {
+											"modify": {
+												"type": "mix",
+												"value": "{ob.h.button.state_layer.strong.hover}",
+												"space": "srgb",
+												"color": "{ob.p.color.cobalt.900}"
+											}
+										}
+									},
+									"$description": "Role: Exclusive. Primary button background on dark surfaces, hover. CH_app: brand ramp."
+								},
+								"active_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.brand.600}",
+									"$extensions": {
+										"studio.tokens": {
+											"modify": {
+												"type": "mix",
+												"value": "{ob.h.button.state_layer.strong.active}",
+												"space": "srgb",
+												"color": "{ob.p.color.cobalt.900}"
+											}
+										}
+									},
+									"$description": "Role: Exclusive. Primary button background on dark surfaces, active. CH_app: brand ramp."
 								}
 							}
 						},
@@ -115,6 +150,41 @@
 										}
 									},
 									"$description": "Role: Exclusive. Secondary button background on level_2, active, light. CH_app: white overlay."
+								},
+								"rest_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.transparent}",
+									"$description": "Role: Exclusive. Secondary button background on dark surfaces, rest. CH_app: brand ramp."
+								},
+								"hover_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.brand.500}",
+									"$extensions": {
+										"studio.tokens": {
+											"modify": {
+												"type": "alpha",
+												"value": "{ob.h.button.state_layer.soft.hover}",
+												"space": "srgb",
+												"color": "{ob.p.color.cobalt.900}"
+											}
+										}
+									},
+									"$description": "Role: Exclusive. Secondary button background on dark surfaces, hover. CH_app: brand ramp."
+								},
+								"active_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.brand.500}",
+									"$extensions": {
+										"studio.tokens": {
+											"modify": {
+												"type": "alpha",
+												"value": "{ob.h.button.state_layer.soft.active}",
+												"space": "srgb",
+												"color": "{ob.p.color.cobalt.900}"
+											}
+										}
+									},
+									"$description": "Role: Exclusive. Secondary button background on dark surfaces, active. CH_app: brand ramp."
 								}
 							},
 							"fg": {

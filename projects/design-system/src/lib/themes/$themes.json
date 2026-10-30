@@ -48,7 +48,8 @@
       "02_primitive/modifier": "enabled",
       "05_html/button/00_state_layer": "enabled",
       "05_html/button/02_typography": "enabled",
-      "05_html/button/04_layout": "enabled"
+      "05_html/button/04_layout": "enabled",
+      "05_html/link/color_scheme/light": "source"
     },
     "$figmaCollectionId": "VariableCollectionId:8:2",
     "$figmaModeId": "8:0",
@@ -448,7 +449,8 @@
       "05_html/button/01_color/brand/CH_app": "enabled",
       "05_html/button/00_state_layer": "source",
       "02_primitive/modifier": "source",
-      "02_primitive/typography": "source"
+      "02_primitive/typography": "source",
+      "05_html/link/brand/CH_app": "enabled"
     },
     "group": "brand",
     "$figmaVariableReferences": {
@@ -505,7 +507,8 @@
       "05_html/button/01_color/brand/CH_marketing": "enabled",
       "05_html/button/00_state_layer": "source",
       "02_primitive/modifier": "source",
-      "02_primitive/typography": "source"
+      "02_primitive/typography": "source",
+      "05_html/link/brand/CH_marketing": "enabled"
     },
     "group": "brand",
     "$figmaVariableReferences": {
@@ -562,7 +565,8 @@
       "05_html/button/01_color/brand/ZH": "enabled",
       "05_html/button/00_state_layer": "source",
       "02_primitive/modifier": "source",
-      "02_primitive/typography": "source"
+      "02_primitive/typography": "source",
+      "05_html/link/brand/ZH": "enabled"
     },
     "group": "brand",
     "$figmaVariableReferences": {
@@ -619,7 +623,8 @@
       "05_html/button/01_color/brand/FR": "enabled",
       "05_html/button/00_state_layer": "source",
       "02_primitive/modifier": "source",
-      "02_primitive/typography": "source"
+      "02_primitive/typography": "source",
+      "05_html/link/brand/FR": "enabled"
     },
     "group": "brand",
     "$figmaVariableReferences": {
@@ -680,7 +685,9 @@
       "05_html/button/01_color/color_scheme/light": "enabled",
       "05_html/typography/color_scheme/light": "enabled",
       "05_html/button/01_color/elevation/level_2_color/color_scheme/light": "enabled",
-      "03_semantic/color/elevation/level_minus_1_color/color_scheme/light": "enabled"
+      "03_semantic/color/elevation/level_minus_1_color/color_scheme/light": "enabled",
+      "05_html/link/brand/CH_app": "source",
+      "05_html/link/color_scheme/light": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:8:3",
     "$figmaModeId": "8:1",
@@ -1089,7 +1096,9 @@
       "05_html/button/01_color/color_scheme/dark": "enabled",
       "05_html/typography/color_scheme/dark": "enabled",
       "05_html/button/01_color/elevation/level_2_color/color_scheme/dark": "enabled",
-      "03_semantic/color/elevation/level_minus_1_color/color_scheme/dark": "enabled"
+      "03_semantic/color/elevation/level_minus_1_color/color_scheme/dark": "enabled",
+      "05_html/link/brand/CH_app": "source",
+      "05_html/link/color_scheme/dark": "enabled"
     },
     "$figmaCollectionId": "VariableCollectionId:8:3",
     "$figmaModeId": "8:2",
