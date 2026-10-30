@@ -183,12 +183,12 @@
             },
             "strong": {
               "$type": "color",
-              "$value": "{ob.s1.color.neutral.border.strong}",
+              "$value": "{ob.s3.color.neutral.border.strong}",
               "$description": "Border for Neutral. Strong strength: Use for focus outlines, selected states, and maximum-emphasis borders."
             },
             "strong_inverse": {
               "$type": "color",
-              "$value": "{ob.s1.color.neutral.border.strong_inverse}",
+              "$value": "{ob.s3.color.neutral.border.strong_inverse}",
               "$description": "Border for Neutral. Strong strength: Use for focus outlines, selected states, and maximum-emphasis borders."
             }
           }
@@ -538,12 +538,12 @@
               },
               "contrast_medium": {
                 "$type": "color",
-                "$value": "{ob.s1.color.status.info.fg.contrast_medium}",
+                "$value": "{ob.s3.color.status.info.fg.contrast_medium}",
                 "$description": "Foreground for Info status. Medium contrast: Use for secondary labels and supporting text on Info status surfaces."
               },
               "contrast_medium_inverse": {
                 "$type": "color",
-                "$value": "{ob.s1.color.status.info.fg.contrast_medium_inverse}",
+                "$value": "{ob.s3.color.status.info.fg.contrast_medium_inverse}",
                 "$description": "Foreground for Info status. Medium contrast: Use for secondary labels and supporting text on Info status surfaces."
               },
               "contrast_low": {
@@ -624,12 +624,12 @@
               },
               "contrast_medium": {
                 "$type": "color",
-                "$value": "{ob.s1.color.status.critical.fg.contrast_medium}",
+                "$value": "{ob.s3.color.status.critical.fg.contrast_medium}",
                 "$description": "Foreground for Critical status. Medium contrast: Use for secondary labels and supporting text on Critical status surfaces."
               },
               "contrast_medium_inverse": {
                 "$type": "color",
-                "$value": "{ob.s1.color.status.critical.fg.contrast_medium_inverse}",
+                "$value": "{ob.s3.color.status.critical.fg.contrast_medium_inverse}",
                 "$description": "Foreground for Critical status. Medium contrast: Use for secondary labels and supporting text on Critical status surfaces."
               },
               "contrast_low": {
@@ -710,12 +710,12 @@
               },
               "contrast_medium": {
                 "$type": "color",
-                "$value": "{ob.s1.color.status.resolved.fg.contrast_medium}",
+                "$value": "{ob.s3.color.status.resolved.fg.contrast_medium}",
                 "$description": "Foreground for Resolved status. Medium contrast: Use for secondary labels and supporting text on Resolved status surfaces."
               },
               "contrast_medium_inverse": {
                 "$type": "color",
-                "$value": "{ob.s1.color.status.resolved.fg.contrast_medium_inverse}",
+                "$value": "{ob.s3.color.status.resolved.fg.contrast_medium_inverse}",
                 "$description": "Foreground for Resolved status. Medium contrast: Use for secondary labels and supporting text on Resolved status surfaces."
               },
               "contrast_low": {
@@ -796,12 +796,12 @@
               },
               "contrast_medium": {
                 "$type": "color",
-                "$value": "{ob.s1.color.status.attention.fg.contrast_medium}",
+                "$value": "{ob.s3.color.status.attention.fg.contrast_medium}",
                 "$description": "Foreground for Attention status. Medium contrast: Use for secondary labels and supporting text on Attention status surfaces."
               },
               "contrast_medium_inverse": {
                 "$type": "color",
-                "$value": "{ob.s1.color.status.attention.fg.contrast_medium_inverse}",
+                "$value": "{ob.s3.color.status.attention.fg.contrast_medium_inverse}",
                 "$description": "Foreground for Attention status. Medium contrast: Use for secondary labels and supporting text on Attention status surfaces."
               },
               "contrast_low": {
@@ -882,12 +882,12 @@
               },
               "contrast_medium": {
                 "$type": "color",
-                "$value": "{ob.s1.color.status.fatal.fg.contrast_medium}",
+                "$value": "{ob.s3.color.status.fatal.fg.contrast_medium}",
                 "$description": "Foreground for Fatal status. Medium contrast: Use for secondary labels and supporting text on Fatal status surfaces."
               },
               "contrast_medium_inverse": {
                 "$type": "color",
-                "$value": "{ob.s1.color.status.fatal.fg.contrast_medium_inverse}",
+                "$value": "{ob.s3.color.status.fatal.fg.contrast_medium_inverse}",
                 "$description": "Foreground for Fatal status. Medium contrast: Use for secondary labels and supporting text on Fatal status surfaces."
               },
               "contrast_low": {

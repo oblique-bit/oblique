@@ -69,7 +69,7 @@ Complete naming conventions and patterns are documented in [Token Naming Convent
 - **Purpose**: Low/medium/high contrast between content and surface
 - **Files**: `low.json`, `medium.json`, `high.json`
 - **References**: S1 color scheme tokens
-- **Usage**: Referenced by the elevation `surface` tokens and the `ob.s` neutral foreground tokens, never consumed directly by components
+- **Usage**: Referenced by the elevation `surface` tokens and the `ob.s` neutral foreground, strong border and status foreground tokens, never consumed directly by components
 
 ### **ob.s: Compilation Layer**
 - **Purpose**: Complete semantic color collection (no modes)

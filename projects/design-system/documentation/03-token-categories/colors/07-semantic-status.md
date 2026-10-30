@@ -9,6 +9,8 @@ Status colors communicate system state, user feedback, and contextual informatio
 - **Contextual information** - Additional descriptive text when needed
 - **Appropriate ARIA labels** - Screen reader support for accessibility compliance
 
+**Contrast mode:** in `high`, the status foreground `contrast_medium` of every status (and its `_inverse`) takes `contrast_medium_max` of S1: the same status step mixed 50 % with black in light mode and with white in dark mode, so the hue stays. See [Contrast Mode](../../04-modes/11-contrast.md).
+
 **Foundation:** Primitive color values are inherited from the [BK Design System](https://swiss.github.io/designsystem/?path=/docs/04_components-badge--docs) for consistency across Swiss government applications and websites. We have enhanced these base primitive colors with semantic meaning and grouped them into two distinct classifications to provide clearer guidance for designers and developers.
 
 ## **Reserved Color Governance**

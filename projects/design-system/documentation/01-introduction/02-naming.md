@@ -116,6 +116,7 @@ These codes are the mode names of the `brand` and `language` mode collections. B
 #### **Primitive Tokens** - Describe appearance
 - **Pattern**: `ob.p.{type}.{name}.{variation}`
 - **Examples**: `ob.p.color.red.50`, `ob.p.dimension.px.16`
+- **Mixed steps**: `{step}_{black|white}_{percent}` next to the step they come from, e.g. `ob.p.color.brand.neutral.300_black_50` (step 300 mixed 50 % with black)
 - **Rule**: Describe *what it looks like*
 
 #### **Semantic Tokens** - Describe intent  
@@ -199,6 +200,7 @@ Design tokens use compound units (multi-word identifiers) with underscores for c
 - `emphasis_high` / `emphasis_low`
 - `contrast_highest` / `contrast_high` / `contrast_medium` / `contrast_low`
 - `contrast_max` (beyond `contrast_highest`: black in light mode, white in dark mode; used by the contrast mode `high`)
+- `_max` (suffix of the S1 values the contrast mode `high` uses, e.g. `border.strong_max`, `fg.contrast_medium_max`)
 
 #### **State Compounds**
 - `bg_hover` / `bg_focus` / `bg_active`

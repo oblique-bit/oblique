@@ -46,7 +46,7 @@ src/lib/themes/03_semantic/color/
 
 #### **S3 - Contrast Semantic Level** (`s3_contrast/`)
 - **Purpose**: Low/medium/high contrast between content and surface
-- **Contains**: `neutral` surfaces per elevation level (`level_minus_1`, `level_0`, `level_1`, `level_2`) and the `neutral` foreground levels `contrast_low` to `contrast_highest`, each with `_inverse`
+- **Contains**: `neutral` surfaces per elevation level (`level_minus_1`, `level_0`, `level_1`, `level_2`), the `neutral` foreground levels `contrast_low` to `contrast_highest`, `neutral.border.strong` and the status foreground `contrast_medium` of every status, each with `_inverse`
 - **Files**: `low.json`, `medium.json`, `high.json`
 - **Reference**: S3 tokens reference S1 tokens; the `surface` tokens of the elevation files and the `ob.s` neutral foreground tokens reference S3
 - **Example token**: `ob.s3.color.neutral.bg.level_0`

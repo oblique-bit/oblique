@@ -177,6 +177,16 @@
               "$type": "color",
               "$value": "{ob.p.color.brand.neutral.300}",
               "$description": "Strong neutral border color. Inverse surface."
+            },
+            "strong_max": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.300_black_50}",
+              "$description": "Strong neutral border for the high contrast mode, mixed 50% toward black. Standard surface."
+            },
+            "strong_max_inverse": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.300_white_50}",
+              "$description": "Strong neutral border for the high contrast mode, mixed 50% toward white. Inverse surface."
             }
           },
           "shadow": {
@@ -293,6 +303,16 @@
                 "$value": "{ob.p.color.brand.status.info.100}",
                 "$description": "Medium contrast info status foreground. Inverse surface."
               },
+              "contrast_medium_max": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.info.800_black_50}",
+                "$description": "Info foreground contrast_medium for the high contrast mode, mixed 50% toward black. Standard surface."
+              },
+              "contrast_medium_max_inverse": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.info.100_white_50}",
+                "$description": "Info foreground contrast_medium for the high contrast mode, mixed 50% toward white. Inverse surface."
+              },
               "contrast_low": {
                 "$type": "color",
                 "$value": "{ob.p.color.brand.status.info.700}",
@@ -368,6 +388,16 @@
                 "$type": "color",
                 "$value": "{ob.p.color.brand.status.resolved.100}",
                 "$description": "Medium contrast resolved status foreground. Inverse surface."
+              },
+              "contrast_medium_max": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.resolved.700_black_50}",
+                "$description": "Resolved foreground contrast_medium for the high contrast mode, mixed 50% toward black. Standard surface."
+              },
+              "contrast_medium_max_inverse": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.resolved.100_white_50}",
+                "$description": "Resolved foreground contrast_medium for the high contrast mode, mixed 50% toward white. Inverse surface."
               },
               "contrast_low": {
                 "$type": "color",
@@ -465,6 +495,16 @@
                 "$value": "{ob.p.color.brand.status.critical.100}",
                 "$description": "Medium contrast fatal status foreground. Inverse surface."
               },
+              "contrast_medium_max": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.critical.700_black_50}",
+                "$description": "Fatal foreground contrast_medium for the high contrast mode, mixed 50% toward black. Standard surface."
+              },
+              "contrast_medium_max_inverse": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.critical.100_white_50}",
+                "$description": "Fatal foreground contrast_medium for the high contrast mode, mixed 50% toward white. Inverse surface."
+              },
               "contrast_low": {
                 "$type": "color",
                 "$value": "{ob.p.color.brand.status.critical.600}",
@@ -540,6 +580,16 @@
                 "$type": "color",
                 "$value": "{ob.p.color.brand.status.attention.100}",
                 "$description": "Medium contrast attention status foreground. Inverse surface."
+              },
+              "contrast_medium_max": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.attention.700_black_50}",
+                "$description": "Attention foreground contrast_medium for the high contrast mode, mixed 50% toward black. Standard surface."
+              },
+              "contrast_medium_max_inverse": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.attention.100_white_50}",
+                "$description": "Attention foreground contrast_medium for the high contrast mode, mixed 50% toward white. Inverse surface."
               },
               "contrast_low": {
                 "$type": "color",
@@ -626,6 +676,16 @@
                 "$type": "color",
                 "$value": "{ob.p.color.brand.status.critical.100}",
                 "$description": "Medium contrast critical status foreground. Inverse surface."
+              },
+              "contrast_medium_max": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.critical.700_black_50}",
+                "$description": "Critical foreground contrast_medium for the high contrast mode, mixed 50% toward black. Standard surface."
+              },
+              "contrast_medium_max_inverse": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.critical.100_white_50}",
+                "$description": "Critical foreground contrast_medium for the high contrast mode, mixed 50% toward white. Inverse surface."
               },
               "contrast_low": {
                 "$type": "color",

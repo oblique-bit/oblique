@@ -82,6 +82,21 @@
                 "$value": "#DBEBF5",
                 "$description": "Role: Exclusive. Status ramp info, step 100. ZH: zh.ch Blau hue, same white contrast as blue 100."
               },
+              "100_white_50": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.info.100}",
+                "$description": "Role: Exclusive. Status ramp info, step 100 mixed 50% with white, for the high contrast mode.",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "mix",
+                      "value": "0.5",
+                      "space": "srgb",
+                      "color": "{ob.p.color.basic.white}"
+                    }
+                  }
+                }
+              },
               "200": {
                 "$type": "color",
                 "$value": "#C1DDED",
@@ -91,6 +106,21 @@
                 "$type": "color",
                 "$value": "#9BC7E1",
                 "$description": "Role: Exclusive. Status ramp info, step 300. ZH: zh.ch Blau hue, same white contrast as blue 300."
+              },
+              "300_white_50": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.info.300}",
+                "$description": "Role: Exclusive. Status ramp info, step 300 mixed 50% with white, for the high contrast mode.",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "mix",
+                      "value": "0.5",
+                      "space": "srgb",
+                      "color": "{ob.p.color.basic.white}"
+                    }
+                  }
+                }
               },
               "400": {
                 "$type": "color",
@@ -117,10 +147,40 @@
                 "$value": "#004E7E",
                 "$description": "Role: Exclusive. Status ramp info, step 800. ZH: zh.ch Blau hue, same white contrast as blue 800."
               },
+              "800_black_50": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.info.800}",
+                "$description": "Role: Exclusive. Status ramp info, step 800 mixed 50% with black, for the high contrast mode.",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "mix",
+                      "value": "0.5",
+                      "space": "srgb",
+                      "color": "{ob.p.color.basic.black}"
+                    }
+                  }
+                }
+              },
               "900": {
                 "$type": "color",
                 "$value": "#00446C",
                 "$description": "Role: Exclusive. Status ramp info, step 900. ZH: zh.ch Blau hue, same white contrast as blue 900."
+              },
+              "900_black_50": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.info.900}",
+                "$description": "Role: Exclusive. Status ramp info, step 900 mixed 50% with black, for the high contrast mode.",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "mix",
+                      "value": "0.5",
+                      "space": "srgb",
+                      "color": "{ob.p.color.basic.black}"
+                    }
+                  }
+                }
               }
             },
             "resolved": {
@@ -134,6 +194,21 @@
                 "$value": "#EAF3EB",
                 "$description": "Role: Exclusive. Status ramp resolved, step 100. ZH: zh.ch Grün hue, same white contrast as green 100."
               },
+              "100_white_50": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.resolved.100}",
+                "$description": "Role: Exclusive. Status ramp resolved, step 100 mixed 50% with white, for the high contrast mode.",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "mix",
+                      "value": "0.5",
+                      "space": "srgb",
+                      "color": "{ob.p.color.basic.white}"
+                    }
+                  }
+                }
+              },
               "200": {
                 "$type": "color",
                 "$value": "#D6E8D6",
@@ -143,6 +218,21 @@
                 "$type": "color",
                 "$value": "#BCD9BD",
                 "$description": "Role: Exclusive. Status ramp resolved, step 300. ZH: zh.ch Grün hue, same white contrast as green 300."
+              },
+              "300_white_50": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.resolved.300}",
+                "$description": "Role: Exclusive. Status ramp resolved, step 300 mixed 50% with white, for the high contrast mode.",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "mix",
+                      "value": "0.5",
+                      "space": "srgb",
+                      "color": "{ob.p.color.basic.white}"
+                    }
+                  }
+                }
               },
               "400": {
                 "$type": "color",
@@ -164,10 +254,40 @@
                 "$value": "#1A7F1F",
                 "$description": "Role: Exclusive. Status ramp resolved, step 700. ZH: zh.ch Grün #1A7F1F."
               },
+              "700_black_50": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.resolved.700}",
+                "$description": "Role: Exclusive. Status ramp resolved, step 700 mixed 50% with black, for the high contrast mode.",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "mix",
+                      "value": "0.5",
+                      "space": "srgb",
+                      "color": "{ob.p.color.basic.black}"
+                    }
+                  }
+                }
+              },
               "800": {
                 "$type": "color",
                 "$value": "#146118",
                 "$description": "Role: Exclusive. Status ramp resolved, step 800. ZH: zh.ch Grün hue, same white contrast as green 800."
+              },
+              "800_black_50": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.resolved.800}",
+                "$description": "Role: Exclusive. Status ramp resolved, step 800 mixed 50% with black, for the high contrast mode.",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "mix",
+                      "value": "0.5",
+                      "space": "srgb",
+                      "color": "{ob.p.color.basic.black}"
+                    }
+                  }
+                }
               },
               "900": {
                 "$type": "color",
@@ -186,6 +306,21 @@
                 "$value": "{ob.p.color.brand.status.critical.100}",
                 "$description": "Role: Exclusive. Status ramp attention, step 100. ZH: same as critical, zh.ch shows warnings in red."
               },
+              "100_white_50": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.attention.100}",
+                "$description": "Role: Exclusive. Status ramp attention, step 100 mixed 50% with white, for the high contrast mode.",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "mix",
+                      "value": "0.5",
+                      "space": "srgb",
+                      "color": "{ob.p.color.basic.white}"
+                    }
+                  }
+                }
+              },
               "200": {
                 "$type": "color",
                 "$value": "{ob.p.color.brand.status.critical.200}",
@@ -195,6 +330,21 @@
                 "$type": "color",
                 "$value": "{ob.p.color.brand.status.critical.300}",
                 "$description": "Role: Exclusive. Status ramp attention, step 300. ZH: same as critical, zh.ch shows warnings in red."
+              },
+              "300_white_50": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.attention.300}",
+                "$description": "Role: Exclusive. Status ramp attention, step 300 mixed 50% with white, for the high contrast mode.",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "mix",
+                      "value": "0.5",
+                      "space": "srgb",
+                      "color": "{ob.p.color.basic.white}"
+                    }
+                  }
+                }
               },
               "400": {
                 "$type": "color",
@@ -216,10 +366,40 @@
                 "$value": "{ob.p.color.brand.status.critical.700}",
                 "$description": "Role: Exclusive. Status ramp attention, step 700. ZH: same as critical, zh.ch shows warnings in red."
               },
+              "700_black_50": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.attention.700}",
+                "$description": "Role: Exclusive. Status ramp attention, step 700 mixed 50% with black, for the high contrast mode.",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "mix",
+                      "value": "0.5",
+                      "space": "srgb",
+                      "color": "{ob.p.color.basic.black}"
+                    }
+                  }
+                }
+              },
               "800": {
                 "$type": "color",
                 "$value": "{ob.p.color.brand.status.critical.800}",
                 "$description": "Role: Exclusive. Status ramp attention, step 800. ZH: same as critical, zh.ch shows warnings in red."
+              },
+              "800_black_50": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.attention.800}",
+                "$description": "Role: Exclusive. Status ramp attention, step 800 mixed 50% with black, for the high contrast mode.",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "mix",
+                      "value": "0.5",
+                      "space": "srgb",
+                      "color": "{ob.p.color.basic.black}"
+                    }
+                  }
+                }
               },
               "900": {
                 "$type": "color",
@@ -238,10 +418,40 @@
                 "$value": "#FCE1E4",
                 "$description": "Role: Exclusive. Status ramp critical, step 100. ZH: zh.ch red hue, same white contrast as red 100."
               },
+              "100_white_50": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.critical.100}",
+                "$description": "Role: Exclusive. Status ramp critical, step 100 mixed 50% with white, for the high contrast mode.",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "mix",
+                      "value": "0.5",
+                      "space": "srgb",
+                      "color": "{ob.p.color.basic.white}"
+                    }
+                  }
+                }
+              },
               "200": {
                 "$type": "color",
                 "$value": "#F9CED3",
                 "$description": "Role: Exclusive. Status ramp critical, step 200. ZH: zh.ch red hue, same white contrast as red 200."
+              },
+              "200_white_50": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.critical.200}",
+                "$description": "Role: Exclusive. Status ramp critical, step 200 mixed 50% with white, for the high contrast mode.",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "mix",
+                      "value": "0.5",
+                      "space": "srgb",
+                      "color": "{ob.p.color.basic.white}"
+                    }
+                  }
+                }
               },
               "300": {
                 "$type": "color",
@@ -268,10 +478,40 @@
                 "$value": "#C60017",
                 "$description": "Role: Exclusive. Status ramp critical, step 700. ZH: zh.ch red hue, same white contrast as red 700."
               },
+              "700_black_50": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.critical.700}",
+                "$description": "Role: Exclusive. Status ramp critical, step 700 mixed 50% with black, for the high contrast mode.",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "mix",
+                      "value": "0.5",
+                      "space": "srgb",
+                      "color": "{ob.p.color.basic.black}"
+                    }
+                  }
+                }
+              },
               "800": {
                 "$type": "color",
                 "$value": "#A00012",
                 "$description": "Role: Exclusive. Status ramp critical, step 800. ZH: zh.ch red hue, same white contrast as red 800."
+              },
+              "800_black_50": {
+                "$type": "color",
+                "$value": "{ob.p.color.brand.status.critical.800}",
+                "$description": "Role: Exclusive. Status ramp critical, step 800 mixed 50% with black, for the high contrast mode.",
+                "$extensions": {
+                  "studio.tokens": {
+                    "modify": {
+                      "type": "mix",
+                      "value": "0.5",
+                      "space": "srgb",
+                      "color": "{ob.p.color.basic.black}"
+                    }
+                  }
+                }
               },
               "900": {
                 "$type": "color",
@@ -306,6 +546,36 @@
               "$type": "color",
               "$value": "#949494",
               "$description": "Role: Exclusive. Neutral step 300, light mode. ZH: zh.ch Black 40."
+            },
+            "300_black_50": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.300}",
+              "$description": "Role: Exclusive. Neutral step 300 mixed 50% with black, for the high contrast mode.",
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "mix",
+                    "value": "0.5",
+                    "space": "srgb",
+                    "color": "{ob.p.color.basic.black}"
+                  }
+                }
+              }
+            },
+            "300_white_50": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.300}",
+              "$description": "Role: Exclusive. Neutral step 300 mixed 50% with white, for the high contrast mode.",
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "mix",
+                    "value": "0.5",
+                    "space": "srgb",
+                    "color": "{ob.p.color.basic.white}"
+                  }
+                }
+              }
             },
             "400": {
               "$type": "color",
@@ -364,6 +634,36 @@
               "$type": "color",
               "$value": "#949494",
               "$description": "Role: Exclusive. Neutral step 300, dark mode. ZH: zh.ch Black 40."
+            },
+            "300_white_50": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral_dark.300}",
+              "$description": "Role: Exclusive. Dark neutral step 300 mixed 50% with white, for the high contrast mode.",
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "mix",
+                    "value": "0.5",
+                    "space": "srgb",
+                    "color": "{ob.p.color.basic.white}"
+                  }
+                }
+              }
+            },
+            "300_black_50": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral_dark.300}",
+              "$description": "Role: Exclusive. Dark neutral step 300 mixed 50% with black, for the high contrast mode.",
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "mix",
+                    "value": "0.5",
+                    "space": "srgb",
+                    "color": "{ob.p.color.basic.black}"
+                  }
+                }
+              }
             },
             "400": {
               "$type": "color",

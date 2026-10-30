@@ -86,6 +86,90 @@
               "$value": "{ob.s1.color.neutral.fg.contrast_highest_inverse}",
               "$description": "Role: Text. Neutral foreground contrast_highest at low contrast, as before. Inverse surface."
             }
+          },
+          "border": {
+            "strong": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.border.strong}",
+              "$description": "Role: Border. Strong neutral border at low contrast, as before. Standard surface."
+            },
+            "strong_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.border.strong_inverse}",
+              "$description": "Role: Border. Strong neutral border at low contrast, as before. Inverse surface."
+            }
+          }
+        },
+        "status": {
+          "info": {
+            "fg": {
+              "contrast_medium": {
+                "$type": "color",
+                "$value": "{ob.s1.color.status.info.fg.contrast_medium}",
+                "$description": "Role: Text. Info status foreground contrast_medium at low contrast, as before. Standard surface."
+              },
+              "contrast_medium_inverse": {
+                "$type": "color",
+                "$value": "{ob.s1.color.status.info.fg.contrast_medium_inverse}",
+                "$description": "Role: Text. Info status foreground contrast_medium at low contrast, as before. Inverse surface."
+              }
+            }
+          },
+          "resolved": {
+            "fg": {
+              "contrast_medium": {
+                "$type": "color",
+                "$value": "{ob.s1.color.status.resolved.fg.contrast_medium}",
+                "$description": "Role: Text. Resolved status foreground contrast_medium at low contrast, as before. Standard surface."
+              },
+              "contrast_medium_inverse": {
+                "$type": "color",
+                "$value": "{ob.s1.color.status.resolved.fg.contrast_medium_inverse}",
+                "$description": "Role: Text. Resolved status foreground contrast_medium at low contrast, as before. Inverse surface."
+              }
+            }
+          },
+          "attention": {
+            "fg": {
+              "contrast_medium": {
+                "$type": "color",
+                "$value": "{ob.s1.color.status.attention.fg.contrast_medium}",
+                "$description": "Role: Text. Attention status foreground contrast_medium at low contrast, as before. Standard surface."
+              },
+              "contrast_medium_inverse": {
+                "$type": "color",
+                "$value": "{ob.s1.color.status.attention.fg.contrast_medium_inverse}",
+                "$description": "Role: Text. Attention status foreground contrast_medium at low contrast, as before. Inverse surface."
+              }
+            }
+          },
+          "critical": {
+            "fg": {
+              "contrast_medium": {
+                "$type": "color",
+                "$value": "{ob.s1.color.status.critical.fg.contrast_medium}",
+                "$description": "Role: Text. Critical status foreground contrast_medium at low contrast, as before. Standard surface."
+              },
+              "contrast_medium_inverse": {
+                "$type": "color",
+                "$value": "{ob.s1.color.status.critical.fg.contrast_medium_inverse}",
+                "$description": "Role: Text. Critical status foreground contrast_medium at low contrast, as before. Inverse surface."
+              }
+            }
+          },
+          "fatal": {
+            "fg": {
+              "contrast_medium": {
+                "$type": "color",
+                "$value": "{ob.s1.color.status.fatal.fg.contrast_medium}",
+                "$description": "Role: Text. Fatal status foreground contrast_medium at low contrast, as before. Standard surface."
+              },
+              "contrast_medium_inverse": {
+                "$type": "color",
+                "$value": "{ob.s1.color.status.fatal.fg.contrast_medium_inverse}",
+                "$description": "Role: Text. Fatal status foreground contrast_medium at low contrast, as before. Inverse surface."
+              }
+            }
           }
         }
       }

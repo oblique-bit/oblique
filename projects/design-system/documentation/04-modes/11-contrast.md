@@ -60,10 +60,22 @@ S3 also holds the neutral foreground levels `contrast_low`, `contrast_medium`, `
 
 `contrast_max` is black (`ob.p.color.basic.black`) in light mode and white in dark mode; `contrast_max_inverse` is the opposite. `contrast_lowest` is not in S3 and does not change, so disabled text does not turn black. In `high` all neutral text has the same color: the difference between primary and secondary text remains only in size and weight.
 
+### **Borders and Status Text**
+
+S3 also holds `neutral.border.strong` and the status foreground `contrast_medium` of all five status families (`info`, `resolved`, `attention`, `critical`, `fatal`), each with `_inverse`. The `ob.s` tokens of the same names point to S3. In `low` and `medium` they point to the same S1 token as before. In `high` they point to S1 tokens with the suffix `_max`:
+
+| S3 token | `high` points to | light mode | dark mode |
+|---|---|---|---|
+| `neutral.border.strong` | `ob.s1.color.neutral.border.strong_max` | `neutral.300` mixed 50 % with black | `neutral_dark.300` mixed 50 % with white |
+| `status.<status>.fg.contrast_medium` | `ob.s1.color.status.<status>.fg.contrast_medium_max` | the status step mixed 50 % with black | the status step mixed 50 % with white |
+
+The `_inverse` tokens mix in the other direction. The mixed colors are primitives of the brand files (`ob.p.color.brand.neutral.300_black_50`, `ob.p.color.brand.status.critical.700_black_50`, …), so each brand gets its own mixed color. `fatal` uses the `critical` steps.
+
 ### **Not Built Yet**
 
-- `high`: link, error text and borders mixed toward black or white, with values per brand.
-- The Button, the header and the link take their colors from the primitives and do not follow the contrast mode yet.
+- `high`: the link. `CH_app` and `ZH` take it from the interaction colors, `CH_marketing` and `FR` from fixed primitives in their brand files, which need their own `high` values.
+- The other status foreground steps (`contrast_high` for Pill, `contrast_highest` for Badge) and the borders `subtle` and `medium`.
+- The Button and the header take their colors from the primitives and do not follow the contrast mode yet.
 - The Button on a moved surface keeps the colors of its own elevation level.
 
 ## **Known Limits**
