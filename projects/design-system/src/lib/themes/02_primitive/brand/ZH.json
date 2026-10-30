@@ -309,23 +309,23 @@
             },
             "400": {
               "$type": "color",
-              "$value": "#838383",
-              "$description": "Role: Exclusive. Neutral step 400, light mode. ZH: grey between the brand greys."
+              "$value": "#666666",
+              "$description": "Role: Exclusive. Neutral step 400, light mode. ZH: zh.ch Black 60, secondary text."
             },
             "500": {
               "$type": "color",
-              "$value": "#757575",
-              "$description": "Role: Exclusive. Neutral step 500, light mode. ZH: grey between the brand greys."
+              "$value": "#333333",
+              "$description": "Role: Exclusive. Neutral step 500, light mode. ZH: zh.ch Black 80."
             },
             "600": {
               "$type": "color",
-              "$value": "#666666",
-              "$description": "Role: Exclusive. Neutral step 600, light mode. ZH: zh.ch Black 60."
+              "$value": "#000000",
+              "$description": "Role: Exclusive. Neutral step 600, light mode. ZH: zh.ch Black 100, headings and buttons."
             },
             "700": {
               "$type": "color",
-              "$value": "#333333",
-              "$description": "Role: Exclusive. Neutral step 700, light mode. ZH: zh.ch Black 80."
+              "$value": "#000000",
+              "$description": "Role: Exclusive. Neutral step 700, light mode. ZH: zh.ch Black 100."
             },
             "800": {
               "$type": "color",
@@ -335,7 +335,7 @@
             "900": {
               "$type": "color",
               "$value": "#000000",
-              "$description": "Role: Exclusive. Neutral step 900, light mode. ZH: zh.ch Black 100."
+              "$description": "Role: Exclusive. Neutral step 900, light mode. ZH: zh.ch Black 100, text."
             }
           },
           "neutral_dark": {
@@ -347,53 +347,53 @@
             },
             "50": {
               "$type": "color",
-              "$value": "{ob.p.color.brand.neutral.50}",
-              "$description": "Role: Exclusive. Neutral step 50, dark mode. ZH: same as light, zh.ch has no dark mode."
+              "$value": "#F7F7F7",
+              "$description": "Role: Exclusive. Neutral step 50, dark mode. ZH: zh.ch Black 5."
             },
             "100": {
               "$type": "color",
-              "$value": "{ob.p.color.brand.neutral.100}",
-              "$description": "Role: Exclusive. Neutral step 100, dark mode. ZH: same as light, zh.ch has no dark mode."
+              "$value": "#F0F0F0",
+              "$description": "Role: Exclusive. Neutral step 100, dark mode. ZH: zh.ch Black 10."
             },
             "200": {
               "$type": "color",
-              "$value": "{ob.p.color.brand.neutral.200}",
-              "$description": "Role: Exclusive. Neutral step 200, dark mode. ZH: same as light, zh.ch has no dark mode."
+              "$value": "#CCCCCC",
+              "$description": "Role: Exclusive. Neutral step 200, dark mode. ZH: zh.ch Black 20."
             },
             "300": {
               "$type": "color",
-              "$value": "{ob.p.color.brand.neutral.300}",
-              "$description": "Role: Exclusive. Neutral step 300, dark mode. ZH: same as light, zh.ch has no dark mode."
+              "$value": "#949494",
+              "$description": "Role: Exclusive. Neutral step 300, dark mode. ZH: zh.ch Black 40."
             },
             "400": {
               "$type": "color",
-              "$value": "{ob.p.color.brand.neutral.400}",
-              "$description": "Role: Exclusive. Neutral step 400, dark mode. ZH: same as light, zh.ch has no dark mode."
+              "$value": "#666666",
+              "$description": "Role: Exclusive. Neutral step 400, dark mode. ZH: zh.ch Black 60."
             },
             "500": {
               "$type": "color",
-              "$value": "{ob.p.color.brand.neutral.500}",
-              "$description": "Role: Exclusive. Neutral step 500, dark mode. ZH: same as light, zh.ch has no dark mode."
+              "$value": "#575757",
+              "$description": "Role: Exclusive. Neutral step 500, dark mode. ZH: grey with the same white contrast as cobalt 500, zh.ch has no dark mode."
             },
             "600": {
               "$type": "color",
-              "$value": "{ob.p.color.brand.neutral.600}",
-              "$description": "Role: Exclusive. Neutral step 600, dark mode. ZH: same as light, zh.ch has no dark mode."
+              "$value": "#414141",
+              "$description": "Role: Exclusive. Neutral step 600, dark mode. ZH: grey with the same white contrast as cobalt 600, zh.ch has no dark mode."
             },
             "700": {
               "$type": "color",
-              "$value": "{ob.p.color.brand.neutral.700}",
-              "$description": "Role: Exclusive. Neutral step 700, dark mode. ZH: same as light, zh.ch has no dark mode."
+              "$value": "#333333",
+              "$description": "Role: Exclusive. Neutral step 700, dark mode. ZH: zh.ch Black 80."
             },
             "800": {
               "$type": "color",
-              "$value": "{ob.p.color.brand.neutral.800}",
-              "$description": "Role: Exclusive. Neutral step 800, dark mode. ZH: same as light, zh.ch has no dark mode."
+              "$value": "#272727",
+              "$description": "Role: Exclusive. Neutral step 800, dark mode. ZH: grey with the same white contrast as cobalt 800, zh.ch has no dark mode."
             },
             "900": {
               "$type": "color",
-              "$value": "{ob.p.color.brand.neutral.900}",
-              "$description": "Role: Exclusive. Neutral step 900, dark mode. ZH: same as light, zh.ch has no dark mode."
+              "$value": "#1B1B1B",
+              "$description": "Role: Exclusive. Neutral step 900, dark mode. ZH: grey with the same white contrast as cobalt 900, zh.ch has no dark mode."
             }
           },
           "neutral_alpha": {

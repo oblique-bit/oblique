@@ -304,28 +304,28 @@
             },
             "300": {
               "$type": "color",
-              "$value": "#B3B3B3",
-              "$description": "Role: Exclusive. Neutral step 300, light mode. FR: grey between the brand greys."
+              "$value": "#8D8D8D",
+              "$description": "Role: Exclusive. Neutral step 300, light mode. FR: grey with the same white contrast as cobalt 300."
             },
             "400": {
               "$type": "color",
-              "$value": "#9E9E9E",
-              "$description": "Role: Exclusive. Neutral step 400, light mode. FR: grey between the brand greys."
+              "$value": "#767676",
+              "$description": "Role: Exclusive. Neutral step 400, light mode. FR: fr.ch dark grey, secondary text."
             },
             "500": {
               "$type": "color",
-              "$value": "#898989",
-              "$description": "Role: Exclusive. Neutral step 500, light mode. FR: grey between the brand greys."
+              "$value": "#383838",
+              "$description": "Role: Exclusive. Neutral step 500, light mode. FR: fr.ch darker grey."
             },
             "600": {
               "$type": "color",
-              "$value": "#767676",
-              "$description": "Role: Exclusive. Neutral step 600, light mode. FR: fr.ch dark grey, secondary text."
+              "$value": "#000000",
+              "$description": "Role: Exclusive. Neutral step 600, light mode. FR: fr.ch black, headings."
             },
             "700": {
               "$type": "color",
-              "$value": "#383838",
-              "$description": "Role: Exclusive. Neutral step 700, light mode. FR: fr.ch darker grey."
+              "$value": "#000000",
+              "$description": "Role: Exclusive. Neutral step 700, light mode. FR: fr.ch black."
             },
             "800": {
               "$type": "color",
@@ -335,7 +335,7 @@
             "900": {
               "$type": "color",
               "$value": "#000000",
-              "$description": "Role: Exclusive. Neutral step 900, light mode. FR: fr.ch black."
+              "$description": "Role: Exclusive. Neutral step 900, light mode. FR: fr.ch black, text."
             }
           },
           "neutral_dark": {
