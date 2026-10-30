@@ -279,6 +279,408 @@
                 "$description": "Role: Exclusive. Status ramp critical, step 900. CH_marketing: red 900."
               }
             }
+          },
+          "neutral": {
+            "token_family_docs": {
+              "description": {
+                "$type": "other",
+                "$value": "Neutral ramp of the brand mode CH_marketing for light mode: text, backgrounds and borders. The S1 neutral, interaction and Button colors of light mode point here."
+              }
+            },
+            "50": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.50}",
+              "$description": "Role: Exclusive. Neutral step 50, light mode. CH_marketing: cobalt 50."
+            },
+            "100": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.100}",
+              "$description": "Role: Exclusive. Neutral step 100, light mode. CH_marketing: cobalt 100."
+            },
+            "200": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.200}",
+              "$description": "Role: Exclusive. Neutral step 200, light mode. CH_marketing: cobalt 200."
+            },
+            "300": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.300}",
+              "$description": "Role: Exclusive. Neutral step 300, light mode. CH_marketing: cobalt 300."
+            },
+            "400": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.400}",
+              "$description": "Role: Exclusive. Neutral step 400, light mode. CH_marketing: cobalt 400."
+            },
+            "500": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.500}",
+              "$description": "Role: Exclusive. Neutral step 500, light mode. CH_marketing: cobalt 500."
+            },
+            "600": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.600}",
+              "$description": "Role: Exclusive. Neutral step 600, light mode. CH_marketing: cobalt 600."
+            },
+            "700": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.700}",
+              "$description": "Role: Exclusive. Neutral step 700, light mode. CH_marketing: cobalt 700."
+            },
+            "800": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.800}",
+              "$description": "Role: Exclusive. Neutral step 800, light mode. CH_marketing: cobalt 800."
+            },
+            "900": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.900}",
+              "$description": "Role: Exclusive. Neutral step 900, light mode. CH_marketing: cobalt 900."
+            }
+          },
+          "neutral_dark": {
+            "token_family_docs": {
+              "description": {
+                "$type": "other",
+                "$value": "Neutral ramp of the brand mode CH_marketing for dark mode. The dark mode S1 and Button colors point here."
+              }
+            },
+            "50": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.50}",
+              "$description": "Role: Exclusive. Neutral step 50, dark mode. CH_marketing: cobalt 50."
+            },
+            "100": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.100}",
+              "$description": "Role: Exclusive. Neutral step 100, dark mode. CH_marketing: cobalt 100."
+            },
+            "200": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.200}",
+              "$description": "Role: Exclusive. Neutral step 200, dark mode. CH_marketing: cobalt 200."
+            },
+            "300": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.300}",
+              "$description": "Role: Exclusive. Neutral step 300, dark mode. CH_marketing: cobalt 300."
+            },
+            "400": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.400}",
+              "$description": "Role: Exclusive. Neutral step 400, dark mode. CH_marketing: cobalt 400."
+            },
+            "500": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.500}",
+              "$description": "Role: Exclusive. Neutral step 500, dark mode. CH_marketing: cobalt 500."
+            },
+            "600": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.600}",
+              "$description": "Role: Exclusive. Neutral step 600, dark mode. CH_marketing: cobalt 600."
+            },
+            "700": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.700}",
+              "$description": "Role: Exclusive. Neutral step 700, dark mode. CH_marketing: cobalt 700."
+            },
+            "800": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.800}",
+              "$description": "Role: Exclusive. Neutral step 800, dark mode. CH_marketing: cobalt 800."
+            },
+            "900": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt.900}",
+              "$description": "Role: Exclusive. Neutral step 900, dark mode. CH_marketing: cobalt 900."
+            }
+          },
+          "neutral_alpha": {
+            "token_family_docs": {
+              "description": {
+                "$type": "other",
+                "$value": "Transparent neutral of the brand mode CH_marketing for shadows, backdrops and overlays."
+              }
+            },
+            "50": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt_alpha.50}",
+              "$description": "Role: Exclusive. Transparent neutral step 50. CH_marketing: cobalt_alpha 50."
+            },
+            "100": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt_alpha.100}",
+              "$description": "Role: Exclusive. Transparent neutral step 100. CH_marketing: cobalt_alpha 100."
+            },
+            "200": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt_alpha.200}",
+              "$description": "Role: Exclusive. Transparent neutral step 200. CH_marketing: cobalt_alpha 200."
+            },
+            "300": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt_alpha.300}",
+              "$description": "Role: Exclusive. Transparent neutral step 300. CH_marketing: cobalt_alpha 300."
+            },
+            "400": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt_alpha.400}",
+              "$description": "Role: Exclusive. Transparent neutral step 400. CH_marketing: cobalt_alpha 400."
+            },
+            "500": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt_alpha.500}",
+              "$description": "Role: Exclusive. Transparent neutral step 500. CH_marketing: cobalt_alpha 500."
+            },
+            "600": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt_alpha.600}",
+              "$description": "Role: Exclusive. Transparent neutral step 600. CH_marketing: cobalt_alpha 600."
+            },
+            "700": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt_alpha.700}",
+              "$description": "Role: Exclusive. Transparent neutral step 700. CH_marketing: cobalt_alpha 700."
+            },
+            "800": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt_alpha.800}",
+              "$description": "Role: Exclusive. Transparent neutral step 800. CH_marketing: cobalt_alpha 800."
+            },
+            "900": {
+              "$type": "color",
+              "$value": "{ob.p.color.cobalt_alpha.900}",
+              "$description": "Role: Exclusive. Transparent neutral step 900. CH_marketing: cobalt_alpha 900."
+            }
+          },
+          "focus": {
+            "500": {
+              "$type": "color",
+              "$value": "{ob.p.color.purple.500}",
+              "$description": "Role: Exclusive. Focus ring on light surfaces. CH_marketing: purple."
+            },
+            "400": {
+              "$type": "color",
+              "$value": "{ob.p.color.purple.400}",
+              "$description": "Role: Exclusive. Focus ring on dark surfaces. CH_marketing: purple."
+            }
+          },
+          "free": {
+            "token_family_docs": {
+              "description": {
+                "$type": "other",
+                "$value": "Free color ramps of the brand mode CH_marketing (indigo, teal, pink, yellow). The S1 free colors point here. A brand without a matching color keeps the Oblique ramp."
+              }
+            },
+            "indigo": {
+              "50": {
+                "$type": "color",
+                "$value": "{ob.p.color.indigo.50}",
+                "$description": "Role: Exclusive. Free indigo step 50. CH_marketing: indigo 50."
+              },
+              "100": {
+                "$type": "color",
+                "$value": "{ob.p.color.indigo.100}",
+                "$description": "Role: Exclusive. Free indigo step 100. CH_marketing: indigo 100."
+              },
+              "200": {
+                "$type": "color",
+                "$value": "{ob.p.color.indigo.200}",
+                "$description": "Role: Exclusive. Free indigo step 200. CH_marketing: indigo 200."
+              },
+              "300": {
+                "$type": "color",
+                "$value": "{ob.p.color.indigo.300}",
+                "$description": "Role: Exclusive. Free indigo step 300. CH_marketing: indigo 300."
+              },
+              "400": {
+                "$type": "color",
+                "$value": "{ob.p.color.indigo.400}",
+                "$description": "Role: Exclusive. Free indigo step 400. CH_marketing: indigo 400."
+              },
+              "500": {
+                "$type": "color",
+                "$value": "{ob.p.color.indigo.500}",
+                "$description": "Role: Exclusive. Free indigo step 500. CH_marketing: indigo 500."
+              },
+              "600": {
+                "$type": "color",
+                "$value": "{ob.p.color.indigo.600}",
+                "$description": "Role: Exclusive. Free indigo step 600. CH_marketing: indigo 600."
+              },
+              "700": {
+                "$type": "color",
+                "$value": "{ob.p.color.indigo.700}",
+                "$description": "Role: Exclusive. Free indigo step 700. CH_marketing: indigo 700."
+              },
+              "800": {
+                "$type": "color",
+                "$value": "{ob.p.color.indigo.800}",
+                "$description": "Role: Exclusive. Free indigo step 800. CH_marketing: indigo 800."
+              },
+              "900": {
+                "$type": "color",
+                "$value": "{ob.p.color.indigo.900}",
+                "$description": "Role: Exclusive. Free indigo step 900. CH_marketing: indigo 900."
+              }
+            },
+            "teal": {
+              "50": {
+                "$type": "color",
+                "$value": "{ob.p.color.teal.50}",
+                "$description": "Role: Exclusive. Free teal step 50. CH_marketing: teal 50."
+              },
+              "100": {
+                "$type": "color",
+                "$value": "{ob.p.color.teal.100}",
+                "$description": "Role: Exclusive. Free teal step 100. CH_marketing: teal 100."
+              },
+              "200": {
+                "$type": "color",
+                "$value": "{ob.p.color.teal.200}",
+                "$description": "Role: Exclusive. Free teal step 200. CH_marketing: teal 200."
+              },
+              "300": {
+                "$type": "color",
+                "$value": "{ob.p.color.teal.300}",
+                "$description": "Role: Exclusive. Free teal step 300. CH_marketing: teal 300."
+              },
+              "400": {
+                "$type": "color",
+                "$value": "{ob.p.color.teal.400}",
+                "$description": "Role: Exclusive. Free teal step 400. CH_marketing: teal 400."
+              },
+              "500": {
+                "$type": "color",
+                "$value": "{ob.p.color.teal.500}",
+                "$description": "Role: Exclusive. Free teal step 500. CH_marketing: teal 500."
+              },
+              "600": {
+                "$type": "color",
+                "$value": "{ob.p.color.teal.600}",
+                "$description": "Role: Exclusive. Free teal step 600. CH_marketing: teal 600."
+              },
+              "700": {
+                "$type": "color",
+                "$value": "{ob.p.color.teal.700}",
+                "$description": "Role: Exclusive. Free teal step 700. CH_marketing: teal 700."
+              },
+              "800": {
+                "$type": "color",
+                "$value": "{ob.p.color.teal.800}",
+                "$description": "Role: Exclusive. Free teal step 800. CH_marketing: teal 800."
+              },
+              "900": {
+                "$type": "color",
+                "$value": "{ob.p.color.teal.900}",
+                "$description": "Role: Exclusive. Free teal step 900. CH_marketing: teal 900."
+              }
+            },
+            "pink": {
+              "50": {
+                "$type": "color",
+                "$value": "{ob.p.color.pink.50}",
+                "$description": "Role: Exclusive. Free pink step 50. CH_marketing: pink 50."
+              },
+              "100": {
+                "$type": "color",
+                "$value": "{ob.p.color.pink.100}",
+                "$description": "Role: Exclusive. Free pink step 100. CH_marketing: pink 100."
+              },
+              "200": {
+                "$type": "color",
+                "$value": "{ob.p.color.pink.200}",
+                "$description": "Role: Exclusive. Free pink step 200. CH_marketing: pink 200."
+              },
+              "300": {
+                "$type": "color",
+                "$value": "{ob.p.color.pink.300}",
+                "$description": "Role: Exclusive. Free pink step 300. CH_marketing: pink 300."
+              },
+              "400": {
+                "$type": "color",
+                "$value": "{ob.p.color.pink.400}",
+                "$description": "Role: Exclusive. Free pink step 400. CH_marketing: pink 400."
+              },
+              "500": {
+                "$type": "color",
+                "$value": "{ob.p.color.pink.500}",
+                "$description": "Role: Exclusive. Free pink step 500. CH_marketing: pink 500."
+              },
+              "600": {
+                "$type": "color",
+                "$value": "{ob.p.color.pink.600}",
+                "$description": "Role: Exclusive. Free pink step 600. CH_marketing: pink 600."
+              },
+              "700": {
+                "$type": "color",
+                "$value": "{ob.p.color.pink.700}",
+                "$description": "Role: Exclusive. Free pink step 700. CH_marketing: pink 700."
+              },
+              "800": {
+                "$type": "color",
+                "$value": "{ob.p.color.pink.800}",
+                "$description": "Role: Exclusive. Free pink step 800. CH_marketing: pink 800."
+              },
+              "900": {
+                "$type": "color",
+                "$value": "{ob.p.color.pink.900}",
+                "$description": "Role: Exclusive. Free pink step 900. CH_marketing: pink 900."
+              }
+            },
+            "yellow": {
+              "50": {
+                "$type": "color",
+                "$value": "{ob.p.color.yellow.50}",
+                "$description": "Role: Exclusive. Free yellow step 50. CH_marketing: yellow 50."
+              },
+              "100": {
+                "$type": "color",
+                "$value": "{ob.p.color.yellow.100}",
+                "$description": "Role: Exclusive. Free yellow step 100. CH_marketing: yellow 100."
+              },
+              "200": {
+                "$type": "color",
+                "$value": "{ob.p.color.yellow.200}",
+                "$description": "Role: Exclusive. Free yellow step 200. CH_marketing: yellow 200."
+              },
+              "300": {
+                "$type": "color",
+                "$value": "{ob.p.color.yellow.300}",
+                "$description": "Role: Exclusive. Free yellow step 300. CH_marketing: yellow 300."
+              },
+              "400": {
+                "$type": "color",
+                "$value": "{ob.p.color.yellow.400}",
+                "$description": "Role: Exclusive. Free yellow step 400. CH_marketing: yellow 400."
+              },
+              "500": {
+                "$type": "color",
+                "$value": "{ob.p.color.yellow.500}",
+                "$description": "Role: Exclusive. Free yellow step 500. CH_marketing: yellow 500."
+              },
+              "600": {
+                "$type": "color",
+                "$value": "{ob.p.color.yellow.600}",
+                "$description": "Role: Exclusive. Free yellow step 600. CH_marketing: yellow 600."
+              },
+              "700": {
+                "$type": "color",
+                "$value": "{ob.p.color.yellow.700}",
+                "$description": "Role: Exclusive. Free yellow step 700. CH_marketing: yellow 700."
+              },
+              "800": {
+                "$type": "color",
+                "$value": "{ob.p.color.yellow.800}",
+                "$description": "Role: Exclusive. Free yellow step 800. CH_marketing: yellow 800."
+              },
+              "900": {
+                "$type": "color",
+                "$value": "{ob.p.color.yellow.900}",
+                "$description": "Role: Exclusive. Free yellow step 900. CH_marketing: yellow 900."
+              }
+            }
           }
         }
       },

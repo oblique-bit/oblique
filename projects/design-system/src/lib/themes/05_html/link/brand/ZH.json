@@ -12,33 +12,43 @@
 						},
 						"default": {
 							"$type": "color",
-							"$value": "{ob.s.color.interaction.fg.contrast_medium}",
-							"$description": "Role: Exclusive. Link color, default, light surfaces. ZH: interaction color."
+							"$value": "#666666",
+							"$description": "Role: Exclusive. Link color, default, light surfaces. ZH: zh.ch text link (grey, black on hover)."
 						},
 						"default_inverse": {
 							"$type": "color",
-							"$value": "{ob.s.color.interaction.fg.contrast_medium}",
-							"$description": "Role: Exclusive. Link color, default, dark surfaces. ZH: interaction color."
+							"$value": "#FFFFFF",
+							"$description": "Role: Exclusive. Link color, default, dark surfaces. ZH: white, as zh.ch shows links on dark backgrounds."
 						},
 						"hover": {
 							"$type": "color",
-							"$value": "{ob.s.color.interaction.fg.contrast_low}",
-							"$description": "Role: Exclusive. Link color, hover, light surfaces. ZH: interaction color."
+							"$value": "#000000",
+							"$description": "Role: Exclusive. Link color, hover, light surfaces. ZH: zh.ch text link (grey, black on hover)."
 						},
 						"hover_inverse": {
 							"$type": "color",
-							"$value": "{ob.s.color.interaction.fg.contrast_low}",
-							"$description": "Role: Exclusive. Link color, hover, dark surfaces. ZH: interaction color."
+							"$value": "#FFFFFF",
+							"$description": "Role: Exclusive. Link color, hover, dark surfaces. ZH: white, as zh.ch shows links on dark backgrounds."
 						},
 						"active": {
 							"$type": "color",
-							"$value": "{ob.s.color.interaction.fg.contrast_high}",
-							"$description": "Role: Exclusive. Link color, active, light surfaces. ZH: interaction color."
+							"$value": "#000000",
+							"$description": "Role: Exclusive. Link color, active, light surfaces. ZH: zh.ch text link (grey, black on hover)."
 						},
 						"active_inverse": {
 							"$type": "color",
-							"$value": "{ob.s.color.interaction.fg.contrast_high}",
-							"$description": "Role: Exclusive. Link color, active, dark surfaces. ZH: interaction color."
+							"$value": "#FFFFFF",
+							"$description": "Role: Exclusive. Link color, active, dark surfaces. ZH: white, as zh.ch shows links on dark backgrounds."
+						},
+						"visited": {
+							"$type": "color",
+							"$value": "#666666",
+							"$description": "Role: Exclusive. Link color, visited, light surfaces. ZH: same as default, zh.ch does not style visited links."
+						},
+						"visited_inverse": {
+							"$type": "color",
+							"$value": "#FFFFFF",
+							"$description": "Role: Exclusive. Link color, visited, dark surfaces. ZH: same as default, zh.ch does not style visited links."
 						}
 					}
 				}

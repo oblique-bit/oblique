@@ -39,6 +39,16 @@
 							"$type": "color",
 							"$value": "{ob.p.color.red.300}",
 							"$description": "Role: Exclusive. Link color, active, dark surfaces. CH_marketing: red, lighter for contrast."
+						},
+						"visited": {
+							"$type": "color",
+							"$value": "{ob.s.color.interaction.visited.fg.contrast_low}",
+							"$description": "Role: Exclusive. Link color, visited, light surfaces. CH_marketing: visited interaction color."
+						},
+						"visited_inverse": {
+							"$type": "color",
+							"$value": "{ob.s.color.interaction.visited.fg.contrast_low}",
+							"$description": "Role: Exclusive. Link color, visited, dark surfaces. CH_marketing: visited interaction color."
 						}
 					}
 				}

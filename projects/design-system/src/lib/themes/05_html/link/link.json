@@ -64,7 +64,7 @@
           },
           "visited": {
             "$type": "color",
-            "$value": "{ob.s.color.interaction.visited.fg.contrast_low}",
+            "$value": "{ob.h.link.color.color_scheme.visited}",
             "$description": "Color of links the user has already visited."
           },
           "hover": {

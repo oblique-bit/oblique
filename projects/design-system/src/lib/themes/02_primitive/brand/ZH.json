@@ -279,6 +279,498 @@
                 "$description": "Role: Exclusive. Status ramp critical, step 900. ZH: zh.ch red hue, same white contrast as red 900."
               }
             }
+          },
+          "neutral": {
+            "token_family_docs": {
+              "description": {
+                "$type": "other",
+                "$value": "Neutral ramp of the brand mode ZH for light mode: text, backgrounds and borders. The S1 neutral, interaction and Button colors of light mode point here."
+              }
+            },
+            "50": {
+              "$type": "color",
+              "$value": "#F7F7F7",
+              "$description": "Role: Exclusive. Neutral step 50, light mode. ZH: zh.ch Black 5."
+            },
+            "100": {
+              "$type": "color",
+              "$value": "#F0F0F0",
+              "$description": "Role: Exclusive. Neutral step 100, light mode. ZH: zh.ch Black 10."
+            },
+            "200": {
+              "$type": "color",
+              "$value": "#CCCCCC",
+              "$description": "Role: Exclusive. Neutral step 200, light mode. ZH: zh.ch Black 20."
+            },
+            "300": {
+              "$type": "color",
+              "$value": "#949494",
+              "$description": "Role: Exclusive. Neutral step 300, light mode. ZH: zh.ch Black 40."
+            },
+            "400": {
+              "$type": "color",
+              "$value": "#838383",
+              "$description": "Role: Exclusive. Neutral step 400, light mode. ZH: grey between the brand greys."
+            },
+            "500": {
+              "$type": "color",
+              "$value": "#757575",
+              "$description": "Role: Exclusive. Neutral step 500, light mode. ZH: grey between the brand greys."
+            },
+            "600": {
+              "$type": "color",
+              "$value": "#666666",
+              "$description": "Role: Exclusive. Neutral step 600, light mode. ZH: zh.ch Black 60."
+            },
+            "700": {
+              "$type": "color",
+              "$value": "#333333",
+              "$description": "Role: Exclusive. Neutral step 700, light mode. ZH: zh.ch Black 80."
+            },
+            "800": {
+              "$type": "color",
+              "$value": "#000000",
+              "$description": "Role: Exclusive. Neutral step 800, light mode. ZH: zh.ch Black 100, text."
+            },
+            "900": {
+              "$type": "color",
+              "$value": "#000000",
+              "$description": "Role: Exclusive. Neutral step 900, light mode. ZH: zh.ch Black 100."
+            }
+          },
+          "neutral_dark": {
+            "token_family_docs": {
+              "description": {
+                "$type": "other",
+                "$value": "Neutral ramp of the brand mode ZH for dark mode. The dark mode S1 and Button colors point here."
+              }
+            },
+            "50": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.50}",
+              "$description": "Role: Exclusive. Neutral step 50, dark mode. ZH: same as light, zh.ch has no dark mode."
+            },
+            "100": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.100}",
+              "$description": "Role: Exclusive. Neutral step 100, dark mode. ZH: same as light, zh.ch has no dark mode."
+            },
+            "200": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.200}",
+              "$description": "Role: Exclusive. Neutral step 200, dark mode. ZH: same as light, zh.ch has no dark mode."
+            },
+            "300": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.300}",
+              "$description": "Role: Exclusive. Neutral step 300, dark mode. ZH: same as light, zh.ch has no dark mode."
+            },
+            "400": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.400}",
+              "$description": "Role: Exclusive. Neutral step 400, dark mode. ZH: same as light, zh.ch has no dark mode."
+            },
+            "500": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.500}",
+              "$description": "Role: Exclusive. Neutral step 500, dark mode. ZH: same as light, zh.ch has no dark mode."
+            },
+            "600": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.600}",
+              "$description": "Role: Exclusive. Neutral step 600, dark mode. ZH: same as light, zh.ch has no dark mode."
+            },
+            "700": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.700}",
+              "$description": "Role: Exclusive. Neutral step 700, dark mode. ZH: same as light, zh.ch has no dark mode."
+            },
+            "800": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.800}",
+              "$description": "Role: Exclusive. Neutral step 800, dark mode. ZH: same as light, zh.ch has no dark mode."
+            },
+            "900": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.900}",
+              "$description": "Role: Exclusive. Neutral step 900, dark mode. ZH: same as light, zh.ch has no dark mode."
+            }
+          },
+          "neutral_alpha": {
+            "token_family_docs": {
+              "description": {
+                "$type": "other",
+                "$value": "Transparent neutral of the brand mode ZH for shadows, backdrops and overlays."
+              }
+            },
+            "50": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.900}",
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "alpha",
+                    "value": "0.05",
+                    "space": "srgb"
+                  }
+                }
+              },
+              "$description": "Role: Exclusive. Transparent neutral step 50. ZH: black, as the brand uses black overlays."
+            },
+            "100": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.900}",
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "alpha",
+                    "value": "0.1",
+                    "space": "srgb"
+                  }
+                }
+              },
+              "$description": "Role: Exclusive. Transparent neutral step 100. ZH: black, as the brand uses black overlays."
+            },
+            "200": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.900}",
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "alpha",
+                    "value": "0.2",
+                    "space": "srgb"
+                  }
+                }
+              },
+              "$description": "Role: Exclusive. Transparent neutral step 200. ZH: black, as the brand uses black overlays."
+            },
+            "300": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.900}",
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "alpha",
+                    "value": "0.3",
+                    "space": "srgb"
+                  }
+                }
+              },
+              "$description": "Role: Exclusive. Transparent neutral step 300. ZH: black, as the brand uses black overlays."
+            },
+            "400": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.900}",
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "alpha",
+                    "value": "0.4",
+                    "space": "srgb"
+                  }
+                }
+              },
+              "$description": "Role: Exclusive. Transparent neutral step 400. ZH: black, as the brand uses black overlays."
+            },
+            "500": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.900}",
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "alpha",
+                    "value": "0.5",
+                    "space": "srgb"
+                  }
+                }
+              },
+              "$description": "Role: Exclusive. Transparent neutral step 500. ZH: black, as the brand uses black overlays."
+            },
+            "600": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.900}",
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "alpha",
+                    "value": "0.6",
+                    "space": "srgb"
+                  }
+                }
+              },
+              "$description": "Role: Exclusive. Transparent neutral step 600. ZH: black, as the brand uses black overlays."
+            },
+            "700": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.900}",
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "alpha",
+                    "value": "0.7",
+                    "space": "srgb"
+                  }
+                }
+              },
+              "$description": "Role: Exclusive. Transparent neutral step 700. ZH: black, as the brand uses black overlays."
+            },
+            "800": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.900}",
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "alpha",
+                    "value": "0.8",
+                    "space": "srgb"
+                  }
+                }
+              },
+              "$description": "Role: Exclusive. Transparent neutral step 800. ZH: black, as the brand uses black overlays."
+            },
+            "900": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral.900}",
+              "$extensions": {
+                "studio.tokens": {
+                  "modify": {
+                    "type": "alpha",
+                    "value": "0.9",
+                    "space": "srgb"
+                  }
+                }
+              },
+              "$description": "Role: Exclusive. Transparent neutral step 900. ZH: black, as the brand uses black overlays."
+            }
+          },
+          "focus": {
+            "500": {
+              "$type": "color",
+              "$value": "#009EE0",
+              "$description": "Role: Exclusive. Focus ring on light surfaces. ZH: zh.ch Cyan, the color of the active state."
+            },
+            "400": {
+              "$type": "color",
+              "$value": "#009EE0",
+              "$description": "Role: Exclusive. Focus ring on dark surfaces. ZH: zh.ch Cyan, the color of the active state."
+            }
+          },
+          "free": {
+            "token_family_docs": {
+              "description": {
+                "$type": "other",
+                "$value": "Free color ramps of the brand mode ZH (indigo, teal, pink, yellow). The S1 free colors point here. A brand without a matching color keeps the Oblique ramp."
+              }
+            },
+            "indigo": {
+              "50": {
+                "$type": "color",
+                "$value": "#ECE2F1",
+                "$description": "Role: Exclusive. Free indigo step 50. ZH: zh.ch Softviolett."
+              },
+              "100": {
+                "$type": "color",
+                "$value": "#D1BADF",
+                "$description": "Role: Exclusive. Free indigo step 100. ZH: derived, same white contrast as indigo 100."
+              },
+              "200": {
+                "$type": "color",
+                "$value": "#C5A7D7",
+                "$description": "Role: Exclusive. Free indigo step 200. ZH: derived, same white contrast as indigo 200."
+              },
+              "300": {
+                "$type": "color",
+                "$value": "#BF9FD3",
+                "$description": "Role: Exclusive. Free indigo step 300. ZH: derived, same white contrast as indigo 300."
+              },
+              "400": {
+                "$type": "color",
+                "$value": "#B590F9",
+                "$description": "Role: Exclusive. Free indigo step 400. ZH: zh.ch Lila, dark mode."
+              },
+              "500": {
+                "$type": "color",
+                "$value": "#9761B7",
+                "$description": "Role: Exclusive. Free indigo step 500. ZH: derived, same white contrast as indigo 500."
+              },
+              "600": {
+                "$type": "color",
+                "$value": "#7F3DA7",
+                "$description": "Role: Exclusive. Free indigo step 600. ZH: zh.ch Violett #7F3DA7."
+              },
+              "700": {
+                "$type": "color",
+                "$value": "#713694",
+                "$description": "Role: Exclusive. Free indigo step 700. ZH: derived, same white contrast as indigo 700."
+              },
+              "800": {
+                "$type": "color",
+                "$value": "#5D2C7A",
+                "$description": "Role: Exclusive. Free indigo step 800. ZH: derived, same white contrast as indigo 800."
+              },
+              "900": {
+                "$type": "color",
+                "$value": "#50276A",
+                "$description": "Role: Exclusive. Free indigo step 900. ZH: derived, same white contrast as indigo 900."
+              }
+            },
+            "teal": {
+              "50": {
+                "$type": "color",
+                "$value": "#E8F3F2",
+                "$description": "Role: Exclusive. Free teal step 50. ZH: zh.ch Softtürkis."
+              },
+              "100": {
+                "$type": "color",
+                "$value": "#BADADB",
+                "$description": "Role: Exclusive. Free teal step 100. ZH: derived, same white contrast as teal 100."
+              },
+              "200": {
+                "$type": "color",
+                "$value": "#A3CFCF",
+                "$description": "Role: Exclusive. Free teal step 200. ZH: derived, same white contrast as teal 200."
+              },
+              "300": {
+                "$type": "color",
+                "$value": "#99CACA",
+                "$description": "Role: Exclusive. Free teal step 300. ZH: derived, same white contrast as teal 300."
+              },
+              "400": {
+                "$type": "color",
+                "$value": "#6BC9CB",
+                "$description": "Role: Exclusive. Free teal step 400. ZH: zh.ch Helltürkis, dark mode."
+              },
+              "500": {
+                "$type": "color",
+                "$value": "#5EAAAC",
+                "$description": "Role: Exclusive. Free teal step 500. ZH: derived, same white contrast as teal 500."
+              },
+              "600": {
+                "$type": "color",
+                "$value": "#238C8D",
+                "$description": "Role: Exclusive. Free teal step 600. ZH: derived, same white contrast as teal 600."
+              },
+              "700": {
+                "$type": "color",
+                "$value": "#00797B",
+                "$description": "Role: Exclusive. Free teal step 700. ZH: zh.ch Türkis #00797B."
+              },
+              "800": {
+                "$type": "color",
+                "$value": "#00595A",
+                "$description": "Role: Exclusive. Free teal step 800. ZH: derived, same white contrast as teal 800."
+              },
+              "900": {
+                "$type": "color",
+                "$value": "#00484A",
+                "$description": "Role: Exclusive. Free teal step 900. ZH: derived, same white contrast as teal 900."
+              }
+            },
+            "pink": {
+              "50": {
+                "$type": "color",
+                "$value": "#F6E3EA",
+                "$description": "Role: Exclusive. Free pink step 50. ZH: zh.ch Softbordeaux."
+              },
+              "100": {
+                "$type": "color",
+                "$value": "#EAC3D3",
+                "$description": "Role: Exclusive. Free pink step 100. ZH: derived, same white contrast as pink 100."
+              },
+              "200": {
+                "$type": "color",
+                "$value": "#E5B3C8",
+                "$description": "Role: Exclusive. Free pink step 200. ZH: derived, same white contrast as pink 200."
+              },
+              "300": {
+                "$type": "color",
+                "$value": "#E5B2C8",
+                "$description": "Role: Exclusive. Free pink step 300. ZH: derived, same white contrast as pink 300."
+              },
+              "400": {
+                "$type": "color",
+                "$value": "#FF94BA",
+                "$description": "Role: Exclusive. Free pink step 400. ZH: zh.ch Rosa, dark mode."
+              },
+              "500": {
+                "$type": "color",
+                "$value": "#CC6892",
+                "$description": "Role: Exclusive. Free pink step 500. ZH: derived, same white contrast as pink 500."
+              },
+              "600": {
+                "$type": "color",
+                "$value": "#C24A7C",
+                "$description": "Role: Exclusive. Free pink step 600. ZH: derived, same white contrast as pink 600."
+              },
+              "700": {
+                "$type": "color",
+                "$value": "#B01657",
+                "$description": "Role: Exclusive. Free pink step 700. ZH: zh.ch Bordeaux #B01657."
+              },
+              "800": {
+                "$type": "color",
+                "$value": "#9E144E",
+                "$description": "Role: Exclusive. Free pink step 800. ZH: derived, same white contrast as pink 800."
+              },
+              "900": {
+                "$type": "color",
+                "$value": "#861142",
+                "$description": "Role: Exclusive. Free pink step 900. ZH: derived, same white contrast as pink 900."
+              }
+            },
+            "yellow": {
+              "50": {
+                "$type": "color",
+                "$value": "{ob.p.color.yellow.50}",
+                "$description": "Role: Exclusive. Free yellow step 50. ZH: yellow 50, the brand has no matching color."
+              },
+              "100": {
+                "$type": "color",
+                "$value": "{ob.p.color.yellow.100}",
+                "$description": "Role: Exclusive. Free yellow step 100. ZH: yellow 100, the brand has no matching color."
+              },
+              "200": {
+                "$type": "color",
+                "$value": "{ob.p.color.yellow.200}",
+                "$description": "Role: Exclusive. Free yellow step 200. ZH: yellow 200, the brand has no matching color."
+              },
+              "300": {
+                "$type": "color",
+                "$value": "{ob.p.color.yellow.300}",
+                "$description": "Role: Exclusive. Free yellow step 300. ZH: yellow 300, the brand has no matching color."
+              },
+              "400": {
+                "$type": "color",
+                "$value": "{ob.p.color.yellow.400}",
+                "$description": "Role: Exclusive. Free yellow step 400. ZH: yellow 400, the brand has no matching color."
+              },
+              "500": {
+                "$type": "color",
+                "$value": "{ob.p.color.yellow.500}",
+                "$description": "Role: Exclusive. Free yellow step 500. ZH: yellow 500, the brand has no matching color."
+              },
+              "600": {
+                "$type": "color",
+                "$value": "{ob.p.color.yellow.600}",
+                "$description": "Role: Exclusive. Free yellow step 600. ZH: yellow 600, the brand has no matching color."
+              },
+              "700": {
+                "$type": "color",
+                "$value": "{ob.p.color.yellow.700}",
+                "$description": "Role: Exclusive. Free yellow step 700. ZH: yellow 700, the brand has no matching color."
+              },
+              "800": {
+                "$type": "color",
+                "$value": "{ob.p.color.yellow.800}",
+                "$description": "Role: Exclusive. Free yellow step 800. ZH: yellow 800, the brand has no matching color."
+              },
+              "900": {
+                "$type": "color",
+                "$value": "{ob.p.color.yellow.900}",
+                "$description": "Role: Exclusive. Free yellow step 900. ZH: yellow 900, the brand has no matching color."
+              }
+            }
           }
         }
       },

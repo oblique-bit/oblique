@@ -39,6 +39,16 @@
 							"$type": "color",
 							"$value": "#57B3C2",
 							"$description": "Role: Exclusive. Link color, active, dark surfaces. FR: fr.ch dark mode primary."
+						},
+						"visited": {
+							"$type": "color",
+							"$value": "{ob.p.color.brand.600}",
+							"$description": "Role: Exclusive. Link color, visited, light surfaces. FR: same as default, fr.ch does not style visited links."
+						},
+						"visited_inverse": {
+							"$type": "color",
+							"$value": "#57B3C2",
+							"$description": "Role: Exclusive. Link color, visited, dark surfaces. FR: same as default, fr.ch does not style visited links."
 						}
 					}
 				}

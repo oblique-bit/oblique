@@ -21,7 +21,7 @@
             "y": "1px",
             "blur": "2px",
             "spread": "0px",
-            "color": "{ob.p.color.cobalt_alpha.50}",
+            "color": "{ob.p.color.brand.neutral_alpha.50}",
             "type": "dropShadow"
           },
           "$description": "Small elevation shadow. Single drop-shadow. Surfaces that sit just above the page, such as cards and raised panels."
@@ -33,7 +33,7 @@
             "y": "2px",
             "blur": "4px",
             "spread": "0px",
-            "color": "{ob.p.color.cobalt_alpha.50}",
+            "color": "{ob.p.color.brand.neutral_alpha.50}",
             "type": "dropShadow"
           },
           "$description": "Medium elevation shadow. Single drop-shadow. Surfaces lifted on interaction or layered over content, such as hovered controls and dropdowns."
@@ -45,7 +45,7 @@
             "y": "4px",
             "blur": "8px",
             "spread": "0px",
-            "color": "{ob.p.color.cobalt_alpha.50}",
+            "color": "{ob.p.color.brand.neutral_alpha.50}",
             "type": "dropShadow"
           },
           "$description": "Large elevation shadow. Single drop-shadow. Surfaces that float above the whole page, such as dialogs and modals."

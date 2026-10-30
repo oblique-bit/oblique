@@ -6,7 +6,7 @@
 					"bg": {
 						"level_minus_1": {
 							"$type": "color",
-							"$value": "{ob.p.color.cobalt.900}",
+							"$value": "{ob.p.color.brand.neutral_dark.900}",
 							"$description": "Role: Surface. Neutral background one step below level_0. Deepest page area in dark mode."
 						},
 						"level_minus_1_inverse": {

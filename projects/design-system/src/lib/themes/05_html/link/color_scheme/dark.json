@@ -24,6 +24,11 @@
 							"$type": "color",
 							"$value": "{ob.h.link.color.brand.active_inverse}",
 							"$description": "Role: Exclusive. Link color, active, dark mode. Takes the brand link color for dark surfaces."
+						},
+						"visited": {
+							"$type": "color",
+							"$value": "{ob.h.link.color.brand.visited_inverse}",
+							"$description": "Role: Exclusive. Link color, visited, dark mode. Takes the brand link color for dark surfaces."
 						}
 					}
 				}

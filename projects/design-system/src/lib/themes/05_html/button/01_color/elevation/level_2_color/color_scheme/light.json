@@ -68,12 +68,12 @@
 							"bg": {
 								"rest_level_2": {
 									"$type": "color",
-									"$value": "{ob.p.color.cobalt.600}",
+									"$value": "{ob.p.color.brand.neutral.600}",
 									"$description": "Primary button background on level_2, rest state, low emphasis, light mode."
 								},
 								"rest_level_2_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.cobalt.50}",
+									"$value": "{ob.p.color.brand.neutral.50}",
 									"$description": "Primary button background on level_2, rest state, low emphasis, light mode, inverse (dark mode colors)."
 								},
 								"hover_level_2": {
@@ -85,7 +85,7 @@
 												"type": "mix",
 												"value": "{ob.h.button.state_layer.strong.hover}",
 												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
+												"color": "{ob.p.color.brand.neutral.900}"
 											}
 										}
 									},
@@ -100,7 +100,7 @@
 												"type": "alpha",
 												"value": "{ob.h.button.state_layer.fill_alpha.hover}",
 												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
+												"color": "{ob.p.color.brand.neutral.900}"
 											}
 										}
 									},
@@ -115,7 +115,7 @@
 												"type": "mix",
 												"value": "{ob.h.button.state_layer.strong.active}",
 												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
+												"color": "{ob.p.color.brand.neutral.900}"
 											}
 										}
 									},
@@ -130,7 +130,7 @@
 												"type": "alpha",
 												"value": "{ob.h.button.state_layer.fill_alpha.active}",
 												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
+												"color": "{ob.p.color.brand.neutral.900}"
 											}
 										}
 									},
@@ -149,7 +149,7 @@
 												"type": "alpha",
 												"value": "{ob.h.button.state_layer.intense.hover}",
 												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
+												"color": "{ob.p.color.brand.neutral.900}"
 											}
 										}
 									},
@@ -164,7 +164,7 @@
 												"type": "alpha",
 												"value": "{ob.h.button.state_layer.subtle.hover}",
 												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
+												"color": "{ob.p.color.brand.neutral.900}"
 											}
 										}
 									},
@@ -179,7 +179,7 @@
 												"type": "alpha",
 												"value": "{ob.h.button.state_layer.intense.active}",
 												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
+												"color": "{ob.p.color.brand.neutral.900}"
 											}
 										}
 									},
@@ -194,7 +194,7 @@
 												"type": "alpha",
 												"value": "{ob.h.button.state_layer.subtle.active}",
 												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
+												"color": "{ob.p.color.brand.neutral.900}"
 											}
 										}
 									},

@@ -186,12 +186,12 @@
 							"bg": {
 								"rest": {
 									"$type": "color",
-									"$value": "{ob.p.color.cobalt.600}",
+									"$value": "{ob.p.color.brand.neutral.600}",
 									"$description": "Primary button background, rest state, low emphasis, light mode."
 								},
 								"rest_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.cobalt.50}",
+									"$value": "{ob.p.color.brand.neutral.50}",
 									"$description": "Primary button background, rest state, low emphasis, light mode, inverse (inverted surface, colors of the dark mode)."
 								},
 								"hover": {
@@ -203,7 +203,7 @@
 												"type": "mix",
 												"value": "{ob.h.button.state_layer.strong.hover}",
 												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
+												"color": "{ob.p.color.brand.neutral.900}"
 											}
 										}
 									},
@@ -218,7 +218,7 @@
 												"type": "alpha",
 												"value": "{ob.h.button.state_layer.fill_alpha.hover}",
 												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
+												"color": "{ob.p.color.brand.neutral.900}"
 											}
 										}
 									},
@@ -233,7 +233,7 @@
 												"type": "mix",
 												"value": "{ob.h.button.state_layer.strong.active}",
 												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
+												"color": "{ob.p.color.brand.neutral.900}"
 											}
 										}
 									},
@@ -248,7 +248,7 @@
 												"type": "alpha",
 												"value": "{ob.h.button.state_layer.fill_alpha.active}",
 												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
+												"color": "{ob.p.color.brand.neutral.900}"
 											}
 										}
 									},
@@ -263,7 +263,7 @@
 								},
 								"rest_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.cobalt.700}",
+									"$value": "{ob.p.color.brand.neutral.700}",
 									"$description": "Primary button foreground, rest state, low emphasis, light mode, inverse (inverted surface, colors of the dark mode)."
 								},
 								"hover": {
@@ -273,7 +273,7 @@
 								},
 								"hover_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.cobalt.700}",
+									"$value": "{ob.p.color.brand.neutral.700}",
 									"$description": "Primary button foreground, hover state, low emphasis, light mode, inverse (inverted surface, colors of the dark mode)."
 								},
 								"active": {
@@ -283,7 +283,7 @@
 								},
 								"active_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.cobalt.700}",
+									"$value": "{ob.p.color.brand.neutral.700}",
 									"$description": "Primary button foreground, active state, low emphasis, light mode, inverse (inverted surface, colors of the dark mode)."
 								}
 							}
@@ -302,14 +302,14 @@
 								},
 								"hover": {
 									"$type": "color",
-									"$value": "{ob.p.color.cobalt.900}",
+									"$value": "{ob.p.color.brand.neutral.900}",
 									"$extensions": {
 										"studio.tokens": {
 											"modify": {
 												"type": "alpha",
 												"value": "{ob.h.button.state_layer.subtle.hover}",
 												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
+												"color": "{ob.p.color.brand.neutral.900}"
 											}
 										}
 									},
@@ -324,7 +324,7 @@
 												"type": "alpha",
 												"value": "{ob.h.button.state_layer.subtle.hover}",
 												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
+												"color": "{ob.p.color.brand.neutral.900}"
 											}
 										}
 									},
@@ -332,14 +332,14 @@
 								},
 								"active": {
 									"$type": "color",
-									"$value": "{ob.p.color.cobalt.900}",
+									"$value": "{ob.p.color.brand.neutral.900}",
 									"$extensions": {
 										"studio.tokens": {
 											"modify": {
 												"type": "alpha",
 												"value": "{ob.h.button.state_layer.subtle.active}",
 												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
+												"color": "{ob.p.color.brand.neutral.900}"
 											}
 										}
 									},
@@ -354,7 +354,7 @@
 												"type": "alpha",
 												"value": "{ob.h.button.state_layer.subtle.active}",
 												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
+												"color": "{ob.p.color.brand.neutral.900}"
 											}
 										}
 									},
@@ -364,39 +364,39 @@
 							"fg": {
 								"rest": {
 									"$type": "color",
-									"$value": "{ob.p.color.cobalt.700}",
+									"$value": "{ob.p.color.brand.neutral.700}",
 									"$description": "Secondary button foreground, rest state, low emphasis, light mode."
 								},
 								"rest_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.cobalt.100}",
+									"$value": "{ob.p.color.brand.neutral.100}",
 									"$description": "Secondary button foreground, rest state, low emphasis, light mode, inverse (inverted surface, colors of the dark mode)."
 								},
 								"hover": {
 									"$type": "color",
-									"$value": "{ob.p.color.cobalt.700}",
+									"$value": "{ob.p.color.brand.neutral.700}",
 									"$description": "Secondary button foreground, hover state, low emphasis, light mode."
 								},
 								"hover_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.cobalt.100}",
+									"$value": "{ob.p.color.brand.neutral.100}",
 									"$description": "Secondary button foreground, hover state, low emphasis, light mode, inverse (inverted surface, colors of the dark mode)."
 								},
 								"active": {
 									"$type": "color",
-									"$value": "{ob.p.color.cobalt.700}",
+									"$value": "{ob.p.color.brand.neutral.700}",
 									"$description": "Secondary button foreground, active state, low emphasis, light mode."
 								},
 								"active_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.cobalt.100}",
+									"$value": "{ob.p.color.brand.neutral.100}",
 									"$description": "Secondary button foreground, active state, low emphasis, light mode, inverse (inverted surface, colors of the dark mode)."
 								}
 							},
 							"border": {
 								"rest": {
 									"$type": "color",
-									"$value": "{ob.p.color.cobalt.700}",
+									"$value": "{ob.p.color.brand.neutral.700}",
 									"$description": "Secondary button border, rest state, low emphasis, light mode."
 								},
 								"rest_inverse": {
@@ -406,7 +406,7 @@
 								},
 								"hover": {
 									"$type": "color",
-									"$value": "{ob.p.color.cobalt.700}",
+									"$value": "{ob.p.color.brand.neutral.700}",
 									"$description": "Secondary button border, hover state, low emphasis, light mode."
 								},
 								"hover_inverse": {
@@ -416,7 +416,7 @@
 								},
 								"active": {
 									"$type": "color",
-									"$value": "{ob.p.color.cobalt.700}",
+									"$value": "{ob.p.color.brand.neutral.700}",
 									"$description": "Secondary button border, active state, low emphasis, light mode."
 								},
 								"active_inverse": {

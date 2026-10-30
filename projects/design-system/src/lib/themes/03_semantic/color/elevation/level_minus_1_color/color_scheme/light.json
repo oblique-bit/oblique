@@ -11,7 +11,7 @@
 						},
 						"level_minus_1_inverse": {
 							"$type": "color",
-							"$value": "{ob.p.color.cobalt.700}",
+							"$value": "{ob.p.color.brand.neutral.700}",
 							"$description": "Role: Surface. Inverse neutral background of level_minus_1, same as level_0. Inverse surface."
 						}
 					}

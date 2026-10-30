@@ -24,6 +24,11 @@
 							"$type": "color",
 							"$value": "{ob.h.link.color.brand.active}",
 							"$description": "Role: Exclusive. Link color, active, light mode. Takes the brand link color for light surfaces."
+						},
+						"visited": {
+							"$type": "color",
+							"$value": "{ob.h.link.color.brand.visited}",
+							"$description": "Role: Exclusive. Link color, visited, light mode. Takes the brand link color for light surfaces."
 						}
 					}
 				}
