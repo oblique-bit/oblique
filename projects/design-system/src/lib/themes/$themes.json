@@ -1360,6 +1360,8 @@
       "ob.s1.color.neutral.fg.contrast_high_inverse": "6b6df4ba6e30b724c5cc8bbfc0ec64751553537c",
       "ob.s1.color.neutral.fg.contrast_highest": "18d3557f1e1260e87dee2a006b0bf7a235e16ac3",
       "ob.s1.color.neutral.fg.contrast_highest_inverse": "d8e38e4b6f945868b0c722c2fe2d91f58f7353ab",
+      "ob.s1.color.neutral.fg.contrast_max": "82f7ba89ea35e481b47138ba779235da672a82b8",
+      "ob.s1.color.neutral.fg.contrast_max_inverse": "e60f8a0f769c0c365282d564878c99800912779e",
       "ob.s1.color.neutral.border.subtle": "04f49eaca1341cf0cd075ac3370945fa21e598b5",
       "ob.s1.color.neutral.border.subtle_inverse": "187290117877f5a85e004269e85ae7e228ed4eea",
       "ob.s1.color.neutral.border.medium": "6706ce59a419404620b29e8c516498de373c3ff7",
@@ -1775,6 +1777,8 @@
       "ob.s1.color.neutral.fg.contrast_high_inverse": "6b6df4ba6e30b724c5cc8bbfc0ec64751553537c",
       "ob.s1.color.neutral.fg.contrast_highest": "18d3557f1e1260e87dee2a006b0bf7a235e16ac3",
       "ob.s1.color.neutral.fg.contrast_highest_inverse": "d8e38e4b6f945868b0c722c2fe2d91f58f7353ab",
+      "ob.s1.color.neutral.fg.contrast_max": "82f7ba89ea35e481b47138ba779235da672a82b8",
+      "ob.s1.color.neutral.fg.contrast_max_inverse": "e60f8a0f769c0c365282d564878c99800912779e",
       "ob.s1.color.neutral.border.subtle": "04f49eaca1341cf0cd075ac3370945fa21e598b5",
       "ob.s1.color.neutral.border.subtle_inverse": "187290117877f5a85e004269e85ae7e228ed4eea",
       "ob.s1.color.neutral.border.medium": "6706ce59a419404620b29e8c516498de373c3ff7",
@@ -2371,7 +2375,15 @@
       "ob.s3.color.neutral.bg.level_1": "c29fd57079a40e1e0692bef85662b197392ae4f6",
       "ob.s3.color.neutral.bg.level_1_inverse": "8977e9bd4fe30686986899f358fd0ccf8de917fd",
       "ob.s3.color.neutral.bg.level_2": "646116059696bc9c421e3dba272593c79c63aed3",
-      "ob.s3.color.neutral.bg.level_2_inverse": "b0f95477ab01c8919ffbd6179426bda0049af12f"
+      "ob.s3.color.neutral.bg.level_2_inverse": "b0f95477ab01c8919ffbd6179426bda0049af12f",
+      "ob.s3.color.neutral.fg.contrast_low": "731ad4458c361799cb3b630dcd05c5b5949751f2",
+      "ob.s3.color.neutral.fg.contrast_low_inverse": "21aa40cce7376b00352f62d4916aa643e0feead7",
+      "ob.s3.color.neutral.fg.contrast_medium": "b09f5d2cb45c151c3072554e1f101d2dd461ac7b",
+      "ob.s3.color.neutral.fg.contrast_medium_inverse": "88fee63a853ee0c498984edc9feb845e4c8ecb74",
+      "ob.s3.color.neutral.fg.contrast_high": "89701ab2ccbac982a7d75a2e51ef6b9700b67066",
+      "ob.s3.color.neutral.fg.contrast_high_inverse": "72c980ce21eccda112f7b0fe8ece4ed8def3e78e",
+      "ob.s3.color.neutral.fg.contrast_highest": "6f807a44852483151e8bb0e81c4ceb66e555c944",
+      "ob.s3.color.neutral.fg.contrast_highest_inverse": "00ef3b67c0ab3af8bf948141fd478ed5b76347d4"
     },
     "$figmaCollectionId": "VariableCollectionId:4239:3402",
     "$figmaModeId": "4239:1"
@@ -2391,7 +2403,15 @@
       "ob.s3.color.neutral.bg.level_1": "c29fd57079a40e1e0692bef85662b197392ae4f6",
       "ob.s3.color.neutral.bg.level_1_inverse": "8977e9bd4fe30686986899f358fd0ccf8de917fd",
       "ob.s3.color.neutral.bg.level_2": "646116059696bc9c421e3dba272593c79c63aed3",
-      "ob.s3.color.neutral.bg.level_2_inverse": "b0f95477ab01c8919ffbd6179426bda0049af12f"
+      "ob.s3.color.neutral.bg.level_2_inverse": "b0f95477ab01c8919ffbd6179426bda0049af12f",
+      "ob.s3.color.neutral.fg.contrast_low": "731ad4458c361799cb3b630dcd05c5b5949751f2",
+      "ob.s3.color.neutral.fg.contrast_low_inverse": "21aa40cce7376b00352f62d4916aa643e0feead7",
+      "ob.s3.color.neutral.fg.contrast_medium": "b09f5d2cb45c151c3072554e1f101d2dd461ac7b",
+      "ob.s3.color.neutral.fg.contrast_medium_inverse": "88fee63a853ee0c498984edc9feb845e4c8ecb74",
+      "ob.s3.color.neutral.fg.contrast_high": "89701ab2ccbac982a7d75a2e51ef6b9700b67066",
+      "ob.s3.color.neutral.fg.contrast_high_inverse": "72c980ce21eccda112f7b0fe8ece4ed8def3e78e",
+      "ob.s3.color.neutral.fg.contrast_highest": "6f807a44852483151e8bb0e81c4ceb66e555c944",
+      "ob.s3.color.neutral.fg.contrast_highest_inverse": "00ef3b67c0ab3af8bf948141fd478ed5b76347d4"
     },
     "$figmaCollectionId": "VariableCollectionId:4239:3402",
     "$figmaModeId": "4239:2"
@@ -2411,7 +2431,15 @@
       "ob.s3.color.neutral.bg.level_1": "c29fd57079a40e1e0692bef85662b197392ae4f6",
       "ob.s3.color.neutral.bg.level_1_inverse": "8977e9bd4fe30686986899f358fd0ccf8de917fd",
       "ob.s3.color.neutral.bg.level_2": "646116059696bc9c421e3dba272593c79c63aed3",
-      "ob.s3.color.neutral.bg.level_2_inverse": "b0f95477ab01c8919ffbd6179426bda0049af12f"
+      "ob.s3.color.neutral.bg.level_2_inverse": "b0f95477ab01c8919ffbd6179426bda0049af12f",
+      "ob.s3.color.neutral.fg.contrast_low": "731ad4458c361799cb3b630dcd05c5b5949751f2",
+      "ob.s3.color.neutral.fg.contrast_low_inverse": "21aa40cce7376b00352f62d4916aa643e0feead7",
+      "ob.s3.color.neutral.fg.contrast_medium": "b09f5d2cb45c151c3072554e1f101d2dd461ac7b",
+      "ob.s3.color.neutral.fg.contrast_medium_inverse": "88fee63a853ee0c498984edc9feb845e4c8ecb74",
+      "ob.s3.color.neutral.fg.contrast_high": "89701ab2ccbac982a7d75a2e51ef6b9700b67066",
+      "ob.s3.color.neutral.fg.contrast_high_inverse": "72c980ce21eccda112f7b0fe8ece4ed8def3e78e",
+      "ob.s3.color.neutral.fg.contrast_highest": "6f807a44852483151e8bb0e81c4ceb66e555c944",
+      "ob.s3.color.neutral.fg.contrast_highest_inverse": "00ef3b67c0ab3af8bf948141fd478ed5b76347d4"
     },
     "$figmaCollectionId": "VariableCollectionId:4239:3402",
     "$figmaModeId": "4239:3"
