@@ -491,7 +491,19 @@
       "ob.h.button.color.brand.secondary.fg.active_inverse": "4210da72633b8590b6f08f10a4e2ad4cf5754bff",
       "ob.h.button.color.brand.secondary.border.rest_inverse": "9440c643df4418ad1fa8d3649734cfd901c6720f",
       "ob.h.button.color.brand.secondary.border.hover_inverse": "c865af131fad909097d71f259ce4eb101a4ec019",
-      "ob.h.button.color.brand.secondary.border.active_inverse": "c63fd83f397d0b5b4138c3fae0cf9541c0842042"
+      "ob.h.button.color.brand.secondary.border.active_inverse": "c63fd83f397d0b5b4138c3fae0cf9541c0842042",
+      "ob.h.button.color.brand.primary.bg.rest_inverse": "35fc6a9a36450724c62da359e02ec2cbbad475d3",
+      "ob.h.button.color.brand.primary.bg.hover_inverse": "1b811d39c7a13e13c0c3367d93903c0593d17996",
+      "ob.h.button.color.brand.primary.bg.active_inverse": "32cea96acb1c646e27a66ab76c40e0846ade93af",
+      "ob.h.button.color.brand.secondary.bg.rest_inverse": "7654ccbf2a698a404dfcb931ba8af2f96dba7b7b",
+      "ob.h.button.color.brand.secondary.bg.hover_inverse": "71012891a822dfe4a929c3dcc5bd5247ab5fde18",
+      "ob.h.button.color.brand.secondary.bg.active_inverse": "606ab3f504e454e3d4e331a3036f65da86141215",
+      "ob.h.link.color.brand.default": "a7249d542a2252a2a6a728afa7969ceebc672a1e",
+      "ob.h.link.color.brand.default_inverse": "5188ded18e1b7fc83d338b2ea91672e90252e75a",
+      "ob.h.link.color.brand.hover": "279b8f41f397c14ba858a3eebf086c2a4bef2c7b",
+      "ob.h.link.color.brand.hover_inverse": "31e14af2154c3c56196d405aaabd97a0bcf04c44",
+      "ob.h.link.color.brand.active": "effc2fe42f29f092d1d6b0c7ca70c6fa72096af3",
+      "ob.h.link.color.brand.active_inverse": "debaac95c49364039bcd22a81c1cb14217df9468"
     },
     "$figmaCollectionId": "VariableCollectionId:4181:6554",
     "$figmaModeId": "4181:1"
@@ -549,7 +561,19 @@
       "ob.h.button.color.brand.secondary.fg.active_inverse": "4210da72633b8590b6f08f10a4e2ad4cf5754bff",
       "ob.h.button.color.brand.secondary.border.rest_inverse": "9440c643df4418ad1fa8d3649734cfd901c6720f",
       "ob.h.button.color.brand.secondary.border.hover_inverse": "c865af131fad909097d71f259ce4eb101a4ec019",
-      "ob.h.button.color.brand.secondary.border.active_inverse": "c63fd83f397d0b5b4138c3fae0cf9541c0842042"
+      "ob.h.button.color.brand.secondary.border.active_inverse": "c63fd83f397d0b5b4138c3fae0cf9541c0842042",
+      "ob.h.button.color.brand.primary.bg.rest_inverse": "35fc6a9a36450724c62da359e02ec2cbbad475d3",
+      "ob.h.button.color.brand.primary.bg.hover_inverse": "1b811d39c7a13e13c0c3367d93903c0593d17996",
+      "ob.h.button.color.brand.primary.bg.active_inverse": "32cea96acb1c646e27a66ab76c40e0846ade93af",
+      "ob.h.button.color.brand.secondary.bg.rest_inverse": "7654ccbf2a698a404dfcb931ba8af2f96dba7b7b",
+      "ob.h.button.color.brand.secondary.bg.hover_inverse": "71012891a822dfe4a929c3dcc5bd5247ab5fde18",
+      "ob.h.button.color.brand.secondary.bg.active_inverse": "606ab3f504e454e3d4e331a3036f65da86141215",
+      "ob.h.link.color.brand.default": "a7249d542a2252a2a6a728afa7969ceebc672a1e",
+      "ob.h.link.color.brand.default_inverse": "5188ded18e1b7fc83d338b2ea91672e90252e75a",
+      "ob.h.link.color.brand.hover": "279b8f41f397c14ba858a3eebf086c2a4bef2c7b",
+      "ob.h.link.color.brand.hover_inverse": "31e14af2154c3c56196d405aaabd97a0bcf04c44",
+      "ob.h.link.color.brand.active": "effc2fe42f29f092d1d6b0c7ca70c6fa72096af3",
+      "ob.h.link.color.brand.active_inverse": "debaac95c49364039bcd22a81c1cb14217df9468"
     },
     "$figmaCollectionId": "VariableCollectionId:4181:6554",
     "$figmaModeId": "4181:2"
@@ -607,7 +631,19 @@
       "ob.h.button.color.brand.secondary.fg.active_inverse": "4210da72633b8590b6f08f10a4e2ad4cf5754bff",
       "ob.h.button.color.brand.secondary.border.rest_inverse": "9440c643df4418ad1fa8d3649734cfd901c6720f",
       "ob.h.button.color.brand.secondary.border.hover_inverse": "c865af131fad909097d71f259ce4eb101a4ec019",
-      "ob.h.button.color.brand.secondary.border.active_inverse": "c63fd83f397d0b5b4138c3fae0cf9541c0842042"
+      "ob.h.button.color.brand.secondary.border.active_inverse": "c63fd83f397d0b5b4138c3fae0cf9541c0842042",
+      "ob.h.button.color.brand.primary.bg.rest_inverse": "35fc6a9a36450724c62da359e02ec2cbbad475d3",
+      "ob.h.button.color.brand.primary.bg.hover_inverse": "1b811d39c7a13e13c0c3367d93903c0593d17996",
+      "ob.h.button.color.brand.primary.bg.active_inverse": "32cea96acb1c646e27a66ab76c40e0846ade93af",
+      "ob.h.button.color.brand.secondary.bg.rest_inverse": "7654ccbf2a698a404dfcb931ba8af2f96dba7b7b",
+      "ob.h.button.color.brand.secondary.bg.hover_inverse": "71012891a822dfe4a929c3dcc5bd5247ab5fde18",
+      "ob.h.button.color.brand.secondary.bg.active_inverse": "606ab3f504e454e3d4e331a3036f65da86141215",
+      "ob.h.link.color.brand.default": "a7249d542a2252a2a6a728afa7969ceebc672a1e",
+      "ob.h.link.color.brand.default_inverse": "5188ded18e1b7fc83d338b2ea91672e90252e75a",
+      "ob.h.link.color.brand.hover": "279b8f41f397c14ba858a3eebf086c2a4bef2c7b",
+      "ob.h.link.color.brand.hover_inverse": "31e14af2154c3c56196d405aaabd97a0bcf04c44",
+      "ob.h.link.color.brand.active": "effc2fe42f29f092d1d6b0c7ca70c6fa72096af3",
+      "ob.h.link.color.brand.active_inverse": "debaac95c49364039bcd22a81c1cb14217df9468"
     },
     "$figmaCollectionId": "VariableCollectionId:4181:6554",
     "$figmaModeId": "4181:3"
@@ -665,7 +701,19 @@
       "ob.h.button.color.brand.secondary.fg.active_inverse": "4210da72633b8590b6f08f10a4e2ad4cf5754bff",
       "ob.h.button.color.brand.secondary.border.rest_inverse": "9440c643df4418ad1fa8d3649734cfd901c6720f",
       "ob.h.button.color.brand.secondary.border.hover_inverse": "c865af131fad909097d71f259ce4eb101a4ec019",
-      "ob.h.button.color.brand.secondary.border.active_inverse": "c63fd83f397d0b5b4138c3fae0cf9541c0842042"
+      "ob.h.button.color.brand.secondary.border.active_inverse": "c63fd83f397d0b5b4138c3fae0cf9541c0842042",
+      "ob.h.button.color.brand.primary.bg.rest_inverse": "35fc6a9a36450724c62da359e02ec2cbbad475d3",
+      "ob.h.button.color.brand.primary.bg.hover_inverse": "1b811d39c7a13e13c0c3367d93903c0593d17996",
+      "ob.h.button.color.brand.primary.bg.active_inverse": "32cea96acb1c646e27a66ab76c40e0846ade93af",
+      "ob.h.button.color.brand.secondary.bg.rest_inverse": "7654ccbf2a698a404dfcb931ba8af2f96dba7b7b",
+      "ob.h.button.color.brand.secondary.bg.hover_inverse": "71012891a822dfe4a929c3dcc5bd5247ab5fde18",
+      "ob.h.button.color.brand.secondary.bg.active_inverse": "606ab3f504e454e3d4e331a3036f65da86141215",
+      "ob.h.link.color.brand.default": "a7249d542a2252a2a6a728afa7969ceebc672a1e",
+      "ob.h.link.color.brand.default_inverse": "5188ded18e1b7fc83d338b2ea91672e90252e75a",
+      "ob.h.link.color.brand.hover": "279b8f41f397c14ba858a3eebf086c2a4bef2c7b",
+      "ob.h.link.color.brand.hover_inverse": "31e14af2154c3c56196d405aaabd97a0bcf04c44",
+      "ob.h.link.color.brand.active": "effc2fe42f29f092d1d6b0c7ca70c6fa72096af3",
+      "ob.h.link.color.brand.active_inverse": "debaac95c49364039bcd22a81c1cb14217df9468"
     },
     "$figmaCollectionId": "VariableCollectionId:4181:6554",
     "$figmaModeId": "4181:4"
@@ -1077,7 +1125,10 @@
       "ob.s1.color.neutral.shadow.second_inverse": "6910797de78ac6085bed1536f3ea37e202f373a5",
       "ob.h.typography.heading.color.fg.contrast_low": "6f60c3872f228b66fa60048f76add947958fa3b7",
       "ob.h.typography.heading.color.fg.contrast_medium": "91fa032b27424d5e9e884024dfaad841c0a75484",
-      "ob.h.typography.heading.color.fg.contrast_high": "5127dbf5f3e99fe979311dbd67011a4bce4ca671"
+      "ob.h.typography.heading.color.fg.contrast_high": "5127dbf5f3e99fe979311dbd67011a4bce4ca671",
+      "ob.h.link.color.color_scheme.default": "e94bda0d8daa742f53943c85ac389a625aa6a6b1",
+      "ob.h.link.color.color_scheme.hover": "abf3432ad829c4370ad3ea7c2afecfd163b70852",
+      "ob.h.link.color.color_scheme.active": "6bbdbce5de58bd01b80423230a4d8da39f697f00"
     },
     "group": "color_scheme"
   },
@@ -1488,7 +1539,10 @@
       "ob.s1.color.neutral.shadow.second_inverse": "6910797de78ac6085bed1536f3ea37e202f373a5",
       "ob.h.typography.heading.color.fg.contrast_low": "6f60c3872f228b66fa60048f76add947958fa3b7",
       "ob.h.typography.heading.color.fg.contrast_medium": "91fa032b27424d5e9e884024dfaad841c0a75484",
-      "ob.h.typography.heading.color.fg.contrast_high": "5127dbf5f3e99fe979311dbd67011a4bce4ca671"
+      "ob.h.typography.heading.color.fg.contrast_high": "5127dbf5f3e99fe979311dbd67011a4bce4ca671",
+      "ob.h.link.color.color_scheme.default": "e94bda0d8daa742f53943c85ac389a625aa6a6b1",
+      "ob.h.link.color.color_scheme.hover": "abf3432ad829c4370ad3ea7c2afecfd163b70852",
+      "ob.h.link.color.color_scheme.active": "6bbdbce5de58bd01b80423230a4d8da39f697f00"
     },
     "group": "color_scheme"
   },
