@@ -139,6 +139,11 @@
             "$value": "#ffffff",
             "$description": "Role: Shared. Base white. Used for backgrounds, foregrounds, and borders across all families."
           },
+          "black": {
+            "$type": "color",
+            "$value": "#000000",
+            "$description": "Role: Shared. Base black. Used for text and borders where the highest contrast is needed."
+          },
           "federal_red": {
             "parent": "Primitives/Colors",
             "oldValue": "#ff0000",
