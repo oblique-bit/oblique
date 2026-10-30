@@ -1540,19 +1540,34 @@
 
 	.ob-brand-zh {
 		--ob-h-button-color-brand-primary-bg-active: #333333;
+		--ob-h-button-color-brand-primary-bg-active_inverse: #ffffffb3;
 		--ob-h-button-color-brand-primary-bg-hover: #333333;
+		--ob-h-button-color-brand-primary-bg-hover_inverse: #ffffffb3;
 		--ob-h-button-color-brand-primary-bg-rest: #000000;
+		--ob-h-button-color-brand-primary-bg-rest_inverse: #ffffff;
+		--ob-h-button-color-brand-primary-fg-active_inverse: #000000;
+		--ob-h-button-color-brand-primary-fg-hover_inverse: #000000;
+		--ob-h-button-color-brand-primary-fg-rest_inverse: #000000;
 		--ob-h-button-color-brand-secondary-bg-active: #000000;
+		--ob-h-button-color-brand-secondary-bg-active_inverse: #ffffff;
 		--ob-h-button-color-brand-secondary-bg-active_level_2: #000000;
 		--ob-h-button-color-brand-secondary-bg-hover: #00000033;
+		--ob-h-button-color-brand-secondary-bg-hover_inverse: #00000066;
 		--ob-h-button-color-brand-secondary-bg-hover_level_2: #00000033;
 		--ob-h-button-color-brand-secondary-bg-rest: #0000001a;
+		--ob-h-button-color-brand-secondary-bg-rest_inverse: #00000033;
 		--ob-h-button-color-brand-secondary-border-active: var(--ob-p-color-basic-transparent);
+		--ob-h-button-color-brand-secondary-border-active_inverse: var(--ob-p-color-basic-transparent);
 		--ob-h-button-color-brand-secondary-border-hover: var(--ob-p-color-basic-transparent);
+		--ob-h-button-color-brand-secondary-border-hover_inverse: var(--ob-p-color-basic-transparent);
 		--ob-h-button-color-brand-secondary-border-rest: var(--ob-p-color-basic-transparent);
+		--ob-h-button-color-brand-secondary-border-rest_inverse: var(--ob-p-color-basic-transparent);
 		--ob-h-button-color-brand-secondary-fg-active: #ffffff;
+		--ob-h-button-color-brand-secondary-fg-active_inverse: #000000;
 		--ob-h-button-color-brand-secondary-fg-hover: #000000;
+		--ob-h-button-color-brand-secondary-fg-hover_inverse: #ffffff;
 		--ob-h-button-color-brand-secondary-fg-rest: #666666;
+		--ob-h-button-color-brand-secondary-fg-rest_inverse: #ffffff;
 		--ob-h-button-color-brand-tertiary-bg-active: var(--ob-p-color-basic-transparent);
 		--ob-h-button-color-brand-tertiary-bg-active_inverse: var(--ob-p-color-basic-transparent);
 		--ob-h-button-color-brand-tertiary-bg-active_level_2: var(--ob-p-color-basic-transparent);

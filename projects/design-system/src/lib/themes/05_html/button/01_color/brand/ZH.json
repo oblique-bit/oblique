@@ -29,38 +29,18 @@
 								},
 								"rest_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.600}",
-									"$description": "Role: Exclusive. Primary button background on dark surfaces, rest. ZH: brand ramp."
+									"$value": "#FFFFFF",
+									"$description": "Role: Exclusive. Primary button background, rest, on dark surfaces. ZH: zh.ch button on dark backgrounds (cv-inverted)."
 								},
 								"hover_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.600}",
-									"$extensions": {
-										"studio.tokens": {
-											"modify": {
-												"type": "mix",
-												"value": "{ob.h.button.state_layer.strong.hover}",
-												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
-											}
-										}
-									},
-									"$description": "Role: Exclusive. Primary button background on dark surfaces, hover. ZH: brand ramp."
+									"$value": "#FFFFFFB3",
+									"$description": "Role: Exclusive. Primary button background, hover, on dark surfaces. ZH: zh.ch button on dark backgrounds (cv-inverted)."
 								},
 								"active_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.600}",
-									"$extensions": {
-										"studio.tokens": {
-											"modify": {
-												"type": "mix",
-												"value": "{ob.h.button.state_layer.strong.active}",
-												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
-											}
-										}
-									},
-									"$description": "Role: Exclusive. Primary button background on dark surfaces, active. ZH: brand ramp."
+									"$value": "#FFFFFFB3",
+									"$description": "Role: Exclusive. Primary button background, active, on dark surfaces. ZH: zh.ch button on dark backgrounds (cv-inverted)."
 								}
 							},
 							"fg": {
@@ -81,18 +61,18 @@
 								},
 								"rest_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.basic.white}",
-									"$description": "Role: Exclusive. Primary button label on dark surfaces, rest. ZH: white."
+									"$value": "#000000",
+									"$description": "Role: Exclusive. Primary button label, rest, on dark surfaces. ZH: zh.ch button on dark backgrounds (cv-inverted)."
 								},
 								"hover_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.basic.white}",
-									"$description": "Role: Exclusive. Primary button label on dark surfaces, hover. ZH: white."
+									"$value": "#000000",
+									"$description": "Role: Exclusive. Primary button label, hover, on dark surfaces. ZH: zh.ch button on dark backgrounds (cv-inverted)."
 								},
 								"active_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.basic.white}",
-									"$description": "Role: Exclusive. Primary button label on dark surfaces, active. ZH: white."
+									"$value": "#000000",
+									"$description": "Role: Exclusive. Primary button label, active, on dark surfaces. ZH: zh.ch button on dark backgrounds (cv-inverted)."
 								}
 							}
 						},
@@ -125,38 +105,18 @@
 								},
 								"rest_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.basic.transparent}",
-									"$description": "Role: Exclusive. Secondary button background on dark surfaces, rest. ZH: brand ramp."
+									"$value": "#00000033",
+									"$description": "Role: Exclusive. Secondary button background, rest, on dark surfaces. ZH: zh.ch button on dark backgrounds (cv-inverted)."
 								},
 								"hover_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.500}",
-									"$extensions": {
-										"studio.tokens": {
-											"modify": {
-												"type": "alpha",
-												"value": "{ob.h.button.state_layer.soft.hover}",
-												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
-											}
-										}
-									},
-									"$description": "Role: Exclusive. Secondary button background on dark surfaces, hover. ZH: brand ramp."
+									"$value": "#00000066",
+									"$description": "Role: Exclusive. Secondary button background, hover, on dark surfaces. ZH: zh.ch button on dark backgrounds (cv-inverted)."
 								},
 								"active_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.500}",
-									"$extensions": {
-										"studio.tokens": {
-											"modify": {
-												"type": "alpha",
-												"value": "{ob.h.button.state_layer.soft.active}",
-												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
-											}
-										}
-									},
-									"$description": "Role: Exclusive. Secondary button background on dark surfaces, active. ZH: brand ramp."
+									"$value": "#FFFFFF",
+									"$description": "Role: Exclusive. Secondary button background, active, on dark surfaces. ZH: zh.ch button on dark backgrounds (cv-inverted)."
 								}
 							},
 							"fg": {
@@ -177,18 +137,18 @@
 								},
 								"rest_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.50}",
-									"$description": "Role: Exclusive. Secondary button label on dark surfaces, rest. ZH: as before."
+									"$value": "#FFFFFF",
+									"$description": "Role: Exclusive. Secondary button label, rest, on dark surfaces. ZH: zh.ch button on dark backgrounds (cv-inverted)."
 								},
 								"hover_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.50}",
-									"$description": "Role: Exclusive. Secondary button label on dark surfaces, hover. ZH: as before."
+									"$value": "#FFFFFF",
+									"$description": "Role: Exclusive. Secondary button label, hover, on dark surfaces. ZH: zh.ch button on dark backgrounds (cv-inverted)."
 								},
 								"active_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.50}",
-									"$description": "Role: Exclusive. Secondary button label on dark surfaces, active. ZH: as before."
+									"$value": "#000000",
+									"$description": "Role: Exclusive. Secondary button label, active, on dark surfaces. ZH: zh.ch button on dark backgrounds (cv-inverted)."
 								}
 							},
 							"border": {
@@ -209,18 +169,18 @@
 								},
 								"rest_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.white_alpha.700}",
-									"$description": "Role: Exclusive. Secondary button border on dark surfaces, rest. ZH: as before."
+									"$value": "{ob.p.color.basic.transparent}",
+									"$description": "Role: Exclusive. Secondary button border, rest, on dark surfaces. ZH: zh.ch button on dark backgrounds (cv-inverted)."
 								},
 								"hover_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.white_alpha.700}",
-									"$description": "Role: Exclusive. Secondary button border on dark surfaces, hover. ZH: as before."
+									"$value": "{ob.p.color.basic.transparent}",
+									"$description": "Role: Exclusive. Secondary button border, hover, on dark surfaces. ZH: zh.ch button on dark backgrounds (cv-inverted)."
 								},
 								"active_inverse": {
 									"$type": "color",
-									"$value": "{ob.p.color.white_alpha.700}",
-									"$description": "Role: Exclusive. Secondary button border on dark surfaces, active. ZH: as before."
+									"$value": "{ob.p.color.basic.transparent}",
+									"$description": "Role: Exclusive. Secondary button border, active, on dark surfaces. ZH: zh.ch button on dark backgrounds (cv-inverted)."
 								}
 							}
 						},

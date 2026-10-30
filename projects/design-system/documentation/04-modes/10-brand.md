@@ -55,7 +55,7 @@ The collection is registered in `01_global/mode_collection/brand.json`. `CH_app`
 
 ## **Limits of the proof of concept**
 
-- `ZH` has no dark mode values of its own (zh.ch has no dark mode): on dark surfaces its Buttons and links use the brand ramp.
+- zh.ch has no dark mode. On dark surfaces `ZH` uses the zh.ch Buttons for dark and colored backgrounds (primary white with a black label, secondary black 20 %, links white); the other dark mode colors are derived.
 - fr.ch shows the link underline only on hover. The underline is the same for every brand.
 - The cyan underline of zh.ch links and the dashed fr.ch focus outline are not tokens; the underline and the focus ring look the same for every brand.
 - The hover line of the main navigation (`ob.s1.color.navigation`) stays Oblique red for every brand.
