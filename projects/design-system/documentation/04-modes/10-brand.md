@@ -31,10 +31,13 @@ White label on step 600: `steelblue` 4.84:1, `red` 5.01:1, `ZH` 5.28:1, `FR` 4.6
 
 - **`01_global/mode_collection/brand.json`**: registers the four modes and the CSS class of each mode.
 - **`02_primitive/brand/CH_app.json`, `CH_marketing.json`, `ZH.json`, `FR.json`**: the brand ramp `ob.p.color.brand.50`–`900` and `ob.p.color.brand.accent`. One file per mode. `CH_app` and `CH_marketing` point to existing primitives, `ZH` and `FR` hold the ramp values.
+- **`05_html/button/01_color/brand/CH_app.json`, `CH_marketing.json`, `ZH.json`, `FR.json`**: the Button colors of the brand, high emphasis, light mode: `ob.h.button.color.brand.primary.bg.*` and `ob.h.button.color.brand.secondary.{bg,fg,border}.*` (rest, hover, active). `CH_app` and `FR` keep the colors of the brand ramp, `CH_marketing` follows the Swiss DS (filled `cobalt.500`, hover `cobalt.600`, active `cobalt.700`; outline `red.600`, hover and active `red.700`), `ZH` follows zh.ch (primary black `#000000`, hover and active `#333333`; secondary black 10 %, hover 20 %, active black, label `#666666`, hover black, active white, no border). Hover and active are plain values per brand, so they follow the brand in Figma too.
 - **`04_component/molecule/header/brand/CH_app.json`, `CH_marketing.json`, `ZH.json`, `FR.json`**: `ob.c.header.logo_figma`, a Figma-only text token (`CH`, `CH`, `ZH`, `FR`). It is bound to the `logo` variant property of the `_pseudo/header` component, so the header shows the logo of the brand.
 
 ### **Tokens that follow the mode**
 
+- The plain (not `_inverse`) high emphasis Button tokens in `05_html/button/01_color/color_scheme/light.json` (primary background, secondary background, label and border; rest, hover, active) and the `level_2` primary backgrounds point to `ob.h.button.color.brand.*`.
+- `ob.s.typography.scale.static.font_family.body` and `heading` point to `ob.p.font_family.brand.sans` (Noto Sans; ZH: Inter). The static and dynamic `font_weight` tokens point to `ob.p.font_weight.brand.*`. ZH uses two weights only: `regular` and `medium` are 400, `semi_bold`, `bold` and `extra_bold` are Black 900, as zh.ch uses Inter Regular and Inter Black.
 - `ob.s1.color.interaction.emphasis_high.*` (light and dark) point to `ob.p.color.brand.*`.
 - `ob.h.button.color.emphasis_high.*` in `05_html/button/01_color/color_scheme/` and `05_html/button/01_color/elevation/level_2_color/color_scheme/` point to `ob.p.color.brand.*`.
 - `ob.s.color.brand.1` and `ob.s1.color.navigation.border.brand` point to `ob.p.color.brand.accent`.
@@ -47,8 +50,9 @@ The collection is registered in `01_global/mode_collection/brand.json`. `CH_app`
 
 ## **Limits of the proof of concept**
 
-- The mode swaps the ramp only. The real brands also use other roles: the Swiss DS filled Button is slate (`cobalt.500`), the ZH Buttons are black, and red is the Swiss DS outline Button and link color. These roles are not part of this mode yet.
-- The logo switches only in Figma (`ob.c.header.logo_figma`). The logos are the official files of the brands: the federal logo, the Canton of Zurich lion with the arms (zh.ch) and the Canton of Fribourg logo (fr.ch).
+- The brand Button colors apply to light mode. Dark mode and the `_inverse` tokens still use the brand ramp.
+- Links still use the brand ramp: Swiss DS links are `red.600`, zh.ch links are grey `#666666` with a cyan `#009EE0` underline.
+- The logo switches only in Figma (`ob.c.header.logo_figma`). The logos are the official files of the brands: the federal logo, the Canton of Zurich lion with the arms (zh.ch) and the coat of arms of Fribourg (Wikimedia Commons, public domain) with the official name of fr.ch.
 
 ## **Mode Interplay**
 

@@ -176,23 +176,23 @@
               },
               "regular": {
                 "$type": "fontWeights",
-                "$value": "{ob.p.font_weight.400}"
+                "$value": "{ob.p.font_weight.brand.regular}"
               },
               "medium": {
                 "$type": "fontWeights",
-                "$value": "{ob.p.font_weight.500}"
+                "$value": "{ob.p.font_weight.brand.medium}"
               },
               "semiBold": {
                 "$type": "fontWeights",
-                "$value": "{ob.p.font_weight.600}"
+                "$value": "{ob.p.font_weight.brand.semi_bold}"
               },
               "bold": {
                 "$type": "fontWeights",
-                "$value": "{ob.p.font_weight.700}"
+                "$value": "{ob.p.font_weight.brand.bold}"
               },
               "extraBold": {
                 "$type": "fontWeights",
-                "$value": "{ob.p.font_weight.800}"
+                "$value": "{ob.p.font_weight.brand.extra_bold}"
               }
             },
             "text_decoration": {

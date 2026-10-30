@@ -1,0 +1,90 @@
+{
+	"ob": {
+		"h": {
+			"button": {
+				"color": {
+					"brand": {
+						"token_family_docs": {
+							"description": {
+								"$type": "other",
+								"$value": "Button colors of the brand mode ZH, high emphasis, light mode. The light Button tokens point here, so the brand decides the Button colors."
+							}
+						},
+						"primary": {
+							"bg": {
+								"rest": {
+									"$type": "color",
+									"$value": "#000000",
+									"$description": "Role: Exclusive. Primary button background, rest, light. ZH: zh.ch."
+								},
+								"hover": {
+									"$type": "color",
+									"$value": "#333333",
+									"$description": "Role: Exclusive. Primary button background, hover, light. ZH: zh.ch."
+								},
+								"active": {
+									"$type": "color",
+									"$value": "#333333",
+									"$description": "Role: Exclusive. Primary button background, active, light. ZH: zh.ch."
+								}
+							}
+						},
+						"secondary": {
+							"bg": {
+								"rest": {
+									"$type": "color",
+									"$value": "#0000001A",
+									"$description": "Role: Exclusive. Secondary button background, rest, light. ZH: zh.ch."
+								},
+								"hover": {
+									"$type": "color",
+									"$value": "#00000033",
+									"$description": "Role: Exclusive. Secondary button background, hover, light. ZH: zh.ch."
+								},
+								"active": {
+									"$type": "color",
+									"$value": "#000000",
+									"$description": "Role: Exclusive. Secondary button background, active, light. ZH: zh.ch."
+								}
+							},
+							"fg": {
+								"rest": {
+									"$type": "color",
+									"$value": "#666666",
+									"$description": "Role: Exclusive. Secondary button label, rest, light. ZH: zh.ch."
+								},
+								"hover": {
+									"$type": "color",
+									"$value": "#000000",
+									"$description": "Role: Exclusive. Secondary button label, hover, light. ZH: zh.ch."
+								},
+								"active": {
+									"$type": "color",
+									"$value": "#FFFFFF",
+									"$description": "Role: Exclusive. Secondary button label, active, light. ZH: zh.ch."
+								}
+							},
+							"border": {
+								"rest": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.transparent}",
+									"$description": "Role: Exclusive. Secondary button border, rest, light. ZH: zh.ch."
+								},
+								"hover": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.transparent}",
+									"$description": "Role: Exclusive. Secondary button border, hover, light. ZH: zh.ch."
+								},
+								"active": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.transparent}",
+									"$description": "Role: Exclusive. Secondary button border, active, light. ZH: zh.ch."
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

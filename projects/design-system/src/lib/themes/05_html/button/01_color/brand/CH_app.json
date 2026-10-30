@@ -1,0 +1,130 @@
+{
+	"ob": {
+		"h": {
+			"button": {
+				"color": {
+					"brand": {
+						"token_family_docs": {
+							"description": {
+								"$type": "other",
+								"$value": "Button colors of the brand mode CH_app, high emphasis, light mode. The light Button tokens point here, so the brand decides the Button colors."
+							}
+						},
+						"primary": {
+							"bg": {
+								"rest": {
+									"$type": "color",
+									"$value": "{ob.p.color.brand.600}",
+									"$description": "Role: Exclusive. Primary button background, rest, light. CH_app: brand ramp."
+								},
+								"hover": {
+									"$type": "color",
+									"$value": "{ob.p.color.brand.600}",
+									"$extensions": {
+										"studio.tokens": {
+											"modify": {
+												"type": "mix",
+												"value": "{ob.h.button.state_layer.strong.hover}",
+												"space": "srgb",
+												"color": "{ob.p.color.cobalt.900}"
+											}
+										}
+									},
+									"$description": "Role: Exclusive. Primary button background, hover, light. CH_app: brand ramp."
+								},
+								"active": {
+									"$type": "color",
+									"$value": "{ob.p.color.brand.600}",
+									"$extensions": {
+										"studio.tokens": {
+											"modify": {
+												"type": "mix",
+												"value": "{ob.h.button.state_layer.strong.active}",
+												"space": "srgb",
+												"color": "{ob.p.color.cobalt.900}"
+											}
+										}
+									},
+									"$description": "Role: Exclusive. Primary button background, active, light. CH_app: brand ramp."
+								}
+							}
+						},
+						"secondary": {
+							"bg": {
+								"rest": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.transparent}",
+									"$description": "Role: Exclusive. Secondary button background, rest, light. CH_app: brand ramp."
+								},
+								"hover": {
+									"$type": "color",
+									"$value": "{ob.p.color.brand.500}",
+									"$extensions": {
+										"studio.tokens": {
+											"modify": {
+												"type": "alpha",
+												"value": "{ob.h.button.state_layer.soft.hover}",
+												"space": "srgb",
+												"color": "{ob.p.color.cobalt.900}"
+											}
+										}
+									},
+									"$description": "Role: Exclusive. Secondary button background, hover, light. CH_app: brand ramp."
+								},
+								"active": {
+									"$type": "color",
+									"$value": "{ob.p.color.brand.500}",
+									"$extensions": {
+										"studio.tokens": {
+											"modify": {
+												"type": "alpha",
+												"value": "{ob.h.button.state_layer.soft.active}",
+												"space": "srgb",
+												"color": "{ob.p.color.cobalt.900}"
+											}
+										}
+									},
+									"$description": "Role: Exclusive. Secondary button background, active, light. CH_app: brand ramp."
+								}
+							},
+							"fg": {
+								"rest": {
+									"$type": "color",
+									"$value": "{ob.p.color.brand.700}",
+									"$description": "Role: Exclusive. Secondary button label, rest, light. CH_app: brand ramp."
+								},
+								"hover": {
+									"$type": "color",
+									"$value": "{ob.p.color.brand.800}",
+									"$description": "Role: Exclusive. Secondary button label, hover, light. CH_app: brand ramp."
+								},
+								"active": {
+									"$type": "color",
+									"$value": "{ob.p.color.brand.800}",
+									"$description": "Role: Exclusive. Secondary button label, active, light. CH_app: brand ramp."
+								}
+							},
+							"border": {
+								"rest": {
+									"$type": "color",
+									"$value": "{ob.p.color.brand.700}",
+									"$description": "Role: Exclusive. Secondary button border, rest, light. CH_app: brand ramp."
+								},
+								"hover": {
+									"$type": "color",
+									"$value": "{ob.p.color.brand.800}",
+									"$description": "Role: Exclusive. Secondary button border, hover, light. CH_app: brand ramp."
+								},
+								"active": {
+									"$type": "color",
+									"$value": "{ob.p.color.brand.800}",
+									"$description": "Role: Exclusive. Secondary button border, active, light. CH_app: brand ramp."
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -65,6 +65,44 @@
             "$description": "Role: Exclusive. Brand accent for the selected navigation line. ZH: official Blau #0070B4."
           }
         }
+      },
+      "font_family": {
+        "brand": {
+          "sans": {
+            "$type": "fontFamilies",
+            "$value": "'Inter', Helvetica, Arial, sans-serif",
+            "$description": "Role: Exclusive. Brand font for body and headings. ZH: Inter, as zh.ch uses for web applications."
+          }
+        }
+      },
+      "font_weight": {
+        "brand": {
+          "regular": {
+            "$type": "fontWeights",
+            "$value": "400",
+            "$description": "Role: Exclusive. Brand weight for regular. ZH uses two weights only: Regular 400 and Black 900."
+          },
+          "medium": {
+            "$type": "fontWeights",
+            "$value": "400",
+            "$description": "Role: Exclusive. Brand weight for medium. ZH uses two weights only: Regular 400 and Black 900."
+          },
+          "semi_bold": {
+            "$type": "fontWeights",
+            "$value": "900",
+            "$description": "Role: Exclusive. Brand weight for semi_bold. ZH uses two weights only: Regular 400 and Black 900."
+          },
+          "bold": {
+            "$type": "fontWeights",
+            "$value": "900",
+            "$description": "Role: Exclusive. Brand weight for bold. ZH uses two weights only: Regular 400 and Black 900."
+          },
+          "extra_bold": {
+            "$type": "fontWeights",
+            "$value": "900",
+            "$description": "Role: Exclusive. Brand weight for extra_bold. ZH uses two weights only: Regular 400 and Black 900."
+          }
+        }
       }
     }
   }

@@ -8,7 +8,7 @@
 							"bg": {
 								"rest_level_2": {
 									"$type": "color",
-									"$value": "{ob.p.color.brand.600}",
+									"$value": "{ob.h.button.color.brand.primary.bg.rest}",
 									"$description": "Primary button background on level_2, rest state, high emphasis, light mode."
 								},
 								"rest_level_2_inverse": {
@@ -18,17 +18,7 @@
 								},
 								"hover_level_2": {
 									"$type": "color",
-									"$value": "{ob.h.button.color.emphasis_high.primary.bg.rest_level_2}",
-									"$extensions": {
-										"studio.tokens": {
-											"modify": {
-												"type": "mix",
-												"value": "{ob.h.button.state_layer.strong.hover}",
-												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
-											}
-										}
-									},
+									"$value": "{ob.h.button.color.brand.primary.bg.hover}",
 									"$description": "Primary button background on level_2, hover state, high emphasis, light mode."
 								},
 								"hover_level_2_inverse": {
@@ -48,17 +38,7 @@
 								},
 								"active_level_2": {
 									"$type": "color",
-									"$value": "{ob.h.button.color.emphasis_high.primary.bg.rest_level_2}",
-									"$extensions": {
-										"studio.tokens": {
-											"modify": {
-												"type": "mix",
-												"value": "{ob.h.button.state_layer.strong.active}",
-												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
-											}
-										}
-									},
+									"$value": "{ob.h.button.color.brand.primary.bg.active}",
 									"$description": "Primary button background on level_2, active state, high emphasis, light mode."
 								},
 								"active_level_2_inverse": {

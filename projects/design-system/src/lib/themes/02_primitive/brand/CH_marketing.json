@@ -65,6 +65,44 @@
             "$description": "Role: Exclusive. Brand accent for the selected navigation line. CH_marketing: federal red."
           }
         }
+      },
+      "font_family": {
+        "brand": {
+          "sans": {
+            "$type": "fontFamilies",
+            "$value": "{ob.p.font_family.sans}",
+            "$description": "Role: Exclusive. Brand font for body and headings. CH_marketing: Noto Sans, the Oblique font."
+          }
+        }
+      },
+      "font_weight": {
+        "brand": {
+          "regular": {
+            "$type": "fontWeights",
+            "$value": "{ob.p.font_weight.400}",
+            "$description": "Role: Exclusive. Brand weight for regular. CH_marketing: same as the Oblique weight."
+          },
+          "medium": {
+            "$type": "fontWeights",
+            "$value": "{ob.p.font_weight.500}",
+            "$description": "Role: Exclusive. Brand weight for medium. CH_marketing: same as the Oblique weight."
+          },
+          "semi_bold": {
+            "$type": "fontWeights",
+            "$value": "{ob.p.font_weight.600}",
+            "$description": "Role: Exclusive. Brand weight for semi_bold. CH_marketing: same as the Oblique weight."
+          },
+          "bold": {
+            "$type": "fontWeights",
+            "$value": "{ob.p.font_weight.700}",
+            "$description": "Role: Exclusive. Brand weight for bold. CH_marketing: same as the Oblique weight."
+          },
+          "extra_bold": {
+            "$type": "fontWeights",
+            "$value": "{ob.p.font_weight.800}",
+            "$description": "Role: Exclusive. Brand weight for extra_bold. CH_marketing: same as the Oblique weight."
+          }
+        }
       }
     }
   }

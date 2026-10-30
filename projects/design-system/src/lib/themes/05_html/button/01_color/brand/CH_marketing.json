@@ -1,0 +1,90 @@
+{
+	"ob": {
+		"h": {
+			"button": {
+				"color": {
+					"brand": {
+						"token_family_docs": {
+							"description": {
+								"$type": "other",
+								"$value": "Button colors of the brand mode CH_marketing, high emphasis, light mode. The light Button tokens point here, so the brand decides the Button colors."
+							}
+						},
+						"primary": {
+							"bg": {
+								"rest": {
+									"$type": "color",
+									"$value": "{ob.p.color.cobalt.500}",
+									"$description": "Role: Exclusive. Primary button background, rest, light. CH_marketing: Swiss DS."
+								},
+								"hover": {
+									"$type": "color",
+									"$value": "{ob.p.color.cobalt.600}",
+									"$description": "Role: Exclusive. Primary button background, hover, light. CH_marketing: Swiss DS."
+								},
+								"active": {
+									"$type": "color",
+									"$value": "{ob.p.color.cobalt.700}",
+									"$description": "Role: Exclusive. Primary button background, active, light. CH_marketing: Swiss DS."
+								}
+							}
+						},
+						"secondary": {
+							"bg": {
+								"rest": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.transparent}",
+									"$description": "Role: Exclusive. Secondary button background, rest, light. CH_marketing: Swiss DS."
+								},
+								"hover": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.transparent}",
+									"$description": "Role: Exclusive. Secondary button background, hover, light. CH_marketing: Swiss DS."
+								},
+								"active": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.transparent}",
+									"$description": "Role: Exclusive. Secondary button background, active, light. CH_marketing: Swiss DS."
+								}
+							},
+							"fg": {
+								"rest": {
+									"$type": "color",
+									"$value": "{ob.p.color.red.600}",
+									"$description": "Role: Exclusive. Secondary button label, rest, light. CH_marketing: Swiss DS."
+								},
+								"hover": {
+									"$type": "color",
+									"$value": "{ob.p.color.red.700}",
+									"$description": "Role: Exclusive. Secondary button label, hover, light. CH_marketing: Swiss DS."
+								},
+								"active": {
+									"$type": "color",
+									"$value": "{ob.p.color.red.700}",
+									"$description": "Role: Exclusive. Secondary button label, active, light. CH_marketing: Swiss DS."
+								}
+							},
+							"border": {
+								"rest": {
+									"$type": "color",
+									"$value": "{ob.p.color.red.600}",
+									"$description": "Role: Exclusive. Secondary button border, rest, light. CH_marketing: Swiss DS."
+								},
+								"hover": {
+									"$type": "color",
+									"$value": "{ob.p.color.red.700}",
+									"$description": "Role: Exclusive. Secondary button border, hover, light. CH_marketing: Swiss DS."
+								},
+								"active": {
+									"$type": "color",
+									"$value": "{ob.p.color.red.700}",
+									"$description": "Role: Exclusive. Secondary button border, active, light. CH_marketing: Swiss DS."
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -444,7 +444,11 @@
     "selectedTokenSets": {
       "02_primitive/color": "source",
       "02_primitive/brand/CH_app": "enabled",
-      "04_component/molecule/header/brand/CH_app": "enabled"
+      "04_component/molecule/header/brand/CH_app": "enabled",
+      "05_html/button/01_color/brand/CH_app": "enabled",
+      "05_html/button/00_state_layer": "source",
+      "02_primitive/modifier": "source",
+      "02_primitive/typography": "source"
     },
     "group": "brand",
     "$figmaVariableReferences": {
@@ -471,7 +475,11 @@
     "selectedTokenSets": {
       "02_primitive/color": "source",
       "02_primitive/brand/CH_marketing": "enabled",
-      "04_component/molecule/header/brand/CH_marketing": "enabled"
+      "04_component/molecule/header/brand/CH_marketing": "enabled",
+      "05_html/button/01_color/brand/CH_marketing": "enabled",
+      "05_html/button/00_state_layer": "source",
+      "02_primitive/modifier": "source",
+      "02_primitive/typography": "source"
     },
     "group": "brand",
     "$figmaVariableReferences": {
@@ -498,7 +506,11 @@
     "selectedTokenSets": {
       "02_primitive/color": "source",
       "02_primitive/brand/ZH": "enabled",
-      "04_component/molecule/header/brand/ZH": "enabled"
+      "04_component/molecule/header/brand/ZH": "enabled",
+      "05_html/button/01_color/brand/ZH": "enabled",
+      "05_html/button/00_state_layer": "source",
+      "02_primitive/modifier": "source",
+      "02_primitive/typography": "source"
     },
     "group": "brand",
     "$figmaVariableReferences": {
@@ -525,7 +537,11 @@
     "selectedTokenSets": {
       "02_primitive/color": "source",
       "02_primitive/brand/FR": "enabled",
-      "04_component/molecule/header/brand/FR": "enabled"
+      "04_component/molecule/header/brand/FR": "enabled",
+      "05_html/button/01_color/brand/FR": "enabled",
+      "05_html/button/00_state_layer": "source",
+      "02_primitive/modifier": "source",
+      "02_primitive/typography": "source"
     },
     "group": "brand",
     "$figmaVariableReferences": {
@@ -552,6 +568,7 @@
     "selectedTokenSets": {
       "02_primitive/color": "source",
       "02_primitive/brand/CH_app": "source",
+      "05_html/button/01_color/brand/CH_app": "source",
       "01_global/component/footer/color_scheme/dynamic/light": "enabled",
       "03_semantic/color/s1_color_scheme/light": "enabled",
       "02_primitive/modifier": "source",
@@ -960,6 +977,7 @@
     "selectedTokenSets": {
       "02_primitive/color": "source",
       "02_primitive/brand/CH_app": "source",
+      "05_html/button/01_color/brand/CH_app": "source",
       "01_global/component/footer/color_scheme/dynamic/dark": "enabled",
       "03_semantic/color/s1_color_scheme/dark": "enabled",
       "02_primitive/modifier": "source",
@@ -1731,6 +1749,7 @@
       "03_semantic/shadow": "enabled",
       "03_semantic/motion/static": "enabled",
       "03_semantic/typography/single/static": "enabled",
+      "02_primitive/brand/CH_app": "source",
       "03_semantic/typography/grouped/static": "enabled",
       "05_html/typography/style": "enabled",
       "03_semantic/dimension/scale/static": "enabled",
@@ -2162,6 +2181,7 @@
     },
     "selectedTokenSets": {
       "03_semantic/typography/single/md": "enabled",
+      "02_primitive/brand/CH_app": "source",
       "03_semantic/typography/grouped/md": "enabled",
       "03_semantic/dimension/scale/md": "enabled",
       "03_semantic/dimension/rem/scale/md": "source"
@@ -2266,6 +2286,7 @@
     },
     "selectedTokenSets": {
       "03_semantic/typography/single/sm": "enabled",
+      "02_primitive/brand/CH_app": "source",
       "03_semantic/typography/grouped/sm": "enabled",
       "03_semantic/dimension/scale/sm": "enabled",
       "03_semantic/dimension/rem/scale/sm": "source"
@@ -2370,6 +2391,7 @@
     },
     "selectedTokenSets": {
       "03_semantic/typography/single/lg": "enabled",
+      "02_primitive/brand/CH_app": "source",
       "03_semantic/typography/grouped/lg": "enabled",
       "03_semantic/dimension/scale/lg": "enabled",
       "03_semantic/dimension/rem/scale/lg": "source"
