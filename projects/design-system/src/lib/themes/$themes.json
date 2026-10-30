@@ -25,6 +25,7 @@
       "04_component/atom/spinner": "enabled",
       "04_component/atom/tooltip": "enabled",
       "04_component/molecule/popover": "enabled",
+      "04_component/molecule/card": "enabled",
       "05_html/list": "enabled",
       "05_html/link/link": "enabled",
       "04_component/atom/icon/02_layout": "enabled",

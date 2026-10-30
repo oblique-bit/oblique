@@ -88,6 +88,7 @@
 		"04_component/molecule/infobox/03_viewport/lg",
 		"04_component/molecule/infobox/03_viewport/2xl",
 		"04_component/molecule/popover",
+		"04_component/molecule/card",
 		"04_component/molecule/tag/01_layout.json",
 		"04_component/molecule/tag/02_typography.json",
 		"04_component/molecule/tag/07_reference_only.json",

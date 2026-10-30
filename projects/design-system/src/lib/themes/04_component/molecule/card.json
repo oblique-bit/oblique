@@ -1,0 +1,148 @@
+{
+  "ob": {
+    "c": {
+      "card": {
+        "token_family_docs": {
+          "description": {
+            "$type": "other",
+            "$value": "Component tokens for the Card molecule — spacing, size, color (bg, border, fg, with inverse pairs), typography, border radius and border width. States (interaction, availability, selection, focus) are Figma component variants, so they have no keys here."
+          }
+        },
+        "spacing": {
+          "padding_top": {
+            "$type": "spacing",
+            "$value": "{ob.s.dimension.dynamic.scale.spacing.xs.px}",
+            "$description": "Top padding of the content area below the image."
+          },
+          "padding_right": {
+            "$type": "spacing",
+            "$value": "{ob.s.dimension.dynamic.scale.spacing.xs.px}",
+            "$description": "Right padding of the content area. Same as the left padding so the text block sits centered."
+          },
+          "padding_bottom": {
+            "$type": "spacing",
+            "$value": "{ob.s.dimension.dynamic.scale.spacing.xs.px}",
+            "$description": "Bottom padding of the content area, below the last slot (footer or buttons)."
+          },
+          "padding_left": {
+            "$type": "spacing",
+            "$value": "{ob.s.dimension.dynamic.scale.spacing.xs.px}",
+            "$description": "Left padding of the content area. Same as the right padding so the text block sits centered."
+          },
+          "row_gap": {
+            "$type": "spacing",
+            "$value": "{ob.s.dimension.dynamic.scale.spacing.xs.px}",
+            "$description": "Vertical gap between the slots of the content area: alert, header, text, footer and buttons."
+          },
+          "header": {
+            "col_gap": {
+              "$type": "spacing",
+              "$value": "{ob.s.dimension.dynamic.scale.spacing.xs.px}",
+              "$description": "Horizontal gap between the header icon or avatar and the title block."
+            }
+          },
+          "footer": {
+            "col_gap": {
+              "$type": "spacing",
+              "$value": "{ob.s.dimension.dynamic.scale.element.sm.px}",
+              "$description": "Horizontal gap between the left and the right footer text."
+            }
+          },
+          "buttons_container": {
+            "col_gap": {
+              "$type": "spacing",
+              "$value": "{ob.s.dimension.dynamic.scale.spacing.xs.px}",
+              "$description": "Horizontal gap between the buttons in the card button group."
+            }
+          }
+        },
+        "size": {
+          "image": {
+            "height": {
+              "$type": "dimension",
+              "$value": "{ob.s.dimension.dynamic.scale.layout.xl.px}",
+              "$description": "Default height of the image slot. The image fills the full card width."
+            }
+          },
+          "avatar": {
+            "width": {
+              "$type": "dimension",
+              "$value": "{ob.s.dimension.dynamic.scale.container.md.px}",
+              "$description": "Width and height of the header avatar or icon."
+            }
+          }
+        },
+        "color": {
+          "bg": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.bg.surface}",
+            "$description": "Background color of the card."
+          },
+          "bg_inverse": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.bg.surface_inverse}",
+            "$description": "Background color of the card on a flipped surface."
+          },
+          "border": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.border.subtle}",
+            "$description": "Border color of the card."
+          },
+          "border_inverse": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.border.subtle_inverse}",
+            "$description": "Border color of the card on a flipped surface."
+          },
+          "fg": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.fg.contrast_highest}",
+            "$description": "Color of the title and the body text."
+          },
+          "fg_inverse": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.fg.contrast_highest_inverse}",
+            "$description": "Color of the title and the body text on a flipped surface."
+          },
+          "fg_subtle": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.fg.contrast_medium}",
+            "$description": "Color of the subtitle and the footer text."
+          },
+          "fg_subtle_inverse": {
+            "$type": "color",
+            "$value": "{ob.s.color.neutral.fg.contrast_medium_inverse}",
+            "$description": "Color of the subtitle and the footer text on a flipped surface."
+          }
+        },
+        "typography": {
+          "title": {
+            "$type": "typography",
+            "$value": "{ob.s.typography.authoring.static.sm.strong}"
+          },
+          "subtitle": {
+            "$type": "typography",
+            "$value": "{ob.s.typography.authoring.static.xs.normal}"
+          },
+          "text": {
+            "$type": "typography",
+            "$value": "{ob.s.typography.authoring.static.sm.normal}"
+          },
+          "footer": {
+            "$type": "typography",
+            "$value": "{ob.s.typography.authoring.static.xs.normal}"
+          }
+        },
+        "border_radius": {
+          "$type": "borderRadius",
+          "$value": "{ob.s.border_radius.lg}",
+          "$description": "Corner radius of the card. The image slot is clipped to it."
+        },
+        "border_width": {
+          "$type": "borderWidth",
+          "$value": "{ob.s.border_width.xs}",
+          "$description": "Border width of the card surface."
+        }
+      }
+    }
+  }
+}
