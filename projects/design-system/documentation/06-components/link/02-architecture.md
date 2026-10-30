@@ -45,10 +45,10 @@ All four tokens use the plain (not `_inverse`) value.
 
 | Token | References | Description |
 |-------|------------|-------------|
-| `ob.h.link.color.default` | `ob.h.link.color.color_scheme.default` | Default color of unvisited links. |
-| `ob.h.link.color.visited` | `ob.s.color.interaction.visited.fg.contrast_low` | Color of links the user has already visited. |
-| `ob.h.link.color.hover` | `ob.h.link.color.color_scheme.hover` | Color of link when hovered with the mouse. |
-| `ob.h.link.color.active` | `ob.h.link.color.color_scheme.active` | Color of link during click interaction. |
+| `ob.h.link.color.default` | `ob.h.link.color.contrast.default` | Default color of unvisited links. |
+| `ob.h.link.color.visited` | `ob.h.link.color.contrast.visited` | Color of links the user has already visited. |
+| `ob.h.link.color.hover` | `ob.h.link.color.contrast.hover` | Color of link when hovered with the mouse. |
+| `ob.h.link.color.active` | `ob.h.link.color.contrast.active` | Color of link during click interaction. |
 
 > **Open point:** the default link color is dark and has little saturation on thin letters; it may be swapped with the hover color in a later round.
 
@@ -78,19 +78,24 @@ The link tokens sit in the `ob.h.*` layer for HTML elements. They reference sema
 
 ```
 ob.h.link.color.default
-  → ob.h.link.color.color_scheme.default   (follows the color scheme mode)
-    → ob.h.link.color.brand.default         (light: plain, dark: default_inverse; follows the brand mode)
-      → ob.s.color.interaction.fg.contrast_medium   (CH_app, ZH, FR; CH_marketing: ob.p.color.red.600 / red.400)
-          → ob.s2.color.interaction.fg.contrast_medium   (follows the emphasis mode)
-              → ob.s1.color.interaction.emphasis_high.fg.contrast_medium
-                or ob.s1.color.interaction.emphasis_low.fg.contrast_medium
-
-ob.h.link.color.visited
-  → ob.s.color.interaction.visited.fg.contrast_low
-      → ob.s1.color.interaction.visited.fg.contrast_low   (no emphasis variant)
+  → ob.h.link.color.contrast.default        (follows the contrast mode: low and medium take default, high takes default_max)
+    → ob.h.link.color.color_scheme.default  (or default_max; follows the color scheme mode)
+      → ob.h.link.color.brand.default       (light: plain, dark: default_inverse; follows the brand mode)
+        → CH_app: ob.s.color.interaction.fg.contrast_medium
+            → ob.s2.color.interaction.fg.contrast_medium   (follows the emphasis mode)
+                → ob.s1.color.interaction.emphasis_high.fg.contrast_medium
+                  or ob.s1.color.interaction.emphasis_low.fg.contrast_medium
+          ZH, CH_marketing, FR: the link color of the brand (fixed value or primitive)
 ```
 
-The hover and active colors follow the same path as the default color, with the contrast levels `contrast_low` and `contrast_high`. The S1 tokens resolve with the `color_scheme` mode. See [Interaction Colors](../../03-token-categories/colors/06-semantic-interaction.md).
+The hover, active and visited colors follow the same path. For `CH_app`, hover takes `contrast_low`, active `contrast_high`, visited `ob.s.color.interaction.visited.fg.contrast_low`; `CH_marketing` takes the same visited color. The S1 tokens resolve with the `color_scheme` mode. See [Interaction Colors](../../03-token-categories/colors/06-semantic-interaction.md).
+
+**High contrast.** The `_max` tokens of the brand files hold the link colors of the contrast mode `high`:
+
+- `CH_app` (and the visited color of `CH_marketing`): one interaction step stronger. Default and active take `contrast_high`, hover `contrast_medium`, visited `ob.s.color.interaction.visited.fg.contrast_medium`. They keep following the emphasis mode.
+- `ZH`, `CH_marketing`, `FR`: the link color of the brand mixed 50 % with black (`_max`, light surfaces) or with white (`_max_inverse`, dark surfaces), written as fixed values. A color modifier on an `ob.h` token would be lost in CSS: the CSS build writes such a token as a reference to its base color.
+
+See [Contrast Mode](../../04-modes/11-contrast.md).
 
 The gap and the icon size are values, not colors. The gap references a static dimension token, so it does not react to the `scale` mode. See [Dimension Tokens](../../03-token-categories/00-dimension.md). The icon size references the static font size scale and changes with the `typography_context` mode collection. See [Typography-Context Mode](../../04-modes/04-typography-context.md).
 

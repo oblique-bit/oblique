@@ -59,22 +59,22 @@
         "color": {
           "default": {
             "$type": "color",
-            "$value": "{ob.h.link.color.color_scheme.default}",
+            "$value": "{ob.h.link.color.contrast.default}",
             "$description": "Default color of unvisited links."
           },
           "visited": {
             "$type": "color",
-            "$value": "{ob.h.link.color.color_scheme.visited}",
+            "$value": "{ob.h.link.color.contrast.visited}",
             "$description": "Color of links the user has already visited."
           },
           "hover": {
             "$type": "color",
-            "$value": "{ob.h.link.color.color_scheme.hover}",
+            "$value": "{ob.h.link.color.contrast.hover}",
             "$description": "Color of link when hovered with the mouse."
           },
           "active": {
             "$type": "color",
-            "$value": "{ob.h.link.color.color_scheme.active}",
+            "$value": "{ob.h.link.color.contrast.active}",
             "$description": "Color of link during click interaction."
           }
         },

@@ -49,6 +49,46 @@
 							"$type": "color",
 							"$value": "{ob.s.color.interaction.visited.fg.contrast_low}",
 							"$description": "Role: Exclusive. Link color, visited, dark surfaces. CH_app: visited interaction color."
+						},
+						"default_max": {
+							"$type": "color",
+							"$value": "{ob.s.color.interaction.fg.contrast_high}",
+							"$description": "Role: Exclusive. Link color, default, light surfaces, high contrast: one interaction step stronger."
+						},
+						"default_max_inverse": {
+							"$type": "color",
+							"$value": "{ob.s.color.interaction.fg.contrast_high}",
+							"$description": "Role: Exclusive. Link color, default, dark surfaces, high contrast: one interaction step stronger."
+						},
+						"hover_max": {
+							"$type": "color",
+							"$value": "{ob.s.color.interaction.fg.contrast_medium}",
+							"$description": "Role: Exclusive. Link color, hover, light surfaces, high contrast: one interaction step stronger."
+						},
+						"hover_max_inverse": {
+							"$type": "color",
+							"$value": "{ob.s.color.interaction.fg.contrast_medium}",
+							"$description": "Role: Exclusive. Link color, hover, dark surfaces, high contrast: one interaction step stronger."
+						},
+						"active_max": {
+							"$type": "color",
+							"$value": "{ob.s.color.interaction.fg.contrast_high}",
+							"$description": "Role: Exclusive. Link color, active, light surfaces, high contrast: one interaction step stronger."
+						},
+						"active_max_inverse": {
+							"$type": "color",
+							"$value": "{ob.s.color.interaction.fg.contrast_high}",
+							"$description": "Role: Exclusive. Link color, active, dark surfaces, high contrast: one interaction step stronger."
+						},
+						"visited_max": {
+							"$type": "color",
+							"$value": "{ob.s.color.interaction.visited.fg.contrast_medium}",
+							"$description": "Role: Exclusive. Link color, visited, light surfaces, high contrast: one interaction step stronger."
+						},
+						"visited_max_inverse": {
+							"$type": "color",
+							"$value": "{ob.s.color.interaction.visited.fg.contrast_medium}",
+							"$description": "Role: Exclusive. Link color, visited, dark surfaces, high contrast: one interaction step stronger."
 						}
 					}
 				}

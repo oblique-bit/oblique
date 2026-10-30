@@ -2468,7 +2468,8 @@
     "id": "wferdb2ogm6chaczrn6odpo6pzh0b2juwbujhe76",
     "name": "medium",
     "selectedTokenSets": {
-      "03_semantic/color/s3_contrast/medium": "enabled"
+      "03_semantic/color/s3_contrast/medium": "enabled",
+      "05_html/link/contrast/medium": "enabled"
     },
     "group": "contrast",
     "$figmaVariableReferences": {
@@ -2508,7 +2509,8 @@
     "id": "xso0m3pcotjkdsqwc3rqgscty1v5kn7vyv71ezhx",
     "name": "low",
     "selectedTokenSets": {
-      "03_semantic/color/s3_contrast/low": "enabled"
+      "03_semantic/color/s3_contrast/low": "enabled",
+      "05_html/link/contrast/low": "enabled"
     },
     "group": "contrast",
     "$figmaVariableReferences": {
@@ -2548,7 +2550,8 @@
     "id": "j88e2iolfnb9my2n09tqss6kfve80e4st6txep1b",
     "name": "high",
     "selectedTokenSets": {
-      "03_semantic/color/s3_contrast/high": "enabled"
+      "03_semantic/color/s3_contrast/high": "enabled",
+      "05_html/link/contrast/high": "enabled"
     },
     "group": "contrast",
     "$figmaVariableReferences": {

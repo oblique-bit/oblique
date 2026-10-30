@@ -29,6 +29,26 @@
 							"$type": "color",
 							"$value": "{ob.h.link.color.brand.visited_inverse}",
 							"$description": "Role: Exclusive. Link color, visited, dark mode. Takes the brand link color for dark surfaces."
+						},
+						"default_max": {
+							"$type": "color",
+							"$value": "{ob.h.link.color.brand.default_max_inverse}",
+							"$description": "Role: Exclusive. Link color, default, dark mode, high contrast. Takes the brand link color for dark surfaces."
+						},
+						"hover_max": {
+							"$type": "color",
+							"$value": "{ob.h.link.color.brand.hover_max_inverse}",
+							"$description": "Role: Exclusive. Link color, hover, dark mode, high contrast. Takes the brand link color for dark surfaces."
+						},
+						"active_max": {
+							"$type": "color",
+							"$value": "{ob.h.link.color.brand.active_max_inverse}",
+							"$description": "Role: Exclusive. Link color, active, dark mode, high contrast. Takes the brand link color for dark surfaces."
+						},
+						"visited_max": {
+							"$type": "color",
+							"$value": "{ob.h.link.color.brand.visited_max_inverse}",
+							"$description": "Role: Exclusive. Link color, visited, dark mode, high contrast. Takes the brand link color for dark surfaces."
 						}
 					}
 				}

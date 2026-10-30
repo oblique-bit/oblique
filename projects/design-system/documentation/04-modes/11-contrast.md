@@ -71,11 +71,22 @@ S3 also holds `neutral.border.strong` and the status foreground `contrast_medium
 
 The `_inverse` tokens mix in the other direction. The mixed colors are primitives of the brand files (`ob.p.color.brand.neutral.300_black_50`, `ob.p.color.brand.status.critical.700_black_50`, …), so each brand gets its own mixed color. `fatal` uses the `critical` steps.
 
+### **Link**
+
+The link handles the contrast mode in its own files, not in S3: `ob.h.link.color.{default,hover,active,visited}` point to `ob.h.link.color.contrast.*` (`05_html/link/contrast/low.json`, `medium.json`, `high.json`). `low` and `medium` take the link color of the color scheme as before, `high` takes the `_max` color of the brand files:
+
+| Brand | `high` |
+|---|---|
+| `CH_app` | one interaction step stronger (default and active `contrast_high`, hover `contrast_medium`, visited `visited.fg.contrast_medium`); keeps following the emphasis mode |
+| `ZH`, `CH_marketing`, `FR` | the brand link color mixed 50 % with black on light surfaces, with white on dark surfaces, as fixed values |
+
+Contrast on white, `medium` → `high`: `ZH` 5.74 → 12.63, `CH_marketing` 5.01 → 12.10, `FR` 4.65 → 11.46, `CH_app` 6.47 → 8.64. See [Link](../06-components/link/02-architecture.md).
+
 ### **Not Built Yet**
 
-- `high`: the link. `CH_app` and `ZH` take it from the interaction colors, `CH_marketing` and `FR` from fixed primitives in their brand files, which need their own `high` values.
 - The other status foreground steps (`contrast_high` for Pill, `contrast_highest` for Badge) and the borders `subtle` and `medium`.
 - The Button and the header take their colors from the primitives and do not follow the contrast mode yet.
+- The interaction text colors (`ob.s.color.interaction.fg.*`) are not in S3. Components that use them, other than the link, do not follow the contrast mode yet.
 - The Button on a moved surface keeps the colors of its own elevation level.
 
 ## **Known Limits**

@@ -49,6 +49,46 @@
 							"$type": "color",
 							"$value": "#FFFFFF",
 							"$description": "Role: Exclusive. Link color, visited, dark surfaces. ZH: same as default, zh.ch does not style visited links."
+						},
+						"default_max": {
+							"$type": "color",
+							"$value": "#333333",
+							"$description": "Role: Exclusive. Link color, default, light surfaces, high contrast: #666666 mixed 50% with black."
+						},
+						"default_max_inverse": {
+							"$type": "color",
+							"$value": "#FFFFFF",
+							"$description": "Role: Exclusive. Link color, default, dark surfaces, high contrast: #FFFFFF mixed 50% with white."
+						},
+						"hover_max": {
+							"$type": "color",
+							"$value": "#000000",
+							"$description": "Role: Exclusive. Link color, hover, light surfaces, high contrast: #000000 mixed 50% with black."
+						},
+						"hover_max_inverse": {
+							"$type": "color",
+							"$value": "#FFFFFF",
+							"$description": "Role: Exclusive. Link color, hover, dark surfaces, high contrast: #FFFFFF mixed 50% with white."
+						},
+						"active_max": {
+							"$type": "color",
+							"$value": "#000000",
+							"$description": "Role: Exclusive. Link color, active, light surfaces, high contrast: #000000 mixed 50% with black."
+						},
+						"active_max_inverse": {
+							"$type": "color",
+							"$value": "#FFFFFF",
+							"$description": "Role: Exclusive. Link color, active, dark surfaces, high contrast: #FFFFFF mixed 50% with white."
+						},
+						"visited_max": {
+							"$type": "color",
+							"$value": "#333333",
+							"$description": "Role: Exclusive. Link color, visited, light surfaces, high contrast: #666666 mixed 50% with black."
+						},
+						"visited_max_inverse": {
+							"$type": "color",
+							"$value": "#FFFFFF",
+							"$description": "Role: Exclusive. Link color, visited, dark surfaces, high contrast: #FFFFFF mixed 50% with white."
 						}
 					}
 				}

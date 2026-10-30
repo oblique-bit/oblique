@@ -1,0 +1,32 @@
+{
+	"ob": {
+		"h": {
+			"link": {
+				"color": {
+					"contrast": {
+						"default": {
+							"$type": "color",
+							"$value": "{ob.h.link.color.color_scheme.default_max}",
+							"$description": "Role: Exclusive. Link color, default, high contrast: takes the high contrast link color."
+						},
+						"hover": {
+							"$type": "color",
+							"$value": "{ob.h.link.color.color_scheme.hover_max}",
+							"$description": "Role: Exclusive. Link color, hover, high contrast: takes the high contrast link color."
+						},
+						"active": {
+							"$type": "color",
+							"$value": "{ob.h.link.color.color_scheme.active_max}",
+							"$description": "Role: Exclusive. Link color, active, high contrast: takes the high contrast link color."
+						},
+						"visited": {
+							"$type": "color",
+							"$value": "{ob.h.link.color.color_scheme.visited_max}",
+							"$description": "Role: Exclusive. Link color, visited, high contrast: takes the high contrast link color."
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -49,6 +49,46 @@
 							"$type": "color",
 							"$value": "{ob.s.color.interaction.visited.fg.contrast_low}",
 							"$description": "Role: Exclusive. Link color, visited, dark surfaces. CH_marketing: visited interaction color."
+						},
+						"default_max": {
+							"$type": "color",
+							"$value": "#6C1215",
+							"$description": "Role: Exclusive. Link color, default, light surfaces, high contrast: #D8232A mixed 50% with black."
+						},
+						"default_max_inverse": {
+							"$type": "color",
+							"$value": "#FEB2B5",
+							"$description": "Role: Exclusive. Link color, default, dark surfaces, high contrast: #FC656B mixed 50% with white."
+						},
+						"hover_max": {
+							"$type": "color",
+							"$value": "#601012",
+							"$description": "Role: Exclusive. Link color, hover, light surfaces, high contrast: #BF1F25 mixed 50% with black."
+						},
+						"hover_max_inverse": {
+							"$type": "color",
+							"$value": "#FCCED0",
+							"$description": "Role: Exclusive. Link color, hover, dark surfaces, high contrast: #FA9DA1 mixed 50% with white."
+						},
+						"active_max": {
+							"$type": "color",
+							"$value": "#601012",
+							"$description": "Role: Exclusive. Link color, active, light surfaces, high contrast: #BF1F25 mixed 50% with black."
+						},
+						"active_max_inverse": {
+							"$type": "color",
+							"$value": "#FCCED0",
+							"$description": "Role: Exclusive. Link color, active, dark surfaces, high contrast: #FA9DA1 mixed 50% with white."
+						},
+						"visited_max": {
+							"$type": "color",
+							"$value": "{ob.s.color.interaction.visited.fg.contrast_medium}",
+							"$description": "Role: Exclusive. Link color, visited, light surfaces, high contrast: one interaction step stronger."
+						},
+						"visited_max_inverse": {
+							"$type": "color",
+							"$value": "{ob.s.color.interaction.visited.fg.contrast_medium}",
+							"$description": "Role: Exclusive. Link color, visited, dark surfaces, high contrast: one interaction step stronger."
 						}
 					}
 				}
