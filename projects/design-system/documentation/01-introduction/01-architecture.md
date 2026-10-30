@@ -51,7 +51,7 @@ Complete naming conventions and patterns are documented in [Token Naming Convent
 
 ---
 
-## **Semantic Layer System (S1/S2/ob.s)**
+## **Semantic Layer System (S1/S2/S3/ob.s)**
 
 ### **S1: Color scheme Layer**
 - **Purpose**: Light/dark mode switching
@@ -64,6 +64,12 @@ Complete naming conventions and patterns are documented in [Token Naming Convent
 - **Files**: `high.json`, `low.json`
 - **References**: S1 color scheme tokens  
 - **Usage**: Non-interactive components, fallback for missing ob.s tokens
+
+### **S3: Contrast Layer**
+- **Purpose**: Low/medium/high contrast between content and surface
+- **Files**: `low.json`, `medium.json`, `high.json`
+- **References**: S1 color scheme tokens
+- **Usage**: Referenced by the elevation `surface` tokens, never consumed directly by components
 
 ### **ob.s: Compilation Layer**
 - **Purpose**: Complete semantic color collection (no modes)

@@ -1,0 +1,34 @@
+{
+  "ob": {
+    "g": {
+      "mode_collection": {
+        "contrast": {
+          "token_family_docs": {
+            "$description": "Contrast mode collection — contrast between content and its surface. Modes: low (.ob-contrast-low), medium (the base — no class is applied), high (.ob-contrast-high). Each mode carries the CSS class string the application adds to a container to activate it. low moves every surface one elevation level toward the text, high one level away from it."
+          },
+          "low": {
+            "selector": {
+              "$type": "other",
+              "$value": ".ob-contrast-low",
+              "$description": "low is activated by a class the application adds to the container."
+            }
+          },
+          "medium": {
+            "selector": {
+              "$type": "other",
+              "$value": "default",
+              "$description": "medium is the base contrast mode — no class is applied. It is the first-paint default."
+            }
+          },
+          "high": {
+            "selector": {
+              "$type": "other",
+              "$value": ".ob-contrast-high",
+              "$description": "high is activated by a class the application adds to the container."
+            }
+          }
+        }
+      }
+    }
+  }
+}

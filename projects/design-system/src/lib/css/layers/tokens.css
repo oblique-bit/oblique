@@ -1459,6 +1459,14 @@
 	--ob-s2-color-interaction-fg-contrast_low_inverse: #d3dee9;
 	--ob-s2-color-interaction-fg-contrast_medium: #236487;
 	--ob-s2-color-interaction-fg-contrast_medium_inverse: #f3f4f5;
+	--ob-s3-color-neutral-bg-level_0: #ffffff;
+	--ob-s3-color-neutral-bg-level_0_inverse: #263645;
+	--ob-s3-color-neutral-bg-level_1: #f0f4f7;
+	--ob-s3-color-neutral-bg-level_1_inverse: #2f4356;
+	--ob-s3-color-neutral-bg-level_2: #dfe4e9;
+	--ob-s3-color-neutral-bg-level_2_inverse: #46596b;
+	--ob-s3-color-neutral-bg-level_minus_1: #ffffff;
+	--ob-s3-color-neutral-bg-level_minus_1_inverse: #263645;
 
 	.ob-brand-ch-marketing {
 		--ob-h-button-color-brand-primary-bg-active: var(--ob-p-color-cobalt-700);
@@ -2102,6 +2110,12 @@
 		--ob-s2-color-interaction-fg-contrast_low_inverse: #c8e0ef;
 		--ob-s2-color-interaction-fg-contrast_medium: #00629e;
 		--ob-s2-color-interaction-fg-contrast_medium_inverse: #edf5fa;
+		--ob-s3-color-neutral-bg-level_0_inverse: #000000;
+		--ob-s3-color-neutral-bg-level_1: #f7f7f7;
+		--ob-s3-color-neutral-bg-level_1_inverse: #000000;
+		--ob-s3-color-neutral-bg-level_2: #f0f0f0;
+		--ob-s3-color-neutral-bg-level_2_inverse: #333333;
+		--ob-s3-color-neutral-bg-level_minus_1_inverse: #000000;
 	}
 
 	.ob-brand-fr {
@@ -2616,6 +2630,12 @@
 		--ob-s2-color-interaction-fg-contrast_low_inverse: #c5e2e7;
 		--ob-s2-color-interaction-fg-contrast_medium: #006878;
 		--ob-s2-color-interaction-fg-contrast_medium_inverse: #ecf6f7;
+		--ob-s3-color-neutral-bg-level_0_inverse: #000000;
+		--ob-s3-color-neutral-bg-level_1: #f5f5f5;
+		--ob-s3-color-neutral-bg-level_1_inverse: #000000;
+		--ob-s3-color-neutral-bg-level_2: #e5e5e5;
+		--ob-s3-color-neutral-bg-level_2_inverse: #383838;
+		--ob-s3-color-neutral-bg-level_minus_1_inverse: #000000;
 	}
 
 	.ob-color-scheme-dark {
@@ -3229,6 +3249,30 @@
 		--ob-s2-color-interaction-fg-contrast_low_inverse: #2379a4;
 		--ob-s2-color-interaction-fg-contrast_medium: #f3f4f5;
 		--ob-s2-color-interaction-fg-contrast_medium_inverse: #236487;
+		--ob-s3-color-neutral-bg-level_0: #1c2834;
+		--ob-s3-color-neutral-bg-level_0_inverse: #ffffff;
+		--ob-s3-color-neutral-bg-level_1: #263645;
+		--ob-s3-color-neutral-bg-level_1_inverse: #f0f4f7;
+		--ob-s3-color-neutral-bg-level_2: #2f4356;
+		--ob-s3-color-neutral-bg-level_2_inverse: #dfe4e9;
+		--ob-s3-color-neutral-bg-level_minus_1: #131b22;
+		--ob-s3-color-neutral-bg-level_minus_1_inverse: #ffffff;
+	}
+
+	.ob-contrast-low {
+		--ob-s-color-neutral-bg-surface: #f0f4f7;
+		--ob-s-color-neutral-bg-surface_inverse: #2f4356;
+		--ob-s3-color-neutral-bg-level_0: #f0f4f7;
+		--ob-s3-color-neutral-bg-level_0_inverse: #2f4356;
+		--ob-s3-color-neutral-bg-level_1: #dfe4e9;
+		--ob-s3-color-neutral-bg-level_1_inverse: #46596b;
+	}
+
+	.ob-contrast-high {
+		--ob-s3-color-neutral-bg-level_1: #ffffff;
+		--ob-s3-color-neutral-bg-level_1_inverse: #263645;
+		--ob-s3-color-neutral-bg-level_2: #f0f4f7;
+		--ob-s3-color-neutral-bg-level_2_inverse: #2f4356;
 	}
 
 	.ob-density-compact {

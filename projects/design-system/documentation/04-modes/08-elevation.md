@@ -43,7 +43,7 @@ The family `neutral` gets a `surface` token that follows the mode. The status fa
         "neutral": {
           "bg": {
             "surface": {
-              "$value": "{ob.s.color.neutral.bg.contrast_highest}"  // level0
+              "$value": "{ob.s3.color.neutral.bg.level_0}"  // level0
             }
           }
         }
@@ -53,7 +53,7 @@ The family `neutral` gets a `surface` token that follows the mode. The status fa
 }
 ```
 
-In `level1` the same token points to `contrast_high`, in `level2` to `contrast_medium`. In `level-1` the token points to the helper token `ob.s1.color.neutral.bg.level_minus_1` (and `level_minus_1_inverse`). `surface_inverse` points to the `_inverse` token of the same step. The existing tokens are not changed.
+In `level1` the same token points to `ob.s3.color.neutral.bg.level_1`, in `level2` to `level_2`, in `level-1` to `level_minus_1`. `surface_inverse` points to the `_inverse` token of the same level. The S3 tokens follow the contrast mode ([11-contrast.md](11-contrast.md)). In `medium` they point to the steps the surface used before: `level_0` to `contrast_highest`, `level_1` to `contrast_high`, `level_2` to `contrast_medium`, `level_minus_1` to the helper token `ob.s1.color.neutral.bg.level_minus_1`. The existing tokens are not changed.
 
 ### **Button Tokens**
 

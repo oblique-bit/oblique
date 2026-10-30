@@ -219,6 +219,9 @@ ob.h.link.color.hover → {ob.s.color.interaction.fg.contrast_low}
 ob.s.color.interaction.fg.contrast_low → {ob.s2.color.interaction.fg.contrast_low}
 ob.s2.color.interaction.fg.contrast_low → {ob.s1.color.interaction.emphasis_low.fg.contrast_low}
 ob.s1.color.interaction.emphasis_low.fg.contrast_low → {ob.p.color.cobalt.600}
+
+ob.s.color.neutral.bg.surface → {ob.s3.color.neutral.bg.level_0}          (elevation level0)
+ob.s3.color.neutral.bg.level_0 → {ob.s1.color.neutral.bg.contrast_highest} (contrast medium)
 ```
 
 ### **Invalid Reference Patterns**

@@ -15,6 +15,7 @@ Navigation hub for all token mode documentation.
 | **Motion** | Animation preference | `on.json` / `off.json` | [07-motion.md](07-motion.md) |
 | **Elevation** | Surface level | `level_minus_1.json` / `level_0.json` / `level_1.json` / `level_2.json` | [08-elevation.md](08-elevation.md) |
 | **Brand** | Brand ramp and accent (proof of concept) | `CH_app.json` / `CH_marketing.json` / `ZH.json` / `FR.json` | [10-brand.md](10-brand.md) |
+| **Contrast** | Contrast between content and surface | `low.json` / `medium.json` / `high.json` | [11-contrast.md](11-contrast.md) |
 
 
 ## **How Modes Work**

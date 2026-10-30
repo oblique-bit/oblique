@@ -6,12 +6,12 @@
           "bg": {
             "surface": {
               "$type": "color",
-              "$value": "{ob.s1.color.neutral.bg.level_minus_1}",
+              "$value": "{ob.s3.color.neutral.bg.level_minus_1}",
               "$description": "Role: Surface. Neutral background of the level_minus_1 elevation. Page areas and containers."
             },
             "surface_inverse": {
               "$type": "color",
-              "$value": "{ob.s1.color.neutral.bg.level_minus_1_inverse}",
+              "$value": "{ob.s3.color.neutral.bg.level_minus_1_inverse}",
               "$description": "Role: Surface. Neutral background of the level_minus_1 elevation, inverse. Page areas and containers."
             }
           }

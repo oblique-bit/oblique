@@ -2356,6 +2356,30 @@
     "group": "emphasis"
   },
   {
+    "id": "wferdb2ogm6chaczrn6odpo6pzh0b2juwbujhe76",
+    "name": "medium",
+    "selectedTokenSets": {
+      "03_semantic/color/s3_contrast/medium": "enabled"
+    },
+    "group": "contrast"
+  },
+  {
+    "id": "xso0m3pcotjkdsqwc3rqgscty1v5kn7vyv71ezhx",
+    "name": "low",
+    "selectedTokenSets": {
+      "03_semantic/color/s3_contrast/low": "enabled"
+    },
+    "group": "contrast"
+  },
+  {
+    "id": "j88e2iolfnb9my2n09tqss6kfve80e4st6txep1b",
+    "name": "high",
+    "selectedTokenSets": {
+      "03_semantic/color/s3_contrast/high": "enabled"
+    },
+    "group": "contrast"
+  },
+  {
     "id": "jdimm0gobb5009cf1o5nqylm5u0iqxufahnrt8mr",
     "name": "level0",
     "$figmaStyleReferences": {},

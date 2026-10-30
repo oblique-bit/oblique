@@ -1,0 +1,52 @@
+{
+  "ob": {
+    "s3": {
+      "color": {
+        "neutral": {
+          "bg": {
+            "level_minus_1": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.level_minus_1}",
+              "$description": "Role: Surface. Neutral background of level_minus_1 at medium contrast, as level_minus_1. Page areas and containers."
+            },
+            "level_minus_1_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.level_minus_1_inverse}",
+              "$description": "Role: Surface. Inverse neutral background of level_minus_1 at medium contrast, as level_minus_1. Inverse surface."
+            },
+            "level_0": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_highest}",
+              "$description": "Role: Surface. Neutral background of level_0 at medium contrast, as level_0. Page areas and containers."
+            },
+            "level_0_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_highest_inverse}",
+              "$description": "Role: Surface. Inverse neutral background of level_0 at medium contrast, as level_0. Inverse surface."
+            },
+            "level_1": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_high}",
+              "$description": "Role: Surface. Neutral background of level_1 at medium contrast, as level_1. Page areas and containers."
+            },
+            "level_1_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_high_inverse}",
+              "$description": "Role: Surface. Inverse neutral background of level_1 at medium contrast, as level_1. Inverse surface."
+            },
+            "level_2": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_medium}",
+              "$description": "Role: Surface. Neutral background of level_2 at medium contrast, as level_2. Page areas and containers."
+            },
+            "level_2_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_medium_inverse}",
+              "$description": "Role: Surface. Inverse neutral background of level_2 at medium contrast, as level_2. Inverse surface."
+            }
+          }
+        }
+      }
+    }
+  }
+}

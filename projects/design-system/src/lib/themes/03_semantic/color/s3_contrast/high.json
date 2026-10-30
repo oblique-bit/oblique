@@ -1,0 +1,52 @@
+{
+  "ob": {
+    "s3": {
+      "color": {
+        "neutral": {
+          "bg": {
+            "level_minus_1": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.level_minus_1}",
+              "$description": "Role: Surface. Neutral background of level_minus_1 at high contrast, no lower level, stays. Page areas and containers."
+            },
+            "level_minus_1_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.level_minus_1_inverse}",
+              "$description": "Role: Surface. Inverse neutral background of level_minus_1 at high contrast, no lower level, stays. Inverse surface."
+            },
+            "level_0": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.level_minus_1}",
+              "$description": "Role: Surface. Neutral background of level_0 at high contrast, the level_minus_1 colour. Page areas and containers."
+            },
+            "level_0_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.level_minus_1_inverse}",
+              "$description": "Role: Surface. Inverse neutral background of level_0 at high contrast, the level_minus_1 colour. Inverse surface."
+            },
+            "level_1": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_highest}",
+              "$description": "Role: Surface. Neutral background of level_1 at high contrast, the level_0 colour. Page areas and containers."
+            },
+            "level_1_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_highest_inverse}",
+              "$description": "Role: Surface. Inverse neutral background of level_1 at high contrast, the level_0 colour. Inverse surface."
+            },
+            "level_2": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_high}",
+              "$description": "Role: Surface. Neutral background of level_2 at high contrast, the level_1 colour. Page areas and containers."
+            },
+            "level_2_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_high_inverse}",
+              "$description": "Role: Surface. Inverse neutral background of level_2 at high contrast, the level_1 colour. Inverse surface."
+            }
+          }
+        }
+      }
+    }
+  }
+}

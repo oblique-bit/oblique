@@ -20,7 +20,12 @@ src/lib/themes/03_semantic/color/
 ├── s2_emphasis/           # Semantic Level 2: High/Low emphasis variations
 │   ├── high.json          # High emphasis colors
 │   └── low.json           # Low emphasis colors
-└── compiled.json          # Semantic Level 3: Complete semantic color collection
+├── s3_contrast/           # Semantic Level 3: Low/Medium/High contrast variations
+│   ├── low.json
+│   ├── medium.json
+│   └── high.json
+├── elevation/             # Surface per elevation level
+└── compiled.json          # ob.s: Complete semantic color collection
 ```
 
 ### **Semantic Level System Logic**
@@ -38,6 +43,14 @@ src/lib/themes/03_semantic/color/
 - **Files**: `high.json`, `low.json`
 - **Reference**: All S2 tokens reference S1 tokens directly
 - **Example token**: `ob.s2.color.interaction.fg.contrast_low`
+
+#### **S3 - Contrast Semantic Level** (`s3_contrast/`)
+- **Purpose**: Low/medium/high contrast between content and surface
+- **Contains**: `neutral` surfaces per elevation level (`level_minus_1`, `level_0`, `level_1`, `level_2`), each with `_inverse`
+- **Files**: `low.json`, `medium.json`, `high.json`
+- **Reference**: S3 tokens reference S1 tokens; the `surface` tokens of the elevation files reference S3
+- **Example token**: `ob.s3.color.neutral.bg.level_0`
+- **Details**: [Contrast mode](../../04-modes/11-contrast.md)
 
 #### **ob.s - Semantic Compilation** (`compiled.json`)
 - **Purpose**: Complete, clean collection of all semantic colors
