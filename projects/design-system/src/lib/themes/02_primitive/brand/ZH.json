@@ -63,6 +63,222 @@
             "$type": "color",
             "$value": "#0070B4",
             "$description": "Role: Exclusive. Brand accent for the selected navigation line. ZH: official Blau #0070B4."
+          },
+          "status": {
+            "token_family_docs": {
+              "description": {
+                "$type": "other",
+                "$value": "Status ramps of the brand mode ZH for info, resolved, attention and critical (fatal uses critical). The S1 status colors point here. Each step has the same white contrast as the Oblique status ramp step of the same number."
+              }
+            },
+            "info": {
+              "50": {
+                "$type": "color",
+                "$value": "#F0F6FB",
+                "$description": "Role: Exclusive. Status ramp info, step 50. ZH: zh.ch Blau hue, same white contrast as blue 50."
+              },
+              "100": {
+                "$type": "color",
+                "$value": "#DBEBF5",
+                "$description": "Role: Exclusive. Status ramp info, step 100. ZH: zh.ch Blau hue, same white contrast as blue 100."
+              },
+              "200": {
+                "$type": "color",
+                "$value": "#C1DDED",
+                "$description": "Role: Exclusive. Status ramp info, step 200. ZH: zh.ch Blau hue, same white contrast as blue 200."
+              },
+              "300": {
+                "$type": "color",
+                "$value": "#9BC7E1",
+                "$description": "Role: Exclusive. Status ramp info, step 300. ZH: zh.ch Blau hue, same white contrast as blue 300."
+              },
+              "400": {
+                "$type": "color",
+                "$value": "#67AAD2",
+                "$description": "Role: Exclusive. Status ramp info, step 400. ZH: zh.ch Blau hue, same white contrast as blue 400."
+              },
+              "500": {
+                "$type": "color",
+                "$value": "#338DC3",
+                "$description": "Role: Exclusive. Status ramp info, step 500. ZH: zh.ch Blau hue, same white contrast as blue 500."
+              },
+              "600": {
+                "$type": "color",
+                "$value": "#0070B4",
+                "$description": "Role: Exclusive. Status ramp info, step 600. ZH: zh.ch Blau #0070B4."
+              },
+              "700": {
+                "$type": "color",
+                "$value": "#006099",
+                "$description": "Role: Exclusive. Status ramp info, step 700. ZH: zh.ch Blau hue, same white contrast as blue 700."
+              },
+              "800": {
+                "$type": "color",
+                "$value": "#004E7E",
+                "$description": "Role: Exclusive. Status ramp info, step 800. ZH: zh.ch Blau hue, same white contrast as blue 800."
+              },
+              "900": {
+                "$type": "color",
+                "$value": "#00446C",
+                "$description": "Role: Exclusive. Status ramp info, step 900. ZH: zh.ch Blau hue, same white contrast as blue 900."
+              }
+            },
+            "resolved": {
+              "50": {
+                "$type": "color",
+                "$value": "#F6FAF7",
+                "$description": "Role: Exclusive. Status ramp resolved, step 50. ZH: zh.ch Grün hue, same white contrast as green 50."
+              },
+              "100": {
+                "$type": "color",
+                "$value": "#EAF3EB",
+                "$description": "Role: Exclusive. Status ramp resolved, step 100. ZH: zh.ch Grün hue, same white contrast as green 100."
+              },
+              "200": {
+                "$type": "color",
+                "$value": "#D6E8D6",
+                "$description": "Role: Exclusive. Status ramp resolved, step 200. ZH: zh.ch Grün hue, same white contrast as green 200."
+              },
+              "300": {
+                "$type": "color",
+                "$value": "#BCD9BD",
+                "$description": "Role: Exclusive. Status ramp resolved, step 300. ZH: zh.ch Grün hue, same white contrast as green 300."
+              },
+              "400": {
+                "$type": "color",
+                "$value": "#99C69C",
+                "$description": "Role: Exclusive. Status ramp resolved, step 400. ZH: zh.ch Grün hue, same white contrast as green 400."
+              },
+              "500": {
+                "$type": "color",
+                "$value": "#73B176",
+                "$description": "Role: Exclusive. Status ramp resolved, step 500. ZH: zh.ch Grün hue, same white contrast as green 500."
+              },
+              "600": {
+                "$type": "color",
+                "$value": "#409545",
+                "$description": "Role: Exclusive. Status ramp resolved, step 600. ZH: zh.ch Grün hue, same white contrast as green 600."
+              },
+              "700": {
+                "$type": "color",
+                "$value": "#1A7F1F",
+                "$description": "Role: Exclusive. Status ramp resolved, step 700. ZH: zh.ch Grün #1A7F1F."
+              },
+              "800": {
+                "$type": "color",
+                "$value": "#146118",
+                "$description": "Role: Exclusive. Status ramp resolved, step 800. ZH: zh.ch Grün hue, same white contrast as green 800."
+              },
+              "900": {
+                "$type": "color",
+                "$value": "#105013",
+                "$description": "Role: Exclusive. Status ramp resolved, step 900. ZH: zh.ch Grün hue, same white contrast as green 900."
+              }
+            },
+            "attention": {
+              "50": {
+                "$type": "color",
+                "$value": "{ob.p.color.orange.50}",
+                "$description": "Role: Exclusive. Status ramp attention, step 50. ZH: orange 50, zh.ch has no own warning color."
+              },
+              "100": {
+                "$type": "color",
+                "$value": "{ob.p.color.orange.100}",
+                "$description": "Role: Exclusive. Status ramp attention, step 100. ZH: orange 100, zh.ch has no own warning color."
+              },
+              "200": {
+                "$type": "color",
+                "$value": "{ob.p.color.orange.200}",
+                "$description": "Role: Exclusive. Status ramp attention, step 200. ZH: orange 200, zh.ch has no own warning color."
+              },
+              "300": {
+                "$type": "color",
+                "$value": "{ob.p.color.orange.300}",
+                "$description": "Role: Exclusive. Status ramp attention, step 300. ZH: orange 300, zh.ch has no own warning color."
+              },
+              "400": {
+                "$type": "color",
+                "$value": "{ob.p.color.orange.400}",
+                "$description": "Role: Exclusive. Status ramp attention, step 400. ZH: orange 400, zh.ch has no own warning color."
+              },
+              "500": {
+                "$type": "color",
+                "$value": "{ob.p.color.orange.500}",
+                "$description": "Role: Exclusive. Status ramp attention, step 500. ZH: orange 500, zh.ch has no own warning color."
+              },
+              "600": {
+                "$type": "color",
+                "$value": "{ob.p.color.orange.600}",
+                "$description": "Role: Exclusive. Status ramp attention, step 600. ZH: orange 600, zh.ch has no own warning color."
+              },
+              "700": {
+                "$type": "color",
+                "$value": "{ob.p.color.orange.700}",
+                "$description": "Role: Exclusive. Status ramp attention, step 700. ZH: orange 700, zh.ch has no own warning color."
+              },
+              "800": {
+                "$type": "color",
+                "$value": "{ob.p.color.orange.800}",
+                "$description": "Role: Exclusive. Status ramp attention, step 800. ZH: orange 800, zh.ch has no own warning color."
+              },
+              "900": {
+                "$type": "color",
+                "$value": "{ob.p.color.orange.900}",
+                "$description": "Role: Exclusive. Status ramp attention, step 900. ZH: orange 900, zh.ch has no own warning color."
+              }
+            },
+            "critical": {
+              "50": {
+                "$type": "color",
+                "$value": "#FCEEEC",
+                "$description": "Role: Exclusive. Status ramp critical, step 50. ZH: zh.ch Rot hue, same white contrast as red 50."
+              },
+              "100": {
+                "$type": "color",
+                "$value": "#F9E1DC",
+                "$description": "Role: Exclusive. Status ramp critical, step 100. ZH: zh.ch Rot hue, same white contrast as red 100."
+              },
+              "200": {
+                "$type": "color",
+                "$value": "#F6D1C8",
+                "$description": "Role: Exclusive. Status ramp critical, step 200. ZH: zh.ch Rot hue, same white contrast as red 200."
+              },
+              "300": {
+                "$type": "color",
+                "$value": "#EDA495",
+                "$description": "Role: Exclusive. Status ramp critical, step 300. ZH: zh.ch Rot hue, same white contrast as red 300."
+              },
+              "400": {
+                "$type": "color",
+                "$value": "#E57861",
+                "$description": "Role: Exclusive. Status ramp critical, step 400. ZH: zh.ch Rot hue, same white contrast as red 400."
+              },
+              "500": {
+                "$type": "color",
+                "$value": "#D93C1A",
+                "$description": "Role: Exclusive. Status ramp critical, step 500. ZH: zh.ch Rot #D93C1A."
+              },
+              "600": {
+                "$type": "color",
+                "$value": "#CD3919",
+                "$description": "Role: Exclusive. Status ramp critical, step 600. ZH: zh.ch Rot hue, same white contrast as red 600."
+              },
+              "700": {
+                "$type": "color",
+                "$value": "#B63216",
+                "$description": "Role: Exclusive. Status ramp critical, step 700. ZH: zh.ch Rot hue, same white contrast as red 700."
+              },
+              "800": {
+                "$type": "color",
+                "$value": "#902811",
+                "$description": "Role: Exclusive. Status ramp critical, step 800. ZH: zh.ch Rot hue, same white contrast as red 800."
+              },
+              "900": {
+                "$type": "color",
+                "$value": "#79210F",
+                "$description": "Role: Exclusive. Status ramp critical, step 900. ZH: zh.ch Rot hue, same white contrast as red 900."
+              }
+            }
           }
         }
       },

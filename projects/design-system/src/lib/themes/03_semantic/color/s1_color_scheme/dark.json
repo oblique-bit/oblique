@@ -223,32 +223,32 @@
               },
               "contrast_medium": {
                 "$type": "color",
-                "$value": "{ob.p.color.blue.900}",
+                "$value": "{ob.p.color.brand.status.info.900}",
                 "$description": "Medium contrast info status background. Standard surface."
               },
               "contrast_medium_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.blue.300}",
+                "$value": "{ob.p.color.brand.status.info.300}",
                 "$description": "Medium contrast info status background. Inverse surface."
               },
               "contrast_high": {
                 "$type": "color",
-                "$value": "{ob.p.color.blue.800}",
+                "$value": "{ob.p.color.brand.status.info.800}",
                 "$description": "High contrast info status background. Standard surface."
               },
               "contrast_high_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.blue.200}",
+                "$value": "{ob.p.color.brand.status.info.200}",
                 "$description": "High contrast info status background. Inverse surface."
               },
               "contrast_low": {
                 "$type": "color",
-                "$value": "{ob.p.color.blue.700}",
+                "$value": "{ob.p.color.brand.status.info.700}",
                 "$description": "Low contrast info status background. Standard surface."
               },
               "contrast_low_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.blue.400}",
+                "$value": "{ob.p.color.brand.status.info.400}",
                 "$description": "Low contrast info status background. Inverse surface."
               }
             },
@@ -265,32 +265,32 @@
               },
               "contrast_high": {
                 "$type": "color",
-                "$value": "{ob.p.color.blue.200}",
+                "$value": "{ob.p.color.brand.status.info.200}",
                 "$description": "High contrast info status foreground. Standard surface."
               },
               "contrast_high_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.blue.800}",
+                "$value": "{ob.p.color.brand.status.info.800}",
                 "$description": "High contrast info status foreground. Inverse surface."
               },
               "contrast_medium": {
                 "$type": "color",
-                "$value": "{ob.p.color.blue.300}",
+                "$value": "{ob.p.color.brand.status.info.300}",
                 "$description": "Medium contrast info status foreground. Standard surface."
               },
               "contrast_medium_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.blue.900}",
+                "$value": "{ob.p.color.brand.status.info.900}",
                 "$description": "Medium contrast info status foreground. Inverse surface."
               },
               "contrast_low": {
                 "$type": "color",
-                "$value": "{ob.p.color.blue.400}",
+                "$value": "{ob.p.color.brand.status.info.400}",
                 "$description": "Low contrast info status foreground. Standard surface."
               },
               "contrast_low_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.blue.700}",
+                "$value": "{ob.p.color.brand.status.info.700}",
                 "$description": "Low contrast info status foreground. Inverse surface."
               }
             }
@@ -309,32 +309,32 @@
               },
               "contrast_low": {
                 "$type": "color",
-                "$value": "{ob.p.color.green.700}",
+                "$value": "{ob.p.color.brand.status.resolved.700}",
                 "$description": "Low contrast resolved status background. Standard surface."
               },
               "contrast_low_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.green.400}",
+                "$value": "{ob.p.color.brand.status.resolved.400}",
                 "$description": "Low contrast resolved status background. Inverse surface."
               },
               "contrast_medium": {
                 "$type": "color",
-                "$value": "{ob.p.color.green.800}",
+                "$value": "{ob.p.color.brand.status.resolved.800}",
                 "$description": "Medium contrast resolved status background. Standard surface."
               },
               "contrast_medium_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.green.300}",
+                "$value": "{ob.p.color.brand.status.resolved.300}",
                 "$description": "Medium contrast resolved status background. Inverse surface."
               },
               "contrast_high": {
                 "$type": "color",
-                "$value": "{ob.p.color.green.900}",
+                "$value": "{ob.p.color.brand.status.resolved.900}",
                 "$description": "High contrast resolved status background. Standard surface."
               },
               "contrast_high_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.green.200}",
+                "$value": "{ob.p.color.brand.status.resolved.200}",
                 "$description": "High contrast resolved status background. Inverse surface."
               }
             },
@@ -351,32 +351,32 @@
               },
               "contrast_high": {
                 "$type": "color",
-                "$value": "{ob.p.color.green.200}",
+                "$value": "{ob.p.color.brand.status.resolved.200}",
                 "$description": "High contrast resolved status foreground. Standard surface."
               },
               "contrast_high_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.green.900}",
+                "$value": "{ob.p.color.brand.status.resolved.900}",
                 "$description": "High contrast resolved status foreground. Inverse surface."
               },
               "contrast_medium": {
                 "$type": "color",
-                "$value": "{ob.p.color.green.300}",
+                "$value": "{ob.p.color.brand.status.resolved.300}",
                 "$description": "Medium contrast resolved status foreground. Standard surface."
               },
               "contrast_medium_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.green.800}",
+                "$value": "{ob.p.color.brand.status.resolved.800}",
                 "$description": "Medium contrast resolved status foreground. Inverse surface."
               },
               "contrast_low": {
                 "$type": "color",
-                "$value": "{ob.p.color.green.400}",
+                "$value": "{ob.p.color.brand.status.resolved.400}",
                 "$description": "Low contrast resolved status foreground. Standard surface."
               },
               "contrast_low_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.green.700}",
+                "$value": "{ob.p.color.brand.status.resolved.700}",
                 "$description": "Low contrast resolved status foreground. Inverse surface."
               }
             }
@@ -385,42 +385,42 @@
             "bg": {
               "contrast_highest": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.900}",
+                "$value": "{ob.p.color.brand.status.critical.900}",
                 "$description": "Highest contrast fatal status background. Standard surface."
               },
               "contrast_highest_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.100}",
+                "$value": "{ob.p.color.brand.status.critical.100}",
                 "$description": "Highest contrast fatal status background. Inverse surface."
               },
               "contrast_high": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.800}",
+                "$value": "{ob.p.color.brand.status.critical.800}",
                 "$description": "High contrast fatal status background. Standard surface."
               },
               "contrast_high_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.200}",
+                "$value": "{ob.p.color.brand.status.critical.200}",
                 "$description": "High contrast fatal status background. Inverse surface."
               },
               "contrast_medium": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.700}",
+                "$value": "{ob.p.color.brand.status.critical.700}",
                 "$description": "Medium contrast fatal status background. Standard surface."
               },
               "contrast_medium_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.300}",
+                "$value": "{ob.p.color.brand.status.critical.300}",
                 "$description": "Medium contrast fatal status background. Inverse surface."
               },
               "contrast_low": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.600}",
+                "$value": "{ob.p.color.brand.status.critical.600}",
                 "$description": "Low contrast fatal status background. Standard surface."
               },
               "contrast_low_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.400}",
+                "$value": "{ob.p.color.brand.status.critical.400}",
                 "$description": "Low contrast fatal status background. Inverse surface."
               }
             },
@@ -437,32 +437,32 @@
               },
               "contrast_high": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.100}",
+                "$value": "{ob.p.color.brand.status.critical.100}",
                 "$description": "High contrast fatal status foreground. Standard surface."
               },
               "contrast_high_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.900}",
+                "$value": "{ob.p.color.brand.status.critical.900}",
                 "$description": "High contrast fatal status foreground. Inverse surface."
               },
               "contrast_medium": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.200}",
+                "$value": "{ob.p.color.brand.status.critical.200}",
                 "$description": "Medium contrast fatal status foreground. Standard surface."
               },
               "contrast_medium_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.800}",
+                "$value": "{ob.p.color.brand.status.critical.800}",
                 "$description": "Medium contrast fatal status foreground. Inverse surface."
               },
               "contrast_low": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.300}",
+                "$value": "{ob.p.color.brand.status.critical.300}",
                 "$description": "Low contrast fatal status foreground. Standard surface."
               },
               "contrast_low_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.700}",
+                "$value": "{ob.p.color.brand.status.critical.700}",
                 "$description": "Low contrast fatal status foreground. Inverse surface."
               }
             }
@@ -481,32 +481,32 @@
               },
               "contrast_high": {
                 "$type": "color",
-                "$value": "{ob.p.color.orange.700}",
+                "$value": "{ob.p.color.brand.status.attention.700}",
                 "$description": "High contrast attention status background. Standard surface."
               },
               "contrast_high_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.orange.400}",
+                "$value": "{ob.p.color.brand.status.attention.400}",
                 "$description": "High contrast attention status background. Inverse surface."
               },
               "contrast_medium": {
                 "$type": "color",
-                "$value": "{ob.p.color.orange.800}",
+                "$value": "{ob.p.color.brand.status.attention.800}",
                 "$description": "Medium contrast attention status background. Standard surface."
               },
               "contrast_medium_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.orange.300}",
+                "$value": "{ob.p.color.brand.status.attention.300}",
                 "$description": "Medium contrast attention status background. Inverse surface."
               },
               "contrast_low": {
                 "$type": "color",
-                "$value": "{ob.p.color.orange.900}",
+                "$value": "{ob.p.color.brand.status.attention.900}",
                 "$description": "Low contrast attention status background. Standard surface."
               },
               "contrast_low_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.orange.200}",
+                "$value": "{ob.p.color.brand.status.attention.200}",
                 "$description": "Low contrast attention status background. Inverse surface."
               }
             },
@@ -523,32 +523,32 @@
               },
               "contrast_high": {
                 "$type": "color",
-                "$value": "{ob.p.color.orange.200}",
+                "$value": "{ob.p.color.brand.status.attention.200}",
                 "$description": "High contrast attention status foreground. Standard surface."
               },
               "contrast_high_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.orange.700}",
+                "$value": "{ob.p.color.brand.status.attention.700}",
                 "$description": "High contrast attention status foreground. Inverse surface."
               },
               "contrast_medium": {
                 "$type": "color",
-                "$value": "{ob.p.color.orange.300}",
+                "$value": "{ob.p.color.brand.status.attention.300}",
                 "$description": "Medium contrast attention status foreground. Standard surface."
               },
               "contrast_medium_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.orange.800}",
+                "$value": "{ob.p.color.brand.status.attention.800}",
                 "$description": "Medium contrast attention status foreground. Inverse surface."
               },
               "contrast_low": {
                 "$type": "color",
-                "$value": "{ob.p.color.orange.400}",
+                "$value": "{ob.p.color.brand.status.attention.400}",
                 "$description": "Low contrast attention status foreground. Standard surface."
               },
               "contrast_low_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.orange.900}",
+                "$value": "{ob.p.color.brand.status.attention.900}",
                 "$description": "Low contrast attention status foreground. Inverse surface."
               }
             }
@@ -567,32 +567,32 @@
               },
               "contrast_high": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.700}",
+                "$value": "{ob.p.color.brand.status.critical.700}",
                 "$description": "High contrast critical status background. Standard surface."
               },
               "contrast_high_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.400}",
+                "$value": "{ob.p.color.brand.status.critical.400}",
                 "$description": "High contrast critical status background. Inverse surface."
               },
               "contrast_medium": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.800}",
+                "$value": "{ob.p.color.brand.status.critical.800}",
                 "$description": "Medium contrast critical status background. Standard surface."
               },
               "contrast_medium_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.300}",
+                "$value": "{ob.p.color.brand.status.critical.300}",
                 "$description": "Medium contrast critical status background. Inverse surface."
               },
               "contrast_low": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.900}",
+                "$value": "{ob.p.color.brand.status.critical.900}",
                 "$description": "Low contrast critical status background. Standard surface."
               },
               "contrast_low_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.200}",
+                "$value": "{ob.p.color.brand.status.critical.200}",
                 "$description": "Low contrast critical status background. Inverse surface."
               }
             },
@@ -609,32 +609,32 @@
               },
               "contrast_high": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.100}",
+                "$value": "{ob.p.color.brand.status.critical.100}",
                 "$description": "High contrast critical status foreground. Standard surface."
               },
               "contrast_high_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.900}",
+                "$value": "{ob.p.color.brand.status.critical.900}",
                 "$description": "High contrast critical status foreground. Inverse surface."
               },
               "contrast_medium": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.200}",
+                "$value": "{ob.p.color.brand.status.critical.200}",
                 "$description": "Medium contrast critical status foreground. Standard surface."
               },
               "contrast_medium_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.800}",
+                "$value": "{ob.p.color.brand.status.critical.800}",
                 "$description": "Medium contrast critical status foreground. Inverse surface."
               },
               "contrast_low": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.300}",
+                "$value": "{ob.p.color.brand.status.critical.300}",
                 "$description": "Low contrast critical status foreground. Standard surface."
               },
               "contrast_low_inverse": {
                 "$type": "color",
-                "$value": "{ob.p.color.red.700}",
+                "$value": "{ob.p.color.brand.status.critical.700}",
                 "$description": "Low contrast critical status foreground. Inverse surface."
               }
             }

@@ -63,6 +63,222 @@
             "$type": "color",
             "$value": "{ob.p.color.basic.federal_red}",
             "$description": "Role: Exclusive. Brand accent for the selected navigation line. CH_app: federal red."
+          },
+          "status": {
+            "token_family_docs": {
+              "description": {
+                "$type": "other",
+                "$value": "Status ramps of the brand mode CH_app for info, resolved, attention and critical (fatal uses critical). The S1 status colors point here. Each step has the same white contrast as the Oblique status ramp step of the same number."
+              }
+            },
+            "info": {
+              "50": {
+                "$type": "color",
+                "$value": "{ob.p.color.blue.50}",
+                "$description": "Role: Exclusive. Status ramp info, step 50. CH_app: blue 50."
+              },
+              "100": {
+                "$type": "color",
+                "$value": "{ob.p.color.blue.100}",
+                "$description": "Role: Exclusive. Status ramp info, step 100. CH_app: blue 100."
+              },
+              "200": {
+                "$type": "color",
+                "$value": "{ob.p.color.blue.200}",
+                "$description": "Role: Exclusive. Status ramp info, step 200. CH_app: blue 200."
+              },
+              "300": {
+                "$type": "color",
+                "$value": "{ob.p.color.blue.300}",
+                "$description": "Role: Exclusive. Status ramp info, step 300. CH_app: blue 300."
+              },
+              "400": {
+                "$type": "color",
+                "$value": "{ob.p.color.blue.400}",
+                "$description": "Role: Exclusive. Status ramp info, step 400. CH_app: blue 400."
+              },
+              "500": {
+                "$type": "color",
+                "$value": "{ob.p.color.blue.500}",
+                "$description": "Role: Exclusive. Status ramp info, step 500. CH_app: blue 500."
+              },
+              "600": {
+                "$type": "color",
+                "$value": "{ob.p.color.blue.600}",
+                "$description": "Role: Exclusive. Status ramp info, step 600. CH_app: blue 600."
+              },
+              "700": {
+                "$type": "color",
+                "$value": "{ob.p.color.blue.700}",
+                "$description": "Role: Exclusive. Status ramp info, step 700. CH_app: blue 700."
+              },
+              "800": {
+                "$type": "color",
+                "$value": "{ob.p.color.blue.800}",
+                "$description": "Role: Exclusive. Status ramp info, step 800. CH_app: blue 800."
+              },
+              "900": {
+                "$type": "color",
+                "$value": "{ob.p.color.blue.900}",
+                "$description": "Role: Exclusive. Status ramp info, step 900. CH_app: blue 900."
+              }
+            },
+            "resolved": {
+              "50": {
+                "$type": "color",
+                "$value": "{ob.p.color.green.50}",
+                "$description": "Role: Exclusive. Status ramp resolved, step 50. CH_app: green 50."
+              },
+              "100": {
+                "$type": "color",
+                "$value": "{ob.p.color.green.100}",
+                "$description": "Role: Exclusive. Status ramp resolved, step 100. CH_app: green 100."
+              },
+              "200": {
+                "$type": "color",
+                "$value": "{ob.p.color.green.200}",
+                "$description": "Role: Exclusive. Status ramp resolved, step 200. CH_app: green 200."
+              },
+              "300": {
+                "$type": "color",
+                "$value": "{ob.p.color.green.300}",
+                "$description": "Role: Exclusive. Status ramp resolved, step 300. CH_app: green 300."
+              },
+              "400": {
+                "$type": "color",
+                "$value": "{ob.p.color.green.400}",
+                "$description": "Role: Exclusive. Status ramp resolved, step 400. CH_app: green 400."
+              },
+              "500": {
+                "$type": "color",
+                "$value": "{ob.p.color.green.500}",
+                "$description": "Role: Exclusive. Status ramp resolved, step 500. CH_app: green 500."
+              },
+              "600": {
+                "$type": "color",
+                "$value": "{ob.p.color.green.600}",
+                "$description": "Role: Exclusive. Status ramp resolved, step 600. CH_app: green 600."
+              },
+              "700": {
+                "$type": "color",
+                "$value": "{ob.p.color.green.700}",
+                "$description": "Role: Exclusive. Status ramp resolved, step 700. CH_app: green 700."
+              },
+              "800": {
+                "$type": "color",
+                "$value": "{ob.p.color.green.800}",
+                "$description": "Role: Exclusive. Status ramp resolved, step 800. CH_app: green 800."
+              },
+              "900": {
+                "$type": "color",
+                "$value": "{ob.p.color.green.900}",
+                "$description": "Role: Exclusive. Status ramp resolved, step 900. CH_app: green 900."
+              }
+            },
+            "attention": {
+              "50": {
+                "$type": "color",
+                "$value": "{ob.p.color.orange.50}",
+                "$description": "Role: Exclusive. Status ramp attention, step 50. CH_app: orange 50."
+              },
+              "100": {
+                "$type": "color",
+                "$value": "{ob.p.color.orange.100}",
+                "$description": "Role: Exclusive. Status ramp attention, step 100. CH_app: orange 100."
+              },
+              "200": {
+                "$type": "color",
+                "$value": "{ob.p.color.orange.200}",
+                "$description": "Role: Exclusive. Status ramp attention, step 200. CH_app: orange 200."
+              },
+              "300": {
+                "$type": "color",
+                "$value": "{ob.p.color.orange.300}",
+                "$description": "Role: Exclusive. Status ramp attention, step 300. CH_app: orange 300."
+              },
+              "400": {
+                "$type": "color",
+                "$value": "{ob.p.color.orange.400}",
+                "$description": "Role: Exclusive. Status ramp attention, step 400. CH_app: orange 400."
+              },
+              "500": {
+                "$type": "color",
+                "$value": "{ob.p.color.orange.500}",
+                "$description": "Role: Exclusive. Status ramp attention, step 500. CH_app: orange 500."
+              },
+              "600": {
+                "$type": "color",
+                "$value": "{ob.p.color.orange.600}",
+                "$description": "Role: Exclusive. Status ramp attention, step 600. CH_app: orange 600."
+              },
+              "700": {
+                "$type": "color",
+                "$value": "{ob.p.color.orange.700}",
+                "$description": "Role: Exclusive. Status ramp attention, step 700. CH_app: orange 700."
+              },
+              "800": {
+                "$type": "color",
+                "$value": "{ob.p.color.orange.800}",
+                "$description": "Role: Exclusive. Status ramp attention, step 800. CH_app: orange 800."
+              },
+              "900": {
+                "$type": "color",
+                "$value": "{ob.p.color.orange.900}",
+                "$description": "Role: Exclusive. Status ramp attention, step 900. CH_app: orange 900."
+              }
+            },
+            "critical": {
+              "50": {
+                "$type": "color",
+                "$value": "{ob.p.color.red.50}",
+                "$description": "Role: Exclusive. Status ramp critical, step 50. CH_app: red 50."
+              },
+              "100": {
+                "$type": "color",
+                "$value": "{ob.p.color.red.100}",
+                "$description": "Role: Exclusive. Status ramp critical, step 100. CH_app: red 100."
+              },
+              "200": {
+                "$type": "color",
+                "$value": "{ob.p.color.red.200}",
+                "$description": "Role: Exclusive. Status ramp critical, step 200. CH_app: red 200."
+              },
+              "300": {
+                "$type": "color",
+                "$value": "{ob.p.color.red.300}",
+                "$description": "Role: Exclusive. Status ramp critical, step 300. CH_app: red 300."
+              },
+              "400": {
+                "$type": "color",
+                "$value": "{ob.p.color.red.400}",
+                "$description": "Role: Exclusive. Status ramp critical, step 400. CH_app: red 400."
+              },
+              "500": {
+                "$type": "color",
+                "$value": "{ob.p.color.red.500}",
+                "$description": "Role: Exclusive. Status ramp critical, step 500. CH_app: red 500."
+              },
+              "600": {
+                "$type": "color",
+                "$value": "{ob.p.color.red.600}",
+                "$description": "Role: Exclusive. Status ramp critical, step 600. CH_app: red 600."
+              },
+              "700": {
+                "$type": "color",
+                "$value": "{ob.p.color.red.700}",
+                "$description": "Role: Exclusive. Status ramp critical, step 700. CH_app: red 700."
+              },
+              "800": {
+                "$type": "color",
+                "$value": "{ob.p.color.red.800}",
+                "$description": "Role: Exclusive. Status ramp critical, step 800. CH_app: red 800."
+              },
+              "900": {
+                "$type": "color",
+                "$value": "{ob.p.color.red.900}",
+                "$description": "Role: Exclusive. Status ramp critical, step 900. CH_app: red 900."
+              }
+            }
           }
         }
       },
