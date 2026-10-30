@@ -45,6 +45,16 @@
 									"$type": "color",
 									"$value": "#000000",
 									"$description": "Role: Exclusive. Secondary button background, active, light. ZH: zh.ch."
+								},
+								"hover_level_2": {
+									"$type": "color",
+									"$value": "#00000033",
+									"$description": "Role: Exclusive. Secondary button background on level_2, hover, light. ZH: zh.ch, same as level_0."
+								},
+								"active_level_2": {
+									"$type": "color",
+									"$value": "#000000",
+									"$description": "Role: Exclusive. Secondary button background on level_2, active, light. ZH: zh.ch, same as level_0."
 								}
 							},
 							"fg": {

@@ -85,6 +85,36 @@
 										}
 									},
 									"$description": "Role: Exclusive. Secondary button background, active, light. CH_app: brand ramp."
+								},
+								"hover_level_2": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.white}",
+									"$extensions": {
+										"studio.tokens": {
+											"modify": {
+												"type": "alpha",
+												"value": "{ob.h.button.state_layer.intense.hover}",
+												"space": "srgb",
+												"color": "{ob.p.color.cobalt.900}"
+											}
+										}
+									},
+									"$description": "Role: Exclusive. Secondary button background on level_2, hover, light. CH_app: white overlay."
+								},
+								"active_level_2": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.white}",
+									"$extensions": {
+										"studio.tokens": {
+											"modify": {
+												"type": "alpha",
+												"value": "{ob.h.button.state_layer.intense.active}",
+												"space": "srgb",
+												"color": "{ob.p.color.cobalt.900}"
+											}
+										}
+									},
+									"$description": "Role: Exclusive. Secondary button background on level_2, active, light. CH_app: white overlay."
 								}
 							},
 							"fg": {

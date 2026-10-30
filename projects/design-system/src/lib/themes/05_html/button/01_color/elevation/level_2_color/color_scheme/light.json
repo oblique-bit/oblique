@@ -62,17 +62,7 @@
 							"bg": {
 								"hover_level_2": {
 									"$type": "color",
-									"$value": "{ob.p.color.basic.white}",
-									"$extensions": {
-										"studio.tokens": {
-											"modify": {
-												"type": "alpha",
-												"value": "{ob.h.button.state_layer.intense.hover}",
-												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
-											}
-										}
-									},
+									"$value": "{ob.h.button.color.brand.secondary.bg.hover_level_2}",
 									"$description": "Secondary button background on level_2, hover state, high emphasis, light mode."
 								},
 								"hover_level_2_inverse": {
@@ -92,17 +82,7 @@
 								},
 								"active_level_2": {
 									"$type": "color",
-									"$value": "{ob.p.color.basic.white}",
-									"$extensions": {
-										"studio.tokens": {
-											"modify": {
-												"type": "alpha",
-												"value": "{ob.h.button.state_layer.intense.active}",
-												"space": "srgb",
-												"color": "{ob.p.color.cobalt.900}"
-											}
-										}
-									},
+									"$value": "{ob.h.button.color.brand.secondary.bg.active_level_2}",
 									"$description": "Secondary button background on level_2, active state, high emphasis, light mode."
 								},
 								"active_level_2_inverse": {

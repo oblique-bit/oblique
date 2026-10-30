@@ -20,7 +20,9 @@
 	--ob-h-button-color-brand-primary-bg-hover: var(--ob-p-color-brand-600);
 	--ob-h-button-color-brand-primary-bg-rest: var(--ob-p-color-brand-600);
 	--ob-h-button-color-brand-secondary-bg-active: var(--ob-p-color-brand-500);
+	--ob-h-button-color-brand-secondary-bg-active_level_2: var(--ob-p-color-basic-white);
 	--ob-h-button-color-brand-secondary-bg-hover: var(--ob-p-color-brand-500);
+	--ob-h-button-color-brand-secondary-bg-hover_level_2: var(--ob-p-color-basic-white);
 	--ob-h-button-color-brand-secondary-bg-rest: var(--ob-p-color-basic-transparent);
 	--ob-h-button-color-brand-secondary-border-active: var(--ob-p-color-brand-800);
 	--ob-h-button-color-brand-secondary-border-hover: var(--ob-p-color-brand-800);
@@ -49,11 +51,11 @@
 	--ob-h-button-color-emphasis_high-primary-fg-rest_inverse: var(--ob-p-color-basic-white);
 	--ob-h-button-color-emphasis_high-secondary-bg-active: var(--ob-h-button-color-brand-secondary-bg-active);
 	--ob-h-button-color-emphasis_high-secondary-bg-active_inverse: var(--ob-p-color-brand-500);
-	--ob-h-button-color-emphasis_high-secondary-bg-active_level_2: var(--ob-p-color-basic-white);
+	--ob-h-button-color-emphasis_high-secondary-bg-active_level_2: var(--ob-h-button-color-brand-secondary-bg-active_level_2);
 	--ob-h-button-color-emphasis_high-secondary-bg-active_level_2_inverse: var(--ob-p-color-brand-500);
 	--ob-h-button-color-emphasis_high-secondary-bg-hover: var(--ob-h-button-color-brand-secondary-bg-hover);
 	--ob-h-button-color-emphasis_high-secondary-bg-hover_inverse: var(--ob-p-color-brand-500);
-	--ob-h-button-color-emphasis_high-secondary-bg-hover_level_2: var(--ob-p-color-basic-white);
+	--ob-h-button-color-emphasis_high-secondary-bg-hover_level_2: var(--ob-h-button-color-brand-secondary-bg-hover_level_2);
 	--ob-h-button-color-emphasis_high-secondary-bg-hover_level_2_inverse: var(--ob-p-color-brand-500);
 	--ob-h-button-color-emphasis_high-secondary-bg-rest: var(--ob-h-button-color-brand-secondary-bg-rest);
 	--ob-h-button-color-emphasis_high-secondary-bg-rest_inverse: var(--ob-p-color-basic-transparent);
@@ -1475,7 +1477,9 @@
 		--ob-h-button-color-brand-primary-bg-hover: #333333;
 		--ob-h-button-color-brand-primary-bg-rest: #000000;
 		--ob-h-button-color-brand-secondary-bg-active: #000000;
+		--ob-h-button-color-brand-secondary-bg-active_level_2: #000000;
 		--ob-h-button-color-brand-secondary-bg-hover: #00000033;
+		--ob-h-button-color-brand-secondary-bg-hover_level_2: #00000033;
 		--ob-h-button-color-brand-secondary-bg-rest: #0000001a;
 		--ob-h-button-color-brand-secondary-border-active: var(--ob-p-color-basic-transparent);
 		--ob-h-button-color-brand-secondary-border-hover: var(--ob-p-color-basic-transparent);
