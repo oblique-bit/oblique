@@ -1383,33 +1383,33 @@
           "bg": {
             "enabled": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.bg.contrast_high}",
-              "$description": "Background for Navigation. Enabled state: Use for the surface of a navigation item in its default state."
+              "$value": "{ob.s.color.neutral.no_color}",
+              "$description": "Background for Navigation. Enabled state: Transparent. The page surface shows through a navigation item at rest."
             },
             "hover": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.bg.contrast_medium}",
+              "$value": "{ob.s1.color.neutral.bg.contrast_high}",
               "$description": "Background for Navigation. Hover state: Use for the surface of a navigation item when a pointer enters it."
             },
             "focus": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.bg.contrast_medium}",
-              "$description": "Background for Navigation. Focus state: Use for the surface of a navigation item that receives keyboard focus."
+              "$value": "{ob.s.color.neutral.no_color}",
+              "$description": "Background for Navigation. Focus state: Transparent. Keyboard focus shows the indicator line and the focus ring only."
             },
             "pressed": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.bg.contrast_high}",
+              "$value": "{ob.s1.color.neutral.bg.contrast_medium}",
               "$description": "Background for Navigation. Pressed state: Use for the surface of a navigation item during an active click or tap."
             },
             "selected": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.bg.contrast_low}",
-              "$description": "Background for Navigation. Selected state: Use for the surface of the currently active navigation item."
+              "$value": "{ob.s.color.neutral.no_color}",
+              "$description": "Background for Navigation. Selected state: Transparent. The current item is marked by the indicator line only."
             },
             "disabled": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.bg_disabled.opacity}",
-              "$description": "Background for Navigation. Disabled state: Use for the surface of navigation items not available for interaction."
+              "$value": "{ob.s.color.neutral.no_color}",
+              "$description": "Background for Navigation. Disabled state: Transparent. Unavailable items differ by their foreground only."
             }
           },
           "border": {
@@ -1420,13 +1420,13 @@
             },
             "hover": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.border.subtle}",
-              "$description": "Border for Navigation. Hover state: Subtle indicator line on navigation items when a pointer enters."
+              "$value": "{ob.s1.color.navigation.border.brand}",
+              "$description": "Border for Navigation. Hover state: Brand indicator line on navigation items when a pointer enters."
             },
             "focus": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.border.subtle}",
-              "$description": "Border for Navigation. Focus state: Subtle indicator line on navigation items that receive keyboard focus."
+              "$value": "{ob.s1.color.navigation.border.brand}",
+              "$description": "Border for Navigation. Focus state: Brand indicator line on navigation items that receive keyboard focus."
             },
             "pressed": {
               "$type": "color",
@@ -1440,8 +1440,8 @@
             },
             "disabled": {
               "$type": "color",
-              "$value": "{ob.s1.color.navigation.border.disabled}",
-              "$description": "Border for Navigation. Disabled state: Muted indicator line on navigation items not available for interaction."
+              "$value": "{ob.s.color.neutral.no_color}",
+              "$description": "Border for Navigation. Disabled state: Transparent. No indicator line on navigation items not available for interaction."
             }
           }
         }
