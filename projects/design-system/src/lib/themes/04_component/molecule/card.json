@@ -115,32 +115,32 @@
           },
           "bg_hover": {
             "$type": "color",
-            "$value": "{ob.s.color.neutral.bg.contrast_lowest}",
+            "$value": "{ob.s.color.neutral.bg.contrast_high}",
             "$description": "Background color of the card on hover."
           },
           "bg_hover_inverse": {
             "$type": "color",
-            "$value": "{ob.s.color.neutral.bg.contrast_lowest_inverse}",
+            "$value": "{ob.s.color.neutral.bg.contrast_high_inverse}",
             "$description": "Background color of the card on hover on a flipped surface."
           },
           "bg_active": {
             "$type": "color",
-            "$value": "{ob.s.color.neutral.bg.contrast_low}",
+            "$value": "{ob.s.color.neutral.bg.contrast_medium}",
             "$description": "Background color of the card while it is pressed."
           },
           "bg_active_inverse": {
             "$type": "color",
-            "$value": "{ob.s.color.neutral.bg.contrast_low_inverse}",
+            "$value": "{ob.s.color.neutral.bg.contrast_medium_inverse}",
             "$description": "Background color of the card while it is pressed on a flipped surface."
           },
           "bg_disabled": {
             "$type": "color",
-            "$value": "{ob.s.color.neutral.bg.contrast_lowest}",
+            "$value": "{ob.s.color.neutral.bg.contrast_medium}",
             "$description": "Background color of a disabled card."
           },
           "bg_disabled_inverse": {
             "$type": "color",
-            "$value": "{ob.s.color.neutral.bg.contrast_lowest_inverse}",
+            "$value": "{ob.s.color.neutral.bg.contrast_medium_inverse}",
             "$description": "Background color of a disabled card on a flipped surface."
           },
           "border_hover": {
@@ -195,12 +195,12 @@
           },
           "fg_disabled": {
             "$type": "color",
-            "$value": "{ob.s.color.neutral.fg.contrast_low}",
+            "$value": "{ob.s.color.neutral.fg.contrast_lowest}",
             "$description": "Text color of a disabled card."
           },
           "fg_disabled_inverse": {
             "$type": "color",
-            "$value": "{ob.s.color.neutral.fg.contrast_low_inverse}",
+            "$value": "{ob.s.color.neutral.fg.contrast_lowest_inverse}",
             "$description": "Text color of a disabled card on a flipped surface."
           }
         },
