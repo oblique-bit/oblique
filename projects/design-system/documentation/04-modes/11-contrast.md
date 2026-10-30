@@ -12,7 +12,7 @@ The **contrast** mode collection has three modes:
 |---|---|---|
 | `low` | applications used for many hours | every surface moves one elevation level toward the text |
 | `medium` | the base, the colors as they are | nothing |
-| `high` | people with low vision | every surface moves one elevation level away from the text |
+| `high` | people with low vision | every surface moves one elevation level away from the text, neutral text is black (white in dark mode) |
 
 `medium` is the base mode and the first-paint default. It is the first theme of the group in `$themes.json`, so it is also the first and default mode of the collection in Figma.
 
@@ -49,12 +49,25 @@ All values point to `ob.s1.color.neutral.bg.*`. The `_inverse` tokens point to t
 
 In light mode `level_0` in `high` stays white, because `level_minus_1` is white in light mode. In dark mode it is `cobalt.900`.
 
+### **Neutral Text**
+
+S3 also holds the neutral foreground levels `contrast_low`, `contrast_medium`, `contrast_high` and `contrast_highest`, each with `_inverse`. The `ob.s.color.neutral.fg.*` tokens of these levels point to S3.
+
+| S3 token | `low` | `medium` | `high` |
+|---|---|---|---|
+| `contrast_low` … `contrast_highest` | the same level of S1 | the same level of S1 | `ob.s1.color.neutral.fg.contrast_max` |
+| the same names with `_inverse` | the same level of S1 | the same level of S1 | `ob.s1.color.neutral.fg.contrast_max_inverse` |
+
+`contrast_max` is black (`ob.p.color.basic.black`) in light mode and white in dark mode; `contrast_max_inverse` is the opposite. `contrast_lowest` is not in S3 and does not change, so disabled text does not turn black. In `high` all neutral text has the same color: the difference between primary and secondary text remains only in size and weight.
+
 ### **Not Built Yet**
 
-- `high`: neutral text in black (white in dark mode, `ob.p.color.basic.black` exists), link, error text and borders mixed toward black or white.
+- `high`: link, error text and borders mixed toward black or white, with values per brand.
+- The Button, the header and the link take their colors from the primitives and do not follow the contrast mode yet.
 - The Button on a moved surface keeps the colors of its own elevation level.
 
 ## **Known Limits**
 
 - In `low`, `level_1` and `level_2` have the same color.
 - The CSS build writes one block per mode. A container with dark mode and `high` gets the `high` values of light mode. The same limit exists for dark mode and `low` emphasis.
+- In CSS, a token that points to another token (for example the heading colors, which point to `ob.s.color.neutral.fg.*`) is computed where it is declared. With the class on a container inside the page, these tokens keep the `medium` value; with the class on the root element they follow.

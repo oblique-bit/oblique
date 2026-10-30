@@ -198,6 +198,7 @@ Design tokens use compound units (multi-word identifiers) with underscores for c
 - `_inverse` (suffix of the inverse variant, e.g. `contrast_high_inverse`)
 - `emphasis_high` / `emphasis_low`
 - `contrast_highest` / `contrast_high` / `contrast_medium` / `contrast_low`
+- `contrast_max` (beyond `contrast_highest`: black in light mode, white in dark mode; used by the contrast mode `high`)
 
 #### **State Compounds**
 - `bg_hover` / `bg_focus` / `bg_active`

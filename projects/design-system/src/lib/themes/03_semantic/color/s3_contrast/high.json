@@ -44,6 +44,48 @@
               "$value": "{ob.s1.color.neutral.bg.contrast_high_inverse}",
               "$description": "Role: Surface. Inverse neutral background of level_2 at high contrast, the level_1 colour. Inverse surface."
             }
+          },
+          "fg": {
+            "contrast_low": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.fg.contrast_max}",
+              "$description": "Role: Text. Neutral foreground contrast_low at high contrast, black in light mode, white in dark mode. Standard surface."
+            },
+            "contrast_low_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.fg.contrast_max_inverse}",
+              "$description": "Role: Text. Neutral foreground contrast_low at high contrast, black in light mode, white in dark mode. Inverse surface."
+            },
+            "contrast_medium": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.fg.contrast_max}",
+              "$description": "Role: Text. Neutral foreground contrast_medium at high contrast, black in light mode, white in dark mode. Standard surface."
+            },
+            "contrast_medium_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.fg.contrast_max_inverse}",
+              "$description": "Role: Text. Neutral foreground contrast_medium at high contrast, black in light mode, white in dark mode. Inverse surface."
+            },
+            "contrast_high": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.fg.contrast_max}",
+              "$description": "Role: Text. Neutral foreground contrast_high at high contrast, black in light mode, white in dark mode. Standard surface."
+            },
+            "contrast_high_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.fg.contrast_max_inverse}",
+              "$description": "Role: Text. Neutral foreground contrast_high at high contrast, black in light mode, white in dark mode. Inverse surface."
+            },
+            "contrast_highest": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.fg.contrast_max}",
+              "$description": "Role: Text. Neutral foreground contrast_highest at high contrast, black in light mode, white in dark mode. Standard surface."
+            },
+            "contrast_highest_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.fg.contrast_max_inverse}",
+              "$description": "Role: Text. Neutral foreground contrast_highest at high contrast, black in light mode, white in dark mode. Inverse surface."
+            }
           }
         }
       }

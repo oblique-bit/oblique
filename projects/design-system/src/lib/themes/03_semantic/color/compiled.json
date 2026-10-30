@@ -57,42 +57,42 @@
             },
             "contrast_medium": {
               "$type": "color",
-              "$value": "{ob.s1.color.neutral.fg.contrast_medium}",
+              "$value": "{ob.s3.color.neutral.fg.contrast_medium}",
               "$description": "Foreground for Neutral. Medium contrast: Use for secondary labels and supporting content."
             },
             "contrast_medium_inverse": {
               "$type": "color",
-              "$value": "{ob.s1.color.neutral.fg.contrast_medium_inverse}",
+              "$value": "{ob.s3.color.neutral.fg.contrast_medium_inverse}",
               "$description": "Foreground for Neutral. Medium contrast: Use for secondary labels and supporting content."
             },
             "contrast_low": {
               "$type": "color",
-              "$value": "{ob.s1.color.neutral.fg.contrast_low}",
+              "$value": "{ob.s3.color.neutral.fg.contrast_low}",
               "$description": "Foreground for Neutral. Low contrast: Use for supplementary or de-emphasized text; avoid where readable body text is needed."
             },
             "contrast_low_inverse": {
               "$type": "color",
-              "$value": "{ob.s1.color.neutral.fg.contrast_low_inverse}",
+              "$value": "{ob.s3.color.neutral.fg.contrast_low_inverse}",
               "$description": "Foreground for Neutral. Low contrast: Use for supplementary or de-emphasized text; avoid where readable body text is needed."
             },
             "contrast_high": {
               "$type": "color",
-              "$value": "{ob.s1.color.neutral.fg.contrast_high}",
+              "$value": "{ob.s3.color.neutral.fg.contrast_high}",
               "$description": "Foreground for Neutral. High contrast: Use for body text, primary labels, and standard readable content."
             },
             "contrast_high_inverse": {
               "$type": "color",
-              "$value": "{ob.s1.color.neutral.fg.contrast_high_inverse}",
+              "$value": "{ob.s3.color.neutral.fg.contrast_high_inverse}",
               "$description": "Foreground for Neutral. High contrast: Use for body text, primary labels, and standard readable content."
             },
             "contrast_highest": {
               "$type": "color",
-              "$value": "{ob.s1.color.neutral.fg.contrast_highest}",
+              "$value": "{ob.s3.color.neutral.fg.contrast_highest}",
               "$description": "Foreground for Neutral. Highest contrast: Use for headings, primary content, and maximum legibility."
             },
             "contrast_highest_inverse": {
               "$type": "color",
-              "$value": "{ob.s1.color.neutral.fg.contrast_highest_inverse}",
+              "$value": "{ob.s3.color.neutral.fg.contrast_highest_inverse}",
               "$description": "Foreground for Neutral. Highest contrast: Use for headings, primary content, and maximum legibility."
             }
           },

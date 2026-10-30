@@ -44,6 +44,48 @@
               "$value": "{ob.s1.color.neutral.bg.contrast_medium_inverse}",
               "$description": "Role: Surface. Inverse neutral background of level_2 at low contrast, no higher level, stays. Inverse surface."
             }
+          },
+          "fg": {
+            "contrast_low": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.fg.contrast_low}",
+              "$description": "Role: Text. Neutral foreground contrast_low at low contrast, as before. Standard surface."
+            },
+            "contrast_low_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.fg.contrast_low_inverse}",
+              "$description": "Role: Text. Neutral foreground contrast_low at low contrast, as before. Inverse surface."
+            },
+            "contrast_medium": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.fg.contrast_medium}",
+              "$description": "Role: Text. Neutral foreground contrast_medium at low contrast, as before. Standard surface."
+            },
+            "contrast_medium_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.fg.contrast_medium_inverse}",
+              "$description": "Role: Text. Neutral foreground contrast_medium at low contrast, as before. Inverse surface."
+            },
+            "contrast_high": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.fg.contrast_high}",
+              "$description": "Role: Text. Neutral foreground contrast_high at low contrast, as before. Standard surface."
+            },
+            "contrast_high_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.fg.contrast_high_inverse}",
+              "$description": "Role: Text. Neutral foreground contrast_high at low contrast, as before. Inverse surface."
+            },
+            "contrast_highest": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.fg.contrast_highest}",
+              "$description": "Role: Text. Neutral foreground contrast_highest at low contrast, as before. Standard surface."
+            },
+            "contrast_highest_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.fg.contrast_highest_inverse}",
+              "$description": "Role: Text. Neutral foreground contrast_highest at low contrast, as before. Inverse surface."
+            }
           }
         }
       }

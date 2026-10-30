@@ -117,6 +117,16 @@
               "$type": "color",
               "$value": "{ob.p.color.brand.neutral_dark.900}",
               "$description": "Highest contrast neutral foreground for text and icons. Inverse surface."
+            },
+            "contrast_max": {
+              "$type": "color",
+              "$value": "{ob.p.color.basic.white}",
+              "$description": "Maximum contrast neutral foreground for text and icons, for the high contrast mode. Standard surface."
+            },
+            "contrast_max_inverse": {
+              "$type": "color",
+              "$value": "{ob.p.color.basic.black}",
+              "$description": "Maximum contrast neutral foreground for text and icons, for the high contrast mode. Inverse surface."
             }
           },
           "border": {
