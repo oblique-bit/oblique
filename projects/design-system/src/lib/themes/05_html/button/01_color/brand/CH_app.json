@@ -369,6 +369,27 @@
 									"$description": "Role: Exclusive. Tertiary button label, active, on inverted surfaces. CH_app: same as secondary."
 								}
 							}
+						},
+						"emphasis_low": {
+							"secondary": {
+								"fg": {
+									"rest_inverse": {
+										"$type": "color",
+										"$value": "{ob.p.color.brand.neutral.100}",
+										"$description": "Role: Exclusive. Low emphasis secondary and tertiary label, rest, on inverted surfaces. CH_app: neutral 100."
+									},
+									"hover_inverse": {
+										"$type": "color",
+										"$value": "{ob.p.color.brand.neutral.100}",
+										"$description": "Role: Exclusive. Low emphasis secondary and tertiary label, hover, on inverted surfaces. CH_app: neutral 100."
+									},
+									"active_inverse": {
+										"$type": "color",
+										"$value": "{ob.p.color.brand.neutral.100}",
+										"$description": "Role: Exclusive. Low emphasis secondary and tertiary label, active, on inverted surfaces. CH_app: neutral 100."
+									}
+								}
+							}
 						}
 					}
 				}

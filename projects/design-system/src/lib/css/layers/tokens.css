@@ -16,6 +16,9 @@
 	--ob-h-body-strong-paragraph_spacing: var(--ob-h-typography-context-body-paragraph_spacing);
 	--ob-h-button-border_radius: var(--ob-s-border_radius-md);
 	--ob-h-button-border_width: var(--ob-s-border_width-xs);
+	--ob-h-button-color-brand-emphasis_low-secondary-fg-active_inverse: var(--ob-p-color-brand-neutral-100);
+	--ob-h-button-color-brand-emphasis_low-secondary-fg-hover_inverse: var(--ob-p-color-brand-neutral-100);
+	--ob-h-button-color-brand-emphasis_low-secondary-fg-rest_inverse: var(--ob-p-color-brand-neutral-100);
 	--ob-h-button-color-brand-primary-bg-active: var(--ob-p-color-brand-600);
 	--ob-h-button-color-brand-primary-bg-active_inverse: var(--ob-p-color-brand-600);
 	--ob-h-button-color-brand-primary-bg-hover: var(--ob-p-color-brand-600);
@@ -141,11 +144,11 @@
 	--ob-h-button-color-emphasis_low-secondary-border-rest: var(--ob-p-color-brand-neutral-700);
 	--ob-h-button-color-emphasis_low-secondary-border-rest_inverse: var(--ob-p-color-white_alpha-700);
 	--ob-h-button-color-emphasis_low-secondary-fg-active: var(--ob-p-color-brand-neutral-700);
-	--ob-h-button-color-emphasis_low-secondary-fg-active_inverse: var(--ob-p-color-brand-neutral-100);
+	--ob-h-button-color-emphasis_low-secondary-fg-active_inverse: var(--ob-h-button-color-brand-emphasis_low-secondary-fg-active_inverse);
 	--ob-h-button-color-emphasis_low-secondary-fg-hover: var(--ob-p-color-brand-neutral-700);
-	--ob-h-button-color-emphasis_low-secondary-fg-hover_inverse: var(--ob-p-color-brand-neutral-100);
+	--ob-h-button-color-emphasis_low-secondary-fg-hover_inverse: var(--ob-h-button-color-brand-emphasis_low-secondary-fg-hover_inverse);
 	--ob-h-button-color-emphasis_low-secondary-fg-rest: var(--ob-p-color-brand-neutral-700);
-	--ob-h-button-color-emphasis_low-secondary-fg-rest_inverse: var(--ob-p-color-brand-neutral-100);
+	--ob-h-button-color-emphasis_low-secondary-fg-rest_inverse: var(--ob-h-button-color-brand-emphasis_low-secondary-fg-rest_inverse);
 	--ob-h-button-color-emphasis_low-token_family_docs-description: Button state colors, low emphasis branch, light mode: rest, hover and active for primary, secondary and the border of secondary. Tertiary reuses secondary. Hover and active are made with color modifiers (mix, alpha). Each color has an inversion pair: the plain name for the light surfaces, the name with _inverse for inverted surfaces (it holds the dark mode colors).;
 	--ob-h-button-color-primary-bg-active: var(--ob-h-button-color-emphasis_high-primary-bg-active);
 	--ob-h-button-color-primary-bg-active_inverse: var(--ob-h-button-color-emphasis_high-primary-bg-active_inverse);
@@ -1539,6 +1542,9 @@
 	}
 
 	.ob-brand-zh {
+		--ob-h-button-color-brand-emphasis_low-secondary-fg-active_inverse: var(--ob-p-color-basic-white);
+		--ob-h-button-color-brand-emphasis_low-secondary-fg-hover_inverse: var(--ob-p-color-basic-white);
+		--ob-h-button-color-brand-emphasis_low-secondary-fg-rest_inverse: var(--ob-p-color-basic-white);
 		--ob-h-button-color-brand-primary-bg-active: #333333;
 		--ob-h-button-color-brand-primary-bg-active_inverse: #ffffffb3;
 		--ob-h-button-color-brand-primary-bg-hover: #333333;
@@ -2100,6 +2106,9 @@
 	}
 
 	.ob-brand-fr {
+		--ob-h-button-color-brand-emphasis_low-secondary-fg-active_inverse: var(--ob-p-color-basic-white);
+		--ob-h-button-color-brand-emphasis_low-secondary-fg-hover_inverse: var(--ob-p-color-basic-white);
+		--ob-h-button-color-brand-emphasis_low-secondary-fg-rest_inverse: var(--ob-p-color-basic-white);
 		--ob-h-button-color-brand-primary-bg-active_inverse: rgb(67.059% 85.098% 88.039%);
 		--ob-h-button-color-brand-primary-bg-hover_inverse: rgb(57.176% 80.627% 84.451%);
 		--ob-h-button-color-brand-primary-bg-rest_inverse: #57b3c2;

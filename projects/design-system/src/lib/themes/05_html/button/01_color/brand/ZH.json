@@ -269,6 +269,27 @@
 									"$description": "Role: Exclusive. Tertiary button label, active, on inverted surfaces. ZH: zh.ch plain text button."
 								}
 							}
+						},
+						"emphasis_low": {
+							"secondary": {
+								"fg": {
+									"rest_inverse": {
+										"$type": "color",
+										"$value": "{ob.p.color.basic.white}",
+										"$description": "Role: Exclusive. Low emphasis secondary and tertiary label, rest, on inverted surfaces. ZH: white, as zh.ch icons and labels on blue and dark backgrounds."
+									},
+									"hover_inverse": {
+										"$type": "color",
+										"$value": "{ob.p.color.basic.white}",
+										"$description": "Role: Exclusive. Low emphasis secondary and tertiary label, hover, on inverted surfaces. ZH: white, as zh.ch icons and labels on blue and dark backgrounds."
+									},
+									"active_inverse": {
+										"$type": "color",
+										"$value": "{ob.p.color.basic.white}",
+										"$description": "Role: Exclusive. Low emphasis secondary and tertiary label, active, on inverted surfaces. ZH: white, as zh.ch icons and labels on blue and dark backgrounds."
+									}
+								}
+							}
 						}
 					}
 				}

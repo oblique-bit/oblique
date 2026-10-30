@@ -309,6 +309,27 @@
 									"$description": "Role: Exclusive. Tertiary button label, active, on inverted surfaces. FR: same as secondary."
 								}
 							}
+						},
+						"emphasis_low": {
+							"secondary": {
+								"fg": {
+									"rest_inverse": {
+										"$type": "color",
+										"$value": "{ob.p.color.basic.white}",
+										"$description": "Role: Exclusive. Low emphasis secondary and tertiary label, rest, on inverted surfaces. FR: white, as the fr.ch header icons on black."
+									},
+									"hover_inverse": {
+										"$type": "color",
+										"$value": "{ob.p.color.basic.white}",
+										"$description": "Role: Exclusive. Low emphasis secondary and tertiary label, hover, on inverted surfaces. FR: white, as the fr.ch header icons on black."
+									},
+									"active_inverse": {
+										"$type": "color",
+										"$value": "{ob.p.color.basic.white}",
+										"$description": "Role: Exclusive. Low emphasis secondary and tertiary label, active, on inverted surfaces. FR: white, as the fr.ch header icons on black."
+									}
+								}
+							}
 						}
 					}
 				}
