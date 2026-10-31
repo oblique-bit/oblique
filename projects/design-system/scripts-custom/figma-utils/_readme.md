@@ -453,3 +453,114 @@ its last annotation from an instance that has no other override, it resets
 the instance so the flag goes away. Run it again after a Token Studio export
 that changes Button or surface colours. Through the CLI, strip the header
 first (see the file).
+
+## build-card.js — build the Card component set from local variables and styles
+
+**The problem.** The Card is 35 variants with 672 layers. Its fills, strokes,
+radii, gaps and sizes bind to `ob/c/card/*` variables (token file
+`src/lib/themes/04_component/molecule/card.json`), its texts to
+`c/card/typography/*` styles and its shadows to `c/card/shadow/*` styles. Only
+the image placeholder fill binds to a semantic variable. Binding that by hand,
+layer by layer, is slow and cannot be repeated.
+
+**The fix.** Run `build-card.js` with `figma-ds-cli eval -f`:
+
+1. Make sure the target file has the `ob/c/card/*` variables (Token Studio
+   push, `static` entry in `$themes.json`) and the Button, Infobox and icon
+   components named in `CONFIG.components`.
+2. Run with `mode: 'scan'` first — lists every missing prerequisite and the id
+   of an existing set, builds nothing.
+3. Re-run with `mode: 'apply'` to build. Apply refuses to run while a
+   prerequisite is missing or a component set named `setName` is on the page,
+   so a rebuild starts by deleting the old set.
+
+What apply builds:
+
+- The text styles `c/card/typography/{title,subtitle,text,footer}`, copied from
+  `s/typography/authoring/dynamic/` (`sm/strong` for the title, `xs/normal`
+  for subtitle and footer, `sm/normal` for the text), and the effect styles
+  `c/card/shadow/{default,hover}`, copied from `s/shadow/sm` and `s/shadow/md`.
+  A `c/card/*` style that already exists is updated.
+- One variant per valid combination of `type` (link, checkbox, radio),
+  `interaction` (rest, hover, active), `availability` (enabled, disabled),
+  `selection` (unselected, selected) and `focus` (unfocused, focused), named
+  `type=…, interaction=…, availability=…, selection=…, focus=…`. A disabled
+  card exists only as rest and unfocused, a link is never selected: 7 + 14 + 14
+  = 35 variants.
+- Boolean properties for the slots (`image`, `alert`, `header`, `text`,
+  `footer`, `buttons`) and text properties `title`, `subtitle`, `text-content`.
+  The alert is an Infobox instance (`status=info`) with its title bar hidden,
+  the buttons are a primary and a secondary Button instance.
+- A `selection-indicator` on the checkbox and radio variants, top right, with a
+  checkmark (checkbox) or a dot (radio) when selected.
+- The explicit mode `CONFIG.elevation` on the set. Without it the surface
+  follows the default mode of the `elevation` collection and renders grey.
+
+### CONFIG fields
+
+| field | what it does |
+|---|---|
+| `mode` | `'scan'` (report only) or `'apply'` (build) |
+| `page` | the page whose name contains this text |
+| `setName` | name of the component set |
+| `x`, `y` | position of the set on the page |
+| `cardWidth` | width of one card in px |
+| `components` | names of the existing components used inside the card, searched on every page: `buttonSet`, `infoboxSet`, `alertVariant`, `headerIcon`, `checkIcon` |
+| `elevation` | `{collection, mode}` set as the explicit mode on the set |
+| `placeholderFill` | semantic color variable for the image placeholder |
+
+### Notes
+
+- The output is `{ ok, mode, id, variants, properties, refreshedPaints, log }`;
+  `log` lists the instance properties the script could not set.
+- **The file must start with `(async`.** In CDP mode the `figma-ds-cli` daemon
+  (`wrapCodeIfNeeded` in its `src/daemon.js`) passes only code that starts with
+  `(async`, `(function` or `(() =>` through unchanged. Other code that contains
+  `; return` is wrapped in a function that does not return the value, so the
+  script runs but the output is empty. That is why the header comment of this
+  script and of `refresh-bound-paints.js` sits inside the function. Confirmed
+  2026-10-31: `refresh-bound-paints.js` printed nothing with the header above
+  `(async` and printed its JSON with the header inside.
+- A layer position cannot be bound in Figma. The `x` and `y` of
+  `selection-indicator` are numbers read from `ob/c/card/indicator/spacing/inset`
+  at build time, so rebuild or move the layer after changing that token.
+- At the end of apply the script writes the resolved colors back into the bound
+  paints, the same step as `refresh-bound-paints.js`, and waits 1500 ms before
+  it returns (see the known issue at the top).
+- Rebuilt next to the hand-built set on 2026-10-30: same variants, layers and
+  bindings.
+
+## refresh-bound-paints.js — write the resolved color back into bound paints
+
+**The problem.** A paint bound with `setBoundVariableForPaint` can keep the
+black placeholder it was created with as its cached color. The variable still
+resolves correctly in Figma, but an export (`exportAsync`) renders the layer
+black.
+
+**The fix.** Run `refresh-bound-paints.js` with `figma-ds-cli eval -f`: it
+resolves every bound fill and stroke for its own node, modes included, and
+writes that color into the paint.
+
+1. Set `rootId` in CONFIG, for example the id of a component set.
+2. Run with `mode: 'scan'` first — counts the bound paints and the ones whose
+   cached color differs from the resolved color (`stale`), changes nothing.
+3. Re-run with `mode: 'apply'` to rewrite the stale paints.
+
+### CONFIG fields
+
+| field | what it does |
+|---|---|
+| `mode` | `'scan'` (report only) or `'apply'` (rewrite) |
+| `rootId` | id of the node whose subtree is checked, e.g. a component set |
+
+### Notes
+
+- Run it after the explicit modes of the subtree are final: the resolved color
+  depends on them.
+- Layers inside nested instances are skipped, they carry their own bindings.
+  Per-range text fills (`figma.mixed`) are skipped.
+- `build-card.js` runs the same refresh at the end of apply. Run this script on
+  its own after a later change of a mode on the set.
+- The output is `{ ok, mode, boundPaints, stale, rewritten, errors }`. The file
+  must start with `(async` and apply waits 1500 ms before it returns, same as
+  `build-card.js`.
