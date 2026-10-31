@@ -81,6 +81,36 @@
 										}
 									},
 									"$description": "Role: Exclusive. Primary button background on dark surfaces, active. CH_app: brand ramp."
+								},
+								"rest_max": {
+									"$type": "color",
+									"$value": "{ob.p.color.brand.700}",
+									"$description": "Role: Exclusive. Primary button background, rest, light, high contrast: one step darker on the brand ramp."
+								},
+								"hover_max": {
+									"$type": "color",
+									"$value": "#1D4A64",
+									"$description": "Role: Exclusive. Primary button background, hover, light, high contrast: brand 700 mixed 35% with cobalt 900."
+								},
+								"active_max": {
+									"$type": "color",
+									"$value": "#1B4055",
+									"$description": "Role: Exclusive. Primary button background, active, light, high contrast: brand 700 mixed 50% with cobalt 900."
+								},
+								"rest_max_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.brand.700}",
+									"$description": "Role: Exclusive. Primary button background on dark surfaces, rest, high contrast: one step darker on the brand ramp."
+								},
+								"hover_max_inverse": {
+									"$type": "color",
+									"$value": "#1D4A64",
+									"$description": "Role: Exclusive. Primary button background on dark surfaces, hover, high contrast: brand 700 mixed 35% with cobalt 900."
+								},
+								"active_max_inverse": {
+									"$type": "color",
+									"$value": "#1B4055",
+									"$description": "Role: Exclusive. Primary button background on dark surfaces, active, high contrast: brand 700 mixed 50% with cobalt 900."
 								}
 							},
 							"fg": {

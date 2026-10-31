@@ -7,27 +7,27 @@
 						"bg": {
 							"rest_level_2": {
 								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_low.primary.bg.rest_level_2}"
+								"$value": "{ob.h.button.color.contrast.emphasis_low.primary.bg.rest_level_2}"
 							},
 							"rest_level_2_inverse": {
 								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_low.primary.bg.rest_level_2_inverse}"
+								"$value": "{ob.h.button.color.contrast.emphasis_low.primary.bg.rest_level_2_inverse}"
 							},
 							"hover_level_2": {
 								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_low.primary.bg.hover_level_2}"
+								"$value": "{ob.h.button.color.contrast.emphasis_low.primary.bg.hover_level_2}"
 							},
 							"hover_level_2_inverse": {
 								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_low.primary.bg.hover_level_2_inverse}"
+								"$value": "{ob.h.button.color.contrast.emphasis_low.primary.bg.hover_level_2_inverse}"
 							},
 							"active_level_2": {
 								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_low.primary.bg.active_level_2}"
+								"$value": "{ob.h.button.color.contrast.emphasis_low.primary.bg.active_level_2}"
 							},
 							"active_level_2_inverse": {
 								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_low.primary.bg.active_level_2_inverse}"
+								"$value": "{ob.h.button.color.contrast.emphasis_low.primary.bg.active_level_2_inverse}"
 							}
 						}
 					},

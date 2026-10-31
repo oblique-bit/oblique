@@ -1,0 +1,84 @@
+{
+	"ob": {
+		"h": {
+			"button": {
+				"color": {
+					"contrast": {
+						"emphasis_high": {
+							"primary": {
+								"bg": {
+									"rest_level_2": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.primary.bg.rest_level_2}",
+										"$description": "Role: Exclusive. Primary button background on level_2, rest, high emphasis, low contrast: takes the color scheme color."
+									},
+									"rest_level_2_inverse": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.primary.bg.rest_level_2_inverse}",
+										"$description": "Role: Exclusive. Primary button background on level_2, rest, inverse, high emphasis, low contrast: takes the color scheme color."
+									},
+									"hover_level_2": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.primary.bg.hover_level_2}",
+										"$description": "Role: Exclusive. Primary button background on level_2, hover, high emphasis, low contrast: takes the color scheme color."
+									},
+									"hover_level_2_inverse": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.primary.bg.hover_level_2_inverse}",
+										"$description": "Role: Exclusive. Primary button background on level_2, hover, inverse, high emphasis, low contrast: takes the color scheme color."
+									},
+									"active_level_2": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.primary.bg.active_level_2}",
+										"$description": "Role: Exclusive. Primary button background on level_2, active, high emphasis, low contrast: takes the color scheme color."
+									},
+									"active_level_2_inverse": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.primary.bg.active_level_2_inverse}",
+										"$description": "Role: Exclusive. Primary button background on level_2, active, inverse, high emphasis, low contrast: takes the color scheme color."
+									}
+								}
+							}
+						},
+						"emphasis_low": {
+							"primary": {
+								"bg": {
+									"rest_level_2": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_low.primary.bg.rest_level_2}",
+										"$description": "Role: Exclusive. Primary button background on level_2, rest, low emphasis, low contrast: takes the color scheme color."
+									},
+									"rest_level_2_inverse": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_low.primary.bg.rest_level_2_inverse}",
+										"$description": "Role: Exclusive. Primary button background on level_2, rest, inverse, low emphasis, low contrast: takes the color scheme color."
+									},
+									"hover_level_2": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_low.primary.bg.hover_level_2}",
+										"$description": "Role: Exclusive. Primary button background on level_2, hover, low emphasis, low contrast: takes the color scheme color."
+									},
+									"hover_level_2_inverse": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_low.primary.bg.hover_level_2_inverse}",
+										"$description": "Role: Exclusive. Primary button background on level_2, hover, inverse, low emphasis, low contrast: takes the color scheme color."
+									},
+									"active_level_2": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_low.primary.bg.active_level_2}",
+										"$description": "Role: Exclusive. Primary button background on level_2, active, low emphasis, low contrast: takes the color scheme color."
+									},
+									"active_level_2_inverse": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_low.primary.bg.active_level_2_inverse}",
+										"$description": "Role: Exclusive. Primary button background on level_2, active, inverse, low emphasis, low contrast: takes the color scheme color."
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

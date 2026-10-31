@@ -29,7 +29,7 @@ The mode does not add new colors. It picks a step of the existing contrast ladde
 - **`03_semantic/color/elevation/level_minus_1.json`, `level_0.json`, `level_1.json`, `level_2.json`** — the `surface` background tokens. One file per mode. The files keep the underscore names of the first draft: `level_minus_1` is `level-1`, `level_0` is `level0`, and so on.
 - **`03_semantic/color/elevation/level_minus_1_color/`** — helper sets (`color_scheme/light.json`, `color_scheme/dark.json`) with the neutral surface of `level-1`. They follow color scheme, so the mode can pick them. The dark value points to `cobalt.900`, the other values to the same primitives as `contrast_highest`.
 - **`05_html/button/01_color/elevation/level_minus_1.json`, `level_0.json`, `level_1.json`, `level_2.json`** — the Button background tokens that follow the mode.
-- **`05_html/button/01_color/elevation/level_2_color/`** — helper sets (`color_scheme/light.json`, `color_scheme/dark.json`, `emphasis/high.json`, `emphasis/low.json`) with the Button colors used on a `level2` surface. They follow color scheme and emphasis, so the mode can pick them.
+- **`05_html/button/01_color/elevation/level_2_color/`** — helper sets (`color_scheme/light.json`, `color_scheme/dark.json`, `contrast/low.json`, `contrast/medium.json`, `contrast/high.json`, `emphasis/high.json`, `emphasis/low.json`) with the Button colors used on a `level2` surface. They follow color scheme, contrast and emphasis, so the mode can pick them.
 
 ### **Surface Tokens**
 

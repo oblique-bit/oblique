@@ -41,6 +41,36 @@
 									"$type": "color",
 									"$value": "{ob.p.color.cobalt.700}",
 									"$description": "Role: Exclusive. Primary button background on dark surfaces, active. CH_marketing: Swiss DS."
+								},
+								"rest_max": {
+									"$type": "color",
+									"$value": "{ob.p.color.cobalt.600}",
+									"$description": "Role: Exclusive. Primary button background, rest, light, high contrast: one step darker on the cobalt ramp."
+								},
+								"hover_max": {
+									"$type": "color",
+									"$value": "{ob.p.color.cobalt.700}",
+									"$description": "Role: Exclusive. Primary button background, hover, light, high contrast: one step darker on the cobalt ramp."
+								},
+								"active_max": {
+									"$type": "color",
+									"$value": "{ob.p.color.cobalt.800}",
+									"$description": "Role: Exclusive. Primary button background, active, light, high contrast: one step darker on the cobalt ramp."
+								},
+								"rest_max_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.cobalt.600}",
+									"$description": "Role: Exclusive. Primary button background on dark surfaces, rest, high contrast: one step darker on the cobalt ramp."
+								},
+								"hover_max_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.cobalt.700}",
+									"$description": "Role: Exclusive. Primary button background on dark surfaces, hover, high contrast: one step darker on the cobalt ramp."
+								},
+								"active_max_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.cobalt.800}",
+									"$description": "Role: Exclusive. Primary button background on dark surfaces, active, high contrast: one step darker on the cobalt ramp."
 								}
 							},
 							"fg": {

@@ -2533,7 +2533,9 @@
     "name": "medium",
     "selectedTokenSets": {
       "03_semantic/color/s3_contrast/medium": "enabled",
-      "05_html/link/contrast/medium": "enabled"
+      "05_html/link/contrast/medium": "enabled",
+      "05_html/button/01_color/contrast/medium": "enabled",
+      "05_html/button/01_color/elevation/level_2_color/contrast/medium": "enabled"
     },
     "group": "contrast",
     "$figmaVariableReferences": {
@@ -2582,7 +2584,9 @@
     "name": "low",
     "selectedTokenSets": {
       "03_semantic/color/s3_contrast/low": "enabled",
-      "05_html/link/contrast/low": "enabled"
+      "05_html/link/contrast/low": "enabled",
+      "05_html/button/01_color/contrast/low": "enabled",
+      "05_html/button/01_color/elevation/level_2_color/contrast/low": "enabled"
     },
     "group": "contrast",
     "$figmaVariableReferences": {
@@ -2631,7 +2635,9 @@
     "name": "high",
     "selectedTokenSets": {
       "03_semantic/color/s3_contrast/high": "enabled",
-      "05_html/link/contrast/high": "enabled"
+      "05_html/link/contrast/high": "enabled",
+      "05_html/button/01_color/contrast/high": "enabled",
+      "05_html/button/01_color/elevation/level_2_color/contrast/high": "enabled"
     },
     "group": "contrast",
     "$figmaVariableReferences": {

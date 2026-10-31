@@ -41,6 +41,36 @@
 									"$type": "color",
 									"$value": "#FFFFFFB3",
 									"$description": "Role: Exclusive. Primary button background, active, on dark surfaces. ZH: zh.ch button on dark backgrounds (cv-inverted)."
+								},
+								"rest_max": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.brand.primary.bg.rest}",
+									"$description": "Role: Exclusive. Primary button background, rest, light, high contrast: same as rest, black is the maximum. ZH: zh.ch."
+								},
+								"hover_max": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.brand.primary.bg.hover}",
+									"$description": "Role: Exclusive. Primary button background, hover, light, high contrast: same as hover. ZH: zh.ch."
+								},
+								"active_max": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.brand.primary.bg.active}",
+									"$description": "Role: Exclusive. Primary button background, active, light, high contrast: same as active. ZH: zh.ch."
+								},
+								"rest_max_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.brand.primary.bg.rest_inverse}",
+									"$description": "Role: Exclusive. Primary button background on dark surfaces, rest, high contrast: same as rest, white is the maximum."
+								},
+								"hover_max_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.brand.primary.bg.hover_inverse}",
+									"$description": "Role: Exclusive. Primary button background on dark surfaces, hover, high contrast: same as hover. ZH: zh.ch."
+								},
+								"active_max_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.brand.primary.bg.active_inverse}",
+									"$description": "Role: Exclusive. Primary button background on dark surfaces, active, high contrast: same as active. ZH: zh.ch."
 								}
 							},
 							"fg": {

@@ -35,6 +35,36 @@
 									"$type": "color",
 									"$value": "{ob.h.button.color.brand.primary.bg.active}",
 									"$description": "Primary button background on level_2, active state, high emphasis, dark mode, inverse (light mode colors)."
+								},
+								"rest_level_2_max": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.brand.primary.bg.rest_max_inverse}",
+									"$description": "Primary button background on level_2, rest state, high emphasis, dark mode, high contrast."
+								},
+								"rest_level_2_max_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.brand.primary.bg.rest_max}",
+									"$description": "Primary button background on level_2, rest state, high emphasis, dark mode, high contrast, inverse (light mode colors)."
+								},
+								"hover_level_2_max": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.brand.primary.bg.hover_max_inverse}",
+									"$description": "Primary button background on level_2, hover state, high emphasis, dark mode, high contrast."
+								},
+								"hover_level_2_max_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.brand.primary.bg.hover_max}",
+									"$description": "Primary button background on level_2, hover state, high emphasis, dark mode, high contrast, inverse (light mode colors)."
+								},
+								"active_level_2_max": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.brand.primary.bg.active_max_inverse}",
+									"$description": "Primary button background on level_2, active state, high emphasis, dark mode, high contrast."
+								},
+								"active_level_2_max_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.brand.primary.bg.active_max}",
+									"$description": "Primary button background on level_2, active state, high emphasis, dark mode, high contrast, inverse (light mode colors)."
 								}
 							}
 						},
@@ -135,6 +165,76 @@
 										}
 									},
 									"$description": "Primary button background on level_2, active state, low emphasis, dark mode, inverse (light mode colors)."
+								},
+								"rest_level_2_max": {
+									"$type": "color",
+									"$value": "{ob.p.color.basic.white}",
+									"$description": "Primary button background on level_2, rest state, low emphasis, dark mode, high contrast."
+								},
+								"rest_level_2_max_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.brand.neutral_dark.700}",
+									"$description": "Primary button background on level_2, rest state, low emphasis, dark mode, high contrast, inverse (light mode colors)."
+								},
+								"hover_level_2_max": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_low.primary.bg.rest_level_2_max}",
+									"$extensions": {
+										"studio.tokens": {
+											"modify": {
+												"type": "alpha",
+												"value": "{ob.h.button.state_layer.fill_alpha.hover}",
+												"space": "srgb",
+												"color": "{ob.p.color.brand.neutral_dark.900}"
+											}
+										}
+									},
+									"$description": "Primary button background on level_2, hover state, low emphasis, dark mode, high contrast."
+								},
+								"hover_level_2_max_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_low.primary.bg.rest_level_2_max_inverse}",
+									"$extensions": {
+										"studio.tokens": {
+											"modify": {
+												"type": "mix",
+												"value": "{ob.h.button.state_layer.strong.hover}",
+												"space": "srgb",
+												"color": "{ob.p.color.brand.neutral_dark.900}"
+											}
+										}
+									},
+									"$description": "Primary button background on level_2, hover state, low emphasis, dark mode, high contrast, inverse (light mode colors)."
+								},
+								"active_level_2_max": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_low.primary.bg.rest_level_2_max}",
+									"$extensions": {
+										"studio.tokens": {
+											"modify": {
+												"type": "alpha",
+												"value": "{ob.h.button.state_layer.fill_alpha.active}",
+												"space": "srgb",
+												"color": "{ob.p.color.brand.neutral_dark.900}"
+											}
+										}
+									},
+									"$description": "Primary button background on level_2, active state, low emphasis, dark mode, high contrast."
+								},
+								"active_level_2_max_inverse": {
+									"$type": "color",
+									"$value": "{ob.h.button.color.emphasis_low.primary.bg.rest_level_2_max_inverse}",
+									"$extensions": {
+										"studio.tokens": {
+											"modify": {
+												"type": "mix",
+												"value": "{ob.h.button.state_layer.strong.active}",
+												"space": "srgb",
+												"color": "{ob.p.color.brand.neutral_dark.900}"
+											}
+										}
+									},
+									"$description": "Primary button background on level_2, active state, low emphasis, dark mode, high contrast, inverse (light mode colors)."
 								}
 							}
 						},

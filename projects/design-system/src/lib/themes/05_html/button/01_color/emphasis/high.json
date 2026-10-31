@@ -6,34 +6,34 @@
 					"token_family_docs": {
 						"description": {
 							"$type": "other",
-							"$value": "Button state colors for the high emphasis mode: primary, secondary and tertiary, each rest, hover and active, plus disabled. Aliases of the high branch of the color_scheme sets, each with the inversion pair. Disabled always aliases the low branch rest colors, so a disabled button is neutral (cobalt) in both emphasis modes."
+							"$value": "Button state colors for the high emphasis mode: primary, secondary and tertiary, each rest, hover and active, plus disabled. Aliases of the high branch of the color_scheme sets, each with the inversion pair; the primary backgrounds go through the contrast sets. Disabled always aliases the low branch rest colors, so a disabled button is neutral (cobalt) in both emphasis modes."
 						}
 					},
 					"primary": {
 						"bg": {
 							"rest": {
 								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.primary.bg.rest}"
+								"$value": "{ob.h.button.color.contrast.emphasis_high.primary.bg.rest}"
 							},
 							"rest_inverse": {
 								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.primary.bg.rest_inverse}"
+								"$value": "{ob.h.button.color.contrast.emphasis_high.primary.bg.rest_inverse}"
 							},
 							"hover": {
 								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.primary.bg.hover}"
+								"$value": "{ob.h.button.color.contrast.emphasis_high.primary.bg.hover}"
 							},
 							"hover_inverse": {
 								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.primary.bg.hover_inverse}"
+								"$value": "{ob.h.button.color.contrast.emphasis_high.primary.bg.hover_inverse}"
 							},
 							"active": {
 								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.primary.bg.active}"
+								"$value": "{ob.h.button.color.contrast.emphasis_high.primary.bg.active}"
 							},
 							"active_inverse": {
 								"$type": "color",
-								"$value": "{ob.h.button.color.emphasis_high.primary.bg.active_inverse}"
+								"$value": "{ob.h.button.color.contrast.emphasis_high.primary.bg.active_inverse}"
 							},
 							"disabled": {
 								"$type": "color",

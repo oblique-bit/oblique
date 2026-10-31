@@ -88,10 +88,27 @@ The link handles the contrast mode in its own files, not in S3: `ob.h.link.color
 
 Contrast on white, `medium` → `high`: `ZH` 5.74 → 12.63, `CH_marketing` 5.01 → 12.10, `FR` 4.65 → 11.46, `CH_app` 6.47 → 8.64. See [Link](../06-components/link/02-architecture.md).
 
+### **Button**
+
+The Button also handles the contrast mode in its own files. Only the primary background follows the mode. `ob.h.button.color.primary.bg.{rest,hover,active}` (with `_inverse`) point to `ob.h.button.color.contrast.emphasis_high.primary.bg.*` in `emphasis/high.json` and to `ob.h.button.color.contrast.emphasis_low.primary.bg.*` in `emphasis/low.json` (`05_html/button/01_color/contrast/low.json`, `medium.json`, `high.json`). The `level_2` helper tokens do the same through `elevation/level_2_color/contrast/`. `low` and `medium` take the color of the color scheme as before. `high` takes the `_max` color: one ramp step away from the label, darker under a white label, lighter under a dark label. Hover and active move by the same step.
+
+| Button | `medium` | `high` |
+|---|---|---|
+| `CH_app`, `FR` (white label) | brand `600` | brand `700` |
+| `CH_marketing` (white label) | `cobalt.500`, hover `600`, active `700` | `cobalt.600`, hover `700`, active `800` |
+| `FR` on dark surfaces (black label) | `#57B3C2` | brand `300` |
+| `ZH` | black, white on dark surfaces | the same: black and white are the maximum |
+| Low emphasis, white label | `neutral.600` (dark mode, inverted surface: `neutral_dark.600`) | `neutral.700` (`neutral_dark.700`) |
+| Low emphasis, dark label | `neutral_dark.50` (light mode, inverted surface: `neutral.50`) | white: `50` is the lightest step |
+
+The `_max` colors of high emphasis are in the brand files (`ob.h.button.color.brand.primary.bg.<state>_max`, `<state>_max_inverse`), the ones of low emphasis in the color scheme files. Hover and active of `CH_app` and `FR` are fixed values: the `high` step mixed 35 % and 50 % with `cobalt.900`, on dark surfaces of `FR` with white, the same state layer as in `medium`. Low emphasis keeps the hover and active modifiers of `medium` on the new rest color.
+
+Contrast of the white label, `medium` → `high`: `CH_app` 4.84 → 6.47, `FR` 4.65 → 6.46, `CH_marketing` 7.24 → 10.20, low emphasis 10.20 → 12.38. `FR` on dark surfaces (black label): 8.63 → 9.69. The labels, the disabled colors and the secondary and tertiary Buttons do not change.
+
 ### **Not Built Yet**
 
 - The other status foreground steps (`contrast_high` for Pill, `contrast_highest` for Badge).
-- The Button and the header take their colors from the primitives and do not follow the contrast mode yet.
+- The header takes its colors from the primitives and does not follow the contrast mode yet. Of the Button, only the primary background follows.
 - The interaction text colors (`ob.s.color.interaction.fg.*`) are not in S3. Components that use them, other than the link, do not follow the contrast mode yet.
 - The Button on a moved surface keeps the colors of its own elevation level.
 
@@ -99,5 +116,6 @@ Contrast on white, `medium` → `high`: `ZH` 5.74 → 12.63, `CH_marketing` 5.01
 
 - In `low`, `level_1` and `level_2` have the same color.
 - The Card uses `border.subtle` also for its disabled border, so in `high` the disabled border gets darker too. Disabled text (`contrast_lowest`) does not change.
+- The hover and active colors of the low emphasis Button are Tokens Studio modifiers in the color scheme files. Figma gets the `CH_app` value in every brand, and the CSS build writes them as the rest color. The same is true in `medium`.
 - The CSS build writes one block per mode. A container with dark mode and `high` gets the `high` values of light mode. The same limit exists for dark mode and `low` emphasis.
 - In CSS, a token that points to another token (for example the heading colors, which point to `ob.s.color.neutral.fg.*`) is computed where it is declared. With the class on a container inside the page, these tokens keep the `medium` value; with the class on the root element they follow.

@@ -81,6 +81,36 @@
 										}
 									},
 									"$description": "Role: Exclusive. Primary button background on dark surfaces, active. FR: fr.ch dark mode, lighter for the black label."
+								},
+								"rest_max": {
+									"$type": "color",
+									"$value": "{ob.p.color.brand.700}",
+									"$description": "Role: Exclusive. Primary button background, rest, light, high contrast: one step darker on the brand ramp."
+								},
+								"hover_max": {
+									"$type": "color",
+									"$value": "#074D5A",
+									"$description": "Role: Exclusive. Primary button background, hover, light, high contrast: brand 700 mixed 35% with cobalt 900."
+								},
+								"active_max": {
+									"$type": "color",
+									"$value": "#0A424D",
+									"$description": "Role: Exclusive. Primary button background, active, light, high contrast: brand 700 mixed 50% with cobalt 900."
+								},
+								"rest_max_inverse": {
+									"$type": "color",
+									"$value": "{ob.p.color.brand.300}",
+									"$description": "Role: Exclusive. Primary button background on dark surfaces, rest, high contrast: brand 300, lighter for the black label."
+								},
+								"hover_max_inverse": {
+									"$type": "color",
+									"$value": "#A6D3DA",
+									"$description": "Role: Exclusive. Primary button background on dark surfaces, hover, high contrast: brand 300 mixed 35% with white."
+								},
+								"active_max_inverse": {
+									"$type": "color",
+									"$value": "#BBDDE3",
+									"$description": "Role: Exclusive. Primary button background on dark surfaces, active, high contrast: brand 300 mixed 50% with white."
 								}
 							},
 							"fg": {

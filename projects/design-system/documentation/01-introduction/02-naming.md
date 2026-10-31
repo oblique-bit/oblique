@@ -200,7 +200,7 @@ Design tokens use compound units (multi-word identifiers) with underscores for c
 - `emphasis_high` / `emphasis_low`
 - `contrast_highest` / `contrast_high` / `contrast_medium` / `contrast_low`
 - `contrast_max` (beyond `contrast_highest`: black in light mode, white in dark mode; used by the contrast mode `high`)
-- `_max` (suffix of the S1 values the contrast mode `high` uses, e.g. `border.strong_max`, `fg.contrast_medium_max`)
+- `_max` (suffix of the values the contrast mode `high` uses: in S1, e.g. `border.strong_max`, `fg.contrast_medium_max`, and in the link and Button files, e.g. `default_max`, `primary.bg.rest_max`)
 
 #### **State Compounds**
 - `bg_hover` / `bg_focus` / `bg_active`

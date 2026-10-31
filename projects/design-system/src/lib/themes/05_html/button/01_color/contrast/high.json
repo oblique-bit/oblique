@@ -1,0 +1,84 @@
+{
+	"ob": {
+		"h": {
+			"button": {
+				"color": {
+					"contrast": {
+						"emphasis_high": {
+							"primary": {
+								"bg": {
+									"rest": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.primary.bg.rest_max}",
+										"$description": "Role: Exclusive. Primary button background, rest, high emphasis, high contrast: takes the high contrast color."
+									},
+									"rest_inverse": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.primary.bg.rest_max_inverse}",
+										"$description": "Role: Exclusive. Primary button background, rest, inverse, high emphasis, high contrast: takes the high contrast color."
+									},
+									"hover": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.primary.bg.hover_max}",
+										"$description": "Role: Exclusive. Primary button background, hover, high emphasis, high contrast: takes the high contrast color."
+									},
+									"hover_inverse": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.primary.bg.hover_max_inverse}",
+										"$description": "Role: Exclusive. Primary button background, hover, inverse, high emphasis, high contrast: takes the high contrast color."
+									},
+									"active": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.primary.bg.active_max}",
+										"$description": "Role: Exclusive. Primary button background, active, high emphasis, high contrast: takes the high contrast color."
+									},
+									"active_inverse": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_high.primary.bg.active_max_inverse}",
+										"$description": "Role: Exclusive. Primary button background, active, inverse, high emphasis, high contrast: takes the high contrast color."
+									}
+								}
+							}
+						},
+						"emphasis_low": {
+							"primary": {
+								"bg": {
+									"rest": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_low.primary.bg.rest_max}",
+										"$description": "Role: Exclusive. Primary button background, rest, low emphasis, high contrast: takes the high contrast color."
+									},
+									"rest_inverse": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_low.primary.bg.rest_max_inverse}",
+										"$description": "Role: Exclusive. Primary button background, rest, inverse, low emphasis, high contrast: takes the high contrast color."
+									},
+									"hover": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_low.primary.bg.hover_max}",
+										"$description": "Role: Exclusive. Primary button background, hover, low emphasis, high contrast: takes the high contrast color."
+									},
+									"hover_inverse": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_low.primary.bg.hover_max_inverse}",
+										"$description": "Role: Exclusive. Primary button background, hover, inverse, low emphasis, high contrast: takes the high contrast color."
+									},
+									"active": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_low.primary.bg.active_max}",
+										"$description": "Role: Exclusive. Primary button background, active, low emphasis, high contrast: takes the high contrast color."
+									},
+									"active_inverse": {
+										"$type": "color",
+										"$value": "{ob.h.button.color.emphasis_low.primary.bg.active_max_inverse}",
+										"$description": "Role: Exclusive. Primary button background, active, inverse, low emphasis, high contrast: takes the high contrast color."
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
