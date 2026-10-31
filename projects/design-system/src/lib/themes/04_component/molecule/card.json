@@ -207,7 +207,7 @@
         "typography": {
           "title": {
             "$type": "typography",
-            "$value": "{ob.s.typography.authoring.dynamic.sm.strong}"
+            "$value": "{ob.s.typography.authoring.dynamic.md.strong}"
           },
           "subtitle": {
             "$type": "typography",
