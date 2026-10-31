@@ -1,22 +1,25 @@
-/**
- * refresh-bound-paints.js — write the resolved variable color back into bound paints
- * ----------------------------------------------------------------------------
- * WHY: A paint bound with setBoundVariableForPaint can keep the black
- * placeholder as its cached color. The variable still resolves correctly, but
- * an export (exportAsync) renders the layer black. This script resolves every
- * bound fill and stroke for its own node, modes included, and writes that color
- * back into the paint.
- *
- * Run it after the explicit modes of the subtree are final, because the
- * resolved color depends on them. Layers inside nested instances are skipped,
- * they carry their own bindings.
- *
- * HOW TO RUN: figma-ds-cli eval -f refresh-bound-paints.js (the last
- * expression is the output). Set rootId in CONFIG and start with mode scan.
- * ----------------------------------------------------------------------------
- */
-
 (async () => {
+  /**
+   * refresh-bound-paints.js — write the resolved variable color back into bound paints
+   * ----------------------------------------------------------------------------
+   * WHY: A paint bound with setBoundVariableForPaint can keep the black
+   * placeholder as its cached color. The variable still resolves correctly, but
+   * an export (exportAsync) renders the layer black. This script resolves every
+   * bound fill and stroke for its own node, modes included, and writes that color
+   * back into the paint.
+   *
+   * Run it after the explicit modes of the subtree are final, because the
+   * resolved color depends on them. Layers inside nested instances are skipped,
+   * they carry their own bindings.
+   *
+   * HOW TO RUN: figma-ds-cli eval -f refresh-bound-paints.js (the last
+   * expression is the output). Set rootId in CONFIG and start with mode scan.
+   * Keep "(async () => {" as the first line of this file. figma-ds-cli passes
+   * only a file that starts with "(async" through unchanged; it wraps any other
+   * file that contains "; return" and then prints nothing (see _readme.md).
+   * ----------------------------------------------------------------------------
+   */
+
   // ====================== CONFIG — edit this block ==========================
   const CONFIG = {
     // 'scan'  -> count the paints with a stale cached color, change nothing

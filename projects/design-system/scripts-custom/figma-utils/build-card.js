@@ -1,24 +1,27 @@
-/**
- * build-card.js — build the Card component set on the Components page
- * ----------------------------------------------------------------------------
- * WHY: One variant per valid combination of type (link, checkbox, radio),
- * interaction, availability, selection and focus, bound to the ob/c/card/*
- * variables and the c/card/* text and effect styles. The slots are boolean
- * properties, the texts are text properties. The set gets the elevation
- * level0 mode and its bound paints are refreshed at the end (see
- * refresh-bound-paints.js).
- *
- * Needs the Card tokens exported to Figma first, plus the Button, Infobox and
- * icon components of the same file. The c/card/* styles are created when they
- * are missing and updated when they exist.
- *
- * HOW TO RUN: figma-ds-cli eval -f build-card.js (the last expression is the
- * output). Start with mode scan, it lists what is missing and builds nothing.
- * Apply refuses to run when a set with the same name is already on the page.
- * ----------------------------------------------------------------------------
- */
-
 (async () => {
+  /**
+   * build-card.js — build the Card component set on the Components page
+   * ----------------------------------------------------------------------------
+   * WHY: One variant per valid combination of type (link, checkbox, radio),
+   * interaction, availability, selection and focus, bound to the ob/c/card/*
+   * variables and the c/card/* text and effect styles. The slots are boolean
+   * properties, the texts are text properties. The set gets the elevation
+   * level0 mode and its bound paints are refreshed at the end (see
+   * refresh-bound-paints.js).
+   *
+   * Needs the Card tokens exported to Figma first, plus the Button, Infobox and
+   * icon components of the same file. The c/card/* styles are created when they
+   * are missing and updated when they exist.
+   *
+   * HOW TO RUN: figma-ds-cli eval -f build-card.js (the last expression is the
+   * output). Start with mode scan, it lists what is missing and builds nothing.
+   * Apply refuses to run when a set with the same name is already on the page.
+   * Keep "(async () => {" as the first line of this file. figma-ds-cli passes
+   * only a file that starts with "(async" through unchanged; it wraps any other
+   * file that contains "; return" and then prints nothing (see _readme.md).
+   * ----------------------------------------------------------------------------
+   */
+
   // ====================== CONFIG — edit this block ==========================
   const CONFIG = {
     // 'scan'  -> check the prerequisites, build nothing (run this first)
