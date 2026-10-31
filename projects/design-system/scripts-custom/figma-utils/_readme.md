@@ -477,7 +477,7 @@ layer by layer, is slow and cannot be repeated.
 What apply builds:
 
 - The text styles `c/card/typography/{title,subtitle,text,footer}`, copied from
-  `s/typography/authoring/dynamic/` (`sm/strong` for the title, `xs/normal`
+  `s/typography/authoring/dynamic/` (`md/strong` for the title, `xs/normal`
   for subtitle and footer, `sm/normal` for the text), and the effect styles
   `c/card/shadow/{default,hover}`, copied from `s/shadow/sm` and `s/shadow/md`.
   A `c/card/*` style that already exists is updated.

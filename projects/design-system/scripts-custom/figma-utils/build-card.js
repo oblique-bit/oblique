@@ -64,7 +64,7 @@
   ].map((n) => 'ob/c/card/' + n).concat(CONFIG.placeholderFill);
 
   // Style name -> the style it is copied from
-  const TEXT_STYLES = { title: 'sm/strong', subtitle: 'xs/normal', text: 'sm/normal', footer: 'xs/normal' };
+  const TEXT_STYLES = { title: 'md/strong', subtitle: 'xs/normal', text: 'sm/normal', footer: 'xs/normal' };
   const EFFECT_STYLES = { default: 's/shadow/sm', hover: 's/shadow/md' };
 
   const previousPage = figma.currentPage;
