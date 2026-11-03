@@ -7,12 +7,12 @@
             "surface": {
               "$type": "color",
               "$value": "{ob.s3.color.neutral.bg.level_1}",
-              "$description": "Role: Surface. Neutral background of the level_1 elevation. Page areas and containers."
+              "$description": "Role: Surface. Neutral background with dimmed on, one step toward the text. Page areas and containers."
             },
             "surface_inverse": {
               "$type": "color",
               "$value": "{ob.s3.color.neutral.bg.level_1_inverse}",
-              "$description": "Role: Surface. Neutral background of the level_1 elevation, inverse. Page areas and containers."
+              "$description": "Role: Surface. Neutral background with dimmed on, one step toward the text, inverse. Page areas and containers."
             }
           }
         }

@@ -2830,8 +2830,8 @@
     "name": "off",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "03_semantic/color/elevation/level_0": "enabled",
-      "05_html/button/01_color/elevation/level_0": "enabled"
+      "03_semantic/color/dimmed/off": "enabled",
+      "05_html/button/01_color/dimmed/off": "enabled"
     },
     "group": "dimmed",
     "$figmaVariableReferences": {
@@ -2860,8 +2860,8 @@
     "name": "on",
     "$figmaStyleReferences": {},
     "selectedTokenSets": {
-      "03_semantic/color/elevation/level_1": "enabled",
-      "05_html/button/01_color/elevation/level_1": "enabled"
+      "03_semantic/color/dimmed/on": "enabled",
+      "05_html/button/01_color/dimmed/on": "enabled"
     },
     "group": "dimmed",
     "$figmaVariableReferences": {

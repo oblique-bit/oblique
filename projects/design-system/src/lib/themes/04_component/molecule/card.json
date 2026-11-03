@@ -75,12 +75,12 @@
         "color": {
           "bg": {
             "$type": "color",
-            "$value": "{ob.s.color.neutral.bg.surface}",
+            "$value": "{ob.s.color.neutral.bg.contrast_highest}",
             "$description": "Background color of the card."
           },
           "bg_inverse": {
             "$type": "color",
-            "$value": "{ob.s.color.neutral.bg.surface_inverse}",
+            "$value": "{ob.s.color.neutral.bg.contrast_highest_inverse}",
             "$description": "Background color of the card on a flipped surface."
           },
           "border": {
@@ -301,12 +301,12 @@
           "color": {
             "bg": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.bg.surface}",
+              "$value": "{ob.s.color.neutral.bg.contrast_highest}",
               "$description": "Background color of the unselected indicator."
             },
             "bg_inverse": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.bg.surface_inverse}",
+              "$value": "{ob.s.color.neutral.bg.contrast_highest_inverse}",
               "$description": "Background color of the unselected indicator on a flipped surface."
             },
             "bg_selected": {
@@ -321,12 +321,12 @@
             },
             "fg_selected": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.bg.surface}",
+              "$value": "{ob.s.color.neutral.bg.contrast_highest}",
               "$description": "Color of the checkmark and the dot on the selected indicator."
             },
             "fg_selected_inverse": {
               "$type": "color",
-              "$value": "{ob.s.color.neutral.bg.surface_inverse}",
+              "$value": "{ob.s.color.neutral.bg.contrast_highest_inverse}",
               "$description": "Color of the checkmark and the dot on the selected indicator on a flipped surface."
             },
             "border": {
