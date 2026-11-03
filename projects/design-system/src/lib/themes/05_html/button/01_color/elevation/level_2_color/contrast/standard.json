@@ -10,32 +10,32 @@
 									"rest_level_2": {
 										"$type": "color",
 										"$value": "{ob.h.button.color.emphasis_high.primary.bg.rest_level_2}",
-										"$description": "Role: Exclusive. Primary button background on level_2, rest, high emphasis, medium contrast: takes the color scheme color."
+										"$description": "Role: Exclusive. Primary button background on level_2, rest, high emphasis, standard contrast: takes the color scheme color."
 									},
 									"rest_level_2_inverse": {
 										"$type": "color",
 										"$value": "{ob.h.button.color.emphasis_high.primary.bg.rest_level_2_inverse}",
-										"$description": "Role: Exclusive. Primary button background on level_2, rest, inverse, high emphasis, medium contrast: takes the color scheme color."
+										"$description": "Role: Exclusive. Primary button background on level_2, rest, inverse, high emphasis, standard contrast: takes the color scheme color."
 									},
 									"hover_level_2": {
 										"$type": "color",
 										"$value": "{ob.h.button.color.emphasis_high.primary.bg.hover_level_2}",
-										"$description": "Role: Exclusive. Primary button background on level_2, hover, high emphasis, medium contrast: takes the color scheme color."
+										"$description": "Role: Exclusive. Primary button background on level_2, hover, high emphasis, standard contrast: takes the color scheme color."
 									},
 									"hover_level_2_inverse": {
 										"$type": "color",
 										"$value": "{ob.h.button.color.emphasis_high.primary.bg.hover_level_2_inverse}",
-										"$description": "Role: Exclusive. Primary button background on level_2, hover, inverse, high emphasis, medium contrast: takes the color scheme color."
+										"$description": "Role: Exclusive. Primary button background on level_2, hover, inverse, high emphasis, standard contrast: takes the color scheme color."
 									},
 									"active_level_2": {
 										"$type": "color",
 										"$value": "{ob.h.button.color.emphasis_high.primary.bg.active_level_2}",
-										"$description": "Role: Exclusive. Primary button background on level_2, active, high emphasis, medium contrast: takes the color scheme color."
+										"$description": "Role: Exclusive. Primary button background on level_2, active, high emphasis, standard contrast: takes the color scheme color."
 									},
 									"active_level_2_inverse": {
 										"$type": "color",
 										"$value": "{ob.h.button.color.emphasis_high.primary.bg.active_level_2_inverse}",
-										"$description": "Role: Exclusive. Primary button background on level_2, active, inverse, high emphasis, medium contrast: takes the color scheme color."
+										"$description": "Role: Exclusive. Primary button background on level_2, active, inverse, high emphasis, standard contrast: takes the color scheme color."
 									}
 								}
 							}
@@ -46,32 +46,32 @@
 									"rest_level_2": {
 										"$type": "color",
 										"$value": "{ob.h.button.color.emphasis_low.primary.bg.rest_level_2}",
-										"$description": "Role: Exclusive. Primary button background on level_2, rest, low emphasis, medium contrast: takes the color scheme color."
+										"$description": "Role: Exclusive. Primary button background on level_2, rest, low emphasis, standard contrast: takes the color scheme color."
 									},
 									"rest_level_2_inverse": {
 										"$type": "color",
 										"$value": "{ob.h.button.color.emphasis_low.primary.bg.rest_level_2_inverse}",
-										"$description": "Role: Exclusive. Primary button background on level_2, rest, inverse, low emphasis, medium contrast: takes the color scheme color."
+										"$description": "Role: Exclusive. Primary button background on level_2, rest, inverse, low emphasis, standard contrast: takes the color scheme color."
 									},
 									"hover_level_2": {
 										"$type": "color",
 										"$value": "{ob.h.button.color.emphasis_low.primary.bg.hover_level_2}",
-										"$description": "Role: Exclusive. Primary button background on level_2, hover, low emphasis, medium contrast: takes the color scheme color."
+										"$description": "Role: Exclusive. Primary button background on level_2, hover, low emphasis, standard contrast: takes the color scheme color."
 									},
 									"hover_level_2_inverse": {
 										"$type": "color",
 										"$value": "{ob.h.button.color.emphasis_low.primary.bg.hover_level_2_inverse}",
-										"$description": "Role: Exclusive. Primary button background on level_2, hover, inverse, low emphasis, medium contrast: takes the color scheme color."
+										"$description": "Role: Exclusive. Primary button background on level_2, hover, inverse, low emphasis, standard contrast: takes the color scheme color."
 									},
 									"active_level_2": {
 										"$type": "color",
 										"$value": "{ob.h.button.color.emphasis_low.primary.bg.active_level_2}",
-										"$description": "Role: Exclusive. Primary button background on level_2, active, low emphasis, medium contrast: takes the color scheme color."
+										"$description": "Role: Exclusive. Primary button background on level_2, active, low emphasis, standard contrast: takes the color scheme color."
 									},
 									"active_level_2_inverse": {
 										"$type": "color",
 										"$value": "{ob.h.button.color.emphasis_low.primary.bg.active_level_2_inverse}",
-										"$description": "Role: Exclusive. Primary button background on level_2, active, inverse, low emphasis, medium contrast: takes the color scheme color."
+										"$description": "Role: Exclusive. Primary button background on level_2, active, inverse, low emphasis, standard contrast: takes the color scheme color."
 									}
 								}
 							}

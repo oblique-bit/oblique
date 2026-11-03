@@ -43,6 +43,56 @@
               "$type": "color",
               "$value": "{ob.s1.color.neutral.bg.contrast_medium_inverse}",
               "$description": "Role: Surface. Inverse neutral background of level_2 at low contrast, no higher level, stays. Inverse surface."
+            },
+            "contrast_highest": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_high}",
+              "$description": "Role: Surface. Neutral background contrast_highest at low contrast, the contrast_high colour. Standard surface."
+            },
+            "contrast_highest_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_high_inverse}",
+              "$description": "Role: Surface. Neutral background contrast_highest at low contrast, the contrast_high colour. Inverse surface."
+            },
+            "contrast_high": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_medium}",
+              "$description": "Role: Surface. Neutral background contrast_high at low contrast, the contrast_medium colour. Standard surface."
+            },
+            "contrast_high_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_medium_inverse}",
+              "$description": "Role: Surface. Neutral background contrast_high at low contrast, the contrast_medium colour. Inverse surface."
+            },
+            "contrast_medium": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_medium}",
+              "$description": "Role: Surface. Neutral background contrast_medium at low contrast, no further step, stays. Standard surface."
+            },
+            "contrast_medium_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_medium_inverse}",
+              "$description": "Role: Surface. Neutral background contrast_medium at low contrast, no further step, stays. Inverse surface."
+            },
+            "contrast_low": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_low}",
+              "$description": "Role: Surface. Neutral background contrast_low at low contrast, as before. Standard surface."
+            },
+            "contrast_low_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_low_inverse}",
+              "$description": "Role: Surface. Neutral background contrast_low at low contrast, as before. Inverse surface."
+            },
+            "contrast_lowest": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_lowest}",
+              "$description": "Role: Surface. Neutral background contrast_lowest at low contrast, as before. Standard surface."
+            },
+            "contrast_lowest_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_lowest_inverse}",
+              "$description": "Role: Surface. Neutral background contrast_lowest at low contrast, as before. Inverse surface."
             }
           },
           "fg": {
@@ -110,13 +160,13 @@
             },
             "strong": {
               "$type": "color",
-              "$value": "{ob.s1.color.neutral.border.strong}",
-              "$description": "Role: Border. Strong neutral border at low contrast, as before. Standard surface."
+              "$value": "{ob.s1.color.neutral.border.stronger}",
+              "$description": "Role: Border. Strong neutral border at low contrast, one step stronger. Standard surface."
             },
             "strong_inverse": {
               "$type": "color",
-              "$value": "{ob.s1.color.neutral.border.strong_inverse}",
-              "$description": "Role: Border. Strong neutral border at low contrast, as before. Inverse surface."
+              "$value": "{ob.s1.color.neutral.border.stronger_inverse}",
+              "$description": "Role: Border. Strong neutral border at low contrast, one step stronger. Inverse surface."
             }
           }
         },

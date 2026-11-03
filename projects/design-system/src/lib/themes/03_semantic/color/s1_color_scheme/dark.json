@@ -225,6 +225,16 @@
               "$type": "color",
               "$value": "{ob.p.color.brand.neutral_dark.300_black_50}",
               "$description": "Strong neutral border for the high contrast mode, mixed 50% toward black. Inverse surface."
+            },
+            "stronger": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral_dark.200}",
+              "$description": "Stronger neutral border for the low contrast mode, one step past strong. Standard surface."
+            },
+            "stronger_inverse": {
+              "$type": "color",
+              "$value": "{ob.p.color.brand.neutral_dark.400}",
+              "$description": "Stronger neutral border for the low contrast mode, one step past strong. Inverse surface."
             }
           },
           "shadow": {

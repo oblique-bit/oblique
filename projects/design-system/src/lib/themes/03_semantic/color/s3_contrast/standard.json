@@ -1,0 +1,248 @@
+{
+  "ob": {
+    "s3": {
+      "color": {
+        "neutral": {
+          "bg": {
+            "level_minus_1": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.level_minus_1}",
+              "$description": "Role: Surface. Neutral background of level_minus_1 at standard contrast, as level_minus_1. Page areas and containers."
+            },
+            "level_minus_1_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.level_minus_1_inverse}",
+              "$description": "Role: Surface. Inverse neutral background of level_minus_1 at standard contrast, as level_minus_1. Inverse surface."
+            },
+            "level_0": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_highest}",
+              "$description": "Role: Surface. Neutral background of level_0 at standard contrast, as level_0. Page areas and containers."
+            },
+            "level_0_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_highest_inverse}",
+              "$description": "Role: Surface. Inverse neutral background of level_0 at standard contrast, as level_0. Inverse surface."
+            },
+            "level_1": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_high}",
+              "$description": "Role: Surface. Neutral background of level_1 at standard contrast, as level_1. Page areas and containers."
+            },
+            "level_1_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_high_inverse}",
+              "$description": "Role: Surface. Inverse neutral background of level_1 at standard contrast, as level_1. Inverse surface."
+            },
+            "level_2": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_medium}",
+              "$description": "Role: Surface. Neutral background of level_2 at standard contrast, as level_2. Page areas and containers."
+            },
+            "level_2_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_medium_inverse}",
+              "$description": "Role: Surface. Inverse neutral background of level_2 at standard contrast, as level_2. Inverse surface."
+            },
+            "contrast_highest": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_highest}",
+              "$description": "Role: Surface. Neutral background contrast_highest at standard contrast, as before. Standard surface."
+            },
+            "contrast_highest_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_highest_inverse}",
+              "$description": "Role: Surface. Neutral background contrast_highest at standard contrast, as before. Inverse surface."
+            },
+            "contrast_high": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_high}",
+              "$description": "Role: Surface. Neutral background contrast_high at standard contrast, as before. Standard surface."
+            },
+            "contrast_high_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_high_inverse}",
+              "$description": "Role: Surface. Neutral background contrast_high at standard contrast, as before. Inverse surface."
+            },
+            "contrast_medium": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_medium}",
+              "$description": "Role: Surface. Neutral background contrast_medium at standard contrast, as before. Standard surface."
+            },
+            "contrast_medium_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_medium_inverse}",
+              "$description": "Role: Surface. Neutral background contrast_medium at standard contrast, as before. Inverse surface."
+            },
+            "contrast_low": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_low}",
+              "$description": "Role: Surface. Neutral background contrast_low at standard contrast, as before. Standard surface."
+            },
+            "contrast_low_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_low_inverse}",
+              "$description": "Role: Surface. Neutral background contrast_low at standard contrast, as before. Inverse surface."
+            },
+            "contrast_lowest": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_lowest}",
+              "$description": "Role: Surface. Neutral background contrast_lowest at standard contrast, as before. Standard surface."
+            },
+            "contrast_lowest_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.bg.contrast_lowest_inverse}",
+              "$description": "Role: Surface. Neutral background contrast_lowest at standard contrast, as before. Inverse surface."
+            }
+          },
+          "fg": {
+            "contrast_low": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.fg.contrast_low}",
+              "$description": "Role: Text. Neutral foreground contrast_low at standard contrast, as before. Standard surface."
+            },
+            "contrast_low_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.fg.contrast_low_inverse}",
+              "$description": "Role: Text. Neutral foreground contrast_low at standard contrast, as before. Inverse surface."
+            },
+            "contrast_medium": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.fg.contrast_medium}",
+              "$description": "Role: Text. Neutral foreground contrast_medium at standard contrast, as before. Standard surface."
+            },
+            "contrast_medium_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.fg.contrast_medium_inverse}",
+              "$description": "Role: Text. Neutral foreground contrast_medium at standard contrast, as before. Inverse surface."
+            },
+            "contrast_high": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.fg.contrast_high}",
+              "$description": "Role: Text. Neutral foreground contrast_high at standard contrast, as before. Standard surface."
+            },
+            "contrast_high_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.fg.contrast_high_inverse}",
+              "$description": "Role: Text. Neutral foreground contrast_high at standard contrast, as before. Inverse surface."
+            },
+            "contrast_highest": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.fg.contrast_highest}",
+              "$description": "Role: Text. Neutral foreground contrast_highest at standard contrast, as before. Standard surface."
+            },
+            "contrast_highest_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.fg.contrast_highest_inverse}",
+              "$description": "Role: Text. Neutral foreground contrast_highest at standard contrast, as before. Inverse surface."
+            }
+          },
+          "border": {
+            "subtle": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.border.subtle}",
+              "$description": "Role: Border. Subtle neutral border at standard contrast, as before. Standard surface."
+            },
+            "subtle_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.border.subtle_inverse}",
+              "$description": "Role: Border. Subtle neutral border at standard contrast, as before. Inverse surface."
+            },
+            "medium": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.border.medium}",
+              "$description": "Role: Border. Medium neutral border at standard contrast, as before. Standard surface."
+            },
+            "medium_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.border.medium_inverse}",
+              "$description": "Role: Border. Medium neutral border at standard contrast, as before. Inverse surface."
+            },
+            "strong": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.border.strong}",
+              "$description": "Role: Border. Strong neutral border at standard contrast, as before. Standard surface."
+            },
+            "strong_inverse": {
+              "$type": "color",
+              "$value": "{ob.s1.color.neutral.border.strong_inverse}",
+              "$description": "Role: Border. Strong neutral border at standard contrast, as before. Inverse surface."
+            }
+          }
+        },
+        "status": {
+          "info": {
+            "fg": {
+              "contrast_medium": {
+                "$type": "color",
+                "$value": "{ob.s1.color.status.info.fg.contrast_medium}",
+                "$description": "Role: Text. Info status foreground contrast_medium at standard contrast, as before. Standard surface."
+              },
+              "contrast_medium_inverse": {
+                "$type": "color",
+                "$value": "{ob.s1.color.status.info.fg.contrast_medium_inverse}",
+                "$description": "Role: Text. Info status foreground contrast_medium at standard contrast, as before. Inverse surface."
+              }
+            }
+          },
+          "resolved": {
+            "fg": {
+              "contrast_medium": {
+                "$type": "color",
+                "$value": "{ob.s1.color.status.resolved.fg.contrast_medium}",
+                "$description": "Role: Text. Resolved status foreground contrast_medium at standard contrast, as before. Standard surface."
+              },
+              "contrast_medium_inverse": {
+                "$type": "color",
+                "$value": "{ob.s1.color.status.resolved.fg.contrast_medium_inverse}",
+                "$description": "Role: Text. Resolved status foreground contrast_medium at standard contrast, as before. Inverse surface."
+              }
+            }
+          },
+          "attention": {
+            "fg": {
+              "contrast_medium": {
+                "$type": "color",
+                "$value": "{ob.s1.color.status.attention.fg.contrast_medium}",
+                "$description": "Role: Text. Attention status foreground contrast_medium at standard contrast, as before. Standard surface."
+              },
+              "contrast_medium_inverse": {
+                "$type": "color",
+                "$value": "{ob.s1.color.status.attention.fg.contrast_medium_inverse}",
+                "$description": "Role: Text. Attention status foreground contrast_medium at standard contrast, as before. Inverse surface."
+              }
+            }
+          },
+          "critical": {
+            "fg": {
+              "contrast_medium": {
+                "$type": "color",
+                "$value": "{ob.s1.color.status.critical.fg.contrast_medium}",
+                "$description": "Role: Text. Critical status foreground contrast_medium at standard contrast, as before. Standard surface."
+              },
+              "contrast_medium_inverse": {
+                "$type": "color",
+                "$value": "{ob.s1.color.status.critical.fg.contrast_medium_inverse}",
+                "$description": "Role: Text. Critical status foreground contrast_medium at standard contrast, as before. Inverse surface."
+              }
+            }
+          },
+          "fatal": {
+            "fg": {
+              "contrast_medium": {
+                "$type": "color",
+                "$value": "{ob.s1.color.status.fatal.fg.contrast_medium}",
+                "$description": "Role: Text. Fatal status foreground contrast_medium at standard contrast, as before. Standard surface."
+              },
+              "contrast_medium_inverse": {
+                "$type": "color",
+                "$value": "{ob.s1.color.status.fatal.fg.contrast_medium_inverse}",
+                "$description": "Role: Text. Fatal status foreground contrast_medium at standard contrast, as before. Inverse surface."
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

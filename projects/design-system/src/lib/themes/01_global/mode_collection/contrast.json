@@ -4,7 +4,7 @@
       "mode_collection": {
         "contrast": {
           "token_family_docs": {
-            "$description": "Contrast mode collection — contrast between content and its surface. Modes: low (.ob-contrast-low), medium (the base — no class is applied), high (.ob-contrast-high). Each mode carries the CSS class string the application adds to a container to activate it. low moves every surface one elevation level toward the text, high one level away from it."
+            "$description": "Contrast mode collection, set by the end user; high can also come from the operating system. Modes: low (.ob-contrast-low), standard (the base, no class is applied), high (.ob-contrast-high). Each mode carries the CSS class string the application adds to a container to activate it. low moves every background one step toward the text, the fixed ones too; the darker grey stays and the strong border gets one step stronger. high moves the surfaces one step away from the text and makes text and borders stronger; the fixed backgrounds stay."
           },
           "low": {
             "selector": {
@@ -13,11 +13,11 @@
               "$description": "low is activated by a class the application adds to the container."
             }
           },
-          "medium": {
+          "standard": {
             "selector": {
               "$type": "other",
               "$value": "default",
-              "$description": "medium is the base contrast mode — no class is applied. It is the first-paint default."
+              "$description": "standard is the base contrast mode: no class is applied. It is the first-paint default."
             }
           },
           "high": {
