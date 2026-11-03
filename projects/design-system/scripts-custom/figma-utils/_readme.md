@@ -247,6 +247,32 @@ two variables' `resolvedType` don't match.
 - Local variable ids never contain `/`; remote ones do (`VariableID:<40hex>/<node:id>`).
   That is the pre-filter used to find alias targets worth checking at all.
 
+## repoint-explicit-modes.js — move node mode overrides onto a library's collection
+
+**The problem.** The third channel that keeps a ghost collection in the
+variable-mode picker: a node carries an explicit mode override
+(`explicitVariableModes`, e.g. `viewport = md` on a template frame) for a
+remote collection. `unbind-variables.js` and `relink-variable-aliases.js`
+do not touch overrides.
+
+**The fix.** Run `repoint-explicit-modes.js`: every override on a collection
+named `collectionName` that is not the target library's gets the same-named
+mode of the target library's collection, and the old override is cleared.
+A node whose mode name has no twin in the target is skipped and reported.
+
+1. Run with `mode: 'scan'` first — lists every node that would move.
+2. Re-run with `mode: 'repoint'` to apply, then reopen the file; the picker
+   keeps the old collection cached until then.
+
+### CONFIG fields
+
+| field | what it does |
+|---|---|
+| `mode` | `'scan'` (report only) or `'repoint'` (apply) |
+| `fileKeyGuard` | refuse to run unless the open file has this key; `null` = any file |
+| `collectionName` | name of the collection to move, same in the old and the new library |
+| `targetLibraryName` | enabled team library holding the target collection, e.g. `DesignSystem@Tokens V10.0` |
+
 ## rename-text-styles.js — cosmetic prefix rename for local text styles
 
 **The problem.** A Figma text style's name comes straight from the token
