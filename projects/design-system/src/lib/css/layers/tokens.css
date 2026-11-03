@@ -3698,26 +3698,7 @@
 		--ob-s-dimension-dynamic-density-xs-rem: 0.5rem;
 	}
 
-	.ob-elevation-level-2 {
-		--ob-h-button-color-primary-bg-active_surface: var(--ob-h-button-color-primary-bg-active_level_2);
-		--ob-h-button-color-primary-bg-active_surface_inverse: var(--ob-h-button-color-primary-bg-active_level_2_inverse);
-		--ob-h-button-color-primary-bg-hover_surface: var(--ob-h-button-color-primary-bg-hover_level_2);
-		--ob-h-button-color-primary-bg-hover_surface_inverse: var(--ob-h-button-color-primary-bg-hover_level_2_inverse);
-		--ob-h-button-color-primary-bg-rest_surface: var(--ob-h-button-color-primary-bg-rest_level_2);
-		--ob-h-button-color-primary-bg-rest_surface_inverse: var(--ob-h-button-color-primary-bg-rest_level_2_inverse);
-		--ob-h-button-color-secondary-bg-active_surface: var(--ob-h-button-color-secondary-bg-active_level_2);
-		--ob-h-button-color-secondary-bg-active_surface_inverse: var(--ob-h-button-color-secondary-bg-active_level_2_inverse);
-		--ob-h-button-color-secondary-bg-hover_surface: var(--ob-h-button-color-secondary-bg-hover_level_2);
-		--ob-h-button-color-secondary-bg-hover_surface_inverse: var(--ob-h-button-color-secondary-bg-hover_level_2_inverse);
-		--ob-h-button-color-tertiary-bg-active_surface: var(--ob-h-button-color-tertiary-bg-active_level_2);
-		--ob-h-button-color-tertiary-bg-active_surface_inverse: var(--ob-h-button-color-tertiary-bg-active_level_2_inverse);
-		--ob-h-button-color-tertiary-bg-hover_surface: var(--ob-h-button-color-tertiary-bg-hover_level_2);
-		--ob-h-button-color-tertiary-bg-hover_surface_inverse: var(--ob-h-button-color-tertiary-bg-hover_level_2_inverse);
-		--ob-s-color-neutral-bg-surface: #dfe4e9;
-		--ob-s-color-neutral-bg-surface_inverse: #46596b;
-	}
-
-	.ob-elevation-level-1 {
+	.ob-dimmed-on {
 		--ob-s-color-neutral-bg-surface: #f0f4f7;
 		--ob-s-color-neutral-bg-surface_inverse: #2f4356;
 	}

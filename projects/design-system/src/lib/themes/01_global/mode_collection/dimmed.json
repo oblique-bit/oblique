@@ -1,0 +1,27 @@
+{
+  "ob": {
+    "g": {
+      "mode_collection": {
+        "dimmed": {
+          "token_family_docs": {
+            "$description": "Dimmed mode collection, set by the product designer (DS consumer). Modes: off (the base, no class is applied) and on (.ob-dimmed-on). on gives parts of a page the light grey background; cards, fields, header and footer keep their own background. Each mode carries the CSS class string the application adds to a container to activate it."
+          },
+          "off": {
+            "selector": {
+              "$type": "other",
+              "$value": "default",
+              "$description": "off is the base dimmed mode: no class is applied. It is the first-paint default."
+            }
+          },
+          "on": {
+            "selector": {
+              "$type": "other",
+              "$value": ".ob-dimmed-on",
+              "$description": "on is activated by a class the application adds to the container."
+            }
+          }
+        }
+      }
+    }
+  }
+}
