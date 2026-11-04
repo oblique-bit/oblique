@@ -29,13 +29,13 @@ export function buildServer(): Express {
 
 function addStaticRoute(server: Express, browserDistFolder: string): void {
 	// eslint-disable-next-line @typescript-eslint/strict-void-return
-	server.get('*.*', express.static(browserDistFolder, {maxAge: '1y'}));
+	server.get('/{*path}', express.static(browserDistFolder, {maxAge: '1y'}));
 }
 
 function addAngularRoute(server: Express, indexHtml: string, browserDistFolder: string): void {
-	const commonEngine = new CommonEngine();
+	const commonEngine = new CommonEngine({allowedHosts: ['localhost', '127.0.0.1']});
 
-	server.get('*', (req, res, next) => {
+	server.get('/{*path}', (req, res, next) => {
 		commonEngine
 			.render(buildRenderOptions(req, indexHtml, browserDistFolder))
 			.then(html => res.send(html))
