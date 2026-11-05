@@ -6,6 +6,7 @@
 		id="ob-language-dropdown"
 		[value]="language()"
 		(selectionChange)="changeLanguage($event.value)"
+		[aria-label]="languageLabel()"
 		(openedChange)="changeChevron()"
 		panelClass="ob-language-dropdown"
 	>

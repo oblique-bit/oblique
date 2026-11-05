@@ -16,9 +16,9 @@ describe('scroll-delta', () => {
 			{desc: 'item on the right', left: 110, right: 350, offset: 60},
 			{desc: 'visible item', left: 110, right: 250, offset: 0},
 		])('with $desc', ({left, right, offset}) => {
-			jest.spyOn(window, 'getComputedStyle').mockReturnValue(mockComputedStyle);
-			jest.spyOn(container, 'getBoundingClientRect').mockReturnValue(mockContainerBoundingRect);
-			jest.spyOn(item, 'getBoundingClientRect').mockReturnValue({left, right} as DOMRect);
+			vi.spyOn(window, 'getComputedStyle').mockReturnValue(mockComputedStyle);
+			vi.spyOn(container, 'getBoundingClientRect').mockReturnValue(mockContainerBoundingRect);
+			vi.spyOn(item, 'getBoundingClientRect').mockReturnValue({left, right} as DOMRect);
 
 			expect(getScrollIntoViewDelta(container, item)).toBe(offset);
 		});

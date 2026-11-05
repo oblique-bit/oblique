@@ -20,7 +20,7 @@ describe('ObServiceNavigationStateApiService', () => {
 		});
 		service = TestBed.inject(ObServiceNavigationStateApiService);
 		httpClient = TestBed.inject(HttpClient);
-		jest.spyOn(httpClient, 'get').mockReturnValue(of(mockData));
+		vi.spyOn(httpClient, 'get').mockReturnValue(of(mockData));
 	});
 
 	it('should be created', () => {
@@ -55,7 +55,7 @@ describe('ObServiceNavigationStateApiService', () => {
 		});
 
 		it('should throw a 500 error when the response contains an errorCode', async () => {
-			jest.spyOn(httpClient, 'get').mockReturnValue(of({...mockData, errorCode: 500}));
+			vi.spyOn(httpClient, 'get').mockReturnValue(of({...mockData, errorCode: 500}));
 
 			const responsePromise = firstValueFrom(service.get('http://rootUrl/', 1));
 

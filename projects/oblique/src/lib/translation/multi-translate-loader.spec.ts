@@ -72,7 +72,7 @@ describe(ObMultiTranslateLoader.name, () => {
 				obConsoleService = TestBed.inject(ObConsoleService);
 				loader = new ObMultiTranslateLoader(http, defaultResources, shouldFlattenFiles, obConsoleService);
 
-				jest.spyOn(http, 'get').mockImplementation((url: string) => {
+				vi.spyOn(http, 'get').mockImplementation((url: string) => {
 					const files: Record<string, unknown> = {
 						//en
 						'./assets/i18n/oblique-en.json': {
@@ -126,14 +126,14 @@ describe(ObMultiTranslateLoader.name, () => {
 		])('with missing $description', ({description, filePrefix, expectedWarning}) => {
 			beforeEach(async () => {
 				obConsoleService = TestBed.inject(ObConsoleService);
-				jest.spyOn(obConsoleService, 'warn').mockImplementation();
+				vi.spyOn(obConsoleService, 'warn').mockImplementation(() => {});
 				loader = new ObMultiTranslateLoader(http, [{prefix: filePrefix, suffix: '.json'}], false, obConsoleService);
-				jest.spyOn(http, 'get').mockReturnValue(throwError(() => new Error('404')));
+				vi.spyOn(http, 'get').mockReturnValue(throwError(() => new Error('404')));
 				result = await firstValueFrom(loader.getTranslation(englishLanguage));
 			});
 
 			afterEach(() => {
-				jest.clearAllMocks();
+				vi.clearAllMocks();
 			});
 
 			test('should return an empty object', () => {

@@ -1,3 +1,17 @@
+<!--
+	This is the one incremental hydration boundary in Sandbox-SSR. On the initial load the server renders
+	the main template instead of the placeholder, and Angular hydrates it once it enters the viewport. The
+	counter in `ssr-text-demo` makes that observable: the button is inert until hydration fires.
+
+	The `@placeholder` is still required, because a later client-side navigation to this route renders the
+	block like a regular `@defer`.
+-->
+@defer (on viewport; hydrate on viewport) {
+	<ssr-text-demo />
+} @placeholder {
+	<p>Text sample</p>
+}
+
 <section>
 	<h1>H1 - The Phantom Menace</h1>
 	<p>

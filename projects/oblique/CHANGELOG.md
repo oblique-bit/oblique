@@ -1,3 +1,9 @@
+# [16.0.4](https://github.com/oblique-bit/oblique/compare/16.0.3...16.0.4) (2026-11-05)
+
+## Bug Fixes
+
+- **service-navigation:** announce full language name for selected language ([43476dfd](https://github.com/oblique-bit/oblique/commit/43476dfda55200ec255b374523e5b1f53c323abf), OUI-4712)
+
 # [16.0.3](https://github.com/oblique-bit/oblique/compare/16.0.2...16.0.3) (2026-10-27)
 
 ## Bug Fixes

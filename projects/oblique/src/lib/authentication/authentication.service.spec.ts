@@ -6,9 +6,9 @@ describe('ObAuthenticationService', () => {
 	let service: ObAuthenticationService;
 
 	const mockOAuthService = {
-		initLoginFlow: jest.fn(),
-		logOut: jest.fn(),
-		getAccessToken: jest
+		initLoginFlow: vi.fn(),
+		logOut: vi.fn(),
+		getAccessToken: vi
 			.fn()
 			.mockImplementation(
 				() =>
@@ -24,7 +24,7 @@ describe('ObAuthenticationService', () => {
 	});
 
 	afterEach(() => {
-		jest.clearAllMocks();
+		vi.clearAllMocks();
 	});
 
 	it('should be created', () => {

@@ -8,6 +8,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTooltipHarness} from '@angular/material/tooltip/testing';
 import {By} from '@angular/platform-browser';
 import {ObPopoverModule} from '../../popover/popover.module';
+import {ObPopoverDirective} from '../../popover/popover.directive';
+import {ObExternalLinkDirective} from '../../external-link/external-link.directive';
 import {ObServiceNavigationPopoverSectionComponent} from '../shared/popover-section/service-navigation-popover-section.component';
 import {ObServiceNavigationInfoHarness} from './service-navigation-info.harness';
 import {ObServiceNavigationInfoComponent} from './service-navigation-info.component';
@@ -23,7 +25,15 @@ describe(ObServiceNavigationInfoComponent.name, () => {
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			imports: [MatIconModule, MatTooltipModule, ObPopoverModule, ObIsCurrentUrlPipe, TranslatePipe],
+			imports: [
+				MatIconModule,
+				MatTooltipModule,
+				ObPopoverModule,
+				ObPopoverDirective,
+				ObExternalLinkDirective,
+				ObIsCurrentUrlPipe,
+				TranslatePipe,
+			],
 			declarations: [
 				ObServiceNavigationInfoComponent,
 				ObServiceNavigationPopoverSectionComponent,

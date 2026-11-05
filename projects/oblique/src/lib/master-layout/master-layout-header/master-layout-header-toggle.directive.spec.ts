@@ -50,7 +50,7 @@ describe('ObMasterLayoutHeaderToggleDirective', () => {
 
 			it('should prevent default', () => {
 				const event = new MouseEvent('click');
-				jest.spyOn(event, 'preventDefault');
+				vi.spyOn(event, 'preventDefault');
 				element.nativeElement.dispatchEvent(event);
 				expect(event.preventDefault).toHaveBeenCalled();
 			});
@@ -68,7 +68,7 @@ describe('ObMasterLayoutHeaderToggleDirective', () => {
 			});
 
 			it('should prevent default', () => {
-				jest.spyOn(event, 'preventDefault');
+				vi.spyOn(event, 'preventDefault');
 				element.nativeElement.dispatchEvent(event);
 				expect(event.preventDefault).toHaveBeenCalled();
 			});

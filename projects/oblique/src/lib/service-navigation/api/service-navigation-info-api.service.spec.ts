@@ -31,7 +31,7 @@ describe('ObServiceNavigationInfoApiService', () => {
 
 		describe('request', () => {
 			it('should have the "lang" and "withCredential" properties', () => {
-				jest.spyOn(httpClient, 'get').mockReturnValue(of(fixtureApplicationHelp()));
+				vi.spyOn(httpClient, 'get').mockReturnValue(of(fixtureApplicationHelp()));
 				service.get('rootUrl/', '42', 'en');
 
 				expect(httpClient.get).toHaveBeenCalledWith('rootUrl/api/applications/42/helpinformation', {
@@ -45,7 +45,7 @@ describe('ObServiceNavigationInfoApiService', () => {
 			describe('with regular data', () => {
 				let result: ObIServiceNavigationBackendInfo;
 				beforeEach(() => {
-					jest.spyOn(httpClient, 'get').mockReturnValue(of(fixtureApplicationHelp()));
+					vi.spyOn(httpClient, 'get').mockReturnValue(of(fixtureApplicationHelp()));
 					service.get('', '', '').subscribe(infoBackend => {
 						result = infoBackend;
 					});
@@ -98,7 +98,7 @@ describe('ObServiceNavigationInfoApiService', () => {
 				it('should not have a contact form', () => {
 					const fixture = fixtureApplicationHelp();
 					fixture.data.contact.links = [];
-					jest.spyOn(httpClient, 'get').mockReturnValue(of(fixture));
+					vi.spyOn(httpClient, 'get').mockReturnValue(of(fixture));
 					let result: ObIServiceNavigationBackendInfo;
 					service.get('', '', '').subscribe(infoBackend => {
 						result = infoBackend;
@@ -116,7 +116,7 @@ describe('ObServiceNavigationInfoApiService', () => {
 				let error: Error;
 
 				beforeEach(() => {
-					jest.spyOn(httpClient, 'get').mockReturnValue(
+					vi.spyOn(httpClient, 'get').mockReturnValue(
 						of({
 							errorCode: fakeErrorCode,
 							message: fakeErrorMessage,

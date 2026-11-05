@@ -7,13 +7,13 @@ import {firstValueFrom, of} from 'rxjs';
 
 describe('ServiceNavigationTimeoutRedirectorService', () => {
 	let service: ObServiceNavigationTimeoutRedirectorService;
-	const fakeSetCookie = jest.fn();
-	const fakeSetShortCookie = jest.fn();
+	const fakeSetCookie = vi.fn();
+	const fakeSetShortCookie = vi.fn();
 	const fakeCurrentUrl = 'fakeUrl';
 	const fakeLogoutUrl = 'fakeLogoutUrl';
 	const fakeWindow = {location: {href: fakeCurrentUrl}};
-	const fakeSetLogoutTrigger = jest.fn();
-	const mockLogoutUrl = jest.fn(() => of(fakeLogoutUrl));
+	const fakeSetLogoutTrigger = vi.fn();
+	const mockLogoutUrl = vi.fn(() => of(fakeLogoutUrl));
 	const fakeServiceNavigationService = {
 		getLogoutUrl$: mockLogoutUrl,
 		setLogoutTrigger: fakeSetLogoutTrigger,

@@ -1,7 +1,7 @@
 {
   "title": "Oblique",
   "name": "oblique",
-  "version": "16.0.3",
+  "version": "16.0.4",
   "type": "module",
   "license": "MIT",
   "organization": {
@@ -32,6 +32,7 @@
   "scripts": {
     "lint": "tsx scripts/lint.ts && npm run lint --workspaces",
     "format": "tsx scripts/lint.ts --fix && npm run format --workspaces",
+    "test": "tsx --test \"scripts/**/*.spec.ts\"",
     "dependencies-update": "tsx scripts/dependencies-update.ts",
     "update-angular": "tsx scripts/update-angular.ts",
     "postinstall": "tsx scripts/sanitize-package-lock.ts",
@@ -64,12 +65,10 @@
     "zone.js": "^0.16.2"
   },
   "devDependencies": {
-    "@angular-builders/jest": "^22.0.1",
     "@angular-devkit/build-angular": "^22.0.4",
     "@angular-devkit/core": "^22.0.4",
     "@angular/cli": "^22.0.0",
     "@angular/compiler-cli": "^22.0.0",
-    "@types/jest": "^30.0.0",
     "@types/js-cookie": "^3.0.6",
     "@types/node": "^22.20.0",
     "angular-eslint": "^22.0.0",
@@ -77,9 +76,7 @@
     "cssnano": "^7.1.9",
     "eslint": "^9.39.5",
     "husky": "^9.1.7",
-    "jest": "^30.4.2",
-    "jest-environment-jsdom": "^30.4.1",
-    "jest-sonar": "^0.2.16",
+    "jsdom": "^26.1.0",
     "lint-staged": "^16.4.0",
     "postcss": "^8.5.15",
     "postcss-import": "^16.1.1",

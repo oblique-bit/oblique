@@ -5,11 +5,11 @@ import {obPauseWhenPageHidden} from './pause-when-page-hidden';
 describe(obPauseWhenPageHidden.name, () => {
 	beforeEach(() => {
 		let index = 0;
-		jest.spyOn(document, 'visibilityState', 'get').mockImplementation(() => (index++ % 2 === 0 ? 'hidden' : 'visible'));
+		vi.spyOn(document, 'visibilityState', 'get').mockImplementation(() => (index++ % 2 === 0 ? 'hidden' : 'visible'));
 	});
 
 	afterEach(() => {
-		jest.clearAllMocks();
+		vi.clearAllMocks();
 	});
 
 	describe.each([undefined, document])('with "%s" as parameter', doc => {
@@ -31,7 +31,7 @@ describe(obPauseWhenPageHidden.name, () => {
 			},
 		])('$description, yields $result', ({events, result}) => {
 			const visibilityChange = new Subject<void>();
-			jest.spyOn(rxjs, 'fromEvent').mockImplementation(() => visibilityChange.asObservable());
+			vi.spyOn(rxjs, 'fromEvent').mockImplementation(() => visibilityChange.asObservable());
 
 			const calls: number[] = [];
 			const emitter = new Subject<number>();

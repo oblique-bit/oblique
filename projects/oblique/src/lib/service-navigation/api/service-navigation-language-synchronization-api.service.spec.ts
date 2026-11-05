@@ -19,7 +19,7 @@ describe('ObServiceNavigationLanguageSynchronizationApiService', () => {
 		});
 		service = TestBed.inject(ObServiceNavigationLanguageSynchronizationApiService);
 		httpClient = TestBed.inject(HttpClient);
-		jest.spyOn(httpClient, 'put').mockReturnValue(of({}));
+		vi.spyOn(httpClient, 'put').mockReturnValue(of({}));
 	});
 
 	it('should be created', () => {

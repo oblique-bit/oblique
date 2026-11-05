@@ -23,7 +23,7 @@ describe('UnsavedChangesService', () => {
 
 	beforeEach(() => {
 		// This prevents the opening of a confirmation dialog if the cli reloads the tests
-		jest.spyOn(window, 'addEventListener');
+		vi.spyOn(window, 'addEventListener');
 	});
 
 	beforeEach(inject([ObUnsavedChangesService], (service: ObUnsavedChangesService) => {
@@ -65,7 +65,7 @@ describe('UnsavedChangesService', () => {
 	describe('canDeactivate()', () => {
 		describe('with no watched form', () => {
 			it("shouldn't call window.confirm", () => {
-				jest.spyOn(window, 'confirm');
+				vi.spyOn(window, 'confirm');
 				unsavedChangesService.canDeactivate();
 				expect(window.confirm).not.toHaveBeenCalled();
 			});
@@ -82,7 +82,7 @@ describe('UnsavedChangesService', () => {
 			});
 
 			it("shouldn't call window.confirm", () => {
-				jest.spyOn(window, 'confirm');
+				vi.spyOn(window, 'confirm');
 				unsavedChangesService.canDeactivate();
 				expect(window.confirm).not.toHaveBeenCalled();
 			});
@@ -99,18 +99,18 @@ describe('UnsavedChangesService', () => {
 			});
 
 			it('should call window.confirm', () => {
-				jest.spyOn(window, 'confirm');
+				vi.spyOn(window, 'confirm');
 				unsavedChangesService.canDeactivate();
 				expect(window.confirm).toHaveBeenCalled();
 			});
 
 			it('should return false, if not confirmed', () => {
-				jest.spyOn(window, 'confirm').mockImplementation(() => false);
+				vi.spyOn(window, 'confirm').mockImplementation(() => false);
 				expect(unsavedChangesService.canDeactivate()).toBeFalsy();
 			});
 
 			it('should return true, if confirmed', () => {
-				jest.spyOn(window, 'confirm').mockImplementation(() => true);
+				vi.spyOn(window, 'confirm').mockImplementation(() => true);
 				expect(unsavedChangesService.canDeactivate()).toBeTruthy();
 			});
 		});
@@ -121,7 +121,7 @@ describe('UnsavedChangesService', () => {
 			});
 
 			it('should return true, if confirmed', () => {
-				jest.spyOn(window, 'confirm').mockImplementation(() => true);
+				vi.spyOn(window, 'confirm').mockImplementation(() => true);
 				expect(unsavedChangesService.canDeactivate()).toBeTruthy();
 			});
 		});
@@ -147,7 +147,7 @@ describe('UnsavedChangesService', () => {
 			});
 
 			it('should NOT ignore changes', () => {
-				jest.spyOn(window, 'confirm').mockImplementation(() => false);
+				vi.spyOn(window, 'confirm').mockImplementation(() => false);
 				expect(unsavedChangesService.ignoreChanges()).toBe(false);
 			});
 		});
@@ -162,17 +162,17 @@ describe('UnsavedChangesService', () => {
 			const form2: ControlContainer = {dirty: false} as ControlContainer;
 			unsavedChangesService.watch('tab_1', form1);
 			unsavedChangesService.watch('tab_2', form2);
-			jest.clearAllMocks();
+			vi.clearAllMocks();
 		});
 
 		it('ignoreChanges with specific dirty formId should call confirm', () => {
-			jest.spyOn(window, 'confirm').mockImplementation(() => true);
+			vi.spyOn(window, 'confirm').mockImplementation(() => true);
 			unsavedChangesService.ignoreChanges(['tab_1']);
 			expect(window.confirm).toHaveBeenCalled();
 		});
 
 		it('ignoreChanges with specific clean formId should not call confirm', () => {
-			jest.spyOn(window, 'confirm').mockImplementation(() => true);
+			vi.spyOn(window, 'confirm').mockImplementation(() => true);
 			unsavedChangesService.ignoreChanges(['tab_2']);
 			expect(window.confirm).not.toHaveBeenCalled();
 		});

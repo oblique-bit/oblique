@@ -21,8 +21,8 @@ describe(ObMasterLayoutNavigationItemDirective.name, () => {
 	let directive: ObMasterLayoutNavigationItemDirective;
 	let masterLayoutService: ObMasterLayoutComponentService;
 	const mock = {
-		menuOpened: jest.fn(),
-		menuClosed: jest.fn(),
+		menuOpened: vi.fn(),
+		menuClosed: vi.fn(),
 	};
 	const clickSubject = new Subject<MouseEvent>();
 	const keyUpSubject = new Subject<KeyboardEvent>();

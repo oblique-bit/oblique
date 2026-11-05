@@ -4,6 +4,7 @@ import {Log} from '../shared/log';
 import {fatal, getResultFromCommand} from '../shared/utils';
 import {getAbsolutePath} from '../shared/root';
 import {Files} from '../shared/files';
+import {checkFooter} from './commit-footer';
 
 interface Header {
 	type: string;
@@ -26,7 +27,7 @@ class HookCommitRules {
 		HookCommitRules.checkLineLength(message, HookCommitRules.maxLineLength);
 		HookCommitRules.checkEmptyLine(message);
 		HookCommitRules.checkHeader(message[0]);
-		HookCommitRules.checkBreakingChanges(message);
+		HookCommitRules.checkFooter(message);
 	}
 
 	private static checkLineLength(lines: string[], maxLength: number): void {
@@ -184,20 +185,9 @@ class HookCommitRules {
 		}
 	}
 
-	private static checkBreakingChanges(lines: string[]): void {
-		Log.info('Check footer breaking changes');
-		const lineIndex: number = lines.findIndex(line => line.toLowerCase().includes('breaking change'));
-		// skip 1st line as it may contain the "breaking change" string
-		if (lineIndex > 0) {
-			if (!/^BREAKING CHANGE:$/.test(lines[lineIndex])) {
-				HookCommitRules.fatal(`${HookCommitRules.numeral(lineIndex)} line must be exactly "BREAKING CHANGE:".`);
-			}
-			if (!lines[lineIndex + 1]?.length) {
-				HookCommitRules.fatal(
-					`${HookCommitRules.numeral(lineIndex + 1)} line cannot be empty as it follows a breaking change declaration.`
-				);
-			}
-		}
+	private static checkFooter(lines: string[]): void {
+		Log.info('Check footer issues declaration and breaking changes');
+		checkFooter(lines, HookCommitRules.fatal);
 	}
 
 	private static getFolderName(pkg: string, type: string): string {

@@ -29,11 +29,15 @@ class ButtonTestComponent {}
 })
 class ButtonWithDisabledTooltipComponent {}
 
-let isDevModeEnabled = true;
-jest.mock('@angular/core', () => ({
-	...jest.requireActual('@angular/core'),
-	isDevMode: jest.fn().mockImplementation(() => isDevModeEnabled),
-}));
+const {state} = vi.hoisted(() => ({state: {isDevModeEnabled: true}}));
+
+vi.mock('@angular/core', async () => {
+	const angularCore = await vi.importActual<typeof import('@angular/core')>('@angular/core');
+	// eslint-disable-next-line prefer-object-spread
+	return Object.assign({}, angularCore, {
+		isDevMode: vi.fn().mockImplementation(() => state.isDevModeEnabled),
+	});
+});
 
 describe(ObIconButtonDirective.name, () => {
 	let directive: ObIconButtonDirective;
@@ -46,7 +50,7 @@ describe(ObIconButtonDirective.name, () => {
 		{mode: 'prod', isDevMode: false, warning: 'absence'},
 	])('$mode mode', ({isDevMode, warning}) => {
 		beforeEach(async () => {
-			isDevModeEnabled = isDevMode;
+			state.isDevModeEnabled = isDevMode;
 			TestBed.resetTestingModule();
 			await TestBed.configureTestingModule({
 				imports: [MatButtonModule, ButtonTestComponent, MatIconModule],
@@ -54,7 +58,7 @@ describe(ObIconButtonDirective.name, () => {
 		});
 
 		afterEach(() => {
-			jest.clearAllMocks();
+			vi.clearAllMocks();
 		});
 
 		describe('without tooltip', () => {
@@ -65,7 +69,7 @@ describe(ObIconButtonDirective.name, () => {
 				button = fixture.debugElement.query(By.directive(ObIconButtonDirective));
 				directive = button.injector.get(ObIconButtonDirective);
 				obConsoleService = TestBed.inject(ObConsoleService);
-				jest.spyOn(obConsoleService, 'warn');
+				vi.spyOn(obConsoleService, 'warn');
 				fixture.detectChanges();
 			});
 

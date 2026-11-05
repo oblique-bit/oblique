@@ -121,7 +121,7 @@ class HtmlInputTestComponent {
 	</div>`,
 })
 class HtmlInputWithDatePickerTestComponent {
-	datePicker = {select: jest.fn()} as unknown as MatDatepicker<unknown>;
+	datePicker = {select: vi.fn()} as unknown as MatDatepicker<unknown>;
 }
 
 @Component({
@@ -173,7 +173,7 @@ describe('InputClear', () => {
 				input = fixture.nativeElement.querySelector('input');
 				input.value = 'testInput';
 				input.dispatchEvent(new Event('input'));
-				jest.spyOn(directive, 'onClick');
+				vi.spyOn(directive, 'onClick');
 				fixture.nativeElement.querySelector('button').click();
 				fixture.detectChanges();
 			});
@@ -246,7 +246,7 @@ describe('InputClear', () => {
 				input = fixture.nativeElement.querySelector('input');
 				input.value = 'testInput';
 				input.dispatchEvent(new Event('input'));
-				jest.spyOn(directive, 'onClick');
+				vi.spyOn(directive, 'onClick');
 				fixture.nativeElement.querySelector('button').click();
 				fixture.detectChanges();
 			});
@@ -320,7 +320,7 @@ describe('InputClear', () => {
 				input.value = 'testInput';
 				fixture.detectChanges();
 				input.dispatchEvent(new Event('input'));
-				jest.spyOn(directive, 'onClick');
+				vi.spyOn(directive, 'onClick');
 				fixture.nativeElement.querySelector('button').click();
 			});
 
@@ -392,7 +392,7 @@ describe('InputClear', () => {
 				input = fixture.nativeElement.querySelector('input');
 				input.value = 'testInput';
 				input.dispatchEvent(new Event('input'));
-				jest.spyOn(directive, 'onClick');
+				vi.spyOn(directive, 'onClick');
 				fixture.nativeElement.querySelector('button').click();
 				fixture.detectChanges();
 			});
@@ -427,7 +427,7 @@ describe('InputClear', () => {
 
 			test('that it focuses the input after clearing', () => {
 				input = fixture.nativeElement.querySelector('input');
-				jest.spyOn(input, 'focus');
+				vi.spyOn(input, 'focus');
 
 				fixture.nativeElement.querySelector('button').click();
 
@@ -437,7 +437,7 @@ describe('InputClear', () => {
 			test('that it does not focus the input after clearing when focusOnClear is false', () => {
 				input = fixture.nativeElement.querySelector('input');
 				fixture.componentRef.instance.focusOnClear = false;
-				jest.spyOn(input, 'focus');
+				vi.spyOn(input, 'focus');
 				const directivePrivate = directive as unknown as ObInputClearDirectivePrivate;
 
 				Reflect.apply(directivePrivate.setFocus, directive, []);
@@ -511,7 +511,7 @@ describe('InputClear', () => {
 
 		beforeEach(() => {
 			obConsoleService = TestBed.inject(ObConsoleService);
-			jest.spyOn(obConsoleService, 'warn');
+			vi.spyOn(obConsoleService, 'warn');
 			fixture = TestBed.createComponent(WrongConfigurationTestComponent);
 			fixture.detectChanges();
 		});

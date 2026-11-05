@@ -16,18 +16,18 @@ describe('ObServiceNavigationPollingService', () => {
 	const mockCountResponse = {data: 42};
 
 	beforeEach(() => {
-		jest.useFakeTimers();
+		vi.useFakeTimers();
 		TestBed.configureTestingModule({
 			providers: [
 				{
 					provide: ObServiceNavigationStateApiService,
-					useValue: {get: jest.fn().mockReturnValue(of(mockStateResponse))},
+					useValue: {get: vi.fn().mockReturnValue(of(mockStateResponse))},
 				},
 				{
 					provide: ObServiceNavigationCountApiService,
-					useValue: {get: jest.fn().mockReturnValue(of(mockCountResponse))},
+					useValue: {get: vi.fn().mockReturnValue(of(mockCountResponse))},
 				},
-				{provide: ObNotificationService, useValue: {error: jest.fn(), success: jest.fn()}},
+				{provide: ObNotificationService, useValue: {error: vi.fn(), success: vi.fn()}},
 				ObServiceNavigationPollingService,
 			],
 		});
@@ -39,9 +39,9 @@ describe('ObServiceNavigationPollingService', () => {
 	});
 
 	afterEach(() => {
-		jest.clearAllMocks();
-		jest.clearAllTimers();
-		jest.useRealTimers();
+		vi.clearAllMocks();
+		vi.clearAllTimers();
+		vi.useRealTimers();
 	});
 
 	it('should be created', () => {
@@ -58,7 +58,7 @@ describe('ObServiceNavigationPollingService', () => {
 			service.state$.subscribe(() => {
 				hasEmitted = true;
 			});
-			jest.advanceTimersByTime(1000);
+			vi.advanceTimersByTime(1000);
 			expect(hasEmitted).toBe(false);
 		});
 	});
@@ -66,7 +66,7 @@ describe('ObServiceNavigationPollingService', () => {
 	describe('initializeStateUpdate', () => {
 		it('should call both polling endpoints immediately when initialized', () => {
 			service.initializeStateUpdate(1, 2, 'http://rootUrl/', 1);
-			jest.advanceTimersByTime(0);
+			vi.advanceTimersByTime(0);
 
 			expect(stateApiService.get).toHaveBeenCalledTimes(1);
 			expect(stateApiService.get).toHaveBeenCalledWith('http://rootUrl/', 1);
@@ -82,7 +82,7 @@ describe('ObServiceNavigationPollingService', () => {
 		])('after $elapsedMs ms with 1s interval', ({elapsedMs, expectedCalls}) => {
 			beforeEach(() => {
 				service.initializeStateUpdate(1, 1, 'http://rootUrl/', 1);
-				jest.advanceTimersByTime(elapsedMs);
+				vi.advanceTimersByTime(elapsedMs);
 			});
 
 			it(`should call "stateApiService.get" ${expectedCalls} times`, () => {
@@ -102,7 +102,7 @@ describe('ObServiceNavigationPollingService', () => {
 		])('after $elapsedMs ms with 2s interval', ({elapsedMs, expectedCalls}) => {
 			beforeEach(() => {
 				service.initializeStateUpdate(1, 2, 'http://rootUrl/', 1);
-				jest.advanceTimersByTime(elapsedMs);
+				vi.advanceTimersByTime(elapsedMs);
 			});
 
 			it(`should call "countApiService.get" ${expectedCalls} times`, () => {
@@ -120,19 +120,19 @@ describe('ObServiceNavigationPollingService', () => {
 		{service: 'count', apiService: () => countApiService},
 	])('with an error while fetching the $service', ({apiService}) => {
 		beforeEach(() => {
-			jest.spyOn(apiService(), 'get').mockReturnValue(throwError(() => new Error('test')));
-			jest.spyOn(notification, 'error');
+			vi.spyOn(apiService(), 'get').mockReturnValue(throwError(() => new Error('test')));
+			vi.spyOn(notification, 'error');
 		});
 
 		it('should throw an error', () => {
 			service.initializeStateUpdate(1, 1, 'http://rootUrl/', 1);
-			expect(() => jest.advanceTimersByTime(1000)).toThrow('Cannot load service navigation state');
+			expect(() => vi.advanceTimersByTime(1000)).toThrow('Cannot load service navigation state');
 		});
 
 		it('should show a notification', () => {
 			service.initializeStateUpdate(1, 1, 'http://rootUrl/', 1);
 			try {
-				jest.advanceTimersByTime(1000);
+				vi.advanceTimersByTime(1000);
 			} catch {
 				/* empty */
 			}
@@ -145,28 +145,27 @@ describe('ObServiceNavigationPollingService', () => {
 
 	describe.each([{status: 500}, {status: 0}])('when a request returns status $status', ({status}) => {
 		it('should retry after the state interval', () => {
-			jest
-				.spyOn(stateApiService, 'get')
+			vi.spyOn(stateApiService, 'get')
 				.mockImplementationOnce(() => throwError(() => ({status})))
 				.mockReturnValue(of(mockStateResponse));
 
 			service.initializeStateUpdate(2, 60, 'http://rootUrl/', 1);
-			jest.advanceTimersByTime(0);
+			vi.advanceTimersByTime(0);
 
-			const callsAfterFirstFailure = jest.mocked(stateApiService.get).mock.calls.length;
+			const callsAfterFirstFailure = vi.mocked(stateApiService.get).mock.calls.length;
 
-			jest.advanceTimersByTime(1999);
+			vi.advanceTimersByTime(1999);
 			expect(stateApiService.get).toHaveBeenCalledTimes(callsAfterFirstFailure);
 
-			jest.advanceTimersByTime(2);
-			expect(jest.mocked(stateApiService.get).mock.calls.length).toBeGreaterThan(callsAfterFirstFailure);
+			vi.advanceTimersByTime(2);
+			expect(vi.mocked(stateApiService.get).mock.calls.length).toBeGreaterThan(callsAfterFirstFailure);
 		});
 
 		it('should display a retry notification', () => {
-			jest.spyOn(stateApiService, 'get').mockReturnValue(throwError(() => ({status})));
+			vi.spyOn(stateApiService, 'get').mockReturnValue(throwError(() => ({status})));
 
 			service.initializeStateUpdate(1, 60, 'http://rootUrl/', 1);
-			jest.advanceTimersByTime(1000);
+			vi.advanceTimersByTime(1000);
 
 			expect(notification.error).toHaveBeenCalledWith({
 				message: 'i18n.oblique.service-navigation.state.error.retry',
@@ -175,26 +174,24 @@ describe('ObServiceNavigationPollingService', () => {
 		});
 
 		it(`should trigger the retry notification only once after two consecutive ${status} errors`, () => {
-			jest
-				.spyOn(stateApiService, 'get')
+			vi.spyOn(stateApiService, 'get')
 				.mockImplementationOnce(() => throwError(() => ({status})))
 				.mockImplementationOnce(() => throwError(() => ({status})))
 				.mockReturnValue(of(mockStateResponse));
 
 			service.initializeStateUpdate(1, 60, 'http://rootUrl/', 1);
-			jest.advanceTimersByTime(1001);
+			vi.advanceTimersByTime(1001);
 
 			expect(notification.error).toHaveBeenCalledTimes(1);
 		});
 
 		it(`should display an "is back" success notification when a ${status} error is followed by a successful response`, () => {
-			jest
-				.spyOn(stateApiService, 'get')
+			vi.spyOn(stateApiService, 'get')
 				.mockImplementationOnce(() => throwError(() => ({status})))
 				.mockReturnValue(of(mockStateResponse));
 
 			service.initializeStateUpdate(1, 60, 'http://rootUrl/', 1);
-			jest.advanceTimersByTime(1001);
+			vi.advanceTimersByTime(1001);
 
 			expect(notification.success).toHaveBeenCalledWith({
 				message: 'i18n.oblique.service-navigation.state.is-back.message',
@@ -205,10 +202,10 @@ describe('ObServiceNavigationPollingService', () => {
 
 	describe.each([{status: 500}, {status: 0}])('when an endpoint fails with status $status', ({status}) => {
 		it('should trigger the retry notification when the state endpoint returns the error', () => {
-			jest.spyOn(stateApiService, 'get').mockReturnValue(throwError(() => ({status})));
+			vi.spyOn(stateApiService, 'get').mockReturnValue(throwError(() => ({status})));
 
 			service.initializeStateUpdate(1, 60, 'http://rootUrl/', 1);
-			jest.advanceTimersByTime(1);
+			vi.advanceTimersByTime(1);
 
 			expect(notification.error).toHaveBeenCalledWith({
 				message: 'i18n.oblique.service-navigation.state.error.retry',
@@ -217,10 +214,10 @@ describe('ObServiceNavigationPollingService', () => {
 		});
 
 		it('should trigger the retry notification when the count endpoint returns the error', () => {
-			jest.spyOn(countApiService, 'get').mockReturnValue(throwError(() => ({status})));
+			vi.spyOn(countApiService, 'get').mockReturnValue(throwError(() => ({status})));
 
 			service.initializeStateUpdate(1, 1, 'http://rootUrl/', 1);
-			jest.advanceTimersByTime(1);
+			vi.advanceTimersByTime(1);
 
 			expect(notification.error).toHaveBeenCalledWith({
 				message: 'i18n.oblique.service-navigation.state.error.retry',

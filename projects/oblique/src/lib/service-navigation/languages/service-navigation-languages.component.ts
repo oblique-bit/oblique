@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation, input, model, signal} from '@angular/core';
+import {Component, ViewEncapsulation, computed, input, model, signal} from '@angular/core';
 import {ObILanguage} from '../service-navigation.model';
 
 @Component({
@@ -14,6 +14,10 @@ export class ObServiceNavigationLanguagesComponent {
 	readonly languages = input<ObILanguage[]>([]);
 
 	readonly chevron = signal<'chevron_down' | 'chevron_up'>('chevron_down');
+
+	protected readonly languageLabel = computed(
+		() => this.languages().find(lang => lang.code === this.language())?.label ?? ''
+	);
 
 	changeChevron(): void {
 		this.chevron.update(chevron => (chevron === 'chevron_down' ? 'chevron_up' : 'chevron_down'));

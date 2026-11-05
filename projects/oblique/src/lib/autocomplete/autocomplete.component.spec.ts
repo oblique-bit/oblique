@@ -66,7 +66,7 @@ describe(ObAutocompleteComponent.name, () => {
 	let valueAccessor: readonly ControlValueAccessor[];
 
 	afterEach(() => {
-		jest.useRealTimers();
+		vi.useRealTimers();
 	});
 
 	beforeEach(async () => {
@@ -329,10 +329,10 @@ describe(ObAutocompleteComponent.name, () => {
 			autocompleteChangeDetectorRef = parentFixture.debugElement
 				.query(By.directive(ObAutocompleteComponent))
 				.injector.get(ChangeDetectorRef);
-			jest.spyOn(component, 'registerOnChange');
-			jest.spyOn(component, 'registerOnTouched');
-			jest.spyOn(component, 'setDisabledState');
-			jest.spyOn(component, 'writeValue');
+			vi.spyOn(component, 'registerOnChange');
+			vi.spyOn(component, 'registerOnTouched');
+			vi.spyOn(component, 'setDisabledState');
+			vi.spyOn(component, 'writeValue');
 			loader = TestbedHarnessEnvironment.documentRootLoader(parentFixture);
 			obAutocompleteHarness = await TestbedHarnessEnvironment.harnessForFixture(parentFixture, ObAutocompleteHarness);
 			parentComponent.model.setValue('have the same value as FormControl in parent');
@@ -386,7 +386,7 @@ describe(ObAutocompleteComponent.name, () => {
 		// ensures the ControlValueAccessor is correct implemented and used
 		describe('onModelTouched', () => {
 			it('should called onModelTouched by blur', async () => {
-				const onModelTouched = jest.fn();
+				const onModelTouched = vi.fn();
 				component.registerOnTouched(onModelTouched);
 				obAutocompleteHarness = await loader.getHarnessOrNull(ObAutocompleteHarness);
 				const inputElement = await obAutocompleteHarness.getInputElement();
@@ -460,9 +460,9 @@ describe(ObAutocompleteComponent.name, () => {
 
 		describe('with null as input', () => {
 			it('searchText should emit an empty string', () => {
-				jest.useFakeTimers();
+				vi.useFakeTimers();
 				component.autocompleteInputControl.setValue(null);
-				jest.advanceTimersByTime(250);
+				vi.advanceTimersByTime(250);
 				expect(component.searchText()).toBe('');
 			});
 
@@ -631,7 +631,7 @@ describe(ObAutocompleteComponent.name, () => {
 			it('should not call updatePosition on the first check after opening', async () => {
 				await obAutocompleteHarness.openAutocompletePanel();
 				parentFixture.detectChanges();
-				const updatePositionSpy = jest.spyOn(getMatAutocompleteTrigger(), 'updatePosition');
+				const updatePositionSpy = vi.spyOn(getMatAutocompleteTrigger(), 'updatePosition');
 
 				component.ngDoCheck();
 
@@ -641,11 +641,11 @@ describe(ObAutocompleteComponent.name, () => {
 			it('should call updatePosition when the position changes while the panel stays open', async () => {
 				await obAutocompleteHarness.openAutocompletePanel();
 				parentFixture.detectChanges();
-				const updatePositionSpy = jest.spyOn(getMatAutocompleteTrigger(), 'updatePosition');
+				const updatePositionSpy = vi.spyOn(getMatAutocompleteTrigger(), 'updatePosition');
 				const hostElement: HTMLElement = parentFixture.debugElement.query(
 					By.directive(ObAutocompleteComponent)
 				).nativeElement;
-				const rectSpy = jest.spyOn(hostElement, 'getBoundingClientRect');
+				const rectSpy = vi.spyOn(hostElement, 'getBoundingClientRect');
 
 				rectSpy.mockReturnValueOnce({top: 0, left: 0} as DOMRect);
 				component.ngDoCheck();
@@ -660,7 +660,7 @@ describe(ObAutocompleteComponent.name, () => {
 	describe('displayWith', () => {
 		let componentWithObject: ObAutocompleteComponent<{name: string}>;
 		beforeEach(async () => {
-			jest.useFakeTimers();
+			vi.useFakeTimers();
 			parentFixture = TestBed.overrideComponent(TestParentComponent, {
 				set: {
 					template: `<form [formGroup]="parentFormControl">
@@ -676,7 +676,7 @@ describe(ObAutocompleteComponent.name, () => {
 		});
 
 		it('modifies the display of the selected option using the displayWith method', async () => {
-			jest.useRealTimers();
+			vi.useRealTimers();
 			parentComponent.autocompleteOptions = [{label: {name: 'hello'}}];
 			parentFixture.componentRef.changeDetectorRef.detectChanges();
 			await obAutocompleteHarness.openAutocompletePanel();
@@ -691,7 +691,7 @@ describe(ObAutocompleteComponent.name, () => {
 
 		it('handles non-string values through displayWith', async () => {
 			componentWithObject.autocompleteInputControl.setValue({name: 'hello'});
-			jest.advanceTimersByTime(250);
+			vi.advanceTimersByTime(250);
 			await Promise.resolve();
 			parentFixture.detectChanges();
 			expect(componentWithObject.searchText()).toBe('hello');
@@ -753,7 +753,7 @@ describe(ObAutocompleteComponent.name, () => {
 		];
 
 		beforeEach(() => {
-			jest.useFakeTimers();
+			vi.useFakeTimers();
 			parentFixture = TestBed.overrideComponent(TestParentComponent, {
 				set: {
 					template: `<form [formGroup]="parentFormControl"><ob-autocomplete [autocompleteOptions]="autocompleteOptions" formControlName="model"></ob-autocomplete></form>`,
@@ -774,7 +774,7 @@ describe(ObAutocompleteComponent.name, () => {
 
 				component.autocompleteInputControl.setValue(searchTerm);
 				parentFixture.detectChanges();
-				jest.advanceTimersByTime(300);
+				vi.advanceTimersByTime(300);
 
 				expect(component.filteredOptions()).toStrictEqual(expectedOptions);
 			}
@@ -787,7 +787,7 @@ describe(ObAutocompleteComponent.name, () => {
 
 				component.autocompleteInputControl.setValue(searchTerm);
 				parentFixture.detectChanges();
-				jest.advanceTimersByTime(300);
+				vi.advanceTimersByTime(300);
 
 				expect(component.filteredOptions().length).toBe(expectedOptions.length);
 			}
@@ -796,7 +796,7 @@ describe(ObAutocompleteComponent.name, () => {
 		it('should return an empty string for a null value', () => {
 			component.autocompleteInputControl.setValue(null);
 			parentFixture.detectChanges();
-			jest.advanceTimersByTime(300);
+			vi.advanceTimersByTime(300);
 
 			expect(component.searchText()).toBe('');
 		});
@@ -806,7 +806,7 @@ describe(ObAutocompleteComponent.name, () => {
 
 			component.autocompleteInputControl.setValue('rolling');
 			parentFixture.detectChanges();
-			jest.advanceTimersByTime(300);
+			vi.advanceTimersByTime(300);
 
 			expect(component.filteredOptions()).toStrictEqual([
 				{

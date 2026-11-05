@@ -3,7 +3,7 @@ import {draft07Convert} from './draft07-converter.decorator';
 describe('draft07Convert', () => {
 	let descriptor;
 	let resultSchema;
-	const mockCallback = jest.fn().mockImplementation(schema => {
+	const mockCallback = vi.fn().mockImplementation(schema => {
 		resultSchema = schema;
 	});
 

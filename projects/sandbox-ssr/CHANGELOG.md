@@ -1,3 +1,14 @@
+# [16.0.4](https://github.com/oblique-bit/oblique/compare/16.0.3...16.0.4) (2026-11-05)
+
+## Bug Fixes
+
+- **app:** restore SSR server startup ([0bc4aab2](https://github.com/oblique-bit/oblique/commit/0bc4aab2b41e75c802601f638fe94354955150e2), OUI-4590)
+- **sandbox-ssr:** skip hydration for demo ([56efe615](https://github.com/oblique-bit/oblique/commit/56efe615e72ad5e7023a8e5b4b82f0656d3cff71), OUI-4590)
+
+## Features
+
+- **sandbox-ssr:** enable incremental hydration ([b7f0aa1d](https://github.com/oblique-bit/oblique/commit/b7f0aa1d242f3e4f710d6709d7af321ad4298edf), OUI-4590)
+
 # [16.0.0](https://github.com/oblique-bit/oblique/compare/15.4.4...16.0.0) (2026-09-24)
 
 ## Features

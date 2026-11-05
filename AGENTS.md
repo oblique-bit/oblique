@@ -27,7 +27,7 @@ Before reporting code edits complete, verify every AI-authored or AI-modified sn
 
 ## Layout
 
-npm-workspaces monorepo. Packages in `projects/`: `oblique` Angular library, `design-system` Vite, `toolchain` schematics, and `sandbox*` examples. Tooling in `tools/`: `cli-registry` local npm registry (workspace, private). Root config: `eslint.config.mjs`, `.prettierrc.yml`, and Angular workspace files. Change the owning package; put tests beside code as `*.spec.ts` for Angular/Jest packages. For Vitest-based packages, check existing test files in the package directory to determine the naming convention before adding new tests.
+npm-workspaces monorepo. Packages in `projects/`: `oblique` Angular library, `design-system` Vite, `toolchain` schematics, and `sandbox*` examples. Tooling in `tools/`: `cli-registry` local npm registry (workspace, private). Root config: `eslint.config.mjs`, `.prettierrc.yml`, and Angular workspace files. Change the owning package; put tests beside code as `*.spec.ts` for Angular packages. For Vitest-based packages, check existing test files in the package directory to determine the naming convention before adding new tests.
 
 Use Node.js lts/krypton (v24.*) and install from the repository root.
 
@@ -38,6 +38,7 @@ Use Node.js lts/krypton (v24.*) and install from the repository root.
 - If lint or format commands fail, fix the reported issues before considering the task complete; do not suppress or ignore lint errors without user confirmation.
 - `npm run -w @oblique/toolchain build` — build a package; replace the workspace name as needed. If the specified workspace name is not found, list available workspaces via `npm run -w` or check the `package.json` workspaces field before proceeding.
 - `npm run -w @oblique/toolchain test` — run Toolchain Vitest plus coverage.
+- `npm test` — run the root `scripts/` tests with Node's built-in test runner.
 - `npm run -w @oblique/sandbox start` — serve the sandbox.
 - `npm run -w @oblique/sandbox-e2e test` — run the sandbox e2e suite (starts the sandbox with `ng serve`).
 
@@ -50,7 +51,7 @@ Use Node.js lts/krypton (v24.*) and install from the repository root.
 
 ## Tests
 
-Jest: `oblique`. Vitest: `cli`, `design-system`, `sandbox`, `sandbox-ssr`, `sds`, `toolchain`, `service-navigation-web-component`, `cli-registry`, and the package's Angular tooling for Angular packages. Add behavior regression tests, including tests and fixtures for new helpers.
+Vitest: `cli`, `design-system`, `oblique`, `sandbox`, `sandbox-ssr`, `sds`, `toolchain`, `service-navigation-web-component`, `cli-registry`, and the package's Angular tooling for Angular packages. Node's built-in test runner via `tsx --test`: the root `scripts/` folder, run with `npm test` from the repository root. Add behavior regression tests, including tests and fixtures for new helpers.
 
 Playwright e2e: `sandbox-e2e` runs the sandbox in a browser and catches what unit tests cannot: broken wiring, missing elements, and interactions that only fail at runtime. When a change touches functionality demonstrated by a sandbox sample, run the e2e suite to check the work. Adding or adjusting e2e tests is a deliberate choice: suggest it as a separate follow-up change. Read `projects/sandbox-e2e/docs/e2e-testing.md` before writing or changing e2e tests; it covers ownership, conventions, and how to run a single spec file.
 

@@ -6,10 +6,10 @@ describe('ObAuthenticationConfigService', () => {
 	let service: ObAuthenticationConfigService;
 
 	const mockOAuthService = {
-		configure: jest.fn(),
-		loadDiscoveryDocumentAndTryLogin: jest.fn().mockImplementation(() => Promise.resolve({data: {}})),
-		tryLogin: jest.fn().mockImplementation(() => Promise.resolve({data: {}})),
-		setupAutomaticSilentRefresh: jest.fn().mockImplementation(() => Promise.resolve({data: {}})),
+		configure: vi.fn(),
+		loadDiscoveryDocumentAndTryLogin: vi.fn().mockImplementation(() => Promise.resolve({data: {}})),
+		tryLogin: vi.fn().mockImplementation(() => Promise.resolve({data: {}})),
+		setupAutomaticSilentRefresh: vi.fn().mockImplementation(() => Promise.resolve({data: {}})),
 	};
 
 	beforeEach(() => {
@@ -40,7 +40,7 @@ describe('ObAuthenticationConfigService', () => {
 		});
 
 		afterEach(() => {
-			jest.clearAllMocks();
+			vi.clearAllMocks();
 		});
 
 		it('should call the configure method of the oAuthService', () => {
@@ -64,7 +64,7 @@ describe('ObAuthenticationConfigService', () => {
 					.configureFlow(null)
 					.subscribe(() => expect(mockOAuthService.setupAutomaticSilentRefresh).toHaveBeenCalledTimes(1));
 
-				jest.clearAllMocks();
+				vi.clearAllMocks();
 			});
 		});
 
@@ -77,7 +77,7 @@ describe('ObAuthenticationConfigService', () => {
 					.configureFlow(null)
 					.subscribe(() => expect(mockOAuthService.setupAutomaticSilentRefresh).toHaveBeenCalledTimes(0));
 
-				jest.clearAllMocks();
+				vi.clearAllMocks();
 			});
 		});
 	});
@@ -89,7 +89,7 @@ describe('ObAuthenticationConfigService', () => {
 		});
 
 		afterEach(() => {
-			jest.clearAllMocks();
+			vi.clearAllMocks();
 		});
 
 		it('should call the configure method of the oAuthService', () => {
@@ -113,7 +113,7 @@ describe('ObAuthenticationConfigService', () => {
 					.configureFlow(null)
 					.subscribe(() => expect(mockOAuthService.setupAutomaticSilentRefresh).toHaveBeenCalledTimes(1));
 
-				jest.clearAllMocks();
+				vi.clearAllMocks();
 			});
 		});
 
@@ -126,7 +126,7 @@ describe('ObAuthenticationConfigService', () => {
 					.configureFlow(null)
 					.subscribe(() => expect(mockOAuthService.setupAutomaticSilentRefresh).toHaveBeenCalledTimes(0));
 
-				jest.clearAllMocks();
+				vi.clearAllMocks();
 			});
 		});
 	});

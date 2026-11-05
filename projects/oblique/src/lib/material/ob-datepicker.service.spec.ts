@@ -22,8 +22,8 @@ describe('ObDatepickerIntlService', () => {
 		translateService.setTranslation('de', obliqueDe, true);
 		translateService.setTranslation('fr', obliqueFr, true);
 		translateService.use('anything'); // this triggers loading of translations
-		jest.spyOn(translateService, 'use');
-		jest.spyOn(datepickerService.changes, 'next');
+		vi.spyOn(translateService, 'use');
+		vi.spyOn(datepickerService.changes, 'next');
 	});
 
 	it('should be created', () => {

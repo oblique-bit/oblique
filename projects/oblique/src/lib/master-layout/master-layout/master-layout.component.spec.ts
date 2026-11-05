@@ -1,8 +1,9 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {CUSTOM_ELEMENTS_SCHEMA, Component, Pipe, PipeTransform} from '@angular/core';
-import {Router, provideRouter} from '@angular/router';
+import {Router, RouterLink, provideRouter} from '@angular/router';
 import {HighContrastMode, HighContrastModeDetector} from '@angular/cdk/a11y';
 import {outputToObservable} from '@angular/core/rxjs-interop';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {TranslatePipe} from '@ngx-translate/core';
 import {Subject, firstValueFrom} from 'rxjs';
 import {provideObliqueTestingConfiguration} from '../../utilities';
@@ -54,14 +55,14 @@ describe('ObMasterLayoutComponent', () => {
 		},
 		header: {configEvents$: new Subject<ObIMasterLayoutEvent>(), isSticky: false},
 		footer: {configEvents$: new Subject<ObIMasterLayoutEvent>(), isSticky: false},
-		navigation: {refresh: jest.fn()},
+		navigation: {refresh: vi.fn()},
 	};
 	let obConsoleService: ObConsoleService;
 
 	beforeEach(async () => {
 		offCanvasOpened$ = new Subject<boolean>();
 		await TestBed.configureTestingModule({
-			imports: [TranslatePipe, ObMockLocalizePipe],
+			imports: [RouterLink, TranslatePipe, ObMockLocalizePipe, MatTooltipModule],
 			declarations: [ObMasterLayoutComponent],
 			providers: [
 				provideObliqueTestingConfiguration(),
@@ -101,7 +102,7 @@ describe('ObMasterLayoutComponent', () => {
 	describe('initialization', () => {
 		describe('focusMainAfterNavigation', () => {
 			it('should focus main content only from the second NavigationEnd event', async () => {
-				jest.spyOn(component, 'focusElementById');
+				vi.spyOn(component, 'focusElementById');
 				const router = TestBed.inject(Router);
 				router.initialNavigation();
 
@@ -115,7 +116,7 @@ describe('ObMasterLayoutComponent', () => {
 
 		describe('with a fragment', () => {
 			beforeEach(async () => {
-				jest.spyOn(component, 'focusElementById');
+				vi.spyOn(component, 'focusElementById');
 				const router = TestBed.inject(Router);
 				router.initialNavigation();
 				await router.navigate(['some/path'], {fragment: 'someFragment', queryParams: {param: 'someParam'}});
@@ -136,7 +137,7 @@ describe('ObMasterLayoutComponent', () => {
 
 		describe('without fragment', () => {
 			beforeEach(async () => {
-				jest.spyOn(component, 'focusElementById');
+				vi.spyOn(component, 'focusElementById');
 				const router = TestBed.inject(Router);
 				router.initialNavigation();
 				await router.navigate(['some/path'], {queryParams: {param: 'someParam'}});
@@ -292,7 +293,7 @@ describe('ObMasterLayoutComponent', () => {
 		it('should ignore unchanged navigation length', () => {
 			fixture.componentRef.setInput('navigation', []);
 			component.ngDoCheck();
-			jest.clearAllMocks();
+			vi.clearAllMocks();
 
 			component.ngDoCheck();
 
@@ -378,9 +379,9 @@ describe('ObMasterLayoutComponent', () => {
 	describe('high contrast mode', () => {
 		it('should detect white on black mode', () => {
 			fixture.destroy();
-			jest
-				.spyOn(TestBed.inject(HighContrastModeDetector), 'getHighContrastMode')
-				.mockReturnValue(HighContrastMode.WHITE_ON_BLACK);
+			vi.spyOn(TestBed.inject(HighContrastModeDetector), 'getHighContrastMode').mockReturnValue(
+				HighContrastMode.WHITE_ON_BLACK
+			);
 			fixture = TestBed.createComponent(ObMasterLayoutComponent);
 			component = fixture.componentInstance;
 
@@ -411,8 +412,8 @@ describe('ObMasterLayoutComponent', () => {
 			beforeEach(() => {
 				recreateComponentWithStickyState(isFooterSticky, isHeaderSticky);
 				element = document.getElementById('content');
-				jest.spyOn(element, 'scrollIntoView');
-				jest.spyOn(element, 'focus');
+				vi.spyOn(element, 'scrollIntoView');
+				vi.spyOn(element, 'focus');
 				component.focusElementById('content');
 			});
 			it('should scroll to the element', () => {
@@ -430,11 +431,11 @@ describe('ObMasterLayoutComponent', () => {
 				element = document.getElementById('content');
 				// scrollTo is not defined in jsdom
 				Object.defineProperty(element, 'scrollTo', {
-					value: jest.fn(),
+					value: vi.fn(),
 					writable: true,
 				});
-				jest.spyOn(element, 'scrollTo');
-				jest.spyOn(element, 'focus');
+				vi.spyOn(element, 'scrollTo');
+				vi.spyOn(element, 'focus');
 				component.focusElementById('content');
 			});
 			it('should scroll within the containing element', () => {
@@ -448,8 +449,8 @@ describe('ObMasterLayoutComponent', () => {
 		describe('with prefersReducedMotion false', () => {
 			beforeEach(() => {
 				element = document.getElementById('content');
-				jest.spyOn(element, 'scrollIntoView');
-				jest.spyOn(element, 'focus');
+				vi.spyOn(element, 'scrollIntoView');
+				vi.spyOn(element, 'focus');
 				component.prefersReducedMotion.set(false);
 				component.focusElementById('content');
 			});
@@ -464,10 +465,10 @@ describe('ObMasterLayoutComponent', () => {
 				content = document.getElementById('content');
 				content.innerHTML = '<div></div>';
 				element = document.getElementById('content');
-				jest.spyOn(element, 'scrollIntoView');
-				jest.spyOn(element, 'focus');
+				vi.spyOn(element, 'scrollIntoView');
+				vi.spyOn(element, 'focus');
 				obConsoleService = TestBed.inject(ObConsoleService);
-				jest.spyOn(obConsoleService, 'error');
+				vi.spyOn(obConsoleService, 'error');
 				component.focusElementById('not_existing_element');
 			});
 			it('should not scroll to the element', () => {
@@ -483,7 +484,7 @@ describe('ObMasterLayoutComponent', () => {
 				);
 			});
 			afterEach(() => {
-				jest.clearAllMocks();
+				vi.clearAllMocks();
 			});
 		});
 		describe('targeting an id that is corresponding to an existing dom element', () => {
@@ -491,10 +492,10 @@ describe('ObMasterLayoutComponent', () => {
 				content = document.getElementById('content');
 				content.innerHTML = '<input id="not_focusable_element" class="foo bar" disabled />';
 				element = document.getElementById('not_focusable_element');
-				jest.spyOn(element, 'scrollIntoView');
-				jest.spyOn(element, 'focus');
+				vi.spyOn(element, 'scrollIntoView');
+				vi.spyOn(element, 'focus');
 				obConsoleService = TestBed.inject(ObConsoleService);
-				jest.spyOn(obConsoleService, 'info');
+				vi.spyOn(obConsoleService, 'info');
 				content.focus();
 			});
 			it('should be first focused on the content element', () => {
@@ -527,9 +528,9 @@ describe('ObMasterLayoutComponent', () => {
 				content = document.getElementById('content');
 				content.innerHTML = '<input id="not_focusable_without_dev_mode" disabled />';
 				element = document.getElementById('not_focusable_without_dev_mode');
-				jest.spyOn(element, 'scrollIntoView');
-				jest.spyOn(element, 'focus');
-				jest.spyOn(global.console, 'info');
+				vi.spyOn(element, 'scrollIntoView');
+				vi.spyOn(element, 'focus');
+				vi.spyOn(global.console, 'info');
 			});
 
 			afterEach(() => {
@@ -544,7 +545,7 @@ describe('ObMasterLayoutComponent', () => {
 		});
 
 		afterEach(() => {
-			jest.clearAllMocks();
+			vi.clearAllMocks();
 		});
 	});
 
@@ -568,7 +569,7 @@ describe('ObMasterLayoutComponent', () => {
 
 		it('should fall back to an undefined path without a route match', async () => {
 			const originalExec = RegExp.prototype.exec;
-			const exec = jest.spyOn(RegExp.prototype, 'exec').mockImplementation(function (url: string) {
+			const exec = vi.spyOn(RegExp.prototype, 'exec').mockImplementation(function (url: string) {
 				return this.source === '^[^?&#]*' ? null : originalExec.call(this, url);
 			});
 
@@ -592,12 +593,12 @@ describe('ObMasterLayoutComponent', () => {
 			{property: 'isLayoutCollapsed', expected: true},
 		])('should have "$property" set to "$expected" with non matching media query', ({property, expected}) => {
 			Object.defineProperty(window, 'matchMedia', {
-				value: jest.fn(() => ({
+				value: vi.fn(() => ({
 					matches: false,
 					onchange: null,
-					addListener: jest.fn(),
-					addEventListener: jest.fn(),
-					removeEventListener: jest.fn(),
+					addListener: vi.fn(),
+					addEventListener: vi.fn(),
+					removeEventListener: vi.fn(),
 				})),
 			});
 			component.ngOnChanges({
@@ -614,15 +615,15 @@ describe('ObMasterLayoutComponent', () => {
 		it('should react to media query changes', () => {
 			let changeHandler: (event: MediaQueryListEvent) => void;
 			Object.defineProperty(window, 'matchMedia', {
-				value: jest.fn(() => ({
+				value: vi.fn(() => ({
 					matches: false,
 					onchange: null,
-					addListener: jest.fn(),
-					addEventListener: jest.fn((type: string, handler: (event: MediaQueryListEvent) => void) => {
+					addListener: vi.fn(),
+					addEventListener: vi.fn((type: string, handler: (event: MediaQueryListEvent) => void) => {
 						expect(type).toBe('change');
 						changeHandler = handler;
 					}),
-					removeEventListener: jest.fn(),
+					removeEventListener: vi.fn(),
 				})),
 			});
 
@@ -645,12 +646,12 @@ describe('ObMasterLayoutComponent', () => {
 			{property: 'isLayoutCollapsed', expected: false},
 		])('should have "$property" set to "$expected" with matching media query', ({property, expected}) => {
 			Object.defineProperty(window, 'matchMedia', {
-				value: jest.fn(() => ({
+				value: vi.fn(() => ({
 					matches: true,
 					onchange: null,
-					addListener: jest.fn(),
-					addEventListener: jest.fn(),
-					removeEventListener: jest.fn(),
+					addListener: vi.fn(),
+					addEventListener: vi.fn(),
+					removeEventListener: vi.fn(),
 				})),
 			});
 			component.ngOnChanges({
@@ -682,11 +683,11 @@ describe('ObMasterLayoutComponent', () => {
 
 	describe('off canvas close button', () => {
 		afterEach(() => {
-			jest.useRealTimers();
+			vi.useRealTimers();
 		});
 
 		it('should focus the close button when the off canvas opens', () => {
-			jest.useFakeTimers();
+			vi.useFakeTimers();
 			fixture.destroy();
 			fixture = TestBed.createComponent(ObMasterLayoutComponent);
 			component = fixture.componentInstance;
@@ -695,16 +696,16 @@ describe('ObMasterLayoutComponent', () => {
 				value: true,
 			});
 			fixture.detectChanges();
-			const focus = jest.spyOn(component.offCanvasClose().nativeElement, 'focus');
+			const focus = vi.spyOn(component.offCanvasClose().nativeElement, 'focus');
 
 			offCanvasOpened$.next(true);
-			jest.advanceTimersByTime(600);
+			vi.advanceTimersByTime(600);
 
 			expect(focus).toHaveBeenCalled();
 		});
 
 		it('should not focus the close button when the off canvas closes', () => {
-			jest.useFakeTimers();
+			vi.useFakeTimers();
 			fixture.destroy();
 			fixture = TestBed.createComponent(ObMasterLayoutComponent);
 			component = fixture.componentInstance;
@@ -713,10 +714,10 @@ describe('ObMasterLayoutComponent', () => {
 				value: true,
 			});
 			fixture.detectChanges();
-			const focus = jest.spyOn(component.offCanvasClose().nativeElement, 'focus');
+			const focus = vi.spyOn(component.offCanvasClose().nativeElement, 'focus');
 
 			offCanvasOpened$.next(false);
-			jest.advanceTimersByTime(600);
+			vi.advanceTimersByTime(600);
 
 			expect(focus).not.toHaveBeenCalled();
 		});

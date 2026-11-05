@@ -9,33 +9,34 @@ import {ObSpinnerService} from '../spinner/spinner.module';
 import {ObHttpApiInterceptorConfig} from './http-api-interceptor.config';
 import {ObHttpApiInterceptorEvents} from './http-api-interceptor.events';
 import {ObHttpApiInterceptor} from './http-api-interceptor';
+import type {Mock} from 'vitest';
 
 describe(ObHttpApiInterceptor.name, () => {
 	let config: ObHttpApiInterceptorConfig;
 	let events: ObHttpApiInterceptorEvents;
 	let interceptor: ObHttpApiInterceptor;
-	let spinner: {activate: jest.Mock; forceDeactivate: jest.Mock};
-	let notificationService: {error: jest.Mock; warning: jest.Mock; send: jest.Mock};
-	let translate: {get: jest.Mock};
-	let windowMock: {setTimeout: jest.Mock};
+	let spinner: {activate: Mock; forceDeactivate: Mock};
+	let notificationService: {error: Mock; warning: Mock; send: Mock};
+	let translate: {get: Mock};
+	let windowMock: {setTimeout: Mock};
 
 	beforeEach(() => {
-		jest.clearAllMocks();
+		vi.clearAllMocks();
 
 		spinner = {
-			activate: jest.fn(),
-			forceDeactivate: jest.fn(),
+			activate: vi.fn(),
+			forceDeactivate: vi.fn(),
 		};
 		notificationService = {
-			error: jest.fn(),
-			warning: jest.fn(),
-			send: jest.fn(),
+			error: vi.fn(),
+			warning: vi.fn(),
+			send: vi.fn(),
 		};
 		translate = {
-			get: jest.fn(),
+			get: vi.fn(),
 		};
 		windowMock = {
-			setTimeout: jest.fn(),
+			setTimeout: vi.fn(),
 		};
 
 		TestBed.configureTestingModule({
@@ -174,7 +175,7 @@ describe(ObHttpApiInterceptor.name, () => {
 	});
 
 	it('starts a timeout warning and clears the timer when the request completes', () => {
-		const clearTimeoutSpy = jest.spyOn(globalThis, 'clearTimeout').mockImplementation();
+		const clearTimeoutSpy = vi.spyOn(globalThis, 'clearTimeout').mockImplementation(() => {});
 		config.timeout = 2500;
 		windowMock.setTimeout.mockImplementation(callback => {
 			callback();
@@ -202,7 +203,7 @@ describe(ObHttpApiInterceptor.name, () => {
 	});
 
 	it('emits the session expired event for 401 responses and skips the notification', async () => {
-		const sessionExpireSpy = jest.spyOn(events, 'sessionExpire');
+		const sessionExpireSpy = vi.spyOn(events, 'sessionExpire');
 
 		let thrownError: unknown;
 		await firstValueFrom(

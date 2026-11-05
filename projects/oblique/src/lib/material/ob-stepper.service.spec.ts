@@ -22,8 +22,8 @@ describe('ObStepperIntlService', () => {
 		translateService.setTranslation('de', obliqueDe, true);
 		translateService.setTranslation('fr', obliqueFr, true);
 		translateService.use('anything'); // this triggers loading of translations
-		jest.spyOn(translateService, 'use');
-		jest.spyOn(stepperService.changes, 'next');
+		vi.spyOn(translateService, 'use');
+		vi.spyOn(stepperService.changes, 'next');
 	});
 
 	it('should be created', () => {

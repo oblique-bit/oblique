@@ -35,7 +35,7 @@ describe(ObErrorMessagesDirective.name, () => {
 		});
 
 		it('should not emit', () => {
-			const spy = jest.fn();
+			const spy = vi.fn();
 
 			directive.errors$.subscribe(spy);
 			directive.ngAfterViewInit();

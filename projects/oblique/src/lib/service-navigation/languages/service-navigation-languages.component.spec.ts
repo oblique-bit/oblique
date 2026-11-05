@@ -1,6 +1,6 @@
 import {HarnessLoader, TestElement} from '@angular/cdk/testing';
 import {TestbedHarnessEnvironment} from '@angular/cdk/testing/testbed';
-import {Component} from '@angular/core';
+import {Component, NO_ERRORS_SCHEMA, NgModule} from '@angular/core';
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 import {ObMockTranslatePipe} from '../../_mocks/mock-translate.pipe';
@@ -10,6 +10,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatOptionHarness} from '@angular/material/core/testing';
 import {MatSelectHarness} from '@angular/material/select/testing';
+import {MatIcon} from '@angular/material/icon';
 
 @Component({
 	standalone: false,
@@ -18,6 +19,14 @@ import {MatSelectHarness} from '@angular/material/select/testing';
 class TestHostComponent {
 	languageChanges: string[] = [];
 }
+
+// TODO remove once Master Layout have been migrated to standalone
+// with Angular 22.2+, non standalone components with dependencies have to be part of a Module to satisfy the AOT compiler
+@NgModule({
+	declarations: [TestHostComponent],
+	schemas: [NO_ERRORS_SCHEMA],
+})
+export class TestHostModule {}
 
 describe('ObServiceNavigationLanguagesComponent', () => {
 	let component: ObServiceNavigationLanguagesComponent;
@@ -28,7 +37,7 @@ describe('ObServiceNavigationLanguagesComponent', () => {
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
 			declarations: [ObServiceNavigationLanguagesComponent, TestHostComponent],
-			imports: [ObMockTranslatePipe, MatFormFieldModule, MatSelectModule],
+			imports: [ObMockTranslatePipe, MatFormFieldModule, MatSelectModule, MatIcon],
 		}).compileComponents();
 
 		fixture = TestBed.createComponent(ObServiceNavigationLanguagesComponent);
@@ -59,6 +68,15 @@ describe('ObServiceNavigationLanguagesComponent', () => {
 	});
 
 	describe('languageChange', () => {
+		beforeEach(() => {
+			fixture.componentRef.setInput('languages', [
+				{code: 'de', label: 'Deutsch'},
+				{code: 'fr', label: 'Français'},
+				{code: 'it', label: 'Italiano'},
+				{code: 'en', label: 'English'},
+			]);
+			fixture.componentRef.changeDetectorRef.detectChanges();
+		});
 		test('that it emits', () => {
 			const hostFixture = TestBed.createComponent(TestHostComponent);
 			const hostComponent = hostFixture.componentInstance;
@@ -66,6 +84,14 @@ describe('ObServiceNavigationLanguagesComponent', () => {
 				.componentInstance as ObServiceNavigationLanguagesComponent;
 			languagesComponent.changeLanguage('de');
 			expect(hostComponent.languageChanges).toEqual(['de']);
+		});
+		test('aria label is correct', () => {
+			const languagesComponent = fixture.componentInstance;
+			languagesComponent.changeLanguage('de');
+			fixture.detectChanges();
+
+			const matSelect = fixture.debugElement.query(By.css('mat-select'));
+			expect(matSelect.nativeElement.getAttribute('aria-label')).toEqual('Deutsch');
 		});
 	});
 
