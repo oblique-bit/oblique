@@ -73,8 +73,7 @@
               "**/*.harness.ts",
               "**/*.model.ts",
               "**/*.module.ts",
-              "**/*.spec.ts",
-              "**/off-canvas-container.directive.ts"
+              "**/*.spec.ts"
             ],
             "coverageThresholds": {
               "lines": 99,
