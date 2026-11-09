@@ -27,8 +27,7 @@
     "test": "vitest",
     "test-ci": "vitest run --config vitest.config.ci.ts",
     "build": "tsx scripts/pre-build.ts && tsc -p tsconfig.app.json && tsx scripts/post-build.ts",
-    "release": "tsx scripts/pre-build.ts && tsx scripts/release.ts",
-    "npm-publish": "tsx scripts/publish.ts"
+    "release": "tsx scripts/pre-build.ts && tsx scripts/release.ts"
   },
   "dependencies": {
     "@commander-js/extra-typings": "^14.0.0",
