@@ -16,13 +16,12 @@ must use the **service-navigation** package and one of the following scopes:
 
 ## <a name="scripts"></a> Scripts
 
-| Script          | Description                                                                                     |
-| --------------- | ----------------------------------------------------------------------------------------------- |
-| **start**       | Starts the project on port 3003                                                                 |
-| **lint**        | Lints the projects with EsLint, StyleLint and Prettier; Automatically run on the CI pipeline    |
-| **format**      | Same as lint, but tries to fix the code with EsLInt/Prettier/StyleLint                          |
-| **test**        | Runs all tests and collects coverage                                                            |
-| **test-ci**     | Same as test, but an additional Sonar report is generated; Automatically run on the CI pipeline |
-| **build**       | Builds the library; Automatically run on the CI pipeline                                        |
-| **release**     | Creates a new release, i.e. bump version number and updates the changelog                       |
-| **npm-publish** | Publishes the package on NPM; automatically run on the CI pipeline                              |
+| Script      | Description                                                                                     |
+| ----------- | ----------------------------------------------------------------------------------------------- |
+| **start**   | Starts the project on port 3003                                                                 |
+| **lint**    | Lints the projects with EsLint, StyleLint and Prettier; Automatically run on the CI pipeline    |
+| **format**  | Same as lint, but tries to fix the code with EsLInt/Prettier/StyleLint                          |
+| **test**    | Runs all tests and collects coverage                                                            |
+| **test-ci** | Same as test, but an additional Sonar report is generated; Automatically run on the CI pipeline |
+| **build**   | Builds the library; Automatically run on the CI pipeline                                        |
+| **release** | Creates a new release, i.e. bump version number and updates the changelog                       |

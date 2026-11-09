@@ -18,16 +18,15 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for details about how to contribute
 
 ## <a name="scripts"></a> Scripts
 
-| Script          | Description                                                                      |
-| --------------- | -------------------------------------------------------------------------------- |
-| **link**        | Builds the Toolchain package and links it locally                                |
-| **build**       | Builds the Toolchain package; automatically run on the CI pipeline               |
-| **lint**        | Lints the project with ESLint and Prettier; automatically run on the CI pipeline |
-| **format**      | Same as lint, but tries to fix the code with EsLInt/Prettier                     |
-| **test**        | Runs all tests and collects coverage                                             |
-| **test-ci**     | Same as test, but also generates SonarQube reports for CI                        |
-| **release**     | Creates a new release (bumps version number and updates changelog)               |
-| **npm-publish** | Publishes the package on NPM; automatically run on the CI pipeline               |
+| Script      | Description                                                                      |
+| ----------- | -------------------------------------------------------------------------------- |
+| **link**    | Builds the Toolchain package and links it locally                                |
+| **build**   | Builds the Toolchain package; automatically run on the CI pipeline               |
+| **lint**    | Lints the project with ESLint and Prettier; automatically run on the CI pipeline |
+| **format**  | Same as lint, but tries to fix the code with EsLInt/Prettier                     |
+| **test**    | Runs all tests and collects coverage                                             |
+| **test-ci** | Same as test, but also generates SonarQube reports for CI                        |
+| **release** | Creates a new release (bumps version number and updates changelog)               |
 
 ## <a name="test"></a> How to test the Schematics locally
 

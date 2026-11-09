@@ -20,7 +20,6 @@
     "postbuild": "tsx scripts/post-build.ts",
     "schematics": "tsc -p schematics/tsconfig.schematics.json",
     "prerelease": "npm run update-icons",
-    "npm-publish": "tsx scripts/publish.ts",
     "release": "tsx scripts/release.ts",
     "update-icons": "tsx scripts/update-icons.ts",
     "tarball": "tsx scripts/tarball.ts"

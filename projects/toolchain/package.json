@@ -17,8 +17,7 @@
     "test": "vitest",
     "test-ci": "vitest run --config vitest.config.ci.ts",
     "build": "tsx scripts/pipelines/pre-build.ts && tsc -p tsconfig.lib.json && tsc -p tsconfig.esm.json && tsx scripts/pipelines/post-build.ts",
-    "release": "tsx scripts/pipelines/release.ts",
-    "npm-publish": "tsx scripts/pipelines/publish.ts"
+    "release": "tsx scripts/pipelines/release.ts"
   },
   "keywords": [
     "schematics"

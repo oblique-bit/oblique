@@ -16,8 +16,7 @@
     "test": "ng test service-navigation-web-component",
     "test-ci": "ng run service-navigation-web-component:test:ci",
     "build": "ng build && tsx scripts/post-build.ts",
-    "release": "tsx scripts/release.ts",
-    "npm-publish": "tsx scripts/publish.ts"
+    "release": "tsx scripts/release.ts"
   },
   "keywords": [
     "service-navigation-web-component"
