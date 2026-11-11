@@ -70,8 +70,8 @@ export function parseGalleryFile(src) {
 }
 
 // ---------------------------------------------------------------- checks (used by validate-icon-set.mjs, rules M01 to M08)
-const norm = (s) => String(s ?? '').replace(/["'`]/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
-const kwSet = (list) => new Set((list || []).flatMap((x) => String(x).split(/[,\n]+/)).map((x) => x.trim().toLowerCase()).filter(Boolean));
+export const norm = (s) => String(s ?? '').replace(/["'`]/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
+export const kwSet = (list) => new Set((list || []).flatMap((x) => String(x).split(/[,\n]+/)).map((x) => x.trim().toLowerCase()).filter(Boolean));
 const fmt = (s) => String(s ?? '').replace(/\s+/g, ' ').slice(0, 90);
 
 // format of one parsed Figma description: M01 category, M02 keywords, M03 and M04 purpose type, M05 description
@@ -106,6 +106,25 @@ export function galleryDiffs(p, g) {
   // the deprecated purpose: the same rule as the old name
   if (p.deprecatedPurpose !== null ? norm(p.deprecatedPurpose) !== norm(g.deprecatedPurpose || '') : newLines && g.deprecatedPurpose) add('deprecated purpose', p.deprecatedPurpose ?? '(no line)', g.deprecatedPurpose);
   return diffs;
+}
+
+// The fields of the Figma description p that have a value and differ from the gallery entry g: what an export has to write
+// (gallery-file.mjs). The counterpart of galleryDiffs for writing: a line that the description does not have or leaves
+// empty never counts, so an export never deletes a field of the gallery. Same comparison as galleryDiffs (quotes and
+// white space do not count, keywords are compared as a set).
+export function changedFields(p, g) {
+  const out = [];
+  if (p.usage && norm(p.usage) !== norm(g.usage)) out.push('usage');
+  if (p.category && p.category !== g.category) out.push('category');
+  if (p.keywords && p.keywords.length) {
+    const a = kwSet(p.keywords), b = kwSet(g.keywords);
+    if (a.size !== b.size || [...a].some((k) => !b.has(k))) out.push('keywords');
+  }
+  if (p.purposeType && p.purposeType !== g.purposeType) out.push('purposeType');
+  if (p.description && norm(p.description) !== norm(g.description)) out.push('description');
+  if (p.oldName && p.oldName !== (g.oldName || '')) out.push('oldName');
+  if (p.deprecatedPurpose && norm(p.deprecatedPurpose) !== norm(g.deprecatedPurpose || '')) out.push('deprecatedPurpose');
+  return out;
 }
 
 // M08: the gallery keeps one keyword per entry

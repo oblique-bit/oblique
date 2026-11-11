@@ -1,26 +1,32 @@
-// export-svg.mjs — write the icons of the open Figma file as SVG files in the format of the Git set (Export)
+// export-svg.mjs — write the icons of the open Figma file as SVG files in the format of the Git set and the gallery file (Export)
 // ----------------------------------------------------------------------------
-// WHY: from the first publish the Figma library leads and Git follows (board "Icons Workflows", Case 0). The DS Developers
-// receive SVG files that are ready for update-icons.ts. Decided on 2026-11-11: the build adds the id of an icon, the export
-// writes no id and removes what the build would keep: width, height and the fills (see lib/normalize-svg.mjs).
+// WHY: from the first publish the Figma library leads and Git follows (board "Icons Workflows", Case 0 and Case F). The DS
+// Developers receive SVG files that are ready for update-icons.ts and the gallery file icons.ts with the texts of the icons.
+// Decided on 2026-11-11: the build adds the id of an icon, the export writes no id and removes what the build would keep:
+// width, height and the fills (see lib/normalize-svg.mjs).
 //
-//   1. fetch      the SVG files of the repository, pinned to one commit (the reference)       (skipped with --no-git or --git)
-//   2. export     the icon page of the open Figma file, with the SVG of every icon
+//   1. fetch      the SVG files of the repository and the gallery file, pinned to one commit (the reference)   (skipped with --no-git or --git)
+//   2. export     the icon page of the open Figma file, with the SVG and the description of every icon
 //   3. normalize  Figma format → Git format without id; an icon that cannot be normalized is reported, never guessed
 //   4. check      the SVG file check on the normalized files (profile export) and the comparison with the reference
-//   5. choose     by default only the icons that changed or are new (Git then sees a small difference); --all = every icon
-//   6. write      the files into --out, optionally one zip; errors of the check stop the export (--force goes on)
+//   5. texts      the gallery file icons.ts: the file of Git with the fields that differ from the Figma descriptions written again
+//                 (lib/gallery-file.mjs: byte for byte where nothing differs, new icons at the end, nothing deleted)
+//   6. choose     by default only the icons that changed or are new (Git then sees a small difference); --all = every icon and the gallery file
+//   7. write      the files into --out, optionally one zip; errors of the check stop the export (--force goes on)
 //
 // usage:
 //   node export-svg.mjs --cli-dir <figma-cli folder> [options]
 //
 // options:
-//   --out <folder>        where the SVG files go (default ./icon-export)
-//   --all                 write every icon, not only the changed and the new ones (Case 0: the whole set)
+//   --out <folder>        where the SVG files and icons.ts go (default ./icon-export)
+//   --all                 write every icon and the gallery file, not only the changed and the new ones (Case 0: the whole set)
 //   --zip                 also write <out>.zip with the files (needs the zip command)
 //   --only <a,b,c>        these icon names only
-//   --no-git              do not compare with Git (implies --all)
-//   --git <folder>        use this folder of SVG files as the reference instead of downloading
+//   --no-git              do not compare with Git (implies --all; no gallery file unless --gallery-file is given)
+//   --git <folder>        use this folder of SVG files as the reference instead of downloading (no gallery file unless --gallery-file is given)
+//   --gallery <path>      the gallery file in the repository (default: metadata.galleryPath of the rule file)
+//   --gallery-file <file> use this local icons.ts as the base of the new gallery file instead of downloading it
+//   --no-gallery          do not write the gallery file
 //   --target <name>       the library the file belongs to: legacy-library or ds-library
 //   --page <text>         the Figma page whose name contains this text (default Icons)
 //   --prefix <text>       component name prefix (default: from the target or the rule file)
@@ -40,10 +46,11 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { runNode, runFigma as runFigmaIn, generate } from './lib/figma-run.mjs';
 import { normalizeSvg } from './lib/normalize-svg.mjs';
+import { buildGallery, summarize } from './lib/gallery-file.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
-const opts = { out: './icon-export', all: false, zip: false, only: null, noGit: false, git: null, target: null, page: null, prefix: null, cliDir: process.env.FIGMA_DS_CLI_DIR || process.cwd(), work: './icon-sync', ref: null, repo: null, path: null, rules: null, force: false };
+const opts = { out: './icon-export', all: false, zip: false, only: null, noGit: false, git: null, target: null, page: null, prefix: null, cliDir: process.env.FIGMA_DS_CLI_DIR || process.cwd(), work: './icon-sync', ref: null, repo: null, path: null, rules: null, force: false, gallery: null, galleryFile: null, noGallery: false };
 for (let i = 0; i < args.length; i++) {
   const a = args[i];
   if (a === '--out') opts.out = args[++i];
@@ -62,6 +69,9 @@ for (let i = 0; i < args.length; i++) {
   else if (a === '--path') opts.path = args[++i];
   else if (a === '--rules') opts.rules = args[++i];
   else if (a === '--force') opts.force = true;
+  else if (a === '--gallery') opts.gallery = args[++i];
+  else if (a === '--gallery-file') opts.galleryFile = args[++i];
+  else if (a === '--no-gallery') opts.noGallery = true;
   else if (a === '--help' || a === '-h') { console.log(readFileSync(fileURLToPath(import.meta.url), 'utf8').split('\n').reduce((acc, l) => (acc.stop || !l.startsWith('//') ? { ...acc, stop: true } : { ...acc, out: [...acc.out, l.replace(/^\/\/ ?/, '')] }), { out: [], stop: false }).out.join('\n')); process.exit(0); }
   else { console.error(`unknown option ${a}`); process.exit(2); }
 }
@@ -83,14 +93,24 @@ const runFigma = (scriptFile) => runFigmaIn(scriptFile, opts.cliDir);
 const list = (a, max = 12) => (a.length ? ` ${a.slice(0, max).join(', ')}${a.length > max ? ` and ${a.length - max} more` : ''}` : '');
 const shortName = (name) => (name.toLowerCase().startsWith(opts.prefix.toLowerCase()) ? name.slice(opts.prefix.length) : name);
 
+// the gallery file with the texts of the icons: its path in the repository and the local copy that is the base of the new file
+const galleryPath = opts.noGallery ? null : (opts.gallery || (ruleSet.metadata && ruleSet.metadata.galleryPath) || null);
+let galleryBase = null, galleryNote = null;
+if (opts.noGallery) galleryNote = '--no-gallery';
+else if (opts.galleryFile) { galleryBase = resolve(opts.galleryFile); if (!existsSync(galleryBase)) fail(`${galleryBase} does not exist`); }
+else if (opts.noGit || opts.git) galleryNote = 'it is not downloaded with --no-git or --git: give a local copy with --gallery-file';
+else if (galleryPath) galleryBase = join(work, 'icons-gallery.ts');
+else galleryNote = 'the rule file has no metadata.galleryPath';
+
 // ---------------------------------------------------------------- 1 fetch
 const gitDir = opts.git ? resolve(opts.git) : join(work, 'git');
 if (opts.noGit) step(1, 'no comparison with Git (--no-git)');
 else if (opts.git) { step(1, `reference: ${gitDir}`); if (!existsSync(gitDir)) fail(`${gitDir} does not exist`); }
 else {
-  step(1, 'fetch the SVG files from Git (the reference)');
+  step(1, `fetch the SVG files${galleryBase && !opts.galleryFile ? ' and the gallery file' : ''} from Git (the reference)`);
   const fetchArgs = ['--out', gitDir];
   for (const k of ['ref', 'repo', 'path']) if (opts[k]) fetchArgs.push(`--${k}`, opts[k]);
+  if (galleryBase && !opts.galleryFile) fetchArgs.push('--gallery', galleryPath, '--gallery-out', galleryBase);
   const fetched = runNode('fetch-icons.mjs', fetchArgs);
   console.log(fetched.out.trim());
   if (fetched.status !== 0) fail('the download failed');
@@ -146,27 +166,45 @@ const names = (rule) => [...new Set(findings.filter((f) => f.rule === rule).map(
 const changed = names('S16'), onlyHere = names('N11'), onlyGit = names('N10');
 if (!opts.noGit) console.log(`\nagainst Git: ${changed.length} changed${list(changed)}; ${onlyHere.length} new${list(onlyHere)}; ${onlyGit.length} only in Git (never deleted)${list(onlyGit)}`);
 
-// ---------------------------------------------------------------- 5 choose, 6 write
+// ---------------------------------------------------------------- 5 texts: the gallery file
+// The descriptions of all icons count (a text can change without the shape), not only the chosen SVG files.
+let gallery = null;
+if (galleryBase) {
+  step(5, 'the texts of the icons: the gallery file icons.ts from the Figma descriptions');
+  const described = data.icons.map((icon) => ({ name: shortName(icon.name), description: icon.description || '' }));
+  try { gallery = buildGallery(readFileSync(galleryBase, 'utf8'), described, { categories: ruleSet.metadata && ruleSet.metadata.categories, only: opts.only }); }
+  catch (e) { fail(`the gallery file: ${e.message}`); }
+  console.log(summarize(gallery).join('\n'));
+} else step(5, `the texts of the icons: no gallery file (${galleryNote})`);
+
+// ---------------------------------------------------------------- 6 choose, 7 write
 const chosen = [...normalized.keys()].filter((n) => opts.all || changed.includes(n) || onlyHere.includes(n)).sort();
-step(5, opts.all ? `every icon (${chosen.length})` : `the changed and the new icons (${chosen.length})`);
+const galleryWrite = Boolean(gallery) && (opts.all || !gallery.same);
+const gallerySkipped = gallery ? gallery.skipped.length : 0;
+step(6, `${opts.all ? `every icon (${chosen.length})` : `the changed and the new icons (${chosen.length})`}${gallery ? `; gallery file: ${galleryWrite ? 'yes' : 'no change'}` : ''}`);
 if (errors.length && !opts.force) {
   console.error(`\nthe SVG file check found ${errors.length} errors, nothing was written (see ${join(work, 'export-check.txt')}; --force goes on anyway)`);
   process.exit(1);
 }
-if (!chosen.length) {
-  console.log('\nNothing to write: the Figma set equals the files in Git.');
-  process.exit(problems.length ? 1 : 0);
+if (!chosen.length && !galleryWrite) {
+  console.log(`\nNothing to write: the Figma set equals the files in Git${gallery ? ' and the descriptions equal the gallery file' : ''}.`);
+  process.exit(problems.length || gallerySkipped ? 1 : 0);
 }
-step(6, `write ${chosen.length} SVG files into ${resolve(opts.out)}`);
 const out = resolve(opts.out);
+step(7, `write ${chosen.length} SVG files${galleryWrite ? ' and icons.ts' : ''} into ${out}`);
 mkdirSync(out, { recursive: true });
 for (const n of chosen) writeFileSync(join(out, `${n}.svg`), normalized.get(n));
+if (galleryWrite) writeFileSync(join(out, 'icons.ts'), gallery.text);
 if (opts.zip) {
   const zipFile = `${out}.zip`;
   rmSync(zipFile, { force: true });
-  try { execFileSync('zip', ['-jq', zipFile, '-@'], { input: chosen.map((n) => join(out, `${n}.svg`)).join('\n') }); console.log(`zip: ${zipFile}`); }
+  const zipped = [...chosen.map((n) => join(out, `${n}.svg`)), ...(galleryWrite ? [join(out, 'icons.ts')] : [])];
+  try { execFileSync('zip', ['-jq', zipFile, '-@'], { input: zipped.join('\n') }); console.log(`zip: ${zipFile}`); }
   catch (e) { fail(`the zip command failed: ${e.message}`); }
 }
-writeFileSync(join(work, 'export-report.json'), JSON.stringify({ source: data.source, written: chosen, changed, new: onlyHere, notNormalizable: problems, checkErrors: errors.length }, null, 2));
-console.log(`\n${chosen.length} files written${opts.all ? '' : ` (${changed.length} changed, ${onlyHere.length} new)`}, ${problems.length} icons not normalizable, ${errors.length} check errors. Report: ${join(work, 'export-report.json')}`);
-process.exit(problems.length || (errors.length && !opts.force) ? 1 : 0);
+writeFileSync(join(work, 'export-report.json'), JSON.stringify({
+  source: data.source, written: chosen, changed, new: onlyHere, notNormalizable: problems, checkErrors: errors.length,
+  gallery: gallery ? { written: galleryWrite, changed: gallery.changed, added: gallery.added, unchanged: gallery.unchanged, skipped: gallery.skipped, onlyInGallery: gallery.onlyInGallery, kept: gallery.kept } : null,
+}, null, 2));
+console.log(`\n${chosen.length} files written${opts.all ? '' : ` (${changed.length} changed, ${onlyHere.length} new)`}${gallery ? `, gallery file ${galleryWrite ? `written (${gallery.changed.length} entries changed, ${gallery.added.length} new)` : 'not written (no change)'}` : ''}, ${problems.length} icons not normalizable, ${gallerySkipped} texts skipped, ${errors.length} check errors. Report: ${join(work, 'export-report.json')}`);
+process.exit(problems.length || gallerySkipped || (errors.length && !opts.force) ? 1 : 0);

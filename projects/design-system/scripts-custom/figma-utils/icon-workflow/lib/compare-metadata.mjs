@@ -4,7 +4,7 @@
 // usage:
 //   node compare-metadata.mjs --figma <export.json | descriptions.json> --gallery <icons.ts> [--json <file>] [--all]
 //
-//   --figma     the export of export-icon-set.js ({ icons: [{ name, figma: { description } }] })
+//   --figma     the export of export-icon-set.js ({ icons: [{ name, description }] }; { figma: { description } } works too)
 //               or a list of [name, description] pairs; the prefix "icon/" of the name is ignored
 //   --gallery   projects/sds/src/app/code-examples/code-examples/icons/previews/icons-gallery/icons.ts
 //   --json      write every finding as JSON
@@ -21,7 +21,7 @@ const figmaPath = opt('--figma'), galleryPath = opt('--gallery'), jsonOut = opt(
 if (!figmaPath || !galleryPath) { console.error('usage: node compare-metadata.mjs --figma <export.json> --gallery <icons.ts> [--json <file>] [--all]'); process.exit(2); }
 
 const raw = JSON.parse(readFileSync(figmaPath, 'utf8'));
-const pairs = Array.isArray(raw) ? raw : (raw.icons || []).map((i) => [i.name, (i.figma && i.figma.description) || '']);
+const pairs = Array.isArray(raw) ? raw : (raw.icons || []).map((i) => [i.name, i.description ?? (i.figma && i.figma.description) ?? '']);
 const figma = new Map(pairs.map(([name, desc]) => [String(name).replace(/^icon\//i, '').toLowerCase(), desc]));
 const gallery = parseGalleryFile(readFileSync(galleryPath, 'utf8'));
 const r = compareMetadata(figma, gallery);
