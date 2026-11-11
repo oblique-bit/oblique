@@ -61,7 +61,8 @@
   };
 
   // Next free place of the grid: the grid columns and rows come from the existing components.
-  const labels = page.findAll((n) => n.type === 'TEXT' && n.parent === section);
+  // the label of an icon is a text beside it, or an instance of the label building block of the Icons builder
+  const labels = section.children.filter((n) => n.type === 'TEXT' || n.type === 'INSTANCE');
   const refLabel = labels.find((t) => Math.abs(t.x - (refComp.x + 32)) <= 1.5 && Math.abs(t.y - refComp.y) <= 12);
   const cols = [...new Set(comps.map((c) => Math.round(c.x)))].sort((a, b) => a - b);
   const rows = [...new Set(comps.map((c) => Math.round(c.y)))].sort((a, b) => a - b);
@@ -123,10 +124,17 @@
           const r = variable.resolveForConsumer(vector).value;
           vector.fills = [figma.variables.setBoundVariableForPaint({ type: 'SOLID', color: { r: r.r, g: r.g, b: r.b }, opacity: r.a === undefined ? 1 : r.a, visible: true, blendMode: 'NORMAL' }, 'color', variable)];
           if (refLabel) {
-            for (const f of refLabel.getRangeAllFontNames(0, refLabel.characters.length)) await figma.loadFontAsync(f);
             const label = refLabel.clone();
             section.appendChild(label);
-            label.characters = name;
+            if (refLabel.type === 'TEXT') {
+              for (const f of refLabel.getRangeAllFontNames(0, refLabel.characters.length)) await figma.loadFontAsync(f);
+              label.characters = name;
+            } else {
+              // an instance: its text property holds the text
+              const key = Object.keys(label.componentProperties).find((k) => k.startsWith('name#'));
+              if (key) label.setProperties({ [key]: name });
+              label.name = name;
+            }
             label.x = c.x + (refLabel.x - refComp.x);
             label.y = c.y + (refLabel.y - refComp.y);
           }

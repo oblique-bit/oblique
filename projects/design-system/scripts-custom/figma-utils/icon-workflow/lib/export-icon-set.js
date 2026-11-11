@@ -143,9 +143,9 @@
       });
     }
 
-    const label = texts.find((t) => t.parent === c.parent
-      && Math.abs(t.x - (c.x + CONFIG.labelOffsetX)) <= CONFIG.labelTolerance
-      && Math.abs(t.y - c.y) <= CONFIG.labelMaxDy);
+    // absolute positions: the label is a text beside the icon, or a text inside a label instance (building block of the Icons builder)
+    const label = texts.find((t) => Math.abs(t.absoluteTransform[0][2] - (c.absoluteTransform[0][2] + CONFIG.labelOffsetX)) <= CONFIG.labelTolerance
+      && Math.abs(t.absoluteTransform[1][2] - c.absoluteTransform[1][2]) <= CONFIG.labelMaxDy);
 
     icons.push({
       id: c.id,
