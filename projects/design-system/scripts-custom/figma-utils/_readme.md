@@ -428,3 +428,106 @@ As of 2026-09-14, every doc-builder's own `deprecateOldScratchPages()`
 move inline, right after renaming — so this script is now mainly for
 ad-hoc cleanup (e.g. after a manual rename) rather than something you need
 to remember to run after every build.
+
+## icon-workflow/ — one command for the icon workflow
+
+Designers run one command. It downloads the icon SVG files from Git, validates them, reads the icon page of the open Figma file, compares both and shows what differs. With `--apply` it writes the changes into the Figma file and validates again.
+
+```bash
+# open the Figma file with the icon page first; run from the figma-cli folder or pass --cli-dir
+node icon-workflow/icons.mjs            # plan: writes nothing
+node icon-workflow/icons.mjs --apply    # writes into the open file
+```
+
+The command finds the library (`ds-library` or `legacy-library`) from the icon names. Optional: `--target <name>`, `--page <text>` (default `Icons`), `--only a,b` (these icons only), `--cli-dir <folder>`, `--work <folder>`, `--rules <file>`, `--force`, `--gallery <path>` (the gallery file in the repository, default from the rule file) and `--no-gallery` (skip the comparison of the texts).
+
+**Parts behind it** in `lib/`: `fetch-icons.mjs` (downloads the SVG folder of the repository, pinned to one commit, and with `--gallery` the gallery file `icons.ts` of the same commit) and `validate-icon-set.mjs` (checks and compares) run in Node. `export-icon-set.js`, `import-icons.js` and `write-descriptions.js` run inside Figma, which cannot read files or Git; `figma-run.mjs` holds what the commands share. Designers do not open them. The validator also runs alone: `node icon-workflow/lib/validate-icon-set.mjs <folder with .svg files | export.json> [--against <folder>]`.
+
+### What is checked
+
+Every finding has a rule id and a severity; `lib/validate-icon-set.mjs --list-rules` prints the catalogue. Rules marked `team list` come from the icon checklist of OB legacy, the others are added checks.
+
+| group | ids | covers |
+|---|---|---|
+| `N` naming | N01–N11 | lowercase name with `_` and `-`, both in one name (info), duplicates, whitespace and upper case, prefix, label (whitespace, equals the name, missing), page and section repeat the prefix word (info), icon missing in this set or in the reference set |
+| `S` svg | S01–S17 | well-formed XML, root and namespace, viewBox, width and height, allowed elements, forbidden attributes, comments, path data, inside the viewBox, padding, duplicate artwork, decimals, root attributes, byte order mark, id attributes, shape equals the reference set, the required root id (git profile) |
+| `C` color and line | C01–C08 | fill kind, stroke, opacity, one color per icon, set color, missing fill, line width, unpainted shape |
+| `M` metadata | M01–M08 | category is one of the 12, keywords not empty and not repeated, the lines `Purpose type:` and `Description:` present (info while they are not written), purpose type single or multi, description equals the gallery entry, an entry in the gallery file for every icon and an icon for every entry, one keyword per gallery entry |
+| `F` figma | F01–F12 | single component, size, one vector, layer name, fill binding, written color, stroke or effect or hidden layer, explicit mode, description, SVG color equals Figma color, every node named like an icon is a component, no styles |
+
+Two shapes count as equal when their outlines lie within `compare.shapeTolerance` (0.05 px): Figma turns quadratic curves into cubic ones and adds or drops closing segments, so the path text of the same shape differs. The profile `git` is for SVG files as Illustrator writes them (no fill attribute, an XML declaration are tolerated, the `id="a"` on the root is required by rule S17 because `update-icons.ts` replaces it with the icon id and does not report a file without it), the profile `figma` for SVG exported from Figma, the profile `export` for the normalized files that `export-svg.mjs` writes (the Git format without the id: the build adds it).
+
+### Metadata of the icons (`lib/compare-metadata.mjs`, `lib/metadata.mjs`)
+
+The texts of an icon (usage, category, keywords, purpose type, description, old name, deprecated purpose) live in the Figma component description and in the SDS gallery file `icons.ts`. The Figma line `Keywords:` is the field `aliases` of the gallery file: both are search words. `compare-metadata.mjs` reads both and reports what differs. It writes nothing:
+
+```bash
+node icon-workflow/lib/compare-metadata.mjs --figma <export.json> --gallery <icons.ts> [--json <file>] [--all]
+```
+
+- `--figma`: the export of `export-icon-set.js` or a list of `[name, description]` pairs (the prefix `icon/` is ignored).
+- `--gallery`: `projects/sds/src/app/code-examples/code-examples/icons/previews/icons-gallery/icons.ts`.
+- Checks: names missing on one side, usage, category, keywords (as a set), purpose type, description, old name and deprecated purpose when the Figma description has them; the category is one of the 12; keywords are not empty and have no duplicates; the gallery keeps one keyword per entry. Exit code 1 when something is found.
+- Format of the Figma description: the usage text, then `Category:`, `Keywords:` and the new lines `Purpose type:` (single or multi), `Description:`, `Old name:` (only for renamed icons) and `Deprecated purpose:` (only where the gallery has one: `headphones` and `id-card`). Decided on 2026-11-10 and 2026-11-11; written into the 284 descriptions of "OUI-4828 add icon set" on 2026-11-11.
+- State on 2026-11-10 (Figma file "OUI-4828 add icon set" against the gallery file of `master`): 284 icons on both sides; usage and category equal in 284, keywords in 282 (`show-more_horizontal` and `show-more_vertical` differ in notation); 31 Figma descriptions repeat a keyword; 6 gallery entries keep several keywords in one text (`arrow_left`, `badge`, `branch`, `chevron_left`, `chevron_left_small`, `file_pdf`).
+- **As rules in the validator.** `validate-icon-set.mjs` checks the same things as rules M01 to M08 (`--list-rules`). M01 to M05 read the Figma description, M06 to M08 need `--gallery <icons.ts>`: `node icon-workflow/lib/validate-icon-set.mjs <export.json> --gallery <icons.ts>`. M07 and M08 also work on a folder of SVG files. M03 and M05 are `info` until the new lines are written; then they can be raised to `error` in the rule file. The category list and the path of the gallery file are in the rule file (`metadata`).
+- **In the `icons` command.** Step 1 downloads the gallery file of the same commit as the SVG files (`<work>/icons-gallery.ts`); steps 4 and 6 compare the Figma descriptions with it, the plan prints one `Texts:` line. Nothing is written for the texts.
+- To build: the export of the gallery file and the changelog per release. The script that writes the new lines is `write-metadata.mjs` (next section).
+
+### Writing the new lines (`write-metadata.mjs`)
+
+The Figma description gets the lines `Purpose type:`, `Description:`, `Old name:` and `Deprecated purpose:` (decided on 2026-11-10 and 2026-11-11). The texts exist in the gallery file; this command copies them into the descriptions of the open Figma file once:
+
+```bash
+node icon-workflow/write-metadata.mjs --cli-dir <figma-cli folder>           # plan: writes nothing
+node icon-workflow/write-metadata.mjs --cli-dir <figma-cli folder> --apply   # writes into the open file
+```
+
+- It adds only lines that are missing and keeps the existing text as it is; it never deletes. A second run changes nothing. An icon without a gallery entry, or where the gallery cannot give a line (purpose type neither single nor multi, no description), is listed and left alone.
+- Steps: read the gallery file (downloaded from the repository, or `--gallery <icons.ts>`), export the descriptions (no SVG, a few seconds), plan, check in Figma (every component found, description unchanged since the export), and with `--apply` save the restore point "Before icon metadata" in the version history, write, export again and compare with the gallery file. `--figma <export.json>` plans from an export without touching Figma.
+- State on 2026-11-11: written into "OUI-4828 add icon set" (restore point "Before icon metadata"): 284 descriptions got lines (Purpose type 284, Description 284, Old name 149, Deprecated purpose 2). Afterwards the old text is unchanged at the start of all 284 descriptions, no other property of any icon changed, and the validator finds 2 texts that differ from the gallery file (the keyword notation of `show-more_horizontal` and `show-more_vertical`).
+- `Deprecated purpose:` exists only for `headphones` and `id-card`, the two gallery entries that carry a `deprecatedPurpose` text (what the icon showed before and which icon shows it now).
+
+### Exporting the SVG files (`export-svg.mjs`)
+
+The export step of the pipeline (board "Icons Workflows", Case 0 and the cases after it). It writes the icons of the open Figma file as SVG files in the format of the Git set, so that the DS Developers can take them into a pull request. Decided on 2026-11-11: the build (`update-icons.ts`) adds the id of an icon, so the files carry no id. The build changes only the id, the XML declaration and the line breaks, so the export itself removes what the build would keep: `width` and `height`, `fill="none"` on the root and the fixed fill of the path (see `lib/normalize-svg.mjs`).
+
+```bash
+node icon-workflow/export-svg.mjs --cli-dir <figma-cli folder> --target ds-library                       # only the changed and the new icons
+node icon-workflow/export-svg.mjs --cli-dir <figma-cli folder> --target ds-library --all --zip --out ./icon-export   # the whole set and a zip
+```
+
+- Steps: download the SVG files of the repository as the reference (pinned to one commit, or `--git <folder>`), export the icon page with the SVG of every icon, normalize, run the SVG file check (profile `export`) and the comparison with Git, choose, write. The Figma tab must be in front.
+- Normalizing: `<svg xmlns viewBox><path d/></svg>` with the XML declaration, on one line, without a line break at the end. Figma wraps three icons (`star`, `star_filled`, `exclamation_diamond`) in a `<g clip-path>` with a clipPath rectangle of the whole 24 x 24 area: that clip is removed when the vector lies inside the area (checked with its bounding box), so it cuts nothing. An icon that cannot be normalized (another viewBox, more than one path, other elements or attributes) is reported and never guessed.
+- By default only icons that differ from Git (shape outside `compare.shapeTolerance`) or are new are written, so that Git sees a small difference. `--all` writes every icon (Case 0: the whole set), `--only a,b` limits the icons, `--no-git` skips the comparison.
+- The SVG file check stops the export on errors (`--force` goes on). Differences from Git are the content of the export, not errors.
+- State on 2026-11-11 ("OUI-4828 add icon set" against Git master 16.0.4): 284 icons normalized, 0 not normalizable, fill `#1C2834` removed from all 284, 0 errors in the check, 266 identical and 18 same shape in another notation, 0 changed, so the default run writes nothing. `--all --zip` writes 284 files. A test with a changed and a missing file in the reference wrote exactly those two.
+- Open: the build must add the id when it is missing (today it only replaces `id="a"`), and once the exported files are in Git the `git` profile must stop requiring the root id (`profiles.git.svg.rootId` to `null`).
+
+### Rule file (`icon-set-rules.json`)
+
+| field | what it does |
+|---|---|
+| `namePrefix` | group of the component name, case included; `icon/` for the design system |
+| `naming.pattern` | regular expression for the name after the prefix; default: lowercase, `_` or `-` between words |
+| `svg.viewBox`, `svg.size` | expected viewBox and width/height in px |
+| `svg.allowedElements`, `svg.forbiddenAttributes`, `svg.forbiddenAttributePrefixes` | what may appear in the SVG (`on` matches event handlers) |
+| `svg.minPadding`, `svg.maxDecimals` | `null` = measured and reported only, a number switches the rule on |
+| `colors.allowedKinds`, `colors.expected`, `colors.allowOpacity` | fill kinds (`hex`, `currentColor`, `none`, ...), the set color (`null` = the color most icons use), opacity |
+| `stroke.allowed` | allow lines; when `true`, width, cap and join must match the rest of the set |
+| `metadata.categories`, `metadata.galleryPath` | the 12 categories a description may name; the path of the gallery file `icons.ts` in the repository |
+| `figma.expectedVariable`, `figma.childName`, `figma.descriptionPattern` | variable the vector fill must be bound to, vector layer name (`null` = not checked), description pattern |
+| `targets` | one block per library with its own `namePrefix` and `figma.expectedVariable`: `ds-library` (`icon/`, `neutral/fg/contrast_high/inversity_normal`) and `legacy-library` (`Icon/`, `Text/High Emphasis`) |
+| `profiles` | overrides for `git`, `export` and `figma` |
+| `severity` | per rule id: `error`, `warn`, `info` or `off`, e.g. `{ "N01": "warn" }` |
+
+### Notes
+
+- **Safety.** The plan writes nothing. `--apply` writes only into the file that is open and was exported in the same run, saves a restore point "Before icon sync" first and never deletes. Git files with validation errors stop the run (`--force` goes on).
+- **Any file.** File, branch and page names are not in the scripts, so the command runs on the legacy library and on the design system library alike. A renamed icon shows up as "only in Figma" plus "to create".
+- **The Figma tab must be in front.** Figma does not draw a tab that is in the background, and the SVG export waits for the drawing. The export stops with a message when the tab is hidden: click the tab and run the command again. The page is the only thing that is loaded (`loadAllPagesAsync` takes minutes on the design system file).
+- **New icons** get no description, Git has none. Rule F09 reports them.
+- **Where the defaults come from.** The 24 px size is the documented `md` icon size (`documentation/06-components/icon/02-architecture.md`). Fill only, one path per icon and one color are what the current set of 284 icons does. The official icon guidelines are not readable as text, so no value is taken from them.
+- **Limits of the SVG reader.** It reads elements and attributes, not CSS stylesheets; `<style>` is a forbidden element by default. Shapes inside `defs`, `clipPath` or `mask` do not count for colors. The bounding box is skipped when a `transform` is present.
+- **Reports** of every step go to the working folder (`--work`, default `./icon-sync`).
+- The Figma parts keep their header inside the IIFE, so `eval -f` returns the output (see the known issue at the top).
