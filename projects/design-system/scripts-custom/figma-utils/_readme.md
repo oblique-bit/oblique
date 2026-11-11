@@ -433,6 +433,8 @@ to remember to run after every build.
 
 Designers run one command. It downloads the icon SVG files from Git, validates them, reads the icon page of the open Figma file, compares both and shows what differs. With `--apply` it writes the changes into the Figma file and validates again.
 
+The page itself (header, purpose boxes, grid of icons and labels) is not made by this folder. Case 0, a new set in a new file, builds it with the Icons builder in `../figma-doc-builders/icons/` (it asks for a source Figma file every time). This folder keeps the icons on that page in sync afterwards. A label beside an icon is a text or an instance of the label building block of that builder: the export and the import script find both.
+
 ```bash
 # open the Figma file with the icon page first; run from the figma-cli folder or pass --cli-dir
 node icon-workflow/icons.mjs            # plan: writes nothing

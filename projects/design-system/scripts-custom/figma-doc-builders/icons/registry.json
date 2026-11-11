@@ -1,0 +1,176 @@
+{
+  "schema": "ob.icons.registry.v1",
+  "page": "🧷 Icons",
+  "namePrefix": "icon/",
+  "utilitiesPage": "Authoring Utilities",
+  "blocksSection": "_building_blocks/icons",
+  "components": {
+    "foundationBar": "_building_blocks/shared/foundation_bar",
+    "purposeBox": "_building_blocks/icons/purpose_box",
+    "label": "_building_blocks/icons/label"
+  },
+  "variables": {
+    "iconFill": "neutral/fg/contrast_high/inversity_normal",
+    "docText": "neutral/fg/contrast_high/inversity_normal",
+    "chipText": "neutral/fg/contrast_highest/inversity_flipped",
+    "link": "ob/p/color/blue/700"
+  },
+  "font": {
+    "family": "Noto Sans",
+    "style": "Regular"
+  },
+  "pageBackground": {
+    "r": 0.9411764740943909,
+    "g": 0.95686274766922,
+    "b": 0.9686274528503418
+  },
+  "section": {
+    "name": "",
+    "x": 0,
+    "y": 0,
+    "width": 1637,
+    "bottomMargin": 52,
+    "fill": {
+      "r": 1,
+      "g": 1,
+      "b": 1
+    },
+    "stroke": {
+      "r": 0,
+      "g": 0,
+      "b": 0,
+      "opacity": 0.1
+    }
+  },
+  "header": {
+    "instanceName": "__foundation_bar",
+    "title": "Icons",
+    "hide": [
+      "Separator",
+      "Foundation Info",
+      "$foundation_description",
+      "$build_generation_meta"
+    ],
+    "empty": [
+      "$foundation_description",
+      "$build_generation_meta"
+    ]
+  },
+  "grid": {
+    "columns": 6,
+    "originX": 44,
+    "originY": 865,
+    "pitchX": 272,
+    "pitchY": 72,
+    "iconSize": 24,
+    "labelOffsetX": 32
+  },
+  "icon": {
+    "layerName": "vector"
+  },
+  "label": {
+    "size": 16,
+    "lineHeightPx": 24,
+    "letterSpacingPercent": 0.1,
+    "color": {
+      "r": 0,
+      "g": 0,
+      "b": 0
+    }
+  },
+  "box": {
+    "width": 749.5,
+    "height": 312,
+    "gap": 24,
+    "padding": 32,
+    "fill": {
+      "r": 0.592156862745098,
+      "g": 0.2784313725490196,
+      "b": 1,
+      "opacity": 0.1
+    },
+    "chip": {
+      "height": 32,
+      "radius": 22,
+      "gap": 8,
+      "paddingY": 7,
+      "paddingX": 12,
+      "textSize": 14,
+      "lineHeightPx": 20,
+      "letterSpacingPercent": 0.25
+    },
+    "body": {
+      "size": 16,
+      "lineHeightPx": 24,
+      "letterSpacingPercent": 0.1
+    }
+  },
+  "boxes": [
+    {
+      "purpose": "single",
+      "name": "Single-purpose icons",
+      "x": 44,
+      "y": 416,
+      "chip": {
+        "text": "Single purpose",
+        "variable": "ob/p/color/blue/800"
+      },
+      "segments": [
+        {
+          "text": "Single-purpose icons are reserved for \u2028a specific function in the Oblique interface. \u2028\u2028Check in the ",
+          "variable": "neutral/fg/contrast_high/inversity_normal"
+        },
+        {
+          "text": "Oblique Icon Gallery",
+          "variable": "ob/p/color/blue/700",
+          "hyperlink": "https://oblique.bit.admin.ch/foundations/icons/examples#icons-examples--icons-gallery",
+          "underline": true
+        },
+        {
+          "text": " that your use case matches the icon’s intended function. If not, use a different icon.\u2028\u2028Example: The “home” icon is used only for the homepage in the main navigation. It must not be used to represent a building or location.",
+          "variable": "neutral/fg/contrast_high/inversity_normal"
+        }
+      ]
+    },
+    {
+      "purpose": "multi",
+      "name": "Multi-purpose icons",
+      "x": 841.5,
+      "y": 416,
+      "chip": {
+        "text": "Multi purpose",
+        "variable": "ob/p/color/green/700"
+      },
+      "segments": [
+        {
+          "text": "Multi-purpose icons can be used in different contexts within the Oblique interface. \u2028\u2028Check the ",
+          "variable": "neutral/fg/contrast_high/inversity_normal"
+        },
+        {
+          "text": "Oblique Icon Gallery",
+          "variable": "ob/p/color/blue/700",
+          "hyperlink": "https://oblique.bit.admin.ch/foundations/icons/examples#icons-examples--icons-gallery",
+          "underline": true
+        },
+        {
+          "text": " for usage recommendations.\u2028\u2028Example: The “antique-building” icon can be used to represent a museum, university, or  heritage sites.",
+          "variable": "neutral/fg/contrast_high/inversity_normal"
+        }
+      ]
+    }
+  ],
+  "blockLayout": {
+    "gapBetweenSections": 322,
+    "paddingX": 45,
+    "paddingTop": 84,
+    "gapBetweenBlocks": 80,
+    "sectionFillFrom": "_building_blocks/typography",
+    "setPadding": 20,
+    "setGap": 20,
+    "setStroke": {
+      "r": 0.592156862745098,
+      "g": 0.2784313725490196,
+      "b": 1
+    }
+  }
+}
