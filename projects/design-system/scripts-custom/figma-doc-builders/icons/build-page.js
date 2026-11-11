@@ -220,6 +220,29 @@
     return removed;
   };
 
+  // the building blocks must exist and the variants of a block must not lie on top of each other
+  const blockProblems = () => {
+    const problems = [];
+    for (const name of [R.components.label, R.components.purposeBox]) if (!findBlock(name)) problems.push(`the building block ${name} does not exist`);
+    const blockSet = findBlock(R.components.purposeBox);
+    if (blockSet && blockSet.type === 'COMPONENT_SET') {
+      const vs = blockSet.children;
+      for (let i = 0; i < vs.length; i++) for (let j = i + 1; j < vs.length; j++) {
+        const a = vs[i], b = vs[j];
+        if (a.x < b.x + b.width && b.x < a.x + a.width && a.y < b.y + b.height && b.y < a.y + a.height) problems.push(`${R.components.purposeBox}: the variants "${a.name}" and "${b.name}" overlap`);
+      }
+    }
+    return problems;
+  };
+
+  // ================================================================ phase blocks: only the building blocks, no page and no icons
+  if (INPUT.phase === 'blocks') {
+    const missing = !(state.blocksSection && state.labelBlock && state.purposeBox);
+    if (missing && INPUT.restorePoint) await figma.saveVersionHistoryAsync(INPUT.label, 'Restore point before the icons builder makes the building blocks');
+    const blocks = await ensureBlocks();
+    return done({ state, made: { blocks: blocks.made }, problems: blockProblems() });
+  }
+
   if (INPUT.phase === 'prepare') {
     if (INPUT.restorePoint) await figma.saveVersionHistoryAsync(INPUT.label, 'Restore point before the icons builder writes the Icons page and its building blocks');
     const blocks = await ensureBlocks();
@@ -280,12 +303,23 @@
   for (const c of existing.values()) occupied.add(`${Math.round((absX(c) - absX(section) - G.originX) / G.pitchX)},${Math.round((absY(c) - absY(section) - G.originY) / G.pitchY)}`);
   const nextSlot = () => { for (let i = 0; ; i++) { const col = i % G.columns, row = Math.floor(i / G.columns); const k = `${col},${row}`; if (!occupied.has(k)) { occupied.add(k); return { col, row, ...slotXY(col, row) }; } } };
 
+  // An icon from a Git SVG file: the SVG is imported (one vector, flattened when it has several shapes) and the vector moves into the component.
+  const importSvg = (svg) => {
+    const frame = figma.createNodeFromSvg(svg);
+    const vectors = frame.findAll((n) => n.type === 'VECTOR' || n.type === 'BOOLEAN_OPERATION');
+    if (!vectors.length) { frame.remove(); throw new Error('the SVG has no shape'); }
+    let vector = vectors[0];
+    if (vectors.length > 1) vector = figma.flatten(vectors, frame);
+    return { frame, vector };
+  };
+
   if (INPUT.phase === 'icons') {
     await figma.setCurrentPageAsync(iconsPage);
     const created = [], kept = [], failed = [];
     for (const it of INPUT.batch) {
       if (existing.has(it.name)) { kept.push(it.name); continue; }
       if (!apply) { created.push(it.name); continue; }
+      let svgFrame = null;
       try {
         const slot = nextSlot();
         const c = figma.createComponent();
@@ -294,11 +328,21 @@
         c.clipsContent = true;
         c.fills = [];
         c.description = it.description || '';
-        const v = figma.createVector();
-        c.appendChild(v);
+        let v;
+        if (it.svg) {
+          const imported = importSvg(it.svg);
+          svgFrame = imported.frame;
+          v = imported.vector;
+          const dx = absX(v) - absX(svgFrame), dy = absY(v) - absY(svgFrame);
+          c.appendChild(v);
+          v.x = dx; v.y = dy;
+        } else {
+          v = figma.createVector();
+          c.appendChild(v);
+          v.vectorPaths = it.vector.paths.map((p) => ({ windingRule: p.windingRule, data: p.data }));
+          v.x = it.vector.x; v.y = it.vector.y;
+        }
         v.name = R.icon.layerName;
-        v.vectorPaths = it.vector.paths.map((p) => ({ windingRule: p.windingRule, data: p.data }));
-        v.x = it.vector.x; v.y = it.vector.y;
         v.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
         v.strokes = [];
         v.fills = [boundPaint(iconVar, v)];
@@ -313,6 +357,7 @@
         li.x = slot.x + G.labelOffsetX; li.y = slot.y;
         created.push(it.name);
       } catch (e) { failed.push(`${it.name}: ${e.message}`); }
+      finally { if (svgFrame) { try { svgFrame.remove(); } catch (e) { /* already gone */ } } }
     }
     return done({ created: created.length, kept: kept.length, failed, createdNames: created.slice(0, 5) });
   }
@@ -345,15 +390,7 @@
     const header = section.children.find((n) => n.type === 'INSTANCE' && n.name === R.header.instanceName);
     if (!header) problems.push('the header instance is missing');
     for (const box of R.boxes) if (!section.children.find((n) => n.type === 'INSTANCE' && n.name === box.name)) problems.push(`the box "${box.name}" is missing`);
-    // the variants of a building block must not lie on top of each other
-    const blockSet = findBlock(R.components.purposeBox);
-    if (blockSet && blockSet.type === 'COMPONENT_SET') {
-      const vs = blockSet.children;
-      for (let i = 0; i < vs.length; i++) for (let j = i + 1; j < vs.length; j++) {
-        const a = vs[i], b = vs[j];
-        if (a.x < b.x + b.width && b.x < a.x + a.width && a.y < b.y + b.height && b.y < a.y + a.height) problems.push(`${R.components.purposeBox}: the variants "${a.name}" and "${b.name}" overlap`);
-      }
-    }
+    problems.push(...blockProblems());
     if (INPUT.total && comps.length !== INPUT.total) problems.push(`${comps.length} icon components on the page, the source has ${INPUT.total}`);
     return done({ icons: comps.length, rows: maxRow + 1, sectionHeight: Math.round(section.height), sectionName: section.name, boundFills: bound, lockedAspect: locked, labelsOk, header: header ? { w: header.width, h: header.height } : null, problems: problems.slice(0, 40), problemCount: problems.length });
   }
