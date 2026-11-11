@@ -1,0 +1,105 @@
+{
+  "namePrefix": "icon/",
+  "naming": {
+    "pattern": "^[a-z][a-z0-9]*([_-][a-z0-9]+)*$"
+  },
+  "svg": {
+    "viewBox": "0 0 24 24",
+    "size": 24,
+    "allowedElements": [
+      "svg",
+      "path"
+    ],
+    "forbiddenAttributes": [
+      "class",
+      "style",
+      "transform",
+      "clip-path",
+      "mask",
+      "filter"
+    ],
+    "forbiddenAttributePrefixes": [
+      "data-",
+      "on"
+    ],
+    "minPadding": null,
+    "maxDecimals": null
+  },
+  "colors": {
+    "allowedKinds": [
+      "hex",
+      "currentColor",
+      "none"
+    ],
+    "expected": null,
+    "allowOpacity": false
+  },
+  "stroke": {
+    "allowed": false
+  },
+  "figma": {
+    "expectedVariable": [
+      "Text/High Emphasis",
+      "neutral/fg/contrast_high/inversity_normal"
+    ],
+    "childName": null,
+    "descriptionPattern": "Category:[\\s\\S]*Keywords:"
+  },
+  "severity": {},
+  "compare": {
+    "tolerance": 0.01,
+    "shapeTolerance": 0.05
+  },
+  "metadata": {
+    "categories": ["Accessibility", "Communication", "Content and files", "Data visualisation", "Devices and tech", "Interface", "Media player", "Navigation", "People and identity", "Physical items and infrastructure", "Social media", "Status and feedback"],
+    "galleryPath": "projects/sds/src/app/code-examples/code-examples/icons/previews/icons-gallery/icons.ts"
+  },
+  "profiles": {
+    "git": {
+      "svg": {
+        "rootId": "a"
+      },
+      "colors": {
+        "allowedKinds": [
+          "currentColor",
+          "none"
+        ],
+        "allowImplicitFill": true
+      },
+      "severity": {
+        "S07": "info"
+      }
+    },
+    "export": {
+      "colors": {
+        "allowedKinds": [
+          "currentColor",
+          "none"
+        ],
+        "allowImplicitFill": true
+      },
+      "severity": {
+        "S07": "info"
+      }
+    },
+    "figma": {}
+  },
+  "targets": {
+    "legacy-library": {
+      "namePrefix": "Icon/",
+      "figma": {
+        "expectedVariable": [
+          "Text/High Emphasis"
+        ]
+      }
+    },
+    "ds-library": {
+      "namePrefix": "icon/",
+      "figma": {
+        "expectedVariable": [
+          "neutral/fg/contrast_high/inversity_normal"
+        ]
+      }
+    }
+  }
+}
