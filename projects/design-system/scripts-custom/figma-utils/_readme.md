@@ -443,7 +443,16 @@ node icon-workflow/icons.mjs --apply    # writes into the open file
 
 The command finds the library (`ds-library` or `legacy-library`) from the icon names. Optional: `--target <name>`, `--page <text>` (default `Icons`), `--only a,b` (these icons only), `--cli-dir <folder>`, `--work <folder>`, `--rules <file>`, `--force`, `--gallery <path>` (the gallery file in the repository, default from the rule file) and `--no-gallery` (skip the comparison of the texts).
 
-**Parts behind it** in `lib/`: `fetch-icons.mjs` (downloads the SVG folder of the repository, pinned to one commit, and with `--gallery` the gallery file `icons.ts` of the same commit) and `validate-icon-set.mjs` (checks and compares) run in Node. `export-icon-set.js`, `import-icons.js` and `write-descriptions.js` run inside Figma, which cannot read files or Git; `figma-run.mjs` holds what the commands share. Designers do not open them. The validator also runs alone: `node icon-workflow/lib/validate-icon-set.mjs <folder with .svg files | export.json> [--against <folder>]`.
+**Commands** of the folder (each has `--help`):
+
+| command | does | writes |
+|---|---|---|
+| `icons.mjs` | compares the SVG files of Git with the icon page of the open Figma file, checks both, with `--apply` writes the shape of changed icons and creates missing icons | Figma, only with `--apply` |
+| `write-metadata.mjs` | copies the texts of the gallery file into the Figma descriptions as lines, once | Figma, only with `--apply` |
+| `export-svg.mjs` | writes the icons of the Figma file as SVG files in the Git format and the gallery file `icons.ts` from the descriptions | a local folder |
+| `changelog.mjs` | lists what changed in the icon set between two Git refs | a local folder |
+
+**Parts behind it** in `lib/`: `fetch-icons.mjs` (downloads the SVG folder of the repository, pinned to one commit; with `--gallery` it also downloads the gallery file `icons.ts` of the same commit), `validate-icon-set.mjs` (checks and compares), `gallery-file.mjs` (writes the gallery file from the Figma descriptions), `changelog.mjs` (the functions behind the command of the same name), `metadata.mjs` (reads and compares the texts) and `normalize-svg.mjs` run in Node. `export-icon-set.js`, `import-icons.js` and `write-descriptions.js` run inside Figma, which cannot read files or Git; `figma-run.mjs` holds what the commands share. Designers do not open them. The validator also runs alone: `node icon-workflow/lib/validate-icon-set.mjs <folder with .svg files | export.json> [--against <folder>]`.
 
 ### What is checked
 
@@ -474,7 +483,7 @@ node icon-workflow/lib/compare-metadata.mjs --figma <export.json> --gallery <ico
 - State on 2026-11-10 (Figma file "OUI-4828 add icon set" against the gallery file of `master`): 284 icons on both sides; usage and category equal in 284, keywords in 282 (`show-more_horizontal` and `show-more_vertical` differ in notation); 31 Figma descriptions repeat a keyword; 6 gallery entries keep several keywords in one text (`arrow_left`, `badge`, `branch`, `chevron_left`, `chevron_left_small`, `file_pdf`).
 - **As rules in the validator.** `validate-icon-set.mjs` checks the same things as rules M01 to M08 (`--list-rules`). M01 to M05 read the Figma description, M06 to M08 need `--gallery <icons.ts>`: `node icon-workflow/lib/validate-icon-set.mjs <export.json> --gallery <icons.ts>`. M07 and M08 also work on a folder of SVG files. M03 and M05 are `info` until the new lines are written; then they can be raised to `error` in the rule file. The category list and the path of the gallery file are in the rule file (`metadata`).
 - **In the `icons` command.** Step 1 downloads the gallery file of the same commit as the SVG files (`<work>/icons-gallery.ts`); steps 4 and 6 compare the Figma descriptions with it, the plan prints one `Texts:` line. Nothing is written for the texts.
-- To build: the export of the gallery file and the changelog per release. The script that writes the new lines is `write-metadata.mjs` (next section).
+- The export of the gallery file is part of `export-svg.mjs` (section "Exporting the SVG files and the gallery file"). The changelog per release is `changelog.mjs` (last section of this part). The script that writes the new lines is `write-metadata.mjs` (next section).
 
 ### Writing the new lines (`write-metadata.mjs`)
 
@@ -490,21 +499,57 @@ node icon-workflow/write-metadata.mjs --cli-dir <figma-cli folder> --apply   # w
 - State on 2026-11-11: written into "OUI-4828 add icon set" (restore point "Before icon metadata"): 284 descriptions got lines (Purpose type 284, Description 284, Old name 149, Deprecated purpose 2). Afterwards the old text is unchanged at the start of all 284 descriptions, no other property of any icon changed, and the validator finds 2 texts that differ from the gallery file (the keyword notation of `show-more_horizontal` and `show-more_vertical`).
 - `Deprecated purpose:` exists only for `headphones` and `id-card`, the two gallery entries that carry a `deprecatedPurpose` text (what the icon showed before and which icon shows it now).
 
-### Exporting the SVG files (`export-svg.mjs`)
+### Exporting the SVG files and the gallery file (`export-svg.mjs`)
 
-The export step of the pipeline (board "Icons Workflows", Case 0 and the cases after it). It writes the icons of the open Figma file as SVG files in the format of the Git set, so that the DS Developers can take them into a pull request. Decided on 2026-11-11: the build (`update-icons.ts`) adds the id of an icon, so the files carry no id. The build changes only the id, the XML declaration and the line breaks, so the export itself removes what the build would keep: `width` and `height`, `fill="none"` on the root and the fixed fill of the path (see `lib/normalize-svg.mjs`).
+The export step of the pipeline (board "Icons Workflows", Case 0 and the cases after it). It writes the icons of the open Figma file as SVG files in the format of the Git set and the gallery file `icons.ts` with the texts of the icons, so that the DS Developers can take both into one pull request. Decided on 2026-11-11: the build (`update-icons.ts`) adds the id of an icon, so the files carry no id. The build changes only the id, the XML declaration and the line breaks, so the export itself removes what the build would keep: `width` and `height`, `fill="none"` on the root and the fixed fill of the path (see `lib/normalize-svg.mjs`).
 
 ```bash
 node icon-workflow/export-svg.mjs --cli-dir <figma-cli folder> --target ds-library                       # only the changed and the new icons
 node icon-workflow/export-svg.mjs --cli-dir <figma-cli folder> --target ds-library --all --zip --out ./icon-export   # the whole set and a zip
 ```
 
-- Steps: download the SVG files of the repository as the reference (pinned to one commit, or `--git <folder>`), export the icon page with the SVG of every icon, normalize, run the SVG file check (profile `export`) and the comparison with Git, choose, write. The Figma tab must be in front.
+- Steps: download the SVG files and the gallery file of the repository as the reference (pinned to one commit, or `--git <folder>`), export the icon page with the SVG and the description of every icon, normalize, run the SVG file check (profile `export`) and the comparison with Git, build the gallery file, choose, write. The Figma tab must be in front.
 - Normalizing: `<svg xmlns viewBox><path d/></svg>` with the XML declaration, on one line, without a line break at the end. Figma wraps three icons (`star`, `star_filled`, `exclamation_diamond`) in a `<g clip-path>` with a clipPath rectangle of the whole 24 x 24 area: that clip is removed when the vector lies inside the area (checked with its bounding box), so it cuts nothing. An icon that cannot be normalized (another viewBox, more than one path, other elements or attributes) is reported and never guessed.
 - By default only icons that differ from Git (shape outside `compare.shapeTolerance`) or are new are written, so that Git sees a small difference. `--all` writes every icon (Case 0: the whole set), `--only a,b` limits the icons, `--no-git` skips the comparison.
 - The SVG file check stops the export on errors (`--force` goes on). Differences from Git are the content of the export, not errors.
 - State on 2026-11-11 ("OUI-4828 add icon set" against Git master 16.0.4): 284 icons normalized, 0 not normalizable, fill `#1C2834` removed from all 284, 0 errors in the check, 266 identical and 18 same shape in another notation, 0 changed, so the default run writes nothing. `--all --zip` writes 284 files. A test with a changed and a missing file in the reference wrote exactly those two.
 - Open: the build must add the id when it is missing (today it only replaces `id="a"`), and once the exported files are in Git the `git` profile must stop requiring the root id (`profiles.git.svg.rootId` to `null`).
+
+**The gallery file `icons.ts`** (`lib/gallery-file.mjs`, step 5 of the export). The texts of an icon come from its Figma description; the line `Keywords:` becomes the field `aliases`. The file of Git is the base, so the pull request shows real changes only:
+
+- An entry or a field that already says what the description says stays byte for byte (quotes and white space do not count as a difference, keywords are compared as a set).
+- A field that differs is written again in the style of the file: tabs, single quotes (double quotes when the text has more single quotes than double), a line of at most 120 characters, a value that does not fit goes to the next line, an array of keywords in one line or one keyword per line. This is how Prettier writes this repository (`.prettierrc.yml` and `.editorconfig` of `master`). A field that the entry does not have yet (`oldName`, `deprecatedPurpose`) goes to its place in the order of the file: `oldName`, `name`, `purpose`, `usage`, `category`, `aliases`, `description`, `deprecatedPurpose`.
+- An icon without an entry is added at the end of the file: the file is grouped by category and its latest additions are at the end too. The order is for the DS Developers to change.
+- Nothing is deleted. An entry without an icon in Figma stays. A line that the description does not have, or leaves empty, never removes a field of the entry. Keywords are written as they are in Figma, repeats included (rule M02 reports them).
+- An icon whose description cannot be read is skipped and listed; its entry stays as it is; the exit code is 1: no usage text, a category outside the 12, a purpose type other than `single` or `multi`, a new icon without the lines `Category:`, `Purpose type:` or `Description:`.
+- After writing, the file is read back and compared with the descriptions. A mismatch stops the export before anything is written.
+- `icons.ts` is written when an entry changed or an icon is new; `--all` always writes it; `--only a,b` limits the icons; `--no-gallery` skips it; `--gallery <path>` names the file in the repository (default from the rule file); `--gallery-file <icons.ts>` uses a local file as the base, which `--no-git` and `--git <folder>` need because they download nothing. `--zip` includes the file.
+- Without Figma, from an export that `export-icon-set.js` made: `node icon-workflow/lib/gallery-file.mjs --figma <export.json> --gallery <icons.ts> --out <file> [--prefix icon/] [--only a,b] [--json <report>]`.
+- State on 2026-11-11: all 284 entries of the gallery file of `master` (commit 67acb3966), written again from their parsed data, equal the file byte for byte; descriptions in the Figma format made from the gallery give the same file again; a test with a changed usage, new keywords, fewer keywords, a changed category and purpose type, an added old name and deprecated purpose, descriptions with quotes and two new icons (and two unreadable descriptions) gives exactly the intended differences. Prettier (3.5.3, the configuration of `master`) leaves the result unchanged. A live run on a Figma file with the 284 icons built from Git: 284 icons normalized, `icons.ts` of `--all` identical to the file in Git, the default run writes nothing, `--only home,menu --all --zip` writes two SVG files, `icons.ts` and the zip.
+
+### Changelog per release (`changelog.mjs`)
+
+The changelog per release was written by hand (Confluence table: Added icon, Changed name, Changed icon). Decided on 2026-11-10: a script generates it. The command compares two states of the set in Git and does not touch Figma:
+
+```bash
+node icon-workflow/changelog.mjs --from 14.2.1 --to 15.0.0 [--out ./icon-changelog]
+```
+
+- Options: `--from <ref>` (the older state: a tag, a branch or a commit; required), `--to <ref>` (default `master`), `--out <folder>` (default `./icon-changelog`), `--work <folder>` (default `./icon-sync`), `--repo`, `--path` and `--token` as in `fetch-icons.mjs`, `--gallery <path>`, `--no-gallery`, `--rules <file>`.
+- Steps: download both states (the SVG files and the gallery file, each pinned to one commit), compare the names, compare the shapes with the validator (rule S16, `compare.shapeTolerance`), compare the texts, write `changelog-<from>-to-<to>.md` and `.csv` into `--out`. The `.md` has the Git refs with commit and date, the icon counts, the counts per kind and one table per kind; the `.csv` has the columns `icon,change,detail`, one row per icon and kind.
+
+| kind | what it is |
+|---|---|
+| Added icon | an SVG file that exists only in the newer state and is not a rename; the table shows category, purpose type and usage from the gallery |
+| Changed name | one SVG file only in the older state and one only in the newer state that count as one icon. Evidence, in this order and only if the match is unique: the old name in the gallery entry of the new icon (case ignored), the same file content (the same Git blob), the same name apart from the case of the letters. The table names the evidence |
+| Changed icon | the shape differs beyond `compare.shapeTolerance` (0.05 px); the difference is given in px. A renamed icon is compared under its old name, so a rename and a redraw in one release are both listed |
+| Changed texts | a field of the gallery entry differs: usage, category, keywords (as a set), purpose type, description, old name, deprecated purpose. For a renamed icon the old name is not listed. It needs the gallery file at both refs |
+| Removed icon | an SVG file that exists only in the older state and is not renamed |
+
+- The gallery keeps the legacy name in `oldName`, which is not always the file name of the older state: in 15.0.0 `arrow_down_left` says `arrow-down-left`, its file in 14.2.1 was `arrow_down-left`. That is why the same file content counts as evidence too.
+- A ref without a gallery file (13.2.0 and older) is compared by its SVG files only; a note says so. A rename together with a redraw is found only through the old name or the same name apart from the case; otherwise it is listed as one removed and one added icon.
+- The shape comparison gives every icon one key that is the same in both folders, because names that differ only by case (13.2.0 `Stop`, 14.0.0 `stop`) would be one file on a case-insensitive file system. The command stops when one state holds two files that differ only by case. The validator and the names must agree about the added and removed icons; a note says when they do not.
+- State on 2026-11-11, checked against `git diff --name-status` of the icon folder: **14.2.1 to 15.0.0** (279 to 284 icons): 7 added, 12 renamed (all by the same file content), 16 changed icons, 2 changed texts (`headphones`, `id-card`), 2 removed (`Ald`, `Family`); the added, removed and renamed sets and the changed icons equal the sets of Git (A, D, R, M) exactly. **16.0.0 to 16.0.4**: no change (Git has none either). **13.2.0 to 14.0.0** (249 to 279 icons, no gallery file at 13.2.0): 68 added, 209 renamed (47 by the old name, 138 by the same file content, 24 by the same name apart from the case), 41 changed icons, 38 removed.
 
 ### Rule file (`icon-set-rules.json`)
 
