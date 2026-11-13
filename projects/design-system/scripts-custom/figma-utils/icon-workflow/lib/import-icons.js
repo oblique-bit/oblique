@@ -13,6 +13,10 @@
    *   action "create"  no component yet: a new component (24x24, one vector, fill
    *                    bound like the existing icons) and its label go to the next
    *                    free place of the grid; the section grows when it needs room.
+   *                    On a page with text labels (the Icons builder and the OB Library
+   *                    make one) the new component goes to the start of the block of the
+   *                    icons and its text label to the start of the block of the labels,
+   *                    so a label is never listed next to its icon in the layers panel.
    * It never deletes. Icons that exist only in Figma are not in INPUT.
    *
    * HOW TO RUN: not by hand. icons.mjs fills INPUT between the markers below
@@ -77,6 +81,14 @@
   };
   const bottomMargin = section.height - Math.max(...section.children.map((c) => c.y + c.height));
 
+  // Layer order on a page with text labels: one block of labels above one block of icons. A new icon goes to the start of the
+  // icon block and a new text label to the start of the label block (the layers panel lists the last child first). A page with
+  // instance labels (an earlier version of the Icons builder) keeps the old behaviour: a new layer goes on top.
+  const hasTextLabels = section.children.some((n) => n.type === 'TEXT');
+  const isIconComponent = (n) => n.type === 'COMPONENT' && n.name.toLowerCase().startsWith(prefixLower);
+  const putIcon = (node) => { const i = section.children.findIndex(isIconComponent); if (hasTextLabels && i >= 0) section.insertChild(i, node); else section.appendChild(node); };
+  const putLabel = (node) => { const j = section.children.findIndex((n) => n.type === 'TEXT'); if (hasTextLabels && node.type === 'TEXT' && j >= 0) section.insertChild(j, node); else section.appendChild(node); };
+
   if (INPUT.mode === 'apply' && INPUT.restorePoint) {
     await figma.saveVersionHistoryAsync('Before icon sync', 'Restore point before the icon geometry is updated from Git');
   }
@@ -112,7 +124,7 @@
           c.resize(24, 24);
           c.fills = [];
           c.clipsContent = true;
-          section.appendChild(c);
+          putIcon(c);
           const s = slot();
           c.x = s.x;
           c.y = s.y;
@@ -125,7 +137,7 @@
           vector.fills = [figma.variables.setBoundVariableForPaint({ type: 'SOLID', color: { r: r.r, g: r.g, b: r.b }, opacity: r.a === undefined ? 1 : r.a, visible: true, blendMode: 'NORMAL' }, 'color', variable)];
           if (refLabel) {
             const label = refLabel.clone();
-            section.appendChild(label);
+            putLabel(label);
             if (refLabel.type === 'TEXT') {
               for (const f of refLabel.getRangeAllFontNames(0, refLabel.characters.length)) await figma.loadFontAsync(f);
               label.characters = name;
