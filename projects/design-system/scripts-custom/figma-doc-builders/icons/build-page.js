@@ -3,9 +3,9 @@
    * build-page.js — build the Icons page of the design system file (Figma side of build-icons.js)
    * ----------------------------------------------------------------------------
    * WHY: Case 0 of the icon workflow creates a new icon set. The icons come from a source file (read-source.js),
-   * everything around them comes from building blocks: components in the section `_building_blocks/icons` of the page
-   * "Authoring Utilities" (the header is the existing `_building_blocks/shared/foundation_bar`). This script makes the
-   * page the way the design system file has it today.
+   * everything around them except the labels comes from building blocks: components in the section
+   * `_building_blocks/icons` of the page "Authoring Utilities" (the header is the existing
+   * `_building_blocks/shared/foundation_bar`). This script makes the page the way the design system file has it today.
    *
    *   page "🧷 Icons"            background colour of the registry
    *   └ section (no name)        white, 1637 px wide, grows with the rows
@@ -13,7 +13,10 @@
    *       Single-purpose icons   instance of `_building_blocks/icons/purpose_box`, purpose=single
    *       Multi-purpose icons    instance of `_building_blocks/icons/purpose_box`, purpose=multi
    *       icon/<name> × N        components 24 x 24, one vector, fill bound to the icon variable, aspect ratio locked
-   *       label × N              instance of `_building_blocks/icons/label`, text property = the label text
+   *       <label> × N            plain text layers beside the icons, no component (user decision 2026-11-13, as in the OB Library)
+   *
+   * Layer order (as in the OB Library): from the top of the layers panel one block of the labels, one block of the icons,
+   * then the two boxes and the header. Each block reads a to z, so a label is never listed next to its icon.
    *
    * It never deletes or replaces an icon component (the Figma component ID of an icon never changes). Icons that exist
    * stay as they are; icons that are missing are created in the first free slot of the grid. The header and the two boxes
@@ -78,42 +81,20 @@
 
   // ---------------------------------------------------------------- the state of the file
   const blocksSection = util.children.find((c) => c.type === 'SECTION' && c.name === R.blocksSection) || null;
-  const labelBlock = findBlock(R.components.label);
   const boxBlock = findBlock(R.components.purposeBox);
   const iconsPage = pageByName(R.page) || null;
   if (iconsPage) await iconsPage.loadAsync();
   const holder = iconsPage ? (iconsPage.children.filter((n) => n.type === 'SECTION').find((s) => s.findAll(isIcon).length) || iconsPage.children.find((n) => n.type === 'SECTION') || null) : null;
   const existing = new Map();
   if (iconsPage) for (const c of iconsPage.findAll(isIcon)) existing.set(c.name.slice(prefix.length), c);
-  const state = { blocksSection: !!blocksSection, labelBlock: !!labelBlock, purposeBox: !!boxBlock, page: !!iconsPage, section: !!holder, existingIcons: existing.size };
+  const state = { blocksSection: !!blocksSection, purposeBox: !!boxBlock, page: !!iconsPage, section: !!holder, existingIcons: existing.size };
 
   if (INPUT.mode === 'scan' && INPUT.phase !== 'icons') {
-    return done({ state, wouldMake: { blocksSection: !blocksSection, labelBlock: !labelBlock, purposeBox: !boxBlock, page: !iconsPage, section: !holder, header: true, boxes: R.boxes.length }, requirementsOk: true });
+    return done({ state, wouldMake: { blocksSection: !blocksSection, purposeBox: !boxBlock, page: !iconsPage, section: !holder, header: true, boxes: R.boxes.length }, requirementsOk: true });
   }
 
   // ================================================================ phase prepare
   const textOf = async (parent, props) => { const t = figma.createText(); parent.appendChild(t); Object.assign(t, props); return t; };
-
-  const makeLabelBlock = async (section) => {
-    const c = figma.createComponent();
-    c.name = R.components.label;
-    c.layoutMode = 'HORIZONTAL'; c.primaryAxisSizingMode = 'AUTO'; c.counterAxisSizingMode = 'AUTO';
-    c.paddingLeft = c.paddingRight = c.paddingTop = c.paddingBottom = 0; c.itemSpacing = 0;
-    c.fills = []; c.clipsContent = false;
-    const t = figma.createText();
-    c.appendChild(t);
-    t.name = 'name';
-    t.fontName = R.font; t.fontSize = R.label.size;
-    t.lineHeight = { unit: 'PIXELS', value: R.label.lineHeightPx };
-    t.letterSpacing = { unit: 'PERCENT', value: R.label.letterSpacingPercent };
-    t.textAutoResize = 'WIDTH_AND_HEIGHT';
-    t.characters = 'label';
-    t.fills = [{ type: 'SOLID', color: R.label.color }];
-    const key = c.addComponentProperty('name', 'TEXT', 'label');
-    t.componentPropertyReferences = { characters: key };
-    section.appendChild(c);
-    return c;
-  };
 
   const makeBoxVariant = async (box) => {
     const B = R.box;
@@ -182,10 +163,9 @@
       made.push(`section ${R.blocksSection}`);
     }
     const L = R.blockLayout;
-    let y = L.paddingTop;
-    let lb = labelBlock;
-    if (!lb) { lb = await makeLabelBlock(sec); lb.x = L.paddingX; lb.y = y; made.push(R.components.label); }
-    y = lb.y + lb.height + L.gapBetweenBlocks;
+    // the purpose box goes below whatever the section holds already (an earlier version of the builder also made a `label` block here)
+    const held = sec.children;
+    const y = held.length ? Math.max(...held.map((k) => k.y + k.height)) + L.gapBetweenBlocks : L.paddingTop;
     let bb = boxBlock;
     if (!bb) {
       const variants = [];
@@ -210,7 +190,7 @@
     // the section is as large as its blocks
     const kids = sec.children;
     sec.resizeWithoutConstraints(Math.max(...kids.map((k) => k.x + k.width)) + L.paddingX, Math.max(...kids.map((k) => k.y + k.height)) + L.paddingX);
-    return { sec, lb, bb, made };
+    return { sec, bb, made };
   };
 
   const clearChrome = (section) => {
@@ -223,7 +203,7 @@
   // the building blocks must exist and the variants of a block must not lie on top of each other
   const blockProblems = () => {
     const problems = [];
-    for (const name of [R.components.label, R.components.purposeBox]) if (!findBlock(name)) problems.push(`the building block ${name} does not exist`);
+    for (const name of [R.components.purposeBox]) if (!findBlock(name)) problems.push(`the building block ${name} does not exist`);
     const blockSet = findBlock(R.components.purposeBox);
     if (blockSet && blockSet.type === 'COMPONENT_SET') {
       const vs = blockSet.children;
@@ -237,7 +217,7 @@
 
   // ================================================================ phase blocks: only the building blocks, no page and no icons
   if (INPUT.phase === 'blocks') {
-    const missing = !(state.blocksSection && state.labelBlock && state.purposeBox);
+    const missing = !(state.blocksSection && state.purposeBox);
     if (missing && INPUT.restorePoint) await figma.saveVersionHistoryAsync(INPUT.label, 'Restore point before the icons builder makes the building blocks');
     const blocks = await ensureBlocks();
     return done({ state, made: { blocks: blocks.made }, problems: blockProblems() });
@@ -266,7 +246,7 @@
     // the header and the boxes are drawn again
     const removed = clearChrome(sec);
     const header = foundationBar.createInstance();
-    sec.appendChild(header);
+    sec.insertChild(0, header); // the header and the boxes are the bottom layers: the layers panel lists them after the labels and the icons
     header.name = R.header.instanceName;
     header.x = 0; header.y = 0;
     header.resize(R.section.width, header.height);
@@ -277,14 +257,15 @@
     for (const t of header.findAll((x) => x.type === 'TEXT' && (R.header.empty || []).includes(x.name))) { await figma.loadFontAsync(t.fontName); t.characters = ''; }
     for (const n of header.findAll((x) => R.header.hide.includes(x.name))) n.visible = false;
     const boxSet = blocks.bb;
+    let boxIndex = 1;
     for (const box of R.boxes) {
       const variant = boxSet.children.find((v) => v.name === `purpose=${box.purpose}`);
       if (!variant) { note(`no variant purpose=${box.purpose} in ${boxSet.name}`); continue; }
       const inst = variant.createInstance();
-      sec.appendChild(inst);
+      sec.insertChild(boxIndex++, inst);
       inst.name = box.name; inst.x = box.x; inst.y = box.y;
     }
-    return done({ state, made: { blocks: blocks.made, page: pageMade, section: secMade }, removedChrome: removed, header: { w: header.width, h: header.height, title: titleNode ? titleNode.characters : null }, sectionId: sec.id, labelPropertyKey: Object.keys(blocks.lb.componentPropertyDefinitions).find((k) => k.startsWith('name#')) });
+    return done({ state, made: { blocks: blocks.made, page: pageMade, section: secMade }, removedChrome: removed, header: { w: header.width, h: header.height, title: titleNode ? titleNode.characters : null }, sectionId: sec.id });
   }
 
   // ================================================================ phase icons
@@ -294,10 +275,6 @@
   }
   if (!iconsPage || !holder) return stop('the Icons page and its section do not exist yet: run the phase prepare first');
   const section = holder;
-  const lb = labelBlock;
-  if (!lb) return stop(`the building block ${R.components.label} does not exist`);
-  const propKey = Object.keys(lb.componentPropertyDefinitions).find((k) => k.startsWith('name#'));
-  if (!propKey) return stop(`${R.components.label} has no text property "name"`);
   const iconVar = varByName.get(R.variables.iconFill);
   const occupied = new Set();
   for (const c of existing.values()) occupied.add(`${Math.round((absX(c) - absX(section) - G.originX) / G.pitchX)},${Math.round((absY(c) - absY(section) - G.originY) / G.pitchY)}`);
@@ -312,6 +289,14 @@
     if (vectors.length > 1) vector = figma.flatten(vectors, frame);
     return { frame, vector };
   };
+
+  // Layer order, as in the OB Library: the labels are one block of text layers above the block of the icons, so a label is
+  // never next to its icon in the layers panel. Inside a block a new layer goes to the start (the panel lists the last
+  // child first), so each block reads a to z from the top.
+  const firstOf = (test) => section.children.findIndex(test);
+  const isText = (n) => n.type === 'TEXT';
+  const placeIcon = (c) => { const i = firstOf(isIcon); const j = firstOf(isText); const at = i >= 0 ? i : j; if (at >= 0) section.insertChild(at, c); else section.appendChild(c); };
+  const placeLabel = (t) => { const j = firstOf(isText); if (j >= 0) section.insertChild(j, t); else section.appendChild(t); };
 
   if (INPUT.phase === 'icons') {
     await figma.setCurrentPageAsync(iconsPage);
@@ -346,14 +331,19 @@
         v.constraints = { horizontal: 'SCALE', vertical: 'SCALE' };
         v.strokes = [];
         v.fills = [boundPaint(iconVar, v)];
-        section.appendChild(c);
+        placeIcon(c);
         c.x = slot.x; c.y = slot.y;
         c.lockAspectRatio();
+        // the label is a plain text layer beside the icon (no component): Noto Sans 16, line height 24 px as high as the icon
         const text = it.label !== null && it.label !== undefined ? it.label : it.name;
-        const li = lb.createInstance();
-        section.appendChild(li);
-        li.name = text;
-        li.setProperties({ [propKey]: text });
+        const li = figma.createText();
+        li.fontName = R.font; li.fontSize = R.label.size;
+        li.lineHeight = { unit: 'PIXELS', value: R.label.lineHeightPx };
+        li.letterSpacing = { unit: 'PERCENT', value: R.label.letterSpacingPercent };
+        li.textAutoResize = 'WIDTH_AND_HEIGHT';
+        li.characters = text;
+        li.fills = [{ type: 'SOLID', color: R.label.color }];
+        placeLabel(li);
         li.x = slot.x + G.labelOffsetX; li.y = slot.y;
         created.push(it.name);
       } catch (e) { failed.push(`${it.name}: ${e.message}`); }

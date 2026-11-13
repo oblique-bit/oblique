@@ -17,10 +17,9 @@
  *     the variables and the page "Authoring Utilities")
  * It opens the Figma files itself, reads the icons of the source, shows the plan, asks and builds in the destination:
  *
- *   - the building blocks `_building_blocks/icons/purpose_box` and `_building_blocks/icons/label` on the page
- *     "Authoring Utilities" (made when they are missing)
+ *   - the building block `_building_blocks/icons/purpose_box` on the page "Authoring Utilities" (made when it is missing)
  *   - the page "🧷 Icons" with its section, the header (the foundation bar), the two purpose boxes
- *   - one component `icon/<name>` and one label for every icon of the source
+ *   - one component `icon/<name>` and one label (a plain text layer, no component) for every icon of the source
  *
  * The source must be readable and the destination writable by a script. Figma gives a script no access to a file that
  * you can only view (for example the live OB Library or a branch you may not edit): the builder stops and asks for an
@@ -298,8 +297,8 @@ async function readFromGit(git) {
     step(2, 'check the destination');
     const plan = runBlocks('blocks', { mode: 'scan' }, 'blocks-scan');
     const st = plan.state;
-    console.log(`building blocks in "${plan.file}": section ${registry.blocksSection} ${st.blocksSection ? 'exists' : 'missing'}, ${registry.components.label} ${st.labelBlock ? 'exists' : 'missing'}, ${registry.components.purposeBox} ${st.purposeBox ? 'exists' : 'missing'}`);
-    if (st.blocksSection && st.labelBlock && st.purposeBox) { console.log('\nThe building blocks exist already: nothing to do.'); process.exit(0); }
+    console.log(`building blocks in "${plan.file}": section ${registry.blocksSection} ${st.blocksSection ? 'exists' : 'missing'}, ${registry.components.purposeBox} ${st.purposeBox ? 'exists' : 'missing'}`);
+    if (st.blocksSection && st.purposeBox) { console.log('\nThe building blocks exist already: nothing to do.'); process.exit(0); }
     if (OPTS.dryRun) { console.log('\nDry run: nothing was written.'); process.exit(0); }
     if (!OPTS.yes) {
       const a = await ask(`\nMake the building blocks for icons in "${dstOpen.file}"? No page and no icons are made. [y/N] `);
@@ -391,11 +390,11 @@ async function readFromGit(git) {
   step(3, 'check the destination');
   const plan = run('prepare', { mode: 'scan' }, 'scan');
   const s = plan.state;
-  console.log(`destination "${plan.file}": page ${s.page ? 'exists' : 'missing'}, section ${s.section ? 'exists' : 'missing'}, ${s.existingIcons} icon components, building blocks ${s.blocksSection && s.labelBlock && s.purposeBox ? 'exist' : 'missing'}`);
+  console.log(`destination "${plan.file}": page ${s.page ? 'exists' : 'missing'}, section ${s.section ? 'exists' : 'missing'}, ${s.existingIcons} icon components, building blocks ${s.blocksSection && s.purposeBox ? 'exist' : 'missing'}`);
   const scanIcons = run('icons', { mode: 'scan', batch: icons.map((i) => ({ name: i.name })) }, 'scan-icons');
   console.log(`plan: ${scanIcons.created} icons to create, ${scanIcons.kept} exist and stay as they are`);
   if (!s.page) console.log(`The page "${registry.page}" does not exist in the destination: the builder makes it.`);
-  if (!(s.blocksSection && s.labelBlock && s.purposeBox)) console.log('The building blocks for icons are missing in the destination: the builder makes them.');
+  if (!(s.blocksSection && s.purposeBox)) console.log('The building block for icons is missing in the destination: the builder makes it.');
   if (sameFile) console.log('Note: the source is the destination file itself. The icons stay as they are, the header and the two boxes are drawn again and missing building blocks are made.');
   if (OPTS.dryRun) { console.log('\nDry run: nothing was written.'); process.exit(0); }
   if (!OPTS.yes) {

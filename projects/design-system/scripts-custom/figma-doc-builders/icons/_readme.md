@@ -2,7 +2,7 @@
 
 Builds the whole **🧷 Icons** page of the design system file from a source (a Figma file or a Git repo): the building blocks, the header, the two purpose boxes, one component and one label for every icon. This is Case 0 of the icon workflow ("create a new set") for the page itself. The shapes, the texts and the checks of the icons stay with `../../figma-utils/icon-workflow/` (`icons.mjs`, `write-metadata.mjs`, `export-svg.mjs`).
 
-Same architecture as the other builders (`dimension`, `typography`): a Node orchestrator (`build-icons.js`), the Figma side as files with an `INPUT` block (`read-source.js`, `build-page.js`) and a `registry.json`. Everything that is not an icon is a component of the section `_building_blocks/icons` on the page "Authoring Utilities".
+Same architecture as the other builders (`dimension`, `typography`): a Node orchestrator (`build-icons.js`), the Figma side as files with an `INPUT` block (`read-source.js`, `build-page.js`) and a `registry.json`. Everything that is neither an icon nor a label is a building block: the purpose box is a component of the section `_building_blocks/icons` on the page "Authoring Utilities" and the header is the existing `_building_blocks/shared/foundation_bar`. The labels are plain text layers.
 
 ## Files
 
@@ -41,21 +41,22 @@ The page `🧷 Icons` is made in the destination when it does not exist. The bui
 
 | Part | Where | How |
 |---|---|---|
-| `_building_blocks/icons` | page "Authoring Utilities" | section for the two building blocks, made when it is missing |
-| `_building_blocks/icons/label` | in that section | component with the text property `name`; the label of an icon is an instance of it |
+| `_building_blocks/icons` | page "Authoring Utilities" | section for the building block, made when it is missing |
 | `_building_blocks/icons/purpose_box` | in that section | component set, variants `purpose=single` and `purpose=multi` stacked with 20 px padding and gap and the dashed border of a component set: the box with the chip and the text with the link |
 | page `🧷 Icons` | file | background of the registry |
 | section (no name) | on the page | white, 1637 px wide, border black 10 %, as high as the rows need |
 | `__foundation_bar` | in the section | instance of `_building_blocks/shared/foundation_bar`, title "Icons", the info part hidden |
 | `Single-purpose icons`, `Multi-purpose icons` | in the section | instances of `purpose_box` |
 | `icon/<name>` | in the section | component 24 x 24, one vector layer `vector`, fill bound to `neutral/fg/contrast_high/inversity_normal`, aspect ratio locked, description of the source |
-| label | beside each icon | instance of `label`, text from the source label (the name when the source has none) |
+| label | beside each icon | plain text layer, no component: Noto Sans Regular 16, line height 24 px, letter spacing 0.1 %, black; the text comes from the source label (the name when the source has none) |
 
 Grid: 6 columns (x 44 + 272 per column), rows from y 865 with 72 px per row, the icons in the order of their names (plain code point order). The label sits 32 px to the right of the icon.
 
+Layer order, as in the OB Library: in the layers panel the labels are one block above the block of the icons, so a label is never listed next to its icon. Each block reads a to z from the top. The two boxes and the header are the bottom layers. A new icon goes to the start of its block, so the order also holds after a rerun.
+
 ## Only the building blocks
 
-`node build-icons.js --blocks-only` asks only for the destination and makes only the building blocks for icons: the section `_building_blocks/icons` with `label` and `purpose_box` on the page "Authoring Utilities". It needs no source and makes no page and no icons. When the building blocks exist already it does nothing.
+`node build-icons.js --blocks-only` asks only for the destination and makes only the building block for icons: the section `_building_blocks/icons` with `purpose_box` on the page "Authoring Utilities". It needs no source and makes no page and no icons. When the building blocks exist already it does nothing.
 
 It is made for a branch that is merged into the main file first. A new branch made from the main file afterwards already has the building blocks. The full run (without `--blocks-only`) in that branch finds them and builds the page and the icons. Steps in Figma: make a branch of the design system file, run `--blocks-only` with the URL of that branch, merge the branch into the main file, make a new branch from the main file and run the builder there.
 
@@ -106,7 +107,7 @@ Compare the page with Git and write the texts of the icons with the workflow com
 
 ## Notes
 
-- The labels are instances because everything that is not an icon is a building block. `export-icon-set.js` and `import-icons.js` find the label by its position beside the icon, so they work on pages with text labels (the legacy library) and on pages built by this builder.
+- The labels are plain text layers, no component (decided 2026-11-13: a label needs no building block. The OB Library has text labels too). An earlier version of the builder made the labels as instances of a `label` building block; a page built then keeps them. The `label` component in `_building_blocks/icons` is no longer used. `export-icon-set.js` and `import-icons.js` find the label by its position beside the icon, as a text or as an instance, so they work on the legacy library, on pages built by this version and on pages built by the earlier one.
 - The text of a purpose box with its link belongs to the component, not to the instance: instances of a component cannot keep a link inside an overridden text.
 - The chip of the old page held a hidden calendar icon. The building block leaves it out.
 - The page background, the grey of the box and the black of the labels are raw colours, as on the page that existed before the builder. Bound variables for them are a later decision.
