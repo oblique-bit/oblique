@@ -5,18 +5,22 @@ Definitions of key terms and concepts in the Oblique Design System.
 
 ## Core Concepts
 
+### **Design Token**
+The W3C standard term for named entities that store visual design attributes. In our context, design tokens are the authoritative source of design decisions implemented across tools and platforms.
+
+**Context:** Used when discussing the product feature in general (high level), for example in a title or an introduction.
+
 ### **Token**
 A named entity that stores a visual design attribute (color, spacing, typography, etc.) in JSON format — the fundamental building block for managing design decisions systematically across platforms and tools.
 
 **Context:** Used when discussing:
 - JSON files and token management
 - Tokens Studio workflows
-- Code implementation
 - Cross-platform design consistency
 
 **Example:** `ob.h.link.color.hover`
 
-### **Variable**
+### **Variable (Figma variable)**
 A reusable value in Figma that can be applied to design properties — Figma's implementation of design tokens, enabling systematic design updates and mode switching.
 
 **Context:** Used when discussing:
@@ -27,12 +31,35 @@ A reusable value in Figma that can be applied to design properties — Figma's i
 
 **Example:** `tag-color-bg` (Figma variable name)
 
+### **CSS Variable**
+A CSS custom property generated from a token by the build. It carries the token's value into the code.
+
+**Context:** Used when discussing code implementation and the generated CSS.
+
+**Example:** `--ob-s-color-neutral-fg-contrast_high-inversity_normal`
+
 ### **Relationship: Tokens ↔ Variables**
-- **Token** ≈ **Variable** (almost the same concept, different contexts)
-- **Tokens** live in JSON files and development environments
-- **Variables** live in Figma and design workflows
-- Both represent the same design decisions, just in different tools
+- **Token** ≈ **Figma variable** ≈ **CSS variable** (almost the same concept, different contexts)
+- **Tokens** live in JSON files (Tokens Studio)
+- **Figma variables** live in Figma and design workflows
+- **CSS variables** live in the generated CSS and development environments
+- All three represent the same design decisions, just in different tools
 - Variables often map 1:1 to tokens for systematic consistency
+
+### **Terms in Text**
+Texts use two levels: a general term for the product feature and a specific term for each environment.
+
+| The text refers to | Write | Short form |
+|---|---|---|
+| The product feature in general (title, introduction) | Design Tokens | none |
+| JSON files, Tokens Studio | tokens | none |
+| Figma | Figma variables | "variables" when Figma is already named in the same sentence or paragraph |
+| CSS | CSS variables | "variables" when CSS is already named in the same sentence or paragraph |
+
+**Rules:**
+- A paragraph that names both Figma and CSS uses the full forms.
+- One paragraph keeps one term for one concept.
+- "Design Tokens" avoids confusion with tokens in the AI context. Use the short form "tokens" only where JSON or Tokens Studio is already clear.
 
 ---
 
@@ -115,9 +142,6 @@ The modern (2025) strategy of using Figma variables as the primary method for co
 The balanced approach using:
 - **Variables** for systematic properties (sizes, colors, systematic modes)
 - **Variants** for Figma-specific functions (interaction states, prototyping)
-
-### **Design Token**
-The W3C standard term for named entities that store visual design attributes. In our context, tokens are the authoritative source of design decisions implemented across tools and platforms.
 
 ### **Aliasing**
 The practice of having one variable reference another variable, enabling hierarchical token relationships and systematic design token implementation.
