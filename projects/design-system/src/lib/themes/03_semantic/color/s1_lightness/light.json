@@ -12,7 +12,7 @@
           "_docs": {
             "token_family_info": {
               "$type": "text",
-              "$value": "Lightness-resolved neutral colors. Only Light/Dark modes apply. References Primitives, referenced by S3. Do: Reference when authoring compiled semantic tokens that resolve to neutral foreground, background, border, or shadow values. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead."
+              "$value": "Lightness-resolved neutral colors. Only Light/Dark modes apply. References Primitives, referenced by S (compiled). Do: Reference when authoring compiled semantic tokens that resolve to neutral foreground, background, border, or shadow values. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead."
             }
           },
           "bg": {
@@ -222,7 +222,7 @@
           "_docs": {
             "token_family_info": {
               "$type": "text",
-              "$value": "Lightness-resolved status colors. Only Light/Dark modes apply. References Primitives, referenced by S3. Do: Reference when authoring compiled tokens that resolve to status colors. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead."
+              "$value": "Lightness-resolved status colors. Only Light/Dark modes apply. References Primitives, referenced by S (compiled). Do: Reference when authoring compiled tokens that resolve to status colors. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead."
             }
           },
           "info": {
