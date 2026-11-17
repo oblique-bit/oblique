@@ -351,6 +351,8 @@
           "options": {
             "tsConfig": "projects/sds/tsconfig.spec.json",
             "runner": "vitest",
+            "runnerConfig": "projects/sds/vitest-base.config.ts",
+            "isolate": true,
             "setupFiles": ["tests/setupVitest.ts", "projects/sds/mock-raw-loader.ts"],
             "coverage": true,
             "coverageReporters": ["text", "html", "lcov"],
