@@ -439,17 +439,6 @@
 					box-shadow: none;
 				}
 			}
-
-			&.ob-expanded {
-				& > a.ob-master-layout-navigation-link.cdk-keyboard-focused,
-				& > button.ob-master-layout-navigation-link.cdk-keyboard-focused {
-					& ~ .ob-sub-menu {
-						.ob-layout-expanded & {
-							margin-left: -(variables.$ob-spacing-xl + shadow.$tab-focus-width);
-						}
-					}
-				}
-			}
 		}
 
 		& > li.ob-has-keyboard-focused-child {
