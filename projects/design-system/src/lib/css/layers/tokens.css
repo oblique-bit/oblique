@@ -919,7 +919,7 @@
 	--ob-s1-color-free-yellow-fg-contrast_low-inversity_normal: #d97706;
 	--ob-s1-color-free-yellow-fg-contrast_medium-inversity_flipped: #fef3c7;
 	--ob-s1-color-free-yellow-fg-contrast_medium-inversity_normal: #b45309;
-	--ob-s1-color-interaction-_docs-token_family_info: Lightness-resolved interaction colors. Only Light/Dark modes apply. References Primitives, referenced by S2. Do: Reference when authoring S2 or compiled tokens that resolve to interaction state colors. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead.;
+	--ob-s1-color-interaction-_docs-token_family_info: Lightness-resolved interaction colors. Only Light/Dark modes apply. References Primitives, referenced by S2 and S (compiled). Do: Reference when authoring S2 or compiled tokens that resolve to interaction state colors. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead.;
 	--ob-s1-color-interaction-emphasis_high-bg-contrast_high-inversity_flipped: #255069;
 	--ob-s1-color-interaction-emphasis_high-bg-contrast_high-inversity_normal: #aacae6;
 	--ob-s1-color-interaction-emphasis_high-bg-contrast_low-inversity_flipped: #2379a4;
@@ -1025,7 +1025,7 @@
 	--ob-s1-color-navigation-border-subtle: #fa9da1;
 	--ob-s1-color-navigation-fg: #131b22;
 	--ob-s1-color-navigation-fg_disabled: rgb(7.451% 10.588% 13.333% / 0.4);
-	--ob-s1-color-neutral-_docs-token_family_info: Lightness-resolved neutral colors. Only Light/Dark modes apply. References Primitives, referenced by S3. Do: Reference when authoring compiled semantic tokens that resolve to neutral foreground, background, border, or shadow values. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead.;
+	--ob-s1-color-neutral-_docs-token_family_info: Lightness-resolved neutral colors. Only Light/Dark modes apply. References Primitives, referenced by S (compiled). Do: Reference when authoring compiled semantic tokens that resolve to neutral foreground, background, border, or shadow values. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead.;
 	--ob-s1-color-neutral-bg-contrast_high-inversity_flipped: #2f4356;
 	--ob-s1-color-neutral-bg-contrast_high-inversity_normal: #f0f4f7;
 	--ob-s1-color-neutral-bg-contrast_highest-inversity_flipped: #263645;
@@ -1054,7 +1054,7 @@
 	--ob-s1-color-neutral-fg-contrast_medium-inversity_normal: #263645;
 	--ob-s1-color-neutral-shadow-first: rgb(7.451% 10.588% 13.333% / 0.05);
 	--ob-s1-color-neutral-shadow-second: rgb(7.451% 10.588% 13.333% / 0.1);
-	--ob-s1-color-status-_docs-token_family_info: Lightness-resolved status colors. Only Light/Dark modes apply. References Primitives, referenced by S3. Do: Reference when authoring compiled tokens that resolve to status colors. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead.;
+	--ob-s1-color-status-_docs-token_family_info: Lightness-resolved status colors. Only Light/Dark modes apply. References Primitives, referenced by S (compiled). Do: Reference when authoring compiled tokens that resolve to status colors. Avoid: Do not assign directly to component tokens — use compiled S-tier tokens instead.;
 	--ob-s1-color-status-attention-bg-contrast_high-inversity_flipped: #9a3412;
 	--ob-s1-color-status-attention-bg-contrast_high-inversity_normal: #fff7ed;
 	--ob-s1-color-status-attention-bg-contrast_highest-inversity_flipped: #131b22;
