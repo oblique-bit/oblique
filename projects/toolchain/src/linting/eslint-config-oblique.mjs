@@ -779,6 +779,7 @@ export const eslintConfigOblique = [
 			'@angular-eslint/use-injectable-provided-in': 'error',
 			'@angular-eslint/use-lifecycle-interface': 'error',
 			'@angular-eslint/use-pipe-transform-interface': 'error',
+			'@angular-eslint/reactive-context-must-read-signal': 'off', // to verify
 		},
 	},
 	{

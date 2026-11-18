@@ -54,7 +54,7 @@
     "glob": "^10.5.0"
   },
   "devDependencies": {
-    "@vitest/coverage-v8": "^4.1.11",
+    "@vitest/coverage-v8": "^4.1.12",
     "ng-packagr": "^22.0.0",
     "uglify-js": "^3.19.3",
     "vitest": "^4.1.11"

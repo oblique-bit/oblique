@@ -22,8 +22,8 @@
     "service-navigation-web-component"
   ],
   "devDependencies": {
-    "@angular/elements": "^22.0.2",
-    "@vitest/coverage-v8": "^4.1.11",
-    "vitest": "4.1.11"
+    "@angular/elements": "^22.2.6",
+    "@vitest/coverage-v8": "^4.1.12",
+    "vitest": "4.1.12"
   }
 }

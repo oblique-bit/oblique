@@ -12,10 +12,11 @@ import {
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {Subject, firstValueFrom} from 'rxjs';
 import type {Mock} from 'vitest';
+import {AppModule} from './app.module';
 
 describe('AppComponent', () => {
 	let routerEvents: Subject<NavigationEnd>;
-	let router: {config: unknown[]; events: Subject<NavigationEnd>; navigateByUrl: Mock};
+	let router: {config: unknown[]; events: Subject<NavigationEnd>; navigateByUrl: Mock; routerState: {root: unknown}};
 
 	beforeEach(async () => {
 		routerEvents = new Subject<NavigationEnd>();
@@ -23,10 +24,11 @@ describe('AppComponent', () => {
 			config: [],
 			events: routerEvents,
 			navigateByUrl: vi.fn().mockResolvedValue(true),
+			routerState: {root: {}},
 		};
 		await TestBed.configureTestingModule({
 			declarations: [AppComponent],
-			imports: [TranslatePipe],
+			imports: [TranslatePipe, AppModule],
 			providers: [
 				provideNativeDateAdapter(),
 				provideObliqueTestingConfiguration(),
