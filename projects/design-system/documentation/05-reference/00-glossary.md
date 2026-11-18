@@ -36,7 +36,7 @@ A CSS custom property generated from a token by the build. It carries the token'
 
 **Context:** Used when discussing code implementation and the generated CSS.
 
-**Example:** `--ob-s-color-neutral-fg-contrast_high-inversity_normal`
+**Example:** `--ob-s-color-neutral-fg-contrast_high` (old name: `--ob-s-color-neutral-fg-contrast_high-inversity_normal`)
 
 ### **Relationship: Tokens ↔ Variables**
 - **Token** ≈ **Figma variable** ≈ **CSS variable** (almost the same concept, different contexts)
@@ -65,24 +65,24 @@ Texts use two levels: a general term for the product feature and a specific term
 
 ## Design System Architecture
 
-### **Inversity**
-Oblique's approach to color contrast management. Instead of traditional light/dark modes, inversity provides normal and flipped variants for every color token to ensure proper contrast relationships.
+### **Inversion** (old name: inversity)
+Oblique's approach to color contrast management. Instead of traditional light/dark modes, inversion provides a normal and an inverse variant for every color token to ensure proper contrast relationships.
 
 **Implementation:** 
-- `inversity_normal` - Standard contrast relationships
-- `inversity_flipped` - Inverted contrast relationships
+- plain name, no suffix (old name: `inversity_normal`) - Standard contrast relationships
+- `_inverse` (old name: `inversity_flipped`) - Inverted contrast relationships
 - Stored flat in color tokens, not as variable modes
 
 ### **Mode**
 A single value within a mode collection — `light`, `dark`, `sm`, `md`, `lg`, `compact`, `standard`, `spacious`, `xs`, `2xl`, and so on. Switching a mode swaps one collection's active value; tokens scoped to that collection re-resolve accordingly.
 
 **Examples:**
-- in the `lightness` collection: `light`, `dark`
-- in the `ui_scale` collection: `sm`, `md`, `lg`
+- in the `color_scheme` collection (old name: `lightness`): `light`, `dark`
+- in the `scale` collection (old name: `ui_scale`): `sm`, `md`, `lg`
 - in the `viewport` collection: `xs`, `sm`, `md`, `lg`, `xl`, `2xl`
 
 ### **Mode collection**
-An axis along which the design system varies — a named group of mutually exclusive modes that the user, the device, or the application switches between. The Oblique Design System has seven mode collections: `lightness`, `emphasis`, `ui_scale`, `density`, `typography_context`, `motion`, `viewport`. In Figma, each mode collection surfaces as a Figma variable collection with one Figma mode per Oblique mode.
+An axis along which the design system varies — a named group of mutually exclusive modes that the user, the device, or the application switches between. The Oblique Design System has ten mode collections: `color_scheme` (old name: `lightness`), `emphasis`, `contrast`, `dimmed`, `brand`, `scale` (old name: `ui_scale`), `density`, `typography_context`, `motion`, `viewport`. Release 16 has seven of them, under the old names, and not `contrast`, `dimmed` and `brand`. In Figma, each mode collection surfaces as a Figma variable collection with one Figma mode per Oblique mode.
 
 ### **Collection (Figma context)**
 A Figma-specific term — a group of related variables and their modes. Every Oblique mode collection surfaces as a Figma variable collection, but "collection" by itself in Figma can also describe non-mode groupings.
@@ -117,14 +117,14 @@ The `{tier}` segment identifies the token's layer; the rest of the path varies b
 
 **Examples:**
 - `ob.h.link.color.hover`
-- `ob.s.color.neutral.fg.contrast_high.inversity_normal`
+- `ob.s.color.neutral.fg.contrast_high` (old name: `ob.s.color.neutral.fg.contrast_high.inversity_normal`)
 - `ob.g.mode_collection.viewport.css_selector.xs`
 
 ### **Token Tiers**
 Four tiers; the top one splits into two peer branches by component origin, not a fifth sequential tier.
 - **`g`** — Global (`ob.g.*`) — system-wide configuration: mode collections, multipliers, component-level mode overrides.
 - **`p`** — Primitive (`ob.p.*`) — atomic, context-agnostic values: colour scales, dimension scales, motion, typography primitives.
-- **`s`** — Semantic (`ob.s.*`, `ob.s1.*`, `ob.s2.*`) — mode-aware, role-based tokens.
+- **`s`** — Semantic (`ob.s.*`, `ob.s1.*`, `ob.s2.*`, `ob.s3.*`) — mode-aware, role-based tokens. `s1` resolves the color scheme, `s2` the emphasis, `s3` the contrast; `ob.s` compiles them.
 - **`c`** / **`h`** — Component, split by origin:
   - **`c`** — Custom Oblique component (`ob.c.*`) — tokens owned by components built specifically for Oblique.
   - **`h`** — Native HTML element (`ob.h.*`) — tokens for elements provided by HTML markup (button, link, typography).
