@@ -13,8 +13,8 @@
     "release": "tsx scripts/release.ts"
   },
   "dependencies": {
-    "@vitest/coverage-v8": "^4.1.11",
+    "@vitest/coverage-v8": "^4.1.12",
     "raw-loader": "^4.0.2",
-    "vitest": "4.1.11"
+    "vitest": "4.1.12"
   }
 }
