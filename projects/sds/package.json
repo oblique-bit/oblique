@@ -1,6 +1,6 @@
 {
   "name": "@oblique/sds",
-  "version": "16.0.4",
+  "version": "16.0.5",
   "type": "module",
   "scripts": {
     "start": "ng serve",
@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@schematics/angular": "^22.0.4",
-    "@vitest/coverage-v8": "^4.1.11",
-    "vitest": "4.1.11"
+    "@vitest/coverage-v8": "^4.1.12",
+    "vitest": "4.1.12"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "@oblique/sandbox-ssr",
-  "version": "16.0.4",
+  "version": "16.0.5",
   "type": "module",
   "scripts": {
     "start": "npm run prebuild && ng serve",
@@ -18,8 +18,8 @@
     "@angular/ssr": "^22.0.4"
   },
   "devDependencies": {
-    "@vitest/coverage-v8": "^4.1.11",
+    "@vitest/coverage-v8": "^4.1.12",
     "express": "^5.2.1",
-    "vitest": "4.1.11"
+    "vitest": "4.1.12"
   }
 }

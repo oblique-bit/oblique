@@ -1,6 +1,6 @@
 {
   "name": "@oblique/oblique",
-  "version": "16.0.4",
+  "version": "16.0.5",
   "type": "module",
   "repository": {
     "type": "git",
@@ -20,7 +20,6 @@
     "postbuild": "tsx scripts/post-build.ts",
     "schematics": "tsc -p schematics/tsconfig.schematics.json",
     "prerelease": "npm run update-icons",
-    "npm-publish": "tsx scripts/publish.ts",
     "release": "tsx scripts/release.ts",
     "update-icons": "tsx scripts/update-icons.ts",
     "tarball": "tsx scripts/tarball.ts"
@@ -55,7 +54,7 @@
     "glob": "^10.5.0"
   },
   "devDependencies": {
-    "@vitest/coverage-v8": "^4.1.11",
+    "@vitest/coverage-v8": "^4.1.12",
     "ng-packagr": "^22.0.0",
     "uglify-js": "^3.19.3",
     "vitest": "^4.1.11"

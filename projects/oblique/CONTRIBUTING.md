@@ -69,4 +69,3 @@ must use the **service-navigation** package and one of the following scopes:
 | **schematics**     | Builds the Schematics                                                                                                                                    |
 | **update-icons**   | Creates icon sets and icons as CSS files, should be called whenever there is a change to any icon SVG                                                    |
 | **tarball**        | Creates a tarball with a fresh build. If one or more paths to other projects can be passed as parameter, the tarball will be installed in those projects |
-| **npm-publish**    | Publishes the package on NPM; automatically run on the CI pipeline                                                                                       |

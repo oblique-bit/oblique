@@ -1,6 +1,6 @@
 {
   "name": "@oblique/toolchain",
-  "version": "16.0.4",
+  "version": "16.0.5",
   "type": "module",
   "repository": {
     "type": "git",
@@ -17,8 +17,7 @@
     "test": "vitest",
     "test-ci": "vitest run --config vitest.config.ci.ts",
     "build": "tsx scripts/pipelines/pre-build.ts && tsc -p tsconfig.lib.json && tsc -p tsconfig.esm.json && tsx scripts/pipelines/post-build.ts",
-    "release": "tsx scripts/pipelines/release.ts",
-    "npm-publish": "tsx scripts/pipelines/publish.ts"
+    "release": "tsx scripts/pipelines/release.ts"
   },
   "keywords": [
     "schematics"
@@ -52,7 +51,7 @@
     "save": "devDependencies"
   },
   "devDependencies": {
-    "@vitest/coverage-v8": "^4.1.11",
+    "@vitest/coverage-v8": "^4.1.12",
     "vitest": "^4.1.10"
   }
 }

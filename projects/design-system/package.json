@@ -1,6 +1,6 @@
 {
   "name": "@oblique/design-system",
-  "version": "16.0.4",
+  "version": "16.0.5",
   "type": "module",
   "scripts": {
     "lint": "tsx scripts/lint.ts",
@@ -17,12 +17,12 @@
   },
   "devDependencies": {
     "@tokens-studio/sd-transforms": "^2.0.3",
-    "@vitest/browser-playwright": "^4.1.11",
-    "@vitest/coverage-v8": "^4.1.11",
+    "@vitest/browser-playwright": "^4.1.12",
+    "@vitest/coverage-v8": "^4.1.12",
     "lit": "^3.3.3",
     "vite": "^7.3.6",
     "vite-plugin-dts": "^5.0.3",
-    "vitest": "4.1.11"
+    "vitest": "4.1.12"
   },
   "sideEffects": true,
   "exports": {

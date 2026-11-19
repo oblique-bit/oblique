@@ -39,6 +39,16 @@
 			}
 		}
 
+		&.ob-has-keyboard-focused-child
+			.ob-master-layout-navigation-go-to-children-button:not(
+				.ob-master-layout-navigation-go-to-children-button-without-url
+			).ob-button {
+			height: 33px;
+			outline: 0;
+			box-shadow: none;
+			padding-right: 13px; // empiric value to keep room for the red border on hover
+		}
+
 		& > a,
 		& > button {
 			&.cdk-keyboard-focused {
