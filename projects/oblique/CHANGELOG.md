@@ -1,3 +1,10 @@
+# [16.0.5](https://github.com/oblique-bit/oblique/compare/16.0.4...16.0.5) (2026-11-19)
+
+## Bug Fixes
+
+- **master-layout:** prevent layout shifts ([11cc57b0](https://github.com/oblique-bit/oblique/commit/11cc57b08f91541bf54193a6bfcd5525645baf71), OUI-4681)
+- **master-layout:** remove sub-menu offset on keyboard focus ([b6503698](https://github.com/oblique-bit/oblique/commit/b65036982753dba324b49d49a91651433f1c2ebc), OUI-4681)
+
 # [16.0.4](https://github.com/oblique-bit/oblique/compare/16.0.3...16.0.4) (2026-11-05)
 
 ## Bug Fixes
