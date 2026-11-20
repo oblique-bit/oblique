@@ -10,7 +10,8 @@
    * starts with CONFIG.namePrefix on the page whose name contains CONFIG.pageName,
    * exports each one as an SVG string and records its Figma facts: size, parent,
    * description, applied styles, children with fills (bound variable, resolved and
-   * written color), strokes, effects, bounding box and the label text next to it.
+   * written color), strokes, effects, bounding box, the label text next to it, the
+   * component key and the publish status (for the Component ID check).
    * It also lists the nodes beside the components that carry the prefix but are
    * not a component (a frame, an instance, a component set): `strays`.
    *
@@ -147,8 +148,14 @@
     const label = texts.find((t) => Math.abs(t.absoluteTransform[0][2] - (c.absoluteTransform[0][2] + CONFIG.labelOffsetX)) <= CONFIG.labelTolerance
       && Math.abs(t.absoluteTransform[1][2] - c.absoluteTransform[1][2]) <= CONFIG.labelMaxDy);
 
+    // key and publish status: read by the Component ID check (lib/component-id-check.mjs)
+    let publishStatus = null;
+    try { publishStatus = await c.getPublishStatusAsync(); } catch { publishStatus = null; }
+
     icons.push({
       id: c.id,
+      key: c.key,
+      publishStatus,
       name: c.name,
       parentType: c.parent ? c.parent.type : null,
       parentName: c.parent ? c.parent.name : null,

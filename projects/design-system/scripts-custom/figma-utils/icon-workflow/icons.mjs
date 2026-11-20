@@ -5,12 +5,20 @@
 //   1. fetch     download the SVG folder of the repository (fetch-icons.mjs)
 //   2. check Git validate the SVG files as they are in Git (profile git); stop on errors
 //   3. export    read the icon page of the open Figma file (export-icon-set.js)
+//   3b. IDs      Component ID check against the published library (with --library and the
+//                environment variable FIGMA_TOKEN; lib/component-id-check.mjs). Mode apply
+//                stops before writing when a published icon lost its component
 //   4. compare   validate the Figma set against the Git set: which icons differ,
 //                which are missing in Figma, which exist only in Figma; the texts of the
 //                icons (Figma description) are compared with the gallery file icons.ts of the
 //                same commit (rules M01 to M08)
 //   5. apply     (mode apply only) write the changed and the missing icons into Figma
-//                (import-icons.js), then export and validate again
+//                (import-icons.js)
+//   5b. order    put every icon at its place in the order of the names (reorder-icons.js):
+//                a new icon is created at the end of the grid, the icons after it move one
+//                place on. Only x, y and the layer order change. Mode scan only shows it
+//   6. again     (mode apply only) export and validate again; the Component ID check compares
+//                the page before and after the run and, with --library, with the published library
 //
 // usage:
 //   node icons.mjs [options]          plan: shows what differs, writes nothing
@@ -29,25 +37,32 @@
 //   --prefix <text>       component name prefix (default: from the target or the rule file)
 //   --only <a,b,c>        sync only these icon names
 //   --ref, --repo, --path as in fetch-icons.mjs
+//   --git <folder>        use this folder of SVG files instead of downloading them (a test before a push;
+//                         the texts are compared only with --gallery-file)
+//   --gallery-file <file> use this local icons.ts instead of downloading the gallery file
 //   --gallery <path>      the gallery file in the repository (default: metadata.galleryPath of the rule file)
 //   --no-gallery          do not compare the texts of the icons with the gallery file
 //   --rules <file>        rule file for the validator
 //   --batch <n>           icons per Figma call (default 40)
 //   --force               go on although the Git files have validation errors
+//   --library <url|key>   the main file of the published library, for the Component ID check
+//                         (also in a branch: give the URL of the main file). Needs FIGMA_TOKEN
+//   --no-reorder          leave the icons where they are (no step 5b)
 //
 // Open the Figma file and the page first and run `figma-ds-cli daemon reconnect`
 // after switching files, so that the CLI talks to the right tab. figma-ds-cli
 // must be installed and Figma Desktop running.
 // ----------------------------------------------------------------------------
 
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { runNode, runFigma as runFigmaIn, generate } from './lib/figma-run.mjs';
+import { fetchPublished, publishedList, checkPublished, checkRun, summarize as summarizeIds, fileKeyOf, isBranchUrl } from './lib/component-id-check.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
-const opts = { mode: 'scan', yes: false, target: null, fileKey: null, cliDir: process.env.FIGMA_DS_CLI_DIR || process.cwd(), work: './icon-sync', page: null, prefix: null, only: null, ref: null, repo: null, path: null, gallery: null, noGallery: false, rules: null, batch: 40, force: false };
+const opts = { mode: 'scan', yes: false, target: null, fileKey: null, cliDir: process.env.FIGMA_DS_CLI_DIR || process.cwd(), work: './icon-sync', page: null, prefix: null, only: null, ref: null, repo: null, path: null, gallery: null, noGallery: false, rules: null, batch: 40, force: false, library: null, reorder: true, git: null, galleryFile: null };
 for (let i = 0; i < args.length; i++) {
   const a = args[i];
   if (a === '--mode') opts.mode = args[++i];
@@ -68,6 +83,10 @@ for (let i = 0; i < args.length; i++) {
   else if (a === '--rules') opts.rules = args[++i];
   else if (a === '--batch') opts.batch = Number(args[++i]);
   else if (a === '--force') opts.force = true;
+  else if (a === '--library') opts.library = args[++i];
+  else if (a === '--git') opts.git = args[++i];
+  else if (a === '--gallery-file') opts.galleryFile = args[++i];
+  else if (a === '--no-reorder') opts.reorder = false;
   else if (a === '--help' || a === '-h') { console.log(readFileSync(fileURLToPath(import.meta.url), 'utf8').split('\n').reduce((acc, l) => (acc.stop || !l.startsWith('//') ? { ...acc, stop: true } : { ...acc, out: [...acc.out, l.replace(/^\/\/ ?/, '')] }), { out: [], stop: false }).out.join('\n')); process.exit(0); }
   else { console.error(`unknown option ${a}`); process.exit(2); }
 }
@@ -86,10 +105,10 @@ const targetArg = opts.target ? ['--target', opts.target] : [];
 
 const work = resolve(opts.work);
 mkdirSync(work, { recursive: true });
-const gitDir = join(work, 'git');
+const gitDir = opts.git ? resolve(opts.git) : join(work, 'git');
 // the gallery file with the texts of the icons: path in the repository, local copy next to the SVG folder
-const galleryPath = opts.noGallery ? null : (opts.gallery || (ruleSet.metadata && ruleSet.metadata.galleryPath) || null);
-const galleryFile = join(work, 'icons-gallery.ts');
+const galleryPath = opts.noGallery || (opts.git && !opts.galleryFile) ? null : (opts.galleryFile || opts.gallery || (ruleSet.metadata && ruleSet.metadata.galleryPath) || null);
+const galleryFile = opts.galleryFile ? resolve(opts.galleryFile) : join(work, 'icons-gallery.ts');
 const step = (n, text) => console.log(`\n[${n}] ${text}`);
 const fail = (msg) => { console.error(`\nerror: ${msg}`); process.exit(1); };
 
@@ -118,13 +137,19 @@ function compare(exportFile, tag) {
 }
 
 // ---------------------------------------------------------------- 1 fetch
-step(1, 'fetch the SVG files from Git');
-const fetchArgs = ['--out', gitDir];
-for (const k of ['ref', 'repo', 'path']) if (opts[k]) fetchArgs.push(`--${k}`, opts[k]);
-if (galleryPath) fetchArgs.push('--gallery', galleryPath, '--gallery-out', galleryFile);
-const fetched = runNode('fetch-icons.mjs', fetchArgs);
-console.log(fetched.out.trim());
-if (fetched.status !== 0) fail('the download failed');
+if (opts.git) {
+  step(1, `the SVG files of the local folder ${gitDir} (nothing is downloaded)${galleryPath ? `, gallery file ${galleryFile}` : ', no gallery file (--gallery-file)'}`);
+  if (!existsSync(gitDir)) fail(`${gitDir} does not exist`);
+  if (galleryPath && !existsSync(galleryFile)) fail(`${galleryFile} does not exist`);
+} else {
+  step(1, 'fetch the SVG files from Git');
+  const fetchArgs = ['--out', gitDir];
+  for (const k of ['ref', 'repo', 'path']) if (opts[k]) fetchArgs.push(`--${k}`, opts[k]);
+  if (galleryPath && !opts.galleryFile) fetchArgs.push('--gallery', galleryPath, '--gallery-out', galleryFile);
+  const fetched = runNode('fetch-icons.mjs', fetchArgs);
+  console.log(fetched.out.trim());
+  if (fetched.status !== 0) fail('the download failed');
+}
 
 // ---------------------------------------------------------------- 2 check Git
 step(2, 'validate the SVG files in Git (profile git)');
@@ -150,6 +175,23 @@ if (!opts.target) {
   }
 }
 if (opts.mode === 'apply' && opts.fileKey && before.source.fileKey !== opts.fileKey) fail(`refusing to write: the open file is ${before.source.fileKey}, --file-key says ${opts.fileKey}`);
+
+// ---------------------------------------------------------------- 3b Component ID check (published library)
+step('3b', 'Component ID check against the published library');
+let published = null;
+if (!opts.library) console.log('NOT RUN: no --library (the URL of the main file of the published library)');
+else if (isBranchUrl(opts.library)) fail('--library needs the URL of the main file: a branch cannot publish');
+else if (!process.env.FIGMA_TOKEN) console.log('NOT RUN: the environment variable FIGMA_TOKEN is not set (a personal access token with the scope library_content:read)');
+else {
+  try {
+    const data = await fetchPublished(fileKeyOf(opts.library), process.env.FIGMA_TOKEN);
+    writeFileSync(join(work, 'published-components.json'), JSON.stringify(data));
+    published = publishedList(data);
+  } catch (e) { fail(`the published library: ${e.message}`); }
+  const ids = checkPublished(published, before.icons, opts.prefix);
+  console.log(summarizeIds(ids, 'Published library'));
+  if (ids.findings.some((f) => f.severity === 'error') && opts.mode === 'apply') fail('a published icon lost its component or its name: nothing is written. Fix the page first (restore the component from the version history)');
+}
 
 // ---------------------------------------------------------------- 4 compare
 step(4, 'validate the Figma set against Git');
@@ -194,19 +236,46 @@ if (all.length) {
   step(5, 'nothing to write');
 }
 
+// ---------------------------------------------------------------- 5b order of the names
+let order = null;
+if (opts.reorder) {
+  step('5b', opts.mode === 'apply' ? 'put every icon at its place in the order of the names' : 'order of the names on the page today (nothing is written; icons made with --apply are placed then)');
+  const script = generate('reorder-icons.js', { mode: opts.mode, fileKeyGuard: opts.fileKey || before.source.fileKey, pageName: opts.page, namePrefix: opts.prefix, labelOffsetX: 32, labelTolerance: 1.5, labelMaxDy: 12 }, join(work, 'reorder.generated.js'));
+  try { order = JSON.parse(runFigma(script)); } catch (e) { fail(e.message); }
+  writeFileSync(join(work, `reorder-${opts.mode}.json`), JSON.stringify(order, null, 2));
+  if (!order.ok) fail(`the reorder reports a problem: ${order.reason}`);
+  const g = order.grid;
+  console.log(`grid: ${g.columns.length} columns, rows every ${g.pitchY} px from y ${g.originY}; ${order.count} icons`);
+  const moved = order.moved.slice(0, 12).map((m) => `${m.name} (${m.from.join(',')} → ${m.to.join(',')})`).join(', ');
+  console.log(`${order.moves ? `${order.moves} icons ${opts.mode === 'apply' ? 'moved' : 'not at their place'}: ${moved}${order.moves > 12 ? ` and ${order.moves - 12} more` : ''}` : 'every icon is at its place'}`);
+  console.log(`layers: ${order.layers.block ? `${order.layers.moves} icons ${opts.mode === 'apply' ? 'moved' : 'not in the a to z order'} in the layers panel` : order.layers.note}${order.growSectionTo ? `; section grows to ${order.growSectionTo} px` : ''}`);
+  if (order.noLabel.length) console.log(`WARN no label beside: ${order.noLabel.join(', ')}`);
+  if (order.applied && order.check.problems.length) fail(`after the reorder: ${order.check.problems.slice(0, 10).join('; ')} (restore point "Before icon reorder")`);
+}
+
 if (opts.mode === 'scan') {
   const bad = done.filter((r) => r.status === 'error').length;
-  console.log(`\nScan done. Run with --apply to write into this file${all.length ? '' : ' (nothing differs)'}.`);
+  console.log(`\nScan done. Run with --apply to write into this file${all.length || (order && order.moves) ? '' : ' (nothing differs)'}.`);
   process.exit(bad ? 1 : 0);
 }
 
 // ---------------------------------------------------------------- 6 validate again
-step(6, 'export again and validate against Git');
+step(6, 'export again, validate against Git, Component ID check');
 let after;
 try { after = exportFigma('figma-export-after'); } catch (e) { fail(e.message); }
 const second = compare(join(work, 'figma-export-after.json'), 'compare-after');
 console.log(summary(second.text));
-const remaining = second.findings.filter((f) => ['S16', 'N10'].includes(f.rule)).length;
+const run = checkRun(before.icons, after.icons);
+console.log(summarizeIds(run, 'Component ID check of the run'));
+let idErrors = run.findings.filter((f) => f.severity === 'error').length;
+if (published) {
+  const ids = checkPublished(published, after.icons, opts.prefix);
+  console.log(summarizeIds(ids, 'Component ID check against the published library'));
+  idErrors += ids.findings.filter((f) => f.severity === 'error').length;
+} else console.log('Component ID check against the published library: NOT RUN (--library and FIGMA_TOKEN)');
+const remaining = [...new Set(second.findings.filter((f) => ['S16', 'N10'].includes(f.rule)).map((f) => f.icon))].filter((n) => !opts.only || opts.only.has(n)).length;
 const errors = done.filter((r) => r.status === 'error').length;
-console.log(`\n${done.filter((r) => ['updated', 'created'].includes(r.status)).length} icons written, ${errors} errors, ${remaining} icons still differ from Git. Report: ${join(work, 'compare-after.txt')}`);
-process.exit(errors || remaining ? 1 : second.status);
+const created = done.filter((r) => r.status === 'created').map((r) => r.name);
+console.log(`\n${done.filter((r) => ['updated', 'created'].includes(r.status)).length} icons written, ${errors} errors, ${remaining} icons still differ from Git, ${order && order.applied ? order.moves : 0} icons moved, ${idErrors} Component ID errors. Report: ${join(work, 'compare-after.txt')}`);
+if (created.length) console.log(`The texts of the new icons (${created.join(', ')}): node write-metadata.mjs${opts.ref ? ` --ref ${opts.ref}` : ''} --apply`);
+process.exit(errors || remaining || idErrors ? 1 : second.status);

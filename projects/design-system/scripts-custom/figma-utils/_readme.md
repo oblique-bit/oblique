@@ -441,18 +441,44 @@ node icon-workflow/icons.mjs            # plan: writes nothing
 node icon-workflow/icons.mjs --apply    # writes into the open file
 ```
 
-The command finds the library (`ds-library` or `legacy-library`) from the icon names. Optional: `--target <name>`, `--page <text>` (default `Icons`), `--only a,b` (these icons only), `--cli-dir <folder>`, `--work <folder>`, `--rules <file>`, `--force`, `--gallery <path>` (the gallery file in the repository, default from the rule file) and `--no-gallery` (skip the comparison of the texts).
+The command finds the library (`ds-library` or `legacy-library`) from the icon names. Optional: `--target <name>`, `--page <text>` (default `Icons`), `--only a,b` (these icons only), `--cli-dir <folder>`, `--work <folder>`, `--rules <file>`, `--force`, `--gallery <path>` (the gallery file in the repository, default from the rule file), `--no-gallery` (skip the comparison of the texts), `--library <url>` (the main file of the published library, for the Component ID check), `--no-reorder` (leave the icons where they are), `--git <folder>` (a local folder of SVG files instead of the download, for a test before a push) and `--gallery-file <file>` (a local gallery file).
 
 **Commands** of the folder (each has `--help`):
 
 | command | does | writes |
 |---|---|---|
-| `icons.mjs` | compares the SVG files of Git with the icon page of the open Figma file, checks both, with `--apply` writes the shape of changed icons and creates missing icons | Figma, only with `--apply` |
+| `icons.mjs` | compares the SVG files of Git with the icon page of the open Figma file, checks both, with `--apply` writes the shape of changed icons, creates missing icons and puts every icon at its place in the order of the names | Figma, only with `--apply` |
 | `write-metadata.mjs` | copies the texts of the gallery file into the Figma descriptions as lines, once | Figma, only with `--apply` |
 | `export-svg.mjs` | writes the icons of the Figma file as SVG files in the Git format and the gallery file `icons.ts` from the descriptions | a local folder |
 | `changelog.mjs` | lists what changed in the icon set between two Git refs | a local folder |
 
-**Parts behind it** in `lib/`: `fetch-icons.mjs` (downloads the SVG folder of the repository, pinned to one commit; with `--gallery` it also downloads the gallery file `icons.ts` of the same commit), `validate-icon-set.mjs` (checks and compares), `gallery-file.mjs` (writes the gallery file from the Figma descriptions), `changelog.mjs` (the functions behind the command of the same name), `metadata.mjs` (reads and compares the texts) and `normalize-svg.mjs` run in Node. `export-icon-set.js`, `import-icons.js` and `write-descriptions.js` run inside Figma, which cannot read files or Git; `figma-run.mjs` holds what the commands share. Designers do not open them. The validator also runs alone: `node icon-workflow/lib/validate-icon-set.mjs <folder with .svg files | export.json> [--against <folder>]`.
+**Parts behind it** in `lib/`: `fetch-icons.mjs` (downloads the SVG folder of the repository, pinned to one commit; with `--gallery` it also downloads the gallery file `icons.ts` of the same commit), `validate-icon-set.mjs` (checks and compares), `gallery-file.mjs` (writes the gallery file from the Figma descriptions), `changelog.mjs` (the functions behind the command of the same name), `metadata.mjs` (reads and compares the texts), `component-id-check.mjs` (the Component ID check) and `normalize-svg.mjs` run in Node. `export-icon-set.js`, `import-icons.js`, `reorder-icons.js` and `write-descriptions.js` run inside Figma, which cannot read files or Git; `figma-run.mjs` holds what the commands share. Designers do not open them. The validator also runs alone: `node icon-workflow/lib/validate-icon-set.mjs <folder with .svg files | export.json> [--against <folder>]`.
+
+### Order of the names (`lib/reorder-icons.js`)
+
+The icon page lists the icons by name, row by row (OB Library, checked on 2026-11-20: all 284 icons in this order, 6 columns, rows every 72 px). `icons.mjs --apply` creates a new icon at the end of the grid and then puts every icon at its place: the icons after the new one move one place on, the label beside an icon moves with it, and in the layers panel the block of the icons reads a to z from the top. The order is plain code point order, as in the Icons builder: `-` comes before `_` (`chevron_left-to-line` before `chevron_left_double`).
+
+- Only x, y and the layer order change. No component is created again, copied or deleted, so no component ID and no key changes. The script checks that after the move.
+- The grid is read from the icons: the columns are the x values that at least two icons share, the row gap is the most common gap. An icon off the grid is moved to its place too.
+- It stops without writing when the icons are in more than one section or frame. The section grows when it needs a new row and never gets smaller.
+- Restore point "Before icon reorder" in the version history. Without `--apply` the plan shows how many icons are not at their place. A second run changes nothing.
+- Tested on 2026-11-20 in a branch of the OB Library: a new icon `calendar_test` was created from a local SVG folder (`--git`) at the end of the grid and moved between `calendar` and `camera`; 246 icons moved one place on; all 285 icons on the grid with their labels, the layers a to z; the 284 icons that existed kept their component IDs and keys; a second run changed nothing.
+
+### Component ID check (`lib/component-id-check.mjs`)
+
+The files of the consumers link every icon instance to the key of its component in the published library. A component that is deleted and made again gets a new key, even with the same name, and the instances lose their link. The check compares the icon page with the last published library:
+
+| rule | severity | checks |
+|---|---|---|
+| `ID01` | error | every icon of the published library has a component in the file (found by key, or by node id in a branch) |
+| `ID02` | error | a published icon keeps its name, or its description has the line `Old name:` with the published name |
+| `ID03` | info | icons of the file that are not published yet (new icons) |
+| `ID04` | error | during a run of `icons.mjs` every icon keeps its component, key and name |
+
+- The published list comes from the Figma REST API (`GET /v1/files/<key>/components`). It needs the URL of the main file (`--library`; a branch cannot publish) and a personal access token with the scope `library_content:read` in the environment variable `FIGMA_TOKEN`. The token is never written into a file.
+- In `icons.mjs`: step 3b checks the page before anything is written (with `--apply` it stops on an error), step 6 checks again and compares the page before and after the run (`ID04`, always, also without a token). Without `--library` or the token the plan says "NOT RUN".
+- Alone, for example in a branch before the merge or in the main file before the publish: export the page and run `node icon-workflow/lib/component-id-check.mjs --current <export.json> --library <url of the main file>`. `--published <file>` uses a list saved before, `--before <export.json>` compares two exports.
+- Not tested yet against the REST API (no token on 2026-11-20): whether its `node_id` equals the node id in the file, and whether a component in a branch has the same key as in the main file. The rules and the comparison were tested with lists made from the export of the OB Library.
 
 ### What is checked
 
