@@ -1,11 +1,12 @@
-// normalize-svg.mjs — an SVG string as Figma exports it → the file format of the Git set, without the id
+// normalize-svg.mjs — an SVG string as Figma exports it → the file format of the Git set
 // ----------------------------------------------------------------------------
-// WHY: decided on 2026-11-11: the build (update-icons.ts) adds the id of an icon, so the export does not write one. But the
-// build changes only the id, the XML declaration and the line breaks. It keeps every other attribute, so the export has to
-// write the format of the Git files itself:
+// WHY: the build (update-icons.ts) changes only the id, the XML declaration and the line breaks. It keeps every other
+// attribute, so the export has to write the format of the Git files itself. The id: decided on 2026-11-11 that the build adds
+// it, but today update-icons.ts only replaces id="a" and adds none. So since 2026-11-20 the export writes id="a" again
+// (option rootId, from the rule file: profiles.export.svg.rootId). When the build adds the id, rootId is set to null.
 //
 //   Figma export (exportAsync)                         Git file                                  export (this module)
-//   <svg width height viewBox fill="none" xmlns>       <svg id="a" xmlns viewBox>                <svg xmlns viewBox>
+//   <svg width height viewBox fill="none" xmlns>       <svg id="a" xmlns viewBox>                <svg id="a" xmlns viewBox>
 //     <path d fill="#1C2834"/>                          <path d/>                                 <path d/>
 //
 // - width, height and fill="none" on the root are removed. The icon scales with the font size and takes its colour from the
@@ -17,7 +18,8 @@
 //   cuts nothing.
 // - anything else (another viewBox, more than one path, other elements or attributes) is not guessed: the icon is reported.
 //
-// normalizeSvg(svg, { bbox }) → { ok: true, svg, fill, notes } or { ok: false, reason }
+// normalizeSvg(svg, { bbox, rootId }) → { ok: true, svg, fill, notes } or { ok: false, reason }
+// rootId = the id on the root ("a" as in the Git files) or null for none.
 // bbox = [x, y, width, height] of the vector inside the 24 x 24 component (from export-icon-set.js), optional.
 // No dependencies. Node 18 or newer.
 // ----------------------------------------------------------------------------
@@ -25,7 +27,7 @@
 const XML_HEADER = '<?xml version="1.0" encoding="UTF-8"?>';
 const attrs = (text) => Object.fromEntries([...String(text).matchAll(/([\w:-]+)="([^"]*)"/g)].map((m) => [m[1], m[2]]));
 
-export function normalizeSvg(svg, { bbox = null, viewBox = '0 0 24 24' } = {}) {
+export function normalizeSvg(svg, { bbox = null, viewBox = '0 0 24 24', rootId = null } = {}) {
   const fail = (reason) => ({ ok: false, reason });
   const notes = [];
   const text = String(svg || '').trim();
@@ -60,5 +62,5 @@ export function normalizeSvg(svg, { bbox = null, viewBox = '0 0 24 24' } = {}) {
 
   // fill-rule and clip-rule change how the shape is drawn, so they stay; the colour goes
   const keep = ['fill-rule', 'clip-rule'].filter((k) => p[k] !== undefined).map((k) => ` ${k}="${p[k]}"`).join('');
-  return { ok: true, svg: `${XML_HEADER}<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}"><path d="${p.d}"${keep}/></svg>`, fill: p.fill || null, notes };
+  return { ok: true, svg: `${XML_HEADER}<svg${rootId ? ` id="${rootId}"` : ''} xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}"><path d="${p.d}"${keep}/></svg>`, fill: p.fill || null, notes };
 }

@@ -2,12 +2,13 @@
 // ----------------------------------------------------------------------------
 // WHY: from the first publish the Figma library leads and Git follows (board "Icons Workflows", Case 0 and Case F). The DS
 // Developers receive SVG files that are ready for update-icons.ts and the gallery file icons.ts with the texts of the icons.
-// Decided on 2026-11-11: the build adds the id of an icon, the export writes no id and removes what the build would keep:
-// width, height and the fills (see lib/normalize-svg.mjs).
+// The files look like the files Illustrator wrote: the root carries id="a", which update-icons.ts replaces with the icon id, so
+// the DS Developers change nothing (decided 2026-11-20; the id switch is profiles.export.svg.rootId in the rule file, null = no id
+// once the build adds the id itself). The export removes what the build would keep: width, height and the fills (lib/normalize-svg.mjs).
 //
 //   1. fetch      the SVG files of the repository and the gallery file, pinned to one commit (the reference)   (skipped with --no-git or --git)
 //   2. export     the icon page of the open Figma file, with the SVG and the description of every icon
-//   3. normalize  Figma format → Git format without id; an icon that cannot be normalized is reported, never guessed
+//   3. normalize  Figma format → Git format (with id="a"); an icon that cannot be normalized is reported, never guessed
 //   4. check      the SVG file check on the normalized files (profile export) and the comparison with the reference
 //   4b. figma     the Figma check of the icons to write: the component (size, one vector, bound fill, locked aspect ratio,
 //                 no stroke or style), the name, the label and the texts (a new icon needs every text: rule M09)
@@ -131,7 +132,8 @@ try {
 console.log(`${data.count} icons in "${data.source.file}" / "${data.source.page}" (file key ${data.source.fileKey}), prefix ${opts.prefix}`);
 
 // ---------------------------------------------------------------- 3 normalize
-step(3, 'normalize the SVG files (Figma format → Git format without id)');
+const rootId = (((ruleSet.profiles || {}).export || {}).svg || {}).rootId || null;
+step(3, `normalize the SVG files (Figma format → Git format, ${rootId ? `root id "${rootId}" as in the Git files` : 'without id'})`);
 const normDir = join(work, 'normalized');
 rmSync(normDir, { recursive: true, force: true });
 mkdirSync(normDir, { recursive: true });
@@ -140,7 +142,7 @@ for (const icon of data.icons) {
   const short = shortName(icon.name);
   if (opts.only && !opts.only.has(short)) continue;
   const bbox = icon.children && icon.children[0] && icon.children[0].bbox ? icon.children[0].bbox : null;
-  const r = normalizeSvg(icon.svg, { bbox });
+  const r = normalizeSvg(icon.svg, { bbox, rootId });
   if (!r.ok) { problems.push(`${short}: ${r.reason}`); continue; }
   normalized.set(short, r.svg);
   writeFileSync(join(normDir, `${short}.svg`), r.svg);
