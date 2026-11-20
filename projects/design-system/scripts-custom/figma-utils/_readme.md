@@ -449,7 +449,7 @@ The command finds the library (`ds-library` or `legacy-library`) from the icon n
 
 | command | does | writes |
 |---|---|---|
-| `icons.mjs` | compares the SVG files of Git with the icon page of the open Figma file, checks both, with `--apply` writes the shape of changed icons, creates missing icons and puts every icon at its place in the order of the names | Figma, only with `--apply` |
+| `icons.mjs` | compares the SVG files of Git with the icon page of the open Figma file, checks both, with `--apply` writes the shape of changed icons, creates missing icons with their whole description from the gallery file of the same commit and puts every icon at its place in the order of the names | Figma, only with `--apply` |
 | `write-metadata.mjs` | copies the texts of the gallery file into the Figma descriptions as lines, once | Figma, only with `--apply` |
 | `export-svg.mjs` | writes the icons of the Figma file as SVG files in the Git format and the gallery file `icons.ts` from the descriptions | a local folder |
 | `changelog.mjs` | lists what changed in the icon set between two Git refs | a local folder |
@@ -464,6 +464,7 @@ The icon page lists the icons by name, row by row (OB Library, checked on 2026-1
 - The grid is read from the icons: the columns are the x values that at least two icons share, the row gap is the most common gap. An icon off the grid is moved to its place too.
 - It stops without writing when the icons are in more than one section or frame. The section grows when it needs a new row and never gets smaller.
 - Restore point "Before icon reorder" in the version history. Without `--apply` the plan shows how many icons are not at their place. A second run changes nothing.
+- **The texts of a new icon.** `icons.mjs` writes the whole description of a new icon (usage, `Category:`, `Keywords:`, `Purpose type:`, `Description:`, and `Old name:` or `Deprecated purpose:` where the entry has them) from the gallery file `icons.ts` of the same commit, where `export-svg.mjs` put it. Without an entry the description stays empty and the command says so. `write-metadata.mjs` would not be enough: it adds only the lines Purpose type, Description, Old name and Deprecated purpose. The Icons builder uses the same function (`descriptionFromGallery` in `lib/metadata.mjs`). Tested on 2026-11-20: `bell_test` from a Git folder got its five texts, and its export gave the same gallery entry again.
 - Tested on 2026-11-20 in a branch of the OB Library: a new icon `calendar_test` was created from a local SVG folder (`--git`) at the end of the grid and moved between `calendar` and `camera`; 246 icons moved one place on; all 285 icons on the grid with their labels, the layers a to z; the 284 icons that existed kept their component IDs and keys; a second run changed nothing.
 
 ### Component ID check (`lib/component-id-check.mjs`)

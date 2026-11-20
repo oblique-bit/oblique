@@ -58,6 +58,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { runNode, runFigma as runFigmaIn, generate, DEFAULT_WORK, defaultCliDir } from './lib/figma-run.mjs';
+import { parseGalleryFile, descriptionFromGallery } from './lib/metadata.mjs';
 import { fetchPublished, publishedList, checkPublished, checkRun, summarize as summarizeIds, fileKeyOf, isBranchUrl } from './lib/component-id-check.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -216,7 +217,16 @@ if (galleryPath) {
 
 const icons = {};
 for (const n of update) icons[n] = { action: 'update', svg: readFileSync(join(gitDir, `${n}.svg`), 'utf8') };
-for (const n of create) icons[n] = { action: 'create', svg: readFileSync(join(gitDir, `${n}.svg`), 'utf8') };
+// a new icon gets its whole description (usage, Category, Keywords, Purpose type, Description, ...) from the gallery file of the same
+// commit: export-svg.mjs put it there from the Figma description of the drawing
+const galleryEntries = galleryPath && existsSync(galleryFile) ? parseGalleryFile(readFileSync(galleryFile, 'utf8')) : new Map();
+const noText = [];
+for (const n of create) {
+  const description = descriptionFromGallery(galleryEntries.get(n));
+  if (!description) noText.push(n);
+  icons[n] = { action: 'create', svg: readFileSync(join(gitDir, `${n}.svg`), 'utf8'), description };
+}
+if (create.length) console.log(`Texts of the new icons: ${create.length - noText.length} from the gallery file${noText.length ? `; no entry, the description stays empty: ${noText.join(', ')}` : ''}`);
 
 // ---------------------------------------------------------------- 5 apply (or the dry check)
 const all = Object.keys(icons);
@@ -277,5 +287,6 @@ const remaining = [...new Set(second.findings.filter((f) => ['S16', 'N10'].inclu
 const errors = done.filter((r) => r.status === 'error').length;
 const created = done.filter((r) => r.status === 'created').map((r) => r.name);
 console.log(`\n${done.filter((r) => ['updated', 'created'].includes(r.status)).length} icons written, ${errors} errors, ${remaining} icons still differ from Git, ${order && order.applied ? order.moves : 0} icons moved, ${idErrors} Component ID errors. Report: ${join(work, 'compare-after.txt')}`);
-if (created.length) console.log(`The texts of the new icons (${created.join(', ')}): node write-metadata.mjs${opts.ref ? ` --ref ${opts.ref}` : ''} --apply`);
+const createdNoText = created.filter((n) => noText.includes(n));
+if (createdNoText.length) console.log(`WARN no gallery entry, the description is empty: ${createdNoText.join(', ')}. Add the entry to icons.ts in the Git branch and create the icon again, or write the texts in Figma (usage, Category, Keywords, Purpose type, Description)`);
 process.exit(errors || remaining || idErrors ? 1 : second.status);

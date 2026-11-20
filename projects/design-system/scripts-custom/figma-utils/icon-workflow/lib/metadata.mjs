@@ -159,6 +159,20 @@ export function withNewLines(text, g) {
 
 // ---------------------------------------------------------------- comparison of two whole sets (compare-metadata.mjs)
 // figma: Map(name -> description text); gallery: Map from parseGalleryFile
+// a Figma description made from a gallery entry, in the format above: usage, Category, Keywords, then the lines Purpose type,
+// Description, Old name, Deprecated purpose. Used by icons.mjs for a new icon and by the Icons builder for a Git source.
+export function descriptionFromGallery(g) {
+  if (!g) return '';
+  const parts = [];
+  if (g.usage) parts.push(g.usage);
+  if (g.category) parts.push(`Category: ${g.category}`);
+  // an entry of the gallery can hold several keywords in one text ("west,\nback"): they are split
+  const keywords = (g.keywords || []).flatMap((k) => String(k).split(/[,\n]+/)).map((k) => k.trim()).filter(Boolean);
+  if (keywords.length) parts.push(`Keywords: ${keywords.join(', ')}`);
+  const base = parts.join('\n\n');
+  return (withNewLines(base, g).text || base).trim();
+}
+
 export function compareMetadata(figma, gallery) {
   const r = { names: figma.size, onlyInFigma: [], onlyInGallery: [], diffs: [], figmaProblems: [], galleryProblems: [], notYetWritten: { purposeType: [], description: [] }, equal: { usage: 0, category: 0, keywords: 0 } };
   for (const [name, desc] of figma) {

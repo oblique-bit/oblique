@@ -221,18 +221,8 @@ async function readFromGit(git) {
 
   const meta = await import(require('url').pathToFileURL(path.join(ICON_WORKFLOW, 'lib', 'metadata.mjs')).href);
   const gallery = fs.existsSync(galleryFile) ? meta.parseGalleryFile(fs.readFileSync(galleryFile, 'utf8')) : new Map();
-  // the same format as the descriptions of the icons in Figma: usage, category, keywords, then the lines Purpose type, Description, Old name, Deprecated purpose
-  const describe = (g) => {
-    if (!g) return '';
-    const parts = [];
-    if (g.usage) parts.push(g.usage);
-    if (g.category) parts.push(`Category: ${g.category}`);
-    // an entry of the gallery can hold several keywords in one text ("west,\nback"): they are split
-    const keywords = (g.keywords || []).flatMap((k) => String(k).split(/[,\n]+/)).map((k) => k.trim()).filter(Boolean);
-    if (keywords.length) parts.push(`Keywords: ${keywords.join(', ')}`);
-    const base = parts.join('\n\n');
-    return (meta.withNewLines(base, g).text || base).trim();
-  };
+  // the same format as the descriptions of the icons in Figma (shared with icons.mjs: metadata.mjs descriptionFromGallery)
+  const describe = (g) => meta.descriptionFromGallery(g);
   const files = fs.readdirSync(gitDir).filter((n) => n.toLowerCase().endsWith('.svg')).sort();
   const icons = files.map((file) => {
     const name = file.replace(/\.svg$/i, '');

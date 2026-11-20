@@ -11,7 +11,8 @@
    *                    The component, its instances, name, description and the
    *                    fill binding stay.
    *   action "create"  no component yet: a new component (24x24, one vector, fill
-   *                    bound like the existing icons, aspect ratio locked) and its label
+   *                    bound like the existing icons, aspect ratio locked, description from
+   *                    the gallery file) and its label
    *                    go to the next free place of the grid; the section grows when it
    *                    needs room. icons.mjs then puts every icon at its place in the
    *                    order of the names (reorder-icons.js).
@@ -123,6 +124,8 @@
           const [dx, dy] = relative(vector, frame);
           const c = figma.createComponent();
           c.name = prefix + name;
+          // the whole description from the gallery file of the same commit (icons.mjs), empty without an entry
+          if (item.description) c.description = item.description;
           c.resize(24, 24);
           // aspect ratio locked, as on the other icons and in the Icons builder
           if (typeof c.lockAspectRatio === 'function') c.lockAspectRatio();
