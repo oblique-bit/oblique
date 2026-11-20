@@ -169,6 +169,7 @@
       strokes: c.strokes.length,
       effects: c.effects.length,
       explicitModes: Object.keys(c.explicitVariableModes || {}).length,
+      aspectLocked: Boolean(c.targetAspectRatio),
       styles: await styleNames(c, ['fillStyleId', 'strokeStyleId', 'effectStyleId', 'gridStyleId']),
       children,
       label: label ? label.characters : null,

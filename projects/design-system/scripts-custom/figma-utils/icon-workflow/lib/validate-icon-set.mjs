@@ -88,6 +88,7 @@ const RULES = {
   F10: ['error', 'figma', 'SVG fill color equals the resolved Figma variable color'],
   F11: ['error', 'figma', 'every node named like an icon is a component (no frame, instance or component set)'],
   F12: ['error', 'figma', 'no style on the component layer, no style on the vector'],
+  F13: ['error', 'figma', 'the aspect ratio of the component is locked'],
   M01: ['error', 'metadata', 'the category in the description is one of the categories of the set'],
   M02: ['warn', 'metadata', 'keywords are not empty and no keyword is repeated'],
   M03: ['info', 'metadata', 'the description has the line "Purpose type:" (single or multi)'],
@@ -96,6 +97,7 @@ const RULES = {
   M06: ['error', 'metadata', 'usage, category, keywords, purpose type, description, old name and deprecated purpose equal the gallery entry'],
   M07: ['error', 'metadata', 'every icon has an entry in the gallery file and every entry has an icon'],
   M08: ['warn', 'metadata', 'the gallery file keeps one keyword per entry'],
+  M09: ['error', 'metadata', 'a new icon (not in the reference set) has every text: usage, Category, Keywords, Purpose type, Description'],
 };
 
 // Rules that come from the icon checklist of the design team; the others are added checks.
@@ -610,6 +612,8 @@ function validate(icons, cfg, origin, strays = [], source = {}, reference = null
       if (f.strokes || f.effects || !f.visible || f.opacity !== 1 || (Array.isArray(f.fills) ? f.fills.length : f.fills)) add('F07', icon, 'the component itself has a fill, stroke, effect, is hidden or has opacity below 1');
       if (f.styles && Object.keys(f.styles).length) add('F12', icon, `component layer has ${Object.entries(f.styles).map(([k, n]) => `${k.replace('StyleId', '')} style ${show(n)}`).join(', ')}`);
       if (f.explicitModes) add('F08', icon, `${f.explicitModes} explicit variable mode(s) on the component`);
+      // an export without the field (written before 2026-11-20) is not checked
+      if (f.aspectLocked === false) add('F13', icon, 'the aspect ratio is not locked');
       if (!f.description || !f.description.trim()) add('F09', icon, 'description is empty');
       else if (descRe && !descRe.test(f.description)) add('F09', icon, `description does not match ${cfg.figma.descriptionPattern}`);
     }
@@ -640,7 +644,17 @@ function validate(icons, cfg, origin, strays = [], source = {}, reference = null
     const mine = new Set(icons.map((i) => i.short));
     for (const icon of icons) {
       const r = refMap.get(icon.short);
-      if (!r) { compare.onlyHere++; add('N11', icon, 'not in the reference set'); continue; }
+      if (!r) {
+        compare.onlyHere++;
+        add('N11', icon, 'not in the reference set');
+        // a new icon needs every text: the gallery file gets its entry from them (M03 and M05 stay info for the icons that exist)
+        if (origin === 'figma') {
+          const p = parseDescription(icon.figma.description);
+          const missing = [!p.usage && 'the usage text', p.category === null && '"Category:"', !(p.keywords && p.keywords.length) && '"Keywords:"', p.purposeType === null && '"Purpose type:"', p.description === null && '"Description:"'].filter(Boolean);
+          if (missing.length) add('M09', icon, `new icon: the description lacks ${missing.join(', ')}`);
+        }
+        continue;
+      }
       const a = inspected.get(icon);
       const b = inspectSvg(r, cfg);
       if (!a.segs.length || !b.segs.length) continue;

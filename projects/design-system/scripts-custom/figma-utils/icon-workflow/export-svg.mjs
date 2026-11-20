@@ -9,10 +9,12 @@
 //   2. export     the icon page of the open Figma file, with the SVG and the description of every icon
 //   3. normalize  Figma format → Git format without id; an icon that cannot be normalized is reported, never guessed
 //   4. check      the SVG file check on the normalized files (profile export) and the comparison with the reference
+//   4b. figma     the Figma check of the icons to write: the component (size, one vector, bound fill, locked aspect ratio,
+//                 no stroke or style), the name, the label and the texts (a new icon needs every text: rule M09)
 //   5. texts      the gallery file icons.ts: the file of Git with the fields that differ from the Figma descriptions written again
 //                 (lib/gallery-file.mjs: byte for byte where nothing differs, new icons at the end, nothing deleted)
 //   6. choose     by default only the icons that changed or are new (Git then sees a small difference); --all = every icon and the gallery file
-//   7. write      the files into --out, optionally one zip; errors of the check stop the export (--force goes on)
+//   7. write      the files into --out, optionally one zip; errors of step 4 or 4b stop the export (--force goes on)
 //
 // usage:
 //   node export-svg.mjs --cli-dir <figma-cli folder> [options]
@@ -166,6 +168,28 @@ const names = (rule) => [...new Set(findings.filter((f) => f.rule === rule).map(
 const changed = names('S16'), onlyHere = names('N11'), onlyGit = names('N10');
 if (!opts.noGit) console.log(`\nagainst Git: ${changed.length} changed${list(changed)}; ${onlyHere.length} new${list(onlyHere)}; ${onlyGit.length} only in Git (never deleted)${list(onlyGit)}`);
 
+// ---------------------------------------------------------------- 4b the Figma check of the icons to write
+// Step 4 sees only the SVG file. Here the component in Figma and its texts are checked, for the icons that are written:
+// F rules (size, one vector, bound fill, locked aspect ratio, no stroke or style), N rules (name, label), M01 to M05 and
+// M09 (a new icon needs every text). The S rules of the Figma SVG are left out: step 4 checked the normalized file.
+// F11 (a node named like an icon that is no component, for example a frame) is always shown.
+const toWrite = new Set([...normalized.keys()].filter((n) => opts.all || changed.includes(n) || onlyHere.includes(n)));
+step('4b', `Figma check of the icons to write (${toWrite.size}): component, name, label, texts`);
+let figmaErrors = [];
+if (toWrite.size) {
+  const figmaJson = join(work, 'figma-check.json');
+  const fc = runNode('validate-icon-set.mjs', [join(work, 'svg-export.json'), ...againstArg, '--all', '--json', figmaJson, ...rulesArg, ...(opts.target ? ['--target', opts.target] : [])]);
+  writeFileSync(join(work, 'figma-check.txt'), fc.out);
+  if (fc.status === 2) fail(fc.out.trim());
+  const mine = JSON.parse(readFileSync(figmaJson, 'utf8')).findings.filter((f) => f.rule === 'F11' || (toWrite.has(f.icon) && !f.rule.startsWith('S') && !COMPARE.has(f.rule)));
+  figmaErrors = mine.filter((f) => f.severity === 'error');
+  const warns = mine.filter((f) => f.severity === 'warn');
+  for (const f of figmaErrors.slice(0, 20)) console.log(`ERROR ${f.rule} ${f.icon}: ${f.message}`);
+  if (figmaErrors.length > 20) console.log(`and ${figmaErrors.length - 20} more errors`);
+  for (const f of warns.slice(0, 10)) console.log(`WARN  ${f.rule} ${f.icon}: ${f.message}`);
+  console.log(`${figmaErrors.length} errors, ${warns.length} warnings (report: ${join(work, 'figma-check.txt')})`);
+} else console.log('no icon to write');
+
 // ---------------------------------------------------------------- 5 texts: the gallery file
 // The descriptions of all icons count (a text can change without the shape), not only the chosen SVG files.
 let gallery = null;
@@ -182,8 +206,8 @@ const chosen = [...normalized.keys()].filter((n) => opts.all || changed.includes
 const galleryWrite = Boolean(gallery) && (opts.all || !gallery.same);
 const gallerySkipped = gallery ? gallery.skipped.length : 0;
 step(6, `${opts.all ? `every icon (${chosen.length})` : `the changed and the new icons (${chosen.length})`}${gallery ? `; gallery file: ${galleryWrite ? 'yes' : 'no change'}` : ''}`);
-if (errors.length && !opts.force) {
-  console.error(`\nthe SVG file check found ${errors.length} errors, nothing was written (see ${join(work, 'export-check.txt')}; --force goes on anyway)`);
+if ((errors.length || figmaErrors.length) && !opts.force) {
+  console.error(`\nthe checks found ${errors.length} errors in the SVG files (step 4, ${join(work, 'export-check.txt')}) and ${figmaErrors.length} in Figma (step 4b, ${join(work, 'figma-check.txt')}): nothing was written. Fix the icon in Figma and export again (--force goes on anyway)`);
   process.exit(1);
 }
 if (!chosen.length && !galleryWrite) {
@@ -203,8 +227,8 @@ if (opts.zip) {
   catch (e) { fail(`the zip command failed: ${e.message}`); }
 }
 writeFileSync(join(work, 'export-report.json'), JSON.stringify({
-  source: data.source, written: chosen, changed, new: onlyHere, notNormalizable: problems, checkErrors: errors.length,
+  source: data.source, written: chosen, changed, new: onlyHere, notNormalizable: problems, checkErrors: errors.length, figmaErrors: figmaErrors.length,
   gallery: gallery ? { written: galleryWrite, changed: gallery.changed, added: gallery.added, unchanged: gallery.unchanged, skipped: gallery.skipped, onlyInGallery: gallery.onlyInGallery, kept: gallery.kept } : null,
 }, null, 2));
-console.log(`\n${chosen.length} files written${opts.all ? '' : ` (${changed.length} changed, ${onlyHere.length} new)`}${gallery ? `, gallery file ${galleryWrite ? `written (${gallery.changed.length} entries changed, ${gallery.added.length} new)` : 'not written (no change)'}` : ''}, ${problems.length} icons not normalizable, ${gallerySkipped} texts skipped, ${errors.length} check errors. Report: ${join(work, 'export-report.json')}`);
-process.exit(problems.length || gallerySkipped || (errors.length && !opts.force) ? 1 : 0);
+console.log(`\n${chosen.length} files written${opts.all ? '' : ` (${changed.length} changed, ${onlyHere.length} new)`}${gallery ? `, gallery file ${galleryWrite ? `written (${gallery.changed.length} entries changed, ${gallery.added.length} new)` : 'not written (no change)'}` : ''}, ${problems.length} icons not normalizable, ${gallerySkipped} texts skipped, ${errors.length} SVG check errors, ${figmaErrors.length} Figma check errors. Report: ${join(work, 'export-report.json')}`);
+process.exit(problems.length || gallerySkipped || ((errors.length || figmaErrors.length) && !opts.force) ? 1 : 0);
