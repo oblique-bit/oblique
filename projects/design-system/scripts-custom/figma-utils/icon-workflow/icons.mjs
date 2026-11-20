@@ -31,8 +31,8 @@
 //   --yes                 apply writes into the file that is open in this run (shown in step 3)
 //   --target <name>       the library the file belongs to: legacy-library or ds-library; sets the
 //                         name prefix and the expected variable from the rule file
-//   --cli-dir <folder>    folder to run figma-ds-cli from (or set FIGMA_DS_CLI_DIR)
-//   --work <folder>       working folder for downloads, exports and reports (default ./icon-sync)
+//   --cli-dir <folder>    folder to run figma-ds-cli from (or set FIGMA_DS_CLI_DIR; default ~/figma-cli when it exists)
+//   --work <folder>       working folder for downloads, exports and reports (default ~/icon-workflow/work)
 //   --page <text>         the Figma page whose name contains this text (default Icons)
 //   --prefix <text>       component name prefix (default: from the target or the rule file)
 //   --only <a,b,c>        sync only these icon names
@@ -57,12 +57,12 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { runNode, runFigma as runFigmaIn, generate } from './lib/figma-run.mjs';
+import { runNode, runFigma as runFigmaIn, generate, DEFAULT_WORK, defaultCliDir } from './lib/figma-run.mjs';
 import { fetchPublished, publishedList, checkPublished, checkRun, summarize as summarizeIds, fileKeyOf, isBranchUrl } from './lib/component-id-check.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
-const opts = { mode: 'scan', yes: false, target: null, fileKey: null, cliDir: process.env.FIGMA_DS_CLI_DIR || process.cwd(), work: './icon-sync', page: null, prefix: null, only: null, ref: null, repo: null, path: null, gallery: null, noGallery: false, rules: null, batch: 40, force: false, library: null, reorder: true, git: null, galleryFile: null };
+const opts = { mode: 'scan', yes: false, target: null, fileKey: null, cliDir: defaultCliDir(), work: DEFAULT_WORK, page: null, prefix: null, only: null, ref: null, repo: null, path: null, gallery: null, noGallery: false, rules: null, batch: 40, force: false, library: null, reorder: true, git: null, galleryFile: null };
 for (let i = 0; i < args.length; i++) {
   const a = args[i];
   if (a === '--mode') opts.mode = args[++i];

@@ -436,10 +436,12 @@ Designers run one command. It downloads the icon SVG files from Git, validates t
 The page itself (header, purpose boxes, grid of icons and labels) is not made by this folder. Case 0, a new set in a new file, builds it with the Icons builder in `../figma-doc-builders/icons/` (it asks every time for the destination file and for the source: a Figma file or a Git repo). This folder keeps the icons on that page in sync afterwards. A label beside an icon is a text or an instance of the label building block of that builder: the export and the import script find both.
 
 ```bash
-# open the Figma file with the icon page first; run from the figma-cli folder or pass --cli-dir
+# open the Figma file with the icon page first; figma-ds-cli runs from ~/figma-cli (or --cli-dir, FIGMA_DS_CLI_DIR)
 node icon-workflow/icons.mjs            # plan: writes nothing
 node icon-workflow/icons.mjs --apply    # writes into the open file
 ```
+
+The folders are the same wherever the command is started and never inside the repository: `~/icon-workflow/export` for the files of `export-svg.mjs` (`--out`), `~/icon-workflow/changelog` for `changelog.mjs` (`--out`) and `~/icon-workflow/work` for downloads and reports (`--work`). figma-ds-cli runs from `~/figma-cli` when that folder exists (`--cli-dir` or `FIGMA_DS_CLI_DIR` choose another).
 
 The command finds the library (`ds-library` or `legacy-library`) from the icon names. Optional: `--target <name>`, `--page <text>` (default `Icons`), `--only a,b` (these icons only), `--cli-dir <folder>`, `--work <folder>`, `--rules <file>`, `--force`, `--gallery <path>` (the gallery file in the repository, default from the rule file), `--no-gallery` (skip the comparison of the texts), `--library <url>` (the main file of the published library, for the Component ID check), `--no-reorder` (leave the icons where they are), `--git <folder>` (a local folder of SVG files instead of the download, for a test before a push) and `--gallery-file <file>` (a local gallery file).
 
@@ -516,8 +518,8 @@ node icon-workflow/lib/compare-metadata.mjs --figma <export.json> --gallery <ico
 The Figma description gets the lines `Purpose type:`, `Description:`, `Old name:` and `Deprecated purpose:` (decided on 2026-11-10 and 2026-11-11). The texts exist in the gallery file; this command copies them into the descriptions of the open Figma file once:
 
 ```bash
-node icon-workflow/write-metadata.mjs --cli-dir <figma-cli folder>           # plan: writes nothing
-node icon-workflow/write-metadata.mjs --cli-dir <figma-cli folder> --apply   # writes into the open file
+node icon-workflow/write-metadata.mjs           # plan: writes nothing
+node icon-workflow/write-metadata.mjs --apply   # writes into the open file
 ```
 
 - It adds only lines that are missing and keeps the existing text as it is; it never deletes. A second run changes nothing. An icon without a gallery entry, or where the gallery cannot give a line (purpose type neither single nor multi, no description), is listed and left alone.
@@ -530,8 +532,8 @@ node icon-workflow/write-metadata.mjs --cli-dir <figma-cli folder> --apply   # w
 The export step of the pipeline (board "Icons Workflows", Case 0 and the cases after it). It writes the icons of the open Figma file as SVG files in the format of the Git set and the gallery file `icons.ts` with the texts of the icons, so that the DS Developers can take both into one pull request. Decided on 2026-11-11: the build (`update-icons.ts`) adds the id of an icon, so the files carry no id. The build changes only the id, the XML declaration and the line breaks, so the export itself removes what the build would keep: `width` and `height`, `fill="none"` on the root and the fixed fill of the path (see `lib/normalize-svg.mjs`).
 
 ```bash
-node icon-workflow/export-svg.mjs --cli-dir <figma-cli folder> --target ds-library                       # only the changed and the new icons
-node icon-workflow/export-svg.mjs --cli-dir <figma-cli folder> --target ds-library --all --zip --out ./icon-export   # the whole set and a zip
+node icon-workflow/export-svg.mjs --target ds-library                       # only the changed and the new icons
+node icon-workflow/export-svg.mjs --target ds-library --all --zip   # the whole set and a zip
 ```
 
 - Steps: download the SVG files and the gallery file of the repository as the reference (pinned to one commit, or `--git <folder>`), export the icon page with the SVG and the description of every icon, normalize, run the SVG file check (profile `export`) and the comparison with Git, check the icons to write in Figma (step 4b), build the gallery file, choose, write. The Figma tab must be in front.
@@ -559,10 +561,10 @@ node icon-workflow/export-svg.mjs --cli-dir <figma-cli folder> --target ds-libra
 The changelog per release was written by hand (Confluence table: Added icon, Changed name, Changed icon). Decided on 2026-11-10: a script generates it. The command compares two states of the set in Git and does not touch Figma:
 
 ```bash
-node icon-workflow/changelog.mjs --from 14.2.1 --to 15.0.0 [--out ./icon-changelog]
+node icon-workflow/changelog.mjs --from 14.2.1 --to 15.0.0 [--out <folder>]
 ```
 
-- Options: `--from <ref>` (the older state: a tag, a branch or a commit; required), `--to <ref>` (default `master`), `--out <folder>` (default `./icon-changelog`), `--work <folder>` (default `./icon-sync`), `--repo`, `--path` and `--token` as in `fetch-icons.mjs`, `--gallery <path>`, `--no-gallery`, `--rules <file>`.
+- Options: `--from <ref>` (the older state: a tag, a branch or a commit; required), `--to <ref>` (default `master`), `--out <folder>` (default `~/icon-workflow/changelog`), `--work <folder>` (default `~/icon-workflow/work`), `--repo`, `--path` and `--token` as in `fetch-icons.mjs`, `--gallery <path>`, `--no-gallery`, `--rules <file>`.
 - Steps: download both states (the SVG files and the gallery file, each pinned to one commit), compare the names, compare the shapes with the validator (rule S16, `compare.shapeTolerance`), compare the texts, write `changelog-<from>-to-<to>.md` and `.csv` into `--out`. The `.md` has the Git refs with commit and date, the icon counts, the counts per kind and one table per kind; the `.csv` has the columns `icon,change,detail`, one row per icon and kind.
 
 | kind | what it is |
@@ -603,5 +605,5 @@ node icon-workflow/changelog.mjs --from 14.2.1 --to 15.0.0 [--out ./icon-changel
 - **New icons** get no description, Git has none. Rule F09 reports them.
 - **Where the defaults come from.** The 24 px size is the documented `md` icon size (`documentation/06-components/icon/02-architecture.md`). Fill only, one path per icon and one color are what the current set of 284 icons does. The official icon guidelines are not readable as text, so no value is taken from them.
 - **Limits of the SVG reader.** It reads elements and attributes, not CSS stylesheets; `<style>` is a forbidden element by default. Shapes inside `defs`, `clipPath` or `mask` do not count for colors. The bounding box is skipped when a `transform` is present.
-- **Reports** of every step go to the working folder (`--work`, default `./icon-sync`).
+- **Reports** of every step go to the working folder (`--work`, default `~/icon-workflow/work`).
 - The Figma parts keep their header inside the IIFE, so `eval -f` returns the output (see the known issue at the top).

@@ -16,8 +16,8 @@
 // options:
 //   --from <ref>          the older state: a tag, a branch or a commit (required)
 //   --to <ref>            the newer state (default master)
-//   --out <folder>        where the files go (default ./icon-changelog)
-//   --work <folder>       working folder for downloads and reports (default ./icon-sync)
+//   --out <folder>        where the files go (default ~/icon-workflow/changelog)
+//   --work <folder>       working folder for downloads and reports (default ~/icon-workflow/work)
 //   --repo <owner/name>, --path <folder>, --token <token>   as in lib/fetch-icons.mjs
 //   --gallery <path>      the gallery file in the repository (default: metadata.galleryPath of the rule file)
 //   --no-gallery          compare the SVG files only (no renames, no texts)
@@ -31,13 +31,13 @@
 import { copyFileSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { runNode } from './lib/figma-run.mjs';
+import { runNode, DEFAULT_WORK, DEFAULT_CHANGELOG } from './lib/figma-run.mjs';
 import { parseGalleryFile } from './lib/metadata.mjs';
 import { classify, textChanges, renderMarkdown, renderCsv } from './lib/changelog.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
-const opts = { from: null, to: 'master', out: './icon-changelog', work: './icon-sync', repo: null, path: null, token: null, gallery: null, noGallery: false, rules: null };
+const opts = { from: null, to: 'master', out: DEFAULT_CHANGELOG, work: DEFAULT_WORK, repo: null, path: null, token: null, gallery: null, noGallery: false, rules: null };
 for (let i = 0; i < args.length; i++) {
   const a = args[i];
   if (a === '--from') opts.from = args[++i];

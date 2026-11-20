@@ -67,7 +67,7 @@ const OPTS = {
   dryRun: args.includes('--dry-run'),
   yes: args.includes('--yes'),
   registry: getArg('--registry', path.join(HERE, 'registry.json')),
-  work: path.resolve(getArg('--work', './icon-sync')),
+  work: path.resolve(getArg('--work', path.join(process.env.HOME || '', 'icon-workflow', 'work'))),
   batch: Number(getArg('--batch', '40')),
 };
 if (args.includes('--help') || args.includes('-h')) {

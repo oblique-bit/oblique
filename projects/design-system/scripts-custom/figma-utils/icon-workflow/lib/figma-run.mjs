@@ -5,11 +5,26 @@
 // ----------------------------------------------------------------------------
 
 import { spawnSync } from 'node:child_process';
-import { readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { homedir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 export const LIB = dirname(fileURLToPath(import.meta.url));
+
+// The folders of the commands: always the same, wherever the command is started, and never inside the repository
+// (a folder inside the repository shows up in git as new files). --out and --work choose another folder.
+export const HOME = join(homedir(), 'icon-workflow');
+export const DEFAULT_WORK = join(HOME, 'work');
+export const DEFAULT_EXPORT = join(HOME, 'export');
+export const DEFAULT_CHANGELOG = join(HOME, 'changelog');
+
+// the folder to run figma-ds-cli from: FIGMA_DS_CLI_DIR, else ~/figma-cli when it exists, else the current folder
+export function defaultCliDir() {
+  if (process.env.FIGMA_DS_CLI_DIR) return process.env.FIGMA_DS_CLI_DIR;
+  const home = join(homedir(), 'figma-cli');
+  return existsSync(home) ? home : process.cwd();
+}
 
 // a Node script of lib/ (validator, fetch); returns the exit status and the output
 export function runNode(script, scriptArgs) {

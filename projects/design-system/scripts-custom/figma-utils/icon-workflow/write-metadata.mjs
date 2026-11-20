@@ -35,8 +35,8 @@
 //   --page <text>         the Figma page whose name contains this text (default Icons)
 //   --prefix <text>       component name prefix (default: from the rule file)
 //   --target <name>       the library the file belongs to: legacy-library or ds-library
-//   --cli-dir <folder>    folder to run figma-ds-cli from (or set FIGMA_DS_CLI_DIR)
-//   --work <folder>       working folder for downloads and reports (default ./icon-sync)
+//   --cli-dir <folder>    folder to run figma-ds-cli from (or set FIGMA_DS_CLI_DIR; default ~/figma-cli when it exists)
+//   --work <folder>       working folder for downloads and reports (default ~/icon-workflow/work)
 //   --ref, --repo         as in fetch-icons.mjs
 //   --rules <file>        rule file
 //   --batch <n>           icons per Figma call (default 100)
@@ -48,12 +48,12 @@
 import { mkdirSync, readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { runNode, runFigma as runFigmaIn, generate } from './lib/figma-run.mjs';
+import { runNode, runFigma as runFigmaIn, generate, DEFAULT_WORK, defaultCliDir } from './lib/figma-run.mjs';
 import { parseGalleryFile, withNewLines, compareMetadata } from './lib/metadata.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
-const opts = { mode: 'scan', yes: false, fileKey: null, gallery: null, figma: null, only: null, page: null, prefix: null, target: null, cliDir: process.env.FIGMA_DS_CLI_DIR || process.cwd(), work: './icon-sync', ref: null, repo: null, rules: null, batch: 100 };
+const opts = { mode: 'scan', yes: false, fileKey: null, gallery: null, figma: null, only: null, page: null, prefix: null, target: null, cliDir: defaultCliDir(), work: DEFAULT_WORK, ref: null, repo: null, rules: null, batch: 100 };
 for (let i = 0; i < args.length; i++) {
   const a = args[i];
   if (a === '--apply') { opts.mode = 'apply'; opts.yes = true; }

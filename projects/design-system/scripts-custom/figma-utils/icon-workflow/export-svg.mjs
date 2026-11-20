@@ -20,7 +20,7 @@
 //   node export-svg.mjs --cli-dir <figma-cli folder> [options]
 //
 // options:
-//   --out <folder>        where the SVG files and icons.ts go (default ./icon-export)
+//   --out <folder>        where the SVG files and icons.ts go (default ~/icon-workflow/export)
 //   --all                 write every icon and the gallery file, not only the changed and the new ones (Case 0: the whole set)
 //   --zip                 also write <out>.zip with the files (needs the zip command)
 //   --only <a,b,c>        these icon names only
@@ -32,8 +32,8 @@
 //   --target <name>       the library the file belongs to: legacy-library or ds-library
 //   --page <text>         the Figma page whose name contains this text (default Icons)
 //   --prefix <text>       component name prefix (default: from the target or the rule file)
-//   --cli-dir <folder>    folder to run figma-ds-cli from (or set FIGMA_DS_CLI_DIR)
-//   --work <folder>       working folder for downloads, exports and reports (default ./icon-sync)
+//   --cli-dir <folder>    folder to run figma-ds-cli from (or set FIGMA_DS_CLI_DIR; default ~/figma-cli when it exists)
+//   --work <folder>       working folder for downloads, exports and reports (default ~/icon-workflow/work)
 //   --ref, --repo, --path as in fetch-icons.mjs
 //   --rules <file>        rule file for the validator
 //   --force               write the files although the check found errors
@@ -46,13 +46,13 @@ import { execFileSync } from 'node:child_process';
 import { mkdirSync, readFileSync, rmSync, writeFileSync, existsSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { runNode, runFigma as runFigmaIn, generate } from './lib/figma-run.mjs';
+import { runNode, runFigma as runFigmaIn, generate, DEFAULT_WORK, DEFAULT_EXPORT, defaultCliDir } from './lib/figma-run.mjs';
 import { normalizeSvg } from './lib/normalize-svg.mjs';
 import { buildGallery, summarize } from './lib/gallery-file.mjs';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const args = process.argv.slice(2);
-const opts = { out: './icon-export', all: false, zip: false, only: null, noGit: false, git: null, target: null, page: null, prefix: null, cliDir: process.env.FIGMA_DS_CLI_DIR || process.cwd(), work: './icon-sync', ref: null, repo: null, path: null, rules: null, force: false, gallery: null, galleryFile: null, noGallery: false };
+const opts = { out: DEFAULT_EXPORT, all: false, zip: false, only: null, noGit: false, git: null, target: null, page: null, prefix: null, cliDir: defaultCliDir(), work: DEFAULT_WORK, ref: null, repo: null, path: null, rules: null, force: false, gallery: null, galleryFile: null, noGallery: false };
 for (let i = 0; i < args.length; i++) {
   const a = args[i];
   if (a === '--out') opts.out = args[++i];

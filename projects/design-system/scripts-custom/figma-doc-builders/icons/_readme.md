@@ -69,28 +69,28 @@ It is made for a branch that is merged into the main file first. A new branch ma
 
 ## Usage
 
-Open a terminal where you can type (the builder asks questions) and go to the folder of the builder. Keep the work folder outside the repository: the default `./icon-sync` is made in the folder you run from. Inside the repository git shows it as a new folder.
+Open a terminal where you can type (the builder asks questions) and go to the folder of the builder. The work folder is `~/icon-workflow/work` by default (the same as the commands of the icon workflow), so it never lands inside the repository.
 
 ```bash
 cd <repository>/projects/design-system/scripts-custom/figma-doc-builders/icons
 
 # asks for the source type, the source and the destination URL, reads the source, shows the plan, asks, builds
-node build-icons.js --work ~/icon-sync
+node build-icons.js
 
 # the same, but writes nothing
-node build-icons.js --dry-run --work ~/icon-sync
+node build-icons.js --dry-run
 
 # only the building blocks: asks only for the destination, no source, no page, no icons
-node build-icons.js --blocks-only --work ~/icon-sync
+node build-icons.js --blocks-only
 
 # for scripts (no questions): a Figma file as the source
-node build-icons.js --source-type figma --source "<url>" --destination "<url>" --yes --work ~/icon-sync
+node build-icons.js --source-type figma --source "<url>" --destination "<url>" --yes
 
 # for scripts: a Git repo as the source
-node build-icons.js --source-type git --git-repo oblique-bit/oblique --git-ref master --destination "<url>" --yes --work ~/icon-sync
+node build-icons.js --source-type git --git-repo oblique-bit/oblique --git-ref master --destination "<url>" --yes
 ```
 
-Options: `--source-type figma|git`, `--source <url>`, `--git-repo <owner/name>`, `--git-ref <branch|tag|sha>`, `--git-path <folder>`, `--force`, `--destination <url>`, `--blocks-only`, `--registry <file>`, `--work <folder>` (default `./icon-sync` in the folder you run from), `--batch <n>` (icons per Figma call, default 40).
+Options: `--source-type figma|git`, `--source <url>`, `--git-repo <owner/name>`, `--git-ref <branch|tag|sha>`, `--git-path <folder>`, `--force`, `--destination <url>`, `--blocks-only`, `--registry <file>`, `--work <folder>` (default `~/icon-workflow/work`), `--batch <n>` (icons per Figma call, default 40).
 
 Phases in the destination: `prepare` saves the restore point "Before icons builder" in the version history, makes the building blocks, the page, the section, the header and the boxes. `icons` creates one batch of icons with their labels. `finish` sizes the section and checks the whole page (size, one vector, bound fill, locked aspect ratio, label text, header, boxes, number of icons, variants of the box component that overlap).
 
