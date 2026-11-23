@@ -1,0 +1,19 @@
+{
+  "ob": {
+    "c": {
+      "footer": {
+        "token_family_docs": {
+          "description": {
+            "$type": "other",
+            "$value": "[FIGMA-ONLY] Temporary tokens used only for Figma documentation of the viewport / responsive system. They drive the _pseudo_footer component variant so the footer swaps with viewport modes. Delete when the real footer component ships."
+          }
+        },
+        "variant": {
+          "$type": "text",
+          "$value": "mobile",
+          "$description": "[FIGMA-ONLY] Pseudo / temporary. Selects the _pseudo_footer component variant for the xl viewport. Mobile fotter below lg, desktop from lg up. Bind to the footer component's variant property; delete when the real footer ships."
+        }
+      }
+    }
+  }
+}
