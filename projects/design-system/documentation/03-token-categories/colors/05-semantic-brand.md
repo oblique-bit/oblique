@@ -1,6 +1,6 @@
 # Brand Colors Documentation
 
-**About this document:** This document defines brand colors within the Oblique Design System semantic color architecture.
+**About this document:** This document defines brand colors within the Oblique Next Design System semantic color architecture.
 
 **Scope:** Static brand identity tokens that maintain consistent federal visual identity across all modes and contexts.
 

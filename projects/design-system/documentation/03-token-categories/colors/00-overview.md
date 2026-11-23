@@ -1,6 +1,6 @@
 # Color Tokens
 
-**About this document:** This document introduces the color system within the design token architecture of the Oblique Design System.
+**About this document:** This document introduces the color system within the design token architecture of the Oblique Next Design System.
 
 **Scope:** Token fundamentals, [semantic layer architecture](03-semantic.md), and navigation to specialized color documentation.
 
@@ -22,7 +22,7 @@
 
 ## Introduction
 
-The Oblique Design System provides a structured color system that ensures consistent visual communication across all components and applications. The color token architecture supports user preferences and accessibility requirements, while maintaining clear semantic meaning.
+The Oblique Next Design System provides a structured color system that ensures consistent visual communication across all components and applications. The color token architecture supports user preferences and accessibility requirements, while maintaining clear semantic meaning.
 
 ### Color System Benefits
 - **Mode adaptation**: Automatic adaptation to light/dark preferences
@@ -174,7 +174,7 @@ For detailed token selection examples and technical implementation, see [Semanti
 
 ### Decorative vs Semantic Color Usage
 
-**Design System Philosophy**: The Oblique Design System **primarily emphasizes semantic color usage** to ensure clear communication and accessibility. However, we do not exclude decorative color usage when it serves to provide additional context or enhance understanding.
+**Design System Philosophy**: The Oblique Next Design System **primarily emphasizes semantic color usage** to ensure clear communication and accessibility. However, we do not exclude decorative color usage when it serves to provide additional context or enhance understanding.
 
 **Primitive Color Selection Warning**: Picking colors directly from primitive tokens is a **high-risk approach** that should only be done with extreme caution and strict adherence to the established color usage rules. Most color needs are already addressed through semantic tokens and components - always exhaust these options first.
 

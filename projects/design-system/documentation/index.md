@@ -1,16 +1,22 @@
-# Oblique Design System
+# Oblique Next Design System
 
 **Oblique 16**
 
-## What is the Oblique Design System?
+## What is the Oblique Next Design System?
 
-Oblique 16 introduces the Oblique Design System for the first time, alongside the existing Oblique library. Today, "Oblique Design System" means design tokens and modes as the source of truth, generated into Figma variables and CSS.
+This repository hosts the groundwork for the Oblique Next Design System. It is meant for exploration and information only, not for production. To design products, please use the latest Oblique library.
 
-It is currently maintained separately from the rest of Oblique and will integrate with it over time. This first version is for exploring the tokens and modes.
+Oblique Next Design System is the upcoming design system for applications of the Swiss Confederation, owned and operated by BIT / Oblique. It is built on design tokens: named values for design decisions such as color, typography, spacing and motion. Defined once and shared by Figma and code, they form a single source of truth instead of scattered, hand-typed numbers.
+
+This removes ambiguity and a whole class of inconsistency errors. Design tokens are also a prerequisite for working with AI: rather than guessing at colors, spacing or type sizes, AI tools work with the exact values we have defined.
+
+In Figma, the design tokens are set up as variables. Modes let the same layout adapt to different contexts, for example light and dark mode or different viewport sizes.
+
+Oblique Next Design System is in active development, while the current Oblique library remains in use. Step by step, the design system will be integrated and will eventually replace the current library.
 
 ### Background
 
-Oblique's CSS variables have grown over time, expanding to meet each project's needs. This makes it harder to keep an overview as the system keeps growing, and to build further on top of it.
+Oblique's CSS variables have grown over time, expanding to meet each project's needs. This makes it harder to keep an overview as the system keeps growing, and to build further on top of it. In addition, they did not match the Figma variables, so design and code could drift apart.
 
 There are also growing demands from several sides:
 
@@ -23,7 +29,7 @@ There are also growing demands from several sides:
 
 ### Benefits of Design Tokens
 
-Design tokens are the natural next step, answering these demands directly.
+Design tokens answer these demands directly.
 
 - A scalable design tokens structure, enriched with context, forming a shared language and bridge between designers, developers, design tools (Figma), and AI tools
 - DTCG-compliant tokens, compatible with Tokens Studio (the industry-standard token management platform) and exportable to Figma and CSS
@@ -31,7 +37,7 @@ Design tokens are the natural next step, answering these demands directly.
 - Replaces hardcoded values with semantically named tokens, lowering the risk of human error
 - Accumulates development cost savings across all federal applications over time
 - Lowers the barrier for product designers to contribute directly to the Design System
-- Modes enable context-driven design, adapting to different environments and easing accessibility challenges
+- Modes make accessibility needs easier to meet, for example high contrast or reduced motion
 
 ### What this Design System release contains
 - Design tokens as JSON files for color, typography, dimension, and more
@@ -50,7 +56,7 @@ Design tokens are the natural next step, answering these demands directly.
 
 ### How this relates to Oblique
 
-"Oblique" without qualification usually means the existing Oblique component library, maintained separately from this Design System project and continuing unchanged in this release. The Oblique Design System provides the token foundation that future components, Oblique's own or otherwise, can build on.
+"Oblique" without qualification usually means the existing Oblique component library, maintained separately from this Design System project and continuing unchanged in this release. The Oblique Next Design System provides the token foundation that future components, Oblique's own or otherwise, can build on.
 
 ---
 

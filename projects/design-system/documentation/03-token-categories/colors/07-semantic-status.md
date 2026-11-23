@@ -1,6 +1,6 @@
 # Status Colors Documentation
 
-Status colors communicate system state, user feedback, and contextual information in the Oblique Design System. They have been redesigned for government web applications with clearer, more accessible naming that follows established signal color semantics.
+Status colors communicate system state, user feedback, and contextual information in the Oblique Next Design System. They have been redesigned for government web applications with clearer, more accessible naming that follows established signal color semantics.
 
 **Semantic Status System:** Semantic statuses act as an overarching term and contain more than colors. Status meaning must not rely solely on color. For full accessibility and clear communication, we combine multiple elements:
 - **Status color** - Visual color coding for quick recognition

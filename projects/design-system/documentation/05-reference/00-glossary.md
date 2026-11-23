@@ -1,5 +1,5 @@
 # Glossary
-Definitions of key terms and concepts in the Oblique Design System.
+Definitions of key terms and concepts in the Oblique Next Design System.
 
 ---
 
@@ -82,7 +82,7 @@ A single value within a mode collection — `light`, `dark`, `sm`, `md`, `lg`, `
 - in the `viewport` collection: `xs`, `sm`, `md`, `lg`, `xl`, `2xl`
 
 ### **Mode collection**
-An axis along which the design system varies — a named group of mutually exclusive modes that the user, the device, or the application switches between. The Oblique Design System has seven mode collections: `lightness`, `emphasis`, `ui_scale`, `density`, `typography_context`, `motion`, `viewport`. In Figma, each mode collection surfaces as a Figma variable collection with one Figma mode per Oblique mode.
+An axis along which the design system varies — a named group of mutually exclusive modes that the user, the device, or the application switches between. The Oblique Next Design System has seven mode collections: `lightness`, `emphasis`, `ui_scale`, `density`, `typography_context`, `motion`, `viewport`. In Figma, each mode collection surfaces as a Figma variable collection with one Figma mode per Oblique mode.
 
 ### **Collection (Figma context)**
 A Figma-specific term — a group of related variables and their modes. Every Oblique mode collection surfaces as a Figma variable collection, but "collection" by itself in Figma can also describe non-mode groupings.
@@ -108,7 +108,7 @@ A component property where the identity and intent remain the same, but the attr
 ## Token Structure
 
 ### **Token Naming Convention**
-The naming pattern used across the Oblique Design System:
+The naming pattern used across the Oblique Next Design System:
 ```
 ob.{tier}.{category}.{...path}
 ```

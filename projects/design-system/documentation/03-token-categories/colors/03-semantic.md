@@ -1,6 +1,6 @@
 # Semantic Colors
 
-**About this document:** This document defines the semantic color system structure, static colors, and organization within the Oblique Design System.
+**About this document:** This document defines the semantic color system structure, static colors, and organization within the Oblique Next Design System.
 
 **Scope:** All semantic color tokens including hierarchical layers, static values, and category organization.
 

@@ -10,7 +10,7 @@
 
 ## About Maintainer Workflows
 
-This folder contains workflows, guides, and processes specifically designed for the **Oblique Design System core team** and maintainers who develop, maintain, and evolve the design system itself.
+This folder contains workflows, guides, and processes specifically designed for the **Oblique Next Design System core team** and maintainers who develop, maintain, and evolve the design system itself.
 
 ### Current Maintainer Workflows
 

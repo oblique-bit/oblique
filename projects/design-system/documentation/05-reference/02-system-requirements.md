@@ -1,6 +1,6 @@
 # Design Token System Requirements
 
-**Purpose:** Define high-level requirements and compatibility priorities for the Oblique Design System token architecture
+**Purpose:** Define high-level requirements and compatibility priorities for the Oblique Next Design System token architecture
 
 ---
 

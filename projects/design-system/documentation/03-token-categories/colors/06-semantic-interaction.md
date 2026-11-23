@@ -1,6 +1,6 @@
 # Interaction Colors Documentation
 
-Interaction colors provide visual feedback for user interactions and establish clear states for all interactive elements in the Oblique Design System. They communicate hover, focus, active, visited, and disabled states across buttons, links, and other actionable components.
+Interaction colors provide visual feedback for user interactions and establish clear states for all interactive elements in the Oblique Next Design System. They communicate hover, focus, active, visited, and disabled states across buttons, links, and other actionable components.
 
 ## Token Structure
 

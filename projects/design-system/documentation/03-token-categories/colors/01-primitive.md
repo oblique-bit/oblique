@@ -1,6 +1,6 @@
 # Primitive Colors
 
-**About this document:** This document defines the primitive color foundation within the Oblique Design System based on the actual token structure in `src/lib/themes/02_primitive/color.json`.
+**About this document:** This document defines the primitive color foundation within the Oblique Next Design System based on the actual token structure in `src/lib/themes/02_primitive/color.json`.
 
 **Scope:** Base primitive color tokens that serve as the foundation for all semantic color layers.
 

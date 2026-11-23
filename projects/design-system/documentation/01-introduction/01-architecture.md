@@ -1,6 +1,6 @@
 # Design Tokens: Foundation Architecture
 
-**Purpose**: Core architectural principles and token structure for the Oblique Design System  
+**Purpose**: Core architectural principles and token structure for the Oblique Next Design System  
 **Audience**: Design system maintainers, token architects, technical leads  
 **Related**: [Token Naming](02-naming.md) | [System Requirements](../05-reference/02-system-requirements.md) | [Tokenization Process](../05-reference/03-workflows-readme.md)
 

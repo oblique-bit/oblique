@@ -1,6 +1,6 @@
 # Primitive Token Architecture
 
-This document outlines the architecture and strategy for primitive tokens in the Oblique Design System. The goal is to establish a clear, scalable, and maintainable foundation for all other token tiers.
+This document outlines the architecture and strategy for primitive tokens in the Oblique Next Design System. The goal is to establish a clear, scalable, and maintainable foundation for all other token tiers.
 
 ## Guiding Principles
 

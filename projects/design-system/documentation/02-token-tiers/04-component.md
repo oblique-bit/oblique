@@ -21,11 +21,11 @@ Component tokens are the top level of the token hierarchy, providing component-s
 
 ## Component Token Levels
 
-The Oblique Design System uses **two distinct component token levels**:
+The Oblique Next Design System uses **two distinct component token levels**:
 
 ### **`ob.c.*` — Custom Oblique Components**
 
-Custom components built specifically for the Oblique Design System with unique styling patterns and behaviors. No component currently ships tokens at this level (see above).
+Custom components built specifically for the Oblique Next Design System with unique styling patterns and behaviors. No component currently ships tokens at this level (see above).
 
 ```
 ob.c.{component}.{category}.{property}.{variant}

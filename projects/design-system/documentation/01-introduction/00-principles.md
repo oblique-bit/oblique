@@ -1,11 +1,11 @@
-# Oblique Design System Principles
-Principles governing the relationship between the Oblique Design System's code and Figma design assets.
+# Oblique Next Design System Principles
+Principles governing the relationship between the Oblique Next Design System's code and Figma design assets.
 
 ---
 
 ##  **Introduction**
 
-The Oblique Design System provides two primary deliverables for federal application development:
+The Oblique Next Design System provides two primary deliverables for federal application development:
 
 ### **Code Assets (Implementation)**
 **Purpose:** To be implemented in federal applications  
@@ -47,7 +47,7 @@ Besides consistency, each environment and target audience has its own needs. We 
 
 ## **Design System Principles**
 
-The Oblique Design System is built on the principle of **Code-Figma Alignment** with **Code Priority** for implementation accuracy and user experience fidelity.
+The Oblique Next Design System is built on the principle of **Code-Figma Alignment** with **Code Priority** for implementation accuracy and user experience fidelity.
 
 ### **Principle 1: Code-Figma Convergence**
 **"Design and code should be as close as possible to each other"**
