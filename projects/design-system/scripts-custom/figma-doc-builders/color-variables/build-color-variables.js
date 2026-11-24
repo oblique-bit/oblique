@@ -1222,7 +1222,7 @@ const DEFAULT_PLACEHOLDERS = ['Tier title', 'Group Title', 'Group description', 
 // Replaces the older standalone __build_header TEXT.
 const _CV_OUTER_NAME              = 'Color Variables Output';
 const _CV_FOUNDATION_BAR_NAME     = '__foundation_bar';
-const _CV_FOUNDATION_NAME         = 'Colors – Variables';
+const _CV_FOUNDATION_NAME         = registry.foundationName || 'Colors';
 
 // Foundation description comes from PAYLOAD.foundationDescription (read
 // Node-side from compiled.json's token_family_docs umbrella; export:false on
