@@ -69,7 +69,7 @@ const BUILDERS = [
 // update here if a page is renamed, this script does not read the
 // registries dynamically.
 const CANONICAL_PAGES = [
-  '🎨 Colors - Variables',
+  'Colors',
   '🎨  Colors – Contrast Pairing Light',
   '🎨  Colors – Contrast Pairing Dark',
   '📐 Dimension – Spacing & Sizing',

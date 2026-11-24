@@ -1,5 +1,6 @@
 {
-  "page": "🎨 Colors - Variables",
+  "page": "Colors",
+  "foundationName": "Colors",
   "tableWidths": {
     "primitive": 1000,
     "s1": 1500,
