@@ -135,7 +135,7 @@
 	--ob-s-border_width-sm: 2px;
 	--ob-s-border_width-xl: 8px;
 	--ob-s-border_width-xs: 1px;
-	--ob-s-color-_docs-token_family_info: Fully resolved semantic color tokens — neutral, interaction, status, free, and brand. No mode resolution required. Light/Dark modes are pre-integrated — no manual mode switching needed. Use: Assign in component and HTML token files. Avoid: Referencing S1 tokens directly in components — S1 is a bridging layer where mode resolution is partial. Figma variable names for this tier trim the ob/s/ prefix (e.g. color/neutral/fg/contrast_medium/inversity_normal) for usability in the variables panel; the JSON token keeps the full ob.s.color path.;
+	--ob-s-color-_docs-token_family_info: Fully resolved semantic color tokens — neutral, interaction, status, free, brand, and navigation. No mode resolution required. Light/Dark modes are pre-integrated — no manual mode switching needed. Use: Assign in component and HTML token files. Avoid: Referencing S1 tokens directly in components — S1 is a bridging layer where mode resolution is partial. Figma variable names for this tier trim the ob/s/ prefix (e.g. color/neutral/fg/contrast_medium/inversity_normal) for usability in the variables panel; the JSON token keeps the full ob.s.color path.;
 	--ob-s-color-brand-1: #ff0000;
 	--ob-s-color-brand-2: #ffffff;
 	--ob-s-color-brand-_docs-token_family_info: Official federal identity color (Bundesrot). Light/Dark modes apply — no emphasis modes. Use: Primary brand accent in navigation active states and official federal identity elements. Avoid: Interactive states or status feedback — use the interaction or status scale instead.;
@@ -403,7 +403,7 @@
 	--ob-s-color-status-resolved-fg-contrast_low-inversity_normal: #059669;
 	--ob-s-color-status-resolved-fg-contrast_medium-inversity_flipped: #d1fae5;
 	--ob-s-color-status-resolved-fg-contrast_medium-inversity_normal: #047857;
-	--ob-s-color-token_family_docs-description: Semantic color tokens — neutral, interaction, status, free, and brand. Light/Dark and emphasis modes are pre-resolved; component and HTML tokens consume these directly without further mode handling. Do not consume primitive colors in components.;
+	--ob-s-color-token_family_docs-description: The Oblique Next Design System provides one shared, consistent set of colors for federal applications. It supports light and dark mode and meets accessibility requirements such as text contrast of at least 4.5:1, WCAG AA. Colors travel through four reference tiers: P (primitives), S1 (light/dark), S2 (emphasis) and S (projects use only this!). Semantic tokens are grouped into categories: neutral, interaction, status, brand, free and navigation. Clear token names and descriptions give product designers and AI tools the usage context. Read more: https://github.com/oblique-bit/oblique/blob/tokens-release-16/projects/design-system/documentation/03-token-categories/colors/00-overview.md;
 	--ob-s-dimension-dynamic-density-10xl-px: 56;
 	--ob-s-dimension-dynamic-density-10xl-rem: 3.5rem;
 	--ob-s-dimension-dynamic-density-11xl-px: 64;
@@ -838,7 +838,7 @@
 	--ob-s-typography-scale-static-text_decoration-token_family_docs-description: Text decoration tokens — primarily for links. Default has an underline; low-emphasis variants drop the underline.;
 	--ob-s-typography-scale-static-token_family_docs-description: Size-mode-independent individual typography tokens.;
 	--ob-s-typography-token_family_docs-description: Typography foundation — every text-related token in the system. Covers font families, font weights, font sizes, line heights, paragraph spacing, letter spacing and text-decoration / text-case / text-align. Composite text styles (Figma styles) are built by combining tokens from these sub-families.;
-	--ob-s1-color-_docs-token_family_info: Source file for S1 color tokens in the Light theme. Usage guidelines are documented per color family — see Neutral, Interaction, Status, and Free.;
+	--ob-s1-color-_docs-token_family_info: Source file for S1 color tokens in the Light theme. Usage guidelines are documented per color family — see Neutral, Interaction, Status, Free, and Navigation.;
 	--ob-s1-color-free-cobalt-bg-contrast_high-inversity_flipped: #1c2834;
 	--ob-s1-color-free-cobalt-bg-contrast_high-inversity_normal: #f0f4f7;
 	--ob-s1-color-free-cobalt-bg-contrast_highest-inversity_flipped: #131b22;
@@ -1507,7 +1507,7 @@
 		--ob-s-color-status-resolved-fg-contrast_low-inversity_normal: #34d399;
 		--ob-s-color-status-resolved-fg-contrast_medium-inversity_flipped: #065f46;
 		--ob-s-color-status-resolved-fg-contrast_medium-inversity_normal: #6ee7b7;
-		--ob-s1-color-_docs-token_family_info: Source file for S1 color tokens in the Dark theme. Usage guidelines are documented per color family — see Neutral, Interaction, Status, and Free.;
+		--ob-s1-color-_docs-token_family_info: Source file for S1 color tokens in the Dark theme. Usage guidelines are documented per color family — see Neutral, Interaction, Status, Free, and Navigation.;
 		--ob-s1-color-free-cobalt-bg-contrast_high-inversity_flipped: #acb4bd;
 		--ob-s1-color-free-cobalt-bg-contrast_high-inversity_normal: #1c2834;
 		--ob-s1-color-free-cobalt-bg-contrast_highest-inversity_flipped: #ffffff;

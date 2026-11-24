@@ -117,7 +117,7 @@ Interaction colors are not named after a state (`selected`, `enabled`, ...) — 
 
 ## **Category Organization**
 
-The semantic color system is organized into **four main categories**:
+The semantic color system is organized into these main categories:
 
 ### **Brand Category**
 - **Location**: `src/lib/themes/03_semantic/color/compiled.json` (integrated with final compilation)
@@ -153,6 +153,22 @@ The semantic color system is organized into **four main categories**:
   - Flexible statuses (pending, confirmed, progress, etc.)
   - Foreground and background variations
 
+### **Free Category**
+- **Location**: L1 semantic level files (`s1_lightness/`) + ob.s compilation (`compiled.json`)
+- **Purpose**: Colors with no fixed semantic meaning, for project-specific use (tags, categories, data visualization)
+- **Includes**:
+  - Five hues: cobalt, yellow, teal, indigo, pink
+  - Foreground and background variations (`fg`, `bg`)
+  - No emphasis variations
+
+### **Navigation Category**
+- **Location**: L1 semantic level files (`s1_lightness/`) + ob.s compilation (`compiled.json`)
+- **Purpose**: Navigation elements (top navigation bar, left navigation panel, tabs)
+- **Includes**:
+  - Foreground, background and border colors (`fg`, `bg`, `border`)
+  - One token per state: enabled, hover, focus, pressed, selected, disabled
+  - No emphasis variations
+
 ### **Contrast Levels per Category**
 
 Semantic color tokens use a **contrast scale** (`lowest` → `low` → `medium` → `high` → `highest`) to express visual weight. The number of levels available differs per category by design:
@@ -162,8 +178,9 @@ Semantic color tokens use a **contrast scale** (`lowest` → `low` → `medium` 
 | **Neutral**     | All 5: `lowest`, `low`, `medium`, `high`, `highest` |
 | **Status**      | 4: `low`, `medium`, `high`, `highest`             |
 | **Interaction** | 3 at S1: `low`, `medium`, `high`                  |
+| **Free**        | 4: `low`, `medium`, `high`, `highest`             |
 
-Currently, the full 5-level scale is provided only for the **Neutral** category (`fg` and `bg`). Status and Interaction use a narrower subset. If the need arises during component development, the scale may be extended for those categories. However, the intent is to keep the number of options deliberately limited to ensure visual consistency across projects through constrained design choices.
+Currently, the full 5-level scale is provided only for the **Neutral** category (`fg` and `bg`). Status, Interaction and Free use a narrower subset. If the need arises during component development, the scale may be extended for those categories. However, the intent is to keep the number of options deliberately limited to ensure visual consistency across projects through constrained design choices.
 
 ---
 
