@@ -69,6 +69,7 @@ Before reaching for a semantic token, check if an `ob.c.*` (component-level) tok
 | System feedback | **Status** | Alerts, validation messages, badges (success, warning, error, info) |
 | Federal identity | **Brand** | Logo area, brand bar — limited use |
 | Decorative / project-specific | **Free** | Tags, categories, data visualization — no built-in semantic meaning |
+| Navigation elements | **Navigation** | Top navigation bar, left navigation panel, tabs |
 
 **Detailed documentation per family:**
 - [Neutral](../03-token-categories/colors/04-semantic-neutral.md)
@@ -126,6 +127,7 @@ Semantic color tokens use a contrast scale to express visual weight. Picking the
 | **Neutral** | `lowest`, `low`, `medium`, `high`, `highest` (all 5) |
 | **Status** | `low`, `medium`, `high`, `highest` (4 levels) |
 | **Interaction** | `low`, `medium`, `high` (3 levels at S1) |
+| **Free** | `low`, `medium`, `high`, `highest` (4 levels) |
 
 Not every primitive shade is available as a semantic token — shades that would produce unreadable pairings are deliberately excluded. The intent is to keep the number of options limited to ensure visual consistency across projects.
 

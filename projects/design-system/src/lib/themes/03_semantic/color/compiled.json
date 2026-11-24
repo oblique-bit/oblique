@@ -5,13 +5,13 @@
         "token_family_docs": {
           "description": {
             "$type": "other",
-            "$value": "Semantic color tokens — neutral, interaction, status, free, and brand. Light/Dark and emphasis modes are pre-resolved; component and HTML tokens consume these directly without further mode handling. Do not consume primitive colors in components."
+            "$value": "The Oblique Next Design System provides one shared, consistent set of colors for federal applications. It supports light and dark mode and meets accessibility requirements such as text contrast of at least 4.5:1, WCAG AA. Colors travel through four reference tiers: P (primitives), S1 (light/dark), S2 (emphasis) and S (projects use only this!). Semantic tokens are grouped into categories: neutral, interaction, status, brand, free and navigation. Clear token names and descriptions give product designers and AI tools the usage context. Read more: https://github.com/oblique-bit/oblique/blob/tokens-release-16/projects/design-system/documentation/03-token-categories/colors/00-overview.md"
           }
         },
         "_docs": {
           "token_family_info": {
             "$type": "text",
-            "$value": "Fully resolved semantic color tokens — neutral, interaction, status, free, and brand. No mode resolution required. Light/Dark modes are pre-integrated — no manual mode switching needed. Use: Assign in component and HTML token files. Avoid: Referencing S1 tokens directly in components — S1 is a bridging layer where mode resolution is partial. Figma variable names for this tier trim the ob/s/ prefix (e.g. color/neutral/fg/contrast_medium/inversity_normal) for usability in the variables panel; the JSON token keeps the full ob.s.color path."
+            "$value": "Fully resolved semantic color tokens — neutral, interaction, status, free, brand, and navigation. No mode resolution required. Light/Dark modes are pre-integrated — no manual mode switching needed. Use: Assign in component and HTML token files. Avoid: Referencing S1 tokens directly in components — S1 is a bridging layer where mode resolution is partial. Figma variable names for this tier trim the ob/s/ prefix (e.g. color/neutral/fg/contrast_medium/inversity_normal) for usability in the variables panel; the JSON token keeps the full ob.s.color path."
           }
         },
         "brand": {

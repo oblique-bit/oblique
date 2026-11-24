@@ -76,6 +76,12 @@ Colors with no built-in semantic meaning, available for project-specific purpose
 
 [View Free Colors Documentation →](08-semantic-free.md)
 
+#### Navigation Colors
+Colors for navigation elements: top navigation bar, left navigation panel and tabs:
+- **States**: Foreground, background and border colors for enabled, hover, focus, pressed, selected and disabled
+- **Emphasis**: Emphasis mode (high/low) has no effect
+- **Brand red**: Reserved for borders and brand indicators; backgrounds use the cobalt scale
+
 ## Token Structure
 
 ### Semantic Naming Convention
