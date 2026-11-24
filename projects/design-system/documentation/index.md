@@ -1,8 +1,8 @@
 # Oblique Design System
 
-**Oblique 16**
+**Oblique Next Design System**
 
-## What is the Oblique Design System?
+## What is the Oblique Next Design System?
 
 Oblique 16 introduces the Oblique Design System for the first time, alongside the existing Oblique library. Today, "Oblique Design System" means design tokens and modes as the source of truth, generated into Figma variables and CSS.
 
